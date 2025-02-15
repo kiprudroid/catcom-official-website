@@ -13,6 +13,7 @@
     "mission"
     "weekly-program"
     "footer";
+    width: 100%;
 }
 .header {
   background-color: white;
@@ -39,8 +40,8 @@
   grid-area: weekly-program;
 }
 .footer {
-  background-color: aqua;
   grid-area: footer;
+  width: 100%;
 }
 
 .slideshow-image {
