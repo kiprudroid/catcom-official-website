@@ -1,16 +1,11 @@
 import React from "react"
-import "./index.css"
-
 
 function App() {
-
   return (
     <>
-     <p>
-      App
-      </p> 
+     <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
