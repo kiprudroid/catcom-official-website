@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import Header from "../../reusable-components/Header/Header";
+import "@fontsource/inter"; 
 
 function Home() {
   return (
@@ -8,28 +9,56 @@ function Home() {
       <div className="grid-container">
         <Header className="header" />
         <div className="item slide-show">
-          <img src="./public/others/st augustine.jpg" alt="" className="slideshow-image"/>
+          <img
+            src="./public/others/st augustine.jpg"
+            alt=""
+            className="slideshow-image"
+          />
         </div>
         <div className="item what-are-we">
-          <h3 className="what-are-we-title">What are we</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ab
-            minus ullam, earum, reprehenderit odit soluta eum dolore accusantium
-            sit repellendus at quo ipsa sapiente? Rem corrupti quibusdam
-            ratione, velit perferendis aperiam magni recusandae exercitationem
-            maxime dicta porro ipsam doloremque cum necessitatibus facere
-            molestias quo cumque. Possimus sapiente reprehenderit quidem, eaque
-            quo fugit eligendi neque, esse corporis, aliquid impedit a.
-          </p>
+          <h3
+            className="what-are-we-title"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            What are we
+          </h3>
+          <div className="content-wrapper">
+            <p
+              className="text-content"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              We are a vibrant Catholic Community that encourages healthy growth
+              spiritually, socially, and academically, with the ultimate goal of
+              encountering Christ in our daily lives. The community supports us
+              in recognizing our inherent vocation bestowed upon us by God,
+              which involves the task of exploring our talents and capabilities
+              and utilizing them for the betterment of others. This friendship
+              grants us the opportunity to cultivate our freedom, allowing us to
+              lead lives that are dedicated to Christ, with Christ, and for
+              Christ. It is a genuine bond that empowers every member to develop
+              love for themselves as well as for others.
+            </p>
+          </div>
         </div>
         <div className="item vision">
-          <h3>Our Vision</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ab
-            minus ullam, earum, reprehenderit odit soluta eum dolore accusantium
-            sit repellendus at quo ipsa sapiente? Rem corrupti quibusdam
-            ratione, velit perferendis aperiam magni recusandae exercitationem
-          </p>
+          <h3
+            className="what-are-we-title"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Our Vision
+          </h3>
+          <div className="content-wrapper">
+            <p
+              className="text-content"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+              ab minus ullam, earum, reprehenderit odit soluta eum dolore
+              accusantium sit repellendus at quo ipsa sapiente? Rem corrupti
+              quibusdam ratione, velit perferendis aperiam magni recusandae
+              exercitationem
+            </p>
+          </div>
         </div>
         <div className="item media-content">
           <h3>Media Content</h3>

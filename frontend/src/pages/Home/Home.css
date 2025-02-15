@@ -27,7 +27,6 @@
   grid-area: what-are-we;
 }
 .vision {
-  background-color: red;
   grid-area: vision;
 }
 .media-content {
@@ -58,4 +57,17 @@
   font-weight: bold;
   text-align: center;
   margin-top: 2rem;
+
+}
+.text-content {
+  color: black;
+  font-size: 24px;
+  text-align: center;
+  margin: 2rem 0;
+  font-family: sans-serif;
+}
+.content-wrapper {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
 }
