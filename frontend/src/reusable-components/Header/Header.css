@@ -1,0 +1,8 @@
+.navbar {
+  display: flex;
+  gap: 10px;
+}
+
+ul > li {
+  display: flex;
+}
