@@ -30,15 +30,12 @@
   grid-area: vision;
 }
 .media-content {
-  background-color: brown;
   grid-area: media-content;
 }
 .mission {
-  background-color: green;
   grid-area: mission;
 }
 .weekly-program {
-  background-color: orange;
   grid-area: weekly-program;
 }
 .footer {
@@ -51,7 +48,7 @@
   height: 70vh;
   object-fit: cover;
 }
-.what-are-we-title {
+.content-title {
   color: #2DABB1;
   font-size: 2rem;
   font-weight: bold;
@@ -70,4 +67,7 @@
   width: 80%;
   height: 100%;
   margin: 0 auto;
+}
+.media-image {
+  height: 300px;
 }

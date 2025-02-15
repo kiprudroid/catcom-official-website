@@ -17,7 +17,7 @@ function Home() {
         </div>
         <div className="item what-are-we">
           <h3
-            className="what-are-we-title"
+            className="content-title"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             What are we
@@ -42,7 +42,7 @@ function Home() {
         </div>
         <div className="item vision">
           <h3
-            className="what-are-we-title"
+            className="content-title"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Our Vision
@@ -61,34 +61,77 @@ function Home() {
           </div>
         </div>
         <div className="item media-content">
-          <h3>Media Content</h3>
-          <img
-            src="/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg"
-            alt=""
-          />
+          <h3
+            className="content-title"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Media Content
+          </h3>
+          <div className="content-wrapper">
+            <img
+              src="/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg"
+              alt=""
+              className="media-image"
+            />
+          </div>
         </div>
         <div className="item mission">
-          <h3>Our Mission</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ab
-            minus ullam, earum, reprehenderit odit soluta eum dolore accusantium
-            sit repellendus at quo ipsa sapiente? Rem corrupti quibusdam
-            ratione, velit perferendis aperiam magni recusandae exercitationem
-          </p>
+          <h3
+            className="content-title"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Our Mission
+          </h3>
+          <div className="content-wrapper">
+            <p
+              className="text-content"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+              ab minus ullam, earum, reprehenderit odit soluta eum dolore
+              accusantium sit repellendus at quo ipsa sapiente? Rem corrupti
+              quibusdam ratione, velit perferendis aperiam magni recusandae
+              exercitationem
+            </p>
+          </div>
         </div>
         <div className="item weekly-program">
-          <h3>Weekly Program</h3>
-          <p>lorem150</p>
+          <h3
+            className="content-title"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Weekly Program
+          </h3>
+
+          <div className="content-wrapper">
+            <p
+              className="text-content"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
+              voluptates quod debitis iusto aspernatur dolor doloremque sint
+              atque eligendi sit porro, delectus officiis eum doloribus,
+              laboriosam, placeat laborum deleniti fuga facere? Fugit
+              consectetur enim numquam ullam, nihil sunt illum veniam
+              dignissimos, impedit soluta veritatis repudiandae magni aperiam,
+              perspiciatis pariatur? Dolor cumque laborum, nemo dolorem qui
+              alias ducimus eos cum facere, soluta velit aspernatur praesentium
+              nesciunt incidunt nostrum, tempore mollitia veniam nisi vitae.
+              Consequatur, sunt, perferendis odio fugiat atque vel quaerat quam
+              illo tenetur beatae pariatur. Autem facilis voluptas nemo facere
+              earum similique, reprehenderit, accusantium exercitationem quasi
+              adipisci quam voluptate sequi a distinctio minus sint, nobis
+              cupiditate et nihil corrupti ratione. Ratione odio nisi nobis
+              quidem quam soluta ipsum praesentium similique tenetur nemo?
+              Excepturi et cum obcaecati molestiae sunt enim sint itaque ex ea
+              voluptatibus atque delectus aliquam nesciunt commodi est
+              necessitatibus iste dolore voluptas, velit veritatis
+              exercitationem, incidunt culpa. Ex?
+            </p>
+          </div>
         </div>
-        <div className="item footer">
-          <p>
-            Lorem ipsum dolor sit Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ipsum iure inventore dolore commodi, consequatur
-            at itaque asperiores consequuntur non sapiente a officiis laboriosam
-            modi, recusandae, laudantium facilis maiores eaque voluptate
-            voluptatum ipsam porro soluta id labore quis! Nobis, velit nihil?
-          </p>
-        </div>
+        <div className="item footer">{/* Put the Footer Component Here */}</div>
       </div>
     </>
   );
