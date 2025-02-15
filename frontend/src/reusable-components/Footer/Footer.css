@@ -1,0 +1,8 @@
+.footer-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  background-color: rgb(156, 43, 43);
+  grid-template-columns: repeat(3, 1fr) 2fr;
+}

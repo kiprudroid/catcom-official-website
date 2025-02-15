@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import Header from "../../reusable-components/Header/Header";
 import "@fontsource/inter"; 
+import Footer from "../../reusable-components/Footer/Footer";
 
 function Home() {
   return (
@@ -131,7 +132,9 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="item footer">{/* Put the Footer Component Here */}</div>
+        <div className="item footer">
+          <Footer/>
+          </div>
       </div>
     </>
   );
