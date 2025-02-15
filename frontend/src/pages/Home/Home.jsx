@@ -8,10 +8,10 @@ function Home() {
       <div className="grid-container">
         <Header className="header" />
         <div className="item slide-show">
-          <img src="./public/others/st augustine.jpg" alt="" />
+          <img src="./public/others/st augustine.jpg" alt="" className="slideshow-image"/>
         </div>
         <div className="item what-are-we">
-          <h3>What are we</h3>
+          <h3 className="what-are-we-title">What are we</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ab
             minus ullam, earum, reprehenderit odit soluta eum dolore accusantium
