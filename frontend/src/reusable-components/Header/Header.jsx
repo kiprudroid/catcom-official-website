@@ -1,34 +1,42 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 function Header({ className }) {
   return (
     <>
-    
       <nav className={`${className}  nav `}>
         <div className="nav-list">
-
           <div className="nav-left">
             <ul className="nav-left-list">
-
-            <li>JKUAT CATCOM</li>
-            <li>Home </li>
-            <li>Liturgy</li>
-            <li>Community</li>
+              <li>JKUAT CATCOM</li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/liturgy">Liturgy</Link>
+              </li>
+              <li>
+                <Link to="/community">Community</Link>
+              </li>
             </ul>
-
           </div>
 
           <div className="logo">
-            <img src="/others/ctm_logo.jpg" alt=""className="catcom-logo"/>
+            <img src="/others/ctm_logo.jpg" alt="" className="catcom-logo" />
           </div>
 
           <div className="nav-right">
             <ul className="nav-right-list">
-
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Join SCC</li>
+              <li>
+                <Link to="/about">About Us</Link>
+              </li>
+              <li>
+                <Link to="/contact"> Contact Us</Link>
+              </li>
+              <li>
+                <Link to="/join-scc">Join SCC</Link>
+              </li>
             </ul>
           </div>
         </div>

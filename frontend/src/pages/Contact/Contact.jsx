@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../../reusable-components/Header/Header";
 
-function Community() {
+function Contact() {
   return (
     <>
-      Community
+      Contact
       <Header />
     </>
   );
 }
 
-export default Community;
+export default Contact;
