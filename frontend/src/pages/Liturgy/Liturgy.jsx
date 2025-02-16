@@ -1,11 +1,13 @@
 import React from "react";
+import Header from "../../reusable-components/Header/Header";
 
 function Liturgy() {
   return (
-    <div>
-     
-    </div>
+    <>
+      Liturgy
+      <Header />
+    </>
   );
 }
 
-export default  Liturgy;
+export default Liturgy;
