@@ -23,7 +23,7 @@ function Header({ className }) {
           </div>
 
           <div className="logo">
-            <img src="./others/ctm_logo.jpg" alt="" className="catcom-logo" />
+            <img src="./others/ctm_logo.png" alt="" className="catcom-logo" />
           </div>
 
           <div className="nav-right">
