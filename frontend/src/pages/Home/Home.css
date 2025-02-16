@@ -77,3 +77,12 @@
 .media-image {
   height: 300px;
 }
+.media-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  overflow-x: scroll;
+  display: flex;
+  gap: 1rem;
+  scroll-behavior: smooth;
+
+}
