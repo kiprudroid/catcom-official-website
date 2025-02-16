@@ -8,7 +8,7 @@ function Footer(){
           <div className="footer-grid-container">
             <div className="grid-item first">
               <img
-                src="/others/ctm_logo.jpg"
+                src="/others/ctm_logo.png"
                 alt="Catcom Logo"
                 className="ctm-logo"
               />

@@ -11,7 +11,7 @@ function Home() {
         <Header className="header" />
         <div className="item slide-show">
           <img
-            src="./public/others/st augustine.jpg"
+            src="./others/st augustine.jpg"
             alt=""
             className="slideshow-image"
           />
