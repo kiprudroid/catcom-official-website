@@ -21,7 +21,7 @@ function Home() {
             className="content-title"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            What are we
+            What are we ?
           </h3>
           <div className="content-wrapper">
             <p
