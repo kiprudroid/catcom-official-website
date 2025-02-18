@@ -68,12 +68,21 @@ function Home() {
           >
             Media Content
           </h3>
-          <div className="content-wrapper">
-            <img
-              src="/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg"
-              alt=""
-              className="media-image"
-            />
+          <div className="media-wrapper">
+            {[
+              "/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg",
+              "/others/placeholder.jpg",
+              "/others/placeholder.jpg",
+              "/others/placeholder.jpg",
+              "/others/kmrm_logo.jpg",
+            ].map((url, index) => (
+              <img
+                key={index}
+                src={url}
+                alt={`media-content-${index}`}
+                className="media-image"
+              />
+            ))}
           </div>
         </div>
         <div className="item mission">
