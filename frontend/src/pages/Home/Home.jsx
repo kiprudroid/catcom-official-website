@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import Header from "../../reusable-components/Header/Header";
-import "@fontsource/inter"; 
+import "@fontsource/inter";
 import Footer from "../../reusable-components/Footer/Footer";
 
 function Home() {
@@ -109,7 +109,6 @@ function Home() {
               className="text-content"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
               voluptates quod debitis iusto aspernatur dolor doloremque sint
               atque eligendi sit porro, delectus officiis eum doloribus,
@@ -133,8 +132,8 @@ function Home() {
           </div>
         </div>
         <div className="item footer">
-          <Footer/>
-          </div>
+          <Footer />
+        </div>
       </div>
     </>
   );
