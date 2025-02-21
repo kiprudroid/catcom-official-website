@@ -1,0 +1,64 @@
+.gridContainer {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: repeat(9, minmax(1fr, auto));
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "header header header"
+    "mass-services mass-services mass-services"
+    "bible-verse bible-verse bible-verse"
+    "calendar calendar calendar"
+    "prayers prayers prayers"
+    "rosary rosary rosary"
+    "divine-mercy divine-mercy divine-mercy"
+    "way-of-cross way-of-cross way-of-cross"
+    "footer footer footer";
+}
+
+.header {
+  grid-area: header;
+  background-color: red;
+}
+.massServices {
+  background-color: rgb(44, 59, 59);
+  grid-area: mass-services;
+}
+
+.bibleVerse {
+  background-color: blue;
+  grid-area: bible-verse;
+  height: 100px;
+}
+.calendar {
+  background-color: red;
+  height: 200px;
+  grid-area: calendar;
+}
+
+.prayers {
+  background-color: blueviolet;
+  height: 100px;
+  grid-area: prayers;
+}
+
+.rosary {
+  background-color: brown;
+  height: 100px;
+  grid-area: rosary;
+}
+
+.divineMercy {
+  background-color: yellow;
+  height: 100px;
+  grid-area: divine-mercy;
+}
+
+.wayOfCross {
+  background-color: orange;
+  height: 100px;
+  grid-area: way-of-cross;
+}
+
+.footer {
+  grid-area: footer;
+}
