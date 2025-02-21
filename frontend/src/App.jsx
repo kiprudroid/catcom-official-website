@@ -15,9 +15,8 @@ function App() {
         <Route path="/liturgy" element={<Liturgy />} />
         <Route path="/community" element={<Community />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/join-scc" element={<Join />} />
         <Route path="/media" element={<Media />} />
+        <Route path="/join-scc" element={<Join />} />
       </Routes>
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import styles from "./Home.module.css";
 import Header from "../../reusable-components/Header/Header";
 import "@fontsource/inter";
 import Footer from "../../reusable-components/Footer/Footer";
@@ -7,25 +7,25 @@ import Footer from "../../reusable-components/Footer/Footer";
 function Home() {
   return (
     <>
-      <div className="grid-container">
-        <Header className="header" />
-        <div className="item slide-show">
+      <div className={styles.gridContainer}>
+        <Header className={styles.header} />
+        <div className={styles.slideShow}>
           <img
             src="./others/st augustine.jpg"
             alt=""
-            className="slideshow-image"
+            className={styles.slideshowImage}
           />
         </div>
-        <div className="item what-are-we">
+        <div className={styles.whatAreWe}>
           <h3
-            className="content-title"
+            className={styles.contentTitle}
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             What are we ?
           </h3>
-          <div className="content-wrapper">
+          <div className={styles.contentWrapper}>
             <p
-              className="text-content"
+              className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               We are a vibrant Catholic Community that encourages healthy growth
@@ -41,16 +41,16 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="item vision">
+        <div className={styles.vision}>
           <h3
-            className="content-title"
+            className={styles.contentTitle}
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Our Vision
           </h3>
-          <div className="content-wrapper">
+          <div className={styles.contentWrapper}>
             <p
-              className="text-content"
+              className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
@@ -61,14 +61,14 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="item media-content">
+        <div className={styles.mediaContent}>
           <h3
-            className="content-title"
+            className={styles.contentTitle}
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Media Content
           </h3>
-          <div className="media-wrapper">
+          <div className={styles.mediaWrapper}>
             {[
               "/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg",
               "/others/placeholder.jpg",
@@ -80,21 +80,21 @@ function Home() {
                 key={index}
                 src={url}
                 alt={`media-content-${index}`}
-                className="media-image"
+                className={styles.mediaImage}
               />
             ))}
           </div>
         </div>
-        <div className="item mission">
+        <div className={styles.mission}>
           <h3
-            className="content-title"
+            className={styles.contentTitle}
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Our Mission
           </h3>
-          <div className="content-wrapper">
+          <div className={styles.contentWrapper}>
             <p
-              className="text-content"
+              className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
@@ -105,17 +105,17 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="item weekly-program">
+        <div className={styles.weeklyProgram}>
           <h3
-            className="content-title"
+            className={styles.contentTitle}
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Weekly Program
           </h3>
 
-          <div className="content-wrapper">
+          <div className={styles.contentWrapper}>
             <p
-              className="text-content"
+              className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
@@ -140,7 +140,7 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="item footer">
+        <div className={styles.footer}>
           <Footer />
         </div>
       </div>

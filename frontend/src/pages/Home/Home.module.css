@@ -1,4 +1,4 @@
-.grid-container {
+.gridContainer {
   height: 100vh;
   display: grid;
   gap: 1rem;
@@ -23,11 +23,16 @@
   background-color: white;
   grid-area: header;
 }
-.slide-show {
+.slideShow {
   background-color: aqua;
   grid-area: slide-show;
 }
-.what-are-we {
+.slideshowImage {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+}
+.whatAreWe {
   background-color: white;
   grid-area: what-are-we;
 }
@@ -40,7 +45,7 @@
 .mission {
   grid-area: mission;
 }
-.weekly-program {
+.weeklyProgram {
   grid-area: weekly-program;
 }
 .footer {
@@ -48,34 +53,29 @@
   width: 100%;
 }
 
-.slideshow-image {
-  width: 100%;
-  height: 70vh;
-  object-fit: cover;
-}
-.content-title {
+.contentTitle {
   color: #2dabb1;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
   margin-top: 2rem;
 }
-.text-content {
+.textContent {
   color: black;
   font-size: 24px;
   text-align: center;
   margin: 2rem 0;
   font-family: sans-serif;
 }
-.content-wrapper {
+.contentWrapper {
   width: 80%;
   height: 100%;
   margin: 0 auto;
 }
-.media-image {
+.mediaImage {
   max-height: 300px;
 }
-.media-wrapper {
+.mediaWrapper {
   white-space: nowrap;
   width: 80%;
   margin: 0 auto;
