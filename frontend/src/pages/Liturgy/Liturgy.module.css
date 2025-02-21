@@ -81,7 +81,8 @@
 }
 .calendarImage {
   height: auto;
-  width: 100%;
+  width: 95%;
+  padding: 1rem;
 }
 
 .prayers {
