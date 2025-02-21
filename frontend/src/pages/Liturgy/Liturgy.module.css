@@ -1,6 +1,7 @@
 .gridContainer {
   display: grid;
   height: 100vh;
+  gap: 2rem;
   grid-template-rows: repeat(9, minmax(1fr, auto));
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
@@ -17,45 +18,116 @@
 
 .header {
   grid-area: header;
-  background-color: red;
 }
 .massServices {
-  background-color: rgb(44, 59, 59);
+  background-color: blueviolet;
   grid-area: mass-services;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "content-title content-title content-title"
+    "col1 col2 col3";
+  gap: 1rem;
+  width: 100%;
+  height: auto;
+}
+.col1 {
+  grid-area: col1;
+  background-color: aqua;
+}
+.col2 {
+  grid-area: col2;
+  background-color: orange;
+}
+.col3 {
+  grid-area: col3;
+  background-color: aqua;
 }
 
 .bibleVerse {
-  background-color: blue;
+  background-color: rgb(112, 112, 146);
   grid-area: bible-verse;
-  height: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-template-areas:
+    "content-title content-title content-title"
+    "first-reading psalms second-reading";
+
+  width: 100%;
+  padding: 1rem;
+}
+.contentTitle {
+  grid-area: content-title;
+  width: 100%;
+}
+.firstReading {
+  grid-area: first-reading;
+  border-right: solid 0.2rem rgb(54, 7, 7);
+  padding: 1rem;
+}
+.psalms {
+  grid-area: psalms;
+  padding: 1rem;
+  border-right: solid 0.2rem rgb(54, 7, 7);
+}
+
+.secondReading {
+  grid-area: second-reading;
+  padding: 1rem;
 }
 .calendar {
-  background-color: red;
-  height: 200px;
   grid-area: calendar;
+}
+.calendarImage {
+  height: auto;
+  width: 100%;
 }
 
 .prayers {
   background-color: blueviolet;
-  height: 100px;
   grid-area: prayers;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 200px;
+  grid-template-areas:
+    "content-title content-title content-title"
+    "our-father hail-mary apostles-creed";
+
+  gap: 10px;
+  width: 100%;
+}
+.contentTitle {
+  grid-area: content-title;
+}
+.ourFather {
+  grid-area: our-father;
+  background-color: aquamarine;
+}
+.hailMary {
+  grid-area: hail-mary;
+  background-color: aquamarine;
+}
+.apostlesCreed {
+  grid-area: apostles-creed;
+  background-color: aquamarine;
 }
 
 .rosary {
   background-color: brown;
-  height: 100px;
+  height: 200px;
   grid-area: rosary;
 }
 
 .divineMercy {
   background-color: yellow;
-  height: 100px;
+  height: 200px;
   grid-area: divine-mercy;
 }
 
 .wayOfCross {
   background-color: orange;
-  height: 100px;
+  height: 200px;
   grid-area: way-of-cross;
 }
 
