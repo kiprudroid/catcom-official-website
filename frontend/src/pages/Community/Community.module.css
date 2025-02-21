@@ -1,7 +1,7 @@
 .communityGridContainer {
     display: grid;
     height: 100%;
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    grid-template-columns: repeat(4, minmax(auto, 1fr));
     grid-template-rows: repeat(9, minmax(1fr, auto));
     grid-gap: 10px;
     padding: 10px;
@@ -26,22 +26,25 @@
 .header {
     background-color: tomato;
     grid-area: header;
-    height: 100px;
+    height: auto;
 }
 .sccDescription {
-    background-color: cyan;
     grid-area: sccDescription;
-    height: 100px;
+    height: auto;
+    text-align: center;
 }
 .sccPictures {
-    background-color: lightcoral;
+    background-color: white;
     grid-area: sccPictures;
-    height: 100px;
+    height: auto;
+    grid-column: span 4;
 }
 .sccExpanded {
     background-color: lightgoldenrodyellow;
     grid-area: sccExpanded;
-    height: 100px;
+    display: grid;
+    grid-template-columns: 2fr 3fr; /* First column takes 2 parts, second takes 1 part */
+    gap: 10px; 
 
 }
 .alumni {
@@ -63,4 +66,35 @@
     background-color: lightsteelblue;
     grid-area: footer;
     height: 100px;
+}
+.sccCardsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.sccItem {
+    border: 1px solid black;
+    height: 600px;
+    width: 100%;
+}
+.sccItem:nth-child(2) {
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+.secondColumnItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 100%;
+    border: 1px solid black;
+}
+.groupPhoto{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
