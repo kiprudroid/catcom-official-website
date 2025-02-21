@@ -8,3 +8,7 @@ body {
 ul li {
   list-style: none;
 }
+.contentWrapper {
+  width: 80%;
+  margin: auto;
+}
