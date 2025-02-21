@@ -1,0 +1,59 @@
+.gridContainer {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: repeat(9, minmax(200px, auto));
+  grid-template-areas:
+    "header"
+    "about-catcom"
+    "heritage"
+    "vision-mission"
+    "communities"
+    "priests"
+    "patrons"
+    "leaders"
+    "footer";
+  gap: 1rem;
+}
+.header {
+  background-color: aqua;
+  grid-area: header;
+}
+.aboutCatcom {
+  background-color: aqua;
+  grid-area: about-catcom;
+}
+
+.heritage {
+  background-color: aqua;
+  grid-area: heritage;
+}
+
+.visionMission {
+  background-color: aqua;
+  grid-area: vision-mission;
+}
+
+.communities {
+  background-color: aqua;
+  grid-area: communities;
+}
+
+.priests {
+  background-color: aqua;
+  grid-area: priests;
+}
+
+.patrons {
+  background-color: aqua;
+  grid-area: patrons;
+}
+
+.leaders {
+  background-color: aqua;
+  grid-area: leaders;
+}
+
+.footer {
+  background-color: aqua;
+  grid-area: footer;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header({ className }) {
@@ -11,13 +11,13 @@ function Header({ className }) {
             <ul className="nav-left-list">
               <li>JKUAT CATCOM</li>
               <li>
-                <Link to="/">Home</Link>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <Link to="/liturgy">Liturgy</Link>
+                <NavLink to="/liturgy">Liturgy</NavLink>
               </li>
               <li>
-                <Link to="/community">Community</Link>
+                <NavLink to="/community">Community</NavLink>
               </li>
             </ul>
           </div>
@@ -29,13 +29,13 @@ function Header({ className }) {
           <div className="nav-right">
             <ul className="nav-right-list">
               <li>
-                <Link to="/about">About Us</Link>
+                <NavLink to="/about">About Us</NavLink>
               </li>
               <li>
-                <Link to="/contact"> Contact Us</Link>
+                <NavLink to="/media"> Media</NavLink>
               </li>
               <li>
-                <Link to="/join-scc">Join SCC</Link>
+                <NavLink to="/join-scc">Join SCC</NavLink>
               </li>
             </ul>
           </div>
