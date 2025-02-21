@@ -1,0 +1,66 @@
+.communityGridContainer {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    grid-template-rows: repeat(9, minmax(1fr, auto));
+    grid-gap: 10px;
+    padding: 10px;
+    grid-template-areas: 
+    "header"
+    "sccDescription"
+    "sccPictures sccPictures sccPictures sccPictures"
+    "sccPictures sccPictures sccPictures sccPictures"
+    "sccExpanded"
+    "alumni"
+    "choir"
+    "technicalTeam"
+    "footer"
+}
+.communityItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 100px;
+}
+.header {
+    background-color: tomato;
+    grid-area: header;
+    height: 100px;
+}
+.sccDescription {
+    background-color: cyan;
+    grid-area: sccDescription;
+    height: 100px;
+}
+.sccPictures {
+    background-color: lightcoral;
+    grid-area: sccPictures;
+    height: 100px;
+}
+.sccExpanded {
+    background-color: lightgoldenrodyellow;
+    grid-area: sccExpanded;
+    height: 100px;
+
+}
+.alumni {
+    background-color: lightgreen;
+    grid-area: alumni;
+    height: 100px;
+}
+.choir {
+    background-color: lightpink;
+    grid-area: choir;
+    height: 100px;
+}
+.technicalTeam {
+    background-color: lightseagreen;
+    grid-area: technicalTeam;
+    height: 100px;
+}
+.footer {
+    background-color: lightsteelblue;
+    grid-area: footer;
+    height: 100px;
+}

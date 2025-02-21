@@ -6,6 +6,7 @@ import Community from "./pages/Community/Community";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Join from "./pages/Join-scc/Join";
+import Media from "./pages/Media/Media";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/join-scc" element={<Join />} />
+        <Route path="/media" element={<Media />} />
       </Routes>
     </>
   );

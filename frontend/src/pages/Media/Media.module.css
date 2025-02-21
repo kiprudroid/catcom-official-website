@@ -1,0 +1,74 @@
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    margin-top: 1rem;
+    grid-template-rows: repeat(9, minmax(200px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
+    grid-template-areas:
+    "header"
+    "massCelebrations"
+    "eventsAndActivities1"
+    "eventsAndActivities2"
+    "eventsAndActivities3"
+    "eventsAndActivities4"
+    "blogsAndBooks"
+    "musicAndVideos"
+    "footer";
+    width: 100vh;
+    height: 100vh;
+
+}
+.header {
+    height: 100px;
+    background-color: lightblue;
+    grid-area: header;
+}
+
+.massCelebrations {
+    height: 100px;
+    background-color: lightgreen;
+    grid-area: massCelebrations;
+}
+
+.eventsAndActivities1 {
+    height: 100px;
+    background-color: lightcoral;
+    grid-area: eventsAndActivities1;
+}
+
+.eventsAndActivities2 {
+    height: 100px;
+    background-color: lightgoldenrodyellow;
+    grid-area: eventsAndActivities2;
+}
+
+.eventsAndActivities3 {
+    height: 100px;
+    background-color: lightpink;
+    grid-area: eventsAndActivities3;
+}
+
+.eventsAndActivities4 {
+    height: 100px;
+    background-color: lightseagreen;
+    grid-area: eventsAndActivities4;
+}
+
+.blogsAndBooks {
+    height: 100px;
+    background-color: lightsteelblue;
+    grid-area: blogsAndBooks;
+}
+
+.musicAndVideos {
+    height: 100px;
+    background-color: lightcyan;
+    grid-area: musicAndVideos;
+}
+
+.footer {
+    height: 100px;
+    background-color: lightgray;
+    grid-area: footer;
+}
