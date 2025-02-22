@@ -8,10 +8,16 @@ function Media() {
     <>
       <div className={styles.gridContainer}>
         <Header className={styles.header} />
-        <div className={`${styles.item} ${styles.massCelebrations}`}>
-          Mass Celebrations
+        <div
+          className={`${styles.item} ${styles.massCelebrations} ${styles.repetitiveRow}`}
+        >
+          <div className={styles.contentTitle}>Mass Celebrations</div>
+          <div className={styles.col1}>x</div>
+          <div className={styles.col2}>y</div>
         </div>
-        <div className={`${styles.item} ${styles.eventsAndActivities1}`}>
+        <div
+          className={`${styles.item} ${styles.eventsAndActivities1} ${styles.repetitiveRow}`}
+        >
           Events and Activities 1
         </div>
         <div className={`${styles.item} ${styles.eventsAndActivities2}`}>

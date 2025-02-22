@@ -17,6 +17,28 @@
   grid-area: header;
   margin-bottom: 0;
 }
+.repetitiveRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  grid-template-areas:
+    "contentTitle contentTitle"
+    "col1 col2 ";
+  width: 100%;
+  height: auto;
+}
+.contentTitle {
+  grid-area: contentTitle;
+  width: 100%;
+}
+.col1 {
+  grid-area: col1;
+  background-color: aqua;
+}
+.col2 {
+  grid-area: col2;
+  background-color: orange;
+}
 
 .massCelebrations {
   background-color: lightgreen;

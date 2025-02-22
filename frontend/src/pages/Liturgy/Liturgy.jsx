@@ -9,7 +9,7 @@ function Liturgy() {
       <div className={`${styles.gridContainer}`}>
         <Header className={styles.header} />
 
-        <div className={`${styles.massServices}`}>
+        <div className={`${styles.massServices} item`}>
           <div className={styles.contentTitle}>
             <h3>Mass and Services</h3>
           </div>
@@ -56,7 +56,7 @@ function Liturgy() {
           </div>
         </div>
 
-        <div className={styles.bibleVerse}>
+        <div className={styles.bibleVerse + " item"}>
           <div className={styles.contentTitle}>
             <h3>Bible Verse and Devotion</h3>
             <p> Date: 22/02/2025</p>
@@ -102,7 +102,7 @@ function Liturgy() {
             </p>
           </div>
         </div>
-        <div className={styles.calendar}>
+        <div className={styles.calendar + " item"}>
           <img
             className={styles.calendarImage}
             src="/others/catcom calender.jpg"
@@ -110,7 +110,7 @@ function Liturgy() {
           />
         </div>
 
-        <div className={styles.prayers}>
+        <div className={styles.prayers + " item"}>
           <div className={styles.contentTitle}>PRAYERS</div>
           <div className={styles.ourFather}>
             <b>OUR FATHER </b>
@@ -148,13 +148,13 @@ function Liturgy() {
           </div>
         </div>
 
-        <div className={styles.rosary}>
+        <div className={styles.rosary + " item"}>
           <p>Holy Rosary Prayers</p>
         </div>
-        <div className={styles.divineMercy}>
+        <div className={styles.divineMercy + " item"}>
           <p>Divine Mercy</p>
         </div>
-        <div className={styles.wayOfCross}>
+        <div className={styles.wayOfCross + " item"}>
           <p> The Way Of the Cross</p>
         </div>
 
