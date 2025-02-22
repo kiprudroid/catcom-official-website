@@ -42,18 +42,24 @@ return (
       <Heading>SCC</Heading>
       <div className={`${styles.item} ${styles.sccExpanded}`}>
         <div className={styles.sccItem}>
-          <img src="/others/group_photo.jpeg" alt="SCC group Photo" className={styles.groupPhoto} />
+          <img
+            src="/others/group_photo.jpeg"
+            alt="SCC group Photo"
+            className={styles.groupPhoto}
+          />
         </div>
         <div className={styles.sccItem}>
           <div className={styles.secondColumnItem}> 1st</div>
           <div className={styles.secondColumnItem}>2nd</div>
         </div>
       </div>
-          <Heading>Alumni</Heading>
-      <div className={`${styles.item} ${styles.alumni}`}>
+      <Heading>Alumni</Heading>
+      <div className={`${styles.item} ${styles.alumni}`}></div>
+      <Heading>Choir</Heading>
 
-      </div>
       <div className={`${styles.item} ${styles.choir}`}></div>
+      <Heading>Technical Team</Heading>
+
       <div className={`${styles.item} ${styles.technicalTeam}`}></div>
       <div className={`${styles.item} ${styles.footer}`}>
         <Footer />

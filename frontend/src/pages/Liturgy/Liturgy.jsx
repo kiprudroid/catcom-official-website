@@ -6,10 +6,10 @@ import styles from "./Liturgy.module.css";
 function Liturgy() {
   return (
     <>
-      <div className={styles.gridContainer}>
+      <div className={`${styles.gridContainer}`}>
         <Header className={styles.header} />
 
-        <div className={styles.massServices}>
+        <div className={`${styles.massServices}`}>
           <div className={styles.contentTitle}>
             <h3>Mass and Services</h3>
           </div>

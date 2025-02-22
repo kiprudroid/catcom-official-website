@@ -1,7 +1,7 @@
 .communityGridContainer {
     display: grid;
     height: 100%;
-    grid-template-columns: repeat(4, minmax(auto, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(9, minmax(1fr, auto));
     grid-gap: 10px;
     padding: 10px;
@@ -48,24 +48,25 @@
 
 }
 .alumni {
-    background-color: lightgreen;
+    background-color: #D9D9D9;
     grid-area: alumni;
-    height: 100px;
+    height: 300px;
 }
 .choir {
-    background-color: lightpink;
+    background-color: #D9D9D9;
     grid-area: choir;
-    height: 100px;
+    height: 300px;
 }
 .technicalTeam {
-    background-color: lightseagreen;
+    background-color: #D9D9D9;
     grid-area: technicalTeam;
-    height: 100px;
+    height: 300px;
+    margin-bottom: 20px;
 }
 .footer {
     background-color: lightsteelblue;
     grid-area: footer;
-    height: 100px;
+    height:auto;
 }
 .sccCardsWrapper {
     display: flex;
