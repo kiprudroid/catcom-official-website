@@ -34,6 +34,7 @@
 .col1 {
   grid-area: col1;
   background-color: aqua;
+  height : 200px
 }
 .col2 {
   grid-area: col2;
@@ -78,4 +79,14 @@
 .footer {
   background-color: lightgray;
   grid-area: footer;
+}
+.musicAndVideos{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  grid-template-areas:
+    "contentTitle contentTitle contentTitle"
+    "col1 col2 col3";
+  width: 100%;
+  height: auto;
 }

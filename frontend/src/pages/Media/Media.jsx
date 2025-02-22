@@ -18,22 +18,45 @@ function Media() {
         <div
           className={`${styles.item} ${styles.eventsAndActivities1} ${styles.repetitiveRow}`}
         >
-          Events and Activities 1
+          <div className={styles.contentTitle}>Mass Celebrations</div>
+          <div className={styles.col1}>x</div>
+          <div className={styles.col2}>y</div>
         </div>
-        <div className={`${styles.item} ${styles.eventsAndActivities2}`}>
-          Events and Activities 2
+        <div
+          className={`${styles.item} ${styles.eventsAndActivities2} ${styles.repetitiveRow}`}
+        >
+          <div className={styles.contentTitle}>Mass Celebrations</div>
+          <div className={styles.col1}>x</div>
+          <div className={styles.col2}>y</div>
         </div>
-        <div className={`${styles.item} ${styles.eventsAndActivities3}`}>
-          Events and Activities 3
+        <div
+          className={`${styles.item} ${styles.eventsAndActivities3} ${styles.repetitiveRow}`}
+        >
+          <div className={styles.contentTitle}>Mass Celebrations</div>
+          <div className={styles.col1}>x</div>
+          <div className={styles.col2}>y</div>
         </div>
-        <div className={`${styles.item} ${styles.eventsAndActivities4}`}>
-          Events and Activities 4
+        <div
+          className={`${styles.item} ${styles.eventsAndActivities4} ${styles.repetitiveRow}`}
+        >
+          <div className={styles.contentTitle}>Mass Celebrations</div>
+          <div className={styles.col1}>x</div>
+          <div className={styles.col2}>y</div>
         </div>
-        <div className={`${styles.item} ${styles.blogsAndBooks}`}>
-          Blogs and Books
+        <div
+          className={`${styles.item} ${styles.blogsAndBooks} ${styles.repetitiveRow}`}
+        >
+          <div className={styles.contentTitle}>Mass Celebrations</div>
+          <div className={styles.col1}>x</div>
+          <div className={styles.col2}>y</div>
         </div>
-        <div className={`${styles.item} ${styles.musicAndVideos}`}>
-          Music and Videos
+        <div
+          className={`${styles.item} ${styles.musicAndVideos} ${styles.musicAndVideos}`}
+        >
+          <div className={styles.contentTitle}>Music and Videos</div>
+          <div className={styles.col1}>x</div>
+          <div className={styles.col2}>y</div>
+          <div className={styles.col1}>x</div>
         </div>
         <Footer className={styles.footer} />
       </div>
