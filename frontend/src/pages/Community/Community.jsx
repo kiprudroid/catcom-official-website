@@ -49,7 +49,7 @@ return (
           <div className={styles.secondColumnItem}>2nd</div>
         </div>
       </div>
-          <Header>Alumni</Header>
+          <Heading>Alumni</Heading>
       <div className={`${styles.item} ${styles.alumni}`}>
 
       </div>
