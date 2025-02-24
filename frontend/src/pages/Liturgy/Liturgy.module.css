@@ -1,0 +1,141 @@
+.gridContainer {
+  display: grid;
+  height: 100vh;
+  gap: 1rem;
+  grid-template-rows: repeat(9, minmax(1fr, auto));
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "header header header"
+    "mass-services mass-services mass-services"
+    "bible-verse bible-verse bible-verse"
+    "calendar calendar calendar"
+    "prayers prayers prayers"
+    "rosary rosary rosary"
+    "divine-mercy divine-mercy divine-mercy"
+    "way-of-cross way-of-cross way-of-cross"
+    "footer footer footer";
+}
+
+.header {
+  grid-area: header;
+  width: 100vw;
+}
+.massServices {
+  background-color: blueviolet;
+  grid-area: mass-services;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "content-title content-title content-title"
+    "col1 col2 col3";
+  gap: 1rem;
+  width: 100%;
+  height: auto;
+}
+.col1 {
+  grid-area: col1;
+  background-color: aqua;
+}
+.col2 {
+  grid-area: col2;
+  background-color: orange;
+}
+.col3 {
+  grid-area: col3;
+  background-color: aqua;
+}
+
+.bibleVerse {
+  background-color: rgb(112, 112, 146);
+  grid-area: bible-verse;
+  display: grid;
+  grid-template-columns: repeat(3, 0.8fr);
+  grid-template-areas:
+    "content-title content-title content-title"
+    "first-reading psalms second-reading";
+  padding: 1rem;
+}
+.contentTitle {
+  grid-area: content-title;
+  width: 100%;
+}
+.firstReading {
+  grid-area: first-reading;
+  border-right: solid 0.2rem rgb(54, 7, 7);
+  padding: 1rem;
+}
+.psalms {
+  grid-area: psalms;
+  padding: 1rem;
+  border-right: solid 0.2rem rgb(54, 7, 7);
+}
+
+.secondReading {
+  grid-area: second-reading;
+  padding: 1rem;
+}
+.calendar {
+  grid-area: calendar;
+}
+.calendarImage {
+  height: auto;
+  width: 70%;
+  padding: 1rem;
+  margin: auto;
+  display: block;
+}
+
+.prayers {
+  background-color: blueviolet;
+  grid-area: prayers;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 300px;
+  grid-template-areas:
+    "content-title content-title content-title"
+    "our-father hail-mary apostles-creed";
+
+  gap: 10px;
+  width: 100%;
+}
+.contentTitle {
+  grid-area: content-title;
+}
+.ourFather {
+  grid-area: our-father;
+  background-color: aquamarine;
+}
+.hailMary {
+  grid-area: hail-mary;
+  background-color: aquamarine;
+}
+.apostlesCreed {
+  grid-area: apostles-creed;
+  background-color: aquamarine;
+}
+
+.rosary {
+  background-color: brown;
+  height: 200px;
+  grid-area: rosary;
+}
+
+.divineMercy {
+  background-color: yellow;
+  height: 200px;
+  grid-area: divine-mercy;
+}
+
+.wayOfCross {
+  background-color: orange;
+  height: 200px;
+  grid-area: way-of-cross;
+}
+
+.footer {
+  grid-area: footer;
+}
+.liturgyItem{
+   border: 1px solid black;
+    width: 100vw;
+}

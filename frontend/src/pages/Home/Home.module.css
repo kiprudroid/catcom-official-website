@@ -1,0 +1,87 @@
+.gridContainer {
+  height: 100vh;
+  display: grid;
+  gap: 1rem;
+  background-color: white;
+  grid-template-rows: 4fr 5fr 2.5fr 1.8fr 1.5fr 0.5fr 4fr 3fr;
+  grid-template-areas:
+    "header"
+    "slide-show"
+    "what-are-we"
+    "vision"
+    "media-content"
+    "mission"
+    "weekly-program"
+    "footer";
+  width: 100%;
+  overflow-x: hidden;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: white;
+  grid-area: header;
+}
+.slideShow {
+  background-color: aqua;
+  grid-area: slide-show;
+}
+.slideshowImage {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+}
+.whatAreWe {
+  background-color: white;
+  grid-area: what-are-we;
+}
+.vision {
+  grid-area: vision;
+}
+.media-content {
+  grid-area: media-content;
+}
+.mission {
+  grid-area: mission;
+}
+.weeklyProgram {
+  grid-area: weekly-program;
+}
+.footer {
+  grid-area: footer;
+  width: 100%;
+}
+
+.contentTitle {
+  color: #2dabb1;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+.textContent {
+  color: black;
+  font-size: 24px;
+  text-align: center;
+  margin: 2rem 0;
+  font-family: sans-serif;
+}
+.contentWrapper {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+.mediaImage {
+  max-height: 300px;
+}
+.mediaWrapper {
+  white-space: nowrap;
+  width: 80%;
+  margin: 0 auto;
+  overflow-x: auto;
+  display: flex;
+  gap: 1rem;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}

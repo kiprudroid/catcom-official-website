@@ -1,0 +1,14 @@
+.textContent {
+  color: black;
+  font-size: 24px;
+  text-align: center;
+  margin: 2rem 0;
+  font-family: sans-serif;
+}
+.contentTitle {
+  color: #2dabb1;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
