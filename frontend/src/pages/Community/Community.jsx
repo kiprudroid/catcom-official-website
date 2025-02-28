@@ -34,7 +34,7 @@ return (
       </div>
       <div className={`${styles.item} ${styles.sccPictures}`}>
         <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
-          {[...Array(4)].map((_, index) => (
+          {[...Array(4)].map((index) => (
             <SccCard key={index} />
           ))}
         </div>

@@ -1,6 +1,6 @@
 .gridContainer {
   display: grid;
-  grid-template-rows: repeat(9, minmax(200px, 1fr));
+  grid-template-rows: repeat(9, auto);
   gap: 1rem;
   grid-template-areas:
     "header"
@@ -10,22 +10,22 @@
     "eventsAndActivities3"
     "eventsAndActivities4"
     "blogsAndBooks"
-    "musicAndVideos"
-    "footer";
+    "musicAndVideos "
+    "footer" ;
 }
+
 .header {
   grid-area: header;
-  margin-bottom: 0;
 }
 .repetitiveRow {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   grid-template-areas:
     "contentTitle contentTitle"
     "col1 col2 ";
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 .contentTitle {
   grid-area: contentTitle;
@@ -33,60 +33,100 @@
 }
 .col1 {
   grid-area: col1;
-  background-color: aqua;
-  height : 200px
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .col2 {
   grid-area: col2;
-  background-color: orange;
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+
 .massCelebrations {
-  background-color: lightgreen;
   grid-area: massCelebrations;
 }
 
 .eventsAndActivities1 {
-  background-color: lightcoral;
   grid-area: eventsAndActivities1;
 }
 
 .eventsAndActivities2 {
-  background-color: lightgoldenrodyellow;
   grid-area: eventsAndActivities2;
 }
 
 .eventsAndActivities3 {
-  background-color: lightpink;
   grid-area: eventsAndActivities3;
 }
 
 .eventsAndActivities4 {
-  background-color: lightseagreen;
   grid-area: eventsAndActivities4;
 }
 
 .blogsAndBooks {
-  background-color: lightsteelblue;
   grid-area: blogsAndBooks;
 }
 
 .musicAndVideos {
-  background-color: lightcyan;
   grid-area: musicAndVideos;
 }
 
 .footer {
-  background-color: lightgray;
   grid-area: footer;
 }
-.musicAndVideos{
+
+
+.specialRow{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   grid-template-areas:
     "contentTitle contentTitle contentTitle"
-    "col1 col2 col3";
+    "MVcol1 MVcol2 MVcol3";
   width: 100%;
   height: auto;
+}
+.MVcol1 {
+  grid-area: MVcol1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.MVcol2 {
+  grid-area: MVcol2;
+   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MVcol3 {
+  grid-area: MVcol3;
+   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item .mediaImage {
+  height: 350px;
+  width: auto;
+  
+}
+
+.specialRow .mediaImage {
+  height: 300px;
+  width: auto;
+}
+
+.gridContainer > *:empty {
+  display: none;
 }
