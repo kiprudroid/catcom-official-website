@@ -4,7 +4,7 @@ import styles from "./About.module.css";
 import Footer from "../../reusable-components/Footer/Footer";
 import CommunityCard from "../../components/communitiesCards/communityCard";
 import PriestPatronCard from "../../components/PriestPatronCard/PriestPatronCard";
-import CatcomExecutiveCard from "../../components/catcomExecutiveCard/catcomExecutiveCard";
+import CatcomExecutiveCard from "../../components/catcomExecutiveCard/CatcomExecutiveCard";
 import { Heading, Text } from "../../components/Typography/Typography";
 
 function About() {

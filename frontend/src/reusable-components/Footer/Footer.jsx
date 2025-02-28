@@ -39,7 +39,7 @@ function Footer(){
                 <li>Blog</li>
                 <li>Contacts</li>
                 <li>Register</li>
-              </ul>{" "}
+              </ul>
             </div>
             <div className="grid-item">
               <h3>Column 4</h3>
