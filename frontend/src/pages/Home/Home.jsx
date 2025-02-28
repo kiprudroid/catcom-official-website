@@ -3,6 +3,7 @@ import styles from "./Home.module.css";
 import Header from "../../reusable-components/Header/Header";
 import "@fontsource/inter";
 import Footer from "../../reusable-components/Footer/Footer";
+import Schedule from "../../components/Schedule/Schedule";
 
 function Home() {
   return (
@@ -53,11 +54,10 @@ function Home() {
               className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-              ab minus ullam, earum, reprehenderit odit soluta eum dolore
-              accusantium sit repellendus at quo ipsa sapiente? Rem corrupti
-              quibusdam ratione, velit perferendis aperiam magni recusandae
-              exercitationem
+              A praying, believing and worshiping community for empowering young
+              people to live as disciples of Jesus Christ; drawing them into
+              responsible participation in the Catholic Church; fostering their
+              personal and spiritual growth.
             </p>
           </div>
         </div>
@@ -93,15 +93,13 @@ function Home() {
             Our Mission
           </h3>
           <div className={styles.contentWrapper}>
+            <p style={{ color: "#E3D879" }} className={styles.contentTitle}>What we do, everyday</p>
             <p
               className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-              ab minus ullam, earum, reprehenderit odit soluta eum dolore
-              accusantium sit repellendus at quo ipsa sapiente? Rem corrupti
-              quibusdam ratione, velit perferendis aperiam magni recusandae
-              exercitationem
+              To help people find God, grow their faith, discover their purpose,
+              and make a difference.We exist to make Heaven more crowded.
             </p>
           </div>
         </div>
@@ -114,30 +112,7 @@ function Home() {
           </h3>
 
           <div className={styles.contentWrapper}>
-            <p
-              className={styles.textContent}
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
-              voluptates quod debitis iusto aspernatur dolor doloremque sint
-              atque eligendi sit porro, delectus officiis eum doloribus,
-              laboriosam, placeat laborum deleniti fuga facere? Fugit
-              consectetur enim numquam ullam, nihil sunt illum veniam
-              dignissimos, impedit soluta veritatis repudiandae magni aperiam,
-              perspiciatis pariatur? Dolor cumque laborum, nemo dolorem qui
-              alias ducimus eos cum facere, soluta velit aspernatur praesentium
-              nesciunt incidunt nostrum, tempore mollitia veniam nisi vitae.
-              Consequatur, sunt, perferendis odio fugiat atque vel quaerat quam
-              illo tenetur beatae pariatur. Autem facilis voluptas nemo facere
-              earum similique, reprehenderit, accusantium exercitationem quasi
-              adipisci quam voluptate sequi a distinctio minus sint, nobis
-              cupiditate et nihil corrupti ratione. Ratione odio nisi nobis
-              quidem quam soluta ipsum praesentium similique tenetur nemo?
-              Excepturi et cum obcaecati molestiae sunt enim sint itaque ex ea
-              voluptatibus atque delectus aliquam nesciunt commodi est
-              necessitatibus iste dolore voluptas, velit veritatis
-              exercitationem, incidunt culpa. Ex?
-            </p>
+            <Schedule />
           </div>
         </div>
         <div className={styles.footer}>

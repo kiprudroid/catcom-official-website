@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { FooterHeading , Text } from "../../components/Typography/Typography";
-import { FaEnvelope, FaFacebook, FaHome, FaInstagramSquare, FaPhone, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa";  // FontAwesome
+import { FaEnvelope, FaFacebook, FaHome, FaInstagramSquare, FaPhone, FaPhoneAlt, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa";  // FontAwesome
 
 function Footer(){
     return (
@@ -65,7 +65,7 @@ function Footer(){
                 </li>
                 <li>
                   {" "}
-                  <FaPhone /> &nbsp; &nbsp; +254 743 728621
+                  <FaPhoneAlt /> &nbsp; &nbsp; +254 743 728621
                 </li>
               </ul>
             </div>
