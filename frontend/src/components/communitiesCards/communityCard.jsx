@@ -1,17 +1,20 @@
 import React from "react";
 import styles from "./communityCard.module.css";
+import { Heading, SmallText } from "../Typography/Typography";
 
 function CommunityCard() {
   return (
     <>
       <div className={styles.communityCard}>
-        <h2>title</h2>
+        <Heading>title</Heading>
         <div>
-          <p>
+          <SmallText>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit, adipisci.
-          </p>
-          <button>see more</button>
+          </SmallText>
+          <button>
+            <SmallText>see more</SmallText>
+          </button>
         </div>
       </div>
     </>

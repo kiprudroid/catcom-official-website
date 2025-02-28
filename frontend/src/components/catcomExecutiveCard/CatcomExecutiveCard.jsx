@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./CatcomExecutiveCard.module.css";
+import { SmallText } from "../Typography/Typography";
 
 function CatcomExecutiveCard() {
   return (
     <>
       <div className={styles.catcomExecutive}>
         <img src="/others/placeholder.jpg" alt="" />
-        <p>name</p>
-        <p>position</p>
+        <SmallText>name</SmallText>
+        <SmallText>position</SmallText>
       </div>
     </>
   );
