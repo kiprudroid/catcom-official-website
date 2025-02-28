@@ -135,7 +135,7 @@
 .footer {
   grid-area: footer;
 }
-.liturgyItem{
-   border: 1px solid black;
-    width: 100vw;
+.liturgyItem {
+  border: 1px solid black;
+  width: 100vw;
 }
