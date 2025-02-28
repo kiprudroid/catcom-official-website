@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { FooterHeading , Text } from "../../components/Typography/Typography";
+import { FaEnvelope, FaFacebook, FaHome, FaInstagramSquare, FaPhone, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa";  // FontAwesome
 
 function Footer(){
     return (
@@ -31,19 +32,42 @@ function Footer(){
               </ul>
             </div>
             <div className="grid-item">
-              <FooterHeading>Quick Links</FooterHeading>
+              <FooterHeading>Contact</FooterHeading>
               <ul>
-                <li>Home</li>
-                <li>Liturgy</li>
-                <li>Community</li>
-                <li>Blog</li>
-                <li>Contacts</li>
-                <li>Register</li>
+                <li>
+                  {" "}
+                  <FaFacebook />
+                  &nbsp; &nbsp; catcomjkuat
+                </li>
+                <li>
+                  {" "}
+                  <FaTiktok /> &nbsp; &nbsp; catcomjkuat
+                </li>
+                <li>
+                  {" "}
+                  <FaInstagramSquare /> &nbsp; &nbsp; catcomjkuat{" "}
+                </li>
+                <li>
+                  {" "}
+                  <FaTwitter /> &nbsp;&nbsp; catcomjkuat
+                </li>
               </ul>
             </div>
             <div className="grid-item">
-              <h3>Column 4</h3>
-              <p>Content for the fourth column, which is wider.</p>
+              <h1>&nbsp;</h1>
+              <ul>
+                <li>
+                  <FaYoutube /> &nbsp; &nbsp; catcomjkuat
+                </li>
+                <li>
+                  {" "}
+                  <FaEnvelope /> &nbsp; &nbsp; jkuatcatcom18@gmail.com
+                </li>
+                <li>
+                  {" "}
+                  <FaPhone /> &nbsp; &nbsp; +254 743 728621
+                </li>
+              </ul>
             </div>
           </div>
         </div>

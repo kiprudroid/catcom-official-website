@@ -37,7 +37,7 @@ const Heading = ({ children }) => {
 const FooterHeading = ({ children }) => {
 return (
   <h3
-    className={styles.contentTitle}
+    className={styles.footerTitle}
     style={{ fontFamily: "Inter, sans-serif", color: "#FE8900" }}
   >
 {children}

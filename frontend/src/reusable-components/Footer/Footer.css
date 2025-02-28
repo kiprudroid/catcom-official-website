@@ -31,7 +31,10 @@
 
 ul {
   display: block; /* Ensures items stack */
+  margin:0 ;
 }
 li {
   display: block; /* Forces items to go on new lines */
+  margin :0 ;
+  font: 2em sans-serif;
 }
