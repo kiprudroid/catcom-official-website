@@ -54,9 +54,10 @@ function Media() {
           className={`${styles.item} ${styles.musicAndVideos} ${styles.musicAndVideos}`}
         >
           <div className={styles.contentTitle}>Music and Videos</div>
+
           <div className={styles.col1}>x</div>
           <div className={styles.col2}>y</div>
-          <div className={styles.col1}>x</div>
+          <div className={styles.col3}>z</div>
         </div>
         <Footer className={styles.footer} />
       </div>

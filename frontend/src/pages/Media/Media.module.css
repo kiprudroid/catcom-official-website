@@ -40,7 +40,10 @@
   grid-area: col2;
   background-color: orange;
 }
-
+.col3 {
+  grid-area: col2;
+  background-color: orange;
+}
 .massCelebrations {
   background-color: lightgreen;
   grid-area: massCelebrations;
