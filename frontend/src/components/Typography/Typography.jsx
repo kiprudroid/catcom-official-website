@@ -1,5 +1,6 @@
 import React from 'react';
 import '@fontsource/inter';
+import '@fontsource/nunito-sans';
 import styles from './Typography.module.css';
 
 const Text = ({ children }) => {
@@ -9,7 +10,13 @@ const Text = ({ children }) => {
         </div>
     );
 }
-
+const SmallText = ({ children }) => {
+  return (
+    <div>
+      <h1 style={{ fontFamily: "Nunito Sans" , fontSize : "1.5rem" ,fontWeight:"unset" }}>{children}</h1>
+    </div>
+  );
+};
 const Paragraph = ({ children }) => {
     return (
         <p className={styles.textContent} style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -26,6 +33,18 @@ const Heading = ({ children }) => {
     );
 }
 
-export { Text, Paragraph, Heading };
+
+const FooterHeading = ({ children }) => {
+return (
+  <h3
+    className={styles.contentTitle}
+    style={{ fontFamily: "Inter, sans-serif", color: "#FE8900" }}
+  >
+{children}
+  </h3>
+);
+};
+
+export { Text, Paragraph, Heading , FooterHeading , SmallText};
 
 

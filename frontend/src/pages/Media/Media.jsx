@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Media.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
-import { Text, Paragraph, Heading } from "../../components/Typography/Typography";
+import { Text, Paragraph, Heading , SmallText } from "../../components/Typography/Typography";
 
 function Media() {
   return (
@@ -16,7 +16,7 @@ function Media() {
             <Heading>Mass Celebrations</Heading>
           </div>
           <div className={styles.col1}>
-            <Text>Wednesday Masses</Text>
+            <SmallText>Wednesday Masses</SmallText>
             <img src="/others/placeholder.jpg" className={styles.mediaImage} />
           </div>
           <div className={styles.col2}>

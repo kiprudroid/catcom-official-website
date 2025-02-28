@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import { FooterHeading , Text } from "../../components/Typography/Typography";
 
 function Footer(){
     return (
@@ -18,12 +19,27 @@ function Footer(){
               </p>
             </div>
             <div className="grid-item">
-              <h3>Column 2</h3>
-              <p>Content for the second column.</p>
+              <FooterHeading>Quick Links</FooterHeading>
+
+              <ul>
+                <li>Home</li>
+                <li>Liturgy</li>
+                <li>Community</li>
+                <li>Blog</li>
+                <li>Contacts</li>
+                <li>Register</li>
+              </ul>
             </div>
             <div className="grid-item">
-              <h3>Column 3</h3>
-              <p>Content for the third column.</p>
+              <FooterHeading>Quick Links</FooterHeading>
+              <ul>
+                <li>Home</li>
+                <li>Liturgy</li>
+                <li>Community</li>
+                <li>Blog</li>
+                <li>Contacts</li>
+                <li>Register</li>
+              </ul>{" "}
             </div>
             <div className="grid-item">
               <h3>Column 4</h3>
