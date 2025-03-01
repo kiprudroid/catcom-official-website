@@ -1,11 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 .navbar {
   display: flex;
   gap: 10px;
 }
-
-ul > li {
-  display: flex;
+.mobile-menu {
+  display: none;
+  gap: 10px;
+  flex-direction: column;
+  background-color: #cccccc;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
+
 
 ul {
   display: flex;
@@ -14,9 +23,10 @@ ul {
   margin: 0;
   align-items: center;
   justify-content: space-around;
+
 }
 .nav {
-  height: 100px;
+  
   background-color: #cccccc;
   color: #000000;
   display: flex;
@@ -25,14 +35,17 @@ ul {
   margin-top: 50px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 16px;
+  top: 30px;
+  
 }
 .catcom-logo {
   width: 150px;
   height: 150px;
   margin-right: 10px;
   position: relative;
-  top: -30px;
+  top: 0px;
 }
+
 .nav-left,
 .nav-right {
   display: flex;
@@ -44,16 +57,111 @@ ul {
   display: flex;
   flex-direction: row;
   width: 100%;
+  background-color: #cccccc;
+  justify-content: space-around;
+  position: relative; /* Change from absolute to relative */
+
 }
 
-.nav-right-list,
+.nav-right-list{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  gap: auto; /* Automatically adjust the gap between list items */
+}
 .nav-left-list {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  gap: 120px; /* Automatically adjust the gap between list items */
+  width: 90%;
+  gap: auto; /* Automatically adjust the gap between list items */
 }
 
+.burger {
+  display: none;
+}
+
+.link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
 ul > li:nth-child(1) {
   margin-left: 1rem;
+}
+
+
+@media screen and (max-width: 850px) {
+  .nav-left-list li,
+  .nav-right-list li {
+    display: none;
+  }
+  .catcom-logo {
+    width: 100px;
+    height: 100px;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .burger {
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    gap: 10px;
+    flex-direction: column;
+  }
+  .nav-list {
+    display: flex; /* Change from none to flex */
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    background-color: #cccccc;
+    z-index: 1;
+  }
+  .mobile-menu {
+    position: relative;
+    width: 100%;
+        background-color: #cccccc;
+
+  }
+  .show {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+  }
+  .show ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.5s;
+
+  }
+  .hide {
+    display: none;
+    transition: all 0.5s;
+
+  }
+  ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+.link{
+  font-size: 16px;
+}
+  .nav-left-list{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  gap: 1px; /* Automatically adjust the gap between list items */
+}
+
 }

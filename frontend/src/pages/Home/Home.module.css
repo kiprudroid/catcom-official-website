@@ -1,9 +1,9 @@
 .gridContainer {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   gap: 1rem;
   background-color: white;
-  grid-template-rows: 4fr 5fr 2.5fr 1.8fr 1.5fr 0.5fr 4fr 3fr;
+  grid-template-rows: minmax(auto, auto) minmax(auto, auto) minmax(auto, auto) minmax(auto, auto) minmax(auto, auto) minmax(auto, auto) minmax(auto, auto) minmax(auto, auto);
   grid-template-areas:
     "header"
     "slide-show"
@@ -22,6 +22,9 @@
 .header {
   background-color: white;
   grid-area: header;
+  width: 100%;
+  position: relative; /* Add this */
+  z-index: 1; /* Add this */
 }
 .slideShow {
   background-color: aqua;
@@ -84,4 +87,14 @@
   gap: 1rem;
   scroll-behavior: smooth;
   padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 850px) {
+  .gridContainer {
+    gap: 0.5rem;
+  }
+  
+  .header {
+    margin-bottom: 1rem;
+  }
 }

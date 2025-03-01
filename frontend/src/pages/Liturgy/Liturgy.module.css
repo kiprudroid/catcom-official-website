@@ -5,20 +5,20 @@
   grid-template-rows: repeat(9, minmax(1fr, auto));
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-    "header header header"
-    "mass-services mass-services mass-services"
-    "bible-verse bible-verse bible-verse"
-    "calendar calendar calendar"
-    "prayers prayers prayers"
-    "rosary rosary rosary"
-    "divine-mercy divine-mercy divine-mercy"
-    "way-of-cross way-of-cross way-of-cross"
-    "footer footer footer";
+    "header"
+    "mass-services"
+    "bible-verse"
+    "calendar "
+    "prayers "
+    "rosary"
+    "divine-mercy"
+    "way-of-cross"
+    "footer";
 }
 
 .header {
   grid-area: header;
-  width: 100vw;
+  width: 100%;
 }
 .massServices {
   background-color: blueviolet;
@@ -90,7 +90,7 @@
   grid-area: prayers;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 300px;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas:
     "content-title content-title content-title"
     "our-father hail-mary apostles-creed";
