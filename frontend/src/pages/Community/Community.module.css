@@ -24,7 +24,6 @@
     height: 100px;
 }
 .header {
-    background-color: tomato;
     grid-area: header;
     height: auto;
 }
