@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./Header.css";
+import styles from "./Header.module.css";
 import { FaBars } from "react-icons/fa";
 
-function Header(className) {
+function Header({ className }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,60 +13,65 @@ function Header(className) {
   return (
     <>
       <nav className={`${className}`}>
-        <div className="nav-list">
-          <div className="nav-left">
-            <ul className="nav-left-list">
+        <div className={styles.navList}>
+          <div className={styles.navLeft}>
+            <ul className={styles.navLeftList}>
               <li>JKUAT CATCOM</li>
               <li>
-                <NavLink to="/" className={"link"}>
+                <NavLink to="/" className={styles.link}>
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/liturgy" className={"link"}>
+                <NavLink to="/liturgy" className={styles.link}>
                   Liturgy
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/community" className={"link"}>
+                <NavLink to="/community" className={styles.link}>
                   Community
                 </NavLink>
               </li>
             </ul>
           </div>
 
-          <div className="logo">
+          <div className={styles.logo}>
             <img
               src="/others/ctm_logo.png"
               alt="CATCOM Logo"
-              className="catcom-logo"
+              className={styles.catcomLogo}
             />
           </div>
 
-          <div className="nav-right">
-            <ul className="nav-right-list">
+          <div className={styles.navRight}>
+            <ul className={styles.navRightList}>
               <li>
-                <NavLink to="/about" className={"link"}>
+                <NavLink to="/about" className={styles.link}>
                   About Us
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/media" className={"link"}>
+                <NavLink to="/media" className={styles.link}>
                   Media
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/join-scc" className={"link"}>
+                <NavLink to="/join-scc" className={styles.link}>
                   Join SCC
                 </NavLink>
               </li>
             </ul>
 
-            <FaBars className="burger" onClick={toggleMenu} />
+            <FaBars className={styles.burger} onClick={toggleMenu} />
           </div>
+
           {/* Mobile Menu */}
-          <div className={`mobile-menu ${isOpen ? "show" : "hide"}`}>
-            <ul className="mobile-nav-list">
+          <div
+            className={`${styles.mobileMenu} ${
+              isOpen ? styles.show : styles.hide
+            }`}
+          >
+            <ul className={styles.mobileNavList}>
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>

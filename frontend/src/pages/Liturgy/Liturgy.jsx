@@ -8,8 +8,7 @@ function Liturgy() {
     <>
       <div className={`${styles.gridContainer}`}>
         <Header className={styles.header} />
-
-        <div className={`${styles.massServices} item`}>
+        <div className={`${styles.massServices} `}>
           <div className={styles.contentTitle}>
             <h3>Mass and Services</h3>
           </div>
