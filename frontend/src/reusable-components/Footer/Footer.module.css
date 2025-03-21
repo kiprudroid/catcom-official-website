@@ -1,33 +1,113 @@
+.footer {
+  width: 100%;
+  background-color: #8f5d5d;
+  color: white;
+  padding: 2rem 0;
+  font-family: "Roboto, sans-serif";
+}
 .footerContainer {
   display: grid;
-  grid-gap: 20px;
-  padding: 20px;
-  background-color: #8f5d5d;
-  grid-template-columns: 1fr 1fr 2fr 3fr;
-  font-size: 14;
-  color: white;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-areas: "location quick-links contact";
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.footer {
-  width: 100vw;
-}
-
 .catcomLogo {
   width: 120px;
   height: 100px;
 }
 
-.locationWrapper {
+.location {
+  grid-area: location;
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
-
-ul {
-  display: block; /* Ensures items stack */
-  margin: 0;
+.locationWrapper {
+  color: white;
 }
-li {
-  display: block; /* Forces items to go on new lines */
-  margin: 0;
-  font: 2em sans-serif;
+.quickLinks {
+  grid-area: quick-links;
+}
+
+.quickLinks ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+  align-items: flex-start;
+}
+
+.contact {
+  grid-area: contact;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "heading heading"
+    "contact1 contact2";
+  width: 100%;
+  max-width: 600px;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.contactHeading {
+  grid-area: heading;
+  text-align: center;
+}
+
+.contact1 {
+  grid-area: contact1;
+}
+
+.contact2 {
+  grid-area: contact2;
+}
+
+.contact1,
+.contact2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contact1 ul,
+.contact2 ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contact1 li,
+.contact2 li {
+  display: flex;
+  align-items: center; /* Aligns icons with text */
+  gap: 8px; /* Adjusts spacing between icon and text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footerContainer {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "location"
+      "quick-links"
+      "contact";
+    text-align: center;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "contact1"
+      "contact2";
+  }
 }

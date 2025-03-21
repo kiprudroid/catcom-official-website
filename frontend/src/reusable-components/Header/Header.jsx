@@ -33,7 +33,9 @@ function Header() {
         <div className={styles.navLeft}>
           {!isMobile && (
             <ul className={styles.navLeftList}>
-              <li>JKUAT CATCOM</li>
+              <li>
+                JKUAT CATCOM
+              </li>
               <li>
                 <NavLink to="/" className={styles.link}>
                   Home
