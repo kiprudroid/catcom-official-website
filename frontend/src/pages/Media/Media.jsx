@@ -2,146 +2,108 @@ import React from "react";
 import styles from "./Media.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
-import { Text, Paragraph, Heading , SmallText } from "../../components/Typography/Typography";
+import {
+  Text,
+  Heading,
+  SmallText,
+} from "../../components/Typography/Typography";
 
 function Media() {
   return (
-    <>
-      <div className={styles.gridContainer}>
-        <Header className={styles.header} />
-        <div
-          className={`${styles.item} ${styles.massCelebrations} ${styles.repetitiveRow}`}
-        >
-          <div className={styles.contentTitle}>
-            <Heading>Mass Celebrations</Heading>
-          </div>
-          <div className={styles.col1}>
-            <SmallText>Wednesday Masses</SmallText>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-          <div className={styles.col2}>
-            <div className={styles.MVcol2}>
+    <div className={styles.container}>
+      <Header />
+
+      <main className={styles.main}>
+        {/* Mass Celebrations Section */}
+        <section className={styles.section}>
+          <Heading className={styles.sectionTitle}>Mass Celebrations</Heading>
+          <div className={styles.grid}>
+            <div className={styles.card}>
+              <SmallText>Wednesday Masses</SmallText>
+              <img
+                src="/others/placeholder.jpg"
+                alt="Wednesday Mass"
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.card}>
               <Text>Sunday Masses</Text>
               <img
                 src="/others/placeholder.jpg"
-                className={styles.mediaImage}
+                alt="Sunday Mass"
+                className={styles.image}
               />
             </div>
           </div>
-        </div>
-        <div
-          className={`${styles.item} ${styles.eventsAndActivities1} ${styles.repetitiveRow}`}
-        >
-          <div className={styles.contentTitle}>
-            <Heading>Events & Activities</Heading>
-          </div>
+        </section>
 
-          <div className={styles.col1}>
-            <Text>Catcom Reunion</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
+        {/* Events & Activities Section */}
+        <section className={styles.section}>
+          <Heading className={styles.sectionTitle}>Events & Activities</Heading>
+          <div className={styles.grid}>
+            {[
+              { title: "Catcom Reunion", alt: "Reunion Event" },
+              { title: "Social Day", alt: "Social Day Event" },
+              { title: "Retreat", alt: "Retreat Event" },
+              { title: "Charity", alt: "Charity Event" },
+              { title: "Hike", alt: "Hiking Event" },
+              { title: "Sports Night", alt: "Sports Event" },
+            ].map((item, index) => (
+              <div key={index} className={styles.card}>
+                <Text>{item.title}</Text>
+                <img
+                  src="/others/placeholder.jpg"
+                  alt={item.alt}
+                  className={styles.image}
+                />
+              </div>
+            ))}
           </div>
-          <div className={styles.col2}>
-            <div className={styles.MVcol2}>
-              <Text>Social Day</Text>
-              <img
-                src="/others/placeholder.jpg"
-                className={styles.mediaImage}
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${styles.item} ${styles.eventsAndActivities2} ${styles.repetitiveRow}`}
-        >
-          <div className={styles.contentTitle}></div>
-          <div className={styles.col1}>
-            <Text>Retreat</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-          <div className={styles.col2}>
-            <div className={styles.MVcol2}>
-              <Text>Charity</Text>
-              <img
-                src="/others/placeholder.jpg"
-                className={styles.mediaImage}
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${styles.item} ${styles.eventsAndActivities3} ${styles.repetitiveRow}`}
-        >
-          <div className={styles.contentTitle}></div>
-          <div className={styles.col1}>
-            <Text>Hike</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-          <div className={styles.col2}>
-            <div className={styles.MVcol2}>
-              <Text>Sports and Games Night</Text>
-              <img
-                src="/others/placeholder.jpg"
-                className={styles.mediaImage}
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${styles.item} ${styles.eventsAndActivities4} ${styles.repetitiveRow}`}
-        >
-          <div className={styles.contentTitle}></div>
-          <div className={styles.col1}>
-            <Text>Final Year Dinner</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-          <div className={styles.col2}>
-            <div className={styles.MVcol2}>
-              <Text>Cultural Day</Text>
-              <img
-                src="/others/placeholder.jpg"
-                className={styles.mediaImage}
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${styles.item} ${styles.blogsAndBooks} ${styles.repetitiveRow}`}
-        >
-          <div className={styles.contentTitle}>
-            <Heading>
-              Blogs and Books 
-            </Heading>
-          </div>
-          <div className={styles.col1}>
-            <Text>Small Title</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-          <div className={styles.col2}>
-            <Text>Small Title</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-        </div>
-        <div className={` ${styles.specialRow}`}>
-          <div className={styles.contentTitle}>
-            <Heading>Music and Videos</Heading>
-          </div>
-          <div className={styles.MVcol1}>
-            <Text>Small Title</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-          <div className={styles.MVcol2}>
-            <Text>Small Title</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-          <div className={styles.MVcol3}>
-            <Text>Small Title</Text>
-            <img src="/others/placeholder.jpg" className={styles.mediaImage} />
-          </div>
-        </div>
+        </section>
 
-        <Footer className={styles.footer} />
-      </div>
-    </>
+        {/* Blogs and Books Section */}
+        <section className={styles.section}>
+          <Heading className={styles.sectionTitle}>Blogs and Books</Heading>
+          <div className={styles.grid}>
+            <div className={styles.card}>
+              <Text>Latest Blog</Text>
+              <img
+                src="/others/placeholder.jpg"
+                alt="Blog"
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.card}>
+              <Text>Featured Book</Text>
+              <img
+                src="/others/placeholder.jpg"
+                alt="Book"
+                className={styles.image}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Music and Videos Section */}
+        <section className={styles.section}>
+          <Heading className={styles.sectionTitle}>Music and Videos</Heading>
+          <div className={styles.grid}>
+            {[1, 2, 3].map((item, index) => (
+              <div key={index} className={styles.card}>
+                <Text>Media Title {item}</Text>
+                <img
+                  src="/others/placeholder.jpg"
+                  alt={`Media content ${item}`}
+                  className={styles.image}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
 
