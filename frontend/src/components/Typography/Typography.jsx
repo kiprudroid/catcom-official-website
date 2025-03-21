@@ -46,15 +46,15 @@ const Heading = ({ children, as = "h2", className }) => {
   );
 };
 
-const FooterHeading = ({ children }) => {
-return (
-  <h3
-    className={styles.footerTitle}
-    style={{ fontFamily: "Inter, sans-serif", color: "#FE8900" }}
-  >
-{children}
-  </h3>
-);
+const FooterHeading = ({ children, className }) => {
+  return (
+    <h3
+      className={`${styles.footerTitle} ${className || ""}`}
+      style={{ fontFamily: "Inter, sans-serif", color: "#FE8900" }}
+    >
+      {children}
+    </h3>
+  );
 };
 
 export { Text, Paragraph, Heading, FooterHeading, SmallText };
