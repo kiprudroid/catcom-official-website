@@ -2,13 +2,17 @@ import React from "react";
 import styles from "./PriestPatronCard.module.css";
 import { SmallText } from "../Typography/Typography";
 
-function PriestPatronCard() {
+function PriestPatronCard({
+  name,
+  role,
+  image = "/chaplain/fatherLawrence.jpg",
+}) {
   return (
     <>
       <div className={styles.priestsPatrons}>
-        <img src="/others/placeholder.jpg" alt="" />
-        <SmallText>name</SmallText>
-        <SmallText>position</SmallText>
+        <img className={styles.priestPatronImage} src={image} alt="" />
+        <SmallText>{name}</SmallText>
+        <SmallText>{role}</SmallText>
       </div>
     </>
   );
