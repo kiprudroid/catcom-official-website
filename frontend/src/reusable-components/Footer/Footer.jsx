@@ -68,6 +68,7 @@ function Footer({ className }) {
               </li>
             </ul>
           </div>
+          
           {/* contact column 2 */}
           <div className={styles.contact2}>
             <h1>&nbsp;</h1>

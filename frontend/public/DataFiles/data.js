@@ -138,3 +138,5 @@ const communities = [
       "this  are movements within the community that have external contact with other universities for common events under coordination from outside the university",
   },
 ];
+
+export { priests, patrons, catcomExecutive, communities };
