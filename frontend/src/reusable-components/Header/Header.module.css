@@ -29,29 +29,43 @@
   align-items: center;
   padding: 4px;
   margin: 0;
+  gap: 2rem; /* Adds spacing between the links */
 }
+
 
 .navRight {
   grid-column: 3;
-  justify-self: end;
+  justify-self: start;
   display: flex;
-  align-items: start;
-  padding-right: 20px; 
+  align-items: center;
+  padding-left: 4rem;
+  margin-right: 1 rem;
+  width : auto;
+
 
 }
 
-.navLeftList,
-.navRightList {
+.navLeftList {
+  width: 100%;
   display: flex;
   gap: 2rem;
   align-items: center;
   margin: 0;
   padding: 0;
 }
+.navRightList {
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;  /* Take full width */
+  justify-content: flex-start;  /* Align items to start */
+}
 
 .catcomLogo {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: contain;
   justify-self: center;
   grid-column: 2;
@@ -86,12 +100,15 @@
     display: none;
   }
 .navRight {
-    padding-right: 10px; /* Reduce padding on smaller screens */
+    justify-self: end;  /* Ensure right alignment in mobile */
+    padding: 0;  /* Remove any padding */
+    width: auto;  /* Ensure width is based on content */
   }
   .burger {
     display: block;
     font-size: 1.5rem;
     cursor: pointer;
+    margin-right: 1rem;
   }
 
   .mobileMenu {
