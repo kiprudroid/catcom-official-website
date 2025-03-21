@@ -33,21 +33,34 @@ function Header() {
         <div className={styles.navLeft}>
           {!isMobile && (
             <ul className={styles.navLeftList}>
+              <li>JKUAT CATCOM</li>
               <li>
-                JKUAT CATCOM
-              </li>
-              <li>
-                <NavLink to="/" className={styles.link}>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.inactiveLink
+                  }
+                >
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/liturgy" className={styles.link}>
+                <NavLink
+                  to="/liturgy"
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.inactiveLink
+                  }
+                >
                   Liturgy
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/community" className={styles.link}>
+                <NavLink
+                  to="/community"
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.inactiveLink
+                  }
+                >
                   Community
                 </NavLink>
               </li>
@@ -65,17 +78,33 @@ function Header() {
           {!isMobile && (
             <ul className={styles.navRightList}>
               <li>
-                <NavLink to="/about" className={styles.link}>
+                <NavLink
+                  to="/about"
+                  // className={styles.link}
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.inactiveLink
+                  }
+                >
                   About Us
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/media" className={styles.link}>
+                <NavLink
+                  to="/media"
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.inactiveLink
+                  }
+                >
                   Media
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/join-scc" className={styles.link}>
+                <NavLink
+                  to="/join-scc"
+                  className={({ isActive }) =>
+                    isActive ? styles.activeLink : styles.inactiveLink
+                  }
+                >
                   Join SCC
                 </NavLink>
               </li>

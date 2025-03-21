@@ -44,6 +44,18 @@
 
 
 }
+.inactiveLink {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+/* When link is active (clicked and current page) */
+.activeLink {
+  color:  #2dabb1;
+  font-weight: bold;
+  text-decoration: none;
+}
 
 .navLeftList {
   width: 100%;
@@ -79,8 +91,11 @@
   transition: color 0.3s ease;
 }
 
-.link:hover {
+a:hover {
   color: #2dabb1;
+}
+a:active {
+  color : #2dabb1;
 }
 
 .burger {
