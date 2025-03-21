@@ -17,6 +17,46 @@ function Home() {
             className={styles.slideshowImage}
           />
         </div>
+        {/* Weekly Program */}
+        <div className={styles.weeklyProgram}>
+          <h3
+            className={styles.contentTitle}
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Weekly Program
+          </h3>
+
+          <div className={styles.contentWrapper}>
+            <Schedule />
+          </div>
+        </div>
+
+        {/* Media content */}
+        <div className={styles.mediaContent}>
+          <h3
+            className={styles.contentTitle}
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Media Content
+          </h3>
+          <div className={styles.mediaWrapper}>
+            {[
+              "/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg",
+              "/others/placeholder.jpg",
+              "/others/placeholder.jpg",
+              "/others/placeholder.jpg",
+              "/others/kmrm_logo.jpg",
+            ].map((url, index) => (
+              <img
+                key={index}
+                src={url}
+                alt={`media-content-${index}`}
+                className={styles.mediaImage}
+              />
+            ))}
+          </div>
+        </div>
+
         <div className={styles.whatAreWe}>
           <h3
             className={styles.contentTitle}
@@ -61,30 +101,7 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className={styles.mediaContent}>
-          <h3
-            className={styles.contentTitle}
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
-            Media Content
-          </h3>
-          <div className={styles.mediaWrapper}>
-            {[
-              "/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg",
-              "/others/placeholder.jpg",
-              "/others/placeholder.jpg",
-              "/others/placeholder.jpg",
-              "/others/kmrm_logo.jpg",
-            ].map((url, index) => (
-              <img
-                key={index}
-                src={url}
-                alt={`media-content-${index}`}
-                className={styles.mediaImage}
-              />
-            ))}
-          </div>
-        </div>
+
         <div className={styles.mission}>
           <h3
             className={styles.contentTitle}
@@ -93,7 +110,9 @@ function Home() {
             Our Mission
           </h3>
           <div className={styles.contentWrapper}>
-            <p style={{ color: "#E3D879" }} className={styles.contentTitle}>What we do, everyday</p>
+            <p style={{ color: "#E3D879" }} className={styles.contentTitle}>
+              What we do, everyday
+            </p>
             <p
               className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
@@ -103,18 +122,7 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className={styles.weeklyProgram}>
-          <h3
-            className={styles.contentTitle}
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
-            Weekly Program
-          </h3>
 
-          <div className={styles.contentWrapper}>
-            <Schedule />
-          </div>
-        </div>
         <div className={styles.footer}>
           <Footer />
         </div>
