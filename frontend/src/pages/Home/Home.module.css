@@ -7,11 +7,11 @@
   grid-template-areas:
     "header"
     "slide-show"
+    "weekly-program"
+    "media-content"
     "what-are-we"
     "vision"
-    "media-content"
     "mission"
-    "weekly-program"
     "footer";
   width: 100%;
   overflow-x: hidden;
