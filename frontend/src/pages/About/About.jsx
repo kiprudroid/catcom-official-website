@@ -21,28 +21,28 @@ function About() {
         <div className={styles.heritage}>
           <Heading>Our Heritage </Heading>
           <SmallText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-            nulla necessitatibus eveniet voluptatum ullam? Voluptatum aliquid
-            temporibus voluptatibus quod voluptate, expedita illum, excepturi
-            placeat quaerat cum nesciunt vero eaque non rerum possimus! Error
-            similique vel, nulla, rerum architecto numquam consectetur, suscipit
-            impedit omnis cumque repellendus iure nihil? Harum magni Lorem ipsum
-            dolor sit amet consectetur, adipisicing elit. Cupiditate perferendis
-            sequi, nulla saepe laboriosam nobis animi, aut aliquam facilis sunt
-            unde iure exercitationem recusandae. Veritatis laboriosam sunt iusto
-            veniam quas! Lorem, ipsum dolor sit amet consectetur adipisicing
-            elit. Possimus amet odio corrupti esse quidem. Dolore nulla unde
-            quos! Quisquam dolores quibusdam quis et tenetur possimus eius
-            voluptatem veritatis architecto laboriosam?
+          We are a vibrant Catholic Community that encourages healthy growth spiritually, socially, and 
+          academically, with the ultimate goal of encountering Christ in our daily lives. The community
+          supports us in recognizing our inherent vocation bestowed upon us by God, which involves the task
+          of exploring our talents and capabilities and utilizing them for the betterment of others.
+          This friendship grants us the opportunity to cultivate our freedom, allowing us to lead lives that are
+          dedicated to Christ, with Christ, and for Christ. It is a genuine bond that empowers every member
+          to develop love for themselves as well as for others.
           </SmallText>
         </div>
 
         <div className={styles.visionMission}>
           <div className={styles.vision}>
-            <MissionVision />
+            <MissionVision heading="Our Vision" text="A praying, believing and worshiping community
+             for empowering young people to live as disciples of Jesus Christ; 
+             drawing them into responsible participation in the Catholic Church; 
+             fostering their personal and spiritual growth."/>
           </div>
           <div className={styles.mission}>
-            <MissionVision />
+            <MissionVision heading="Our Mission" text="
+           To help people find God, grow their faith,
+           discover their purpose, and make a difference.
+           We exist to make Heaven more crowded."/>
           </div>
         </div>
 

@@ -6,7 +6,7 @@ function CommunityCard() {
   return (
     <>
       <div className={styles.communityCard}>
-        <Heading>title</Heading>
+        <Heading>SCC</Heading>
         <div>
           <SmallText>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.

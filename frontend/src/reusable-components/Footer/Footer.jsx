@@ -16,12 +16,9 @@ import styles from "./Footer.module.css";
 
 function Footer({ className }) {
   return (
-    <footer
-      className={`${styles.footer} ${className}`}
-      style={{ fontFamily: "Roboto, sans-serif" }}
-    >
+    <footer className={`${styles.footer} ${className || ""}`}>
       <div className={styles.footerContainer}>
-        <div className={styles.gridItemFirst}>
+        <div className={styles.location}>
           <img
             src="/others/ctm_logo.png"
             alt="Catcom Logo"
@@ -32,9 +29,11 @@ function Footer({ className }) {
             Juja
           </p>
         </div>
-        <div>
+
+        {/* Quick Links column */}
+
+        <div className={styles.quickLinks}>
           <FooterHeading>Quick Links</FooterHeading>
-          {/* Quick Links column */}
           <ul>
             <li>Home</li>
             <li>Liturgy</li>
@@ -46,39 +45,44 @@ function Footer({ className }) {
         </div>
 
         {/* contact column */}
-        <div>
-          <FooterHeading>Contact</FooterHeading>
-          <ul>
-            <li>
-              <FaFacebook />
-              &nbsp; &nbsp; catcomjkuat
-            </li>
-            <li>
-              <FaTiktok /> &nbsp; &nbsp; catcomjkuat
-            </li>
-            <li>
-              <FaInstagramSquare /> &nbsp; &nbsp; catcomjkuat{" "}
-            </li>
-            <li>
-              <FaTwitter /> &nbsp;&nbsp; catcomjkuat
-            </li>
-          </ul>
-        </div>
+        <div className={styles.contact}>
+          <div className={styles.contactHeading}>
+            <FooterHeading>Contact</FooterHeading>
+          </div>
 
-        {/* contact column 2 */}
-        <div className={styles.gridItem}>
-          <h1>&nbsp;</h1>
-          <ul>
-            <li>
-              <FaYoutube /> &nbsp; &nbsp; catcomjkuat
-            </li>
-            <li>
-              <FaEnvelope /> &nbsp; &nbsp; jkuatcatcom18@gmail.com
-            </li>
-            <li>
-              <FaPhoneAlt /> &nbsp; &nbsp; +254 743 728621
-            </li>
-          </ul>
+          <div className={styles.contact1}>
+            <ul>
+              <li>
+                <FaFacebook />
+                catcomjkuat
+              </li>
+              <li>
+                <FaTiktok />
+                catcomjkuat
+              </li>
+              <li>
+                <FaInstagramSquare /> catcomjkuat
+              </li>
+              <li>
+                <FaTwitter /> catcomjkuat
+              </li>
+            </ul>
+          </div>
+          {/* contact column 2 */}
+          <div className={styles.contact2}>
+            <h1>&nbsp;</h1>
+            <ul>
+              <li>
+                <FaYoutube /> catcomjkuat
+              </li>
+              <li>
+                <FaEnvelope /> jkuatcatcom18@gmail.com
+              </li>
+              <li>
+                <FaPhoneAlt /> +254 7XX XXXXXX
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,161 +1,173 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 .navbar {
-  display: flex;
-  gap: 10px;
-}
-.mobileMenu {
-  display: none;
-  gap: 10px;
-  flex-direction: column;
-  background-color: #cccccc;
-  position: absolute;
-  top: 100px;
-  left: 0;
   width: 100%;
-  z-index: 1;
+  position: relative;
 }
 
-ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  justify-content: space-around;
-}
 .nav {
   background-color: #cccccc;
-  color: #000000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 50px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 16px;
-  top: 30px;
+  width: 100%;
+  padding: 1rem;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
+
+.navList {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navLeft {
+  grid-column: 1;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  margin: 0;
+  gap: 2rem; /* Adds spacing between the links */
+}
+
+
+.navRight {
+  grid-column: 3;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  padding-left: 4rem;
+  margin-right: 1 rem;
+  width : auto;
+
+
+}
+
+.navLeftList {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.navRightList {
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;  /* Take full width */
+  justify-content: flex-start;  /* Align items to start */
+}
+
 .catcomLogo {
   width: 150px;
   height: 150px;
-  margin-right: 10px;
-  position: relative;
-  top: 0px;
+  object-fit: contain;
+  justify-self: center;
+  grid-column: 2;
 }
 
-.navLeft,
-.navRight {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 50%;
-}
-.navList {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: #cccccc;
-  justify-content: space-around;
-  position: relative; /* Change from absolute to relative */
+.link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-.navRightList {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  gap: auto; /* Automatically adjust the gap between list items */
-}
-.navLeftList {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  gap: 2rem; /* Automatically adjust the gap between list items */
+.link:hover {
+  color: #2dabb1;
 }
 
 .burger {
   display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding-right: 10px;
 }
 
-.link {
-  text-decoration: none;
-  color: #000000;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: "Inter", sans-serif;
-}
-ul > li:nth-child(1) {
-  margin-left: 1rem;
-}
-
-:global(.active) {
-  color: red; /* Change this to your preferred active color */
-  font-weight: bold;
+.mobileMenu {
+  display: none;
 }
 
 @media screen and (max-width: 850px) {
-  .navLeftList li,
-  .navRightList li {
+  .navLeftList,
+  .navRightList {
     display: none;
   }
-  .catcom-logo {
-    width: 100px;
-    height: 100px;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+.navRight {
+    justify-self: end;  /* Ensure right alignment in mobile */
+    padding: 0;  /* Remove any padding */
+    width: auto;  /* Ensure width is based on content */
   }
   .burger {
-    display: flex;
+    display: block;
+    font-size: 1.5rem;
     cursor: pointer;
-    position: absolute;
-    left: 20px;
-    top: 30px;
-    gap: 10px;
-    flex-direction: column;
+    margin-right: 1rem;
   }
-  .navList {
-    display: flex; /* Change from none to flex */
-    flex-direction: column;
-    width: 100%;
-    position: relative;
-    background-color: #cccccc;
-    z-index: 1;
-  }
+
   .mobileMenu {
-    position: relative;
-    width: 100%;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
     background-color: #cccccc;
+    padding: 1rem;
+    z-index: 999;
   }
-  .show {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
+
+  .mobileMenu.show {
+    display: block;
   }
-  .show ul {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: all 0.5s;
-  }
-  .hide {
+
+  .mobileMenu.hide {
     display: none;
-    transition: all 0.5s;
   }
-  ul {
+
+  .mobileNavList {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .mobileNavList li {
+    text-align: center;
+  }
+
+  .mobileNavList a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .catcomLogo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .navList {
+    padding: 0.5rem;
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .link {
-    font-size: 16px;
+@media screen and (max-width: 480px) {
+  .nav {
+    padding: 0.5rem;
   }
-  .navLeftList {
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    gap: 1px; /* Automatically adjust the gap between list items */
+
+  .catcomLogo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .mobileMenu {
+    top: 80px;
   }
 }
