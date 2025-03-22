@@ -5,14 +5,14 @@ import { SmallText } from "../Typography/Typography";
 function CatcomExecutiveCard({
   name,
   role,
-  image = "/leadersImages/wandera.jpg",
+  image = "/leadersImages/manSaint.webp",
 }) {
   return (
     <>
       <div className={styles.catcomExecutive}>
         <img
           className={styles.executiveImage}
-          src="/leadersImages/mutwiwa.jpg"
+          src={image}
           alt=""
         />
         <SmallText>{name}</SmallText>

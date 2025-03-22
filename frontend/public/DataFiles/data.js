@@ -33,58 +33,58 @@ const catcomExecutive = [
   {
     name: " Stephen Mutwiwa Mutie",
     role: "Catcom moderator",
-    image: "/leadersImage/mutwiwa.jpg",
+    image: "/leadersImages/mutwiwa.jpg",
   },
   {
     name: " Sophie Kathambi ",
     role: "Catcom vice moderator",
-    image: "/leadersImage/mutwiwa.jpg",
+    image: "/leadersImages/mutwiwa.jpg",
   },
 
   {
     name: " Eliza chiru",
     role: "Catcom secretary",
-    image: "/leadersImage/eliza.jpg",
+    image: "/leadersImages/eliza.jpg",
   },
   {
     name: " terryann Wanjohi",
     role: "Catcom treasurer",
-    image: "/leadersImage/terry.jpg",
+    image: "/leadersImages/terry.jpg",
   },
   {
     name: " Alvin Muthoni",
     role: "Catcom organizing secretary",
-    image: "/leadersImage/alvin.jpg",
+    image: "/leadersImages/alvin.jpg",
   },
   {
     name: " Bernard Nderitu",
     role: "Catcom pastoral secretary",
-    image: "/leadersImage/nderitu.jpg",
+    image: "/leadersImages/nderitu.jpg",
   },
   {
     name: " Albanus Timona",
     role: "Catcom choir moderator",
-    image: "/leadersImage/engineer.jpg",
+    image: "/leadersImages/engineerTim.jpg",
   },
   {
     name: " Rodgers Matia",
     role: "Catcom choir director",
-    image: "/leadersImage/matia.jpg",
+    image: "/leadersImages/matia.jpg",
   },
   {
     name: " Robinson Koskei Cheruiyot",
     role: "Catcom publicity secretary",
-    image: "/leadersImage/mutwiwa.jpg",
+    image: "/leadersImages/mutwiwa.jpg",
   },
   {
     name: " Wilfred Wandera",
     role: "Catcom technical secretary",
-    image: "/leadersImage/wandera.jpg",
+    image: "/leadersImages/wandera.jpg",
   },
   {
     name: " Sarah Okello",
     role: "Catcom Catering secretary",
-    image: "/leadersImage/sarah okello.jpg",
+    image: "/leadersImages/sarahOkello.jpg",
   },
 ];
 
