@@ -2,9 +2,16 @@ import React from "react";
 import styles from "./SccCard.module.css";
 
 
+
 function SccCard({ SccName = "Scc Name" }) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card}
+    style={{
+      backgroundImage: `url(/others/gptSaint.webp)`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+    >
       <h1 className={styles.title}
       >{SccName}</h1>
 

@@ -40,7 +40,14 @@ const Paragraph = ({ children }) => {
 const Heading = ({ children, as = "h2", className }) => {
   const Tag = as; // Dynamically use the passed tag, default to h2
   return (
-    <Tag className={className} style={{ fontFamily: "Inter, sans-serif" }}>
+    <Tag
+      className={className}
+      style={{
+        fontFamily: "Inter, sans-serif",
+        color: "#2dabb1",
+        textAlign: "center",
+      }}
+    >
       {children}
     </Tag>
   );
@@ -50,7 +57,7 @@ const FooterHeading = ({ children, className }) => {
   return (
     <h3
       className={`${styles.footerTitle} ${className || ""}`}
-      style={{ fontFamily: "Inter, sans-serif", color: "#FE8900" }}
+      style={{ fontFamily: "Inter, sans-serif", color: "#FE8900"  }}
     >
       {children}
     </h3>

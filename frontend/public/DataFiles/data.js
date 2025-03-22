@@ -139,4 +139,40 @@ const communities = [
   },
 ];
 
-export { priests, patrons, catcomExecutive, communities };
+const SCCs = [
+  {
+    name: "St. MARTIN DE PORRES",
+    image: ""
+  },
+  {
+    name: "Mary mother of God",
+    image: ""
+  },
+  {
+    name: "St. Therese of the child Jesus",
+    image: ""
+  },
+  {
+    name: "St. Veronica",
+    image: ""
+  },
+  {
+    name: "St Charles Lwanga",
+    image: ""
+  },
+  {
+    name: "St. Stephen",
+    image: ""
+  },
+  {
+    name: "St. Jude",
+    image: ""
+  },
+  {
+    name: "St. Paul",
+    image: ""
+  }
+]
+
+
+export { priests, patrons, catcomExecutive, communities , SCCs};

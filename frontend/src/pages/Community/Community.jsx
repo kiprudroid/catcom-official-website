@@ -4,7 +4,7 @@ import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
 import {Heading, Paragraph, Text ,} from "../../components/Typography/Typography";
 import SccCard from "../../components/SccCard/SccCard";
-
+import {SCCs} from "../../../public/DataFiles/data"
 
 
 function Community() {
@@ -27,15 +27,8 @@ return (
       <div className={`${styles.item} ${styles.sccPictures}`}>
         <Heading>Our SCCs</Heading>
         <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
-          {[...Array(4)].map((_, index) => (
-            <SccCard key={index} />
-          ))}
-        </div>
-      </div>
-      <div className={`${styles.item} ${styles.sccPictures}`}>
-        <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
-          {[...Array(4)].map((index) => (
-            <SccCard key={index} />
+          {SCCs.map((_, index) => (
+            <SccCard key={index} SccName={SCCs[index].name} />
           ))}
         </div>
       </div>
@@ -49,7 +42,20 @@ return (
           />
         </div>
         <div className={styles.sccItem}>
-          <div className={styles.secondColumnItem}> 1st</div>
+          <div className={styles.secondColumnItem}>
+            <div className={styles.familyCard}>
+              <p>Family of Mary and Joseph</p>
+            </div>
+            <div className={styles.familyCard}>
+              <p>Family of Mary and Joseph</p>
+            </div>
+            <div className={styles.familyCard}>
+              <p>Family of Mary and Joseph</p>
+            </div>
+            <div className={styles.familyCard}>
+              <p>Family of Mary and Joseph</p>
+            </div>
+          </div>
           <div className={styles.secondColumnItem}>2nd</div>
         </div>
       </div>

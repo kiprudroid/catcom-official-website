@@ -47,7 +47,7 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "heading heading"
     "contact1 contact2";
@@ -75,6 +75,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-top: 1rem;
 }
 .contact1 ul,
 .contact2 ul {
