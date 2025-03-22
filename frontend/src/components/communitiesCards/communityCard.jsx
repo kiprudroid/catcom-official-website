@@ -4,17 +4,15 @@ import { Heading, SmallText } from "../Typography/Typography";
 
 function CommunityCard({ title, content }) {
   return (
-    <>
-      <div className={styles.communityCard}>
+    <div className={styles.communityCard}>
+      <div className={styles.cardContent}>
         <Heading>{title}</Heading>
-        <div>
-          <SmallText>{content}</SmallText>
-          <button>
-            <SmallText>see more about {title}</SmallText>
-          </button>
-        </div>
+        <SmallText>{content}</SmallText>
       </div>
-    </>
+      <button className={styles.button}>
+        <SmallText>see more about {title}</SmallText>
+      </button>
+    </div>
   );
 }
 

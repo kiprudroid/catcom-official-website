@@ -49,7 +49,6 @@
 }
 
 .visionMission {
-  background-color: aqua;
   grid-area: vision-mission;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -60,31 +59,31 @@
 }
 .vision {
   grid-area: vision;
-  background-color: blueviolet;
-  width: 100%;
+  width: 80%;
   padding: 1rem;
+  margin: 0 auto;
 }
 .mission {
   grid-area: mission;
-  background-color: brown;
-  width: 100%;
+  width: 80%;
   padding: 1.5rem;
+  margin: 0 auto;
 }
 .communities {
   background-color: aqua;
   grid-area: communities;
-  width: 100%;
+  width: 90%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
   grid-template-areas:
     "scc choir liturgical-dancers"
     "pastoral committees catechism"
     "welfare technical cl";
-
-  gap: 0.5rem;
+  gap: 2rem;
   height: auto;
-  padding: 1.5rem;
+  padding: 2rem; /* Increased padding */
+  margin: 1rem auto; /* Added margin */
 }
 
 .priests {
@@ -202,8 +201,9 @@
   }
 
   .communities {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     padding: 0.5rem;
+    gap: 1.5rem; 
   }
 
   .leaders {
@@ -246,5 +246,9 @@
   .communities,
   .leaders {
     padding: 0.25rem;
+  }
+  .communities {
+    grid-template-columns: 1fr;
+    gap: 1rem;  /* Even smaller gap on mobile */
   }
 }

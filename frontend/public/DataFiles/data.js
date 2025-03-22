@@ -127,7 +127,7 @@ const communities = [
   {
     title: "Technical Team",
     content:
-      "the team is led by the technical secretary who is helped by the team in place. the teami s responsible for the community's technical equipment and the website of the community in terms of it's development and maintenance",
+      "the team is led by the technical secretary who is helped by the team in place. the team is responsible for the community's technical equipment and the website of the community in terms of it's development and maintenance",
   },
   {
     title: "Communion and Liberation and Bible prayer service",
