@@ -5,13 +5,14 @@ const priests = [
     image: "/chaplain/fatherLawrence.jpg",
   },
   {
-    name: "(Fr.)Patrick ",
+    name: "Fr. Patrick ",
     role: "Parish priest",
+    image: "/chaplain/fatherLawrence.jpg",
   },
   {
-    name: "Prof(Fr.)Bernard",
+    name: "Fr. Bernard",
     role: "Assistant parish priest",
-    image: "",
+    image: "/chaplain/fatherLawrence.jpg",
   },
 ];
 
@@ -39,11 +40,7 @@ const catcomExecutive = [
     role: "Catcom vice moderator",
     image: "/leadersImage/mutwiwa.jpg",
   },
-  {
-    name: " Stephen Mutwiwa Mutie",
-    role: "Catcom moderator",
-    image: "/leadersImage/mutwiwa.jpg",
-  },
+
   {
     name: " Eliza chiru",
     role: "Catcom secretary",

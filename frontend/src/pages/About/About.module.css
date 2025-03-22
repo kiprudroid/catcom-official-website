@@ -73,8 +73,8 @@
     "pastoral committees catechism"
     "welfare technical cl";
 
-  gap: 1rem;
-  height: 900px;
+  gap: 0.5rem;
+  height: auto;
   padding: 1.5rem;
 }
 

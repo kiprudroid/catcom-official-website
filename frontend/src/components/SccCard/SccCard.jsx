@@ -15,8 +15,8 @@ function SccCard({ SccName = "Scc Name" }) {
       <h1 className={styles.title}
       >{SccName}</h1>
 
-<button className={styles.button}>See More</button>
-   </div>
+      <button className={styles.button}>See More</button>
+    </div>
   );
 }
 
