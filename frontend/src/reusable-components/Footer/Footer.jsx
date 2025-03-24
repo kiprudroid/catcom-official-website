@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Footer.module.css";
 import { FooterHeading, Text } from "../../components/Typography/Typography";
 import {
@@ -35,51 +36,95 @@ function Footer({ className }) {
         <div className={styles.quickLinks}>
           <FooterHeading>Quick Links</FooterHeading>
           <ul>
-            <li>Home</li>
-            <li>Liturgy</li>
-            <li>Community</li>
-            <li>Blog</li>
-            <li>Contacts</li>
-            <li>Register</li>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/liturgy">Liturgy</NavLink>
+            </li>
+            <li>
+              <NavLink to="/community">Community</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/media">Media</NavLink>
+            </li>
+            <li>
+              <NavLink to="/register">Register</NavLink>
+            </li>
           </ul>
         </div>
 
         {/* contact column */}
         <div className={styles.contact}>
           <div className={styles.contactHeading}>
-            <FooterHeading>Contact</FooterHeading>
+            <FooterHeading>Contacts</FooterHeading>
           </div>
 
           <div className={styles.contact1}>
             <ul>
               <li>
-                <FaFacebook />
-                catcomjkuat
+                <NavLink
+                  to="https://www.catcom.com/catcomjkuat"
+                  target="_blank"
+                >
+                  <FaFacebook />
+                  catcomjkuat
+                </NavLink>
               </li>
               <li>
-                <FaTiktok />
-                catcomjkuat
+                <NavLink
+                  to="https://www.catcom.com/catcomjkuat"
+                  target="_blank"
+                >
+                  <FaTiktok />
+                  catcomjkuat
+                </NavLink>
               </li>
               <li>
-                <FaInstagramSquare /> catcomjkuat
+                <NavLink
+                  to="https://www.catcom.com/catcomjkuat"
+                  target="_blank"
+                >
+                  <FaInstagramSquare /> catcomjkuat
+                </NavLink>
               </li>
               <li>
-                <FaTwitter /> catcomjkuat
+                <NavLink
+                  to="https://www.catcom.com/catcomjkuat"
+                  target="_blank"
+                >
+                  <FaTwitter /> catcomjkuat
+                </NavLink>
               </li>
             </ul>
           </div>
-          
+
           {/* contact column 2 */}
           <div className={styles.contact2}>
             <ul>
               <li>
-                <FaYoutube /> catcomjkuat
+                <NavLink
+                  to="https://www.catcom.com/catcomjkuat"
+                  target="_blank"
+                >
+                  <FaYoutube /> catcomjkuat
+                </NavLink>
               </li>
               <li>
-                <FaEnvelope /> jkuatcatcom18@gmail.com
+                <NavLink
+                  to="https://www.catcom.com/catcomjkuat"
+                  target="_blank"
+                >
+                  <FaEnvelope /> jkuatcatcom18@gmail.com
+                </NavLink>
               </li>
               <li>
-                <FaPhoneAlt /> +254 7XX XXXXXX
+                <NavLink>
+                  <FaPhoneAlt /> +254 7XX XXXXXX
+                </NavLink>
               </li>
             </ul>
           </div>
