@@ -70,7 +70,6 @@
   margin: 0 auto;
 }
 .communities {
-  background-color: aqua;
   grid-area: communities;
   width: 90%;
   display: grid;

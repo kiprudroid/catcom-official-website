@@ -1,5 +1,6 @@
 .communityCard {
-  background-color: antiquewhite;
+  
+  background-color: #D9D9D9;
   padding: 1rem;
   min-height: 600px; /* Set fixed minimum height */
   display: flex;
@@ -19,16 +20,23 @@
   width: fit-content;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 4px;
-  background-color: #2dabb1;
+  background-color: #8F5D5D;
   cursor: pointer;
   transition: background-color 0.3s ease;
   position: absolute;
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
+  color: white;
 }
 
 .button:hover {
   background-color: #238a8f;
+}
+
+@media screen and (max-width: 700px) {
+  .communityCard {
+    min-height: auto;
+    padding-bottom: 4rem; /* Add extra padding at bottom to prevent button overlap */
+  }
 }
