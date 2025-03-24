@@ -20,7 +20,7 @@
 }
 .header {
   grid-area: header;
-  z-index: 1000; /* Ensure header stays above other content */
+  z-index: 1000; /* Ensuring the header stays above other content */
   width: 100%;
   position: relative;
 }
@@ -74,9 +74,9 @@
   grid-area: communities;
   width: 90%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
+    "content-title content-title content-title"
     "scc choir liturgical-dancers"
     "pastoral committees catechism"
     "welfare technical cl";
@@ -140,6 +140,18 @@
 }
 /* Add responsive breakpoints */
 @media screen and (max-width: 850px) {
+  .communities {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "content-title content-title"
+      "scc choir"
+      "liturgical-dancers pastoral"
+      "committees catechism"
+      "welfare technical"
+      "cl .";
+    gap: 2rem;
+    padding: 1.5rem;
+  }
   .gridContainer {
     gap: 0.5rem;
   }
@@ -157,7 +169,8 @@
 
   .communities {
     grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
+    gap: 2rem ;
+    padding: 1.5rem;
   }
 
   .priests {
@@ -202,8 +215,9 @@
 
   .communities {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0.5rem;
+    padding: 1rem;
     gap: 1.5rem; 
+    width: 95%;
   }
 
   .leaders {
@@ -249,6 +263,19 @@
   }
   .communities {
     grid-template-columns: 1fr;
-    gap: 1rem;  /* Even smaller gap on mobile */
+    grid-template-areas:
+      "content-title"
+      "scc"
+      "choir"
+      "liturgical-dancers"
+      "pastoral"
+      "committees"
+      "catechism"
+      "welfare"
+      "technical"
+      "cl";
+    gap: 1rem;
+    padding: 0.5rem;
+    width: 100%;
   }
 }

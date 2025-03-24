@@ -1,14 +1,12 @@
 .communityCard {
   background-color: antiquewhite;
   padding: 1rem;
-  height: 100%;  /* Changed from min-height to height */
+  min-height: 600px; /* Set fixed minimum height */
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 90%;
-  margin:1rem auto;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  width: 90%; /* Take full width of grid cell */
+  margin: 0; /* Remove margin that was causing issues */
 }
 
 .cardContent {
