@@ -1,3 +1,10 @@
+const images = [
+  "/others/st_augustine.jpg",
+  "/others/st_augustine.jpg",
+  "/others/st_augustine.jpg",
+  "/others/st_augustine.jpg",
+];
+
 const priests = [
   {
     name: "Prof(Fr.)Lawrence Njoroge",
@@ -139,37 +146,36 @@ const communities = [
 const SCCs = [
   {
     name: "St. MARTIN DE PORRES",
-    image: ""
+    image: "",
   },
   {
     name: "Mary mother of God",
-    image: ""
+    image: "",
   },
   {
     name: "St. Therese of the child Jesus",
-    image: ""
+    image: "",
   },
   {
     name: "St. Veronica",
-    image: ""
+    image: "",
   },
   {
     name: "St Charles Lwanga",
-    image: ""
+    image: "",
   },
   {
     name: "St. Stephen",
-    image: ""
+    image: "",
   },
   {
     name: "St. Jude",
-    image: ""
+    image: "",
   },
   {
     name: "St. Paul",
-    image: ""
-  }
-]
+    image: "",
+  },
+];
 
-
-export { priests, patrons, catcomExecutive, communities , SCCs};
+export { images, priests, patrons, catcomExecutive, communities, SCCs };

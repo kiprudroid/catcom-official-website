@@ -4,19 +4,41 @@ import Header from "../../reusable-components/Header/Header";
 import "@fontsource/inter";
 import Footer from "../../reusable-components/Footer/Footer";
 import Schedule from "../../components/Schedule/Schedule";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { images } from "../../../public/DataFiles/data";
 
 function Home() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
   return (
     <>
       <div className={styles.gridContainer}>
         <Header className={styles.header} />
+
+        {/* SlideShow */}
         <div className={styles.slideShow}>
-          <img
-            src="./others/st augustine.jpg"
-            alt=""
-            className={styles.slideshowImage}
-          />
+          <Slider {...settings} className={styles.sliderContainer}>
+            {images.map((image, index) => (
+              <div key={index}>
+                <img
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                  className={styles.slideshowImage}
+                />
+              </div>
+            ))}
+          </Slider>
         </div>
+
         {/* Weekly Program */}
         <div className={styles.weeklyProgram}>
           <h3
