@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./CatcomExecutiveCard.module.css";
 import { SmallText } from "../Typography/Typography";
 
+
 function CatcomExecutiveCard({
   name,
   role,
