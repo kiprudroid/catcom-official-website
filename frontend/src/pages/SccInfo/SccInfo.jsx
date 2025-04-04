@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SccInfo.module.css"; // Assuming you have a CSS module for styling
-import Header from "../../reusable-components/Header";
-import Footer from "../../reusable-components/Footer";
+import Header from "../../reusable-components/Header/Header";
+import Footer from "../../reusable-components/Footer/Footer";
 import { SCCs } from "../../DataFiles/data";
 const SccInfo = ({
   name,
