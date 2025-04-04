@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./Schedule.module.css";
 
 const Schedule = () => {
-  console.log("Schedule component rendered");
-
   return (
     <div className={styles.container}>
       <div className={styles.daily}>
