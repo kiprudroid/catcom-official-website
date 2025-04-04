@@ -7,6 +7,9 @@ import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Join from "./pages/Join-scc/Join";
 import Media from "./pages/Media/Media";
+import { SCCs } from "./DataFiles/data";
+import SccInfo from "./pages/SccInfo/SccInfo";
+
 function App() {
   return (
     <>
@@ -18,6 +21,22 @@ function App() {
         <Route path="/media" element={<Media />} />
         <Route path="/join-scc" element={<Join />} />
         <Route path="/media" element={<Media />} />
+        {SCCs.map((scc) => (
+          <Route
+            key={scc.name}
+            path={scc.path}
+            element={
+              <SccInfo
+                name={scc.name}
+                about={scc.about}
+                activities={scc.activities}
+                photos={scc.photos}
+                aboutPatronSaint={scc.aboutPatronSaint}
+                prayer={scc.prayer}
+              />
+            }
+          />
+        ))}
       </Routes>
     </>
   );

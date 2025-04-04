@@ -7,7 +7,7 @@ import Schedule from "../../components/Schedule/Schedule";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { images } from "../../../public/DataFiles/data";
+import { images } from "../../DataFiles/data";
 
 function Home() {
   const settings = {
@@ -51,6 +51,14 @@ function Home() {
           <div className={styles.contentWrapper}>
             <Schedule />
           </div>
+        </div>
+
+        <div className={styles.calendar}>
+          <img
+            className={styles.calendarImage}
+            src="/others/catcom calender.jpg"
+            alt=""
+          />
         </div>
 
         {/* Media content */}

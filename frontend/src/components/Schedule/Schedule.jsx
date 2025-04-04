@@ -4,7 +4,10 @@ import styles from "./Schedule.module.css";
 const Schedule = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.daily}>
+
+      <div className={styles.weeklyGrid}> 
+
+      <div className={styles.weeklyItem}>
         <h3>MONDAY - FRIDAY</h3>
         <p>
           <strong>6.00am - 7.00am :</strong> <br />
@@ -15,15 +18,6 @@ const Schedule = () => {
           Rosary Prayers | SCC 008, JKUAT
         </p>
       </div>
-
-      <div className={styles.weeklyGrid}>
-        <div className={styles.weeklyItem}>
-          <h3>EVERY TUESDAY</h3>
-          <p>
-            <strong>6.45pm - 7.30pm :</strong> <br />
-            Family Meetings, JKUAT
-          </p>
-        </div>
         <div className={styles.weeklyItem}>
           <h3>EVERY WEDNESDAY</h3>
           <p>
