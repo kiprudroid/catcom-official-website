@@ -145,6 +145,7 @@ const communities = [
 
 const SCCs = [
   {
+    path: "st-martin",
     name: "St. MARTIN DE PORRES",
     image: "",
     about:
@@ -166,6 +167,7 @@ const SCCs = [
       "O glorious Saint Martin, whose burning charity embraced all, especially the poor and needy, we humbly turn to you for your intercession. May we, like you, be moved by compassion and generosity, and may we always strive to follow your example of humility and service to others. Saint Martin, pray for us, that we may be made worthy of the promises of Christ. Amen",
   },
   {
+    path: "mmog",
     name: "Mary mother of God",
     image: "",
     about:
@@ -186,6 +188,7 @@ const SCCs = [
       "Hail Mary, full of grace, the Lord is with thee; blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen ",
   },
   {
+    path: "st-therese",
     name: "St. Therese of the child Jesus",
     image: "",
     about:
@@ -206,6 +209,7 @@ const SCCs = [
       "Teach us how to open our hearts without reserve to the Holy Spirit as you did ,to seek and find God's will in all the crises and choices, in all the joys and disappointments of our lives. Gain for us too, the Grace to do His will with courage and untroubled hearts so that we may radiate a joy and a gladness like yours in the service of Our Lord.Amen",
   },
   {
+    path: "st-veronica",
     name: "St. Veronica",
     image: "",
     about:
@@ -226,6 +230,7 @@ const SCCs = [
       "Prayer to Saint VeronicaO My Jesus, Saint Veronica served You on the way to Calvary by wiping Your beloved face with a towel on which Your sacred image then appeared. She protected this treasure, and whenever people touched it, they were miraculously healed. I ask her to pray for the growth of my ability to see Your sacred image in others, to recognize their hurts, to stop and join them on their difficult journeys, and to feel the same compassion for them as she did for You. Show me how to wipe their faces, serve their needs, and heal their wounds, reminding me that as I do this for them, I also do this for You. Saint Veronica, pray for me. Amen.",
   },
   {
+    path: "st-charles",
     name: "St Charles Lwanga",
     image: "",
     about:
@@ -245,6 +250,7 @@ const SCCs = [
       "Saint Charles Lwanga, you embraced suffering and death for your faith, shining brightly as a beacon of hope in the face of persecution. Your unwavering love for Christ inspires us to live lives of integrity and courage. Pray for us, that we may have the strength to stand firm in our faith, to follow Christ's teachings, and to bear witness to the Gospel, even in the face of adversity. Amen",
   },
   {
+    path: "st-stephen",
     name: "St. Stephen",
     image: "",
     about:
@@ -264,6 +270,7 @@ const SCCs = [
       "O glorious St. Stephen, first martyr for the faith, you who were filled with grace and power, and who, even in the face of death, prayed for your persecutors, intercede for us. Grant that we may imitate your courage and steadfastness in our own lives, always choosing to follow the truth and love even our enemies. Help us to be faithful witnesses to Christ, and to seek forgiveness, not only for ourselves, but for those who have wronged us. St. Stephen, pray for us, that we may one day join you in heaven, praising God eternally. Amen.",
   },
   {
+    path: "st-jude",
     name: "St. Jude",
     image: "",
     about:
@@ -284,6 +291,7 @@ const SCCs = [
       "Most holy Apostle, St. Jude, faithful servant and friend of Jesus, I place myself into your hands at this difficult time.Help me to know that I am not alone. Please pray for me, asking God to send me comfort for my sorrows, bravery for my fears, and healing for my suffering. Ask our loving God to strengthen my faith and give me the courage to accept His Will for my life. Thank you, St. Jude, for the hope you offer to all who believe in you.  Amen.",
   },
   {
+    path: "st-paul",
     name: "St. Paul",
     image: "",
     about:
@@ -304,6 +312,7 @@ const SCCs = [
       "Holy St. Paul, you taught others about the saving message of Jesus, intercede for us so that Christ may live in us. Help us to know and imitate you and your love for Jesus. It is through your writings that many people have come to know Jesus, may all people know and glorify God through your writings and intercession.",
   },
   {
+    path: "kmrm",
     name: "KWAYA YA MTAKATIFU ROMANO MTUNZI",
     image: "",
     about:
@@ -312,9 +321,9 @@ const SCCs = [
       " To Help the community in and around Jkuat realise that there's power in service to God and humanity.",
     mission: "Evangelism through singing",
     aboutPatronSaint:
-     "Romanos the Melodist (born  late 5th-century after 555) was a Byzantine hymnographer and composer,who is a central early figure in the history of Byzantine music. Called 'the Pindar of rhythmic poetry'he flourished during the sixth century, though the earliest manuscripts of his works are dated centuries after this. He was the foremost Kontakion composer of his time. Feast day is celebrated on 1st october.",
+      "Romanos the Melodist (born  late 5th-century after 555) was a Byzantine hymnographer and composer,who is a central early figure in the history of Byzantine music. Called 'the Pindar of rhythmic poetry'he flourished during the sixth century, though the earliest manuscripts of his works are dated centuries after this. He was the foremost Kontakion composer of his time. Feast day is celebrated on 1st october.",
     prayer:
-     "O Saint Romanos, the Melodist, you who were once a humble singer, but through divine grace became a master of hymnody, we humbly ask for your intercession.May your gift of song inspire us to praise God with heartfelt melodies and words, and may your example encourage us to embrace our own unique talents for the glory of God",
+      "O Saint Romanos, the Melodist, you who were once a humble singer, but through divine grace became a master of hymnody, we humbly ask for your intercession.May your gift of song inspire us to praise God with heartfelt melodies and words, and may your example encourage us to embrace our own unique talents for the glory of God",
   },
 ];
 

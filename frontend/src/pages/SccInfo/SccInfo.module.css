@@ -1,0 +1,79 @@
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto auto;
+    grid-template-areas:
+        "header"
+        "title"
+        "about"
+        "activitiesAndPhotos"
+        "PatronSaint"
+        "prayer"
+        "footer";
+    gap: 20px;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+/* Header Section */
+.header {
+    grid-area: header;
+    background-color: #3498db;
+    height: 80px;
+}
+
+/* Title Section */
+.title {
+    grid-area: title;
+    background-color: #f1c40f;
+    height: 100px;
+}
+
+/* About Section */
+.about {
+    grid-area: about;
+    background-color: #e74c3c;
+    height: 200px;
+}
+
+/* Activities and Photos Section */
+.activitiesAndPhotos {
+    grid-area: activitiesAndPhotos;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "activities photos";
+    background-color: #2ecc71;
+    height: 300px;
+}
+
+.activities {
+    grid-area: activities;
+    background-color: #27ae60;
+}
+
+.photos {
+    grid-area: photos;
+    background-color: #16a085;
+}
+
+/* Patron Saint Section */
+.PatronSaint {
+    grid-area: PatronSaint;
+    background-color: #9b59b6;
+    height: 250px;
+}
+
+/* Prayer Section */
+.prayer {
+    grid-area: prayer;
+    background-color: #34495e;
+    height: 150px;
+}
+
+/* Footer Section */
+.footer {
+    grid-area: footer;
+    background-color: #7f8c8d;
+    height: 100px;
+}
