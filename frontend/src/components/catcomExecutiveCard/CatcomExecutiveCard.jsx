@@ -10,11 +10,7 @@ function CatcomExecutiveCard({
   return (
     <>
       <div className={styles.catcomExecutive}>
-        <img
-          className={styles.executiveImage}
-          src={image}
-          alt=""
-        />
+        <img className={styles.executiveImage} src={image} alt="" />
         <SmallText>{name}</SmallText>
         <SmallText>{role}</SmallText>
       </div>
