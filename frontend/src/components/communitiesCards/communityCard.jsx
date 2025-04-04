@@ -10,7 +10,7 @@ function CommunityCard({ title, content }) {
         <SmallText>{content}</SmallText>
       </div>
       <button className={styles.button}>
-        <SmallText>see more about {title}</SmallText>
+        <SmallText>See more</SmallText>
       </button>
     </div>
   );
