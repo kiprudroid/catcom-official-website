@@ -7,8 +7,7 @@ import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Join from "./pages/Join-scc/Join";
 import Media from "./pages/Media/Media";
-import { SCCs } from "../public/DataFiles/data";
-
+import { SCCs } from "./DataFiles/data";
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
         <Route path="/media" element={<Media />} />
         <Route path="/join-scc" element={<Join />} />
         <Route path="/media" element={<Media />} />
-
       </Routes>
     </>
   );

@@ -12,7 +12,7 @@ import {
   patrons,
   priests,
   catcomExecutive,
-} from "../../../public/DataFiles/data";
+} from "./../../DataFiles/data";
 
 function About() {
   return (
