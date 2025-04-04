@@ -1,23 +1,21 @@
 .gridContainer {
   min-height: 100vh;
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   background-color: white;
-  grid-template-rows:
-    minmax(auto, auto) minmax(auto, auto) minmax(auto, auto) minmax(auto, auto)
-    minmax(auto, auto) minmax(auto, auto) minmax(auto, auto) minmax(auto, auto);
+  grid-template-rows:auto;
   grid-template-areas:
     "header"
     "slide-show"
     "weekly-program"
+    "calendar"
     "media-content"
     "what-are-we"
     "vision"
     "mission"
     "footer";
   width: 100%;
-  overflow-x: hidden;
-  left: 0;
+  overflow-x: hidden;  
   margin: 0;
   padding: 0;
 }
@@ -66,6 +64,16 @@
   grid-area: weekly-program;
   height: auto;
 }
+.calendar {
+  grid-area: calendar;
+}
+.calendarImage {
+  height: auto;
+  width: 70%;
+  padding: 1rem;
+  margin: auto;
+  display: block;
+}
 .footer {
   grid-area: footer;
   width: 100%;
@@ -80,36 +88,144 @@
 }
 .textContent {
   color: black;
-  font-size: 24px;
   text-align: center;
   margin: 2rem 0;
   font-family: sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  padding: 1rem;
 }
 .contentWrapper {
-  width: 80%;
-  height: 100%;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 1rem;
 }
 .mediaImage {
   max-height: 300px;
 }
 .mediaWrapper {
-  white-space: nowrap;
-  width: 80%;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 1rem;
   overflow-x: auto;
   display: flex;
   gap: 1rem;
   scroll-behavior: smooth;
-  padding-bottom: 1rem;
+  white-space: nowrap;
 }
 
+.whatAreWe,
+.vision,
+.mission,
+.weeklyProgram,
+.media-content {
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+
+
+
+/* Medium-large screens */
+@media screen and (max-width: 1024px) {
+  .slideShow {
+    height: 60vh;
+  }
+  
+  .slideshowImage {
+    height: 50vh;
+  }
+  
+  .mediaImage {
+    max-height: 250px;
+  }
+}
+
+/* Medium screens */
 @media screen and (max-width: 850px) {
+  .gridContainer {
+    gap: 1rem;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+
+  .whatAreWe,
+  .vision,
+  .mission,
+  .weeklyProgram,
+  .media-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .slideShow {
+    height: 50vh;
+  }
+
+  .slideshowImage {
+    height: 40vh;
+  }
+
+  .contentTitle {
+    font-size: 1.75rem;
+  }
+
+  .textContent {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+/* Small screens */
+@media screen and (max-width: 480px) {
   .gridContainer {
     gap: 0.5rem;
   }
 
-  .header {
-    margin-bottom: 1rem;
+  .slideShow {
+    height: 40vh;
+  }
+  
+  .slideshowImage {
+    height: 30vh;
+  }
+
+  .whatAreWe,
+  .vision,
+  .mission,
+  .weeklyProgram,
+  .media-content {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .contentWrapper,
+  .mediaWrapper {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .contentTitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .textContent {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .mediaImage {
+    max-height: 200px;
   }
 }

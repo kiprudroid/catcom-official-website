@@ -53,6 +53,16 @@ function Home() {
           </div>
         </div>
 
+        <div className={styles.calendar}>
+          
+            <img
+              className={styles.calendarImage}
+              src="/others/catcom calender.jpg"
+              alt=""
+            />
+          
+        </div>
+
         {/* Media content */}
         <div className={styles.mediaContent}>
           <h3
