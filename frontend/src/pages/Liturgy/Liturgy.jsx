@@ -3,7 +3,7 @@ import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
 import styles from "./Liturgy.module.css";
 import Readings from "../../components/Readings/Readings.jsx";
-import PrayerSection from "../../components/prayerSection/PrayerSection.jsx";
+import PrayerSection from "../../components/PrayerSection/PrayerSection.jsx";
 
 function Liturgy() {
   return (
