@@ -1,17 +1,13 @@
 import React from "react";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
-<<<<<<< HEAD
 import styles from "./Liturgy.module.css";
 import Readings from "../../components/Readings/Readings.jsx";
 import PrayerSection from "../../components/PrayerSection/PrayerSection.jsx";
-=======
->>>>>>> de9be84 (Changed the logo in the header to png format)
 
 function Liturgy() {
   return (
     <>
-<<<<<<< HEAD
       <div className={`${styles.gridContainer}`}>
         <Header className={styles.header} />
 
@@ -261,11 +257,6 @@ function Liturgy() {
 
         <Footer className={styles.footer} />
       </div>
-=======
-      Liturgy
-      <Header />
-      <Footer />
->>>>>>> de9be84 (Changed the logo in the header to png format)
     </>
   );
 }

@@ -65,29 +65,7 @@ function Header() {
                 </NavLink>
               </li>
             </ul>
-<<<<<<< HEAD
           )}
-=======
-          </div>
-
-          <div className="logo">
-            <img src="./others/ctm_logo.png" alt="" className="catcom-logo" />
-          </div>
-
-          <div className="nav-right">
-            <ul className="nav-right-list">
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-              <li>
-                <Link to="/contact"> Contact Us</Link>
-              </li>
-              <li>
-                <Link to="/join-scc">Join SCC</Link>
-              </li>
-            </ul>
-          </div>
->>>>>>> de9be84 (Changed the logo in the header to png format)
         </div>
 
         <img
