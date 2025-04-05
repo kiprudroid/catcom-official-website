@@ -1,5 +1,5 @@
 /* Grid Container */
-.grid-container {
+.gridContainer {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto auto auto auto;
@@ -13,14 +13,20 @@
         "footer";
     gap: 20px;
     min-height: 100vh;
-    overflow-y: auto;
+    width: 100%; /* Ensure it takes full width */
+    max-width: 100%; /* Prevent overflow */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    margin: 0;
+    padding: 0;
 }
 
 /* Header Section */
 .header {
     grid-area: header;
     background-color: #3498db;
-    height: 80px;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Title Section */
@@ -76,4 +82,34 @@
     grid-area: footer;
     background-color: #7f8c8d;
     height: 100px;
+}
+.title,
+.about,
+.activitiesAndPhotos,
+.PatronSaint,
+.prayer
+{
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+@media screen and (max-width: 850px) {
+    .title,
+    .about,
+    .activitiesAndPhotos,
+    .PatronSaint,
+    .prayer {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title,
+    .about,
+    .activitiesAndPhotos,
+    .PatronSaint,
+    .prayer {
+        width: 100%;
+        padding: 1rem;
+    }
 }

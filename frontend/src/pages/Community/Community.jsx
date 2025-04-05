@@ -17,7 +17,11 @@ function Community() {
           <Heading>Our SCCs</Heading>
           <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
             {SCCs.map((_, index) => (
-              <SccCard key={index} SccName={SCCs[index].name} />
+              <SccCard
+                key={index}
+                SccName={SCCs[index].name}
+                path={SCCs[index].path}
+              />
             ))}
           </div>
 
