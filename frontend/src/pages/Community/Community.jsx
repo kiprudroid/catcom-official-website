@@ -21,6 +21,7 @@ function Community() {
                 key={index}
                 SccName={SCCs[index].name}
                 path={SCCs[index].path}
+                image={SCCs[index].image}
               />
             ))}
           </div>

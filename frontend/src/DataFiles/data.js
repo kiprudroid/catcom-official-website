@@ -147,7 +147,7 @@ const SCCs = [
   {
     path: "st-martin",
     name: "St. MARTIN DE PORRES",
-    image: "",
+    image: "PatronSaints/SaintMartin.jpg",
     about:
       "Located within the vibrant JKUAT CATCOM, St. Martin De Porres SCC is a devoted and welcoming Small Christian Community committed to fostering spiritual growth, fellowship, and service. Named after the beloved St. Martin de Porres, our SCC emphasizes love, compassion, and unity, bringing together students, and members of the surrounding community in prayer, worship, and outreach activities.We believe in the power of small, faith-centered groups to strengthen our relationship with God and each other. Through our regular meetings, charitable initiatives, and collaborative efforts, we seek to live out our CathoLic faith in meaningful and impactful ways. Join us as we strive to grow in faith and community, guided by the teachings of Christ and the example of St. Martin de Porres.St. Martin's is also divided into sub groups called families, at this level,the members of the SCC get to interact more and know each other better, it fosters unity and friendship with thin the SCC at large   The families include Faith Family Wisdom Family,Goodness Family",
     activities: [
@@ -177,7 +177,7 @@ const SCCs = [
   {
     path: "mmog",
     name: "Mary mother of God",
-    image: "",
+    image: "others/gptSaint.webp",
     about:
       "The SCC consists of students from the first year to the fifth year. We also have an alumni wing that plays a major role in the growth and functionality of the SCC. It is founded on love, unity, and support for one another. Above all, it is also rooted in our Catholic faith and trust in God. The actvities by the SCC range from our normal indoor meetings on Thursdays at 6 pm., and Sundays after mass to outdoor activities planned by the members through the various committees formed. These activities include hikes, charity works, bike rides, color fests, and social days. The activities aim to grow the members' bond and give back to the community. We also have families that meet on different days of the week and plan out their activities. On  Thursdays, we mainly have discussions, debates, karaoke, game nights, and trivia",
     activities: [
@@ -198,7 +198,7 @@ const SCCs = [
   {
     path: "st-therese",
     name: "St. Therese of the child Jesus",
-    image: "",
+    image: "PatronSaints/SaintTherese.jpg",
     about:
       "the scc begun in 2013 and has so far grown to be one of the best small chrisitian communities in catcom. it has a population of almost 100 active members and a group of alumns too. the scc has 3 families the great Family of Abraham and Sarah is a pillar that reminds us to keep our faith in God and he will come through for us in tough times for his promises always hold, The Holy Family of Mary and Joseph reminds us of God's fulfilment of His promise and the love that he had for us thus compelling us to strive for holiness and perfections in our spiritual life and The Perfect Family of Adam and Eve which is like an ocean with a calm surface but vigorous undercurrents reminding us that our greatness lies within us and so we should invest in our wisdom and relationship with God.The SCC engages its members in activities that buid both their spiritual and social life as it prepares them for the outside world",
     activities: [
@@ -223,7 +223,7 @@ const SCCs = [
   {
     path: "st-veronica",
     name: "St. Veronica",
-    image: "",
+    image: "PatronSaints/SaintVeronica.jpg",
     about:
       "ST Veronicah SCC was formed in the year 2010 around September. Before then, there were only 5 SCCs: St Mary's, St Martin, St Charles Lwanga, St Paul (nicknamed CMA) and St Jude. Due to the increase in number of CATCOM members, it was suggested that more SCC's be formed to accommodate more catcomers. The then chairman, Erick Otieno appointed a committee to come up with the structure. The report suggested that there be added three more SCC's. two to cater for those residing in University hostels and an additional one to cater for those renting outside the University. Three SCC's were formed namely: St Veronica SCC, St Stephen SCC and St Theresa of the Child Jesus SCC.At around November the same year, the SCC was commissioned by the then Father in Charge, Rev Fr Francis Kiarie, St Augustine Parish. Worth noting, Irene was the first chair lady, and during her time the families were formed. Then the scc could meet once in a week on Thursdays at the halls of residence from 7:00 PM. Later on, the meeting was transferred to lecture halls e.g. SCC, NCLB.",
     activities: [
@@ -248,7 +248,7 @@ const SCCs = [
   {
     path: "st-charles",
     name: "St Charles Lwanga",
-    image: "",
+    image: "PatronSaints/SaintCharles.jpg",
     about:
       "This is a vibrant, faith-filled Christian community where love abounds, joy overflows, and prayer is at the heart of everything we do! We are more than just a group—we are a family united in Christ, supporting and uplifting one another in faith. Here, you will find a warm, special, and spirit-filled atmosphere where you can grow, worship, and experience God's love in a powerful way. Whether you are seeking encouragement, fellowship, or a deeper connection with God, you are welcome just as you are!. Our vision reaches beyond the horizon, where challenges dissolve intoopportunities and the seeds of today blossom into a future brighter than we ever imagined.",
     activities: [
@@ -272,7 +272,7 @@ const SCCs = [
   {
     path: "st-stephen",
     name: "St. Stephen",
-    image: "",
+    image: "PatronSaints/SaintStephen.jpg",
     about:
       "St Stephen Small Christian Community (SCC) is a faith-based group within JKUAT Catholic Community, focused on fostering spiritual growth, fellowship, and service among its members.The SCC is a vibrant community comprising of 50 -60 active members. It thrives due to the strong bonds that exist in our individual families.Families include Capernaum Canaan Antioch Bethlehem.It aims at creating ties that are helpful both spiritually, mentally and physically. We hope to ensure continuity of the community by creating a safe space for our members.",
     activities: [
@@ -296,7 +296,7 @@ const SCCs = [
   {
     path: "st-jude",
     name: "St. Jude",
-    image: "",
+    image: "PatronSaints/SaintJude.jpg",
     about:
       "St. Jude Thaddeus was the very first scc that was formed in the catcom, as a group of Catholics dedicated to praying the Holy Rosary and following the early Christian community in communion and helping one another. The community continued to grow, as members continued to increase by day and thus subdivided to the other sccs. St. Jude is therefore a proud firstborn among the catcom small Christian communities.St. Jude Thaddeus Scc has continued to grow as a wonderful, beautiful and vibrant family of young men and women looking to follow the example of our patron saint who is an intercessor of hopeless cases. The scc is made up of a total of six amazing families, Bethlehem, Jerusalem, Judea, Nazareth, Samaria and Zion. We are also privileged to sphere head the rosary prayers in our community, something we are enthusiastic about. We have football team and club named Catalans St. Jude fc, a very active club promoting talent in both ladies and gents with a football passion.",
     activities: [
@@ -321,7 +321,7 @@ const SCCs = [
   {
     path: "st-paul",
     name: "St. Paul",
-    image: "",
+    image: "PatronSaints/SaintPaul.jpg",
     about:
       "The SCC is comprised of three families; the Favoured family, the Arelis family, and the Sacred Heart family. The family heads spearhead the family activities and they are also part of the SCC executive and hence act as a link between the families and the SCC executive. Families usually meet regularly at their convenience for various activities such as games night, prepare and take dinner together. On Thursdays and Sundays, SCC members gather for holy rosary prayers and a variety of activities. The community cherishes the sense of connection and support fostered through these gatherings and every meeting offers a chance to engage in meaningful interactions and strengthen the bonds among the group members making these gatherings both spiritually and socially rewarding for all members. Each gathering is both enriching and enjoyable, strengthening the bonds within the group and making these experiences spiritually and socially rewarding. These activities reflect the group's commitment to holistic growth and community engagement.",
     activities: [
@@ -346,7 +346,7 @@ const SCCs = [
   {
     path: "kmrm",
     name: "KWAYA YA MTAKATIFU ROMANO MTUNZI",
-    image: "",
+    image: "PatronSaints/SaintRomanus.jpg",
     about:
       "Kwaya Ya Mtakatifu Romano Mtunzi {KMRM} begun the year a chaplaincy was started in JKUAT by Fr. Lawrence Njoroge with the help of the late archbishop emeritus Ndingi Mwana a Nzeki. It is a choir composed of mainly students and a few parishioners.One of the major principles that we value as KMRM is discipline and faith. The belief that there exists God and he's the one giving us life, health and sweet voices to sing and evangelise well.",
     vision:

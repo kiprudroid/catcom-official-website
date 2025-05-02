@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SccCard.module.css";
 
-function SccCard({ SccName = "Scc Name", path }) {
+function SccCard({ SccName = "Scc Name", path , image }) {
   const handleClick = () => {
     // Check if path exists, then navigate to it
     if (path) {
@@ -14,7 +14,7 @@ function SccCard({ SccName = "Scc Name", path }) {
     <div
       className={styles.card}
       style={{
-        backgroundImage: `url(/others/gptSaint.webp)`,
+        backgroundImage: `url(${image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
