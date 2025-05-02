@@ -50,8 +50,7 @@
 }
 
 .slideShow {
-  grid-area: slide-show;
-  height: 80vh;
+  grid-area: slide-show;  
   width: 100%;
   margin: auto;
   display: flex; /* Ensures children are aligned properly */
@@ -60,7 +59,7 @@
 }
 .slideshowImage {
   width: 100%;
-  height: 70vh;
+  height: 80%;
   object-fit: cover;
 }
 
