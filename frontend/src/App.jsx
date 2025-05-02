@@ -30,7 +30,7 @@ function App() {
                 name={scc.name}
                 about={scc.about}
                 activities={scc.activities}
-                photos={scc.photos}
+                sccPhotos={scc.sccPhotos}
                 aboutPatronSaint={scc.aboutPatronSaint}
                 prayer={scc.prayer}
               />

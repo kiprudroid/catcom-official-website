@@ -11,7 +11,7 @@ const SccInfo = ({
   name,
   about,
   activities,
-  photos,
+  sccPhotos,
   aboutPatronSaint,
   prayer,
 }) => {
@@ -23,6 +23,8 @@ const SccInfo = ({
      slidesToScroll: 1,
      autoplay: true,
      autoplaySpeed: 3000,
+     adaptiveHeight: true,
+     fade: true,
    };
   return (
     <div className={styles.gridContainer}>
@@ -48,17 +50,21 @@ const SccInfo = ({
           <Heading>Photos </Heading>
           {/* SlideShow */}
           <div className={styles.slideShow}>
-            <Slider {...settings} className={styles.sliderContainer}>
-              {photos && photos.map((image, index) => (
-                <div key={index}>
-                  <img
-                    src={image}
-                    alt={`Slide ${index + 1}`}
-                    className={styles.slideshowImage}
-                  />
-                </div>
-              ))}
-            </Slider>
+            {sccPhotos && sccPhotos.length > 0 ? (
+              <Slider {...settings} className={styles.sliderContainer}>
+                {sccPhotos.map((image, index) => (
+                  <div key={index}>
+                    <img
+                      src={image}
+                      alt={`Slide ${index + 1}`}
+                      className={styles.slideshowImage}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            ) : (
+              <div className={styles.noImages}>No photos available</div>
+            )}
           </div>
         </div>
       </div>
