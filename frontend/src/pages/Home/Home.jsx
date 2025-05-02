@@ -71,7 +71,7 @@ function Home() {
           </h3>
           <div className={styles.mediaWrapper}>
             {[
-              "/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg",
+              "/others/placeholder.jpg",
               "/others/placeholder.jpg",
               "/others/placeholder.jpg",
               "/others/placeholder.jpg",
@@ -132,33 +132,9 @@ function Home() {
           </div>
         </div>
 
-        <div className={styles.mission}>
-          <h3
-            className={styles.contentTitle}
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
-            Media Content
-          </h3>
-          <div className="media-wrapper">
-            {[
-              "/others/Beyond-Century-of-Endeavour-A-History-of-the-Catholic-Church-in-Kenya.jpg",
-              "/others/placeholder.jpg",
-              "/others/placeholder.jpg",
-              "/others/placeholder.jpg",
-              "/others/kmrm_logo.jpg",
-            ].map((url, index) => (
-              <img
-                key={index}
-                src={url}
-                alt={`media-content-${index}`}
-                className="media-image"
-              />
-            ))}
-          </div>
-        </div>
         <div className="item mission">
           <h3
-            className="content-title"
+            className={styles.contentTitle}
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Our Mission
@@ -180,9 +156,7 @@ function Home() {
         <div className={styles.footer}>
           <Footer />
         </div>
-         
-        </div>
-      
+      </div>
     </>
   );
 }
