@@ -2,7 +2,7 @@
 .gridContainer {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto auto auto;
+    grid-template-rows: auto;
     grid-template-areas:
         "header"
         "title"
@@ -14,10 +14,9 @@
     gap: 20px;
     min-height: 100vh;
     width: 100%; /* Ensure it takes full width */
-    max-width: 100%; /* Prevent overflow */
-    overflow-x: hidden; /* Hide horizontal overflow */
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Header Section */
@@ -33,14 +32,14 @@
 .title {
     grid-area: title;
     background-color: #f1c40f;
-    height: 100px;
+    padding: 2rem;
 }
 
 /* About Section */
 .about {
     grid-area: about;
     background-color: #e74c3c;
-    height: 200px;
+    padding: 2rem;
 }
 
 /* Activities and Photos Section */
@@ -50,7 +49,8 @@
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "activities photos";
     background-color: #2ecc71;
-    height: 300px;
+    gap : 1rem;
+    padding: 1rem;
 }
 
 .activities {
@@ -61,27 +61,28 @@
 .photos {
     grid-area: photos;
     background-color: #16a085;
+    padding: 1rem;
 }
 
 /* Patron Saint Section */
 .PatronSaint {
     grid-area: PatronSaint;
     background-color: #9b59b6;
-    height: 250px;
+    padding: 2rem;
 }
 
 /* Prayer Section */
 .prayer {
     grid-area: prayer;
     background-color: #34495e;
-    height: 150px;
+    padding: 2rem;
 }
 
 /* Footer Section */
 .footer {
     grid-area: footer;
     background-color: #7f8c8d;
-    height: 100px;
+    height: auto;
 }
 .title,
 .about,
@@ -92,6 +93,8 @@
     width: 90%;
     margin: 0 auto;
     max-width: 1200px;
+    box-sizing: border-box;
+     
 }
 @media screen and (max-width: 850px) {
     .title,
@@ -101,9 +104,18 @@
     .prayer {
         width: 95%;
     }
+    .activitiesAndPhotos {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "activities"
+            "photos";
+    }
 }
 
 @media screen and (max-width: 480px) {
+    .gridContainer {
+        gap: 10px;
+    }
     .title,
     .about,
     .activitiesAndPhotos,

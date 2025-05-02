@@ -3,6 +3,7 @@ import styles from "./SccInfo.module.css"; // Assuming you have a CSS module for
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
 import { SCCs } from "../../DataFiles/data";
+import {Heading ,Paragraph ,SmallText } from "../../components/Typography/Typography";
 const SccInfo = ({
   name,
   about,
@@ -16,14 +17,31 @@ const SccInfo = ({
       <div className={styles.header}>
         <Header />
       </div>
-      <div className={styles.title}>{name}</div>
-      <div className={styles.about}>{about}</div>
+      <Heading className={styles.heading} as="h1">
+        <div className={styles.title}>{name}</div>
+      </Heading>
+      <SmallText className={styles.subTitle}>
+        <div className={styles.about}>{about}</div>
+      </SmallText>
       <div className={styles.activitiesAndPhotos}>
-        <div className="activities"></div>
-        <div className="photos"></div>
+        <div className={styles.activities}>
+          {activities.map((activity, index) => (
+            <li>{activity}</li>
+          ))}
+        </div>
+        <div className={styles.photos}></div>
       </div>
-      <div className={styles.PatronSaint}>{aboutPatronSaint}</div>
-      <div className={styles.prayer}> {prayer}</div>
+      <div className={styles.PatronSaint}>
+        <Heading> About {name}</Heading>
+        <SmallText>
+          {aboutPatronSaint}
+          {prayer}
+        </SmallText>
+      </div>
+      <div className={styles.prayer}>
+        <Heading> Prayer To {name}</Heading>
+        <SmallText>{prayer}</SmallText>
+      </div>
       <div className={styles.footer}>
         <Footer />
       </div>
