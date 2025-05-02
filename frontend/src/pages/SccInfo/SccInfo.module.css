@@ -58,13 +58,13 @@
   align-items: center;
 }
 .slideshowImage {
-  width: 100%;
-  height: 80%;
+  width: auto;
+  height: 300px;
   object-fit: cover;
 }
 
 .sliderContainer {
-  width: 100%;
+  width: 300px;
   max-width: 1200px;
   margin: auto;
 }
@@ -72,6 +72,12 @@
 .activities {
     grid-area: activities;
   
+}
+.activitiesList {
+    list-style-type: none;
+    padding: 0;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .photos {

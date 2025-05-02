@@ -163,7 +163,7 @@ const SCCs = [
     sccPhotos: [
       "/others/gptSaint.webp",
       "others/group_photo.jpeg",
-      "others/manSaint",
+      "others/manSaint.webp",
     ],
     aboutPatronSaint:
       "St Martin (1579-1639) was born in Lima, Peru. He was the illegitimate son of a nobleman and possibly an African woman slave. He had a younger sister but soon after her birth, their father abandoned them.St Martin grew up in poverty with his mother who, unable to support him, sent him for two years to a Care School and then to work and train with a barber/surgeon.St Martin devoted his life to the sick, the poor and praying to the Blessed Sacrament. As a Lay Brother, he begged for alms to feed the hungry, the sick and his Dominican community. Often when there was no more space in their infirmary, he would give patients his own small bed.",
@@ -209,7 +209,7 @@ const SCCs = [
     sccPhotos: [
       "/others/gptSaint.webp",
       "others/group_photo.jpeg",
-      "others/manSaint",
+      "others/manSaint.webp",
     ],
     aboutPatronSaint:
       "St Therese of Lisieux, also known as the little flower lived a very short simple but adventurous and profound life in her time. Born in 1873 she went on to become one of the Carmalite nuns at age 15 where she embarked on a path of humility and childlike trust and fondness to Jesus Christ.Her approach, “The Little Way” of doing small things with extraordinary love has become a legacy that we embrace in our daily spiritual life. She lived for 24 years on earth but her spirit lives on in us and in heaven",
@@ -234,7 +234,7 @@ const SCCs = [
     sccPhotos: [
       "/others/gptSaint.webp",
       "others/group_photo.jpeg",
-      "others/manSaint",
+      "others/manSaint.webp",
     ],
     aboutPatronSaint:
       "Saint Veronicah is also known as Berenike.She was in the 1st century AD in Jerusalem.Saint Veronica feast day is 12th July and she is the patron saint of maids, parsonage housekeepers, photographers, rectoryhousekeepers, seamstresses, washerwomen,against bleeding, against hemorraghes, domestic workers, dying people, laundry workers and linen weavers. Saint Veronicah is known as the woman who offered a cloth to Jesus so he could wipe His face on the way to His crucifixion.Saint Veronicah is not mentioned in the Bible, but is known to us by Catholic tradition and in the Sixth Station of the Cross, 'Veronica Wipes the Face of Jesus.' ",
@@ -258,7 +258,7 @@ const SCCs = [
     sccPhotos: [
       "/others/gptSaint.webp",
       "others/group_photo.jpeg",
-      "others/manSaint",
+      "others/manSaint.webp",
     ],
     aboutPatronSaint:
       "Saint Charles Lwanga, born in 1860 in Buganda (modern-day Uganda), was a Christian convert and one of the 22 Catholic martyrs who died for their faith under King Mwanga II's persecution. Serving as a page in the royal court, he became a leader among the Christian converts and protected young boys from the king's immoral advances. Amid growing hostility, he was baptized and encouraged his fellow believers to remain steadfast. Arrested and condemned, he was burned alive on June 3, 1886, at Namugongo, showing immense courage and devotion until his last breath. Canonized by Pope Paul VI in 1964, he is honored as the patron saint of youth, converts, and African Catholics. His feast day, celebrated with his fellow martyrs, remains a significant event in Uganda and beyond, inspiring Christians to stand firm in their faith despite persecution",
@@ -282,7 +282,7 @@ const SCCs = [
     sccPhotos: [
       "/others/gptSaint.webp",
       "others/group_photo.jpeg",
-      "others/manSaint",
+      "others/manSaint.webp",
     ],
     aboutPatronSaint:
       "Saint Stephen, the first Christian martyr, was one of the first deacons of the Church, chosen to assist the apostles in serving the poor and ensuring fair resource distribution. Known for his deep faith, wisdom, and ability to perform miracles, he became a prominent preacher, which led to opposition from Jewish synagogues. Accused of blasphemy, he was brought before the Sanhedrin, where he delivered a speech recounting Israel’s history and condemning the religious leaders for resisting God's will. Enraged, they dragged him outside Jerusalem and stoned him to death, during which he prayed for his persecutors.Among those witnessing his execution was Saul of Tarsus, who later became Saint Paul.feast day is celebrated on December 26",
@@ -307,7 +307,7 @@ const SCCs = [
     sccPhotos: [
       "/others/gptSaint.webp",
       "others/group_photo.jpeg",
-      "others/manSaint",
+      "others/manSaint.webp",
     ],
     aboutPatronSaint:
       "St. Jude is the Patron Saint of Hope and impossible causes and one of Jesus’ original twelve Apostles.He preached the Gospel with great passion, often in the most difficult circumstances. Through the power of the Holy Spirit, he made profound differences in people's lives as he offered them the Word of God. The Gospel tells us that St. Jude was a brother of St. James the Less, also one of the Apostles. They are described in the Gospel of Matthew as the 'brethren' of Jesus, probably cousins.",
@@ -332,7 +332,7 @@ const SCCs = [
     sccPhotos: [
       "/others/gptSaint.webp",
       "others/group_photo.jpeg",
-      "others/manSaint",
+      "others/manSaint.webp",
     ],
     aboutPatronSaint:
       "Saint Paul, originally named Saul, was born around 5 AD in Tarsus, a prominent city in modern-day Turkey. He came from a devout Jewish background, was a Roman citizen, and was highly educated in Jewish law under the renowned rabbi Gamaliel. As a Pharisee, he zealously upheld the Mosaic Law and initially persecuted early Christians, believing them to be a threat to Judaism.His life dramatically changed on the road to Damascus when he had a vision of Jesus. This experience left him temporarily blind, but after three days, he regained his sight and converted to Christianity. Taking the name Paul, he dedicated his life to spreading the gospel.",

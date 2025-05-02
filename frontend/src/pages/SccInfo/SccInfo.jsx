@@ -40,7 +40,7 @@ const SccInfo = ({
       <div className={styles.activitiesAndPhotos}>
         <div className={styles.activities}>
           <Heading>Activities</Heading>
-          <ul>
+          <ul class={styles.activitiesList}>
             {activities.map((activity, index) => (
               <li>{activity}</li>
             ))}
