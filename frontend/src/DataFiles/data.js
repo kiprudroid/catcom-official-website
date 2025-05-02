@@ -161,9 +161,13 @@ const SCCs = [
       "Joint Activities with other SCCs",
     ],
     sccPhotos: [
-      "/others/gptSaint.webp",
-      "others/group_photo.jpeg",
-      "others/manSaint.webp",
+      "sccPictures/stMartin/Picture1.png",
+      "sccPictures/stMartin/Picture2.png",
+      "sccPictures/stMartin/Picture3.png",
+      "sccPictures/stMartin/Picture4.png",
+      "sccPictures/stMartin/Picture5.png",
+      "sccPictures/stMartin/Picture6.png",
+      "sccPictures/stMartin/Picture7.png",
     ],
     aboutPatronSaint:
       "St Martin (1579-1639) was born in Lima, Peru. He was the illegitimate son of a nobleman and possibly an African woman slave. He had a younger sister but soon after her birth, their father abandoned them.St Martin grew up in poverty with his mother who, unable to support him, sent him for two years to a Care School and then to work and train with a barber/surgeon.St Martin devoted his life to the sick, the poor and praying to the Blessed Sacrament. As a Lay Brother, he begged for alms to feed the hungry, the sick and his Dominican community. Often when there was no more space in their infirmary, he would give patients his own small bed.",
