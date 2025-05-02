@@ -12,8 +12,9 @@
     font-weight: bold;
     text-align: center;
     margin: auto;
-    /* color:#2dabb1 */
-    color: #ec5d0a;
+    color:#2dabb1;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+   
 }
 
 .button{
