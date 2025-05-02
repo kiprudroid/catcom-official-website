@@ -171,7 +171,7 @@ const SCCs = [
     name: "Mary mother of God",
     image: "",
     about:
-      "The SCC consists of students from the first year to the fiŌ h year. We also have an alumni wing that plays a major role in the growth and functionality of the SCC. It is founded on love, unity, and support for one another. Above all, it is also rooted in our Catholic faith and trust in God. The actvities by the SCC range from our normal indoor meet ngs on Thursdays at 6 pm., and Sundays after mass to outdoor acti vities planned by the members through the various committees formed. These activities include hikes, charity works, bike rides, color fests, and social days. The acƟ viƟ es aim to grow the members' bond and give back to the community. We also have families that meet on different days of the week and plan out their activities. On  Thursdays, we mainly have discussions, debates, karaoke, game nights, and trivia",
+      "The SCC consists of students from the first year to the fifth year. We also have an alumni wing that plays a major role in the growth and functionality of the SCC. It is founded on love, unity, and support for one another. Above all, it is also rooted in our Catholic faith and trust in God. The actvities by the SCC range from our normal indoor meetings on Thursdays at 6 pm., and Sundays after mass to outdoor activities planned by the members through the various committees formed. These activities include hikes, charity works, bike rides, color fests, and social days. The activities aim to grow the members' bond and give back to the community. We also have families that meet on different days of the week and plan out their activities. On  Thursdays, we mainly have discussions, debates, karaoke, game nights, and trivia",
     activities: [
       "karaoke night",
       "social day",
@@ -202,7 +202,7 @@ const SCCs = [
       "charity work",
       "spiritual discussions",
     ],
-    sccPhotos: ["", "", ""],
+    sccPhotos: ["/others/gptSaint.webp", "others/group_photo.jpeg", ""],
     aboutPatronSaint:
       "St Therese of Lisieux, also known as the little flower lived a very short simple but adventurous and profound life in her time. Born in 1873 she went on to become one of the Carmalite nuns at age 15 where she embarked on a path of humility and childlike trust and fondness to Jesus Christ.Her approach, “The Little Way” of doing small things with extraordinary love has become a legacy that we embrace in our daily spiritual life. She lived for 24 years on earth but her spirit lives on in us and in heaven",
     prayer:

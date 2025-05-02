@@ -3,6 +3,9 @@ import styles from "./SccInfo.module.css"; // Assuming you have a CSS module for
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
 import { SCCs } from "../../DataFiles/data";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {Heading ,Paragraph ,SmallText } from "../../components/Typography/Typography";
 const SccInfo = ({
   name,
@@ -25,11 +28,30 @@ const SccInfo = ({
       </SmallText>
       <div className={styles.activitiesAndPhotos}>
         <div className={styles.activities}>
-          {activities.map((activity, index) => (
-            <li>{activity}</li>
-          ))}
+          <Heading>Activities</Heading>
+          <ul>
+            {activities.map((activity, index) => (
+              <li>{activity}</li>
+            ))}
+          </ul>
         </div>
-        <div className={styles.photos}></div>
+        <div className={styles.photos}>
+          <Heading>Photos </Heading>
+          {/* SlideShow */}
+          <div className={styles.slideShow}>
+            <Slider {...settings} className={styles.sliderContainer}>
+              {photos.map((image, index) => (
+                <div key={index}>
+                  <img
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                    className={styles.slideshowImage}
+                  />
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </div>
       </div>
       <div className={styles.PatronSaint}>
         <Heading> About {name}</Heading>
