@@ -2,7 +2,7 @@
 .gridContainer {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto auto auto;
+    grid-template-rows: auto;
     grid-template-areas:
         "header"
         "title"
@@ -14,16 +14,14 @@
     gap: 20px;
     min-height: 100vh;
     width: 100%; /* Ensure it takes full width */
-    max-width: 100%; /* Prevent overflow */
-    overflow-x: hidden; /* Hide horizontal overflow */
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Header Section */
 .header {
     grid-area: header;
-    background-color: #3498db;
     height: auto;
     width: 100%;
     box-sizing: border-box;
@@ -32,15 +30,13 @@
 /* Title Section */
 .title {
     grid-area: title;
-    background-color: #f1c40f;
-    height: 100px;
+    padding: 2rem;
 }
 
 /* About Section */
 .about {
     grid-area: about;
-    background-color: #e74c3c;
-    height: 200px;
+    padding: 2rem;
 }
 
 /* Activities and Photos Section */
@@ -49,39 +45,58 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "activities photos";
-    background-color: #2ecc71;
-    height: 300px;
+    gap : 1rem;
+    padding: 1rem;
+}
+
+.slideShow {
+  grid-area: slide-show;
+  height: 80vh;
+  width: 100%;
+  margin: auto;
+  display: flex; /* Ensures children are aligned properly */
+  justify-content: center;
+  align-items: center;
+}
+.slideshowImage {
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+}
+
+.sliderContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .activities {
     grid-area: activities;
-    background-color: #27ae60;
+  
 }
 
 .photos {
-    grid-area: photos;
-    background-color: #16a085;
+    grid-area: photos;    
+    padding: 1rem;
+    background-color: #2ecc71;
 }
 
 /* Patron Saint Section */
 .PatronSaint {
     grid-area: PatronSaint;
-    background-color: #9b59b6;
-    height: 250px;
+    padding: 2rem;
 }
 
 /* Prayer Section */
 .prayer {
     grid-area: prayer;
-    background-color: #34495e;
-    height: 150px;
+    padding: 2rem;
 }
 
 /* Footer Section */
 .footer {
     grid-area: footer;
-    background-color: #7f8c8d;
-    height: 100px;
+    height: auto;
 }
 .title,
 .about,
@@ -92,6 +107,8 @@
     width: 90%;
     margin: 0 auto;
     max-width: 1200px;
+    box-sizing: border-box;
+     
 }
 @media screen and (max-width: 850px) {
     .title,
@@ -101,9 +118,18 @@
     .prayer {
         width: 95%;
     }
+    .activitiesAndPhotos {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "activities"
+            "photos";
+    }
 }
 
 @media screen and (max-width: 480px) {
+    .gridContainer {
+        gap: 10px;
+    }
     .title,
     .about,
     .activitiesAndPhotos,
