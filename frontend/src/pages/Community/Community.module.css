@@ -44,6 +44,25 @@
   grid-template-columns: 2fr 3fr; /* First column takes 2 parts, second takes 1 part */
   gap: 10px;
 }
+.slideShow {
+  grid-area: slide-show;  
+  width: 100%;
+  margin: auto;
+  display: flex; /* Ensures children are aligned properly */
+  justify-content: center;
+  align-items: center;
+}
+.slideshowImage {
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+}
+
+.sliderContainer {
+  width: 300px;
+  max-width: 1200px;
+  margin: auto;
+}
 .alumni {
   background-color: #d9d9d9;
   grid-area: alumni;
