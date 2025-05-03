@@ -212,7 +212,7 @@ const SCCs = [
   {
     path: "st-therese",
     name: "St. Therese of the child Jesus",
-    image: "PatronSaints/SaintTherese.jpg",
+    image: "PatronSaints/SaintTherese2.png",
     about:
       "the scc begun in 2013 and has so far grown to be one of the best small chrisitian communities in catcom. it has a population of almost 100 active members and a group of alumns too. the scc has 3 families the great Family of Abraham and Sarah is a pillar that reminds us to keep our faith in God and he will come through for us in tough times for his promises always hold, The Holy Family of Mary and Joseph reminds us of God's fulfilment of His promise and the love that he had for us thus compelling us to strive for holiness and perfections in our spiritual life and The Perfect Family of Adam and Eve which is like an ocean with a calm surface but vigorous undercurrents reminding us that our greatness lies within us and so we should invest in our wisdom and relationship with God.The SCC engages its members in activities that buid both their spiritual and social life as it prepares them for the outside world",
     activities: [
