@@ -89,6 +89,35 @@
 .PatronSaint {
     grid-area: PatronSaint;
     padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+.PatronSaintImage {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    margin: auto;
+}
+.PatronSaintText {
+    font-size: 24px;
+    line-height: 1.5;
+    padding: 1rem;
+}
+.PatronSaintText h2 {
+    font-size: 32px;
+    margin-bottom: 1rem;
+}
+.PatronSaintText p {
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+.patronSaintImage{
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    margin: auto;
 }
 
 /* Prayer Section */

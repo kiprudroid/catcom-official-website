@@ -74,14 +74,22 @@ function Community() {
             </div>
             <div className={styles.sccItem}>
               <div className={styles.secondColumnItem}>
-                {selectedScc.families.map((family, index) => (
-                  <div className={styles.familyCard}>
-                    <p>{family}</p>
-                  </div>
-                ))}
+                {selectedScc.families && selectedScc.families.map(
+                  (family, index) => (
+                    <div className={styles.familyCard}>
+                      <p>{family}</p>
+                    </div>
+                  )
+                )}
               </div>
               <div className={styles.secondColumnItem}>
-                Activities and Photos
+                <Heading>Activities</Heading>
+                <ul className={styles.activitiesList}>
+                  {selectedScc.activities &&
+                    selectedScc.activities.map((activity, index) => (
+                      <li key={index}>{activity}</li>
+                    ))}
+                </ul>
               </div>
             </div>
           </div>
