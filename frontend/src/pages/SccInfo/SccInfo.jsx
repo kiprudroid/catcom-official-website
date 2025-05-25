@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SccInfo.module.css"; // Assuming you have a CSS module for styling
+import styles from "./SccInfo.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
 import { SCCs } from "../../DataFiles/data";
