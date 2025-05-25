@@ -38,29 +38,59 @@
   grid-column: span 4;
 }
 .sccExpanded {
-  background-color: lightgoldenrodyellow;
+  background-color: white;
   grid-area: sccExpanded;
   display: grid;
-  grid-template-columns: 2fr 3fr; /* First column takes 2 parts, second takes 1 part */
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
 }
 .slideShow {
-  grid-area: slide-show;  
   width: 100%;
+  height: 500px; /* Fixed height */
+  position: relative;
+  overflow: hidden;
   margin: auto;
-  display: flex; /* Ensures children are aligned properly */
-  justify-content: center;
-  align-items: center;
+  background-color: #f8f8f8;
 }
 .slideshowImage {
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
-  height: 300px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  margin: auto;
+  display: block;
+}
+.imageWrapper {
+  width: 100%;
+  height: 500px; /* Match slideShow height */
+  position: relative;
+  display: flex !important; /* Override slick-slider default */
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+}
+
+.imageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #f8f8f8;
 }
 
 .sliderContainer {
-  width: 300px;
-  max-width: 1200px;
+  width: 100%;
+  height: 100%;
   margin: auto;
 }
 .alumni {
@@ -103,24 +133,40 @@
 }
 
 .sccItem {
-  border: 1px solid black;
+  position: relative;
+  border-radius: 8px;
   height: 600px;
   width: 100%;
+  overflow: hidden;
+  background: white;
 }
 .sccItem:nth-child(2) {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  gap: 2rem;
+  padding: 1rem;
+  background: white;
 }
 .secondColumnItem {
- display: flex;
-  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-  padding: 1rem;
-  justify-content: center; /* Center the cards horizontally */
-  align-items: center; /* Center the cards vertically */
-  width: 100%; /* Take full width of container */
-  border: 1px solid black;
+  padding: 2rem;
+  width: 100%;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.secondColumnItem:first-child {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+  align-items: center;
 }
 .groupPhoto {
   width: 100%;
@@ -128,24 +174,42 @@
   object-fit: cover;
 }
 .familyCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 200;
-  flex: 0 1 calc(33.333% - 1rem); /* Three cards per row with gap consideration */
-  min-width: 200px; /* Minimum width before wrapping */
-  border: 1px solid black;
-  padding: 10px;
+  background: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex: 0 1 auto;
+  min-width: fit-content;
+  text-align: center;
 }
 .familyCard img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.familyCard h2 {
-  font-size: 2rem;
+.familyText {
+  font-size: 16px;
   color: #2dabb1;
+  white-space: nowrap;
+}
+.activitiesList {
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin: 0;
+}
+
+.activitiesList li {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.sectionHeading {
+  color: #2dabb1;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -163,5 +227,137 @@
 @media screen and (max-width: 600px) {
   .sccCardsWrapper > * {
     flex: 0 1 100%; /* 1 card per row */
+  }
+}
+
+.sccNavigationButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(45, 171, 177, 0.8);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+  z-index: 100;
+}
+
+.sccNavigationButton:hover {
+  background: rgba(45, 171, 177, 1);
+}
+
+.prevButton {
+  left: -50px; /* Move further out */
+}
+
+.nextButton {
+  right: -50px; /* Move further out */
+}
+
+/* Adjust button positions for smaller screens */
+@media screen and (max-width: 1500px) {
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+}
+
+/* Ensure content doesn't overlap with buttons on small screens */
+@media screen and (max-width: 768px) {
+  .sccExpanded {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .sccItem {
+    height: auto;
+  }
+
+  .sccNavigationButton {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+}
+
+/* Add responsive adjustments */
+@media screen and (max-width: 768px) {
+  .slideShow,
+  .imageWrapper {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slideShow,
+  .imageWrapper {
+    height: 250px;
+  }
+}
+
+/* Adjusted styles for second column items and family cards */
+.secondColumnItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.secondColumnItem:first-child {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.familyCard {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex: 0 1 auto;
+  min-width: fit-content;
+  text-align: center;
+}
+
+.familyText {
+  font-size: 16px;
+  color: #2dabb1;
+  white-space: nowrap;
+}
+
+/* Add responsive adjustments */
+@media screen and (max-width: 768px) {
+  .secondColumnItem:first-child {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+  
+  .familyCard {
+    padding: 0.5rem 1rem;
+  }
+  
+  .familyText {
+    font-size: 14px;
   }
 }
