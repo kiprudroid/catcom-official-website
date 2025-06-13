@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SccInfo.module.css"; // Assuming you have a CSS module for styling
+import styles from "./SccInfo.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
 import { SCCs } from "../../DataFiles/data";
@@ -14,8 +14,11 @@ const SccInfo = ({
   sccPhotos,
   aboutPatronSaint,
   prayer,
+  image,
+  // Add any other props you need
+  // from the SCCs data
 }) => {
-   const settings = {
+const settings = {
      dots: true,
      infinite: true,
      speed: 500,
@@ -69,11 +72,20 @@ const SccInfo = ({
         </div>
       </div>
       <div className={styles.PatronSaint}>
-        <Heading> About {name}</Heading>
-        <SmallText>
-          {aboutPatronSaint}
-          {prayer}
-        </SmallText>
+        <div className={styles.PatronSaintImage}>
+          <img
+            src={image}
+            alt="Patron Saint"
+            className={styles.patronSaintImage}
+          ></img>
+        </div>
+        <div className={styles.patronSaintText}>
+          <SmallText>
+            <Heading> About {name}</Heading>
+
+            {aboutPatronSaint}
+          </SmallText>
+        </div>
       </div>
       <div className={styles.prayer}>
         <Heading> Prayer To {name}</Heading>
