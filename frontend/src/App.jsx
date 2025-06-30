@@ -33,7 +33,7 @@ function App() {
                 sccPhotos={scc.sccPhotos}
                 aboutPatronSaint={scc.aboutPatronSaint}
                 prayer={scc.prayer}
-                image ={scc.image}
+                image={scc.image}
               />
             }
           />

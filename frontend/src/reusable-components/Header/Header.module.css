@@ -5,6 +5,8 @@
 
 .nav {
   background-color: #cccccc;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+
   width: 100%;
   padding: 1rem;
   position: relative;
@@ -32,7 +34,6 @@
   gap: 2rem; /* Adds spacing between the links */
 }
 
-
 .navRight {
   grid-column: 3;
   justify-self: start;
@@ -40,9 +41,7 @@
   align-items: center;
   padding-left: 4rem;
   margin-right: 1 rem;
-  width : auto;
-
-
+  width: auto;
 }
 .inactiveLink {
   text-decoration: none;
@@ -52,7 +51,7 @@
 
 /* When link is active (clicked and current page) */
 .activeLink {
-  color:  #2dabb1;
+  color: #2dabb1;
   font-weight: bold;
   text-decoration: none;
 }
@@ -71,8 +70,8 @@
   align-items: center;
   margin: 0;
   padding: 0;
-  width: 100%;  /* Take full width */
-  justify-content: flex-start;  /* Align items to start */
+  width: 100%; /* Take full width */
+  justify-content: flex-start; /* Align items to start */
 }
 
 .catcomLogo {
@@ -95,7 +94,7 @@ a:hover {
   color: #2dabb1;
 }
 a:active {
-  color : #2dabb1;
+  color: #2dabb1;
 }
 
 .burger {
@@ -114,10 +113,10 @@ a:active {
   .navRightList {
     display: none;
   }
-.navRight {
-    justify-self: end;  /* Ensure right alignment in mobile */
-    padding: 0;  /* Remove any padding */
-    width: auto;  /* Ensure width is based on content */
+  .navRight {
+    justify-self: end; /* Ensure right alignment in mobile */
+    padding: 0; /* Remove any padding */
+    width: auto; /* Ensure width is based on content */
   }
   .burger {
     display: block;

@@ -226,23 +226,12 @@ function Liturgy() {
                 receive from Thy bounty. Through Christ our Lord. Amen."
             className={styles.beforeMeals}
           />
-
-          {/* <div className={styles.beforeMeals}>
-            <div>
-              <b>Grace Before Meals</b>
-              <p>
-                Bless us, O Lord, and these your gifts which we are about to
-                receive from Thy bounty. Through Christ our Lord. Amen.
-              </p>
-            </div>
-            <div>
-              <b>Grace After Meals</b>
-              <p>
-                We give You thanks, almighty God, for all your gifts, who lives
-                and reigns forever and ever. Amen.
-              </p>
-            </div>
-          </div> */}
+          <PrayerSection
+            title="Grace Before Meals"
+            text=" Bless us, O Lord, and these your gifts which we are about to
+                receive from Thy bounty. Through Christ our Lord. Amen."
+            className={styles.beforeMeals}
+          />
         </div>
 
         <div className={`${styles.rosary} item`}>
