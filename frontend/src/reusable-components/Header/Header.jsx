@@ -30,90 +30,69 @@ function Header() {
   return (
     <nav className={styles.nav}>
       <div className={styles.navList}>
-        <div className={styles.navLeft}>
-          {!isMobile && (
-            <ul className={styles.navLeftList}>
-              <li>JKUAT CATCOM</li>
-              <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? styles.activeLink : styles.inactiveLink
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/liturgy"
-                  className={({ isActive }) =>
-                    isActive ? styles.activeLink : styles.inactiveLink
-                  }
-                >
-                  Liturgy
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/community"
-                  className={({ isActive }) =>
-                    isActive ? styles.activeLink : styles.inactiveLink
-                  }
-                >
-                  Community
-                </NavLink>
-              </li>
-            </ul>
-          )}
-        </div>
-
-        <img
-          src="/others/ctm_logo.png"
-          alt="CATCOM Logo"
-          className={styles.catcomLogo}
-        />
-
-        <div className={styles.navRight}>
-          {!isMobile && (
-            <ul className={styles.navRightList}>
-              <li>
-                <NavLink
-                  to="/about"
-                  // className={styles.link}
-                  className={({ isActive }) =>
-                    isActive ? styles.activeLink : styles.inactiveLink
-                  }
-                >
-                  About Us
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/media"
-                  className={({ isActive }) =>
-                    isActive ? styles.activeLink : styles.inactiveLink
-                  }
-                >
-                  Media
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/join-scc"
-                  className={({ isActive }) =>
-                    isActive ? styles.activeLink : styles.inactiveLink
-                  }
-                >
-                  Join SCC
-                </NavLink>
-              </li>
-            </ul>
-          )}
-          {isMobile && (
-            <FaBars className={styles.burger} onClick={toggleMenu} />
-          )}
-        </div>
+        {!isMobile && (
+          <ul className={styles.navUnifiedList}>
+            <img
+              src="/others/ctm_logo.png"
+              alt="CATCOM Logo"
+              className={styles.catcomLogo}
+            />
+            <li>JKUAT CATCOM</li>
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/liturgy"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
+                Liturgy
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/community"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
+                SCC
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/join-scc"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
+                Groups
+              </NavLink>
+            </li>
+          </ul>
+        )}
+        {isMobile && (
+          <FaBars className={styles.burger} onClick={toggleMenu} />
+        )}
       </div>
 
       {isMobile && (
