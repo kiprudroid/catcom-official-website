@@ -133,20 +133,18 @@ function Header() {
                 Liturgy
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/community" onClick={closeMenu}>
-                Community
-              </NavLink>
-            </li>
+
             <li>
               <NavLink to="/about" onClick={closeMenu}>
                 About Us
               </NavLink>
             </li>
             <li>
-              <NavLink to="/media" onClick={closeMenu}>
-                Media
-              </NavLink>
+              <li>
+                <NavLink to="/community" onClick={closeMenu}>
+                  SCCs
+                </NavLink>
+              </li>
             </li>
             <li>
               <NavLink to="/join-scc" onClick={closeMenu}>
