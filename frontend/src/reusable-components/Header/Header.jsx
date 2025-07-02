@@ -70,6 +70,16 @@ function Header() {
             </li>
             <li>
               <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
+                Groups
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/community"
                 className={({ isActive }) =>
                   isActive ? styles.activeLink : styles.inactiveLink
@@ -85,14 +95,12 @@ function Header() {
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                Groups
+                Join SCC
               </NavLink>
             </li>
           </ul>
         )}
-        {isMobile && (
-          <FaBars className={styles.burger} onClick={toggleMenu} />
-        )}
+        {isMobile && <FaBars className={styles.burger} onClick={toggleMenu} />}
       </div>
 
       {isMobile && (
