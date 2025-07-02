@@ -17,31 +17,34 @@
 
 .navList {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  /* grid-template-columns: 1fr auto 1fr; */
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.navLeft {
+/* .navLeft {
   grid-column: 1;
   justify-self: start;
   display: flex;
   align-items: center;
   padding: 4px;
   margin: 0;
-  gap: 2rem; /* Adds spacing between the links */
-}
+ 
+} */
 
-.navRight {
-  grid-column: 3;
+.navUnifiedList {
   justify-self: start;
   display: flex;
   align-items: center;
-  padding-left: 4rem;
-  margin-right: 1 rem;
+  padding-left: 0;
+  margin-right: 0;
   width: auto;
+  justify-content: space-between;
+  gap: 0;
+  width: 100%;
+  justify-content: space-between;
 }
 .inactiveLink {
   text-decoration: none;
@@ -56,23 +59,23 @@
   text-decoration: none;
 }
 
-.navLeftList {
+/* .navLeftList {
   width: 100%;
   display: flex;
   gap: 2rem;
   align-items: center;
   margin: 0;
   padding: 0;
-}
-.navRightList {
+} */
+/* .navRightList {
   display: flex;
   gap: 5rem;
   align-items: center;
   margin: 0;
   padding: 0;
-  width: 100%; /* Take full width */
-  justify-content: flex-start; /* Align items to start */
-}
+  width: 100%; 
+  justify-content: flex-start;  
+} */
 
 .catcomLogo {
   width: 150px;
