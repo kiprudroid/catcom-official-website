@@ -411,20 +411,22 @@ const SCCs = [
     prayer:
       "Holy St. Paul, you taught others about the saving message of Jesus, intercede for us so that Christ may live in us. Help us to know and imitate you and your love for Jesus. It is through your writings that many people have come to know Jesus, may all people know and glorify God through your writings and intercession.",
   },
-  {
-    path: "kmrm",
-    name: "KWAYA YA MTAKATIFU ROMANO MTUNZI",
-    image: "PatronSaints/SaintRomanus.jpg",
-    about:
-      "Kwaya Ya Mtakatifu Romano Mtunzi {KMRM} begun the year a chaplaincy was started in JKUAT by Fr. Lawrence Njoroge with the help of the late archbishop emeritus Ndingi Mwana a Nzeki. It is a choir composed of mainly students and a few parishioners.One of the major principles that we value as KMRM is discipline and faith. The belief that there exists God and he's the one giving us life, health and sweet voices to sing and evangelise well.",
-    vision:
-      " To Help the community in and around Jkuat realise that there's power in service to God and humanity.",
-    mission: "Evangelism through singing",
-    aboutPatronSaint:
-      "Romanos the Melodist (born  late 5th-century after 555) was a Byzantine hymnographer and composer,who is a central early figure in the history of Byzantine music. Called 'the Pindar of rhythmic poetry'he flourished during the sixth century, though the earliest manuscripts of his works are dated centuries after this. He was the foremost Kontakion composer of his time. Feast day is celebrated on 1st october.",
-    prayer:
-      "O Saint Romanos, the Melodist, you who were once a humble singer, but through divine grace became a master of hymnody, we humbly ask for your intercession.May your gift of song inspire us to praise God with heartfelt melodies and words, and may your example encourage us to embrace our own unique talents for the glory of God",
-  },
+  
 ];
+
+//removed from the scc page
+const kmrm = {
+  name: "KWAYA YA MTAKATIFU ROMANO MTUNZI",
+  image: "PatronSaints/SaintRomanus.jpg",
+  about:
+    "Kwaya Ya Mtakatifu Romano Mtunzi {KMRM} begun the year a chaplaincy was started in JKUAT by Fr. Lawrence Njoroge with the help of the late archbishop emeritus Ndingi Mwana a Nzeki. It is a choir composed of mainly students and a few parishioners.One of the major principles that we value as KMRM is discipline and faith. The belief that there exists God and he's the one giving us life, health and sweet voices to sing and evangelise well.",
+  vision:
+    " To Help the community in and around Jkuat realise that there's power in service to God and humanity.",
+  mission: "Evangelism through singing",
+  aboutPatronSaint:
+    "Romanos the Melodist (born  late 5th-century after 555) was a Byzantine hymnographer and composer,who is a central early figure in the history of Byzantine music. Called 'the Pindar of rhythmic poetry'he flourished during the sixth century, though the earliest manuscripts of his works are dated centuries after this. He was the foremost Kontakion composer of his time. Feast day is celebrated on 1st october.",
+  prayer:
+    "O Saint Romanos, the Melodist, you who were once a humble singer, but through divine grace became a master of hymnody, we humbly ask for your intercession.May your gift of song inspire us to praise God with heartfelt melodies and words, and may your example encourage us to embrace our own unique talents for the glory of God",
+}
 
 export { images, priests, patrons, catcomExecutive, communities, SCCs };

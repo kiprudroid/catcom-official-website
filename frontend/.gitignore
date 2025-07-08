@@ -46,3 +46,4 @@ coverage/
 .npm/
 .eslintcache
 .prettiercache
+**/node_modules/

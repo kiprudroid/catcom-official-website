@@ -70,7 +70,7 @@ function Header() {
             </li>
             <li>
               <NavLink
-                to="/about"
+                to="/groups"
                 className={({ isActive }) =>
                   isActive ? styles.activeLink : styles.inactiveLink
                 }

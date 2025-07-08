@@ -63,6 +63,20 @@ function Community() {
         <div className={`${styles.item} ${styles.header}`}>
           <Header />
         </div>
+
+        <div className={`${styles.item} ${styles.whatIsScc}`}>
+          <Heading>What is an SCC?:</Heading>
+          <p
+            className={styles.textContent}
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            A Small Christian Community (SCC) is the Church within the
+            community, comprising of a manageable group of students, which help
+            to promote communion, co-responsibility, and gives every member a
+            sense of belonging to the community at large.
+          </p>
+        </div>
+
         <div className={`${styles.item} ${styles.sccPictures}`}>
           <Heading>Our SCCs</Heading>
           <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
@@ -75,73 +89,66 @@ function Community() {
               />
             ))}
           </div>
+        </div>
 
-          <Heading>SCC : {selectedScc.name}</Heading>
-          <div
-            className={`${styles.item} ${styles.sccExpanded} contentWrapper`}
+        <Heading>SCC OVERVIEW : {selectedScc.name}</Heading>
+        <div className={`${styles.item} ${styles.sccExpanded} contentWrapper`}>
+          <button
+            className={`${styles.sccNavigationButton} ${styles.prevButton}`}
+            onClick={handlePrevScc}
+            aria-label="Previous SCC"
           >
-            <button 
-              className={`${styles.sccNavigationButton} ${styles.prevButton}`}
-              onClick={handlePrevScc}
-              aria-label="Previous SCC"
-            >
-              &#8249;
-            </button>
-            <div className={styles.sccItem}>
-              <div className={styles.slideShow}>
-                {selectedScc.sccPhotos && selectedScc.sccPhotos.length > 0 ? (
-                  <Slider {...settings} className={styles.sliderContainer}>
-                    {selectedScc.sccPhotos.map((image, index) => (
-                      <div key={index} className={styles.imageWrapper}>
-                        <img
-                          src={image}
-                          alt={`Slide ${index + 1}`}
-                          className={styles.slideshowImage}
-                        />
-                      </div>
-                    ))}
-                  </Slider>
-                ) : (
-                  <div className={styles.noImages}>No photos available</div>
-                )}
-              </div>
-            </div>
-            <div className={styles.sccItem}>
-              <div className={styles.secondColumnItem}>
-                {selectedScc.families &&
-                  selectedScc.families.map((family, index) => (
-                    <div className={styles.familyCard}>
-                      <h1 className={styles.familyText}>{family}</h1>
+            &#8249;
+          </button>
+          <div className={styles.sccItem}>
+            <div className={styles.slideShow}>
+              {selectedScc.sccPhotos && selectedScc.sccPhotos.length > 0 ? (
+                <Slider {...settings} className={styles.sliderContainer}>
+                  {selectedScc.sccPhotos.map((image, index) => (
+                    <div key={index} className={styles.imageWrapper}>
+                      <img
+                        src={image}
+                        alt={`Slide ${index + 1}`}
+                        className={styles.slideshowImage}
+                      />
                     </div>
                   ))}
-              </div>
-              <div className={styles.secondColumnItem}>
-                <Heading>Activities</Heading>
-                <ul className={styles.activitiesList}>
-                  {selectedScc.activities &&
-                    selectedScc.activities.map((activity, index) => (
-                      <li key={index}>{activity}</li>
-                    ))}
-                </ul>
-              </div>
+                </Slider>
+              ) : (
+                <div className={styles.noImages}>No photos available</div>
+              )}
             </div>
-            <button 
-              className={`${styles.sccNavigationButton} ${styles.nextButton}`}
-              onClick={handleNextScc}
-              aria-label="Next SCC"
-            >
-              &#8250;
-            </button>
           </div>
-          <Heading>Alumni</Heading>
-          <div className={`${styles.item} ${styles.alumni}`}></div>
-          <Heading>Choir</Heading>
-          <div className={`${styles.item} ${styles.choir}`}></div>
-          <Heading>Technical Team</Heading>
-          <div className={`${styles.item} ${styles.technicalTeam}`}></div>
-          <div className={`${styles.item} ${styles.footer}`}>
-            <Footer />
+          <div className={styles.sccItem}>
+            <div className={styles.secondColumnItem}>
+              {selectedScc.families &&
+                selectedScc.families.map((family, index) => (
+                  <div className={styles.familyCard}>
+                    <h1 className={styles.familyText}>{family}</h1>
+                  </div>
+                ))}
+            </div>
+            <div className={styles.secondColumnItem}>
+              <Heading>Activities</Heading>
+              <ul className={styles.activitiesList}>
+                {selectedScc.activities &&
+                  selectedScc.activities.map((activity, index) => (
+                    <li key={index}>{activity}</li>
+                  ))}
+              </ul>
+            </div>
           </div>
+          <button
+            className={`${styles.sccNavigationButton} ${styles.nextButton}`}
+            onClick={handleNextScc}
+            aria-label="Next SCC"
+          >
+            &#8250;
+          </button>
+        </div>
+
+        <div className={`${styles.item} ${styles.footer}`}>
+          <Footer />
         </div>
       </div>
     </>
