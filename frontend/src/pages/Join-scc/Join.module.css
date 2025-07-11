@@ -1,7 +1,7 @@
 .churchIcon {
   height: 2rem;
 }
-.joinConatiner {
+.joinContainer {
   display: grid;
   grid-template-areas:
     "header"
