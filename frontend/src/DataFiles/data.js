@@ -32,7 +32,7 @@ const patrons = [
   {
     name: "Mr. Alfred Wanzala",
     role: "assistant patron",
-    image: "/patrons/wanzala.jpg",
+    image: "/patrons/Wanzala.jpg",
   },
 ];
 
@@ -45,7 +45,7 @@ const catcomExecutive = [
   {
     name: " Sophie Kathambi ",
     role: "Catcom vice moderator",
-    image: "/leadersImages/mutwiwa.jpg",
+    image: "/leadersImages/sophie.jpg",
   },
 
   {
@@ -81,7 +81,7 @@ const catcomExecutive = [
   {
     name: " Robinson Koskei Cheruiyot",
     role: "Catcom publicity secretary",
-    image: "/leadersImages/mutwiwa.jpg",
+    image: "/leadersImages/Robinson.jpg",
   },
   {
     name: " Wilfred Wandera",

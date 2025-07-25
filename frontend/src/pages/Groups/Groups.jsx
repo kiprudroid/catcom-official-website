@@ -47,20 +47,58 @@ export default function Groups() {
                 className={styles.infoIcon}
                 style={{ width: "100px", height: "100px", marginRight: "1rem" }}
               />
-              <h1>Groups in St Augustine</h1>
+              <h1  style={{ fontFamily: "Inter, sans-serif" }}
+              >Groups in Jkuat Catcom</h1>
             </div>
             <div>
               {/* <h2>Groups in St Augustine</h2> */}
-              <p>
-                St. Augustine's Chapel has about 14 different groups among which
-                you can choose which one best fits you that you may be able to
-                actively participate in the body of the church. The groups meet
-                regularly and at varied times with each group having its own
-                norms and calendar. Below are some of the groups.
+              <p 
+              className={styles.textContent} 
+              style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                The CATCOM community is built on unity, service, and shared faith.
+                 Our various groups bring together students with different gifts, 
+                 passions, and callings all working together to strengthen our mission and deepen our fellowship. 
+                 These groups are the lifeblood of our ministry, creating opportunities for active participation,
+                  leadership, and growth within the Catholic faith. By joining a group, members find belonging, 
+                  purpose, and a meaningful way to live out their discipleship at JKUAT.
               </p>
             </div>
           </div>
         </div>
+                 <div className={styles.ContentWrapper}>
+         <div className={styles.contentWrapper}>
+          <h3 className={styles.contentTitle} style={{ fontFamily: "Inter, sans-serif" }}>
+            Our Vision
+          </h3>
+            <p
+              className={styles.textContent}
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              A praying, believing and worshiping community for empowering young
+                      people to live as disciples of Jesus Christ; drawing them into
+                      responsible participation in the Catholic Church; fostering their
+                      personal and spiritual growth.
+                    </p>
+                  </div>
+             <div className={styles.contentWrapper}>
+                      <h3
+                        className={styles.contentTitle}
+                        style={{ fontFamily: "Inter, sans-serif" }}
+                      >
+                        Our Mission
+                      </h3>
+                
+                        <p
+                          className={styles.textContent}
+                          style={{ fontFamily: "Inter, sans-serif" }}
+                        >
+                          To help people find God, grow their faith, discover their purpose,
+                          and make a difference.We exist to make Heaven more crowded.
+                        </p>
+                      </div>
+                      </div>                    
+            
         <div className={styles.groupsGrid}>
           <GroupCard
             imgSrc="/sccPictures/stPaul/picture1.png"
@@ -73,74 +111,62 @@ export default function Groups() {
               region."
           />
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/pastoral.jpg"
             alt="Pastoral Team"
             title="Pastoral Team"
-            description="Devotion to the Sacred heart of Jesus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ab magni necessitatibus quia eaque
-              possimus quam cumque officia modi quod illum enim unde temporibus
-              nihil odio aut assumenda deleniti, sit incidunt quos, ex porro.
-              Numquam mollitia veniam aspernatur molestias quisquam labore."
+            description="Provides spiritual guidance, coordinates retreats and mass animations processes,
+             formations, and supports the faith journey of members through teaching about the Catholic faith and prayer."
           />
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/welfare.jpg"
             alt="Welfare"
             title="Welfare "
-            description="Devotion to the Sacred heart of Jesus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ab magni necessitatibus quia eaque
-              possimus quam cumque officia modi quod illum enim unde temporibus
-              nihil odio aut assumenda deleniti, sit incidunt quos, ex porro.
-              Numquam mollitia veniam aspernatur molestias quisquam labore."
+            description="Promotes unity and compassion by reaching out 
+            to members in times of need, joy, or crisis be it, illnesses, 
+            or bereavement. They also suppor the community through various charitable initiatives."
           />
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/CL.jpg"
             alt="Communion and Liberation"
             title="Communion and Liberation"
-            description="Devotion to the Sacred heart of Jesus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ab magni necessitatibus quia eaque
-              possimus quam cumque officia modi quod illum enim unde temporibus
-              nihil odio aut assumenda deleniti, sit incidunt quos, ex porro.
-              Numquam mollitia veniam aspernatur molestias quisquam labore."
+            description="A Religious movement focused on living out the
+             Christian faith in daily life through community, personal 
+             witness, and catechesis.
+"
           />
           <GroupCard
             imgSrc="/sccPictures/stPaul/picture1.png"
-            alt="Sacred Heart"
-            title="Sacred Heart"
-            description="Devotion to the Sacred heart of Jesus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ab magni necessitatibus quia eaque
-              possimus quam cumque officia modi quod illum enim unde temporibus
-              nihil odio aut assumenda deleniti, sit incidunt quos, ex porro.
-              Numquam mollitia veniam aspernatur molestias quisquam labore."
+            alt="Catcom Enterprise"
+            title="Catcom Enterprise"
+            description="This team comprises CATCOM treasurers and secretaries
+             who oversee the planning, coordination, and execution of CATCOM
+              projects during events. They ensure proper resource management,
+               budgeting, and logistical support, helping to bring CATCOM’s 
+               initiatives to life with excellence and accountability.."
           />
           <GroupCard
             imgSrc="/sccPictures/stPaul/picture1.png"
             alt="Bible Prayer Service"
             title="Bible Prayer Service "
-            description="Devotion to the Sacred heart of Jesus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ab magni necessitatibus quia eaque
-              possimus quam cumque officia modi quod illum enim unde temporibus
-              nihil odio aut assumenda deleniti, sit incidunt quos, ex porro.
-              Numquam mollitia veniam aspernatur molestias quisquam labore."
+            description="Fosters spiritual growth through regular Bible study,
+             reflections, and intercessory prayers, helping members deepen their
+              relationship with God."
           />
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/dancers.jpg"
             alt="Liturgical Dancers"
             title="Liturgical Dancers"
-            description="Devotion to the Sacred heart of Jesus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ab magni necessitatibus quia eaque
-              possimus quam cumque officia modi quod illum enim unde temporibus
-              nihil odio aut assumenda deleniti, sit incidunt quos, ex porro.
-              Numquam mollitia veniam aspernatur molestias quisquam labore."
+            description="Expresses praise and worship through sacred dance,
+             bringing energy, beauty, and meaning to liturgical celebrations
+              and special events."
           />
           <GroupCard
             imgSrc="/sccPictures/stPaul/picture1.png"
             alt="Technical Team"
             title="Technical Team "
-            description="Devotion to the Sacred heart of Jesus. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ab magni necessitatibus quia eaque
-              possimus quam cumque officia modi quod illum enim unde temporibus
-              nihil odio aut assumenda deleniti, sit incidunt quos, ex porro.
-              Numquam mollitia veniam aspernatur molestias quisquam labore."
+            description="Handles sound, projection, and media support
+             during services and events, ensuring smooth and impactful
+              communication during worship and gatherings."
           />
         </div>
         <div>
@@ -175,120 +201,68 @@ export default function Groups() {
                     <div>
                       <input
                         type="checkbox"
-                        id="cjpc"
+                        id="technical"
                         name="groups"
-                        value="CJPC"
+                        value="Technical Team"
                       />
-                      <label htmlFor="cjpc">CJPC</label>
+                      <label htmlFor="technical">Technical Team</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
-                        id="eucharistic"
+                        id="pastoral"
                         name="groups"
-                        value="Eucharistic Ministry"
+                        value="Pastoral"
                       />
-                      <label htmlFor="eucharistic">Eucharistic Ministry</label>
+                      <label htmlFor="pastoral">Pastoral</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
-                        id="lectors"
+                        id="Welfare"
                         name="groups"
-                        value="Lectors"
+                        value="Welfare"
                       />
-                      <label htmlFor="lectors">Lectors</label>
+                      <label htmlFor="Welfare">Welfare</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
-                        id="men"
+                        id="BPS"
                         name="groups"
-                        value="Men of St. Paul's"
+                        value="Bible Prayer Service"
                       />
-                      <label htmlFor="men">Men of St. Paul's</label>
+                      <label htmlFor="BPS">Bible Prayer Service</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
-                        id="cwa"
+                        id="Catcomes"
                         name="groups"
-                        value="CWA"
+                        value="catcomes"
                       />
-                      <label htmlFor="cwa">CWA</label>
+                      <label htmlFor="Catcomes">Catcom Enterprise</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
-                        id="friends"
+                        id="liturgical dancers"
                         name="groups"
-                        value="Friends of St. Paul's"
+                        value="liturgical dancers"
                       />
-                      <label htmlFor="friends">Friends of St. Paul's</label>
+                      <label htmlFor="liturgical dancers">Liturgical Dancers</label>
                     </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="spy"
-                        name="groups"
-                        value="SPY"
-                      />
-                      <label htmlFor="spy">SPY</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="legion"
-                        name="groups"
-                        value="Legion of Mary"
-                      />
-                      <label htmlFor="legion">Legion of Mary</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="sacred"
-                        name="groups"
-                        value="Sacred Heart"
-                      />
-                      <label htmlFor="sacred">Sacred Heart</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="pmc"
-                        name="groups"
-                        value="PMC"
-                      />
-                      <label htmlFor="pmc">PMC</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="family"
-                        name="groups"
-                        value="Family Life Group"
-                      />
-                      <label htmlFor="family">Family Life Group</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="ushers"
-                        name="groups"
-                        value="Ushers & Helpers"
-                      />
-                      <label htmlFor="ushers">Ushers & Helpers</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="selfhelp"
-                        name="groups"
-                        value="Self Help Group"
-                      />
-                      <label htmlFor="selfhelp">Self Help Group</label>
-                    </div>
+                     <div>
+                        <input
+                          type="checkbox"
+                          id="communion and liberation"
+                          name="groups"
+                          value="communion and liberation"
+                        />
+                        <label htmlFor="communion and liberation">
+                          Communion and Liberation
+                        </label> 
+                        </div>                  
                   </div>
                 </div>
               </div>
@@ -301,3 +275,5 @@ export default function Groups() {
     </>
   );
 }
+
+

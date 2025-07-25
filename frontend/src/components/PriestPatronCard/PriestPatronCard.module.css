@@ -19,8 +19,13 @@
   border-radius: 50%;
   display: block;
   margin-top: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.priestPatronImage:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 24px rgba(72, 92, 223, 0.3);
+}
 @media screen and (max-width: 1200px) {
   .executiveImage {
     height: 180px;

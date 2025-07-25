@@ -57,7 +57,7 @@ input[type="email"] {
   color: #fff;
   border: none;
   border-radius: 10px;
-  font-size: 2.0rem;
+  font-size: 1ss.5rem;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -79,27 +79,31 @@ label,
 }
 
 .groupCard {
+  font-family: "Inter, sans-serif";
+  position: relative;
   width: 450px; 
-  height: 550px;
+  height: 500px;
   background: #fff;
-  border-radius: 8px;
+  /* background: #b9c8c8; */
+  border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   padding: 1.5rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 1.5rem;
+  font-size:  clamp(1rem, 2vw, 1.5rem);
 }
 
 .groupCard img {
   width: 450px;
-  max-width: 450px;
-  height: auto;
+  height: 300px;
   border-radius: 6px;
   margin-bottom: 1rem;
   object-fit: cover;
   transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 100%;
+  display: block;
 }
 
 .groupCard img:hover {
@@ -109,7 +113,7 @@ label,
 
 .groupCard h3 {
   margin: 0.5rem 0 0.5rem 0;
-  font-size: 2.0rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #2dabb1;
 }
@@ -120,6 +124,7 @@ label,
 }
 
 .infoCard {
+  font-Family: "Inter, sans-serif";
   background: #f3efefc4;
   border-radius: 30px; 
   box-shadow: 0 4px 32px rgba(72, 92, 223, 0.12); 
@@ -128,12 +133,12 @@ label,
   max-width: 1200px; 
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.35rem; 
+  font-size:  clamp(1rem, 2vw, 1.5rem); 
   color: #222; 
 }
 
 .infoHeader h1 {
-  font-size: 3.0rem; 
+  font-size: 1.8rem; 
   font-weight: 700;
   color: #2dabb1;
   margin: 0;
@@ -152,9 +157,10 @@ label,
 }
 
 .infoCard p {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   color: #333;
   line-height: 1.7;
+  text-align: stretch;
 }
 
 .showMoreBtn {
@@ -168,3 +174,48 @@ label,
   padding: 0;
   text-decoration: underline;
 }
+.ContentWrapper {
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+   align-items: stretch;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 1200px;
+}
+
+.contentWrapper {
+  font-family: "Inter, sans-serif";
+  position: relative;
+  width: 800px; 
+  height: 300px;
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1.5rem 1rem 1rem 1rem;
+  font-size:  clamp(1rem, 2vw, 1.5rem);
+  box-sizing: border-box;
+transition: transform 0.3s ease;
+}
+
+.contentWrapper:hover {
+  transform: translateY(-5px);
+}
+.contentTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #2dabb1;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  }
+
+.textContent {
+    font-size: 1.3rem;
+    text-align: center;
+    color: #333;
+    line-height: 1.6;
+  }
