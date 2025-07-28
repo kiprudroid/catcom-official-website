@@ -101,7 +101,7 @@ export default function Groups() {
             
         <div className={styles.groupsGrid}>
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/choir.jpg"
             alt="Choir"
             title="Choir"
             description="There is the Community Choir that animates the 11:30am Mass on
@@ -135,7 +135,7 @@ export default function Groups() {
 "
           />
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/catcomes.jpg"
             alt="Catcom Enterprise"
             title="Catcom Enterprise"
             description="This team comprises CATCOM treasurers and secretaries
@@ -145,7 +145,7 @@ export default function Groups() {
                initiatives to life with excellence and accountability.."
           />
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/bps.jpg"
             alt="Bible Prayer Service"
             title="Bible Prayer Service "
             description="Fosters spiritual growth through regular Bible study,
@@ -161,7 +161,7 @@ export default function Groups() {
               and special events."
           />
           <GroupCard
-            imgSrc="/sccPictures/stPaul/picture1.png"
+            imgSrc="/Groups/technical.jpg"
             alt="Technical Team"
             title="Technical Team "
             description="Handles sound, projection, and media support
