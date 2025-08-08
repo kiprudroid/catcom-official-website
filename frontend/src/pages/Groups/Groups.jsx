@@ -9,9 +9,7 @@ function GroupCard({ imgSrc, alt, title, description }) {
 
   const isLong = description.length > maxLength;
   const displayText =
-    expanded || !isLong
-      ? description
-      : description.slice(0, maxLength) + "...";
+    expanded || !isLong ? description : description.slice(0, maxLength) + "...";
 
   return (
     <div className={styles.groupCard}>
@@ -47,58 +45,64 @@ export default function Groups() {
                 className={styles.infoIcon}
                 style={{ width: "100px", height: "100px", marginRight: "1rem" }}
               />
-              <h1  style={{ fontFamily: "Inter, sans-serif" }}
-              >Groups in Jkuat Catcom</h1>
+              <h1 style={{ fontFamily: "Inter, sans-serif" }}>
+                Groups in Jkuat Catcom
+              </h1>
             </div>
             <div>
               {/* <h2>Groups in St Augustine</h2> */}
-              <p 
-              className={styles.textContent} 
-              style={{ fontFamily: "Inter, sans-serif" }}
+              <p
+                className={styles.textContent}
+                style={{ fontFamily: "Inter, sans-serif" }}
               >
-                The CATCOM community is built on unity, service, and shared faith.
-                 Our various groups bring together students with different gifts, 
-                 passions, and callings all working together to strengthen our mission and deepen our fellowship. 
-                 These groups are the lifeblood of our ministry, creating opportunities for active participation,
-                  leadership, and growth within the Catholic faith. By joining a group, members find belonging, 
-                  purpose, and a meaningful way to live out their discipleship at JKUAT.
+                The CATCOM community is built on unity, service, and shared
+                faith. Our various groups bring together students with different
+                gifts, passions, and callings all working together to strengthen
+                our mission and deepen our fellowship. These groups are the
+                lifeblood of our ministry, creating opportunities for active
+                participation, leadership, and growth within the Catholic faith.
+                By joining a group, members find belonging, purpose, and a
+                meaningful way to live out their discipleship at JKUAT.
               </p>
             </div>
           </div>
         </div>
-                 <div className={styles.ContentWrapper}>
-         <div className={styles.contentWrapper}>
-          <h3 className={styles.contentTitle} style={{ fontFamily: "Inter, sans-serif" }}>
-            Our Vision
-          </h3>
+        <div className={styles.ContentWrapper}>
+          <div className={styles.contentWrapper}>
+            <h3
+              className={styles.contentTitle}
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Our Vision
+            </h3>
             <p
               className={styles.textContent}
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               A praying, believing and worshiping community for empowering young
-                      people to live as disciples of Jesus Christ; drawing them into
-                      responsible participation in the Catholic Church; fostering their
-                      personal and spiritual growth.
-                    </p>
-                  </div>
-             <div className={styles.contentWrapper}>
-                      <h3
-                        className={styles.contentTitle}
-                        style={{ fontFamily: "Inter, sans-serif" }}
-                      >
-                        Our Mission
-                      </h3>
-                
-                        <p
-                          className={styles.textContent}
-                          style={{ fontFamily: "Inter, sans-serif" }}
-                        >
-                          To help people find God, grow their faith, discover their purpose,
-                          and make a difference.We exist to make Heaven more crowded.
-                        </p>
-                      </div>
-                      </div>                    
-            
+              people to live as disciples of Jesus Christ; drawing them into
+              responsible participation in the Catholic Church; fostering their
+              personal and spiritual growth.
+            </p>
+          </div>
+          <div className={styles.contentWrapper}>
+            <h3
+              className={styles.contentTitle}
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Our Mission
+            </h3>
+
+            <p
+              className={styles.textContent}
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              To help people find God, grow their faith, discover their purpose,
+              and make a difference.We exist to make Heaven more crowded.
+            </p>
+          </div>
+        </div>
+
         <div className={styles.groupsGrid}>
           <GroupCard
             imgSrc="/Groups/choir.jpg"
@@ -250,19 +254,21 @@ export default function Groups() {
                         name="groups"
                         value="liturgical dancers"
                       />
-                      <label htmlFor="liturgical dancers">Liturgical Dancers</label>
+                      <label htmlFor="liturgical dancers">
+                        Liturgical Dancers
+                      </label>
                     </div>
-                     <div>
-                        <input
-                          type="checkbox"
-                          id="communion and liberation"
-                          name="groups"
-                          value="communion and liberation"
-                        />
-                        <label htmlFor="communion and liberation">
-                          Communion and Liberation
-                        </label> 
-                        </div>                  
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="communion and liberation"
+                        name="groups"
+                        value="communion and liberation"
+                      />
+                      <label htmlFor="communion and liberation">
+                        Communion and Liberation
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -275,5 +281,3 @@ export default function Groups() {
     </>
   );
 }
-
-
