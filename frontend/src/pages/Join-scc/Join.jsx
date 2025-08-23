@@ -7,7 +7,7 @@ function Join() {
   return (
     <>
       <div className={styles.joinContainer}>
-        <Header className={styles.header} />
+                             <Header className={styles.header} />
         <h2 className={styles.introHeader}>Small Christian Communities</h2>
 
         <div className={styles.scc}>
