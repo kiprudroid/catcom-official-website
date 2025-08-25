@@ -1,6 +1,6 @@
 import styles from "./Groups.module.css";
 import Header from "../../reusable-components/Header/Header";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../../reusable-components/Footer/Footer";
 
 function GroupCard({ imgSrc, alt, title, description }) {
@@ -34,6 +34,26 @@ function GroupCard({ imgSrc, alt, title, description }) {
 }
 
 export default function Groups() {
+  const verses = [
+    {
+      title: " FRUITS OF THE HOLY SPIRIT (GALATIANS 5:22-23)",
+      text: "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law."
+    },
+    {
+      title: "GIFTS OF THE HOLY SPIRIT(ACTS 2:38)",
+      text: "Then Peter said unto them, Repent, and be baptized and ye shall receive the gift of the Holy Spirit: Wisdom, Understanding, Counsel, Fortitude, Knowledge, Piety, and Fear of the Lord."
+    }
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % verses.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <div>
@@ -66,39 +86,40 @@ export default function Groups() {
             </div>
           </div>
         </div>
-                 <div className={styles.ContentWrapper}>
-         <div className={styles.contentWrapper}>
-          <h3 className={styles.contentTitle} style={{ fontFamily: "Inter, sans-serif" }}>
-            Our Vision
-          </h3>
-            <p
-              className={styles.textContent}
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              A praying, believing and worshiping community for empowering young
-                      people to live as disciples of Jesus Christ; drawing them into
-                      responsible participation in the Catholic Church; fostering their
-                      personal and spiritual growth.
-                    </p>
-                  </div>
-             <div className={styles.contentWrapper}>
-                      <h3
-                        className={styles.contentTitle}
-                        style={{ fontFamily: "Inter, sans-serif" }}
-                      >
-                        Our Mission
-                      </h3>
-                
-                        <p
-                          className={styles.textContent}
-                          style={{ fontFamily: "Inter, sans-serif" }}
-                        >
-                          To help people find God, grow their faith, discover their purpose,
-                          and make a difference.We exist to make Heaven more crowded.
-                        </p>
-                      </div>
-                      </div>                    
-            
+
+         <div className={styles.container}>
+        
+          <div className={styles.cardsOverlap}>
+         <div className={styles.cardBase}>
+          <img
+            src="/Groups/fruits.webp"
+            alt="Fruit of the Spirit"
+            className={styles.cardImage}
+          />
+          <h2 className={styles.title}>GALATIANS 5:22-23</h2> 
+          
+        </div>
+        
+
+  <div className={`${styles.cardBase} ${styles.cardOverlapBottom}`}>
+          <img
+            src="/Groups/gifts.jpg"
+            alt="Gift of the Holy Spirit"
+            className={styles.cardImage}
+          />
+          <h2 className={styles.title}>Gift of the Holy Spirit<br />Acts 2:38</h2>
+          
+        </div>
+      </div>
+
+      <div className={styles.carouselContainer}>
+        <div key={index} className={styles.carouselText}>
+          <h2>{verses[index].title}</h2>
+          <p>{verses[index].text}</p>
+        </div>
+      </div>
+    </div>
+
         <div className={styles.groupsGrid}>
           <GroupCard
             imgSrc="/Groups/choir.jpg"
