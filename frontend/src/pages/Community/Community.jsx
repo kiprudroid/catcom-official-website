@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Community.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
-import { Heading  } from "../../components/Typography/Typography";
+import { Heading } from "../../components/Typography/Typography";
 import SccCard from "../../components/SccCard/SccCard";
 import { SCCs } from "../../DataFiles/data";
 import Slider from "react-slick";
@@ -30,29 +30,29 @@ function Community() {
     autoplaySpeed: 3000,
     adaptiveHeight: false, // Changed to false
     fade: true,
-    cssEase: 'linear',
+    cssEase: "linear",
     centerMode: true,
-    centerPadding: '0',
+    centerPadding: "0",
     responsive: [
       {
         breakpoint: 768,
         settings: {
           arrows: false,
           centerMode: true,
-          centerPadding: '0',
-        }
-      }
-    ]
+          centerPadding: "0",
+        },
+      },
+    ],
   };
 
   const handlePrevScc = () => {
-    const currentIndex = SCCs.findIndex(scc => scc.name === selectedScc.name);
+    const currentIndex = SCCs.findIndex((scc) => scc.name === selectedScc.name);
     const prevIndex = currentIndex > 0 ? currentIndex - 1 : SCCs.length - 1;
     setSelectedScc(SCCs[prevIndex]);
   };
 
   const handleNextScc = () => {
-    const currentIndex = SCCs.findIndex(scc => scc.name === selectedScc.name);
+    const currentIndex = SCCs.findIndex((scc) => scc.name === selectedScc.name);
     const nextIndex = currentIndex < SCCs.length - 1 ? currentIndex + 1 : 0;
     setSelectedScc(SCCs[nextIndex]);
   };

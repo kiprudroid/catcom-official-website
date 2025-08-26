@@ -35,12 +35,12 @@ export default function Groups() {
   const verses = [
     {
       title: " FRUITS OF THE HOLY SPIRIT (GALATIANS 5:22-23)",
-      text: "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law."
+      text: "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law.",
     },
     {
       title: "GIFTS OF THE HOLY SPIRIT(ACTS 2:38)",
-      text: "Then Peter said unto them, Repent, and be baptized and ye shall receive the gift of the Holy Spirit: Wisdom, Understanding, Counsel, Fortitude, Knowledge, Piety, and Fear of the Lord."
-    }
+      text: "Then Peter said unto them, Repent, and be baptized and ye shall receive the gift of the Holy Spirit: Wisdom, Understanding, Counsel, Fortitude, Knowledge, Piety, and Fear of the Lord.",
+    },
   ];
 
   const [index, setIndex] = useState(0);
@@ -89,38 +89,38 @@ export default function Groups() {
           </div>
         </div>
 
-         <div className={styles.container}>
-        
+        <div className={styles.container}>
           <div className={styles.cardsOverlap}>
-         <div className={styles.cardBase}>
-          <img
-            src="/Groups/fruits.webp"
-            alt="Fruit of the Spirit"
-            className={styles.cardImage}
-          />
-          <h2 className={styles.title}>GALATIANS 5:22-23</h2> 
-          
-        </div>
-        
+            <div className={styles.cardBase}>
+              <img
+                src="/Groups/fruits.webp"
+                alt="Fruit of the Spirit"
+                className={styles.cardImage}
+              />
+              <h2 className={styles.title}>GALATIANS 5:22-23</h2>
+            </div>
 
-  <div className={`${styles.cardBase} ${styles.cardOverlapBottom}`}>
-          <img
-            src="/Groups/gifts.jpg"
-            alt="Gift of the Holy Spirit"
-            className={styles.cardImage}
-          />
-          <h2 className={styles.title}>Gift of the Holy Spirit<br />Acts 2:38</h2>
-          
-        </div>
-      </div>
+            <div className={`${styles.cardBase} ${styles.cardOverlapBottom}`}>
+              <img
+                src="/Groups/gifts.jpg"
+                alt="Gift of the Holy Spirit"
+                className={styles.cardImage}
+              />
+              <h2 className={styles.title}>
+                Gift of the Holy Spirit
+                <br />
+                Acts 2:38
+              </h2>
+            </div>
+          </div>
 
-      <div className={styles.carouselContainer}>
-        <div key={index} className={styles.carouselText}>
-          <h2>{verses[index].title}</h2>
-          <p>{verses[index].text}</p>
+          <div className={styles.carouselContainer}>
+            <div key={index} className={styles.carouselText}>
+              <h2>{verses[index].title}</h2>
+              <p>{verses[index].text}</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
         <div className={styles.groupsGrid}>
           <GroupCard

@@ -4,7 +4,6 @@ import Home from "./pages/Home/Home";
 import Liturgy from "./pages/Liturgy/Liturgy";
 import Community from "./pages/Community/Community";
 import About from "./pages/About/About";
-import Media from "./pages/Media/Media";
 import { SCCs } from "./DataFiles/data";
 import SccInfo from "./pages/SccInfo/SccInfo";
 import Groups from "./pages/Groups/Groups";
@@ -17,8 +16,6 @@ function App() {
         <Route path="/liturgy" element={<Liturgy />} />
         <Route path="/community" element={<Community />} />
         <Route path="/about" element={<About />} />
-        <Route path="/media" element={<Media />} />
-        <Route path="/media" element={<Media />} />
         <Route path="/groups" element={<Groups />} />
         {SCCs.map((scc) => (
           <Route

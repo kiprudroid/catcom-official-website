@@ -6,7 +6,11 @@ import { SCCs } from "../../DataFiles/data";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {Heading ,Paragraph ,SmallText } from "../../components/Typography/Typography";
+import {
+  Heading,
+  Paragraph,
+  SmallText,
+} from "../../components/Typography/Typography";
 const SccInfo = ({
   name,
   about,
@@ -18,17 +22,17 @@ const SccInfo = ({
   // Add any other props you need
   // from the SCCs data
 }) => {
-const settings = {
-     dots: true,
-     infinite: true,
-     speed: 500,
-     slidesToShow: 1,
-     slidesToScroll: 1,
-     autoplay: true,
-     autoplaySpeed: 3000,
-     adaptiveHeight: true,
-     fade: true,
-   };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    adaptiveHeight: true,
+    fade: true,
+  };
   return (
     <div className={styles.gridContainer}>
       <div className={styles.header}>
