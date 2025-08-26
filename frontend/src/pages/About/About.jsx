@@ -5,7 +5,10 @@ import Footer from "../../reusable-components/Footer/Footer";
 import CommunityCard from "../../components/communitiesCards/communityCard";
 import PriestPatronCard from "../../components/PriestPatronCard/PriestPatronCard";
 import CatcomExecutiveCard from "../../components/catcomExecutiveCard/CatcomExecutiveCard";
-import { Heading, SmallText } from "../../components/Typography/Typography";
+import {
+  SectionHeading,
+  SmallText,
+} from "../../components/Typography/Typography";
 import MissionVision from "../../components/MissionVision/MissionVision";
 import {
   communities,
@@ -20,7 +23,7 @@ function About() {
       <Header className={styles.header} />
 
       <div className={styles.hero}>
-        <Heading>About JKUAT catcom</Heading>
+        <SectionHeading>About JKUAT catcom</SectionHeading>
       </div>
 
       <div className={styles.heritage}>
@@ -31,27 +34,30 @@ function About() {
           encountering Christ in our daily lives. The community supports us in
           recognizing our inherent vocation bestowed upon us by God, which
           involves the task of exploring our talents and capabilities and
-          utilizing them for the betterment of others. This friendship grants
-          us the opportunity to cultivate our freedom, allowing us to lead
-          lives that are dedicated to Christ, with Christ, and for Christ. It
-          is a genuine bond that empowers every member to develop love for
-          themselves as well as for others.
+          utilizing them for the betterment of others. This friendship grants us
+          the opportunity to cultivate our freedom, allowing us to lead lives
+          that are dedicated to Christ, with Christ, and for Christ. It is a
+          genuine bond that empowers every member to develop love for themselves
+          as well as for others.
         </p>
       </div>
 
       <div className={styles.visionMission}>
         <div className={styles.vision}>
           <h2>Our Vision</h2>
-          <p>A praying, believing and worshiping community
-            for empowering young people to live as disciples of Jesus Christ;
-            drawing them into responsible participation in the Catholic Church;
-            fostering their personal and spiritual growth.</p>
+          <p>
+            A praying, believing and worshiping community for empowering young
+            people to live as disciples of Jesus Christ; drawing them into
+            responsible participation in the Catholic Church; fostering their
+            personal and spiritual growth.
+          </p>
         </div>
         <div className={styles.mission}>
           <h2>Our Mission</h2>
-          <p>To help people find God, grow their faith,
-            discover their purpose, and make a difference.
-            We exist to make Heaven more crowded."</p>
+          <p>
+            To help people find God, grow their faith, discover their purpose,
+            and make a difference. We exist to make Heaven more crowded."
+          </p>
         </div>
       </div>
 

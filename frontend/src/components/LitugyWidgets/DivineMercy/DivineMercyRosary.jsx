@@ -1,12 +1,7 @@
 import React from "react";
 import styles from "./DivineMercyRosary.module.css";
 import { FaPrayingHands } from "react-icons/fa";
-import {
-  Heading,
-  Paragraph,
-  SectionHeading,
-  SmallText,
-} from "../../Typography/Typography";
+import { SectionHeading, SmallText } from "../../Typography/Typography";
 
 function DivineMercyRosary() {
   return (

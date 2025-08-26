@@ -7,8 +7,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
-  Heading,
-  Paragraph,
+  SectionHeading,
   SmallText,
 } from "../../components/Typography/Typography";
 const SccInfo = ({
@@ -19,8 +18,6 @@ const SccInfo = ({
   aboutPatronSaint,
   prayer,
   image,
-  // Add any other props you need
-  // from the SCCs data
 }) => {
   const settings = {
     dots: true,
@@ -38,15 +35,15 @@ const SccInfo = ({
       <div className={styles.header}>
         <Header />
       </div>
-      <Heading className={styles.heading} as="h1">
+      <SectionHeading className={styles.heading} as="h1">
         <div className={styles.title}>{name}</div>
-      </Heading>
+      </SectionHeading>
       <SmallText className={styles.subTitle}>
         <div className={styles.about}>{about}</div>
       </SmallText>
       <div className={styles.activitiesAndPhotos}>
         <div className={styles.activities}>
-          <Heading>Activities</Heading>
+          <SectionHeading>Activities</SectionHeading>
           <ul class={styles.activitiesList}>
             {activities.map((activity, index) => (
               <li>{activity}</li>
@@ -54,7 +51,7 @@ const SccInfo = ({
           </ul>
         </div>
         <div className={styles.photos}>
-          <Heading>Photos </Heading>
+          <SectionHeading>Photos </SectionHeading>
           {/* SlideShow */}
           <div className={styles.slideShow}>
             {sccPhotos && sccPhotos.length > 0 ? (
@@ -85,14 +82,14 @@ const SccInfo = ({
         </div>
         <div className={styles.patronSaintText}>
           <SmallText>
-            <Heading> About {name}</Heading>
+            <SectionHeading> About {name}</SectionHeading>
 
             {aboutPatronSaint}
           </SmallText>
         </div>
       </div>
       <div className={styles.prayer}>
-        <Heading> Prayer To {name}</Heading>
+        <SectionHeading> Prayer To {name}</SectionHeading>
         <SmallText>{prayer}</SmallText>
       </div>
       <div className={styles.footer}>

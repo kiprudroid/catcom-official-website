@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Footer.module.css";
-import { FooterHeading } from "../../components/Typography/Typography";
+import { SectionHeading } from "../../components/Typography/Typography";
 import {
   FaEnvelope,
   FaFacebook,
@@ -37,7 +37,7 @@ function Footer({ className }) {
 
         {/* Quick Links */}
         <div className={styles.quickLinks}>
-          <FooterHeading>Quick Links</FooterHeading>
+          <SectionHeading>Quick Links</SectionHeading>
           <ul>
             <li>
               <FaHome />
@@ -65,7 +65,7 @@ function Footer({ className }) {
         {/* Contacts */}
         <div className={styles.contact}>
           <div className={styles.contactHeading}>
-            <FooterHeading>Contacts</FooterHeading>
+            <SectionHeading>Contacts</SectionHeading>
           </div>
 
           <div className={styles.contact1}>

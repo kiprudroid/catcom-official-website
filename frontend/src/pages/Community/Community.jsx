@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import styles from "./Community.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
-import { Heading } from "../../components/Typography/Typography";
 import SccCard from "../../components/SccCard/SccCard";
 import { SCCs } from "../../DataFiles/data";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { SectionHeading } from "../../components/Typography/Typography";
 
 function Community() {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
@@ -65,7 +65,7 @@ function Community() {
         </div>
 
         <div className={`${styles.item} ${styles.whatIsScc}`}>
-          <Heading>What is an SCC?:</Heading>
+          <SectionHeading>What is an SCC?:</SectionHeading>
           <p
             className={styles.textContent}
             style={{ fontFamily: "Inter, sans-serif" }}
@@ -78,7 +78,7 @@ function Community() {
         </div>
 
         <div className={`${styles.item} ${styles.sccPictures}`}>
-          <Heading>Our SCCs</Heading>
+          <SectionHeading>Our SCCs</SectionHeading>
           <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
             {SCCs.map((_, index) => (
               <SccCard
@@ -91,7 +91,7 @@ function Community() {
           </div>
         </div>
 
-        <Heading>SCC OVERVIEW : {selectedScc.name}</Heading>
+        <SectionHeading>SCC OVERVIEW : {selectedScc.name}</SectionHeading>
         <div className={`${styles.item} ${styles.sccExpanded} contentWrapper`}>
           <button
             className={`${styles.sccNavigationButton} ${styles.prevButton}`}
@@ -123,13 +123,13 @@ function Community() {
             <div className={styles.secondColumnItem}>
               {selectedScc.families &&
                 selectedScc.families.map((family, index) => (
-                  <div className={styles.familyCard}>
+                  <div className={styles.familyCard} key={index}>
                     <h1 className={styles.familyText}>{family}</h1>
                   </div>
                 ))}
             </div>
             <div className={styles.secondColumnItem}>
-              <Heading>Activities</Heading>
+              <SectionHeading>Activities</SectionHeading>
               <ul className={styles.activitiesList}>
                 {selectedScc.activities &&
                   selectedScc.activities.map((activity, index) => (
