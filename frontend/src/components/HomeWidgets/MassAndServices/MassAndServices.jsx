@@ -15,10 +15,9 @@ const MassAndServices = () => {
         {/* MONDAY - FRIDAY */}
         <div className={styles.card}>
           <SectionHeading as="h3">MONDAY – FRIDAY</SectionHeading>
-
           <div className={styles.serviceItem}>
             <SmallText as="p" className={styles.activity}>
-              <FaClock className={styles.iconClock} /> 6.00am – 7.00am : Daily
+              <FaClock className={styles.iconClock} /> 6.15am – 7.00am : Daily
               Mass
             </SmallText>
             <SmallText as="p" className={styles.venue}>
@@ -29,21 +28,21 @@ const MassAndServices = () => {
 
           <div className={styles.serviceItem}>
             <SmallText as="p" className={styles.activity}>
-              <FaClock className={styles.iconClock} /> 12.45pm – 1.15pm : Rosary
-              Prayers
-            </SmallText>
-            <SmallText as="p" className={styles.venue}>
-              <FaMapMarkerAlt className={styles.iconMap} /> Mango Park, JKUAT
-            </SmallText>
-          </div>
-
-          <div className={styles.serviceItem}>
-            <SmallText as="p" className={styles.activity}>
               <FaClock className={styles.iconClock} /> 6.00pm – 7.00pm : Rosary
               Prayers
             </SmallText>
             <SmallText as="p" className={styles.venue}>
               <FaMapMarkerAlt className={styles.iconMap} /> SCC 008, JKUAT
+            </SmallText>
+          </div>
+          <div className={styles.serviceItem}>
+            <SmallText as="p" className={styles.activity}>
+              <FaClock className={styles.iconClock} /> 9.00pm – 10.00pm : Rosary
+              Prayers
+            </SmallText>
+            <SmallText as="p" className={styles.venue}>
+              <FaMapMarkerAlt className={styles.iconMap} /> Outside Cafeteria ,
+              JKUAT
             </SmallText>
           </div>
         </div>
@@ -64,8 +63,8 @@ const MassAndServices = () => {
           <SectionHeading as="h3">EVERY WEDNESDAY</SectionHeading>
           <div className={styles.serviceItem}>
             <SmallText as="p" className={styles.activity}>
-              <FaClock className={styles.iconClock} /> 6.30pm – 8.00pm : Holy
-              Mass
+              <FaClock className={styles.iconClock} /> 6.00pm – 8.00pm :
+              Confessions, thereafter Holy Mass
             </SmallText>
             <SmallText as="p" className={styles.venue}>
               <FaMapMarkerAlt className={styles.iconMap} /> SPA LH, JKUAT
@@ -94,6 +93,17 @@ const MassAndServices = () => {
             </SmallText>
             <SmallText as="p" className={styles.venue}>
               <FaMapMarkerAlt className={styles.iconMap} /> SPA Building, JKUAT
+            </SmallText>
+          </div>
+          <SectionHeading as="h3">EVERY SATURDAY</SectionHeading>
+          <div className={styles.serviceItem}>
+            <SmallText as="p" className={styles.activity}>
+              <FaClock className={styles.iconClock} /> 7:00am – 8.00am : Holy
+              Mass, thereafter Confessions
+            </SmallText>
+            <SmallText as="p" className={styles.venue}>
+              <FaMapMarkerAlt className={styles.iconMap} /> St Augustine Parish,
+              Juja
             </SmallText>
           </div>
         </div>

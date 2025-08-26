@@ -5,7 +5,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CatcomCalendar from "../../components/HomeWidgets/CatcomCalendar/CatcomCalendar";
-import { SectionHeading } from "../../components/Typography/Typography";
+import {
+  SectionHeading,
+  SmallText,
+} from "../../components/Typography/Typography";
 import MediaContent from "../../components/HomeWidgets/MediaContent/MediaContent";
 import MassAndServices from "../../components/HomeWidgets/MassAndServices/MassAndServices";
 import { slideShowImages } from "../../DataFiles/data";
@@ -28,34 +31,42 @@ function Home() {
     <HomepageLayout>
       <div className={styles.homeContainer}>
         <div className={styles.card}>
-          <h3 className={styles.cardTitle}>What are we?</h3>
-          <p className={styles.textContent}>
+          <SectionHeading className={styles.cardTitle}>
+            What are we?
+          </SectionHeading>
+          <SmallText className={styles.textContent}>
             We are a vibrant Catholic Community that encourages healthy growth
             spiritually, socially, and academically, with the ultimate goal of
             encountering Christ in our daily lives. The community supports us in
-            recognizing our inherent vocation bestowed upon us by God...
-          </p>
+            recognizing our inherent vocation bestowed upon us by God.
+          </SmallText>
         </div>
-        {/* Vision */}
+
         <div className={styles.card}>
-          <h3 className={styles.cardTitle}>Our Vision</h3>
-          <p className={styles.textContent}>
+          <SectionHeading className={styles.cardTitle}>
+            Our Vision
+          </SectionHeading>
+          <SmallText className={styles.textContent}>
             A praying, believing and worshiping community for empowering young
-            people to live as disciples of Jesus Christ...
-          </p>
+            people to live as disciples of Jesus Christ.
+          </SmallText>
         </div>
+
         <div className={`${styles.card} ${styles.calendar}`}>
           <MassAndServices />
         </div>
+
         <div className={`${styles.card} ${styles.calendar}`}>
           <SectionHeading className={styles.cardTitle}>
             CATCOM Semester Calendar
           </SectionHeading>
           <CatcomCalendar />
         </div>
+
         <div className={styles.card}>
           <MediaContent />
         </div>
+
         <div className={styles.card}>
           <Slider {...settings} className={styles.sliderContainer}>
             {slideShowImages.map((image, index) => (

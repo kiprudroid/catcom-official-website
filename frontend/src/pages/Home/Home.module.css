@@ -9,8 +9,7 @@
   font-family: "Inter", sans-serif;
 }
 
-.card,
-.cardWide {
+.card {
   background: #fff;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -19,16 +18,9 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover,
-.cardWide:hover {
+.card:hover {
   transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.cardWide {
-  grid-column: 1 / -1;
-  padding: 0;
-  background-color: #b9c8c8;
 }
 
 .cardTitle {
