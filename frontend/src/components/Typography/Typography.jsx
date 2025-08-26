@@ -2,7 +2,7 @@ import React from "react";
 import "@fontsource/nunito-sans";
 import styles from "./Typography.module.css";
 
-export const SmallText = ({ children, className, as: Component = "p" }) => {
+export const Paragraph = ({ children, className, as: Component = "p" }) => {
   return (
     <Component
       className={className}

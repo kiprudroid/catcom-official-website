@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ReadingsOfTheWeek.module.css";
-import { SectionHeading, SmallText } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "../../Typography/Typography";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 const readings = [
@@ -56,16 +56,16 @@ const ReadingOfTheWeek = () => {
               />
               <div className={styles.overlay}></div>
               <div className={styles.cardHeader} onClick={() => toggle(idx)}>
-                <SmallText className={styles.cardTitle}>
+                <Paragraph className={styles.cardTitle}>
                   <strong>{reading.title}:</strong> {reading.reference}
-                </SmallText>
+                </Paragraph>
                 {openIndex === idx ? <FaMinus /> : <FaPlus />}
               </div>
             </div>
 
             {openIndex === idx && (
               <div className={styles.fullText}>
-                <SmallText>{reading.fullText}</SmallText>
+                <Paragraph>{reading.fullText}</Paragraph>
               </div>
             )}
           </div>
@@ -73,7 +73,7 @@ const ReadingOfTheWeek = () => {
       </div>
 
       <button className={styles.button}>
-        <SmallText>Full Sermon</SmallText>
+        <Paragraph>Full Sermon</Paragraph>
       </button>
     </div>
   );

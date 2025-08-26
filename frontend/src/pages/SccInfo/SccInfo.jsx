@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
   SectionHeading,
-  SmallText,
+  Paragraph,
 } from "../../components/Typography/Typography";
 const SccInfo = ({
   name,
@@ -38,9 +38,9 @@ const SccInfo = ({
       <SectionHeading className={styles.heading} as="h1">
         <div className={styles.title}>{name}</div>
       </SectionHeading>
-      <SmallText className={styles.subTitle}>
+      <Paragraph className={styles.subTitle}>
         <div className={styles.about}>{about}</div>
-      </SmallText>
+      </Paragraph>
       <div className={styles.activitiesAndPhotos}>
         <div className={styles.activities}>
           <SectionHeading>Activities</SectionHeading>
@@ -81,16 +81,16 @@ const SccInfo = ({
           ></img>
         </div>
         <div className={styles.patronSaintText}>
-          <SmallText>
+          <Paragraph>
             <SectionHeading> About {name}</SectionHeading>
 
             {aboutPatronSaint}
-          </SmallText>
+          </Paragraph>
         </div>
       </div>
       <div className={styles.prayer}>
         <SectionHeading> Prayer To {name}</SectionHeading>
-        <SmallText>{prayer}</SmallText>
+        <Paragraph>{prayer}</Paragraph>
       </div>
       <div className={styles.footer}>
         <Footer />

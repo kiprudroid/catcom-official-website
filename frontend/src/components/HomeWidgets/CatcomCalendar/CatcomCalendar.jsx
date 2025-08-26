@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./CatcomCalendar.module.css";
-import { SectionHeading, SmallText } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "../../Typography/Typography";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const events = [
@@ -143,10 +143,10 @@ const CatcomCalendar = () => {
               <div className={styles.dateBadge}>{formatDate(event.date)}</div>
               <div className={styles.eventDetails}>
                 <h4 className={styles.eventTitle}>{event.title}</h4>
-                <SmallText className={styles.meta}>
+                <Paragraph className={styles.meta}>
                   <FaMapMarkerAlt className={styles.icon} />{" "}
                   {event.venue || "Venue TBA"}
-                </SmallText>
+                </Paragraph>
               </div>
             </div>
           ))}
@@ -162,10 +162,10 @@ const CatcomCalendar = () => {
               <div className={styles.dateBadge}>{formatDate(event.date)}</div>
               <div className={styles.eventDetails}>
                 <h4 className={styles.eventTitle}>{event.title}</h4>
-                <SmallText className={styles.meta}>
+                <Paragraph className={styles.meta}>
                   <FaMapMarkerAlt className={styles.icon} />{" "}
                   {event.venue || "Venue TBA"}
-                </SmallText>
+                </Paragraph>
               </div>
             </div>
           ))}
@@ -174,15 +174,15 @@ const CatcomCalendar = () => {
 
       {/* Contacts */}
       <div className={styles.contacts}>
-        <SmallText>
+        <Paragraph>
           <strong>Stephen Mutwiwa Mutie (Moderator)</strong> – 0798715858
-        </SmallText>
-        <SmallText>
+        </Paragraph>
+        <Paragraph>
           <strong>Sophie Kathambi (V. Moderator)</strong> – 0797872432
-        </SmallText>
-        <SmallText>
+        </Paragraph>
+        <Paragraph>
           <strong>Alvin Muthoni (OS)</strong> – 0793661637
-        </SmallText>
+        </Paragraph>
       </div>
     </div>
   );

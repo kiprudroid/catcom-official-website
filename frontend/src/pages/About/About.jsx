@@ -7,7 +7,7 @@ import PriestPatronCard from "../../components/PriestPatronCard/PriestPatronCard
 import CatcomExecutiveCard from "../../components/catcomExecutiveCard/CatcomExecutiveCard";
 import {
   SectionHeading,
-  SmallText,
+  Paragraph,
 } from "../../components/Typography/Typography";
 import MissionVision from "../../components/MissionVision/MissionVision";
 import {

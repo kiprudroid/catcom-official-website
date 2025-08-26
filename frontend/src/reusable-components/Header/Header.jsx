@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import {
   SectionHeading,
-  SmallText,
+  Paragraph,
 } from "../../components/Typography/Typography";
 
 function Header() {

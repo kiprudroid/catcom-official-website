@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./RosaryPrayers.module.css";
-import { SectionHeading, SmallText } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "../../Typography/Typography";
 import { FaPlus, FaMinus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const mysteries = [
@@ -169,10 +169,10 @@ function RosaryPrayers() {
           <FaChevronLeft /> Previous
         </button>
         <div className={styles.current}>
-          <SmallText>
+          <Paragraph>
             {mysteries[currentMystery.section].title} –{" "}
             {mysteries[currentMystery.section].items[currentMystery.item].title}
-          </SmallText>
+          </Paragraph>
         </div>
         <button onClick={goNext} className={styles.navBtn}>
           Next <FaChevronRight />
@@ -192,9 +192,9 @@ function RosaryPrayers() {
                 <SectionHeading className={styles.cardTitle}>
                   {section.title}
                 </SectionHeading>
-                <SmallText className={styles.cardDays}>
+                <Paragraph className={styles.cardDays}>
                   {section.days}
-                </SmallText>
+                </Paragraph>
                 {openIndex === idx ? <FaMinus /> : <FaPlus />}
               </div>
             </div>
@@ -211,13 +211,13 @@ function RosaryPrayers() {
                         : ""
                     }`}
                   >
-                    <SmallText>
+                    <Paragraph>
                       <span className={styles.mysteryTitle}>
                         {mystery.title}
                       </span>
                       <br />
                       <span className={styles.detail}>{mystery.detail}</span>
-                    </SmallText>
+                    </Paragraph>
                   </li>
                 ))}
               </ul>

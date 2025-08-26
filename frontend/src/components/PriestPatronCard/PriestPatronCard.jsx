@@ -1,22 +1,14 @@
 import React from "react";
 import styles from "./PriestPatronCard.module.css";
-import { SmallText } from "../Typography/Typography";
+import { Paragraph } from "../Typography/Typography";
 
-function PriestPatronCard({
-  name,
-  role,
-  image,
-}) {
+function PriestPatronCard({ name, role, image }) {
   return (
     <>
       <div className={styles.priestsPatrons}>
-        <img 
-        className={styles.priestPatronImage} 
-             src={image} 
-             alt="" 
-             />
-        <SmallText>{name}</SmallText>
-        <SmallText>{role}</SmallText>
+        <img className={styles.priestPatronImage} src={image} alt="" />
+        <Paragraph>{name}</Paragraph>
+        <Paragraph>{role}</Paragraph>
       </div>
     </>
   );

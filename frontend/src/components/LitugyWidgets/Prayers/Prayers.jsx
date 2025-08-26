@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Prayers.module.css";
-import { SectionHeading, SmallText } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "../../Typography/Typography";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 function Prayers() {
@@ -75,13 +75,13 @@ function Prayers() {
               )}
             </span>
           </div>
-          <SmallText
+          <Paragraph
             className={`${styles.content} ${
               openIndex === index ? styles.show : ""
             }`}
           >
             {prayer.content}
-          </SmallText>
+          </Paragraph>
         </div>
       ))}
     </div>

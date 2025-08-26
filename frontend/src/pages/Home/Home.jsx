@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CatcomCalendar from "../../components/HomeWidgets/CatcomCalendar/CatcomCalendar";
 import {
   SectionHeading,
-  SmallText,
+  Paragraph,
 } from "../../components/Typography/Typography";
 import MediaContent from "../../components/HomeWidgets/MediaContent/MediaContent";
 import MassAndServices from "../../components/HomeWidgets/MassAndServices/MassAndServices";
@@ -34,22 +34,22 @@ function Home() {
           <SectionHeading className={styles.cardTitle}>
             What are we?
           </SectionHeading>
-          <SmallText className={styles.textContent}>
+          <Paragraph className={styles.textContent}>
             We are a vibrant Catholic Community that encourages healthy growth
             spiritually, socially, and academically, with the ultimate goal of
             encountering Christ in our daily lives. The community supports us in
             recognizing our inherent vocation bestowed upon us by God.
-          </SmallText>
+          </Paragraph>
         </div>
 
         <div className={styles.card}>
           <SectionHeading className={styles.cardTitle}>
             Our Vision
           </SectionHeading>
-          <SmallText className={styles.textContent}>
+          <Paragraph className={styles.textContent}>
             A praying, believing and worshiping community for empowering young
             people to live as disciples of Jesus Christ.
-          </SmallText>
+          </Paragraph>
         </div>
 
         <div className={`${styles.card} ${styles.calendar}`}>
