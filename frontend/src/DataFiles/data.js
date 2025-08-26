@@ -25,7 +25,7 @@ const priests = [
 
 const patrons = [
   {
-    name: "professor Rebecca Waihenya",
+    name: "Professor Rebecca Waihenya",
     role: "Patron",
     image: "/patrons/profWaihenya.jpg",
   },
@@ -54,7 +54,7 @@ const catcomExecutive = [
     image: "/leadersImages/eliza.jpg",
   },
   {
-    name: " terryann Wanjohi",
+    name: " Terryann Wanjohi",
     role: "Catcom treasurer",
     image: "/leadersImages/terry.jpg",
   },

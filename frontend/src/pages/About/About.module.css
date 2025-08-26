@@ -16,22 +16,25 @@
 /* Heritage */
 .heritage {
     background-color: #D9D9D9;
-    width: 90%;
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
     margin: 3vh auto;
-    padding: 4vh;
+    padding: 2.5vh;
     border-top-right-radius: 100px;
     border-bottom-left-radius: 100px;
 }
 .heritage>h2 {
     margin-bottom: 1vh;
-    font-family: var(--primary-font-family);
+    font-family: "Inter, sans-serif";
     text-align: center;
     font-size: 2rem;
-    color: var(--heading-color);
+    color: #1A237E;
 }
 .heritage>p{
     margin: auto;
-    font-family: var(--primary-font-family);
+    font-family: "Inter, sans-serif";
+    font-size: 1.3rem;
     width: 80%;
     line-height: 1.5;
     text-align: center;
@@ -41,32 +44,39 @@
 
 /* Vision and Mission */
 .visionMission{
-    width: 80%;
-    margin: 8vh auto;
+    /* background-color: #D9D9D9; */
+    border-radius: 30px;
+    width: 70%;
+    margin: 4vh auto;
     display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(72, 92, 223, 0.07);
+    padding: 2vh 2vw;
 }
 
 .vision, .mission {
-    width: 50%;
-    padding: 6vh;
+    width: 48%;
+    padding: 2vh 1vw;
     display: flex;
     flex-direction: column;
     gap: 1vh;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.137);
+    align-items: center;
 }
 
 .vision h2, .mission h2 {
-    font-family: inter, sans-serif;
-    color: var(--heading-color);
+    font-family: "Inter, sans-serif";
+    color: #1A237E;
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 1vh;
 }
 
 .vision p, .mission p {
-    font-family: var(--primary-font-family);
-    text-align: center;
+    font-family: "Inter, sans-serif";
+    text-align: left;
     line-height: 1.5;
     font-weight: 500;
+    font-size: 1.3rem;
 }
 
 
@@ -74,53 +84,66 @@
 .communities {
     width: 100%;
     margin: 8vh auto;
-    padding: 10vh;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    gap: 2vh;
+    padding: 5vh 2vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     background-color: #D9D9D9;
 }
-.communities>h2{
+
+.communities > h2 {
+    grid-column: 1 / -1;
     width: 100%;
     text-align: center;
-    font-family: var(--primary-font-family);
-    color: var(--heading-color);
+    font-family: "Inter, sans-serif";
+    color: #1A237E;
     font-size: 2rem;
     margin-bottom: 2vh;
 }
+
 .community {
-    width: 30%;
-    margin-bottom: 2vh;
-    padding: 2vh;
+    min-height: 250px; 
+    margin-bottom: 0;
+    padding: 2vh 1vw;
     display: flex;
     flex-direction: column;
     gap: 1vh;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.137);
     border-radius: 10px;
     background-color: #d1d1d1;
+    align-items: stretch;
+    justify-content: space-between;
 }
 
-.community>h3, .community>p{
-    font-family: var(--primary-font-family);
+.community>h3 {
+    font-family: "Inter, sans-serif";
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0vh;
 }
 
-.community>p{
-    opacity: 0.9;
-    font-size: 0.9rem;
-    line-height: 1.2;
+.community>p {
+    opacity: 0.95;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 1vh;
 }
 
 .community>button {
-    width: 100%;
-    margin-top: 2vh;
-    padding: 0.5rem;
+    width: 80%;
+    margin: 1.5vh auto 0 auto; /* Center the button horizontally */
+    padding: 0.7rem;
     background-color: #8F5D5D;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: var(--primary-font-family);
+    font-family: "Inter, sans-serif";
+    font-size: 1rem;
+    font-weight: 500;
+    display: block;
+    text-align: center;
 }
 
 .leaders{
@@ -137,8 +160,8 @@
     top: 0;
     width: 100%;
     text-align: center;
-    font-family: var(--primary-font-family);
-    color: var(--heading-color);
+    font-family: "Inter, sans-serif";
+    color: #1A237E;
     font-size: 1.5rem;
     margin-bottom: 2vh;
 }
@@ -157,14 +180,26 @@
 }
 
 .leader>h3, .leader>p {
-    font-family: var(--primary-font-family);
+    font-family: "Inter, sans-serif";
     text-align: center;
 }
 
 .leader img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin-bottom: 2vh;
     border-radius: 50%;
     object-fit: cover;
+}
+
+/* Responsive grid for smaller screens */
+@media (max-width: 900px) {
+    .communities {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .communities {
+        grid-template-columns: 1fr;
+    }
 }
