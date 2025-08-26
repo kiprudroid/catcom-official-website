@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import styles from "./Community.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
-import { Heading  } from "../../components/Typography/Typography";
 import SccCard from "../../components/SccCard/SccCard";
 import { SCCs } from "../../DataFiles/data";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { SectionHeading } from "../../components/Typography/Typography";
 
 function Community() {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
@@ -30,29 +30,29 @@ function Community() {
     autoplaySpeed: 3000,
     adaptiveHeight: false, // Changed to false
     fade: true,
-    cssEase: 'linear',
+    cssEase: "linear",
     centerMode: true,
-    centerPadding: '0',
+    centerPadding: "0",
     responsive: [
       {
         breakpoint: 768,
         settings: {
           arrows: false,
           centerMode: true,
-          centerPadding: '0',
-        }
-      }
-    ]
+          centerPadding: "0",
+        },
+      },
+    ],
   };
 
   const handlePrevScc = () => {
-    const currentIndex = SCCs.findIndex(scc => scc.name === selectedScc.name);
+    const currentIndex = SCCs.findIndex((scc) => scc.name === selectedScc.name);
     const prevIndex = currentIndex > 0 ? currentIndex - 1 : SCCs.length - 1;
     setSelectedScc(SCCs[prevIndex]);
   };
 
   const handleNextScc = () => {
-    const currentIndex = SCCs.findIndex(scc => scc.name === selectedScc.name);
+    const currentIndex = SCCs.findIndex((scc) => scc.name === selectedScc.name);
     const nextIndex = currentIndex < SCCs.length - 1 ? currentIndex + 1 : 0;
     setSelectedScc(SCCs[nextIndex]);
   };
@@ -65,7 +65,7 @@ function Community() {
         </div>
 
         <div className={`${styles.item} ${styles.whatIsScc}`}>
-          <Heading>What is an SCC?:</Heading>
+          <SectionHeading>What is an SCC?:</SectionHeading>
           <p
             className={styles.textContent}
             style={{ fontFamily: "Inter, sans-serif" }}
@@ -78,7 +78,7 @@ function Community() {
         </div>
 
         <div className={`${styles.item} ${styles.sccPictures}`}>
-          <Heading>Our SCCs</Heading>
+          <SectionHeading>Our SCCs</SectionHeading>
           <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
             {SCCs.map((_, index) => (
               <SccCard
@@ -91,7 +91,7 @@ function Community() {
           </div>
         </div>
 
-        <Heading>SCC OVERVIEW : {selectedScc.name}</Heading>
+        <SectionHeading>SCC OVERVIEW : {selectedScc.name}</SectionHeading>
         <div className={`${styles.item} ${styles.sccExpanded} contentWrapper`}>
           <button
             className={`${styles.sccNavigationButton} ${styles.prevButton}`}
@@ -123,13 +123,13 @@ function Community() {
             <div className={styles.secondColumnItem}>
               {selectedScc.families &&
                 selectedScc.families.map((family, index) => (
-                  <div className={styles.familyCard}>
+                  <div className={styles.familyCard} key={index}>
                     <h1 className={styles.familyText}>{family}</h1>
                   </div>
                 ))}
             </div>
             <div className={styles.secondColumnItem}>
-              <Heading>Activities</Heading>
+              <SectionHeading>Activities</SectionHeading>
               <ul className={styles.activitiesList}>
                 {selectedScc.activities &&
                   selectedScc.activities.map((activity, index) => (

@@ -1,24 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Footer.module.css";
-import { FooterHeading, Text } from "../../components/Typography/Typography";
+import { SectionHeading } from "../../components/Typography/Typography";
 import {
   FaEnvelope,
   FaFacebook,
-  FaHome,
   FaInstagramSquare,
-  FaPhone,
   FaPhoneAlt,
   FaTiktok,
   FaTwitter,
   FaYoutube,
-} from "react-icons/fa"; // FontAwesome
+  FaHome,
+  FaBookOpen,
+  FaUsers,
+  FaChurch,
+  FaInfoCircle,
+} from "react-icons/fa";
 import styles from "./Footer.module.css";
 
 function Footer({ className }) {
   return (
     <footer className={`${styles.footer} ${className || ""}`}>
       <div className={styles.footerContainer}>
+        {/* Location / Logo */}
         <div className={styles.location}>
           <img
             src="/others/ctm_logo.png"
@@ -31,104 +35,112 @@ function Footer({ className }) {
           </p>
         </div>
 
-        {/* Quick Links column */}
-
+        {/* Quick Links */}
         <div className={styles.quickLinks}>
-          <FooterHeading>Quick Links</FooterHeading>
+          <SectionHeading>Quick Links</SectionHeading>
           <ul>
             <li>
+              <FaHome />
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
+              <FaBookOpen />
               <NavLink to="/liturgy">Liturgy</NavLink>
             </li>
             <li>
-              <NavLink to="/community">Community</NavLink>
+              <FaInfoCircle />
+              <NavLink to="/about-us">About Us</NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <FaUsers />
+              <NavLink to="/groups">Groups</NavLink>
             </li>
             <li>
-              <NavLink to="/media">Media</NavLink>
-            </li>
-            <li>
-              <NavLink to="/register">Register</NavLink>
+              <FaChurch />
+              <NavLink to="/scc">SCC</NavLink>
             </li>
           </ul>
         </div>
 
-        {/* contact column */}
+        {/* Contacts */}
         <div className={styles.contact}>
           <div className={styles.contactHeading}>
-            <FooterHeading>Contacts</FooterHeading>
+            <SectionHeading>Contacts</SectionHeading>
           </div>
 
           <div className={styles.contact1}>
             <ul>
               <li>
+                <FaFacebook />
                 <NavLink
                   to="https://www.catcom.com/catcomjkuat"
                   target="_blank"
                 >
-                  <FaFacebook />
                   catcomjkuat
                 </NavLink>
               </li>
               <li>
+                <FaTiktok />
                 <NavLink
                   to="https://www.catcom.com/catcomjkuat"
                   target="_blank"
                 >
-                  <FaTiktok />
                   catcomjkuat
                 </NavLink>
               </li>
               <li>
+                <FaInstagramSquare />
                 <NavLink
                   to="https://www.catcom.com/catcomjkuat"
                   target="_blank"
                 >
-                  <FaInstagramSquare /> catcomjkuat
+                  catcomjkuat
                 </NavLink>
               </li>
               <li>
+                <FaTwitter />
                 <NavLink
                   to="https://www.catcom.com/catcomjkuat"
                   target="_blank"
                 >
-                  <FaTwitter /> catcomjkuat
+                  catcomjkuat
                 </NavLink>
               </li>
             </ul>
           </div>
 
-          {/* contact column 2 */}
           <div className={styles.contact2}>
             <ul>
               <li>
+                <FaYoutube />
                 <NavLink
                   to="https://www.catcom.com/catcomjkuat"
                   target="_blank"
                 >
-                  <FaYoutube /> catcomjkuat
+                  catcomjkuat
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="https://www.catcom.com/catcomjkuat"
-                  target="_blank"
-                >
-                  <FaEnvelope /> jkuatcatcom18@gmail.com
+                <FaEnvelope />
+                <NavLink to="mailto:jkuatcatcom18@gmail.com">
+                  jkuatcatcom18@gmail.com
                 </NavLink>
               </li>
               <li>
-                <NavLink>
-                  <FaPhoneAlt /> +254 7XX XXXXXX
-                </NavLink>
+                <FaPhoneAlt />
+                <span>+254 7XX XXXXXX</span>
               </li>
             </ul>
           </div>
         </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className={styles.footerBottom}>
+        <p>© {new Date().getFullYear()} JKUAT Catcom. All Rights Reserved.</p>
+        <p className={styles.tagline}>
+          “Rooted in Faith, Growing in Community.”
+        </p>
       </div>
     </footer>
   );

@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-import { FaBars } from "react-icons/fa";
+import {
+  FaBars,
+  FaHome,
+  FaBook,
+  FaInfoCircle,
+  FaUsers,
+  FaChurch,
+  FaPlusCircle,
+} from "react-icons/fa";
+import {
+  SectionHeading,
+  SmallText,
+} from "../../components/Typography/Typography";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,33 +31,33 @@ function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <nav className={styles.nav}>
       <div className={styles.navList}>
         {!isMobile && (
           <ul className={styles.navUnifiedList}>
-            <img
-              src="/others/ctm_logo.png"
-              alt="CATCOM Logo"
-              className={styles.catcomLogo}
-            />
-            <li>JKUAT CATCOM</li>
+            <div className={styles.logoGroup}>
+              <img
+                src="/others/ctm_logo.png"
+                alt="CATCOM Logo"
+                className={styles.catcomLogo}
+              />
+              <SectionHeading className={styles.title}>
+                JKUAT CATCOM
+              </SectionHeading>
+            </div>
+
             <li>
               <NavLink
-                to="/"
+                to="/home"
                 className={({ isActive }) =>
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                Home
+                <FaHome className={styles.icon} /> Home
               </NavLink>
             </li>
             <li>
@@ -55,6 +67,7 @@ function Header() {
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
+                <FaBook className={styles.icon} />
                 Liturgy
               </NavLink>
             </li>
@@ -65,7 +78,7 @@ function Header() {
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                About Us
+                <FaInfoCircle className={styles.icon} /> About Us
               </NavLink>
             </li>
             <li>
@@ -75,7 +88,7 @@ function Header() {
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                Groups
+                <FaUsers className={styles.icon} /> Groups
               </NavLink>
             </li>
             <li>
@@ -85,22 +98,18 @@ function Header() {
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                SCC
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/join-scc"
-                className={({ isActive }) =>
-                  isActive ? styles.activeLink : styles.inactiveLink
-                }
-              >
-                Join SCC
+                <FaChurch className={styles.icon} /> SCC
               </NavLink>
             </li>
           </ul>
         )}
-        {isMobile && <FaBars className={styles.burger} onClick={toggleMenu} />}
+        {isMobile && (
+          <FaBars
+            className={styles.burger}
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+          />
+        )}
       </div>
 
       {isMobile && (
@@ -112,30 +121,27 @@ function Header() {
           <ul className={styles.mobileNavList}>
             <li>
               <NavLink to="/" onClick={closeMenu}>
-                Home
+                <FaHome className={styles.icon} /> Home
               </NavLink>
             </li>
             <li>
               <NavLink to="/liturgy" onClick={closeMenu}>
-                Liturgy
+                <FaBook className={styles.icon} /> Liturgy
               </NavLink>
             </li>
-
             <li>
               <NavLink to="/about" onClick={closeMenu}>
-                About Us
+                <FaInfoCircle className={styles.icon} /> About Us
               </NavLink>
             </li>
             <li>
-              <li>
-                <NavLink to="/community" onClick={closeMenu}>
-                  SCCs
-                </NavLink>
-              </li>
+              <NavLink to="/groups" onClick={closeMenu}>
+                <FaUsers className={styles.icon} /> Groups
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/join-scc" onClick={closeMenu}>
-                Join SCC
+              <NavLink to="/community" onClick={closeMenu}>
+                <FaChurch className={styles.icon} /> SCC
               </NavLink>
             </li>
           </ul>

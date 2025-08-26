@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./communityCard.module.css";
-import { Heading, SmallText } from "../Typography/Typography";
+import { SectionHeading, SmallText } from "../Typography/Typography";
 
 function CommunityCard({ title, content }) {
   return (
     <div className={styles.communityCard}>
       <div className={styles.cardContent}>
-        <Heading>{title}</Heading>
+        <SectionHeading>{title}</SectionHeading>
         <SmallText>{content}</SmallText>
       </div>
       <button className={styles.button}>

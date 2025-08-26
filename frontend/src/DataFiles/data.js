@@ -1,11 +1,20 @@
-const images = [
-  "/others/st_augustine.jpg",
-  "/others/st_augustine.jpg",
-  "/others/st_augustine.jpg",
-  "/others/st_augustine.jpg",
+export const slideShowImages = [
+  "/sccPictures/stPaul/picture1.png",
+  "/sccPictures/stJude/picture1.png",
+  "/sccPictures/MMOG/Picture2.jpg",
+  "/sccPictures/stCharles/picture1.png",
+  "/sccPictures/stStephen/picture3.jpg",
+  "/sccPictures/stTherese/Picture3.png",
+  "/sccPictures/stVeronica/picture2.png",
+  "/sccPictures/stTherese/Picture2.png",
+  "/sccPictures/stVeronica/picture7.png",
+  "/sccPictures/MMOG/Picture1.jpg",
+  "/sccPictures/stCharles/picture2.png",
+  "/sccPictures/MMOG/Picture4.jpg",
+  "/sccPictures/stPaul/picture2.png",
 ];
 
-const priests = [
+export const priests = [
   {
     name: "Prof(Fr.)Lawrence Njoroge",
     role: "Chaplaincy",
@@ -23,7 +32,7 @@ const priests = [
   },
 ];
 
-const patrons = [
+export const patrons = [
   {
     name: "Professor Rebecca Waihenya",
     role: "Patron",
@@ -36,7 +45,7 @@ const patrons = [
   },
 ];
 
-const catcomExecutive = [
+export const catcomExecutive = [
   {
     name: " Stephen Mutwiwa Mutie",
     role: "Catcom moderator",
@@ -95,7 +104,7 @@ const catcomExecutive = [
   },
 ];
 
-const communities = [
+export const communities = [
   {
     title: "SCC",
     content:
@@ -143,7 +152,7 @@ const communities = [
   },
 ];
 
-const SCCs = [
+export const SCCs = [
   {
     path: "st-martin",
     name: "St. MARTIN DE PORRES",
@@ -188,7 +197,7 @@ const SCCs = [
     image: "others/gptSaint.webp",
     about:
       "The SCC consists of students from the first year to the fifth year. We also have an alumni wing that plays a major role in the growth and functionality of the SCC. It is founded on love, unity, and support for one another. Above all, it is also rooted in our Catholic faith and trust in God. The actvities by the SCC range from our normal indoor meetings on Thursdays at 6 pm., and Sundays after mass to outdoor activities planned by the members through the various committees formed. These activities include hikes, charity works, bike rides, color fests, and social days. The activities aim to grow the members' bond and give back to the community. We also have families that meet on different days of the week and plan out their activities. On  Thursdays, we mainly have discussions, debates, karaoke, game nights, and trivia",
-      families: [],
+    families: [],
     activities: [
       "karaoke night",
       "social day",
@@ -257,7 +266,7 @@ const SCCs = [
     image: "PatronSaints/SaintVeronica.jpg",
     about:
       "ST Veronicah SCC was formed in the year 2010 around September. Before then, there were only 5 SCCs: St Mary's, St Martin, St Charles Lwanga, St Paul (nicknamed CMA) and St Jude. Due to the increase in number of CATCOM members, it was suggested that more SCC's be formed to accommodate more catcomers. The then chairman, Erick Otieno appointed a committee to come up with the structure. The report suggested that there be added three more SCC's. two to cater for those residing in University hostels and an additional one to cater for those renting outside the University. Three SCC's were formed namely: St Veronica SCC, St Stephen SCC and St Therese of the Child Jesus SCC.At around November the same year, the SCC was commissioned by the then Father in Charge, Rev Fr Francis Kiarie, St Augustine Parish. Worth noting, Irene was the first chair lady, and during her time the families were formed. Then the scc could meet once in a week on Thursdays at the halls of residence from 7:00 PM. Later on, the meeting was transferred to lecture halls e.g. SCC, NCLB.",
-    families: ["Priscila and Aquila","", "", ""],
+    families: ["Priscila and Aquila", "", "", ""],
     activities: [
       "games night",
       "trivias",
@@ -386,7 +395,11 @@ const SCCs = [
     image: "PatronSaints/SaintPaul.jpg",
     about:
       "The SCC is comprised of three families; the Favoured family, the Arelis family, and the Sacred Heart family. The family heads spearhead the family activities and they are also part of the SCC executive and hence act as a link between the families and the SCC executive. Families usually meet regularly at their convenience for various activities such as games night, prepare and take dinner together. On Thursdays and Sundays, SCC members gather for holy rosary prayers and a variety of activities. The community cherishes the sense of connection and support fostered through these gatherings and every meeting offers a chance to engage in meaningful interactions and strengthen the bonds among the group members making these gatherings both spiritually and socially rewarding for all members. Each gathering is both enriching and enjoyable, strengthening the bonds within the group and making these experiences spiritually and socially rewarding. These activities reflect the group's commitment to holistic growth and community engagement.",
-      families: ["The Favoured Family", "The Arelis Family", "The Sacred Heart Family"],
+    families: [
+      "The Favoured Family",
+      "The Arelis Family",
+      "The Sacred Heart Family",
+    ],
     activities: [
       "colour splashes",
       "bible trivia",
@@ -411,11 +424,10 @@ const SCCs = [
     prayer:
       "Holy St. Paul, you taught others about the saving message of Jesus, intercede for us so that Christ may live in us. Help us to know and imitate you and your love for Jesus. It is through your writings that many people have come to know Jesus, may all people know and glorify God through your writings and intercession.",
   },
-  
 ];
 
 //removed from the scc page
-const kmrm = {
+export const kmrm = {
   name: "KWAYA YA MTAKATIFU ROMANO MTUNZI",
   image: "PatronSaints/SaintRomanus.jpg",
   about:
@@ -427,6 +439,4 @@ const kmrm = {
     "Romanos the Melodist (born  late 5th-century after 555) was a Byzantine hymnographer and composer,who is a central early figure in the history of Byzantine music. Called 'the Pindar of rhythmic poetry'he flourished during the sixth century, though the earliest manuscripts of his works are dated centuries after this. He was the foremost Kontakion composer of his time. Feast day is celebrated on 1st october.",
   prayer:
     "O Saint Romanos, the Melodist, you who were once a humble singer, but through divine grace became a master of hymnody, we humbly ask for your intercession.May your gift of song inspire us to praise God with heartfelt melodies and words, and may your example encourage us to embrace our own unique talents for the glory of God",
-}
-
-export { images, priests, patrons, catcomExecutive, communities, SCCs };
+};

@@ -1,14 +1,10 @@
 .footer {
   width: 100%;
-  background-color: #8f5d5d;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-
-  /* background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png"); */
-
-  color: white;
-  padding: 2rem 0;
-  font-family: "Roboto, sans-serif";
+  background-color: #2d2d2d;
+  color: #eaeaea;
+  font-family: "Nunito Sans";
 }
+
 .footerContainer {
   display: grid;
   grid-gap: 2rem;
@@ -16,27 +12,33 @@
   grid-template-areas: "location quick-links contact";
   max-width: 1200px;
   margin: 0 auto;
+  padding: 3rem 1rem;
 }
+
 .catcomLogo {
   width: 120px;
-  height: 100px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .location {
   grid-area: location;
-  border-right: rgb(172, 150, 25) solid 0.2rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  border-right: 2px solid rgba(255, 215, 0, 0.4);
 }
+
 .locationWrapper {
-  color: white;
+  font-size: 0.95rem;
+  color: #dcdcdc;
+  line-height: 1.5;
 }
+
 .quickLinks {
   grid-area: quick-links;
-  border-right: rgb(172, 150, 25) solid 0.2rem;
+  border-right: 2px solid rgba(255, 215, 0, 0.4);
 }
 
 .quickLinks ul {
@@ -44,9 +46,24 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  list-style: none;
-  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.quickLinks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quickLinks a {
+  text-decoration: none;
+  color: #eaeaea;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.quickLinks a:hover {
+  color: #ffd700;
+  transform: translateX(4px);
 }
 
 .contact {
@@ -58,49 +75,67 @@
   grid-template-areas:
     "heading heading"
     "contact1 contact2";
-  width: 100%;
-  max-width: 600px;
-  justify-content: space-between;
-  align-items: start;
 }
 
 .contactHeading {
   grid-area: heading;
-  text-align: left;
-}
-
-.contact1 {
-  grid-area: contact1;
-}
-
-.contact2 {
-  grid-area: contact2;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .contact1,
 .contact2 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
+
 .contact1 ul,
 .contact2 ul {
   list-style: none;
   padding: 0;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
+
 .contact1 li,
 .contact2 li {
   display: flex;
-  align-items: center; /* Aligns icons with text */
-  gap: 8px; /* Adjusts spacing between icon and text */
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
 }
 
-/* Responsive Design */
+.contact1 a,
+.contact2 a {
+  color: #eaeaea;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.contact1 a:hover,
+.contact2 a:hover {
+  color: #ffd700;
+  transform: translateX(4px);
+}
+
+.footerBottom {
+  background: rgba(0, 0, 0, 0.3);
+  color: #cfcfcf;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footerBottom p {
+  margin: 0.3rem 0;
+}
+
+.tagline {
+  font-style: italic;
+  color: #ffd700;
+}
+
 @media (max-width: 768px) {
   .footerContainer {
     grid-template-columns: 1fr;

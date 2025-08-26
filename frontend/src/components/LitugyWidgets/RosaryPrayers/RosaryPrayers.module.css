@@ -1,0 +1,135 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  height: max-content;
+  width: 500px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.imageWrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(30, 41, 59, 0.75);
+  color: #fff;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.cardDays {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  color: white;
+}
+
+.list {
+  padding: 1rem;
+}
+
+.mystery {
+  margin-bottom: 0.8rem;
+}
+
+.mysteryTitle {
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.detail {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.tracker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+  background: #f8fafc;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.navBtn {
+  background: #2dabb1;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.3s ease;
+}
+
+.navBtn:hover {
+  background: #238b90;
+}
+
+.current {
+  flex: 1;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: bolder;
+}
+
+.activeMystery {
+  background: #e0f7f8;
+  border-left: 4px solid #2dabb1;
+  border-radius: 6px;
+  padding: 0.5rem;
+}

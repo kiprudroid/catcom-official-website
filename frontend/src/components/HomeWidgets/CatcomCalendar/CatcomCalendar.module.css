@@ -1,0 +1,116 @@
+.calendarWrapper {
+  background: linear-gradient(135deg, #003366, #006699);
+  color: #fff;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #ffd700;
+  margin-bottom: 2.5rem;
+}
+
+.title span {
+  color: #e0e0e0;
+  font-weight: 400;
+}
+
+.subSection {
+  margin-bottom: 3rem;
+}
+
+.subTitle {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+/* Event Grid */
+.eventGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.eventCard {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  position: relative;
+  transition: transform 0.3s ease, background 0.3s ease;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.eventCard:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dateBadge {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  background: #ffd700;
+  color: #003366;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.6rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.eventDetails {
+  margin-top: 1rem;
+}
+
+.eventTitle {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.icon {
+  color: #ffd700;
+  font-size: 1rem;
+}
+
+.contacts {
+  margin-top: 2.5rem;
+  padding: 1.2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.contacts strong {
+  color: #ffd700;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.6rem;
+  }
+  .subTitle {
+    font-size: 1.3rem;
+  }
+}
