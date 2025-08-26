@@ -1,12 +1,6 @@
-.navbar {
-  width: 100%;
-  position: relative;
-}
-
 .nav {
   background-color: #cccccc;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-
   width: 100%;
   padding: 1rem;
   position: relative;
@@ -16,88 +10,61 @@
 }
 
 .navList {
-  display: grid;
-  /* grid-template-columns: 1fr auto 1fr; */
+  display: flex;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  justify-content: space-between;
 }
-
-/* .navLeft {
-  grid-column: 1;
-  justify-self: start;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-  margin: 0;
- 
-} */
 
 .navUnifiedList {
-  justify-self: start;
   display: flex;
   align-items: center;
+  gap: 2rem;
   padding-left: 0;
-  margin-right: 0;
-  width: auto;
-  justify-content: space-between;
-  gap: 0;
+  margin: 0;
+  list-style: none;
   width: 100%;
-  justify-content: space-between;
 }
-.inactiveLink {
-  text-decoration: none;
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.catcomLogo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.title {
   font-weight: bold;
+  font-size: 1.3rem;
   color: black;
 }
 
-/* When link is active (clicked and current page) */
+.inactiveLink {
+  text-decoration: none;
+  font-weight: 500;
+  color: black;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
 .activeLink {
   color: #2dabb1;
   font-weight: bold;
   text-decoration: none;
+  border-bottom: 2px solid #2dabb1;
+  padding-bottom: 3px;
 }
 
-/* .navLeftList {
-  width: 100%;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-} */
-/* .navRightList {
-  display: flex;
-  gap: 5rem;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  width: 100%; 
-  justify-content: flex-start;  
-} */
-
-.catcomLogo {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  justify-self: center;
-  grid-column: 2;
-}
-
-.link {
-  color: #000;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-a:hover {
+.inactiveLink:hover {
   color: #2dabb1;
-}
-a:active {
-  color: #2dabb1;
+  border-bottom: 2px solid #2dabb1;
 }
 
 .burger {
@@ -107,70 +74,87 @@ a:active {
   padding-right: 10px;
 }
 
+/* Mobile Menu */
 .mobileMenu {
-  display: none;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  z-index: 999;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.mobileMenu.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mobileNavList li {
+  text-align: center;
+}
+
+.mobileNavList a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.mobileNavList a:hover {
+  color: #2dabb1;
+}
+
+.icon {
+  margin-right: 6px;
+  font-size: 1rem;
+  vertical-align: middle;
+  transition: color 0.3s ease;
+}
+
+.activeLink .icon {
+  color: #2dabb1;
+}
+
+.inactiveLink .icon {
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.inactiveLink:hover,
+.inactiveLink:hover .icon {
+  color: #2dabb1;
 }
 
 @media screen and (max-width: 850px) {
-  .navLeftList,
-  .navRightList {
-    display: none;
-  }
-  .navRight {
-    justify-self: end; /* Ensure right alignment in mobile */
-    padding: 0; /* Remove any padding */
-    width: auto; /* Ensure width is based on content */
-  }
   .burger {
     display: block;
-    font-size: 1.5rem;
-    cursor: pointer;
     margin-right: 1rem;
   }
-
-  .mobileMenu {
-    position: fixed;
-    top: 100px;
-    left: 0;
-    right: 0;
-    background-color: #cccccc;
-    padding: 1rem;
-    z-index: 999;
-  }
-
-  .mobileMenu.show {
-    display: block;
-  }
-
-  .mobileMenu.hide {
+  .navUnifiedList {
     display: none;
   }
-
-  .mobileNavList {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0;
-  }
-
-  .mobileNavList li {
-    text-align: center;
-  }
-
-  .mobileNavList a {
-    color: #000;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-
   .catcomLogo {
-    width: 80px;
-    height: 80px;
-  }
-
-  .navList {
-    padding: 0.5rem;
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -178,12 +162,10 @@ a:active {
   .nav {
     padding: 0.5rem;
   }
-
   .catcomLogo {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
   }
-
   .mobileMenu {
     top: 80px;
   }

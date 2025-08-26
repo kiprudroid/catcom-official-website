@@ -3,22 +3,24 @@ import "@fontsource/inter";
 import "@fontsource/nunito-sans";
 import styles from "./Typography.module.css";
 
-const Text = ({ children, className }) => {
+export const Text = ({ children, className }) => {
   return (
     <div>
       <h1 style={{ fontFamily: "Inter, sans-serif" }}>{children}</h1>
     </div>
   );
 };
-const SmallText = ({ children, className }) => {
+
+export const SmallText = ({ children, className }) => {
   return (
     <div>
       <h1
         className={className}
         style={{
           fontFamily: "Nunito Sans",
-          fontSize: "1.5rem",
+          fontSize: "0.95rem",
           fontWeight: "unset",
+          margin: 0,
         }}
       >
         {children}
@@ -26,7 +28,24 @@ const SmallText = ({ children, className }) => {
     </div>
   );
 };
-const Paragraph = ({ children }) => {
+
+// export const SmallText = ({ children, className, as: Component = "p" }) => {
+//   return (
+//     <Component
+//       className={className}
+//       style={{
+//         fontFamily: "Nunito Sans",
+//         fontSize: "0.95rem",
+//         fontWeight: "unset",
+//         margin: 0, // prevent unwanted spacing
+//       }}
+//     >
+//       {children}
+//     </Component>
+//   );
+// };
+
+export const Paragraph = ({ children }) => {
   return (
     <p
       className={styles.textContent}
@@ -37,8 +56,8 @@ const Paragraph = ({ children }) => {
   );
 };
 
-const Heading = ({ children, as = "h2", className }) => {
-  const Tag = as; // Dynamically use the passed tag, default to h2
+export const Heading = ({ children, as = "h2", className }) => {
+  const Tag = as;
   return (
     <Tag
       className={className}
@@ -53,7 +72,7 @@ const Heading = ({ children, as = "h2", className }) => {
   );
 };
 
-const FooterHeading = ({ children, className }) => {
+export const FooterHeading = ({ children, className }) => {
   return (
     <h3
       className={`${styles.footerTitle} ${className || ""}`}
@@ -64,4 +83,17 @@ const FooterHeading = ({ children, className }) => {
   );
 };
 
-export { Text, Paragraph, Heading, FooterHeading, SmallText };
+export const SectionHeading = ({ children, as = "h3", className }) => {
+  const Tag = as;
+  return (
+    <Tag
+      className={className}
+      style={{
+        fontFamily: "Inter, sans-serif",
+        color: "#2dabb1ff",
+      }}
+    >
+      {children}
+    </Tag>
+  );
+};

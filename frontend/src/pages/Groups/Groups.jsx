@@ -51,6 +51,7 @@ export default function Groups() {
             </div>
             <div>
               {/* <h2>Groups in St Augustine</h2> */}
+
               <p
                 className={styles.textContent}
                 style={{ fontFamily: "Inter, sans-serif" }}
@@ -85,6 +86,7 @@ export default function Groups() {
               personal and spiritual growth.
             </p>
           </div>
+          
           <div className={styles.contentWrapper}>
             <h3
               className={styles.contentTitle}

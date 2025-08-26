@@ -1,0 +1,91 @@
+.massServices {
+  background: linear-gradient(135deg, #f0f4ff, #e6ecf7);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.massServices h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  color: #003366;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #006699;
+  border-left: 4px solid #ffd700;
+  padding-left: 0.6rem;
+}
+
+.serviceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  border-radius: 0.75rem;
+  background-color: #f9fbff;
+  transition: background 0.3s ease;
+}
+
+.serviceItem:hover {
+  background-color: #e0e8ff;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.venue {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #374151;
+}
+
+/* Icon Colors */
+.iconClock {
+  color: #ffd700; /* gold for FaClock */
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.iconMap {
+  color: #2dabb1; /* teal for FaMapMarkerAlt */
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
