@@ -10,6 +10,10 @@ import {
   FaChurch,
   FaPlusCircle,
 } from "react-icons/fa";
+import {
+  SectionHeading,
+  SmallText,
+} from "../../components/Typography/Typography";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +45,9 @@ function Header() {
                 alt="CATCOM Logo"
                 className={styles.catcomLogo}
               />
-              <span className={styles.title}>JKUAT CATCOM</span>
+              <SectionHeading className={styles.title}>
+                JKUAT CATCOM
+              </SectionHeading>
             </div>
 
             <li>
@@ -61,7 +67,8 @@ function Header() {
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                <FaBook className={styles.icon} /> Liturgy
+                <FaBook className={styles.icon} />
+                Liturgy
               </NavLink>
             </li>
             <li>
