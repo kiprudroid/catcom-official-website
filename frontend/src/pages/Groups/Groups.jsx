@@ -9,7 +9,9 @@ function GroupCard({ imgSrc, alt, title, description }) {
 
   const isLong = description.length > maxLength;
   const displayText =
-    expanded || !isLong ? description : description.slice(0, maxLength) + "...";
+    expanded || !isLong
+      ? description
+      : description.slice(0, maxLength) + "...";
 
   return (
     <div className={styles.groupCard}>
@@ -32,15 +34,15 @@ function GroupCard({ imgSrc, alt, title, description }) {
 }
 
 export default function Groups() {
-  const verses = [
+  const groupCard = [
     {
       title: " FRUITS OF THE HOLY SPIRIT (GALATIANS 5:22-23)",
-      text: "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law.",
+      text: "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law."
     },
     {
       title: "GIFTS OF THE HOLY SPIRIT(ACTS 2:38)",
-      text: "Then Peter said unto them, Repent, and be baptized and ye shall receive the gift of the Holy Spirit: Wisdom, Understanding, Counsel, Fortitude, Knowledge, Piety, and Fear of the Lord.",
-    },
+      text: "Then Peter said unto them, Repent, and be baptized and ye shall receive the gift of the Holy Spirit: Wisdom, Understanding, Counsel, Fortitude, Knowledge, Piety, and Fear of the Lord."
+    }
   ];
 
   const [index, setIndex] = useState(0);
@@ -71,56 +73,53 @@ export default function Groups() {
             </div>
             <div>
               {/* <h2>Groups in St Augustine</h2> */}
-
-              <p
-                className={styles.textContent}
-                style={{ fontFamily: "Inter, sans-serif" }}
+              <p 
+              className={styles.textContent} 
+              style={{ fontFamily: "Inter, sans-serif" }}
               >
-                The CATCOM community is built on unity, service, and shared
-                faith. Our various groups bring together students with different
-                gifts, passions, and callings all working together to strengthen
-                our mission and deepen our fellowship. These groups are the
-                lifeblood of our ministry, creating opportunities for active
-                participation, leadership, and growth within the Catholic faith.
-                By joining a group, members find belonging, purpose, and a
-                meaningful way to live out their discipleship at JKUAT.
+                The CATCOM community is built on unity, service, and shared faith.
+                 Our various groups bring together students with different gifts, 
+                 passions, and callings all working together to strengthen our mission and deepen our fellowship. 
+                 These groups are the lifeblood of our ministry, creating opportunities for active participation,
+                  leadership, and growth within the Catholic faith. By joining a group, members find belonging, 
+                  purpose, and a meaningful way to live out their discipleship at JKUAT.
               </p>
             </div>
           </div>
         </div>
 
-        <div className={styles.container}>
+         <div className={styles.container}>
+        
           <div className={styles.cardsOverlap}>
-            <div className={styles.cardBase}>
-              <img
-                src="/Groups/fruits.webp"
-                alt="Fruit of the Spirit"
-                className={styles.cardImage}
-              />
-              <h2 className={styles.title}>GALATIANS 5:22-23</h2>
-            </div>
-
-            <div className={`${styles.cardBase} ${styles.cardOverlapBottom}`}>
-              <img
-                src="/Groups/gifts.jpg"
-                alt="Gift of the Holy Spirit"
-                className={styles.cardImage}
-              />
-              <h2 className={styles.title}>
-                Gift of the Holy Spirit
-                <br />
-                Acts 2:38
-              </h2>
-            </div>
-          </div>
-
-          <div className={styles.carouselContainer}>
-            <div key={index} className={styles.carouselText}>
-              <h2>{verses[index].title}</h2>
-              <p>{verses[index].text}</p>
-            </div>
-          </div>
+         <div className={styles.cardBase}>
+          <img
+            src="/Groups/fruits.webp"
+            alt="Fruit of the Spirit"
+            className={styles.cardImage}
+          />
+          <h2 className={styles.title}>GALATIANS 5:22-23</h2> 
+          
         </div>
+        
+
+  <div className={`${styles.cardBase} ${styles.cardOverlapBottom}`}>
+          <img
+            src="/Groups/gifts.jpg"
+            alt="Gift of the Holy Spirit"
+            className={styles.cardImage}
+          />
+          <h2 className={styles.title}>Gift of the Holy Spirit<br />Acts 2:38</h2>
+          
+        </div>
+      </div>
+
+      <div className={styles.carouselContainer}>
+        <div key={index} className={styles.carouselText}>
+          <h2>{verses[index].title}</h2>
+          <p>{verses[index].text}</p>
+        </div>
+      </div>
+    </div>
 
         <div className={styles.groupsGrid}>
           <GroupCard
@@ -242,29 +241,11 @@ export default function Groups() {
                     <div>
                       <input
                         type="checkbox"
-                        id="Welfare"
-                        name="groups"
-                        value="Welfare"
-                      />
-                      <label htmlFor="Welfare">Welfare</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
                         id="BPS"
                         name="groups"
                         value="Bible Prayer Service"
                       />
                       <label htmlFor="BPS">Bible Prayer Service</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="Catcomes"
-                        name="groups"
-                        value="catcomes"
-                      />
-                      <label htmlFor="Catcomes">Catcom Enterprise</label>
                     </div>
                     <div>
                       <input
@@ -300,3 +281,5 @@ export default function Groups() {
     </>
   );
 }
+
+
