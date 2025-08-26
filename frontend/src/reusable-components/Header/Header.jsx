@@ -94,16 +94,6 @@ function Header() {
                 <FaChurch className={styles.icon} /> SCC
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/join-scc"
-                className={({ isActive }) =>
-                  isActive ? styles.activeLink : styles.inactiveLink
-                }
-              >
-                <FaPlusCircle className={styles.icon} /> Join SCC
-              </NavLink>
-            </li>
           </ul>
         )}
         {isMobile && (
@@ -145,11 +135,6 @@ function Header() {
             <li>
               <NavLink to="/community" onClick={closeMenu}>
                 <FaChurch className={styles.icon} /> SCC
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/join-scc" onClick={closeMenu}>
-                <FaPlusCircle className={styles.icon} /> Join SCC
               </NavLink>
             </li>
           </ul>
