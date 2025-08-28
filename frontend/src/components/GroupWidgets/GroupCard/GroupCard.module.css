@@ -1,0 +1,63 @@
+.groupsSection {
+  background: #fff;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 20px;       
+}
+
+.groupCard {
+  width: 1000px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 4rem auto;
+  gap: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;  
+}
+
+.groupCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.groupCard img {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.groupCard:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.cardText {
+  flex: 1;
+  max-width: 500px;      
+  margin: 0 auto; 
+}
+.cardTitle {
+  margin-bottom: 1rem;
+}
+
+.cardDesc {
+  color: #333;
+  line-height: 1.5;
+  max-width: 480px;      
+  margin: 0 auto;       
+}
+
+.leftAlign {
+  flex-direction: row;   
+}
+
+.rightAlign {
+  flex-direction: row-reverse; 
+}
