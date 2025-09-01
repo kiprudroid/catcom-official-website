@@ -1,0 +1,217 @@
+.sccExpanded {
+  background-color: white;
+  grid-area: sccExpanded;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+
+}
+.slideShow {
+  width: 100%;
+  height: 500px; /* Fixed height */
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  background-color: #f8f8f8;
+}
+.slideshowImage {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: auto;
+  display: block;
+}
+.imageWrapper {
+  width: 100%;
+  height: 500px; /* Match slideShow height */
+  position: relative;
+  display: flex !important; /* Override slick-slider default */
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+}
+
+.imageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #f8f8f8;
+}
+
+.sliderContainer {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+.sccItem {
+  position: relative;
+  border-radius: 8px;
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+}
+.sccItem:nth-child(2) {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+  background: white;
+}
+.secondColumnItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.secondColumnItem:first-child {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+.groupPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.familyCard {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex: 0 1 auto;
+  min-width: fit-content;
+  text-align: center;
+}
+.familyCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.familyText {
+  font-size: 16px;
+  color: #2dabb1;
+  white-space: nowrap;
+}
+.activitiesList {
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin: 0;
+}
+
+.activitiesList li {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.sectionHeading {
+  color: #2dabb1;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 100%;
+}
+.sccNavigationButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(45, 171, 177, 0.8);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+  z-index: 100;
+}
+
+.sccNavigationButton:hover {
+  background: rgba(45, 171, 177, 1);
+}
+
+.prevButton {
+  left: -50px; /* Move further out */
+}
+
+.nextButton {
+  right: -50px; /* Move further out */
+}
+/* Adjusted styles for second column items and family cards */
+.secondColumnItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.secondColumnItem:first-child {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.familyCard {
+  background: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex: 0 1 auto;
+  min-width: fit-content;
+  text-align: center;
+}
+
+.familyText {
+  font-size: 16px;
+  color: #2dabb1;
+  white-space: nowrap;
+}
+.textContent {
+  color: white;
+  text-align: center;
+  margin: 2rem 0;
+  font-family: sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  padding: 1rem;
+}
+.centeredText{
+  text-align: center;
+}

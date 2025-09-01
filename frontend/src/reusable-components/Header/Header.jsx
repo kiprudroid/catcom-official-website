@@ -93,7 +93,7 @@ function Header() {
             </li>
             <li>
               <NavLink
-                to="/community"
+                to="/scc"
                 className={({ isActive }) =>
                   isActive ? styles.activeLink : styles.inactiveLink
                 }

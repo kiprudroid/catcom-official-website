@@ -1,0 +1,24 @@
+.sccMembersDuties{
+  list-style-type: disc;
+  background-color: #8f5d5d;
+  color: white;
+  display: grid;
+  grid-area: SccMemberDuties;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding: 2rem;  
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto 0 auto;
+}
+
+.membersDutiesList{
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin: 0;
+  font-size: 20px;
+}
+.centeredText {
+  text-align: center;
+}
