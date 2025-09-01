@@ -10,7 +10,7 @@
     "sccDescription"
     "sccPictures sccPictures sccPictures sccPictures"
     "sccExpanded"   
-    "footer";
+    "SccMemberDuties";
 }
 .communityItem {
   display: flex;
@@ -19,9 +19,8 @@
   font-size: 1.5rem;
   height: 100px;
 }
-.header {
-  grid-area: header;
-  height: auto;
+.centeredText{
+  text-align: center;
 }
 
 .whatIsScc {
@@ -195,6 +194,21 @@
   margin-bottom: 1rem;
   text-align: center;
   width: 100%;
+}
+
+.sccMembersDuties{
+  list-style-type: disc;
+  background-color: #8f5d5d;
+  color: white;
+  display: grid;
+  grid-area: SccMemberDuties;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding: 2rem;  
+  width: 100%;
+  max-width: 1400px;
+  margin: 10px auto 0 auto;
 }
 
 @media screen and (max-width: 1200px) {

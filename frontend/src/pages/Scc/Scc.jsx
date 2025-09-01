@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Community.module.css";
+import styles from "./Scc.module.css";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
 import SccCard from "../../components/SccCard/SccCard";
@@ -7,9 +7,10 @@ import { SCCs } from "../../DataFiles/data";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { SectionHeading } from "../../components/Typography/Typography";
+import { SectionHeading ,Paragraph } from "../../components/Typography/Typography";
+import SccLayout from "../../layouts/homepage-layout/HomepageLayout";
 
-function Community() {
+function Scc() {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
 
   React.useEffect(() => {
@@ -28,7 +29,7 @@ function Community() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    adaptiveHeight: false, // Changed to false
+    adaptiveHeight: false,
     fade: true,
     cssEase: "linear",
     centerMode: true,
@@ -58,14 +59,10 @@ function Community() {
   };
 
   return (
-    <>
+    <SccLayout>
       <div className={styles.gridContainer}>
-        <div className={`${styles.item} ${styles.header}`}>
-          <Header />
-        </div>
-
         <div className={`${styles.item} ${styles.whatIsScc}`}>
-          <SectionHeading>What is an SCC?:</SectionHeading>
+          <SectionHeading className={styles.centeredText}>What is an SCC?:</SectionHeading>
           <p
             className={styles.textContent}
             style={{ fontFamily: "Inter, sans-serif" }}
@@ -78,7 +75,7 @@ function Community() {
         </div>
 
         <div className={`${styles.item} ${styles.sccPictures}`}>
-          <SectionHeading>Our SCCs</SectionHeading>
+          <SectionHeading className={styles.centeredText}>Our SCCs</SectionHeading>
           <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
             {SCCs.map((_, index) => (
               <SccCard
@@ -91,7 +88,7 @@ function Community() {
           </div>
         </div>
 
-        <SectionHeading>SCC OVERVIEW : {selectedScc.name}</SectionHeading>
+        <SectionHeading className={styles.centeredText}>SCC OVERVIEW : {selectedScc.name}</SectionHeading>
         <div className={`${styles.item} ${styles.sccExpanded} contentWrapper`}>
           <button
             className={`${styles.sccNavigationButton} ${styles.prevButton}`}
@@ -129,7 +126,7 @@ function Community() {
                 ))}
             </div>
             <div className={styles.secondColumnItem}>
-              <SectionHeading>Activities</SectionHeading>
+              <SectionHeading className={styles.centeredText}>Activities</SectionHeading>
               <ul className={styles.activitiesList}>
                 {selectedScc.activities &&
                   selectedScc.activities.map((activity, index) => (
@@ -147,12 +144,25 @@ function Community() {
           </button>
         </div>
 
-        <div className={`${styles.item} ${styles.footer}`}>
-          <Footer />
+        
+        <div className={`${styles.item} ${styles.sccMembersDuties}`}>
+          <SectionHeading className={styles.centeredText}>What SCC Members Should Do</SectionHeading>
+          <Paragraph>
+          <ul className={styles.membersDutiesList}>
+            <li>Attend Rosary prayers at the SCC meetings every Sunday</li>
+            <li>Participate actively in SCC meetings and activities</li>
+            <li>Support and encourage fellow members</li>
+            <li>Engage in community outreach and service</li>
+            <li>Promote unity and cooperation within the SCC</li>
+            <li>Take responsibility for assigned roles and tasks</li>
+            <li>Pray together and for one another</li>
+            <li>Contribute ideas for SCC growth and improvement</li>
+          </ul>
+          </Paragraph>
         </div>
       </div>
-    </>
+    </SccLayout>
   );
 }
 
-export default Community;
+export default Scc;

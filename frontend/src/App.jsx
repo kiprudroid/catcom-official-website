@@ -2,11 +2,11 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Liturgy from "./pages/Liturgy/Liturgy";
-import Community from "./pages/Community/Community";
 import About from "./pages/About/About";
 import { SCCs } from "./DataFiles/data";
 import SccInfo from "./pages/SccInfo/SccInfo";
 import Groups from "./pages/Groups/Groups";
+import Scc from "./pages/Scc/Scc";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/liturgy" element={<Liturgy />} />
-        <Route path="/community" element={<Community />} />
+        <Route path="/scc" element={<Scc />} />
         <Route path="/about" element={<About />} />
         <Route path="/groups" element={<Groups />} />
         {SCCs.map((scc) => (
