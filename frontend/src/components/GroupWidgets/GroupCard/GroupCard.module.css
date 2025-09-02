@@ -10,13 +10,8 @@
 }
 
 .groupCard img {
-<<<<<<< HEAD
-  width: 450px;
-  height: 400px;
-=======
   width: 400px;
   height: 300px;
->>>>>>> 83cda32a53b5ff12ebfdb8f21a3541dfbc0600c6
   object-fit: cover;
   border-radius: 10px;
 }
