@@ -1,0 +1,19 @@
+.whatIsScc {
+  background-color: #8f5d5d;
+  padding: 2rem;  
+  width: 100%;
+  max-width: 1400px;
+  margin: 10px auto 0 auto;
+}
+.textContent {
+  color: white;
+  text-align: center;
+  margin: 2rem 0;
+  font-family: sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  padding: 1rem;
+}
+.centeredText{
+  text-align: center;
+}

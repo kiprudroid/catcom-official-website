@@ -14,20 +14,24 @@
   gap: 2rem;                  
 }
 
-.groupsSection {
-  background: #fff;
-  padding: 2rem 0;
-  width: 70vw;           
-  margin: 0 auto;
-  border-radius: 20px;       
+.infoHeader {
+  display: block;
+  gap: 1rem;
+  text-align: center;
+  margin-left: 2rem;
 }
 
-  .joinForm {
-  margin: 2rem auto;
-  max-width: 1200px;
-  max-height: 1600px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 2rem;
+.infoRow {
+  display: flex;
+  flex-direction: row;      
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.textContent {
+  text-align: center;
+  color: #333;
+  line-height: 1.6;
 }

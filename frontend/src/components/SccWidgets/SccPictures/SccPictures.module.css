@@ -1,0 +1,25 @@
+.sccPictures {
+  grid-area: sccPictures;
+  height: auto;
+  grid-column: span 4;
+}
+.centeredText{
+  text-align: center;
+}
+.sccCardsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  flex-wrap: wrap; /* Enable wrapping */
+  gap: 2rem; /* Add consistent spacing between cards */
+  justify-content: center; /* Center the cards */
+  align-items: stretch; /* Make all cards same height in a row */
+  padding: 2rem;
+}
+.sccCardsWrapper > * {
+  flex: 0 1 calc(25% - 2rem); /* 4 cards per row with gap consideration */
+  min-width: 250px; /* Minimum width before wrapping */
+  margin-bottom: 2rem; /* Add bottom margin for wrapped rows */
+}
