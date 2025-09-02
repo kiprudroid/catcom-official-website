@@ -6,11 +6,8 @@ import About from "./pages/About/About";
 import { SCCs } from "./DataFiles/data";
 import SccInfo from "./pages/SccInfo/SccInfo";
 import Groups from "./pages/Groups/Groups";
-<<<<<<< HEAD
 import PersistentPlayer from "./components/PersistentPlayer/PersistentPlayer";
-=======
 import Scc from "./pages/Scc/Scc";
->>>>>>> fcf430de1c8025c2a6af483570138e4ea2f4b474
 
 function App() {
   return (
