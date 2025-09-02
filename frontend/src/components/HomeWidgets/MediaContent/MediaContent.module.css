@@ -1,5 +1,5 @@
 .card {
-  background: #fff;
+  background: #dce7ea;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
@@ -33,7 +33,6 @@
   transform: scale(1.05);
 }
 
-/* Video styling */
 .videoWrapper {
   position: relative;
   width: 320px;

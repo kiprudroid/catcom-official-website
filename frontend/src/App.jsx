@@ -7,10 +7,12 @@ import About from "./pages/About/About";
 import { SCCs } from "./DataFiles/data";
 import SccInfo from "./pages/SccInfo/SccInfo";
 import Groups from "./pages/Groups/Groups";
+import PersistentPlayer from "./components/PersistentPlayer/PersistentPlayer";
 
 function App() {
   return (
     <>
+      {/* <PersistentPlayer /> */}
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/liturgy" element={<Liturgy />} />

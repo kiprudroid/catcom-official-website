@@ -1,9 +1,11 @@
 .container {
-  padding: 1.5rem;
-  max-width: 850px;
   margin: auto;
   font-family: Georgia, serif;
   line-height: 1.6;
+  background: #dce7ea;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .title {
@@ -11,6 +13,7 @@
   font-size: 2rem;
   font-weight: bold;
   color: #2c3e50;
+  text-align: center;
 }
 
 .prayerBlock {
@@ -19,12 +22,6 @@
   margin: 1rem 0;
   border-left: 4px solid #2dabb1ff;
   border-radius: 6px;
-}
-
-.prayerBlock h3 {
-  margin-top: 0;
-  font-size: 1.25rem;
-  color: #444;
 }
 
 .progressWrapper {
@@ -61,13 +58,13 @@
   text-align: center;
 }
 
-.stationLabel {
+.stationTitle {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #2d3436;
 }
 
-.stationText {
+.subtitle {
   margin: 0.6rem 0;
   font-style: italic;
   font-size: 1.1rem;
@@ -87,10 +84,27 @@
   color: #333;
 }
 
-.response {
-  margin-top: 0.4rem;
-  color: #2d6a4f;
+.prayer {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background: #f9f9f9;
+  border-left: 3px solid #2dabb1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.hymn {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  text-align: center;
   font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+  background: #dce7ea;
+
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .navButtons {
@@ -117,4 +131,29 @@
 .navButtons button:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+.concludingPrayers {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background: #f0f8f8;
+  border-left: 3px solid #2dabb1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.invocation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.crossIcon {
+  font-size: 1.5rem;
+  color: #2dabb1;
 }
