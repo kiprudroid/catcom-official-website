@@ -9,20 +9,8 @@
   color: #222;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-  align-items: center;        
-  gap: 2rem;                  
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  cursor: pointer;  
-}
-
-.infoCard:hover {
-  transform: scale(1.03) translateY(-8px); 
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-=======
   align-items: center;
   gap: 2rem;
->>>>>>> 83cda32a53b5ff12ebfdb8f21a3541dfbc0600c6
 }
 
 .infoHeader {
