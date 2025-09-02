@@ -1,20 +1,26 @@
 .container {
-  padding: 1rem;
   background: #dce7ea;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.prayerSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
 }
 
 .title {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #1e40af;
-  /* text-align: center; */
   margin-bottom: 1rem;
 }
 
 .card {
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   background: white;
@@ -44,7 +50,7 @@
 
 .content {
   margin-top: 0.5rem;
-  max-height: 1.2rem; /* show only one line */
+  max-height: 1.2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -52,6 +58,6 @@
 }
 
 .show {
-  max-height: 500px; /* expand fully */
+  max-height: 500px;
   white-space: normal;
 }

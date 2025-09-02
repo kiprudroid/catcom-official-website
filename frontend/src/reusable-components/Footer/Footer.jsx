@@ -41,7 +41,7 @@ function Footer({ className }) {
           <ul>
             <li>
               <FaHome />
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/home">Home</NavLink>
             </li>
             <li>
               <FaBookOpen />
@@ -49,7 +49,7 @@ function Footer({ className }) {
             </li>
             <li>
               <FaInfoCircle />
-              <NavLink to="/about-us">About Us</NavLink>
+              <NavLink to="/about">About Us</NavLink>
             </li>
             <li>
               <FaUsers />

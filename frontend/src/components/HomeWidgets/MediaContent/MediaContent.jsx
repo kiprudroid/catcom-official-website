@@ -46,3 +46,24 @@ const MediaContent = () => {
 };
 
 export default MediaContent;
+
+// import React from "react";
+// import styles from "./MediaContent.module.css";
+// import { SectionHeading } from "../../Typography/Typography";
+// import PersistentPlayer from "../../PersistentPlayer/PersistentPlayer";
+
+// const MediaContent = () => {
+//   return (
+//     <div className={styles.card}>
+//       <SectionHeading as="h3" className={styles.cardTitle}>
+//         Media Content
+//       </SectionHeading>
+
+//       <div className={styles.mediaWrapper}>
+//         <PersistentPlayer />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default MediaContent;

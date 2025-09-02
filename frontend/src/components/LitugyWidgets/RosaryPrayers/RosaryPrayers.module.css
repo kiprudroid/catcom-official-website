@@ -1,31 +1,52 @@
 .container {
   padding: 2rem;
-  max-width: 1200px;
   margin: 0 auto;
+  background: #f1f5f9;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .title {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #1e293b;
 }
 
+.crossIcon {
+  display: block;
+  margin: 0 auto 1rem auto;
+  font-size: 2.2rem;
+  color: #2dabb1;
+}
+
+.opening {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.prayerBlock {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
+
 .card {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
-  height: max-content;
-  width: 500px;
 }
 
 .card:hover {
@@ -41,7 +62,6 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  display: block;
 }
 
 .overlay {
@@ -60,17 +80,16 @@
 .cardTitle {
   font-size: 1.1rem;
   font-weight: bold;
-  margin: 0;
 }
 
 .cardDays {
   font-size: 0.85rem;
   opacity: 0.9;
-  color: white;
 }
 
 .list {
   padding: 1rem;
+  list-style: none;
 }
 
 .mystery {
@@ -124,7 +143,7 @@
   text-align: center;
   font-size: 0.95rem;
   color: #334155;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .activeMystery {
@@ -132,4 +151,51 @@
   border-left: 4px solid #2dabb1;
   border-radius: 6px;
   padding: 0.5rem;
+}
+
+.section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.litany,
+.additional {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggleText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.toggleButton:hover .toggleText {
+  color: #900;
+}
+
+.gridList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem 1.5rem;
+}
+
+.litany,
+.additional {
+  margin: 0;
+  line-height: 1.5;
 }

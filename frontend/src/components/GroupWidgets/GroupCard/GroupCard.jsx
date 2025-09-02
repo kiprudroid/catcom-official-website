@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./GroupCard.module.css";
 import { SectionHeading, Paragraph } from "../../Typography/Typography";
 
+<<<<<<< HEAD
 const groupCard = [
     {
       imgSrc: "/Groups/choir.jpg",
@@ -60,22 +61,20 @@ const groupCard = [
   ];
 
 export default function GroupCard() {
+=======
+const GroupCard = ({ data }) => {
+>>>>>>> 83cda32a53b5ff12ebfdb8f21a3541dfbc0600c6
   return (
-    <div className={styles.groupsSection}>
-  {groupCard.map((group, idx) => (
-    <div 
-      key={idx} 
-      className={`${styles.groupCard} ${idx % 2 === 0 ? styles.leftAlign : styles.rightAlign}`}
- >
-      <img src={group.imgSrc} alt={group.alt} className={styles.cardImage} />
+    <div className={styles.groupCard}>
+      <img src={data.imgSrc} alt={data.alt} className={styles.cardImage} />
       <div className={styles.cardText}>
-        <SectionHeading className={styles.cardTitle}>{group.title}</SectionHeading>
-        <Paragraph className={styles.cardDesc}>{group.description}</Paragraph>
+        <SectionHeading className={styles.cardTitle}>
+          {data.title}
+        </SectionHeading>
+        <Paragraph className={styles.cardDesc}>{data.description}</Paragraph>
       </div>
-     </div>
-     ))}
-  </div>
+    </div>
   );
-}
+};
 
-
+export default GroupCard;
