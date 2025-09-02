@@ -11,7 +11,6 @@ import InfoCard from "../../components/GroupWidgets/InfoCard/InfoCard";
   
   return (
     <GroupLayout>
-    <>
         <div className={styles.infoCard}>
           <InfoCard />          
         </div>
@@ -21,7 +20,6 @@ import InfoCard from "../../components/GroupWidgets/InfoCard/InfoCard";
         <div className={styles.joinForm}>
            <JoinForm />
          </div>
-    </>
     </GroupLayout>
   );
 }

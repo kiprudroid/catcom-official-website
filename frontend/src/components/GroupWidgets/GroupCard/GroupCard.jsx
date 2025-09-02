@@ -7,13 +7,13 @@ const groupCard = [
       imgSrc: "/Groups/choir.jpg",
       alt: "Choir",
       title: "Choir",
-      description: "There is the Community Choir that animates the 11:30am Mass on Sundays and takes major role during community celebrations, then there is the Students' Choir that animates the 9:00am Mass on Sundays. They always have outdoors video shootings and also have a vibrant online presence. They do meet on Tuesdays and Saturday evenings for rehearsals and events."
+      description: "There is the Community Choir that animates the 11:30am Mass on Sundays and takes major role during community celebrations, then there is the Students' Choir that animates the 9:00am Mass on Sundays. They always have outdoors video shootings and also have a vibrant online presence. They are open to all members who have a passion for singing and worship through music."
     },
     {
       imgSrc: "/Groups/pastoral.jpg",
       alt: "Pastoral Team",
       title: "Pastoral Team",
-      description: "The pastoral team provides spiritual guidance, coordinates retreats and mass animations processes, formations, and supports the faith journey of members through teaching about the Catholic faith and prayer."
+      description: "The pastoral team provides spiritual guidance, coordinates retreats and mass animations processes, formations, and supports the faith journey of members through teaching about the Catholic faith and prayer. They also organize various spiritual activities and events to foster community and deepen members' relationship with God."
     },
     {
       imgSrc: "/Groups/welfare.jpg",
@@ -25,7 +25,7 @@ const groupCard = [
       imgSrc: "/Groups/CL.jpg",
       alt: "Communion and Liberation",
       title: "Communion and Liberation",
-      description: "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis."
+      description: "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis. They do meet to discuss faith, share experiences, and support one another in their spiritual journeys."
     },
     {
       imgSrc: "/Groups/catcomes.jpg",
@@ -50,6 +50,12 @@ const groupCard = [
       alt: "Technical Team",
       title: "Technical Team",
       description: "The Technical group handles sound, projection, and media support during services and events, ensuring smooth and impactful communication during worship and gatherings. They also engage in technical trainings such as trainings on websites development, they are responsible for maintaining the church's online presence."
+    },
+    {
+      imgSrc: "/Groups/pastoral.jpg",
+      alt: "Tournament FC",
+      title: "Tournament FC",
+      description: "The Tournament FC is a vibrant community of football enthusiasts who come together to share their passion for the game. They organize regular matches, training sessions, and social events, fostering a spirit of teamwork and sportsmanship among members."
     }
   ];
 

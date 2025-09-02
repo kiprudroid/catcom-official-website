@@ -21,6 +21,10 @@ import { SectionHeading, Paragraph } from "../../Typography/Typography";
                   <input type="text" id="phone" name="phone" />
                   <label htmlFor="email"><Paragraph>Your E-mail</Paragraph></label>
                   <input type="email" id="email" name="email" />
+                  <label htmlFor="college"><Paragraph>College</Paragraph></label>
+                  <input type="text" id="college" name="college" />
+                  <label htmlFor="gender"><Paragraph>Gender</Paragraph></label>
+                  <input type="text" id="gender" name="gender" />
                 </div>
                 <div className={styles.formCol}>
                   <label className={styles.groupLabel}>
@@ -59,11 +63,11 @@ import { SectionHeading, Paragraph } from "../../Typography/Typography";
                     <div>
                       <input
                         type="checkbox"
-                        id="Catcomes"
+                        id="technical"
                         name="groups"
-                        value="catcomes"
+                        value="technical"
                       />
-                      <label htmlFor="Catcomes"><Paragraph>Catcom Enterprise</Paragraph></label>
+                      <label htmlFor="technical"><Paragraph>Technical Team</Paragraph></label>
                     </div>
                     <div>
                       <input
