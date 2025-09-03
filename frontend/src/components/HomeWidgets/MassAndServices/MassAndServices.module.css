@@ -1,8 +1,6 @@
 .massServices {
-  background: #dce7ea;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .massServices h2 {
@@ -29,11 +27,6 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
@@ -66,6 +59,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   color: #1f2937;
+  cursor: pointer;
 }
 
 .venue {
@@ -75,17 +69,17 @@
   font-size: 0.88rem;
   font-style: italic;
   color: #374151;
+  cursor: pointer;
 }
 
-/* Icon Colors */
 .iconClock {
-  color: #ffd700; /* gold for FaClock */
+  color: #ffd700;
   font-size: 1.1rem;
   flex-shrink: 0;
 }
 
 .iconMap {
-  color: #2dabb1; /* teal for FaMapMarkerAlt */
+  color: #2dabb1;
   font-size: 1.1rem;
   flex-shrink: 0;
 }
