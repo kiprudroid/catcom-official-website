@@ -1,6 +1,5 @@
 .readingBox {
   background: #dce7ea;
-
   text-align: center;
   padding: 2rem;
   border-radius: 0.75rem;
@@ -18,12 +17,11 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  background: #fff;
   transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-0.2px);
 }
 
 .imageWrapper {

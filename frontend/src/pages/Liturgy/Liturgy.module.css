@@ -26,7 +26,6 @@
 }
 
 .placeholder {
-  background: #f5f5f5;
   border-radius: 0.5rem;
   padding: 1rem;
   min-height: 200px;
@@ -38,7 +37,6 @@
 }
 
 .readingWeek {
-  background: #f5f5f5;
   border-radius: 0.5rem;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
