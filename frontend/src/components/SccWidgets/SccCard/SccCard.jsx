@@ -19,7 +19,9 @@ function SccCard({ SccName = "Scc Name", path , image }) {
         backgroundPosition: "center",
       }}
     >
+      <div className={styles.overlay}>
       <h1 className={styles.title}>{SccName}</h1>
+      </div>
 
       <button className={styles.button} onClick={handleClick}>
         See More

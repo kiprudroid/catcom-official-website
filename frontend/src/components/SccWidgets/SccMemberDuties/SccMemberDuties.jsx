@@ -6,7 +6,7 @@ const SccMemberDuties = () => {
     return (
          <div className={`${styles.item} ${styles.sccMembersDuties}`}>
           <SectionHeading className={styles.centeredText}>What SCC Members Should Do</SectionHeading>
-          <Paragraph>
+          <Paragraph >
           <ul className={styles.membersDutiesList}>
             <li>Attend Rosary prayers at the SCC meetings every Sunday</li>
             <li>Participate actively in SCC meetings and activities</li>
