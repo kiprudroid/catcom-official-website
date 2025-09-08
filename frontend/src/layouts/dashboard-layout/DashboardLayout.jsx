@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "../../reusable-components/Header/Header";
 import Footer from "../../reusable-components/Footer/Footer";
-import styles from "./HomepageLayout.module.css";
+import styles from "./DashboardLayout.module.css";
 
-const HomepageLayout = ({ children }) => {
+const DashboardLayout = ({ children }) => {
   return (
     <div className={styles.layout}>
       <Header />
@@ -13,4 +13,4 @@ const HomepageLayout = ({ children }) => {
   );
 };
 
-export default HomepageLayout;
+export default DashboardLayout;

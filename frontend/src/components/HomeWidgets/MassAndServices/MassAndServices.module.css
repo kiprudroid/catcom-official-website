@@ -83,3 +83,70 @@
   font-size: 1.1rem;
   flex-shrink: 0;
 }
+
+/* === Mobile (Phones) === */
+@media screen and (max-width: 600px) {
+  .massServices {
+    padding: 1rem;
+  }
+
+  .massServices h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .activity {
+    font-size: 0.9rem;
+  }
+
+  .venue {
+    font-size: 0.82rem;
+  }
+}
+
+/* === Tablets & Small Laptops === */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .massServices {
+    padding: 1.5rem;
+  }
+
+  .massServices h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  .card h3 {
+    font-size: 1.05rem;
+  }
+}
+
+/* === Desktops & Large Screens === */
+@media screen and (min-width: 1025px) {
+  .massServices {
+    padding: 2rem;
+  }
+
+  .massServices h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+}

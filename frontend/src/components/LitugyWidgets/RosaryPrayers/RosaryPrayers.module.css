@@ -199,3 +199,31 @@
   margin: 0;
   line-height: 1.5;
 }
+
+.gridList {
+  column-count: 3;
+  column-gap: 2rem;
+  padding: 1rem 0;
+}
+
+.litany,
+.additional {
+  break-inside: avoid;
+  display: block;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+@media (max-width: 1024px) {
+  .gridList {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .gridList {
+    column-count: 1;
+  }
+}

@@ -112,3 +112,47 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* === Mobile (Phones) === */
+@media screen and (max-width: 600px) {
+  .homeContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .calendar,
+  .imageSection {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+
+  .textContent {
+    font-size: 0.9rem;
+  }
+
+  .mediaImage {
+    height: 150px;
+  }
+}
+
+/* === Tablets & Small Laptops === */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .homeContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .calendar,
+  .imageSection {
+    grid-column: span 2;
+  }
+
+  .cardTitle {
+    font-size: 1.6rem;
+  }
+}
