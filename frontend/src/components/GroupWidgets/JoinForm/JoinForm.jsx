@@ -22,18 +22,33 @@ import { SectionHeading, Paragraph } from "../../Typography/Typography";
                   <label htmlFor="email"><Paragraph>Your E-mail</Paragraph></label>
                   <input type="email" id="email" name="email" />
                   <label htmlFor="gender"><Paragraph>Gender</Paragraph></label>
-                  <input type="text" id="gender" name="gender" />
-                  <label htmlFor="college"><Paragraph>College</Paragraph></label>
-                  <select id="college" name="college">
-                       <option value=""><Paragraph>Select College</Paragraph></option>
-                       <option value=""><Paragraph>COHES</Paragraph></option>
-                       <option value="Male"><Paragraph>COPAS</Paragraph></option>
-                       <option value="Female"><Paragraph>COANRE</Paragraph></option>
-                       <option value=""><Paragraph>COETEC</Paragraph></option>
-                       <option value="Male"><Paragraph>COHRED</Paragraph></option>
-                   </select>
+                  <select id="gender" name="gender">
+                    <option value="Male"><Paragraph>Select Gender</Paragraph></option>
+                    <option value="Male"><Paragraph>Male</Paragraph></option>
+                    <option value="Female"><Paragraph>Female</Paragraph></option>
+                    <option value="Other"><Paragraph>Other</Paragraph></option>
+                  </select>
                 </div>
                 <div className={styles.formCol}>
+                  <label htmlFor="year"><Paragraph>Year of Study</Paragraph></label>
+                  <select id="year" name="year">
+                       <option value=""><Paragraph>Select Year</Paragraph></option>
+                       <option value="1"><Paragraph>1st Year</Paragraph></option>
+                       <option value="2"><Paragraph>2nd Year</Paragraph></option>
+                       <option value="3"><Paragraph>3rd Year</Paragraph></option>
+                       <option value="4"><Paragraph>4th Year</Paragraph></option>
+                       <option value="5"><Paragraph>5th Year</Paragraph></option>
+                      <option value="6"><Paragraph>6th Year</Paragraph></option>      
+                   </select>
+                  <label htmlFor="college"><Paragraph>College</Paragraph></label>
+                  <select id="college" name="college">
+                       <option value="text"><Paragraph>Select College</Paragraph></option>
+                       <option value="text"><Paragraph>COHES</Paragraph></option>
+                       <option value="text"><Paragraph>COPAS</Paragraph></option>
+                       <option value="text"><Paragraph>COANRE</Paragraph></option>
+                       <option value="text"><Paragraph>COETEC</Paragraph></option>
+                       <option value="text"><Paragraph>COHRED</Paragraph></option>
+                   </select>
                   <label className={styles.groupLabel}>
                     <SectionHeading>Select Which Group(s) to Join</SectionHeading>
                   </label>
@@ -96,6 +111,9 @@ import { SectionHeading, Paragraph } from "../../Typography/Typography";
                        <Paragraph>Communion and Liberation</Paragraph>
                       </label>
                     </div>
+                    <Paragraph>
+                   After filling this form you will be added to the group within 24 hours.
+                    </Paragraph>
                   </div>
                 </div>
               </div>
