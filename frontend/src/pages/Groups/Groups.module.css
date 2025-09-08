@@ -13,7 +13,9 @@
   align-items: center;
   gap: 1rem;
 }
-
+.groupsTitle {
+  text-align: center;
+}
 .groupsSection {
   padding: 2rem 0;
   margin: 0 auto;

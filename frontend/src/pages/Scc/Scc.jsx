@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Scc.module.css";
-import { SCCs } from "../../DataFiles/data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SectionHeading ,Paragraph } from "../../components/Typography/Typography";

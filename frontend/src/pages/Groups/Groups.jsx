@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Groups.module.css";
+import { SectionHeading } from "../../components/Typography/Typography";
 import GroupLayout from "../../layouts/group-layout/GroupLayout";
 import GroupCard from "../../components/GroupWidgets/GroupCard/GroupCard";
 import JoinForm from "../../components/GroupWidgets/JoinForm/JoinForm";
@@ -13,8 +14,11 @@ function Groups() {
         <div className={`${styles.infoCard}  ${styles.widget}`}>
           <InfoCard />
         </div>
-
+            
         <div className={`${styles.groupsSection} ${styles.widget}`}>
+           <SectionHeading as="h2" className={styles.groupsTitle}>
+            Explore Groups in Catcom
+          </SectionHeading>
           {groupCardsData.map((card, index) => {
             return <GroupCard key={index} data={card} />;
           })}

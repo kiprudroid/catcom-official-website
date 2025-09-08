@@ -1,15 +1,14 @@
 import React from "react";
 import styles from "./SccInfo.module.css";
-import Header from "../../reusable-components/Header/Header";
-import Footer from "../../reusable-components/Footer/Footer";
-import { SCCs } from "../../DataFiles/data";
+import Header from "../../../reusable-components/Header/Header";
+import Footer from "../../../reusable-components/Footer/Footer";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
   SectionHeading,
   Paragraph,
-} from "../../components/Typography/Typography";
+} from "../../../components/Typography/Typography";
 const SccInfo = ({
   name,
   about,

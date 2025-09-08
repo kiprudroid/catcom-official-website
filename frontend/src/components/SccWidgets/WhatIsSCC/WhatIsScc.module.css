@@ -1,19 +1,29 @@
 .whatIsScc {
-  background-color: #8f5d5d;
+  background-color:#dce7ea;
   padding: 2rem;  
   width: 100%;
   max-width: 1400px;
   margin: 10px auto 0 auto;
+  border-radius: 40px;
+
 }
 .textContent {
-  color: white;
+  color: black;
   text-align: center;
-  margin: 2rem 0;
-  font-family: sans-serif;
-  font-size: clamp(1rem, 2vw, 1.5rem);
   line-height: 1.6;
   padding: 1rem;
 }
 .centeredText{
   text-align: center;
+}
+.contentWrapper {
+  border-radius: 40px;
+  background-color: #fff;
+  padding: 3rem 3.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
 }

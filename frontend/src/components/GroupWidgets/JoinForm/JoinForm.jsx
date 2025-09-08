@@ -21,10 +21,17 @@ import { SectionHeading, Paragraph } from "../../Typography/Typography";
                   <input type="text" id="phone" name="phone" />
                   <label htmlFor="email"><Paragraph>Your E-mail</Paragraph></label>
                   <input type="email" id="email" name="email" />
-                  <label htmlFor="college"><Paragraph>College</Paragraph></label>
-                  <input type="text" id="college" name="college" />
                   <label htmlFor="gender"><Paragraph>Gender</Paragraph></label>
                   <input type="text" id="gender" name="gender" />
+                  <label htmlFor="college"><Paragraph>College</Paragraph></label>
+                  <select id="college" name="college">
+                       <option value=""><Paragraph>Select College</Paragraph></option>
+                       <option value=""><Paragraph>COHES</Paragraph></option>
+                       <option value="Male"><Paragraph>COPAS</Paragraph></option>
+                       <option value="Female"><Paragraph>COANRE</Paragraph></option>
+                       <option value=""><Paragraph>COETEC</Paragraph></option>
+                       <option value="Male"><Paragraph>COHRED</Paragraph></option>
+                   </select>
                 </div>
                 <div className={styles.formCol}>
                   <label className={styles.groupLabel}>

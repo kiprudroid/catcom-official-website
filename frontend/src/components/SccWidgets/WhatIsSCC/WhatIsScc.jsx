@@ -6,6 +6,7 @@ const WhatIsScc = () => {
     return (
         <div className={`${styles.item} ${styles.whatIsScc}`}>
           <SectionHeading className={styles.centeredText}>What is an SCC?:</SectionHeading>
+          <div className={styles.contentWrapper}>
           <p
             className={styles.textContent}
             style={{ fontFamily: "Inter, sans-serif" }}
@@ -15,6 +16,7 @@ const WhatIsScc = () => {
             to promote communion, co-responsibility, and gives every member a
             sense of belonging to the community at large.
           </p>
+          </div>
         </div>
     );
 };
