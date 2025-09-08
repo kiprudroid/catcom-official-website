@@ -6,8 +6,9 @@
 }
 
 .formRow {
+  margin-top: 1rem;
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   flex-wrap: wrap;
 }
 
@@ -39,7 +40,7 @@
 
 .groupLabel {
   font-weight: 300;
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 
 input[type="text"],
@@ -54,7 +55,6 @@ input[type="email"] {
   width: 300px;
   display: inline-block;
   text-align: center;
-  margin-top: 1.5rem;
   padding: 0.75rem 2rem;
   background: #2dabb1;
   color: #fff;
