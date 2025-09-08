@@ -25,7 +25,7 @@ function Footer({ className }) {
         {/* Location / Logo */}
         <div className={styles.location}>
           <img
-            src="/others/ctm_logo.png"
+            src="/others/catcom-logo.png"
             alt="Catcom Logo"
             className={styles.catcomLogo}
           />

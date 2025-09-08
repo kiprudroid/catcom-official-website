@@ -41,7 +41,7 @@ function Header() {
           <ul className={styles.navUnifiedList}>
             <div className={styles.logoGroup}>
               <img
-                src="/others/catcom-logo.jpg"
+                src="/others/catcom-logo.png"
                 alt="CATCOM Logo"
                 className={styles.catcomLogo}
               />

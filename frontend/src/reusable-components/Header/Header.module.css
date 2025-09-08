@@ -34,9 +34,9 @@
 
 .catcomLogo {
   width: 90px;
-  height: 90px;
+  height: 80px;
   object-fit: contain;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
   background: #cccccc;
 }
 
