@@ -4,7 +4,6 @@
   gap: 2rem;
   width: 100%;
   max-width: 1300px;
-  margin: 2rem auto;
   padding: 1rem;
   font-family: "Inter", sans-serif;
 }
@@ -19,8 +18,8 @@
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 0 8px rgba(45, 171, 177, 0.4);
 }
 
 .cardTitle {
@@ -45,16 +44,6 @@
   text-align: center;
 }
 
-.sliderContainer {
-  width: 100%;
-}
-.slideshowImage {
-  width: 100%;
-  height: auto;
-  max-height: 60vh;
-  object-fit: contain;
-}
-
 .calendarImage {
   display: block;
   margin: 0 auto;
@@ -69,11 +58,13 @@
   scroll-behavior: smooth;
   padding: 0.5rem;
 }
+
 .mediaImage {
   height: 200px;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
+
 .mediaImage:hover {
   transform: scale(1.05);
 }
@@ -82,23 +73,86 @@
   grid-column: span 2;
 }
 
+.imageSection {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.quoteWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quoteText {
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: #333;
+  background: #f8fafc;
+  border-left: 5px solid #2dabb1;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quoteRef {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2dabb1;
+  align-self: flex-end;
+}
+
 @media screen and (max-width: 768px) {
-  .slideshowImage {
-    height: 40vh;
-  }
-  .cardTitle {
-    font-size: 1.5rem;
+  .imageSection {
+    grid-template-columns: 1fr;
   }
 }
-@media screen and (max-width: 480px) {
+
+/* === Mobile (Phones) === */
+@media screen and (max-width: 600px) {
   .homeContainer {
+    grid-template-columns: 1fr;
     gap: 1rem;
     padding: 0.5rem;
   }
-  .slideshowImage {
-    height: 30vh;
+
+  .calendar,
+  .imageSection {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
   }
+
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+
+  .textContent {
+    font-size: 0.9rem;
+  }
+
   .mediaImage {
     height: 150px;
+  }
+}
+
+/* === Tablets & Small Laptops === */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .homeContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .calendar,
+  .imageSection {
+    grid-column: span 2;
+  }
+
+  .cardTitle {
+    font-size: 1.6rem;
   }
 }

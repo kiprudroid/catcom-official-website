@@ -1,16 +1,10 @@
 export const slideShowImages = [
   "/sccPictures/stPaul/picture1.png",
   "/sccPictures/stJude/picture1.png",
-  "/sccPictures/MMOG/Picture2.jpg",
-  "/sccPictures/stCharles/picture1.png",
   "/sccPictures/stStephen/picture3.jpg",
   "/sccPictures/stTherese/Picture3.png",
-  "/sccPictures/stVeronica/picture2.png",
   "/sccPictures/stTherese/Picture2.png",
-  "/sccPictures/stVeronica/picture7.png",
-  "/sccPictures/MMOG/Picture1.jpg",
   "/sccPictures/stCharles/picture2.png",
-  "/sccPictures/MMOG/Picture4.jpg",
   "/sccPictures/stPaul/picture2.png",
 ];
 

@@ -1,8 +1,6 @@
 .massServices {
-  background: #dce7ea;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .massServices h2 {
@@ -29,11 +27,6 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
@@ -66,6 +59,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   color: #1f2937;
+  cursor: pointer;
 }
 
 .venue {
@@ -75,17 +69,84 @@
   font-size: 0.88rem;
   font-style: italic;
   color: #374151;
+  cursor: pointer;
 }
 
-/* Icon Colors */
 .iconClock {
-  color: #ffd700; /* gold for FaClock */
+  color: #ffd700;
   font-size: 1.1rem;
   flex-shrink: 0;
 }
 
 .iconMap {
-  color: #2dabb1; /* teal for FaMapMarkerAlt */
+  color: #2dabb1;
   font-size: 1.1rem;
   flex-shrink: 0;
+}
+
+/* === Mobile (Phones) === */
+@media screen and (max-width: 600px) {
+  .massServices {
+    padding: 1rem;
+  }
+
+  .massServices h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .activity {
+    font-size: 0.9rem;
+  }
+
+  .venue {
+    font-size: 0.82rem;
+  }
+}
+
+/* === Tablets & Small Laptops === */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .massServices {
+    padding: 1.5rem;
+  }
+
+  .massServices h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  .card h3 {
+    font-size: 1.05rem;
+  }
+}
+
+/* === Desktops & Large Screens === */
+@media screen and (min-width: 1025px) {
+  .massServices {
+    padding: 2rem;
+  }
+
+  .massServices h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
 }

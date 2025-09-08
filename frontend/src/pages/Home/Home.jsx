@@ -1,9 +1,6 @@
 import React from "react";
 import styles from "./Home.module.css";
 import "@fontsource/inter";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import CatcomCalendar from "../../components/HomeWidgets/CatcomCalendar/CatcomCalendar";
 import {
   SectionHeading,
@@ -12,24 +9,31 @@ import {
 import MediaContent from "../../components/HomeWidgets/MediaContent/MediaContent";
 import MassAndServices from "../../components/HomeWidgets/MassAndServices/MassAndServices";
 import { slideShowImages } from "../../DataFiles/data";
-import HomepageLayout from "../../layouts/homepage-layout/HomepageLayout";
+import ImageSlider from "../../components/HomeWidgets/ImageSlider/ImageSlider";
+import ChurchImage from "../../components/HomeWidgets/ChurchImage/ChurchImage";
+import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 
 function Home() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
-    adaptiveHeight: true,
-  };
-
   return (
-    <HomepageLayout>
+    <DashboardLayout>
       <div className={styles.homeContainer}>
+        <div className={`${styles.card} ${styles.imageSection}`}>
+          <ChurchImage />
+
+          <div className={styles.quoteWrapper}>
+            <Paragraph className={styles.quoteText}>
+              “For where two or three are gathered in my name, there am I with
+              them.”
+              <span className={styles.quoteRef}>– Matthew 18:20</span>
+            </Paragraph>
+
+            <Paragraph className={styles.quoteText}>
+              “I can do all things through Christ who strengthens me.”
+              <span className={styles.quoteRef}>– Philippians 4:13</span>
+            </Paragraph>
+          </div>
+        </div>
+
         <div className={styles.card}>
           <SectionHeading className={styles.cardTitle}>
             What are we?
@@ -68,22 +72,10 @@ function Home() {
         </div>
 
         <div className={styles.card}>
-          <Slider {...settings} className={styles.sliderContainer}>
-            {slideShowImages.map((image, index) => (
-              <div key={index}>
-                <img
-                  src={image}
-                  srcSet={`${image}?w=800 800w, ${image}?w=1600 1600w, ${image}?w=2400 2400w`}
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  alt={`Slide ${index + 1}`}
-                  className={styles.slideshowImage}
-                />
-              </div>
-            ))}
-          </Slider>
+          <ImageSlider images={slideShowImages} />
         </div>
       </div>
-    </HomepageLayout>
+    </DashboardLayout>
   );
 }
 

@@ -114,3 +114,87 @@
     font-size: 1.3rem;
   }
 }
+
+/* === Mobile (Phones) === */
+@media screen and (max-width: 600px) {
+  .calendarWrapper {
+    padding: 1.2rem;
+    margin: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .subTitle {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .eventCard {
+    padding: 1rem;
+  }
+
+  .dateBadge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .eventTitle {
+    font-size: 1rem;
+  }
+
+  .contacts {
+    font-size: 0.85rem;
+    padding: 1rem;
+  }
+}
+
+/* === Tablets & Small Laptops === */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .calendarWrapper {
+    padding: 2rem;
+    margin: 1.5rem auto;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subTitle {
+    font-size: 1.3rem;
+  }
+
+  .eventCard {
+    padding: 1.1rem;
+  }
+
+  .contacts {
+    font-size: 0.9rem;
+  }
+}
+
+/* === Desktops & Large Screens === */
+@media screen and (min-width: 1025px) {
+  .calendarWrapper {
+    padding: 2.5rem;
+    margin: 2rem auto;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subTitle {
+    font-size: 1.6rem;
+  }
+
+  .eventCard {
+    padding: 1.2rem;
+  }
+
+  .contacts {
+    font-size: 0.95rem;
+  }
+}
