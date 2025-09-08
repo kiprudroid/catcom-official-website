@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SccPictures.module.css';
 import { SectionHeading } from '../../Typography/Typography';
 import SccCard from '../../SccCard/SccCard';
-import { SCCs } from '../../../DataFiles/data';
+import { SCCs } from '../../../DataFiles/scc.js';
 
 const SccPictures = () => {
     return (

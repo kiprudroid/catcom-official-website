@@ -4,7 +4,7 @@ import { SectionHeading } from "../../Typography/Typography";
 import styles from "./SccOverview.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { SCCs } from "../../../DataFiles/data";
+import { SCCs } from "../../../DataFiles/scc";
 
 const SccOverview = () => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
