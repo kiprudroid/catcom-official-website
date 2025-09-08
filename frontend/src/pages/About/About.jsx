@@ -2,14 +2,10 @@ import React from "react";
 import Header from "../../reusable-components/Header/Header";
 import styles from "./About.module.css";
 import Footer from "../../reusable-components/Footer/Footer";
-import CommunityCard from "../../components/communitiesCards/communityCard";
-import PriestPatronCard from "../../components/PriestPatronCard/PriestPatronCard";
-import CatcomExecutiveCard from "../../components/catcomExecutiveCard/CatcomExecutiveCard";
 import {
   SectionHeading,
   Paragraph,
 } from "../../components/Typography/Typography";
-import MissionVision from "../../components/MissionVision/MissionVision";
 import {
   communities,
   patrons,

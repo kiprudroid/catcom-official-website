@@ -36,6 +36,8 @@
   width: 90px;
   height: 90px;
   object-fit: contain;
+  margin-right: 1rem;
+  background: #cccccc;
 }
 
 .title {
