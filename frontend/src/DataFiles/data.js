@@ -1,3 +1,5 @@
+import { Star } from "lucide-react"; 
+
 export const slideShowImages = [
   "/sccPictures/stPaul/picture1.png",
   "/sccPictures/stJude/picture1.png",
@@ -10,90 +12,143 @@ export const slideShowImages = [
 
 export const priests = [
   {
-    name: "Prof(Fr.)Lawrence Njoroge",
-    role: "Chaplaincy",
+    name: "Prof(Fr.) Lawrence Njoroge",
+    title: "Chaplaincy",
+    bio: "Prof. Fr. Lawrence has dedicated his life to guiding students in faith and academics, offering both spiritual and intellectual mentorship.",
+    specialties: ["Counseling", "Teaching", "Leadership"],
+    yearsOfService: 15,
+    contact: "lawrence.njoroge@catcom.ac.ke",
     image: "/chaplain/fatherLawrence.jpg",
   },
   {
-    name: "Fr. Patrick ",
-    role: "Parish priest",
+    name: "Fr. Patrick",
+    title: "Parish Priest",
+    bio: "Fr. Patrick provides pastoral care to the parish community, celebrating the sacraments and leading parish missions.",
+    specialties: ["Pastoral Care", "Sacraments", "Community Outreach"],
+    yearsOfService: 10,
+    contact: "patrick@catcom.ac.ke",
     image: "/chaplain/fatherLawrence.jpg",
   },
   {
     name: "Fr. Bernard",
-    role: "Assistant parish priest",
+    title: "Assistant Parish Priest",
+    bio: "Fr. Bernard supports parish activities, assists in Masses, and engages with students in their spiritual journey.",
+    specialties: ["Youth Ministry", "Liturgical Service", "Spiritual Guidance"],
+    yearsOfService: 5,
+    contact: "bernard@catcom.ac.ke",
     image: "/chaplain/fatherLawrence.jpg",
   },
 ];
 
+
 export const patrons = [
   {
     name: "Professor Rebecca Waihenya",
-    role: "Patron",
+    title: "Patron",
+    description: "A guiding figure who supports the spiritual and academic mission of CATCOM.",
+    feastDay: "January 15",
+    prayer: "Guide us in our journey of learning and faith.",
+    symbol: Star,
     image: "/patrons/profWaihenya.jpg",
   },
   {
     name: "Mr. Alfred Wanzala",
-    role: "assistant patron",
+    title: "Assistant Patron",
+    description: "Supports students with mentorship and dedicated service to the community.",
+    feastDay: "March 20",
+    prayer: "Bless our community with wisdom and unity.",
+    symbol: Star,
     image: "/patrons/Wanzala.jpg",
   },
 ];
 
 export const catcomExecutive = [
   {
-    name: " Stephen Mutwiwa Mutie",
-    role: "Catcom moderator",
+    name: "Stephen Mutwiwa Mutie",
+    position: "Catcom Moderator",
+    course: "BSc Computer Science",
+    bio: "Stephen leads the CATCOM community with vision and dedication, ensuring smooth coordination of all activities.",
+    achievements: ["Leadership Award 2024", "Organized 10+ community events"],
     image: "/leadersImages/mutwiwa.jpg",
   },
   {
-    name: " Sophie Kathambi ",
-    role: "Catcom vice moderator",
+    name: "Sophie Kathambi",
+    position: "Catcom Vice Moderator",
+    course: "BSc Civil Engineering",
+    bio: "Sophie supports the moderator in managing programs and fostering student involvement.",
+    achievements: ["Community Outreach Volunteer", "Youth Empowerment Advocate"],
     image: "/leadersImages/sophie.jpg",
   },
-
   {
-    name: " Eliza chiru",
-    role: "Catcom secretary",
+    name: "Eliza Chiru",
+    position: "Catcom Secretary",
+    course: "BBA Business Administration",
+    bio: "Eliza keeps records, manages communications, and ensures CATCOM operations run smoothly.",
+    achievements: ["Exemplary Record Keeping Award", "Mentorship in Student Leadership"],
     image: "/leadersImages/eliza.jpg",
   },
   {
-    name: " Terryann Wanjohi",
-    role: "Catcom treasurer",
+    name: "Terryann Wanjohi",
+    position: "Catcom Treasurer",
+    course: "BCom Finance",
+    bio: "Terryann manages CATCOM finances, ensuring accountability and transparency.",
+    achievements: ["Budgeting Excellence Award", "Organized successful fundraising drives"],
     image: "/leadersImages/terry.jpg",
   },
   {
-    name: " Alvin Muthoni",
-    role: "Catcom organizing secretary",
+    name: "Alvin Muthoni",
+    position: "Catcom Organizing Secretary",
+    course: "BSc Project Management",
+    bio: "Alvin oversees event planning, ensuring all CATCOM activities are well-coordinated.",
+    achievements: ["Event Planning Champion", "Organized 15+ parish events"],
     image: "/leadersImages/alvin.jpg",
   },
   {
-    name: " Bernard Nderitu",
-    role: "Catcom pastoral secretary",
+    name: "Bernard Nderitu",
+    position: "Catcom Pastoral Secretary",
+    course: "BSc Agricultural Economics",
+    bio: "Bernard strengthens spiritual life within CATCOM by organizing retreats and prayer sessions.",
+    achievements: ["Led successful prayer campaigns", "Community outreach programs"],
     image: "/leadersImages/nderitu.jpg",
   },
   {
-    name: " Albanus Timona",
-    role: "Catcom choir moderator",
+    name: "Albanus Timona",
+    position: "Catcom Choir Moderator",
+    course: "BSc Electrical Engineering",
+    bio: "Albanus directs and organizes choir activities, nurturing musical talents within CATCOM.",
+    achievements: ["Trained 30+ choir members", "Choir Excellence Award 2023"],
     image: "/leadersImages/engineerTim.jpg",
   },
   {
-    name: " Rodgers Matia",
-    role: "Catcom choir director",
+    name: "Rodgers Matia",
+    position: "Catcom Choir Director",
+    course: "BSc Mechanical Engineering",
+    bio: "Rodgers ensures the choir delivers uplifting liturgical music during masses and events.",
+    achievements: ["Best Choir Performance 2023", "Coordinated regional choir competition"],
     image: "/leadersImages/matia.jpg",
   },
   {
-    name: " Robinson Koskei Cheruiyot",
-    role: "Catcom publicity secretary",
+    name: "Robinson Koskei Cheruiyot",
+    position: "Catcom Publicity Secretary",
+    course: "BSc Information Technology",
+    bio: "Robinson manages CATCOM's publicity and communication to enhance visibility.",
+    achievements: ["Launched CATCOM social media", "Boosted event attendance by 40%"],
     image: "/leadersImages/Robinson.jpg",
   },
   {
-    name: " Wilfred Wandera",
-    role: "Catcom technical secretary",
+    name: "Wilfred Wandera",
+    position: "Catcom Technical Secretary",
+    course: "BSc Telecommunication Engineering",
+    bio: "Wilfred handles all technical needs, ensuring events and activities run seamlessly.",
+    achievements: ["Built CATCOM website", "Audio-visual excellence award"],
     image: "/leadersImages/wandera.jpg",
   },
   {
-    name: " Sarah Okello",
-    role: "Catcom Catering secretary",
+    name: "Sarah Okello",
+    position: "Catcom Catering Secretary",
+    course: "BSc Food Science & Nutrition",
+    bio: "Sarah manages catering during CATCOM events, ensuring hospitality for all members.",
+    achievements: ["Organized 20+ catering services", "Community food drives leader"],
     image: "/leadersImages/sarahOkello.jpg",
   },
 ];
@@ -101,50 +156,96 @@ export const catcomExecutive = [
 export const communities = [
   {
     title: "SCC",
-    content:
-      "A small Christian community is a smaller version of the entire CATCOM comprising of a smaller number of catcomers. They operate majorly within the campus. We have a total of eight SCCs",
+    description:
+      "A small Christian community is a smaller version of the entire CATCOM comprising of a smaller number of catcomers. They operate majorly within the campus. We have a total of eight SCCs.",
+    specialty: "Faith Groups",
+    members: 120,
+    meetingDay: "Sundays",
+    location: "Campus Residences",
+    gradient: "gradient-sacred",
   },
   {
     title: "Choir",
-    content:
-      "We have a vibrant choir called KMRM (kwaya ya mtakatifu Romano Mtunzi) that keeps the community vibrant especially during mass",
+    description:
+      "We have a vibrant choir called KMRM (Kwaya ya Mtakatifu Romano Mtunzi) that keeps the community vibrant especially during mass.",
+    specialty: "Music Ministry",
+    members: 45,
+    meetingDay: "Fridays",
+    location: "Main Chapel",
+    gradient: "gradient-divine",
   },
   {
-    title: "Liturgical dancers",
-    content:
-      "CATCOM liturgical dancers operate under the KMRM choir. they train and sing alongside the choir",
+    title: "Liturgical Dancers",
+    description:
+      "CATCOM liturgical dancers operate under the KMRM choir. They train and perform alongside the choir.",
+    specialty: "Dance Ministry",
+    members: 25,
+    meetingDay: "Saturdays",
+    location: "Student Centre Hall",
+    gradient: "gradient-holy",
   },
   {
-    title: "Pastoral team",
-    content:
-      "the team handles the community's spiritual well being . they are responsible for mass preparation and following up on the community's progress in spiritual activities",
+    title: "Pastoral Team",
+    description:
+      "The team handles the community's spiritual well-being. They are responsible for mass preparation and follow-up on spiritual activities.",
+    specialty: "Pastoral Care",
+    members: 15,
+    meetingDay: "Thursdays",
+    location: "Chaplains’ Office",
+    gradient: "gradient-peaceful",
   },
   {
     title: "Committees",
-    content:
-      "these are formed to help in organizing the community events such as hikes and retreats. these committees are formed and headed by the organizing secretary together with the publicity secretary ",
+    description:
+      "Formed to help in organizing community events such as hikes and retreats. Committees are headed by the organizing secretary and publicity secretary.",
+    specialty: "Event Planning",
+    members: 30,
+    meetingDay: "As Needed",
+    location: "Campus Grounds",
+    gradient: "gradient-sacred",
   },
   {
-    title: "Chatechism",
-    content:
-      "These are spiritual classes majorly spearheaded by the parish in line with the pastoral team to help members of the community get a chance to reeive the sacraments of the catholic church and also know their faith",
+    title: "Catechism",
+    description:
+      "Spiritual classes spearheaded by the parish and pastoral team to prepare members for sacraments and deepen their faith.",
+    specialty: "Faith Formation",
+    members: 40,
+    meetingDay: "Wednesdays",
+    location: "Parish Hall",
+    gradient: "gradient-divine",
   },
   {
     title: "Welfare Team",
-    content:
-      "This is a team led by the Catering secretary who is helped by the project managers and catering secretaries of all SCC groups. They are responsible for the well being of the community members in terms of financial, emotional support or any needs of the members",
+    description:
+      "Led by the Catering Secretary, they support members’ well-being in terms of financial, emotional, and other needs.",
+    specialty: "Welfare Support",
+    members: 20,
+    meetingDay: "Mondays",
+    location: "Community Office",
+    gradient: "gradient-holy",
   },
   {
     title: "Technical Team",
-    content:
-      "the team is led by the technical secretary who is helped by the team in place. the team is responsible for the community's technical equipment and the website of the community in terms of it's development and maintenance",
+    description:
+      "Responsible for managing the community's technical equipment and maintaining the website.",
+    specialty: "Tech Support",
+    members: 12,
+    meetingDay: "Tuesdays",
+    location: "Tech Room",
+    gradient: "gradient-peaceful",
   },
   {
-    title: "Communion and Liberation and Bible prayer service",
-    content:
-      "this  are movements within the community that have external contact with other universities for common events under coordination from outside the university",
+    title: "Communion & Liberation / Bible Prayer Service",
+    description:
+      "Movements within the community that collaborate with other universities for common events.",
+    specialty: "Spiritual Movements",
+    members: 35,
+    meetingDay: "Sundays",
+    location: "Main Chapel & External",
+    gradient: "gradient-sacred",
   },
 ];
+
 
 
 

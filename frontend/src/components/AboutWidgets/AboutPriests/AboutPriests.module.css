@@ -1,0 +1,137 @@
+.priests-section {
+  padding: 5rem 1.5rem;
+  background: #f9fafb; /* light neutral background */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.section-divider {
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  border-radius: 2px;
+  margin: 1rem auto 2rem;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.priests-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.priest-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.priest-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.3);
+}
+
+.priest-avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.priest-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.priest-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: .25rem;
+  color: #111;
+}
+
+.priest-title {
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.priest-bio {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.priest-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background: #f3f4f6;
+  color: #111;
+  font-size: 0.75rem;
+  padding: .3rem .6rem;
+  border-radius: .5rem;
+}
+
+.priest-footer {
+  font-size: 0.85rem;
+  color: #555;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+
+.priest-contact {
+  font-size: 0.8rem;
+  color: #2dabb1;
+}
+
+/* Animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

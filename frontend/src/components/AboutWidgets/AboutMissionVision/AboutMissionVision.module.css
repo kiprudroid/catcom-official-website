@@ -1,0 +1,155 @@
+.mv-section {
+  padding: 2rem 0;
+  background: #f9f9f9;
+}
+
+@media (min-width: 1024px) {
+  .mv-section {
+    padding: 2rem 0;
+  }
+}
+
+.mv-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.mv-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeUp 1.2s ease-in-out;
+}
+
+.mv-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .mv-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mv-title {
+    font-size: 3rem;
+  }
+}
+
+.mv-divider {
+  width: 4rem;
+  height: 4px;
+  background: linear-gradient(90deg, #ffd700, #ff6600, #ff1493);
+  border-radius: 999px;
+  margin: 0 auto 2rem;
+}
+
+.mv-subtitle {
+  font-size: 1.25rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.mv-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .mv-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mv-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeUp 1.2s ease-in-out both;
+}
+
+.mv-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.mv-card-header {
+  margin-bottom: 1rem;
+}
+
+.mv-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: glow 2s infinite alternate;
+}
+
+.mv-icon {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+}
+
+.mv-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.mv-card-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Gradient options */
+.gradient-sacred {
+  background: linear-gradient(135deg, #ffd700, #ff6600);
+}
+
+.gradient-divine {
+  background: linear-gradient(135deg, #ff1493, #6a0dad);
+}
+
+.gradient-holy {
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+}
+
+.gradient-peaceful {
+  background: linear-gradient(135deg, #2dabb1, #1c6f74);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+  }
+}
