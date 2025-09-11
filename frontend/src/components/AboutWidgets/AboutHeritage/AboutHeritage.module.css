@@ -1,0 +1,143 @@
+.heritage-section {
+    padding: 2rem 0;
+    background: linear-gradient(180deg, #fdfdfd, #fafafa);
+}
+
+@media (min-width: 1024px) {
+    .heritage-section {
+        padding: 2rem 0;
+    }
+}
+
+.heritage-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.heritage-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .heritage-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+    }
+}
+
+.heritage-text {
+    animation: fadeUp 1.2s ease-in-out;
+}
+
+.heritage-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .heritage-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .heritage-title {
+        font-size: 3rem;
+    }
+}
+
+.heritage-divider {
+    width: 4rem;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #ff6600, #ff1493);
+    border-radius: 999px;
+    margin-bottom: 2rem;
+}
+
+.heritage-prose {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.heritage-prose p {
+    margin-bottom: 1.5rem;
+}
+
+.heritage-image-wrapper {
+    position: relative;
+    animation: fadeUp 1.2s ease-in-out;
+}
+
+.heritage-image-container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.heritage-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+    .heritage-image {
+        height: 500px;
+    }
+}
+
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.circle-top-right {
+    top: -1rem;
+    right: -1rem;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ffd700, #ff1493);
+}
+
+.circle-bottom-left {
+    bottom: -1.5rem;
+    left: -1.5rem;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #2dabb1, #17575a);
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
