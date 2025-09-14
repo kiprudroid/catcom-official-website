@@ -1,25 +1,65 @@
-.sccExpanded {
-  background-color: white;
-  grid-area: sccExpanded;
+.familiesGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  gap: 1rem;
+}
+.familyCard {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1.5px 6px rgba(45,171,177,0.10), 0 1px 3px rgba(0,0,0,0.07);
+  padding: 0.6rem 0.8rem;
+  min-width: 0;
+  text-align: center;
+  border: 1px solid #b2ebf2;
+  font-weight: 600;
+  color: #2dabb1;
+  font-size: 1.05rem;
+  transition: box-shadow 0.18s, transform 0.18s;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.familyCard:hover {
+  box-shadow: 0 4px 16px rgba(45,171,177,0.13), 0 2px 8px rgba(0,0,0,0.09);
+  transform: translateY(-2px) scale(1.03);
+}
+.sccExpanded {
+  background: #fff;
+  grid-area: sccExpanded;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(45,171,177,0.08), 0 1.5px 6px rgba(0,0,0,0.06);
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
-
+  overflow: hidden;
 }
 .slideShow {
   width: 100%;
-  height: 500px; /* Fixed height */
+  height: 400px;
   position: relative;
   overflow: hidden;
-  margin: auto;
-  background-color: #f8f8f8;
+  margin: 0;
+  background: linear-gradient(120deg, #e0f7fa 0%, #f8f8f8 100%);
+  border-radius: 16px 16px 0 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sccContentRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  width: 100%;
+  margin: 0;
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  box-shadow: none;
+  padding: 2.5rem 4vw 2.5rem 4vw;
 }
 .slideshowImage {
   max-width: 100%;
@@ -56,12 +96,15 @@
   margin: auto;
 }
 .sccItem {
-  position: relative;
-  border-radius: 8px;
-  height: 600px;
-  width: 100%;
-  overflow: hidden;
-  background: white;
+  flex: 0 0 40%;
+  min-width: 0;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+  padding: 0;
+  gap: 1.5rem;
+  border: none;
 }
 .sccItem:nth-child(2) {
   display: grid;
@@ -71,25 +114,44 @@
   background: white;
 }
 .secondColumnItem {
+  flex: 0 0 50%;
+  min-width: 0;
+  background: none;
   display: flex;
   flex-direction: column;
+  box-shadow: none;
+  padding: 0; /* Remove horizontal padding here */
   gap: 1.5rem;
-  padding: 2rem;
-  width: 100%;
-  background: #f8f8f8;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: none;
+  align-items: stretch;
+  box-sizing: border-box;
 }
-.secondColumnItem:first-child {
+.activitiesList {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-bottom: 2px solid #e0e0e0;
-  margin-bottom: 1rem;
+  gap: 1.2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
   justify-content: flex-start;
-  align-items: center;
+}
+.activityCard {
+  background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
+  border-radius: 10px;
+  box-shadow: 0 1.5px 6px rgba(45,171,177,0.08), 0 1px 3px rgba(0,0,0,0.06);
+  padding: 1.1rem 1.5rem;
+  min-width: 120px;
+  flex: 1 1 120px;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #124346;
+  margin-bottom: 0.5rem;
+  border: 1.2px solid #b2ebf2;
+  font-weight: 500;
+  transition: box-shadow 0.2s;
+}
+.activityCard:hover {
+  box-shadow: 0 4px 16px rgba(45,171,177,0.13), 0 2px 8px rgba(0,0,0,0.09);
 }
 .groupPhoto {
   width: 100%;
@@ -97,13 +159,17 @@
   object-fit: cover;
 }
 .familyCard {
-  background: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background: #fff;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 1.5px 6px rgba(45,171,177,0.08), 0 1px 3px rgba(0,0,0,0.06);
   flex: 0 1 auto;
   min-width: fit-content;
   text-align: center;
+  border: 1.2px solid #b2ebf2;
+  font-weight: 500;
+  color: #2dabb1;
+  margin-bottom: 0.5rem;
 }
 .familyCard img {
   width: 100%;
@@ -114,17 +180,6 @@
   font-size: 16px;
   color: #2dabb1;
   white-space: nowrap;
-}
-.activitiesList {
-  list-style-type: disc;
-  padding-left: 2rem;
-  margin: 0;
-}
-
-.activitiesList li {
-  margin-bottom: 0.5rem;
-  color: #333;
-  font-size: 1rem;
 }
 
 .sectionHeading {
@@ -158,11 +213,42 @@
 }
 
 .prevButton {
-  left: -50px; /* Move further out */
+  left: 10px;
 }
 
 .nextButton {
-  right: -50px; /* Move further out */
+  right: 10px;
+}
+@media (max-width: 900px) {
+  .sccExpanded {
+    padding: 0;
+    gap: 0;
+    border-radius: 10px;
+  }
+  .slideShow {
+    height: 220px;
+    border-radius: 10px 10px 0 0;
+  }
+  .sccContentRow {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.2rem 2vw 1.2rem 2vw;
+    border-radius: 0 0 10px 10px;
+  }
+  .sccItem, .secondColumnItem {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+  .secondColumnItem {
+    padding: 0;
+  }
+  .activityCard, .familyCard {
+    min-width: 100px;
+    font-size: 0.98rem;
+    padding: 0.8rem 1rem;
+  }
 }
 /* Adjusted styles for second column items and family cards */
 .secondColumnItem {

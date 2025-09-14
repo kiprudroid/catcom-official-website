@@ -9,14 +9,16 @@ import { SCCs } from "../../../DataFiles/scc";
 const SccOverview = () => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
 
+  // Change SCC every 3 minutes (180000 ms)
   React.useEffect(() => {
     const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * SCCs.length);
-      setSelectedScc(SCCs[randomIndex]);
-    }, 20000);
-
+      const currentIndex = SCCs.findIndex((scc) => scc.name === selectedScc.name);
+      const nextIndex = currentIndex < SCCs.length - 1 ? currentIndex + 1 : 0;
+      setSelectedScc(SCCs[nextIndex]);
+    }, 180000);
     return () => clearInterval(interval);
-  }, []);
+    // eslint-disable-next-line
+  }, [selectedScc]);
   const settings = {
     dots: true,
     infinite: true,
@@ -60,60 +62,64 @@ const SccOverview = () => {
         SCC OVERVIEW : {selectedScc.name}
       </SectionHeading>
       <div className={styles.sccExpanded}>
-        <button
-          className={`${styles.sccNavigationButton} ${styles.prevButton}`}
-          onClick={handlePrevScc}
-          aria-label="Previous SCC"
-        >
-          &#8249;
-        </button>
-        <div className={styles.sccItem}>
-          <div className={styles.slideShow}>
-            {selectedScc.sccPhotos && selectedScc.sccPhotos.length > 0 ? (
-              <Slider {...settings} className={styles.sliderContainer}>
-                {selectedScc.sccPhotos.map((image, index) => (
-                  <div key={index} className={styles.imageWrapper}>
-                    <img
-                      src={image}
-                      alt={`Slide ${index + 1}`}
-                      className={styles.slideshowImage}
-                    />
-                  </div>
-                ))}
-              </Slider>
-            ) : (
-              <div className={styles.noImages}>No photos available</div>
-            )}
-          </div>
-        </div>
-        <div className={styles.sccItem}>
-          <div className={styles.secondColumnItem}>
-            {selectedScc.families &&
-              selectedScc.families.map((family, index) => (
-                <div className={styles.familyCard} key={index}>
-                  <h1 className={styles.familyText}>{family}</h1>
+        <div className={styles.slideShow}>
+          <button
+            className={`${styles.sccNavigationButton} ${styles.prevButton}`}
+            onClick={handlePrevScc}
+            aria-label="Previous SCC"
+          >
+            &#8249;
+          </button>
+          {selectedScc.sccPhotos && selectedScc.sccPhotos.length > 0 ? (
+            <Slider {...settings} className={styles.sliderContainer}>
+              {selectedScc.sccPhotos.map((image, index) => (
+                <div key={index} className={styles.imageWrapper}>
+                  <img
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                    className={styles.slideshowImage}
+                  />
                 </div>
               ))}
-          </div>
-          <div className={styles.secondColumnItem}>
+            </Slider>
+          ) : (
+            <div className={styles.noImages}>No photos available</div>
+          )}
+          <button
+            className={`${styles.sccNavigationButton} ${styles.nextButton}`}
+            onClick={handleNextScc}
+            aria-label="Next SCC"
+          >
+            &#8250;
+          </button>
+        </div>
+        <div className={styles.sccContentRow}>
+          <div className={styles.sccItem}>
             <SectionHeading className={styles.centeredText}>
               Activities
             </SectionHeading>
             <ul className={styles.activitiesList}>
               {selectedScc.activities &&
                 selectedScc.activities.map((activity, index) => (
-                  <li key={index}>{activity}</li>
+                  <li key={index} className={styles.activityCard}>{activity}</li>
                 ))}
             </ul>
           </div>
+          <div className={styles.secondColumnItem}>
+            <SectionHeading className={styles.centeredText}>
+              Families
+            </SectionHeading>
+            {selectedScc.families && (
+              <div className={styles.familiesGrid}>
+                {selectedScc.families.map((family, index) => (
+                  <div className={styles.familyCard} key={index}>
+                    <h1 className={styles.familyText}>{family}</h1>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-        <button
-          className={`${styles.sccNavigationButton} ${styles.nextButton}`}
-          onClick={handleNextScc}
-          aria-label="Next SCC"
-        >
-          &#8250;
-        </button>
       </div>
     </div>
   );
