@@ -104,11 +104,18 @@ function Header() {
           </ul>
         )}
         {isMobile && (
-          <FaBars
-            className={styles.burger}
-            onClick={toggleMenu}
-            aria-label="Toggle navigation menu"
-          />
+          <><div className={styles.logoGroup}>
+            <img
+              src="/others/catcom-logo.png"
+              alt="CATCOM Logo"
+              className={styles.catcomLogo} />
+            <SectionHeading className={styles.title}>
+              JKUAT CATCOM
+            </SectionHeading>
+          </div><FaBars
+              className={styles.burger}
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu" /></>
         )}
       </div>
 
@@ -120,7 +127,7 @@ function Header() {
         >
           <ul className={styles.mobileNavList}>
             <li>
-              <NavLink to="/" onClick={closeMenu}>
+              <NavLink to="/home" onClick={closeMenu}>
                 <FaHome className={styles.icon} /> Home
               </NavLink>
             </li>
@@ -140,7 +147,7 @@ function Header() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/community" onClick={closeMenu}>
+              <NavLink to="/scc" onClick={closeMenu}>
                 <FaChurch className={styles.icon} /> SCC
               </NavLink>
             </li>
