@@ -17,7 +17,6 @@ const SccOverview = () => {
       setSelectedScc(SCCs[nextIndex]);
     }, 180000);
     return () => clearInterval(interval);
-    // eslint-disable-next-line
   }, [selectedScc]);
   const settings = {
     dots: true,
@@ -57,11 +56,11 @@ const SccOverview = () => {
   };
 
   return (
-    <div>
+    <>
+      <div className={styles.sccExpanded}>
       <SectionHeading className={styles.centeredText}>
         SCC OVERVIEW : {selectedScc.name}
       </SectionHeading>
-      <div className={styles.sccExpanded}>
         <div className={styles.slideShow}>
           <button
             className={`${styles.sccNavigationButton} ${styles.prevButton}`}
@@ -121,7 +120,7 @@ const SccOverview = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

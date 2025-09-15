@@ -1,5 +1,4 @@
 .sccPictures {
-  grid-area: sccPictures;
   height: auto;
   grid-column: span 4;
 }
@@ -12,14 +11,14 @@
   align-items: center;
   width: 100%;
   padding: 0 10px;
-  flex-wrap: wrap; /* Enable wrapping */
-  gap: 2rem; /* Add consistent spacing between cards */
-  justify-content: center; /* Center the cards */
-  align-items: stretch; /* Make all cards same height in a row */
+  flex-wrap: wrap; 
+  gap: 2rem; 
+  justify-content: center; 
+  align-items: stretch; 
   padding: 2rem;
 }
 .sccCardsWrapper > * {
-  flex: 0 1 calc(25% - 2rem); /* 4 cards per row with gap consideration */
-  min-width: 250px; /* Minimum width before wrapping */
-  margin-bottom: 2rem; /* Add bottom margin for wrapped rows */
+  flex: 0 1 calc(25% - 2rem); 
+  min-width: 250px; 
+  margin-bottom: 2rem; 
 }

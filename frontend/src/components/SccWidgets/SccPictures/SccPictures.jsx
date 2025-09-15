@@ -6,9 +6,9 @@ import { SCCs } from '../../../DataFiles/scc.js';
 
 const SccPictures = () => {
     return (
-         <div className={`${styles.item} ${styles.sccPictures}`}>
+         <div className={styles.sccPictures}>
                   <SectionHeading className={styles.centeredText}>Our SCCs</SectionHeading>
-                  <div className={`contentWrapper ${styles.sccCardsWrapper}`}>
+                  <div className={styles.sccCardsWrapper}>
                     {SCCs.map((_, index) => (
                       <SccCard
                         key={index}
