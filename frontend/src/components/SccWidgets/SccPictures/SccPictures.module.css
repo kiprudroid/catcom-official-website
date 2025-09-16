@@ -2,6 +2,9 @@
   height: auto;
   grid-column: span 4;  
   margin: auto;
+  background-color: #dce7ea;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .centeredText{
   text-align: center;
