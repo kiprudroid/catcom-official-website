@@ -4,7 +4,7 @@ import {Paragraph,SectionHeading} from '../../Typography/Typography';
 
 const SccMemberDuties = () => {
     return (
-         <div className={`${styles.item} ${styles.sccMembersDuties}`}>
+         <div className={styles.sccMembersDuties}>
           <SectionHeading className={styles.centeredText}>What SCC Members Should Do</SectionHeading>
           <Paragraph >
           <ul className={styles.membersDutiesList}>

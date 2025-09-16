@@ -1,14 +1,11 @@
 import React from "react";
 import styles from "./SccInfo.module.css";
-import Header from "../../../reusable-components/Header/Header";
-import Footer from "../../../reusable-components/Footer/Footer";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-  SectionHeading,
-  Paragraph,
+import { SectionHeading, Paragraph,
 } from "../../../components/Typography/Typography";
+import DashboardLayout from "../../../layouts/dashboard-layout/DashboardLayout";
 const SccInfo = ({
   name,
   about,
@@ -30,18 +27,19 @@ const SccInfo = ({
     fade: true,
   };
   return (
-    <div className={styles.gridContainer}>
-      <div className={styles.header}>
-        <Header />
-      </div>
-      <SectionHeading className={styles.heading} as="h1">
-        <div className={styles.title}>{name}</div>
-      </SectionHeading>
-      <Paragraph className={styles.subTitle}>
-        <div className={styles.about}>{about}</div>
-      </Paragraph>
+    <DashboardLayout>
+      <div className={`${styles.gridContainer} ${styles.widget}`}>
+
+            <div className={`${styles.hero} ${styles.widget}`} >
+            <SectionHeading  as="h2">
+            <div className={styles.title}>{name}</div>
+          </SectionHeading>
+          <Paragraph>
+            <div className={styles.about}>{about}</div>
+          </Paragraph>
+          </div>
       <div className={styles.activitiesAndPhotos}>
-        <div className={styles.activities}>
+        <div className={`${styles.activities} ${styles.widget}`}>
           <SectionHeading>Activities</SectionHeading>
           <ul class={styles.activitiesList}>
             {activities.map((activity, index) => (
@@ -79,7 +77,7 @@ const SccInfo = ({
             className={styles.patronSaintImage}
           ></img>
         </div>
-        <div className={styles.patronSaintText}>
+        <div className={`${styles.patronSaintText} ${styles.widget}`}>
           <Paragraph>
             <SectionHeading> About {name}</SectionHeading>
 
@@ -87,14 +85,12 @@ const SccInfo = ({
           </Paragraph>
         </div>
       </div>
-      <div className={styles.prayer}>
+      <div className={`${styles.prayer} ${styles.widget}`}>
         <SectionHeading> Prayer To {name}</SectionHeading>
         <Paragraph>{prayer}</Paragraph>
       </div>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
     </div>
+    </DashboardLayout>
   );
 };
 

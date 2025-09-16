@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import styles from "./Scc.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-  SectionHeading,
-  Paragraph,
-} from "../../components/Typography/Typography";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 import JoinSccForm from "../../components/SccWidgets/JoinSccForm/JoinSccForm";
 import WhatIsScc from "../../components/SccWidgets/WhatIsSCC/WhatIsScc";
