@@ -2,10 +2,12 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(320px, 1fr));
   gap: 2rem;
-  width: 100%;
-  max-width: 1300px;
   padding: 1rem;
-  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1.4rem;
+  width: 100%;
 }
 
 .card {
@@ -15,6 +17,8 @@
   overflow: hidden;
   padding: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-right: 1.5rem;
+  width: 90%;
 }
 
 .card:hover {
@@ -65,11 +69,25 @@
   transition: transform 0.3s ease;
 }
 
+.mediaContainer {
+  display: flex;
+  gap: 2rem;
+}
+
+.media {
+  width: 50%;
+}
+.imageSlider {
+  width: 50%;
+}
+
 .mediaImage:hover {
   transform: scale(1.05);
 }
 
-.calendar {
+.calendar,
+.vision,
+.mediaContainer {
   grid-column: span 2;
 }
 
@@ -108,6 +126,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .homeContainer {
+    width: 90%;
+  }
   .imageSection {
     grid-template-columns: 1fr;
   }
@@ -119,9 +140,19 @@
     grid-template-columns: 1fr;
     gap: 1rem;
     padding: 0.5rem;
+    width: 90%;
+  }
+  .mediaContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  .media,
+  .imageSlider {
+    width: 100%;
   }
 
-  .calendar,
+  /* .calendar,
   .imageSection {
     grid-column: span 1;
     grid-template-columns: 1fr;
@@ -134,10 +165,9 @@
   .textContent {
     font-size: 0.9rem;
   }
-
   .mediaImage {
     height: 150px;
-  }
+  }*/
 }
 
 /* === Tablets & Small Laptops === */

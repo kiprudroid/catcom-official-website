@@ -1,11 +1,8 @@
 .container {
   margin: auto;
-  font-family: Georgia, serif;
   line-height: 1.6;
-  background: #dce7ea;
   border-radius: 0.75rem;
   padding: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .title {

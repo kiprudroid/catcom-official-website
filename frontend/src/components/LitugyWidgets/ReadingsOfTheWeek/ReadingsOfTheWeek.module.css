@@ -1,9 +1,7 @@
 .readingBox {
-  background: #dce7ea;
   text-align: center;
   padding: 2rem;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .grid {
@@ -86,4 +84,88 @@
 
 .button:hover {
   background: #2daab1cf;
+}
+
+/* Medium screens: tablets */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+
+  .imageWrapper {
+    height: 180px;
+  }
+
+  .button {
+    padding: 0.6rem 1.2rem;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Small screens: mobile */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .readingBox {
+    padding: 1rem;
+  }
+
+  .imageWrapper {
+    height: 150px;
+  }
+
+  .cardHeader {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .fullText {
+    padding: 0.8rem;
+  }
+
+  .button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Extra small screens: very small phones */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .imageWrapper {
+    height: 120px;
+  }
+
+  .cardHeader {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .cardTitle {
+    font-size: 0.85rem;
+  }
+
+  .fullText {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+  }
 }

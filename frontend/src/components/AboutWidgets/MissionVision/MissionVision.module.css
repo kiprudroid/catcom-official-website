@@ -1,46 +1,28 @@
-.mv-section {
+.mvSection {
   padding: 2rem 0;
-  background: #f9f9f9;
+  background: #c8d8dc;
 }
 
-@media (min-width: 1024px) {
-  .mv-section {
-    padding: 2rem 0;
-  }
-}
-
-.mv-container {
+.mvContainer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.mv-header {
+.mvHeader {
   text-align: center;
   margin-bottom: 4rem;
   animation: fadeUp 1.2s ease-in-out;
 }
 
-.mv-title {
+.mvTitle {
   font-size: 2rem;
   font-weight: 700;
   color: #222;
   margin-bottom: 1.5rem;
 }
 
-@media (min-width: 1024px) {
-  .mv-title {
-    font-size: 2.5rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .mv-title {
-    font-size: 3rem;
-  }
-}
-
-.mv-divider {
+.mvDivider {
   width: 4rem;
   height: 4px;
   background: linear-gradient(90deg, #ffd700, #ff6600, #ff1493);
@@ -48,7 +30,7 @@
   margin: 0 auto 2rem;
 }
 
-.mv-subtitle {
+.mvSubtitle {
   font-size: 1.25rem;
   color: #666;
   max-width: 700px;
@@ -56,18 +38,12 @@
   line-height: 1.6;
 }
 
-.mv-grid {
+.mvGrid {
   display: grid;
   gap: 2rem;
 }
 
-@media (min-width: 768px) {
-  .mv-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.mv-card {
+.mvCard {
   background: #fff;
   border-radius: 1rem;
   padding: 2rem;
@@ -78,16 +54,16 @@
   animation: fadeUp 1.2s ease-in-out both;
 }
 
-.mv-card:hover {
+.mvCard:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-.mv-card-header {
+.mvCardHeader {
   margin-bottom: 1rem;
 }
 
-.mv-icon-wrapper {
+.mvIconWrapper {
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -95,45 +71,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: glow 2s infinite alternate;
 }
 
-.mv-icon {
+.mvIcon {
   width: 32px;
   height: 32px;
   color: #fff;
 }
 
-.mv-card-title {
+.mvCardTitle {
   font-size: 1.5rem;
   font-weight: 600;
   color: #222;
 }
 
-.mv-card-content p {
+.mvCardContent p {
   font-size: 1rem;
   line-height: 1.6;
   color: #555;
 }
 
-/* Gradient options */
-.gradient-sacred {
+.gradientSacred {
   background: linear-gradient(135deg, #ffd700, #ff6600);
 }
 
-.gradient-divine {
+.gradientDivine {
   background: linear-gradient(135deg, #ff1493, #6a0dad);
 }
 
-.gradient-holy {
+.gradientHoly {
   background: linear-gradient(135deg, #00c9ff, #92fe9d);
 }
 
-.gradient-peaceful {
+.gradientPeaceful {
   background: linear-gradient(135deg, #2dabb1, #1c6f74);
 }
 
-/* Animations */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -151,5 +124,25 @@
   }
   to {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mvTitle {
+    font-size: 2.5rem;
+  }
+  .mvSection {
+    padding: 2rem 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mvTitle {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  .mvGrid {
+    grid-template-columns: 1fr 1fr;
   }
 }

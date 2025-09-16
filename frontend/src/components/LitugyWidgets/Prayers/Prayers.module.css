@@ -1,9 +1,7 @@
 .container {
-  background: #dce7ea;
   text-align: center;
   padding: 2rem;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .prayerSection {
@@ -60,4 +58,21 @@
 .show {
   max-height: 500px;
   white-space: normal;
+}
+
+/* Tablets: 481px - 1024px */
+@media (max-width: 1024px) and (min-width: 481px) {
+  .container {
+    padding: 1.5rem;
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* Phones: max-width 480px */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+    width: 90%;
+  }
 }

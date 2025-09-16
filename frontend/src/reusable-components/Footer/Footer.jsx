@@ -22,7 +22,6 @@ function Footer({ className }) {
   return (
     <footer className={`${styles.footer} ${className || ""}`}>
       <div className={styles.footerContainer}>
-        {/* Location / Logo */}
         <div className={styles.location}>
           <img
             src="/others/catcom-logo.png"
@@ -35,7 +34,6 @@ function Footer({ className }) {
           </p>
         </div>
 
-        {/* Quick Links */}
         <div className={styles.quickLinks}>
           <SectionHeading>Quick Links</SectionHeading>
           <ul>
@@ -62,80 +60,76 @@ function Footer({ className }) {
           </ul>
         </div>
 
-        {/* Contacts */}
         <div className={styles.contact}>
-          <div className={styles.contactHeading}>
-            <SectionHeading>Contacts</SectionHeading>
-          </div>
-
-          <div className={styles.contact1}>
-            <ul>
-              <li>
-                <FaFacebook />
-                <NavLink
-                  to="https://www.catcom.com/catcomjkuat"
-                  target="_blank"
-                >
-                  catcomjkuat
-                </NavLink>
-              </li>
-              <li>
-                <FaTiktok />
-                <NavLink
-                  to="https://www.catcom.com/catcomjkuat"
-                  target="_blank"
-                >
-                  catcomjkuat
-                </NavLink>
-              </li>
-              <li>
-                <FaInstagramSquare />
-                <NavLink
-                  to="https://www.catcom.com/catcomjkuat"
-                  target="_blank"
-                >
-                  catcomjkuat
-                </NavLink>
-              </li>
-              <li>
-                <FaTwitter />
-                <NavLink
-                  to="https://www.catcom.com/catcomjkuat"
-                  target="_blank"
-                >
-                  catcomjkuat
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.contact2}>
-            <ul>
-              <li>
-                <FaYoutube />
-                <NavLink
-                  to="https://www.catcom.com/catcomjkuat"
-                  target="_blank"
-                >
-                  catcomjkuat
-                </NavLink>
-              </li>
-              <li>
-                <FaEnvelope />
-                <NavLink to="mailto:jkuatcatcom18@gmail.com">
-                  jkuatcatcom18@gmail.com
-                </NavLink>
-              </li>
-              <li>
-                <FaPhoneAlt />
-                <span>+254 7XX XXXXXX</span>
-              </li>
-            </ul>
+          <div className={styles.contactsWrapper}>
+            <div className={styles.contact1}>
+              <SectionHeading>Contacts</SectionHeading>
+              <ul>
+                <li>
+                  <FaFacebook />
+                  <NavLink
+                    to="https://www.catcom.com/catcomjkuat"
+                    target="_blank"
+                  >
+                    catcomjkuat
+                  </NavLink>
+                </li>
+                <li>
+                  <FaTiktok />
+                  <NavLink
+                    to="https://www.catcom.com/catcomjkuat"
+                    target="_blank"
+                  >
+                    catcomjkuat
+                  </NavLink>
+                </li>
+                <li>
+                  <FaInstagramSquare />
+                  <NavLink
+                    to="https://www.catcom.com/catcomjkuat"
+                    target="_blank"
+                  >
+                    catcomjkuat
+                  </NavLink>
+                </li>
+                <li>
+                  <FaTwitter />
+                  <NavLink
+                    to="https://www.catcom.com/catcomjkuat"
+                    target="_blank"
+                  >
+                    catcomjkuat
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.contact2}>
+              <ul>
+                <li>
+                  <FaYoutube />
+                  <NavLink
+                    to="https://www.catcom.com/catcomjkuat"
+                    target="_blank"
+                  >
+                    catcomjkuat
+                  </NavLink>
+                </li>
+                <li>
+                  <FaEnvelope />
+                  <NavLink to="mailto:jkuatcatcom18@gmail.com">
+                    jkuatcatcom18@gmail.com
+                  </NavLink>
+                </li>
+                <li>
+                  <FaPhoneAlt />
+                  <span>+254 7XX XXXXXX</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className={styles.footerBottom}>
         <p>© {new Date().getFullYear()} JKUAT Catcom. All Rights Reserved.</p>
         <p className={styles.tagline}>

@@ -1,0 +1,39 @@
+.visionContainer {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 1.5rem;
+  margin-right: 1.5rem;
+  width: 50%;
+}
+
+.card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.078), 0 0 8px rgba(45, 171, 177, 0.4);
+}
+
+.cardTitle {
+  color: #2dabb1;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .visionContainer {
+    /* display: flex; */
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}

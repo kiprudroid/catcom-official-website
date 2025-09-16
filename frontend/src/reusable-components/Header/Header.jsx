@@ -120,7 +120,7 @@ function Header() {
         >
           <ul className={styles.mobileNavList}>
             <li>
-              <NavLink to="/" onClick={closeMenu}>
+              <NavLink to="/home" onClick={closeMenu}>
                 <FaHome className={styles.icon} /> Home
               </NavLink>
             </li>

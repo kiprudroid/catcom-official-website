@@ -7,29 +7,46 @@ import {
   priests,
   catcomExecutive,
 } from "./../../DataFiles/data";
+import styles from "./About.module.css";
 
-// Import all the About Us sections
-import { HeroSection } from '../../components/AboutWidgets/AboutHero/AboutHero';
-import { HeritageSection } from '../../components/AboutWidgets/AboutHeritage/AboutHeritage';
-import { MissionVisionSection } from '../../components/AboutWidgets/AboutMissionVision/AboutMissionVision';
-import { SccSection } from '../../components/AboutWidgets/AboutScc/AboutScc';
-import { PriestsSection } from '../../components/AboutWidgets/AboutPriests/AboutPriests';
-import { PatronsSection } from '../../components/AboutWidgets/AboutPatrons/AboutPatrons';
-import { ExecutivesSection } from '../../components/AboutWidgets/AboutExecutives/AboutExecutives';
+import { HeroSection } from "../../components/AboutWidgets/HeroSection/HeroSection";
+import { Heritage } from "../../components/AboutWidgets/Heritage/Heritage";
+import { MissionVision } from "../../components/AboutWidgets/MissionVision/MissionVision";
+
+import { PriestsCard } from "../../components/AboutWidgets/PriestsCard/PriestsCard";
+import { PatronsCard } from "../../components/AboutWidgets/PatronsCard/PatronsCard";
+import { ExecutiveCards } from "../../components/AboutWidgets/ExecutiveCards/ExecutiveCards";
+import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 
 const AboutPage = () => {
   return (
-    <main>
-      <Header />
-      <HeroSection />
-      <HeritageSection />
-      <MissionVisionSection />
-      <SccSection communities={communities} />
-      <PriestsSection priests={priests} />
-      <PatronsSection patrons={patrons} />
-      <ExecutivesSection executives={catcomExecutive} />
-      <Footer />
-    </main>
+    <DashboardLayout>
+      <div className={styles.aboutContainer}>
+        <div className={styles.widget}>
+          <HeroSection />
+        </div>
+
+        <div className={styles.widget}>
+          <Heritage />
+        </div>
+
+        <div className={styles.widget}>
+          <MissionVision />
+        </div>
+
+        <div className={styles.widget}>
+          <PriestsCard priests={priests} />
+        </div>
+
+        <div className={styles.widget}>
+          <PatronsCard patrons={patrons} />
+        </div>
+
+        <div className={styles.widget}>
+          <ExecutiveCards executives={catcomExecutive} />
+        </div>
+      </div>
+    </DashboardLayout>
   );
 };
 

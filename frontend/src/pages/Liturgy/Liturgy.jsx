@@ -11,22 +11,20 @@ function Liturgy() {
   return (
     <DashboardLayout>
       <div className={styles.gridContainer}>
-        <div className={styles.placeholders}>
-          <div className={styles.readingWeek}>
-            <ReadingOfTheWeek />
-          </div>
-          <div className={styles.placeholder}>
-            <Prayers />
-          </div>
-          <div className={styles.placeholder}>
-            <DivineMercyRosary />
-          </div>
-          <div className={styles.placeholder}>
-            <RosaryPrayers />
-          </div>
-          <div className={styles.placeholder}>
-            <WayOfTheCross />
-          </div>
+        <div className={`${styles.readingWeek} ${styles.widget}`}>
+          <ReadingOfTheWeek />
+        </div>
+        <div className={styles.widget}>
+          <Prayers />
+        </div>
+        <div className={styles.widget}>
+          <DivineMercyRosary />
+        </div>
+        <div className={styles.widget}>
+          <RosaryPrayers />
+        </div>
+        <div className={styles.widget}>
+          <WayOfTheCross />
         </div>
       </div>
     </DashboardLayout>

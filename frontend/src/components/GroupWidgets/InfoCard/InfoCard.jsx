@@ -4,19 +4,26 @@ import { SectionHeading, Paragraph } from "../../Typography/Typography";
 
 function InfoCard() {
   return (
-    <div>
-      <SectionHeading as="h1" className={styles.infoHeader}>
-        Groups in Jkuat Catcom
-      </SectionHeading>
-      <div className={styles.infoCard}>
-        <div className={styles.infoRow}>
+    <div className={styles.infoCard}>
+      <div className={styles.infoRow}>
+        <div>
+          <SectionHeading as="h1" className={styles.infoHeader}>
+            Groups in Jkuat Catcom
+          </SectionHeading>
+        </div>
+
+        <div>
           <img
             src="/others/Group.jpg"
             alt="Church Group Icon"
             className={styles.infoIcon}
-            style={{ width: "100px", height: "100px", marginRight: "1rem" }}
+            style={{
+              width: "100px",
+              height: "100px",
+              float: "left",
+              marginRight: "1rem",
+            }}
           />
-
           <Paragraph className={styles.textContent}>
             The CATCOM community is built on unity, service, and shared faith.
             Our various groups bring together students with different gifts,

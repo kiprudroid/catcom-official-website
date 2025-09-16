@@ -2,15 +2,19 @@ import React from "react";
 import "@fontsource/nunito-sans";
 import styles from "./Typography.module.css";
 
-export const Paragraph = ({ children, className, as: Component = "p" }) => {
+export const Paragraph = ({
+  children,
+  fontSize = "0.95rem",
+  className,
+  as: Component = "p",
+}) => {
   return (
     <Component
       className={className}
       style={{
         fontFamily: "Nunito Sans",
-        fontSize: "0.95rem",
+        fontSize,
         fontWeight: "unset",
-        margin: 0,
       }}
     >
       {children}
@@ -18,7 +22,12 @@ export const Paragraph = ({ children, className, as: Component = "p" }) => {
   );
 };
 
-export const SectionHeading = ({ children, as = "h3", className }) => {
+export const SectionHeading = ({
+  children,
+  fontSize = "",
+  as = "h3",
+  className,
+}) => {
   const Tag = as;
   return (
     <Tag
@@ -26,6 +35,7 @@ export const SectionHeading = ({ children, as = "h3", className }) => {
       style={{
         fontFamily: "Nunito Sans",
         color: "#2dabb1ff",
+        fontSize,
       }}
     >
       {children}

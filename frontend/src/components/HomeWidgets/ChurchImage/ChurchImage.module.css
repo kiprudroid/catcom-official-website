@@ -14,8 +14,7 @@
 
 .imageLabel {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
+  bottom: 20px;
   background: rgba(45, 171, 177, 0.9);
   color: #fff;
   padding: 0.5rem 1rem;

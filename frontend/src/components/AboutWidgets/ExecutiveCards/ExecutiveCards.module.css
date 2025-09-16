@@ -1,6 +1,5 @@
-.executives-section {
+.executivesSection {
   padding: 2rem 1rem;
-  background: #f9fafb;
 }
 
 .container {
@@ -8,19 +7,19 @@
   margin: 0 auto;
 }
 
-.section-header {
+.sectionHeader {
   text-align: center;
   margin-bottom: 4rem;
   animation: fadeUp 0.6s ease-in-out;
 }
 
-.section-header h2 {
+.sectionHeader h2 {
   font-size: 2.5rem;
   font-weight: bold;
   color: #222;
 }
 
-.section-header .underline {
+.underline {
   width: 70px;
   height: 4px;
   margin: 1rem auto;
@@ -28,35 +27,35 @@
   background: linear-gradient(90deg, #6a11cb, #2575fc);
 }
 
-.section-header p {
+.sectionHeader p {
   font-size: 1.1rem;
   color: #555;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.executives-grid {
+.executivesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-.executive-card {
+.executiveCard {
   background: #fff;
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   animation: fadeUp 0.6s ease-in-out forwards;
   opacity: 0;
 }
 
-.executive-card:hover {
+.executiveCard:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.executive-header {
+.executiveHeader {
   text-align: center;
   position: relative;
   margin-bottom: 1rem;
@@ -68,41 +67,22 @@
   margin: 0 auto 1rem;
   border-radius: 50%;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: glow 2s infinite alternate;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(185, 200, 200, 0.6),
+    0 0 25px rgba(99, 102, 241, 0.3);
 }
 
-.exec-img {
+.execImg {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.leader-badge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #e2e8f0;
-  color: #333;
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
-  font-size: 0.7rem;
-  font-weight: bold;
-}
-
-.executive-header h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #111;
-}
-
-.executive-header .position {
+.position {
   font-weight: 600;
   color: #555;
 }
@@ -117,7 +97,7 @@
   margin-top: 0.3rem;
 }
 
-.executive-body {
+.executiveBody {
   text-align: center;
 }
 
@@ -127,43 +107,31 @@
   margin-bottom: 1rem;
 }
 
-.achievements {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.achievement {
-  padding: 0.3rem 0.6rem;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  background: #f9fafb;
-}
-
 .contact {
   border-top: 1px solid #eee;
   padding-top: 1rem;
 }
 
-.contact-btn {
-  background: linear-gradient(90deg, #2dabb1, #2575fc);
+.contactBtn {
+  background: #2dabb1;
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.contact-btn:hover {
-  background: linear-gradient(90deg, #2575fc, #1c676b);
+.contactBtn:hover {
+  background: #2daab1b7;
 }
 
-.executives-cta {
+.executivesCta {
   margin-top: 4rem;
   text-align: center;
   background: #f0f4ff;
@@ -172,21 +140,21 @@
   animation: fadeUp 0.6s ease-in-out;
 }
 
-.executives-cta h3 {
+.executivesCta h3 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #222;
 }
 
-.executives-cta p {
+.executivesCta p {
   max-width: 600px;
   margin: 0 auto 1.5rem;
   color: #555;
   font-size: 1rem;
 }
 
-.cta-btn {
+.ctaBtn {
   background: linear-gradient(90deg, #1c6c70, #2575fc);
   color: #fff;
   padding: 0.75rem 1.5rem;
@@ -197,7 +165,7 @@
   cursor: pointer;
 }
 
-.cta-btn:hover {
+.ctaBtn:hover {
   background: linear-gradient(90deg, #2575fc, #186266);
 }
 
@@ -210,14 +178,5 @@
   to {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 5px #6a11cb, 0 0 10px #2575fc;
-  }
-  to {
-    box-shadow: 0 0 15px #6a11cb, 0 0 25px #2575fc;
   }
 }

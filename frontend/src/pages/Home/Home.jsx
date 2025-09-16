@@ -12,6 +12,7 @@ import { slideShowImages } from "../../DataFiles/data";
 import ImageSlider from "../../components/HomeWidgets/ImageSlider/ImageSlider";
 import ChurchImage from "../../components/HomeWidgets/ChurchImage/ChurchImage";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
+import VisionCards from "../../components/HomeWidgets/VisionCards/VisionCards";
 
 function Home() {
   return (
@@ -34,26 +35,8 @@ function Home() {
           </div>
         </div>
 
-        <div className={styles.card}>
-          <SectionHeading className={styles.cardTitle}>
-            What are we?
-          </SectionHeading>
-          <Paragraph className={styles.textContent}>
-            We are a vibrant Catholic Community that encourages healthy growth
-            spiritually, socially, and academically, with the ultimate goal of
-            encountering Christ in our daily lives. The community supports us in
-            recognizing our inherent vocation bestowed upon us by God.
-          </Paragraph>
-        </div>
-
-        <div className={styles.card}>
-          <SectionHeading className={styles.cardTitle}>
-            Our Vision
-          </SectionHeading>
-          <Paragraph className={styles.textContent}>
-            A praying, believing and worshiping community for empowering young
-            people to live as disciples of Jesus Christ.
-          </Paragraph>
+        <div className={`${styles.card} ${styles.vision}`}>
+          <VisionCards />
         </div>
 
         <div className={`${styles.card} ${styles.calendar}`}>
@@ -67,12 +50,14 @@ function Home() {
           <CatcomCalendar />
         </div>
 
-        <div className={styles.card}>
-          <MediaContent />
-        </div>
+        <div className={`${styles.card} ${styles.mediaContainer}`}>
+          <div className={` ${styles.media}`}>
+            <MediaContent />
+          </div>
 
-        <div className={styles.card}>
-          <ImageSlider images={slideShowImages} />
+          <div className={` ${styles.imageSlider}`}>
+            <ImageSlider images={slideShowImages} />
+          </div>
         </div>
       </div>
     </DashboardLayout>

@@ -1,4 +1,4 @@
-import { Star } from "lucide-react"; 
+import { Star } from "lucide-react";
 
 export const slideShowImages = [
   "/sccPictures/stPaul/picture1.png",
@@ -40,12 +40,12 @@ export const priests = [
   },
 ];
 
-
 export const patrons = [
   {
     name: "Professor Rebecca Waihenya",
     title: "Patron",
-    description: "A guiding figure who supports the spiritual and academic mission of CATCOM.",
+    description:
+      "A guiding figure who supports the spiritual and academic mission of CATCOM.",
     feastDay: "January 15",
     prayer: "Guide us in our journey of learning and faith.",
     symbol: Star,
@@ -54,7 +54,8 @@ export const patrons = [
   {
     name: "Mr. Alfred Wanzala",
     title: "Assistant Patron",
-    description: "Supports students with mentorship and dedicated service to the community.",
+    description:
+      "Supports students with mentorship and dedicated service to the community.",
     feastDay: "March 20",
     prayer: "Bless our community with wisdom and unity.",
     symbol: Star,
@@ -76,7 +77,10 @@ export const catcomExecutive = [
     position: "Catcom Vice Moderator",
     course: "BSc Civil Engineering",
     bio: "Sophie supports the moderator in managing programs and fostering student involvement.",
-    achievements: ["Community Outreach Volunteer", "Youth Empowerment Advocate"],
+    achievements: [
+      "Community Outreach Volunteer",
+      "Youth Empowerment Advocate",
+    ],
     image: "/leadersImages/sophie.jpg",
   },
   {
@@ -84,7 +88,10 @@ export const catcomExecutive = [
     position: "Catcom Secretary",
     course: "BBA Business Administration",
     bio: "Eliza keeps records, manages communications, and ensures CATCOM operations run smoothly.",
-    achievements: ["Exemplary Record Keeping Award", "Mentorship in Student Leadership"],
+    achievements: [
+      "Exemplary Record Keeping Award",
+      "Mentorship in Student Leadership",
+    ],
     image: "/leadersImages/eliza.jpg",
   },
   {
@@ -92,7 +99,10 @@ export const catcomExecutive = [
     position: "Catcom Treasurer",
     course: "BCom Finance",
     bio: "Terryann manages CATCOM finances, ensuring accountability and transparency.",
-    achievements: ["Budgeting Excellence Award", "Organized successful fundraising drives"],
+    achievements: [
+      "Budgeting Excellence Award",
+      "Organized successful fundraising drives",
+    ],
     image: "/leadersImages/terry.jpg",
   },
   {
@@ -108,7 +118,10 @@ export const catcomExecutive = [
     position: "Catcom Pastoral Secretary",
     course: "BSc Agricultural Economics",
     bio: "Bernard strengthens spiritual life within CATCOM by organizing retreats and prayer sessions.",
-    achievements: ["Led successful prayer campaigns", "Community outreach programs"],
+    achievements: [
+      "Led successful prayer campaigns",
+      "Community outreach programs",
+    ],
     image: "/leadersImages/nderitu.jpg",
   },
   {
@@ -124,7 +137,10 @@ export const catcomExecutive = [
     position: "Catcom Choir Director",
     course: "BSc Mechanical Engineering",
     bio: "Rodgers ensures the choir delivers uplifting liturgical music during masses and events.",
-    achievements: ["Best Choir Performance 2023", "Coordinated regional choir competition"],
+    achievements: [
+      "Best Choir Performance 2023",
+      "Coordinated regional choir competition",
+    ],
     image: "/leadersImages/matia.jpg",
   },
   {
@@ -132,7 +148,10 @@ export const catcomExecutive = [
     position: "Catcom Publicity Secretary",
     course: "BSc Information Technology",
     bio: "Robinson manages CATCOM's publicity and communication to enhance visibility.",
-    achievements: ["Launched CATCOM social media", "Boosted event attendance by 40%"],
+    achievements: [
+      "Launched CATCOM social media",
+      "Boosted event attendance by 40%",
+    ],
     image: "/leadersImages/Robinson.jpg",
   },
   {
@@ -148,7 +167,10 @@ export const catcomExecutive = [
     position: "Catcom Catering Secretary",
     course: "BSc Food Science & Nutrition",
     bio: "Sarah manages catering during CATCOM events, ensuring hospitality for all members.",
-    achievements: ["Organized 20+ catering services", "Community food drives leader"],
+    achievements: [
+      "Organized 20+ catering services",
+      "Community food drives leader",
+    ],
     image: "/leadersImages/sarahOkello.jpg",
   },
 ];
@@ -245,9 +267,6 @@ export const communities = [
     gradient: "gradient-sacred",
   },
 ];
-
-
-
 
 //removed from the scc page
 export const kmrm = {

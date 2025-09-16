@@ -1,6 +1,7 @@
 .gridContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
   padding: 1rem;
   max-width: 1200px;
@@ -9,23 +10,8 @@
   box-sizing: border-box;
 }
 
-.middleRow {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.placeholders {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  gap: 1rem;
-  width: 100%;
-}
-
-.placeholder {
+.widget {
+  background-color: #b9c8c8;
   border-radius: 0.5rem;
   padding: 1rem;
   min-height: 200px;
@@ -34,6 +20,7 @@
   justify-content: flex-start;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   overflow-x: hidden;
+  width: 90%;
 }
 
 .readingWeek {
@@ -41,14 +28,7 @@
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
-}
-
-.prayerSectionWrapper {
-  background: #c8d8dc;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  overflow-x: hidden;
+  width: 90%;
 }
 
 /* === Mobile (Phones) === */
@@ -56,35 +36,19 @@
   .gridContainer {
     padding: 0.5rem;
     gap: 1rem;
-  }
-
-  .middleRow {
-    grid-template-columns: 1fr;
-  }
-
-  .placeholders {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .placeholder {
-    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }
 
 /* === Tablets & Small Laptops === */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-  .middleRow {
-    grid-template-columns: 3fr 2fr;
-    gap: 1.25rem;
-  }
-
-  .placeholders {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
-
-  .placeholder {
-    min-height: 180px;
+  .gridContainer {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1rem;
   }
 }

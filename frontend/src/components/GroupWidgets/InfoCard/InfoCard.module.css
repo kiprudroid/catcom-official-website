@@ -1,5 +1,5 @@
 .infoCard {
-  border-radius: 40px;
+  border-radius: 8px;
   background-color: #fff;
   padding: 3rem 3.5rem;
   margin: 1.5rem 0;
@@ -10,15 +10,12 @@
 }
 
 .infoHeader {
-  display: block;
-  gap: 1rem;
   text-align: center;
-  margin-left: 2rem;
 }
 
 .infoRow {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;

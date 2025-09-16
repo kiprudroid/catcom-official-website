@@ -1,6 +1,6 @@
 .sliderContainer {
-  width: 100%;
   position: relative;
+  max-width: 100%;
 }
 
 .slide {
@@ -11,8 +11,8 @@
 
 .slideshowImage {
   width: 100%;
-  height: auto;
-  max-height: 500px;
+  height: 300px;
+  max-height: 400px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -35,8 +35,8 @@
 .sliderContainer :global(.slick-prev),
 .sliderContainer :global(.slick-next) {
   z-index: 2;
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
 }
 
 .sliderContainer :global(.slick-prev:before),

@@ -18,7 +18,7 @@ export const groupCardsData = [
       "/Groups/welfare.jpg",
       "/Groups/welfare1.jpg",
       "/Groups/welfare2.jpg",
-      "/Groups/welfare3.jpg"
+      "/Groups/welfare3.jpg",
     ],
     alt: "Welfare",
     title: "Welfare",
@@ -26,10 +26,7 @@ export const groupCardsData = [
       "This team consist of Catcom Catering secretaries and Project managers. They promote unity and compassion by reaching out to members in times of need, joy, or crisis be it, illnesses, or bereavement. They also support the community through various charitable initiatives and organize various projects and drives to assist those in need.",
   },
   {
-    imgSrc: [
-      "/Groups/CL.jpg",
-      "/Groups/CL1.jpg"
-    ],
+    imgSrc: ["/Groups/CL.jpg", "/Groups/CL1.jpg"],
     alt: "Communion and Liberation",
     title: "Communion and Liberation",
     description:
@@ -69,11 +66,11 @@ export const groupCardsData = [
       "/Groups/Tournament1.png",
       "/Groups/Tournament2.jpg",
       "/Groups/Tournament3.jpg",
-      "/Groups/Tournament4.png"
+      "/Groups/Tournament4.png",
     ],
     alt: "Tournament FC",
     title: "Tournament FC",
     description:
       "The Tournament FC is a vibrant community of football enthusiasts who come together to share their passion for the game. They organize regular matches, tournaments, and training sessions, fostering teamwork and sportsmanship among members.",
-  }
+  },
 ];

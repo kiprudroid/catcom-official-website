@@ -1,0 +1,347 @@
+.priests-section {
+  padding: 5rem 1.5rem;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.priestsSection {
+  padding: 5rem 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.sectionDivider {
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  border-radius: 2px;
+  margin: 1rem auto 2rem;
+}
+
+.sectionHeader p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.priestsGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.priestCard {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.priestCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+}
+
+.priestAvatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.priestImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.priestName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #111;
+}
+
+.priestTitle {
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.priestBio {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.priestSpecialties {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background: #f3f4f6;
+  color: #111;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.priestFooter {
+  font-size: 0.85rem;
+  color: #555;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+
+.priestContact {
+  font-size: 0.8rem;
+  color: #2dabb1;
+}
+
+.fadeUp {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.section-divider {
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  border-radius: 2px;
+  margin: 1rem auto 2rem;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.priests-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.priest-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.priest-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+}
+
+.priest-avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.priest-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.priest-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #111;
+}
+
+.priest-title {
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.priest-bio {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.priest-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background: #f3f4f6;
+  color: #111;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Extra small screens (phones, <480px) */
+@media (max-width: 480px) {
+  .priests-section,
+  .priestsSection {
+    padding: 3rem 1rem;
+  }
+
+  .sectionHeader h2,
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .sectionHeader p,
+  .section-header p {
+    font-size: 1rem;
+  }
+
+  .priestCard,
+  .priest-card {
+    padding: 1.2rem;
+  }
+
+  .priest-avatar,
+  .priestAvatar {
+    width: 100px;
+    height: 100px;
+    font-size: 1.2rem;
+  }
+
+  .priest-name,
+  .priestName {
+    font-size: 1rem;
+  }
+
+  .priest-title,
+  .priestTitle {
+    font-size: 0.85rem;
+  }
+
+  .priest-bio,
+  .priestBio {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small to medium screens (tablets, 481px - 1023px) */
+@media (min-width: 481px) and (max-width: 1023px) {
+  .priests-section,
+  .priestsSection {
+    padding: 4rem 1.5rem;
+  }
+
+  .sectionHeader h2,
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .sectionHeader p,
+  .section-header p {
+    font-size: 1.1rem;
+  }
+
+  .priestCard,
+  .priest-card {
+    padding: 1.5rem;
+  }
+
+  .priest-avatar,
+  .priestAvatar {
+    width: 120px;
+    height: 120px;
+    font-size: 1.3rem;
+  }
+
+  .priest-name,
+  .priestName {
+    font-size: 1.15rem;
+  }
+
+  .priest-title,
+  .priestTitle {
+    font-size: 0.9rem;
+  }
+
+  .priest-bio,
+  .priestBio {
+    font-size: 0.9rem;
+  }
+}
