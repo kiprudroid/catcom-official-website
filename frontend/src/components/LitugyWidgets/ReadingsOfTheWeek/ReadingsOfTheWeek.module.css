@@ -86,6 +86,29 @@
   background: #2daab1cf;
 }
 
+.warningBox {
+  background: #fff3cd;
+  color: #856404;
+  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  margin: 1rem auto;
+  max-width: 500px;
+  border-radius: 0.5rem;
+  border: 1px solid #ffeeba;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Medium screens: tablets */
 @media (max-width: 1024px) {
   .grid {

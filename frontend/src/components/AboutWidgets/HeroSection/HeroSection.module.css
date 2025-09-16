@@ -55,7 +55,7 @@
 .heroDivider {
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, #2dabb1ff, #ff6600b9, #ff1994ac);
+  background: linear-gradient(90deg, #2dabb1ff, #2dabb1ff, #ff1994ac);
   margin: 0 auto 1.5rem;
   border-radius: 999px;
 }

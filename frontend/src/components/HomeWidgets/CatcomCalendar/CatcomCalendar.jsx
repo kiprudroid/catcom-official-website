@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CatcomCalendar.module.css";
 import { SectionHeading, Paragraph } from "../../Typography/Typography";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaChevronDown,
+  FaPrayingHands,
+  FaChevronUp,
+  FaCalendarCheck,
+} from "react-icons/fa";
 
-const events = [
+let events = [
   // === Activities ===
   {
     title: "Reunion & 1st Year Orientation",
@@ -195,9 +201,15 @@ const events = [
   },
 ];
 
-// Sorting helper
+events = [];
+
 const sortByDate = (arr) =>
   [...arr].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+const filterUpcoming = (arr) => {
+  const today = new Date();
+  return arr.filter((event) => new Date(event.date) >= today);
+};
 
 const formatDate = (dateStr) => {
   const options = { month: "short", day: "numeric" };
@@ -206,11 +218,15 @@ const formatDate = (dateStr) => {
 
 const CatcomCalendar = () => {
   const activities = sortByDate(
-    events.filter((e) => e.category === "Activity")
+    filterUpcoming(events.filter((e) => e.category === "Activity"))
   );
+
   const masses = sortByDate(
-    events.filter((e) => e.category === "Mass Animation")
+    filterUpcoming(events.filter((e) => e.category === "Mass Animation"))
   );
+
+  const [showActivities, setShowActivities] = useState(false);
+  const [showMasses, setShowMasses] = useState(false);
 
   return (
     <div className={styles.calendarWrapper}>
@@ -218,45 +234,92 @@ const CatcomCalendar = () => {
         JKUAT CATCOM <span>Sept – Dec 2025</span> Semester Calendar
       </SectionHeading>
 
-      {/* Activities Section */}
       <div className={styles.subSection}>
-        <h3 className={styles.subTitle}>Activities</h3>
-        <div className={styles.eventGrid}>
-          {activities.map((event, index) => (
-            <div key={`act-${index}`} className={styles.eventCard}>
-              <div className={styles.dateBadge}>{formatDate(event.date)}</div>
-              <div className={styles.eventDetails}>
-                <h4 className={styles.eventTitle}>{event.title}</h4>
-                <Paragraph className={styles.meta}>
-                  <FaMapMarkerAlt className={styles.icon} />{" "}
-                  {event.venue || "Venue TBA"}
-                </Paragraph>
-              </div>
-            </div>
-          ))}
-        </div>
+        <button
+          className={styles.dropdownHeader}
+          onClick={() => setShowActivities((prev) => !prev)}
+        >
+          <h3 className={styles.subTitle}>Upcoming Activities</h3>
+          {showActivities ? (
+            <FaChevronUp className={styles.chevron} />
+          ) : (
+            <FaChevronDown className={styles.chevron} />
+          )}
+        </button>
+
+        {showActivities && (
+          <div className={styles.eventGrid}>
+            {activities.length === 0 ? (
+              <p className={styles.emptyMsg}>
+                <FaCalendarCheck className={styles.emptyIcon} />
+                <span>All caught up — new activities coming soon 🎉</span>
+                <small className={styles.subMsg}>
+                  Be sure to check back here or on our website!
+                </small>
+              </p>
+            ) : (
+              activities.map((event, index) => (
+                <div key={`act-${index}`} className={styles.eventCard}>
+                  <div className={styles.dateBadge}>
+                    {formatDate(event.date)}
+                  </div>
+                  <div className={styles.eventDetails}>
+                    <h4 className={styles.eventTitle}>{event.title}</h4>
+                    <Paragraph className={styles.meta}>
+                      <FaMapMarkerAlt className={styles.icon} />{" "}
+                      {event.venue || "Venue TBA"}
+                    </Paragraph>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </div>
 
-      {/* Mass Animation Section */}
       <div className={styles.subSection}>
-        <h3 className={styles.subTitle}>Mass Animations</h3>
-        <div className={styles.eventGrid}>
-          {masses.map((event, index) => (
-            <div key={`mass-${index}`} className={styles.eventCard}>
-              <div className={styles.dateBadge}>{formatDate(event.date)}</div>
-              <div className={styles.eventDetails}>
-                <h4 className={styles.eventTitle}>{event.title}</h4>
-                <Paragraph className={styles.meta}>
-                  <FaMapMarkerAlt className={styles.icon} />{" "}
-                  {event.venue || "Venue TBA"}
-                </Paragraph>
-              </div>
-            </div>
-          ))}
-        </div>
+        <button
+          className={styles.dropdownHeader}
+          onClick={() => setShowMasses((prev) => !prev)}
+        >
+          <h3 className={styles.subTitle}>Mass Animations Schedule</h3>
+          {showMasses ? (
+            <FaChevronUp className={styles.chevron} />
+          ) : (
+            <FaChevronDown className={styles.chevron} />
+          )}
+        </button>
+
+        {showMasses && (
+          <div className={styles.eventGrid}>
+            {masses.length === 0 ? (
+              <p className={styles.emptyMsg}>
+                <FaPrayingHands className={styles.emptyIcon} />
+                <span>Mass animations will be announced soon 🙏</span>
+                <small className={styles.subMsg}>
+                  Be sure to check back here or on our website!
+                </small>
+              </p>
+            ) : (
+              masses.map((event, index) => (
+                <div key={`mass-${index}`} className={styles.eventCard}>
+                  <div className={styles.dateBadge}>
+                    {formatDate(event.date)}
+                  </div>
+                  <div className={styles.eventDetails}>
+                    <h4 className={styles.eventTitle}>{event.title}</h4>
+                    <Paragraph className={styles.meta}>
+                      <FaMapMarkerAlt className={styles.icon} />{" "}
+                      {event.venue || "Venue TBA"}
+                    </Paragraph>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </div>
 
-      {/* Contacts */}
       <div className={styles.contacts}>
         <Paragraph>
           <strong>Stephen Mutwiwa Mutie (Moderator)</strong> – 0798715858

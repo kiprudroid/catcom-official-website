@@ -1,49 +1,44 @@
 import React, { useState } from "react";
 import styles from "./ReadingsOfTheWeek.module.css";
 import { SectionHeading, Paragraph } from "../../Typography/Typography";
-import { FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 const readings = [
   {
     title: "1st Reading",
     reference: "Mal 3:1-4",
-    fullText:
-      "Behold, I send my messenger to prepare the way before me... (full scripture or sermon goes here).",
     image: "/litugy-images/Bible.jpg",
   },
   {
     title: "Responsorial Psalms",
     reference: "Psalms 3:1-4",
-    fullText:
-      "The Lord takes delight in his People... (full scripture or sermon goes here).",
     image: "/litugy-images/Bible.jpg",
   },
   {
     title: "2nd Reading",
     reference: "Heb 2:14-18",
-    fullText:
-      "Since therefore the children share flesh and blood, he himself likewise partook of the same... (full reading).",
     image: "/litugy-images/Bible.jpg",
   },
   {
     title: "Gospel",
     reference: "Luke 2:22-40",
-    fullText:
-      "When the time came for their purification according to the Law of Moses, they brought him up to Jerusalem... (full gospel).",
     image: "/litugy-images/Bible.jpg",
   },
 ];
 
 const ReadingOfTheWeek = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [warning, setWarning] = useState(null);
 
-  const toggle = (idx) => {
-    setOpenIndex(openIndex === idx ? null : idx);
+  const showWarning = (msg) => {
+    setWarning(msg);
+    setTimeout(() => setWarning(null), 3500);
   };
 
   return (
     <div className={styles.readingBox}>
       <SectionHeading as="h2">Readings of the Day</SectionHeading>
+
+      {warning && <div className={styles.warningBox}>{warning}</div>}
 
       <div className={styles.grid}>
         {readings.map((reading, idx) => (
@@ -55,24 +50,26 @@ const ReadingOfTheWeek = () => {
                 className={styles.image}
               />
               <div className={styles.overlay}></div>
-              <div className={styles.cardHeader} onClick={() => toggle(idx)}>
+              <div
+                className={styles.cardHeader}
+                onClick={() =>
+                  showWarning(`🚧 This Feature is under development`)
+                }
+              >
                 <Paragraph className={styles.cardTitle}>
                   <strong>{reading.title}:</strong> {reading.reference}
                 </Paragraph>
-                {openIndex === idx ? <FaMinus /> : <FaPlus />}
+                <FaPlus />
               </div>
             </div>
-
-            {openIndex === idx && (
-              <div className={styles.fullText}>
-                <Paragraph>{reading.fullText}</Paragraph>
-              </div>
-            )}
           </div>
         ))}
       </div>
 
-      <button className={styles.button}>
+      <button
+        className={styles.button}
+        onClick={() => showWarning("🚧This feature under development")}
+      >
         <Paragraph>Full Sermon</Paragraph>
       </button>
     </div>

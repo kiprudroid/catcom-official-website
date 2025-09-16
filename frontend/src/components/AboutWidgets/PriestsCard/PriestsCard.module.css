@@ -33,7 +33,8 @@
 .sectionDivider {
   width: 64px;
   height: 4px;
-  background: linear-gradient(90deg, #a855f7, #6366f1);
+  background: linear-gradient(135deg, #2dabb1, #1c6f74);
+
   border-radius: 2px;
   margin: 1rem auto 2rem;
 }

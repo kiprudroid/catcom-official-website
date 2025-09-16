@@ -1,6 +1,15 @@
 .sliderContainer {
   position: relative;
   max-width: 100%;
+  margin: 0 auto;
+}
+
+.sliderTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #2dabb1;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .slide {
@@ -15,6 +24,7 @@
   max-height: 400px;
   object-fit: cover;
   border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .sliderContainer :global(.slick-dots) {

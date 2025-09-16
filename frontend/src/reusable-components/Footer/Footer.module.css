@@ -1,6 +1,7 @@
 .footer {
   width: 100%;
   background-color: #2d2d2d;
+  background-image: url("https://www.transparenttextures.com/patterns/rough-cloth-light.png");
   color: #eaeaea;
 }
 
@@ -11,7 +12,7 @@
   grid-template-areas: "location quick-links contact";
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1rem;
+  padding: 2rem;
 }
 
 .catcomLogo {
@@ -33,6 +34,7 @@
   font-size: 0.95rem;
   color: #dcdcdc;
   line-height: 1.5;
+  cursor: pointer;
 }
 
 .quickLinks {
@@ -62,25 +64,16 @@
 
 .quickLinks a:hover {
   color: #ffd700;
-  transform: translateX(4px);
+  transform: translateX(2px);
 }
 
 .contact {
+  grid-area: contact;
   display: flex;
   flex-direction: column;
 }
 
-.contactsWrapper {
-  display: flex;
-  gap: 4rem;
-}
-
-.contact2 {
-  margin-top: 45px;
-}
-
-.contact1 ul,
-.contact2 ul {
+.contact ul {
   list-style: none;
   padding: 0;
   display: flex;
@@ -88,34 +81,36 @@
   gap: 0.75rem;
 }
 
-.contact1 li,
-.contact2 li {
+.contact li {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 0.95rem;
 }
 
-.contact1 a,
-.contact2 a {
+.contact a {
   color: #eaeaea;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.contact1 a:hover,
-.contact2 a:hover {
+.contact a:hover {
   color: #ffd700;
   transform: translateX(4px);
 }
+.contact .heading {
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
 
 .footerBottom {
-  background: rgba(0, 0, 0, 0.3);
   color: #cfcfcf;
   padding: 1rem;
   text-align: center;
   font-size: 0.85rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .footerBottom p {
@@ -127,21 +122,77 @@
   color: #ffd700;
 }
 
-@media (max-width: 768px) {
+/* Tablets (<= 1024px) */
+@media (max-width: 1024px) {
   .footerContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "location"
-      "quick-links"
-      "contact";
+      "location quick-links"
+      "contact contact";
     text-align: center;
   }
 
-  .contact {
-    grid-template-columns: 1fr;
+  .location,
+  .quickLinks {
+    border-right: none;
+  }
+
+  .contactsWrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+/* Phones (<= 768px) */
+@media (max-width: 768px) {
+  .footerContainer {
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "heading"
-      "contact1"
-      "contact2";
+      "location location"
+      "quick-links contact";
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .location {
+    padding-bottom: 1rem;
+  }
+
+  .quickLinks {
+    border-right: none;
+    border-right: 2px solid rgba(255, 215, 0, 0.4);
+  }
+
+  .contactsWrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .heading {
+    text-align: left;
+  }
+}
+
+/* Extra small phones (<= 480px) */
+@media (max-width: 480px) {
+  .catcomLogo {
+    width: 100px;
+  }
+
+  .footerContainer {
+    padding: 2rem 1rem;
+    gap: 1.2rem;
+  }
+
+  .contact li {
+    font-size: 0.85rem;
+  }
+
+  .footerBottom {
+    font-size: 0.75rem;
+  }
+
+  .heading {
+    text-align: left;
   }
 }

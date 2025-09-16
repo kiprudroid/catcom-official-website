@@ -25,7 +25,8 @@
 .mvDivider {
   width: 4rem;
   height: 4px;
-  background: linear-gradient(90deg, #ffd700, #ff6600, #ff1493);
+  background: linear-gradient(135deg, #2dabb1, #1c6f74);
+
   border-radius: 999px;
   margin: 0 auto 2rem;
 }
@@ -91,19 +92,10 @@
   color: #555;
 }
 
+.gradientPeaceful,
+.gradientHoly,
+.gradientDivine,
 .gradientSacred {
-  background: linear-gradient(135deg, #ffd700, #ff6600);
-}
-
-.gradientDivine {
-  background: linear-gradient(135deg, #ff1493, #6a0dad);
-}
-
-.gradientHoly {
-  background: linear-gradient(135deg, #00c9ff, #92fe9d);
-}
-
-.gradientPeaceful {
   background: linear-gradient(135deg, #2dabb1, #1c6f74);
 }
 

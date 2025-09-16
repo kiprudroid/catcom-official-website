@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./ImageSlider.module.css";
+import { SectionHeading } from "../../Typography/Typography";
 
-function ImageSlider({ images }) {
+function ImageSlider({ images, title = "Life at CATCOM ✨📸" }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -19,6 +20,10 @@ function ImageSlider({ images }) {
 
   return (
     <div className={styles.sliderContainer}>
+      <SectionHeading as="h3" className={styles.sliderTitle}>
+        {title}
+      </SectionHeading>
+
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index} className={styles.slide}>

@@ -35,7 +35,10 @@ function Footer({ className }) {
         </div>
 
         <div className={styles.quickLinks}>
-          <SectionHeading>Quick Links</SectionHeading>
+          <SectionHeading className={styles.heading}>
+            {" "}
+            Quick Links
+          </SectionHeading>
           <ul>
             <li>
               <FaHome />
@@ -61,72 +64,40 @@ function Footer({ className }) {
         </div>
 
         <div className={styles.contact}>
-          <div className={styles.contactsWrapper}>
-            <div className={styles.contact1}>
-              <SectionHeading>Contacts</SectionHeading>
-              <ul>
-                <li>
-                  <FaFacebook />
-                  <NavLink
-                    to="https://www.catcom.com/catcomjkuat"
-                    target="_blank"
-                  >
-                    catcomjkuat
-                  </NavLink>
-                </li>
-                <li>
-                  <FaTiktok />
-                  <NavLink
-                    to="https://www.catcom.com/catcomjkuat"
-                    target="_blank"
-                  >
-                    catcomjkuat
-                  </NavLink>
-                </li>
-                <li>
-                  <FaInstagramSquare />
-                  <NavLink
-                    to="https://www.catcom.com/catcomjkuat"
-                    target="_blank"
-                  >
-                    catcomjkuat
-                  </NavLink>
-                </li>
-                <li>
-                  <FaTwitter />
-                  <NavLink
-                    to="https://www.catcom.com/catcomjkuat"
-                    target="_blank"
-                  >
-                    catcomjkuat
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.contact2}>
-              <ul>
-                <li>
-                  <FaYoutube />
-                  <NavLink
-                    to="https://www.catcom.com/catcomjkuat"
-                    target="_blank"
-                  >
-                    catcomjkuat
-                  </NavLink>
-                </li>
-                <li>
-                  <FaEnvelope />
-                  <NavLink to="mailto:jkuatcatcom18@gmail.com">
-                    jkuatcatcom18@gmail.com
-                  </NavLink>
-                </li>
-                <li>
-                  <FaPhoneAlt />
-                  <span>+254 7XX XXXXXX</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <SectionHeading className={styles.heading}>Contacts</SectionHeading>
+          <ul>
+            <li>
+              <FaFacebook />
+              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+                catcomjkuat
+              </NavLink>
+            </li>
+            <li>
+              <FaTiktok />
+              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+                catcomjkuat
+              </NavLink>
+            </li>
+            <li>
+              <FaInstagramSquare />
+              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+                catcomjkuat
+              </NavLink>
+            </li>
+
+            <li>
+              <FaYoutube />
+              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+                catcomjkuat
+              </NavLink>
+            </li>
+            <li>
+              <FaEnvelope />
+              <NavLink to="mailto:jkuatcatcom18@gmail.com">
+                jkuatcatcom18@gmail.com
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </div>
 
