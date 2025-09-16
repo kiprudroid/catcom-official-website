@@ -4,13 +4,12 @@
   color: white;
   display: grid;
   grid-area: SccMemberDuties;
-  gap: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  width: 100%;
+  gap: 1rem;  
   margin:0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
 }
-
 .membersDutiesList{
   list-style-type: disc;
   padding-left: 2rem;

@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SCCs } from "../../../DataFiles/scc";
 
-const SccOverview = () => {
+const SccOverview = ({className}) => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
 
   // Change SCC every 3 minutes (180000 ms)
@@ -57,7 +57,7 @@ const SccOverview = () => {
 
   return (
     <>
-      <div className={styles.sccExpanded}>
+      <div className={`${styles.sccExpanded} ${className}`}>
       <SectionHeading className={styles.centeredText}>
         SCC OVERVIEW : {selectedScc.name}
       </SectionHeading>

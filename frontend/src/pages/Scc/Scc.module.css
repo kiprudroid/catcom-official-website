@@ -1,33 +1,28 @@
 .gridContainer{
-  gap: 20px;
-  padding: 20px;
-  margin: auto;
+    margin: auto;
 }
-@media (min-width: 1200px) {
-  .gridContainer {
+.card{
     width: 80%;
-    padding: 40px;
+    padding: 2rem;
+    border-radius: 8px;
+}
+/* @media (min-width: 1200px) {
+  .gridContainer {   
     gap: 32px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .gridContainer {
-    width: 90%;
-    padding: 32px;
-    gap: 28px;
+        gap: 28px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .gridContainer {
-    width: 95%;
-    padding: 24px;
-    gap: 20px;
+   gap: 20px;
   }
 }
 @media (max-width: 767px) {
   .gridContainer {
-    width: 100%;
-    padding: 12px;
     gap: 12px;
   }
-}
+} */

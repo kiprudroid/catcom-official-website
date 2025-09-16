@@ -1,10 +1,6 @@
 .whatIsScc {
-  background-color: #dce7ea;
-  padding: 1.2rem;
-  width: 100%;
-  max-width: 1100px;
-  margin: 10px auto 0 auto;
-  border-radius: 32px;
+  background-color: #dce7ea;  
+  margin: 0 auto;  
 }
 
 .contentRow {

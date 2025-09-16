@@ -4,9 +4,9 @@ import { SectionHeading } from '../../Typography/Typography';
 import SccCard from '../../SccWidgets/SccCard/SccCard.jsx';
 import { SCCs } from '../../../DataFiles/scc.js';
 
-const SccPictures = () => {
+const SccPictures = ({className}) => {
     return (
-         <div className={styles.sccPictures}>
+         <div className={`${styles.sccPictures} ${className}`}>
                   <SectionHeading className={styles.centeredText}>Our SCCs</SectionHeading>
                   <div className={styles.sccCardsWrapper}>
                     {SCCs.map((_, index) => (
