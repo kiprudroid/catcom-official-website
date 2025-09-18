@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./SccCard.module.css";
-import { SectionHeading } from "../../Typography/Typography";
 
-function SccCard({ SccName = "Scc Name", path, image }) {
+function SccCard({ SccName = "Scc Name", path , image }) {
   const handleClick = () => {
     // Check if path exists, then navigate to it
     if (path) {
@@ -12,23 +11,21 @@ function SccCard({ SccName = "Scc Name", path, image }) {
     }
   };
   return (
-    <div className={styles.card}>
-      <img
-        src={image}
-        alt={SccName}
-        className={styles.cardImage}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-      />
+    <div
+      className={styles.card}
+      style={{
+        backgroundImage: `url(${image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className={styles.overlay}>
-        <SectionHeading className={styles.title}>{SccName}</SectionHeading>
-        <div className={styles.cardActions}>
-          <button className={styles.button} onClick={handleClick}>View More</button>
-        </div>
+      <h1 className={styles.title}>{SccName}</h1>
       </div>
+
+      <button className={styles.button} onClick={handleClick}>
+        See More
+      </button>
     </div>
   );
 }

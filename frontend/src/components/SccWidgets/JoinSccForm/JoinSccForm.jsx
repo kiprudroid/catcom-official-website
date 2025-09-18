@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { SectionHeading, Paragraph } from "../../Typography/Typography";
 
 
- function JoinSccForm() {
+ function JoinSccForm({className}) {
 
     return (
-      <div className={styles.joinForm}>
+      <div className={`${styles.joinForm} ${className}`}>
       <form className={styles.formGrid}>
         <SectionHeading as="h2">Joining an SCC</SectionHeading>
         <Paragraph>To join an SCC, please fill out the form below</Paragraph>

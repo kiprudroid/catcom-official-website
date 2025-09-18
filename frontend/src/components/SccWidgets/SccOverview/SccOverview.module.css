@@ -1,13 +1,10 @@
 .sccExpanded {
-  max-width: 1200px; 
-  width: 100%;
   margin: 0 auto;
-  background: #fff;
+  background:#dce7ea;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
   box-shadow: 0 4px 16px rgba(45,171,177,0.08), 0 1.5px 6px rgba(0,0,0,0.06);
-  width: 100%;  
+ 
 }
 .slideShow {
   width: 100%;
@@ -55,7 +52,7 @@
 }
 
 .sccItem {
-  flex: 0 1 60%;
+  flex: 0 1 50%;
   min-width: 0;
   box-sizing: border-box;
 }
@@ -262,6 +259,7 @@
     padding: 0;
     gap: 0;
     border-radius: 10px;
+    margin-top: 4rem;
   }
   .slideShow {
     height: 220px;
@@ -270,8 +268,10 @@
   .sccContentRow {
     flex-direction: column;
     gap: 1rem;
+    margin-top: 200px;
     padding: 1.2rem 2vw 1.2rem 2vw;
     border-radius: 0 0 10px 10px;
+    position: relative;
   }
   .sccItem, .secondColumnItem {
     width: 100%;

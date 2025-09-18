@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './WhatIsScc.module.css';
 import { SectionHeading, Paragraph } from '../../Typography/Typography';
 
-const WhatIsScc = () => {
+const WhatIsScc = ({className}) => {
     return (
-        <div className={`${styles.item} ${styles.whatIsScc}`}>
+        <div className={`${styles.item} ${styles.whatIsScc} ${className}`}>
           <SectionHeading className={styles.centeredText}>What is an SCC?:</SectionHeading>
           <div className={styles.contentWrapper}>
             <div className={styles.sideImageSection}>

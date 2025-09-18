@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './SccMemberDuties.module.css';
 import {Paragraph,SectionHeading} from '../../Typography/Typography';
 
-const SccMemberDuties = () => {
+const SccMemberDuties = ({className}) => {
     return (
-         <div className={styles.sccMembersDuties}>
+         <div className={`${styles.sccMembersDuties} ${className}`}>
           <SectionHeading className={styles.centeredText}>What SCC Members Should Do</SectionHeading>
           <Paragraph >
           <ul className={styles.membersDutiesList}>

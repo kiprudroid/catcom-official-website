@@ -1,8 +1,10 @@
 .sccPictures {
   height: auto;
-  grid-column: span 4;
-  width: 100%;
-  max-width: 100%;
+  grid-column: span 4;  
+  margin: auto;
+  background-color: #dce7ea;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .centeredText{
   text-align: center;
@@ -11,13 +13,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 0 10px;
-  flex-wrap: wrap; 
+   flex-wrap: wrap; 
   gap: 2rem; 
   justify-content: center; 
   align-items: stretch; 
-  padding: 2rem;
+  
 }
 .sccCardsWrapper > * {
   flex: 0 1 calc(25% - 2rem); 
