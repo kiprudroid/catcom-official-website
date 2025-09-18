@@ -74,20 +74,29 @@ function Footer({ className }) {
             </li>
             <li>
               <FaTiktok />
-              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+              <NavLink
+                to="https://www.tiktok.com/@catcom.jkuat?_t=ZM-8zTdmPA4DH6&_r=1"
+                target="_blank"
+              >
                 catcomjkuat
               </NavLink>
             </li>
             <li>
               <FaInstagramSquare />
-              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+              <NavLink
+                to="https://www.instagram.com/catcomjkuat?igsh=MTRtOHczbzIzZzBpcg=="
+                target="_blank"
+              >
                 catcomjkuat
               </NavLink>
             </li>
 
             <li>
               <FaYoutube />
-              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+              <NavLink
+                to="https://youtube.com/@catcomjkuat588?si=QGVGHWX9WrLa9HiL"
+                target="_blank"
+              >
                 catcomjkuat
               </NavLink>
             </li>
