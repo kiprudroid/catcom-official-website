@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SccCard.module.css";
 
-function SccCard({ SccName = "Scc Name", path , image }) {
+function SccCard({ SccName = "Scc Name", path, image }) {
   const handleClick = () => {
     // Check if path exists, then navigate to it
     if (path) {
@@ -20,7 +20,7 @@ function SccCard({ SccName = "Scc Name", path , image }) {
       }}
     >
       <div className={styles.overlay}>
-      <h1 className={styles.title}>{SccName}</h1>
+        <h1 className={styles.title}>{SccName}</h1>
       </div>
 
       <button className={styles.button} onClick={handleClick}>

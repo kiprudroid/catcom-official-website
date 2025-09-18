@@ -1,8 +1,8 @@
 .joinForm {
-  margin:0 auto;  
+  margin: 0 auto;
   max-height: 1600px;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
 }
 .formGrid {
@@ -30,7 +30,7 @@
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 1rem;
-  }
+}
 
 .checkboxGroup > div {
   display: flex;
@@ -39,7 +39,7 @@
 }
 
 .checkboxGroup input[type="checkbox"] {
-  accent-color: #2dabb1; 
+  accent-color: #2dabb1;
   margin-right: 0.5rem;
 }
 
@@ -68,7 +68,7 @@ input[type="email"] {
   border-radius: 10px;
   font-size: 1.5rem;
   cursor: pointer;
-  transition:  0.2s;
+  transition: 0.2s;
 }
 
 .joinBtn:hover {
@@ -77,7 +77,7 @@ input[type="email"] {
 
 label,
 .checkboxGroup label {
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
 }
 
 .inputRow {
@@ -103,5 +103,63 @@ select {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
-  background:white;
+  background: white;
+}
+
+/* Tablet: ≤ 1024px */
+@media (max-width: 1024px) {
+  .formRow,
+  .inputRow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .formCol,
+  .inputCol {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .joinBtn {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile: ≤ 600px */
+@media (max-width: 600px) {
+  .joinForm {
+    padding: 1rem;
+    max-height: none;
+  }
+
+  .formRow,
+  .inputRow {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .formCol,
+  .inputCol {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .joinBtn {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+
+  label,
+  .checkboxGroup label {
+    font-size: 1rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select {
+    font-size: 0.95rem;
+    padding: 0.45rem;
+  }
 }

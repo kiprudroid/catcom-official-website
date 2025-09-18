@@ -271,3 +271,47 @@ export const SCCs = [
       "Holy St. Paul, you taught others about the saving message of Jesus, intercede for us so that Christ may live in us. Help us to know and imitate you and your love for Jesus. It is through your writings that many people have come to know Jesus, may all people know and glorify God through your writings and intercession.",
   },
 ];
+
+export const sccCards = [
+  {
+    path: "st-martin",
+    name: "St. Martin De Porres",
+    images: ["sccPictures/stMartin/Picture4.png"],
+  },
+
+  {
+    path: "mmog",
+    name: "Mary Mother of God",
+    images: ["sccPictures/MMOG/Picture4.jpg"],
+  },
+  {
+    path: "st-therese",
+    name: "St. Therese of the child Jesus",
+    images: ["sccPictures/stTherese/Picture2.png"],
+  },
+  {
+    path: "st-veronica",
+    name: "St. Veronica",
+    images: ["sccPictures/stVeronica/picture2.png"],
+  },
+  {
+    path: "st-charles",
+    name: "St Charles Lwanga",
+    images: ["sccPictures/stCharles/picture1.png"],
+  },
+  {
+    path: "st-stephen",
+    name: "St. Stephen",
+    images: ["sccPictures/stStephen/picture3.jpg"],
+  },
+  {
+    path: "st-jude",
+    name: "St. Jude",
+    images: ["sccPictures/stJude/picture1.png"],
+  },
+  {
+    path: "st-paul",
+    name: "St. Paul",
+    images: ["sccPictures/stPaul/picture2.png"],
+  },
+];

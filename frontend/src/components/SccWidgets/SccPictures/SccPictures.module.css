@@ -1,26 +1,43 @@
 .sccPictures {
-  height: auto;
-  grid-column: span 4;  
   margin: auto;
   background-color: #dce7ea;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.centeredText{
+.centeredText {
   text-align: center;
 }
 .sccCardsWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-   flex-wrap: wrap; 
-  gap: 2rem; 
-  justify-content: center; 
-  align-items: stretch; 
-  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
-.sccCardsWrapper > * {
-  flex: 0 1 calc(25% - 2rem); 
-  min-width: 250px; 
-  margin-bottom: 2rem; 
+
+.sccPictures {
+  margin: auto;
+  background-color: #dce7ea;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.centeredText {
+  text-align: center;
+}
+
+.sccCardsWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .sccCardsWrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sccCardsWrapper {
+    grid-template-columns: 1fr;
+  }
 }

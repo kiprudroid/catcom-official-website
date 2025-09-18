@@ -1,25 +1,38 @@
-import React from 'react';
-import styles from './SccMemberDuties.module.css';
-import {Paragraph,SectionHeading} from '../../Typography/Typography';
+import React from "react";
+import styles from "./SccMemberDuties.module.css";
+import { Paragraph, SectionHeading } from "../../Typography/Typography";
+import { FaCheckCircle } from "react-icons/fa";
 
-const SccMemberDuties = ({className}) => {
-    return (
-         <div className={`${styles.sccMembersDuties} ${className}`}>
-          <SectionHeading className={styles.centeredText}>What SCC Members Should Do</SectionHeading>
-          <Paragraph >
-          <ul className={styles.membersDutiesList}>
-            <li>Attend Rosary prayers at the SCC meetings every Sunday</li>
-            <li>Participate actively in SCC meetings and activities</li>
-            <li>Support and encourage fellow members</li>
-            <li>Engage in community outreach and service</li>
-            <li>Promote unity and cooperation within the SCC</li>
-            <li>Take responsibility for assigned roles and tasks</li>
-            <li>Pray together and for one another</li>
-            <li>Contribute ideas for SCC growth and improvement</li>
-          </ul>
-          </Paragraph>
-        </div>
-    );
+const SccMemberDuties = ({ className }) => {
+  const duties = [
+    "Attend Rosary prayers at the SCC meetings every Sunday",
+    "Participate actively in SCC meetings and activities",
+    "Support and encourage fellow members",
+    "Engage in community outreach and service",
+    "Promote unity and cooperation within the SCC",
+    "Take responsibility for assigned roles and tasks",
+    "Pray together and for one another",
+    "Contribute ideas for SCC growth and improvement",
+  ];
+
+  return (
+    <div className={`${styles.sccMembersDuties} ${className}`}>
+      <SectionHeading className={styles.centeredText}>
+        What SCC Members Should Do
+      </SectionHeading>
+
+      <Paragraph>
+        <ul className={styles.membersDutiesList}>
+          {duties.map((duty, index) => (
+            <li key={index} className={styles.dutyItem}>
+              <FaCheckCircle className={styles.icon} />
+              <span>{duty}</span>
+            </li>
+          ))}
+        </ul>
+      </Paragraph>
+    </div>
+  );
 };
 
 export default SccMemberDuties;
