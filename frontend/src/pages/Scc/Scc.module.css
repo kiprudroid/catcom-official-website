@@ -13,23 +13,19 @@
   width: 90%;
 }
 
-/* @media (min-width: 1200px) {
-  .gridContainer {   
-    gap: 32px;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .gridContainer {
-        gap: 28px;
-  }
-}
 @media (min-width: 768px) and (max-width: 991px) {
   .gridContainer {
-   gap: 20px;
+    gap: 20px;
   }
 }
 @media (max-width: 767px) {
   .gridContainer {
     gap: 12px;
   }
-} */
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .gridContainer {
+    gap: 2rem;
+  }
+}

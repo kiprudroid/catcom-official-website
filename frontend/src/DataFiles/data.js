@@ -46,8 +46,7 @@ export const patrons = [
     title: "Patron",
     description:
       "A guiding figure who supports the spiritual and academic mission of CATCOM.",
-    feastDay: "January 15",
-    prayer: "Guide us in our journey of learning and faith.",
+
     symbol: Star,
     image: "/patrons/profWaihenya.jpg",
   },
@@ -56,8 +55,7 @@ export const patrons = [
     title: "Assistant Patron",
     description:
       "Supports students with mentorship and dedicated service to the community.",
-    feastDay: "March 20",
-    prayer: "Bless our community with wisdom and unity.",
+
     symbol: Star,
     image: "/patrons/Wanzala.jpg",
   },
@@ -68,7 +66,6 @@ export const catcomExecutive = [
     name: "Stephen Mutwiwa Mutie",
     position: "Catcom Moderator",
     bio: "Leads the CATCOM community with vision and dedication, ensuring smooth coordination of all activities.",
-    achievements: ["Leadership Award 2024", "Organized 10+ community events"],
     image: "/leadersImages/mutwiwa.jpg",
     phone: "+254 798715858",
     email: "",
@@ -77,10 +74,6 @@ export const catcomExecutive = [
     name: "Sophie Kathambi",
     position: "Catcom Vice Moderator",
     bio: "Supports the moderator in managing programs and fostering student involvement.",
-    achievements: [
-      "Community Outreach Volunteer",
-      "Youth Empowerment Advocate",
-    ],
     image: "/leadersImages/sophie.jpg",
     phone: "+254 797872432",
     email: "",
@@ -89,10 +82,6 @@ export const catcomExecutive = [
     name: "Eliza Chiru",
     position: "Catcom Secretary",
     bio: "Keeps records, manages communications, and ensures CATCOM operations run smoothly.",
-    achievements: [
-      "Exemplary Record Keeping Award",
-      "Mentorship in Student Leadership",
-    ],
     image: "/leadersImages/eliza.jpg",
     phone: "+254 725026216",
     email: "",
@@ -101,10 +90,6 @@ export const catcomExecutive = [
     name: "Terryann Wanjohi",
     position: "Catcom Treasurer",
     bio: "Manages CATCOM finances, ensuring accountability and transparency.",
-    achievements: [
-      "Budgeting Excellence Award",
-      "Organized successful fundraising drives",
-    ],
     image: "/leadersImages/terry.jpg",
     phone: "+254 746402544",
     email: "",
@@ -113,7 +98,6 @@ export const catcomExecutive = [
     name: "Alvin Muthoni",
     position: "Catcom Organizing Secretary",
     bio: "Oversees event planning, ensuring all CATCOM activities are well-coordinated.",
-    achievements: ["Event Planning Champion", "Organized 15+ parish events"],
     image: "/leadersImages/alvin.jpg",
     phone: "+254 793661637",
     email: "",
@@ -122,10 +106,6 @@ export const catcomExecutive = [
     name: "Bernard Nderitu",
     position: "Catcom Pastoral Secretary",
     bio: "Strengthens spiritual life within CATCOM by organizing retreats and prayer sessions.",
-    achievements: [
-      "Led successful prayer campaigns",
-      "Community outreach programs",
-    ],
     image: "/leadersImages/nderitu.jpg",
     phone: "+254 796820460",
     email: "",
@@ -134,7 +114,6 @@ export const catcomExecutive = [
     name: "Albanus Timona",
     position: "Catcom Choir Moderator",
     bio: "Directs and organizes choir activities, nurturing musical talents within CATCOM.",
-    achievements: ["Trained 30+ choir members", "Choir Excellence Award 2023"],
     image: "/leadersImages/engineerTim.jpg",
     phone: "+254 743458439",
     email: "",
@@ -143,10 +122,6 @@ export const catcomExecutive = [
     name: "FirstName Nyongesa",
     position: "Catcom Choir Director",
     bio: "Ensures the choir delivers uplifting liturgical music during masses and events.",
-    achievements: [
-      "Best Choir Performance 2023",
-      "Coordinated regional choir competition",
-    ],
     image: "/leadersImages/matia.jpg",
     phone: "+254 796784081",
     email: "",
@@ -155,10 +130,6 @@ export const catcomExecutive = [
     name: "Hillary Melita Kasaine",
     position: "Catcom Publicity Secretary",
     bio: "Manages CATCOM's publicity and communication to enhance visibility.",
-    achievements: [
-      "Launched CATCOM social media",
-      "Boosted event attendance by 40%",
-    ],
     image: "/leadersImages/Robinson.jpg",
     phone: "+254 743382152",
     email: "",
@@ -167,7 +138,6 @@ export const catcomExecutive = [
     name: "Wilfred Wandera",
     position: "Catcom Technical Secretary",
     bio: "Handles all technical needs, ensuring events and activities run seamlessly.",
-    achievements: ["Built CATCOM website", "Audio-visual excellence award"],
     image: "/leadersImages/wandera.jpg",
     phone: "+254 715115907",
     email: "",
@@ -176,10 +146,6 @@ export const catcomExecutive = [
     name: "Sarah Okello",
     position: "Catcom Catering Secretary",
     bio: "Manages catering during CATCOM events, ensuring hospitality for all members.",
-    achievements: [
-      "Organized 20+ catering services",
-      "Community food drives leader",
-    ],
     image: "/leadersImages/sarahOkello.jpg",
     phone: "+254 113764124",
     email: "",
@@ -188,64 +154,34 @@ export const catcomExecutive = [
 export const sccExecutive = [
   {
     name: "Stephen Mutwiwa Mutie",
-    position: "Catcom Moderator",
-    course: "BSc Computer Science",
-    bio: "Stephen leads the CATCOM community with vision and dedication, ensuring smooth coordination of all activities.",
-    achievements: ["Leadership Award 2024", "Organized 10+ community events"],
+    position: "Moderator",
     image: "/leadersImages/mutwiwa.jpg",
   },
   {
     name: "Sophie Kathambi",
-    position: "Catcom Vice Moderator",
-    course: "BSc Civil Engineering",
-    bio: "Sophie supports the moderator in managing programs and fostering student involvement.",
-    achievements: [
-      "Community Outreach Volunteer",
-      "Youth Empowerment Advocate",
-    ],
+    position: "Vice Moderator",
     image: "/leadersImages/sophie.jpg",
   },
   {
     name: "Eliza Chiru",
-    position: "Catcom Secretary",
-    course: "BBA Business Administration",
-    bio: "Eliza keeps records, manages communications, and ensures CATCOM operations run smoothly.",
-    achievements: [
-      "Exemplary Record Keeping Award",
-      "Mentorship in Student Leadership",
-    ],
+    position: "Secretary",
     image: "/leadersImages/eliza.jpg",
   },
   {
     name: "Terryann Wanjohi",
-    position: "Catcom Treasurer",
-    course: "BCom Finance",
-    bio: "Terryann manages CATCOM finances, ensuring accountability and transparency.",
-    achievements: [
-      "Budgeting Excellence Award",
-      "Organized successful fundraising drives",
-    ],
+    position: "Treasurer",
     image: "/leadersImages/terry.jpg",
   },
   {
     name: "Alvin Muthoni",
     position: "Catcom Organizing Secretary",
-    course: "BSc Project Management",
-    bio: "Alvin oversees event planning, ensuring all CATCOM activities are well-coordinated.",
-    achievements: ["Event Planning Champion", "Organized 15+ parish events"],
     image: "/leadersImages/alvin.jpg",
   },
   {
     name: "Bernard Nderitu",
-    position: "Catcom Pastoral Secretary",
-    course: "BSc Agricultural Economics",
-    bio: "Bernard strengthens spiritual life within CATCOM by organizing retreats and prayer sessions.",
-    achievements: [
-      "Led successful prayer campaigns",
-      "Community outreach programs",
-    ],
+    position: " Pastoral Secretary",
     image: "/leadersImages/nderitu.jpg",
-  }
+  },
 ];
 
 export const communities = [

@@ -5,12 +5,6 @@ import styles from "./SccOverview.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SCCs } from "../../../DataFiles/scc";
-import { SccExecutiveCard } from "../SccExecutiveCard/SccExecutiveCard.jsx";
-
-import {
-  
-  sccExecutive,
-} from "../../../DataFiles/data.js";
 
 const SccOverview = ({ className }) => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
@@ -54,47 +48,44 @@ const SccOverview = ({ className }) => {
     <>
       <div className={`${styles.sccExpanded} ${className}`}>
         <div className={styles.navigationButtonsAndHeading}>
-
-         <button
+          <button
             className={`${styles.sccNavigationButton} ${styles.prevButton}`}
             onClick={handlePrevScc}
             aria-label="Previous SCC"
           >
             &#8249; Previous
           </button>
-        <SectionHeading className={styles.centeredText}>
-          SCC OVERVIEW : {selectedScc.name}
-        </SectionHeading>
-        <button
+          <SectionHeading className={styles.centeredText}>
+            SCC OVERVIEW : {selectedScc.name}
+          </SectionHeading>
+          <button
             className={`${styles.sccNavigationButton} ${styles.nextButton}`}
             onClick={handleNextScc}
             aria-label="Next SCC"
           >
-           Next &#8250;
+            Next &#8250;
           </button>
         </div>
 
         <div className={styles.slideshowActivityRow}>
-        <div className={styles.slideShow}>
-         
-          {selectedScc.sccPhotos && selectedScc.sccPhotos.length > 0 ? (
-            <Slider {...settings} className={styles.sliderContainer}>
-              {selectedScc.sccPhotos.map((image, index) => (
-                <div key={index} className={styles.imageWrapper}>
-                  <img
-                    src={image}
-                    alt={`Slide ${index + 1}`}
-                    className={styles.slideshowImage}
-                  />
-                </div>
-              ))}
-            </Slider>
-          ) : (
-            <div className={styles.noImages}>No photos available</div>
-          )}
-          
-        </div>
-        
+          <div className={styles.slideShow}>
+            {selectedScc.sccPhotos && selectedScc.sccPhotos.length > 0 ? (
+              <Slider {...settings} className={styles.sliderContainer}>
+                {selectedScc.sccPhotos.map((image, index) => (
+                  <div key={index} className={styles.imageWrapper}>
+                    <img
+                      src={image}
+                      alt={`Slide ${index + 1}`}
+                      className={styles.slideshowImage}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            ) : (
+              <div className={styles.noImages}>No photos available</div>
+            )}
+          </div>
+
           <div className={styles.families}>
             <SectionHeading className={styles.centeredText}>
               Families
@@ -125,7 +116,6 @@ const SccOverview = ({ className }) => {
             </ul>
           </div>
         </div>
-          <SccExecutiveCard executives={sccExecutive} />
       </div>
     </>
   );

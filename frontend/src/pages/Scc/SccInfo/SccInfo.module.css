@@ -1,43 +1,42 @@
 .gridContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 90%; 
-    margin: 0 auto;
-    padding: 0 1rem;
-    box-sizing: border-box;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  margin-left: 2rem;
+  align-items: stretch;
   justify-content: center;
 }
 
-@media screen and (max-width: 850px) {
-    .title,
-    .hero,
-    .about,
-    .activitiesAndPhotos,
-    .PatronSaint,
-    .prayer {
-        width: 95%;
-    }
-    .activitiesAndPhotos {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-            "activities"
-            "photos";
-    }
+.card {
+  width: 90%;
+  background-color: #b9c8c8;
+  border-radius: 8px;
+}
+.exec {
+  width: 92%;
+}
+/* Tablets  */
+@media screen and (max-width: 1024px) {
+  .gridContainer {
+    margin-left: 1rem;
+    gap: 1.5rem;
+  }
+
+  .card {
+    width: 95%;
+  }
 }
 
-@media screen and (max-width: 480px) {
-    .gridContainer {
-        gap: 10px;
-    }
-    .title,
-    .hero
-    .about,
-    .activitiesAndPhotos,
-    .PatronSaint,
-    .prayer {
-        width: 100%;
-        padding: 1rem;
-    }
-} 
+/* Phones */
+@media screen and (max-width: 600px) {
+  .gridContainer {
+    margin-left: 0;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 90%;
+  }
+}

@@ -1,35 +1,29 @@
 .sccExpanded {
   margin: 0 auto;
-  background:#dce7ea;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 16px rgba(45,171,177,0.08), 0 1.5px 6px rgba(0,0,0,0.06);
- 
 }
 .slideshowActivityRow {
   display: flex;
-  flex-direction: row; /* children side by side */
+  flex-direction: row;
   width: 100%;
-  gap: 2rem; /* optional spacing */
-  height:auto;
-
+  gap: 2rem;
+  height: auto;
 }
 .slideShow {
   flex: 0 0 60%;
   max-width: 60%;
-  /* margin-bottom: 2rem; */
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   position: relative;
   background: #fff;
-
 }
 .sliderContainer {
   width: 100%;
 }
-/* Adjusted styles for second column items and family cards */
+
 .families {
   box-sizing: border-box;
   flex: 0 0 35%;
@@ -40,15 +34,15 @@
   width: 100%;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-height: 500px;
 }
-.activities {   
+.activities {
   width: 100%;
   background-color: #fff;
-  padding:1rem;
+  padding: 1rem;
   border-radius: 8px;
-  margin-top:2rem ;
+  margin-top: 2rem;
 }
 .familiesGrid {
   display: grid;
@@ -58,7 +52,7 @@
 .familyCard {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 1.5px 6px rgba(45,171,177,0.10), 0 1px 3px rgba(0,0,0,0.07);
+  box-shadow: 0 1.5px 6px rgba(45, 171, 177, 0.1), 0 1px 3px rgba(0, 0, 0, 0.07);
   padding: 0.6rem 0.8rem;
   min-width: 0;
   text-align: center;
@@ -71,7 +65,7 @@
   margin-bottom: 0;
 }
 .familyCard:hover {
-  box-shadow: 0 4px 16px rgba(45,171,177,0.13), 0 2px 8px rgba(0,0,0,0.09);
+  box-shadow: 0 4px 16px rgba(45, 171, 177, 0.13), 0 2px 8px rgba(0, 0, 0, 0.09);
   transform: translateY(-2px) scale(1.03);
 }
 .sccContentRow {
@@ -82,15 +76,15 @@
   justify-content: space-between;
 }
 
-.slideshowImage {  
+.slideshowImage {
   width: 100%;
-  height: 500px;  
+  height: 500px;
   margin: auto;
   display: block;
   object-fit: cover;
 }
-.imageWrapper {  
-  height: 100%; 
+.imageWrapper {
+  height: 100%;
   position: relative;
   display: flex !important; /* Override slick-slider default */
   justify-content: center;
@@ -107,7 +101,7 @@
 .activityCard {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 1.5px 6px rgba(45,171,177,0.10), 0 1px 3px rgba(0,0,0,0.07);
+  box-shadow: 0 1.5px 6px rgba(45, 171, 177, 0.1), 0 1px 3px rgba(0, 0, 0, 0.07);
   padding: 0.6rem 0.8rem;
   min-width: 0;
   text-align: center;
@@ -120,9 +114,8 @@
   margin-bottom: 0;
 }
 .activityCard:hover {
-  box-shadow: 0 4px 16px rgba(45,171,177,0.13), 0 2px 8px rgba(0,0,0,0.09);
+  box-shadow: 0 4px 16px rgba(45, 171, 177, 0.13), 0 2px 8px rgba(0, 0, 0, 0.09);
   transform: translateY(-2px) scale(1.03);
-
 }
 .familyText {
   font-size: 16px;
@@ -130,7 +123,7 @@
   white-space: nowrap;
 }
 
-.navigationButtonsAndHeading{
+.navigationButtonsAndHeading {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,11 +142,11 @@
   font-weight: bold;
   transition: background 0.2s;
 }
-.nextArrow, .prevArrow {
+.nextArrow,
+.prevArrow {
   font-size: 24px;
   font-weight: bold;
 }
-
 
 .sccNavigationButton:hover {
   background: rgba(45, 171, 177, 1);
@@ -167,19 +160,16 @@
   right: 10px;
 }
 
-
 .familyText {
   font-size: 16px;
   color: #2dabb1;
   white-space: nowrap;
 }
 
-.centeredText{
+.centeredText {
   text-align: center;
   width: auto;
-
 }
-
 
 /* @media (max-width: 900px) {
   .sccExpanded {

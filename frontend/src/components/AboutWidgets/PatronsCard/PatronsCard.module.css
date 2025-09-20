@@ -67,19 +67,6 @@
   box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
 }
 
-.patronHalo {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #30b6bd, #1f858b3a);
-
-  animation: glow 3s infinite ease-in-out;
-}
-
 .patronSymbol {
   width: 150px;
   height: 150px;

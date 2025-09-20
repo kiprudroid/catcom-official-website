@@ -1,19 +1,14 @@
 .card {
-  width: 90%;
-  background: #dce7ea;
-  border-radius: 16px;
+  width: 100%;
+  border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: #fff;
 }
 
 .cardHeader {
-  padding: 0.25rem 0 ;
+  padding: 0.25rem 0;
+  text-align: center;
+  font-size: 1.4rem;
 }
 
 .cardBody {
@@ -23,20 +18,17 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .activitiesColumn {
-  background: #fff;               
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.04);    display: flex;
   display: flex;
   flex-direction: column;
 }
 
 .activitiesInner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   height: 80%;
-  align-items: stretch;      
   justify-items: center;
 }
 
@@ -48,29 +40,30 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 90%;
   text-align: center;
   background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 15px 10px;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 1.5px 6px rgba(45,171,177,0.08), 0 1px 3px rgba(0,0,0,0.06);
+  box-shadow: 0 1.5px 6px rgba(45, 171, 177, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.06);
   transition: box-shadow 0.2s;
 }
 
 .activityButton:hover {
-  box-shadow: 0 4px 16px rgba(45,171,177,0.13), 0 2px 8px rgba(0,0,0,0.09);
+  box-shadow: 0 4px 16px rgba(45, 171, 177, 0.13), 0 2px 8px rgba(0, 0, 0, 0.09);
 }
 
 .dateBadge {
   position: absolute;
   top: -12px;
   left: -12px;
-  background: rgba(45, 171, 177, 0.9); 
+  background: rgba(45, 171, 177, 0.9);
   color: #fff;
   padding: 0.5rem 0.9rem;
   border-radius: 0.6rem;
   font-weight: 500;
   line-height: 1;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+
   pointer-events: none;
   font-size: 0.75rem;
 }
@@ -92,7 +85,6 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 12px;
   padding: 1rem;
   min-height: 220px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,7 +111,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sliderContainer {
-  width: 500px;  
+  width: 500px;
   position: relative;
   margin: auto;
 }
@@ -168,7 +160,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .activitiesInner {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   .dateBadge {

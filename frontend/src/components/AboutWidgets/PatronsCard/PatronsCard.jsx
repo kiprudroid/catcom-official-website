@@ -25,7 +25,6 @@ export const PatronsCard = ({ patrons }) => {
               className={`${styles.patronCard} ${styles.fadeUp}`}
               style={{ animationDelay: `${index * 0.3}s` }}
             >
-              <div className={styles.patronHalo}></div>
               <div className={styles.patronSymbol}>
                 <img
                   src={patron.image}
