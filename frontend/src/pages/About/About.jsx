@@ -6,7 +6,7 @@ import {
   patrons,
   priests,
   catcomExecutive,
-} from "./../../DataFiles/data";
+} from  "../../DataFiles/data"
 import styles from "./About.module.css";
 
 import { HeroSection } from "../../components/AboutWidgets/HeroSection/HeroSection";

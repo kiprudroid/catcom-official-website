@@ -5,42 +5,37 @@ import styles from "./SccOverview.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SCCs } from "../../../DataFiles/scc";
+import { SccExecutiveCard } from "../SccExecutiveCard/SccExecutiveCard.jsx";
 
-const SccOverview = ({className}) => {
+import {
+  
+  sccExecutive,
+} from "../../../DataFiles/data.js";
+
+const SccOverview = ({ className }) => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
 
   // Change SCC every 3 minutes (180000 ms)
   React.useEffect(() => {
     const interval = setInterval(() => {
-      const currentIndex = SCCs.findIndex((scc) => scc.name === selectedScc.name);
+      const currentIndex = SCCs.findIndex(
+        (scc) => scc.name === selectedScc.name
+      );
       const nextIndex = currentIndex < SCCs.length - 1 ? currentIndex + 1 : 0;
       setSelectedScc(SCCs[nextIndex]);
     }, 180000);
     return () => clearInterval(interval);
   }, [selectedScc]);
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    pauseOnHover: true,
     adaptiveHeight: false,
-    fade: true,
-    cssEase: "linear",
-    centerMode: true,
-    centerPadding: "0",
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: "0",
-        },
-      },
-    ],
   };
 
   const handlePrevScc = () => {
@@ -58,17 +53,30 @@ const SccOverview = ({className}) => {
   return (
     <>
       <div className={`${styles.sccExpanded} ${className}`}>
-      <SectionHeading className={styles.centeredText}>
-        SCC OVERVIEW : {selectedScc.name}
-      </SectionHeading>
-        <div className={styles.slideShow}>
-          <button
+        <div className={styles.navigationButtonsAndHeading}>
+
+         <button
             className={`${styles.sccNavigationButton} ${styles.prevButton}`}
             onClick={handlePrevScc}
             aria-label="Previous SCC"
           >
-            &#8249;
+            &#8249; Previous
           </button>
+        <SectionHeading className={styles.centeredText}>
+          SCC OVERVIEW : {selectedScc.name}
+        </SectionHeading>
+        <button
+            className={`${styles.sccNavigationButton} ${styles.nextButton}`}
+            onClick={handleNextScc}
+            aria-label="Next SCC"
+          >
+           Next &#8250;
+          </button>
+        </div>
+
+        <div className={styles.slideshowActivityRow}>
+        <div className={styles.slideShow}>
+         
           {selectedScc.sccPhotos && selectedScc.sccPhotos.length > 0 ? (
             <Slider {...settings} className={styles.sliderContainer}>
               {selectedScc.sccPhotos.map((image, index) => (
@@ -84,27 +92,10 @@ const SccOverview = ({className}) => {
           ) : (
             <div className={styles.noImages}>No photos available</div>
           )}
-          <button
-            className={`${styles.sccNavigationButton} ${styles.nextButton}`}
-            onClick={handleNextScc}
-            aria-label="Next SCC"
-          >
-            &#8250;
-          </button>
+          
         </div>
-        <div className={styles.sccContentRow}>
-          <div className={styles.sccItem}>
-            <SectionHeading className={styles.centeredText}>
-              Activities
-            </SectionHeading>
-            <ul className={styles.activitiesList}>
-              {selectedScc.activities &&
-                selectedScc.activities.map((activity, index) => (
-                  <li key={index} className={styles.activityCard}>{activity}</li>
-                ))}
-            </ul>
-          </div>
-          <div className={styles.secondColumnItem}>
+        
+          <div className={styles.families}>
             <SectionHeading className={styles.centeredText}>
               Families
             </SectionHeading>
@@ -119,6 +110,22 @@ const SccOverview = ({className}) => {
             )}
           </div>
         </div>
+        <div className={styles.sccContentRow}>
+          <div className={styles.activities}>
+            <SectionHeading className={styles.centeredText}>
+              Activities
+            </SectionHeading>
+            <ul className={styles.activitiesList}>
+              {selectedScc.activities &&
+                selectedScc.activities.map((activity, index) => (
+                  <li key={index} className={styles.activityCard}>
+                    {activity}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+          <SccExecutiveCard executives={sccExecutive} />
       </div>
     </>
   );

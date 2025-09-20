@@ -6,18 +6,49 @@
   box-shadow: 0 4px 16px rgba(45,171,177,0.08), 0 1.5px 6px rgba(0,0,0,0.06);
  
 }
-.slideShow {
+.slideshowActivityRow {
+  display: flex;
+  flex-direction: row; /* children side by side */
   width: 100%;
-  margin-bottom: 2rem;
+  gap: 2rem; /* optional spacing */
+  height:auto;
+
+}
+.slideShow {
+  flex: 0 0 60%;
+  max-width: 60%;
+  /* margin-bottom: 2rem; */
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   position: relative;
+  background: #fff;
+
 }
 .sliderContainer {
   width: 100%;
-  max-width: 900px;
+}
+/* Adjusted styles for second column items and family cards */
+.families {
+  box-sizing: border-box;
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-height: 500px;
+}
+.activities {   
+  width: 100%;
+  background-color: #fff;
+  padding:1rem;
+  border-radius: 8px;
+  margin-top:2rem ;
 }
 .familiesGrid {
   display: grid;
@@ -51,113 +82,47 @@
   justify-content: space-between;
 }
 
-.sccItem {
-  flex: 0 1 50%;
-  min-width: 0;
-  box-sizing: border-box;
-}
-.slideshowImage {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.slideshowImage {  
+  width: 100%;
+  height: 500px;  
   margin: auto;
   display: block;
+  object-fit: cover;
 }
-.imageWrapper {
-  width: 100%;
-  height: 500px; /* Match slideShow height */
+.imageWrapper {  
+  height: 100%; 
   position: relative;
   display: flex !important; /* Override slick-slider default */
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: #fff;
 }
 
-.imageWrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background-color: #f8f8f8;
-}
-
-
-.sccItem {
-  flex: 0 0 40%;
-  min-width: 0;
-  background: none;
-  display: flex;
-  flex-direction: column;
-  box-shadow: none;
-  padding: 0;
-  gap: 1.5rem;
-  border: none;
-}
-.sccItem:nth-child(2) {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 2rem;
-  padding: 1rem;
-  background: white;
-}
-.secondColumnItem {
-  flex: 0 1 40%;
-  min-width: 0;
-  box-sizing: border-box;
-}
 .activitiesList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  padding: 0;
-  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
   list-style: none;
-  justify-content: flex-start;
 }
 .activityCard {
-  background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
-  border-radius: 10px;
-  box-shadow: 0 1.5px 6px rgba(45,171,177,0.08), 0 1px 3px rgba(0,0,0,0.06);
-  padding: 1.1rem 1.5rem;
-  min-width: 120px;
-  flex: 1 1 120px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1.5px 6px rgba(45,171,177,0.10), 0 1px 3px rgba(0,0,0,0.07);
+  padding: 0.6rem 0.8rem;
+  min-width: 0;
   text-align: center;
+  border: 1px solid #b2ebf2;
+  font-weight: 600;
+  color: #2dabb1;
   font-size: 1.05rem;
-  color: #124346;
-  margin-bottom: 0.5rem;
-  border: 1.2px solid #b2ebf2;
-  font-weight: 500;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.18s, transform 0.18s;
+  cursor: pointer;
+  margin-bottom: 0;
 }
 .activityCard:hover {
   box-shadow: 0 4px 16px rgba(45,171,177,0.13), 0 2px 8px rgba(0,0,0,0.09);
-}
-.groupPhoto {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.familyCard {
-  background: #fff;
-  padding: 0.85rem 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 1.5px 6px rgba(45,171,177,0.08), 0 1px 3px rgba(0,0,0,0.06);
-  flex: 0 1 auto;
-  min-width: fit-content;
-  text-align: center;
-  border: 1.2px solid #b2ebf2;
-  font-weight: 500;
-  color: #2dabb1;
-  margin-bottom: 0.5rem;
-}
-.familyCard img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  transform: translateY(-2px) scale(1.03);
+
 }
 .familyText {
   font-size: 16px;
@@ -165,31 +130,30 @@
   white-space: nowrap;
 }
 
-.sectionHeading {
-  color: #2dabb1;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
+.navigationButtonsAndHeading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
 }
 .sccNavigationButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(45, 171, 177, 0.8);
+  background: #2dabb1ff;
   color: white;
   border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: background-color 0.3s ease;
-  z-index: 100;
+  font-weight: bold;
+  transition: background 0.2s;
 }
+.nextArrow, .prevArrow {
+  font-size: 24px;
+  font-weight: bold;
+}
+
 
 .sccNavigationButton:hover {
   background: rgba(45, 171, 177, 1);
@@ -202,59 +166,22 @@
 .nextButton {
   right: 10px;
 }
-/* Adjusted styles for second column items and family cards */
-.secondColumnItem {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem;
-  width: 100%;
-  background: #f8f8f8;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 
-.secondColumnItem:first-child {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-bottom: 2px solid #e0e0e0;
-  margin-bottom: 1rem;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.familyCard {
-  background: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  flex: 0 1 auto;
-  min-width: fit-content;
-  text-align: center;
-}
 
 .familyText {
   font-size: 16px;
   color: #2dabb1;
   white-space: nowrap;
 }
-.textContent {
-  color: white;
-  text-align: center;
-  margin: 2rem 0;
-  font-family: sans-serif;
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  line-height: 1.6;
-  padding: 1rem;
-}
+
 .centeredText{
   text-align: center;
+  width: auto;
+
 }
 
-@media (max-width: 900px) {
+
+/* @media (max-width: 900px) {
   .sccExpanded {
     padding: 0;
     gap: 0;
@@ -287,4 +214,4 @@
     font-size: 0.98rem;
     padding: 0.8rem 1rem;
   }
-}
+} */
