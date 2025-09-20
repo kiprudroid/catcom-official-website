@@ -1,7 +1,7 @@
 export const SCCs = [
   {
     path: "st-martin",
-    name: "St. MARTIN DE PORRES",
+    name: "St. Martin De Porres",
     image: "PatronSaints/SaintMartin.jpg",
     about:
       "Located within the vibrant JKUAT CATCOM, St. Martin De Porres SCC is a devoted and welcoming Small Christian Community committed to fostering spiritual growth, fellowship, and service. Named after the beloved St. Martin de Porres, our SCC emphasizes love, compassion, and unity, bringing together students, and members of the surrounding community in prayer, worship, and outreach activities.We believe in the power of small, faith-centered groups to strengthen our relationship with God and each other. Through our regular meetings, charitable initiatives, and collaborative efforts, we seek to live out our CathoLic faith in meaningful and impactful ways. Join us as we strive to grow in faith and community, guided by the teachings of Christ and the example of St. Martin de Porres.St. Martin's is also divided into sub groups called families, at this level,the members of the SCC get to interact more and know each other better, it fosters unity and friendship with thin the SCC at large   The families include Faith Family Wisdom Family,Goodness Family",

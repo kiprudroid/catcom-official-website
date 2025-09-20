@@ -1,0 +1,21 @@
+.backButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.backButton {
+  background-color: #2dabb1;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  font-weight: bold;
+}
+
+.backButton:hover {
+  background-color: #124346;
+  transform: translateY(-2px);
+}

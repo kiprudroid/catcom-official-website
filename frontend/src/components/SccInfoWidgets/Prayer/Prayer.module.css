@@ -1,0 +1,24 @@
+.card {
+  width: 90%;
+  background: #dce7ea;
+  border-radius: 16px;
+  padding: 1.3rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.prayerCard {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.prayerCard:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.078), 0 0 8px rgba(45, 171, 177, 0.4);
+}
