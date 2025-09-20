@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./ImageSlider.module.css";
-import { SectionHeading } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 
 function ImageSlider({ images, title = "Life at CATCOM ✨📸" }) {
   const settings = {

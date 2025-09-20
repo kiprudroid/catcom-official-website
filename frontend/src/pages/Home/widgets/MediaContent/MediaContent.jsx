@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MediaContent.module.css";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import { FaYoutube } from "react-icons/fa";
 
 const mediaItems = [

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ExecutiveCards.module.css";
-import { Mail } from "lucide-react";
+import { Phone } from "lucide-react";
 import { SectionHeading } from "../../Typography/Typography";
 
 export const ExecutiveCards = ({ executives }) => {
@@ -43,11 +43,9 @@ export const ExecutiveCards = ({ executives }) => {
 
                 <div className={styles.contact}>
                   <h3 className={styles.contactBtn}>
-                    <Mail size={14} />
-                    Contact Details
+                    <Phone size={14} />
+                    {exec.phone}
                   </h3>
-                  <p>Phone number: 0778764747</p>
-                  <p>Email Address: leader@gmail.com</p>
                 </div>
               </div>
             </div>

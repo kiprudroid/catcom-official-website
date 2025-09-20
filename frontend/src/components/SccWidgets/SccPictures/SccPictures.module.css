@@ -1,8 +1,7 @@
 .sccPictures {
-  margin: auto;
-  background-color: #dce7ea;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  margin: auto;
 }
 .centeredText {
   text-align: center;
@@ -11,13 +10,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-}
-
-.sccPictures {
-  margin: auto;
-  background-color: #dce7ea;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .centeredText {

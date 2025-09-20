@@ -13,15 +13,21 @@ function Scc() {
   return (
     <DashboardLayout>
       <div className={styles.gridContainer}>
-        <WhatIsScc className={styles.card} />
-
-        <SccPictures  className={styles.card}/>
-
-        <SccOverview  className={styles.card}/>
-
-        <SccMemberDuties  className={styles.card}/>
-
-        <JoinSccForm  className={styles.card}/>
+        <div className={styles.card}>
+          <WhatIsScc />
+        </div>
+        <div className={styles.card}>
+          <SccPictures />
+        </div>
+        <div className={styles.card}>
+          <SccOverview />
+        </div>
+        <div className={styles.card}>
+          <SccMemberDuties />
+        </div>
+        <div className={`${styles.card}`}>
+          <JoinSccForm />
+        </div>
       </div>
     </DashboardLayout>
   );

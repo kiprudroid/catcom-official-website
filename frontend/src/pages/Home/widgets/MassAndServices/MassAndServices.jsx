@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MassAndServices.module.css";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import { FaClock, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 
 const MassAndServices = () => {

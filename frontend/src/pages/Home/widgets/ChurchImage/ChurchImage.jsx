@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ChurchImage.module.css";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 
 function ChurchImage() {
   return (

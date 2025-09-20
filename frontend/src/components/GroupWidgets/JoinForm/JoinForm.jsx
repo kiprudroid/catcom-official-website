@@ -10,6 +10,7 @@ function JoinForm() {
         To join a group, please fill out the form below and select the group(s)
         you wish to join.
       </Paragraph>
+
       <div className={styles.formRow}>
         <div className={styles.formCol}>
           <label htmlFor="name">

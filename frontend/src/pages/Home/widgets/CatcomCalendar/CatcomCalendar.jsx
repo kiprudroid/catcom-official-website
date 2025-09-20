@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./CatcomCalendar.module.css";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import {
   FaMapMarkerAlt,
   FaChevronDown,

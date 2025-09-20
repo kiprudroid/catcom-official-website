@@ -1,5 +1,6 @@
 import React from "react";
-import { Paragraph, SectionHeading } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
+
 import styles from "./VisionCards.module.css";
 
 const VisionCards = () => {

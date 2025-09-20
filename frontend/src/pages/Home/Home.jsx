@@ -1,18 +1,21 @@
 import React from "react";
 import styles from "./Home.module.css";
 import "@fontsource/inter";
-import CatcomCalendar from "../../components/HomeWidgets/CatcomCalendar/CatcomCalendar";
-import {
-  SectionHeading,
-  Paragraph,
-} from "../../components/Typography/Typography";
-import MediaContent from "../../components/HomeWidgets/MediaContent/MediaContent";
-import MassAndServices from "../../components/HomeWidgets/MassAndServices/MassAndServices";
+
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
+
 import { slideShowImages } from "../../DataFiles/data";
-import ImageSlider from "../../components/HomeWidgets/ImageSlider/ImageSlider";
-import ChurchImage from "../../components/HomeWidgets/ChurchImage/ChurchImage";
+
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
-import VisionCards from "../../components/HomeWidgets/VisionCards/VisionCards";
+
+import {
+  VisionCards,
+  CatcomCalendar,
+  ChurchImage,
+  ImageSlider,
+  MassAndServices,
+  MediaContent,
+} from "@/pages/Home/widgets";
 
 function Home() {
   return (
