@@ -2,7 +2,7 @@
   background: #fff;
   border-radius: 16px;
   padding: 1.3rem;
-
+  width: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
