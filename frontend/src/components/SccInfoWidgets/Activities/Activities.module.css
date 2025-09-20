@@ -13,7 +13,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cardHeader {
-  padding: 0.25rem 0 0.75rem 0;
+  padding: 0.25rem 0 ;
 }
 
 .cardBody {
@@ -35,28 +35,29 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  height: 90%;
-  align-items: stretch;
+  height: 80%;
+  align-items: stretch;      
+  justify-items: center;
 }
 
 .activityButton {
+  color: #124346;
   position: relative;
   overflow: visible;
   display: block;
   width: 90%;
   text-align: center;
-  background: #f7fbfb;
+  background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
   border: 1px solid rgba(0,0,0,0.06);
   padding: 15px 10px;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow: 0 1.5px 6px rgba(45,171,177,0.08), 0 1px 3px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s;
 }
 
 .activityButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(45,171,177,0.13), 0 2px 8px rgba(0,0,0,0.09);
 }
 
 .dateBadge {
@@ -67,7 +68,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #fff;
   padding: 0.5rem 0.9rem;
   border-radius: 0.6rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   pointer-events: none;
