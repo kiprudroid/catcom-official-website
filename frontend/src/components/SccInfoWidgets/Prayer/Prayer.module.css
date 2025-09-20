@@ -19,6 +19,3 @@
   margin: 0 auto;
 }
 
-.prayerCard:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.078), 0 0 8px rgba(45, 171, 177, 0.4);
-}

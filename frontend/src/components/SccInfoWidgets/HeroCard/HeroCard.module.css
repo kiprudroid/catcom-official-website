@@ -19,9 +19,7 @@
   align-items: center;
   gap: 1rem;
   background: #fff;
-  border-radius: 8px;}
-.hero:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.078), 0 0 8px rgba(45, 171, 177, 0.4);
+  border-radius: 8px;
 }
 
 .title {
