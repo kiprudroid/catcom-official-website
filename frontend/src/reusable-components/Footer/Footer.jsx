@@ -67,9 +67,21 @@ function Footer({ className }) {
           <SectionHeading className={styles.heading}>Contacts</SectionHeading>
           <ul>
             <li>
-              <FaFacebook />
-              <NavLink to="https://www.catcom.com/catcomjkuat" target="_blank">
+              <FaYoutube />
+              <NavLink
+                to="https://youtube.com/@catcomjkuat588?si=QGVGHWX9WrLa9HiL"
+                target="_blank"
+              >
                 catcomjkuat
+              </NavLink>
+            </li>
+            <li>
+              <FaYoutube />
+              <NavLink
+                to="https://youtube.com/@kmrmcatcomjkuat?si=5bK4Rd5BchV5uYN8"
+                target="_blank"
+              >
+                Catcom KMRM Choir
               </NavLink>
             </li>
             <li>
@@ -91,15 +103,6 @@ function Footer({ className }) {
               </NavLink>
             </li>
 
-            <li>
-              <FaYoutube />
-              <NavLink
-                to="https://youtube.com/@catcomjkuat588?si=QGVGHWX9WrLa9HiL"
-                target="_blank"
-              >
-                catcomjkuat
-              </NavLink>
-            </li>
             <li>
               <FaEnvelope />
               <NavLink to="mailto:jkuatcatcom18@gmail.com">
