@@ -1,0 +1,182 @@
+.executivesSection {
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeUp 0.6s ease-in-out;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.underline {
+  width: 70px;
+  height: 4px;
+  margin: 1rem auto;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+}
+
+.sectionHeader p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.executivesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.executiveCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeUp 0.6s ease-in-out forwards;
+  opacity: 0;
+}
+
+.executiveCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.executiveHeader {
+  text-align: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(185, 200, 200, 0.6),
+    0 0 25px rgba(99, 102, 241, 0.3);
+}
+
+.execImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.position {
+  font-weight: 600;
+  color: #555;
+}
+
+.course {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.executiveBody {
+  text-align: center;
+}
+
+.bio {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.contact {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.contactBtn {
+  background: #2dabb1;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contactBtn:hover {
+  background: #2daab1b7;
+}
+
+.executivesCta {
+  margin-top: 4rem;
+  text-align: center;
+  background: #f0f4ff;
+  padding: 2rem;
+  border-radius: 16px;
+  animation: fadeUp 0.6s ease-in-out;
+}
+
+.executivesCta h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.executivesCta p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.ctaBtn {
+  background: linear-gradient(90deg, #1c6c70, #2575fc);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.ctaBtn:hover {
+  background: linear-gradient(90deg, #2575fc, #186266);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
