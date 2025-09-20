@@ -174,6 +174,68 @@ export const catcomExecutive = [
     image: "/leadersImages/sarahOkello.jpg",
   },
 ];
+export const sccExecutive = [
+  {
+    name: "Stephen Mutwiwa Mutie",
+    position: "Catcom Moderator",
+    course: "BSc Computer Science",
+    bio: "Stephen leads the CATCOM community with vision and dedication, ensuring smooth coordination of all activities.",
+    achievements: ["Leadership Award 2024", "Organized 10+ community events"],
+    image: "/leadersImages/mutwiwa.jpg",
+  },
+  {
+    name: "Sophie Kathambi",
+    position: "Catcom Vice Moderator",
+    course: "BSc Civil Engineering",
+    bio: "Sophie supports the moderator in managing programs and fostering student involvement.",
+    achievements: [
+      "Community Outreach Volunteer",
+      "Youth Empowerment Advocate",
+    ],
+    image: "/leadersImages/sophie.jpg",
+  },
+  {
+    name: "Eliza Chiru",
+    position: "Catcom Secretary",
+    course: "BBA Business Administration",
+    bio: "Eliza keeps records, manages communications, and ensures CATCOM operations run smoothly.",
+    achievements: [
+      "Exemplary Record Keeping Award",
+      "Mentorship in Student Leadership",
+    ],
+    image: "/leadersImages/eliza.jpg",
+  },
+  {
+    name: "Terryann Wanjohi",
+    position: "Catcom Treasurer",
+    course: "BCom Finance",
+    bio: "Terryann manages CATCOM finances, ensuring accountability and transparency.",
+    achievements: [
+      "Budgeting Excellence Award",
+      "Organized successful fundraising drives",
+    ],
+    image: "/leadersImages/terry.jpg",
+  },
+  {
+    name: "Alvin Muthoni",
+    position: "Catcom Organizing Secretary",
+    course: "BSc Project Management",
+    bio: "Alvin oversees event planning, ensuring all CATCOM activities are well-coordinated.",
+    achievements: ["Event Planning Champion", "Organized 15+ parish events"],
+    image: "/leadersImages/alvin.jpg",
+  },
+  {
+    name: "Bernard Nderitu",
+    position: "Catcom Pastoral Secretary",
+    course: "BSc Agricultural Economics",
+    bio: "Bernard strengthens spiritual life within CATCOM by organizing retreats and prayer sessions.",
+    achievements: [
+      "Led successful prayer campaigns",
+      "Community outreach programs",
+    ],
+    image: "/leadersImages/nderitu.jpg",
+  }
+];
 
 export const communities = [
   {
