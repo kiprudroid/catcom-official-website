@@ -2,7 +2,7 @@ export const groupCardsData = [
   {
     imgSrc: [
       "/Groups/choir.jpg",
-      "/Groups/choir1.jpg"
+      "/Groups/Choir1.jpg"
     ],
     alt: "Choir",
     title: "Choir",
