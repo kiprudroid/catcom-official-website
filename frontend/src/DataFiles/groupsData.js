@@ -36,7 +36,10 @@ export const groupCardsData = [
       "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis.",
   },
   {
-    imgSrc: ["/Groups/catcomes.jpg"],
+    imgSrc: [
+      "/Groups/Catcomes.jpg",
+      "/Groups/Catcomes1.jpg"
+    ],
     alt: "Catcom Enterprise",
     title: "Catcom Enterprise",
     description:
@@ -57,7 +60,10 @@ export const groupCardsData = [
       "They express praise and worship through sacred dance, bringing energy, beauty, and meaning to liturgical celebrations and special events. They are dedicated to enhancing the worship experience through their artistic expression.",
   },
   {
-    imgSrc: ["/Groups/technical.jpg"],
+    imgSrc: [
+      "/Groups/Technical.jpg",
+      "/Groups/Technical1.jpg"
+    ],
     alt: "Technical Team",
     title: "Technical Team",
     description:
