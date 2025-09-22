@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import { SectionHeading } from "../../Typography/Typography";
+import { SectionHeading } from "./../../../../components/Typography/Typography";
 import styles from "./SccOverview.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { SCCs } from "../../../DataFiles/scc";
+import { SCCs } from "./../../Datafiles/scc";
 
 const SccOverview = ({ className }) => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
@@ -109,9 +109,9 @@ const SccOverview = ({ className }) => {
             <ul className={styles.activitiesList}>
               {selectedScc.activities &&
                 selectedScc.activities.map((activity, index) => (
-                  <li key={index} className={styles.activityCard}>
+                  <div key={index} className={styles.activityCard}>
                     {activity}
-                  </li>
+                  </div>
                 ))}
             </ul>
           </div>

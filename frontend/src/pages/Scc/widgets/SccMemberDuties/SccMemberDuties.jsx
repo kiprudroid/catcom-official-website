@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SccMemberDuties.module.css";
-import { Paragraph, SectionHeading } from "../../Typography/Typography";
+import { Paragraph, SectionHeading } from "../../../../components/Typography/Typography";
 import { FaCheckCircle } from "react-icons/fa";
 
 const SccMemberDuties = ({ className }) => {

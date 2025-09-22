@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./WhatIsScc.module.css";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "./../../../../components/Typography/Typography";
 
 const WhatIsScc = ({ className }) => {
   return (

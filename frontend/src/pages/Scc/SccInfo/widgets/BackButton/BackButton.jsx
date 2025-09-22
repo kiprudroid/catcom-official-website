@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./BackButton.module.css";
-import { Paragraph } from "../../../components/Typography/Typography";
+import { Paragraph } from "@/components/Typography/Typography";
 
 const BackButton = () => {
   return (

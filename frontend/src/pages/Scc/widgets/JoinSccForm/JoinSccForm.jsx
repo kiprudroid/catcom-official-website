@@ -1,10 +1,21 @@
 import styles from "./JoinSccForm.module.css";
 import React, { useState, useEffect } from "react";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import {
+  SectionHeading,
+  Paragraph,
+} from "./../../../../components/Typography/Typography";
 
 function JoinSccForm({ className }) {
+  const [warning, setWarning] = useState(null);
+
+  const showWarning = (msg) => {
+    setWarning(msg);
+    setTimeout(() => setWarning(null), 3500);
+  };
+
   return (
     <form className={`${styles.formGrid} ${styles.joinForm} `}>
+
       <SectionHeading as="h2">Joining an SCC</SectionHeading>
       <Paragraph>To join an SCC, please fill out the form below</Paragraph>
 
@@ -70,8 +81,16 @@ function JoinSccForm({ className }) {
         After submitting, you will be contacted and informed of the SCC to join.
       </Paragraph>
       <div className={styles.buttonRow}>
-        <button className={styles.joinBtn}>Join SCC</button>
+        <button
+          type="button"
+          className={styles.joinBtn}
+          onClick={() => showWarning(`🚧 This Feature is under development`)}
+        >
+          Join SCC
+        </button>
+
       </div>
+              {warning && <div className={styles.warningBox}>{warning}</div>}
     </form>
   );
 }

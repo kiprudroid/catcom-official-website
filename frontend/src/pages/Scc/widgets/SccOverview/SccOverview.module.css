@@ -45,16 +45,16 @@
   margin-top: 2rem;
 }
 .familiesGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;  
 }
 .familyCard {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 1.5px 6px rgba(45, 171, 177, 0.1), 0 1px 3px rgba(0, 0, 0, 0.07);
   padding: 0.6rem 0.8rem;
-  min-width: 0;
+  min-width: 100px;
   text-align: center;
   border: 1px solid #b2ebf2;
   font-weight: 600;
@@ -63,6 +63,8 @@
   transition: box-shadow 0.18s, transform 0.18s;
   cursor: pointer;
   margin-bottom: 0;
+  word-wrap: break-word;
+
 }
 .familyCard:hover {
   box-shadow: 0 4px 16px rgba(45, 171, 177, 0.13), 0 2px 8px rgba(0, 0, 0, 0.09);
@@ -171,37 +173,31 @@
   width: auto;
 }
 
-/* @media (max-width: 900px) {
-  .sccExpanded {
-    padding: 0;
-    gap: 0;
-    border-radius: 10px;
-    margin-top: 4rem;
+@media (max-width: 900px){
+  .slideshowActivityRow {
+    display: flex;
+    flex-direction: column;
+  }
+  .slideShow, .families {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   .slideShow {
-    height: 220px;
-    border-radius: 10px 10px 0 0;
+    height: auto;
   }
-  .sccContentRow {
-    flex-direction: column;
+  .slideshowImage {
+    height: auto;
+    max-height: 400px;
+  }
+  .activitiesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;   /* center the grid */
     gap: 1rem;
-    margin-top: 200px;
-    padding: 1.2rem 2vw 1.2rem 2vw;
-    border-radius: 0 0 10px 10px;
-    position: relative;
   }
-  .sccItem, .secondColumnItem {
-    width: 100%;
-    min-width: 0;
-    padding: 0;
-    border-radius: 0;
-  }
-  .secondColumnItem {
-    padding: 0;
-  }
-  .activityCard, .familyCard {
+  .activityCard {
+    flex: 0 0 45%;
+    margin: 0.5rem;
     min-width: 100px;
-    font-size: 0.98rem;
-    padding: 0.8rem 1rem;
   }
-} */
+}
