@@ -64,7 +64,7 @@ function Footer({ className }) {
         </div>
 
         <div className={styles.contact}>
-          <SectionHeading className={styles.heading}>Contacts</SectionHeading>
+          <SectionHeading className={styles.heading}>Socials</SectionHeading>
           <ul>
             <li>
               <FaYoutube />

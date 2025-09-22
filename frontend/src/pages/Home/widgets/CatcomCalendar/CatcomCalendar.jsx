@@ -201,7 +201,7 @@ let events = [
   },
 ];
 
-events = [];
+// events = [];
 
 const sortByDate = (arr) =>
   [...arr].sort((a, b) => new Date(a.date) - new Date(b.date));

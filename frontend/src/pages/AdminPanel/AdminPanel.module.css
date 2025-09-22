@@ -1,0 +1,130 @@
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #b9c8c8;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.section h2 {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.form input,
+.form textarea,
+.form button {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #0077ff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 119, 255, 0.3);
+}
+
+.form button {
+  background: #2daab1b7;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form button:hover {
+  background: #2daab192;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.8rem;
+  margin-bottom: 0.75rem;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.6rem;
+}
+
+.preview {
+  margin-top: 0.5rem;
+  max-width: 120px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.actions button {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.actions button:first-of-type {
+  background: #ffc107;
+  color: #333;
+}
+
+.actions button:last-of-type {
+  background: #dc3545;
+  color: #fff;
+}
+
+.actions button:hover {
+  opacity: 0.85;
+}

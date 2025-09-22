@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Liturgy from "./pages/Liturgy/Liturgy";
 import About from "./pages/About/About";
@@ -8,8 +8,14 @@ import SccInfo from "./pages/Scc/SccInfo/SccInfo";
 import Groups from "./pages/Groups/Groups";
 import Scc from "./pages/Scc/Scc";
 import NotFound from "./pages/NotFound/NotFound";
+import AdminPanel from "@/pages/AdminPanel";
+import Login from "@/pages/Auth/Login";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("token")
+  );
+
   return (
     <>
       <Routes>
@@ -35,6 +41,17 @@ function App() {
             }
           />
         ))}
+
+        <Route
+          path="/login"
+          element={<Login onLogin={() => setIsAuthenticated(true)} />}
+        />
+        <Route
+          path="/admin"
+          element={
+            isAuthenticated ? <AdminPanel /> : <Navigate to="/login" replace />
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
