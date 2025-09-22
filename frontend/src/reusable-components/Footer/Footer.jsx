@@ -42,7 +42,7 @@ function Footer({ className }) {
           <ul>
             <li>
               <FaHome />
-              <NavLink to="/home">Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
               <FaBookOpen />

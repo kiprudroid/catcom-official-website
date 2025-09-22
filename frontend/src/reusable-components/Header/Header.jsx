@@ -52,7 +52,7 @@ function Header() {
 
             <li>
               <NavLink
-                to="/home"
+                to="/"
                 className={({ isActive }) =>
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
@@ -104,18 +104,23 @@ function Header() {
           </ul>
         )}
         {isMobile && (
-          <><div className={styles.logoGroup}>
-            <img
-              src="/others/catcom-logo.png"
-              alt="CATCOM Logo"
-              className={styles.catcomLogo} />
-            <SectionHeading className={styles.title}>
-              JKUAT CATCOM
-            </SectionHeading>
-          </div><FaBars
+          <>
+            <div className={styles.logoGroup}>
+              <img
+                src="/others/catcom-logo.png"
+                alt="CATCOM Logo"
+                className={styles.catcomLogo}
+              />
+              <SectionHeading className={styles.title}>
+                JKUAT CATCOM
+              </SectionHeading>
+            </div>
+            <FaBars
               className={styles.burger}
               onClick={toggleMenu}
-              aria-label="Toggle navigation menu" /></>
+              aria-label="Toggle navigation menu"
+            />
+          </>
         )}
       </div>
 
@@ -127,7 +132,7 @@ function Header() {
         >
           <ul className={styles.mobileNavList}>
             <li>
-              <NavLink to="/home" onClick={closeMenu}>
+              <NavLink to="/" onClick={closeMenu}>
                 <FaHome className={styles.icon} /> Home
               </NavLink>
             </li>

@@ -18,7 +18,7 @@ const NotFound = () => {
           It seems you’ve wandered off the path. Let’s guide you back to the
           home page.
         </Paragraph>
-        <NavLink to="/home" className={styles.backButton}>
+        <NavLink to="/" className={styles.backButton}>
           <FaArrowLeft className={styles.backIcon} /> Back to Home
         </NavLink>
       </div>
