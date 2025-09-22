@@ -111,7 +111,9 @@
 }
 
 .sliderContainer {
-  width: 500px;
+  /* MODIFIED: Changed fixed width to be responsive */
+  width: 100%;
+  max-width: 500px; 
   position: relative;
   margin: auto;
 }

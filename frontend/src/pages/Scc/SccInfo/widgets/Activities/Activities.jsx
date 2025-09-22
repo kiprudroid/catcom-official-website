@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./Activities.module.css";
-import { SectionHeading } from "../../../components/Typography/Typography";
+import { SectionHeading } from "@/components/Typography/Typography";
 
 const ActivityItem = ({ activity }) => {
   const name = typeof activity === "string" ? activity : activity.name || "Activity";

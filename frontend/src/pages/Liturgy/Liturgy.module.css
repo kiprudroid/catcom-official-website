@@ -30,6 +30,17 @@
   overflow-x: auto;
   width: 90%;
 }
+.warningBox {
+  background: #fff3cd;
+  color: #856404;
+  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  margin: 1rem auto;
+  max-width: 500px;
+  border-radius: 0.5rem;
+  border: 1px solid #ffeeba;
+  animation: fadeIn 0.3s ease-in-out;
+}
 
 /* === Mobile (Phones) === */
 @media screen and (max-width: 600px) {

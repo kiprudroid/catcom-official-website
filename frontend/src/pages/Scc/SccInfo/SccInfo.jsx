@@ -1,13 +1,16 @@
 import React from "react";
 import styles from "./SccInfo.module.css";
 import DashboardLayout from "../../../layouts/dashboard-layout/DashboardLayout";
-import BackButton from "../../../components/SccInfoWidgets/BackButton/BackButton";
-import HeroCard from "../../../components/SccInfoWidgets/HeroCard/HeroCard";
-import Activities from "../../../components/SccInfoWidgets/Activities/Activities";
-import PatronSaint from "../../../components/SccInfoWidgets/PatronSaint/PatronSaint";
-import Prayer from "../../../components/SccInfoWidgets/Prayer/Prayer";
+import {
+  Activities,
+  BackButton,
+  HeroCard,
+  PatronSaint,
+  Prayer,
+  SccExecutiveCard,
+} from "@/pages/Scc/SccInfo/widgets";
 
-import { SccExecutiveCard } from "@/components/SccInfoWidgets/SccExecutiveCard/SccExecutiveCard";
+// import { SccExecutiveCard } from "@/pages/Scc/SccInfo/widgets/SccInfoWidgets/SccExecutiveCard/SccExecutiveCard";
 import { sccExecutive } from "@/DataFiles/data";
 
 const SccInfo = ({

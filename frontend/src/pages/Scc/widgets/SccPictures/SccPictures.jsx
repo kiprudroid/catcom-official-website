@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./SccPictures.module.css";
-import { SectionHeading } from "../../Typography/Typography";
-import Card from "../Card/Card.jsx";
-import { sccCards } from "../../../DataFiles/scc.js";
+import { SectionHeading } from "./../../../../components/Typography/Typography";
+import Card from "./../Card/Card";
+import { sccCards } from "../../Datafiles/scc";
 
 const SccPictures = ({ className }) => {
   return (

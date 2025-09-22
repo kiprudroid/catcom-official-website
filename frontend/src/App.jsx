@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Liturgy from "./pages/Liturgy/Liturgy";
 import About from "./pages/About/About";
-import { SCCs } from "./DataFiles/scc";
+import { SCCs } from "./pages/Scc/Datafiles/scc";
 import SccInfo from "./pages/Scc/SccInfo/SccInfo";
 import Groups from "./pages/Groups/Groups";
 import Scc from "./pages/Scc/Scc";

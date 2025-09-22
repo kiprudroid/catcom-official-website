@@ -3,7 +3,7 @@ import styles from "./HeroCard.module.css";
 import {
   SectionHeading,
   Paragraph,
-} from "../../../components/Typography/Typography";
+} from "@/components/Typography/Typography";
 
 const HeroCard = ({ name, about }) => {
   return (

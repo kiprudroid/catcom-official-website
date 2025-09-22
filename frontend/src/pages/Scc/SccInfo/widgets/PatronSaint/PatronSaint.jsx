@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./PatronSaint.module.css";
-import { SectionHeading, Paragraph } from "../../../components/Typography/Typography";
+import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 
 const PatronSaint= ({ image, name, aboutPatronSaint, }) => {
   return (

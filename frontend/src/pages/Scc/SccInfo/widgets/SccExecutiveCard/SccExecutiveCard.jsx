@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SccExecutiveCard.module.css";
 import { Phone } from "lucide-react";
-import { SectionHeading } from "../../Typography/Typography";
+import { SectionHeading } from "@/components/Typography/Typography";
 import { FaUserCircle } from "react-icons/fa";
 
 export const SccExecutiveCard = ({ executives }) => {
