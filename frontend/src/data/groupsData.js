@@ -54,7 +54,7 @@ export const groupCardsData = [
       "They express praise and worship through sacred dance, bringing energy, beauty, and meaning to liturgical celebrations and special events. They are dedicated to enhancing the worship experience through their artistic expression.",
   },
   {
-    imgSrc: ["/Groups/Technical.jpg", "/Groups/Technical1.jpg"],
+    imgSrc: ["/Groups/technical.jpg", "/Groups/Technical1.jpg"],
     alt: "Technical Team",
     title: "Technical Team",
     description:
