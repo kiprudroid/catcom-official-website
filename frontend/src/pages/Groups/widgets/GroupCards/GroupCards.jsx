@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styles from "./GroupCards.module.css";
 
-import { groupCardsData } from "@/DataFiles/groupsData";
+import { groupCardsData } from "@/data/groupsData";
 
 const GroupCards = () => {
   return (

@@ -4,7 +4,7 @@ import "@fontsource/inter";
 
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 
-import { slideShowImages } from "../../DataFiles/data";
+import { slideShowImages } from "../../data/data";
 
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 

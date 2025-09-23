@@ -1,8 +1,21 @@
 import React from "react";
 import styles from "./AdminHeader.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
+import {
+  FaUsers,
+  FaCalendarAlt,
+  FaUserCheck,
+  FaChartBar,
+} from "react-icons/fa";
 
 export default function AdminHeader({ activeTab, setActiveTab }) {
+  const tabs = [
+    { key: "leaders", label: "Leaders", icon: <FaUsers /> },
+    { key: "events", label: "Events", icon: <FaCalendarAlt /> },
+    { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
+    { key: "reports", label: "Reports", icon: <FaChartBar /> },
+  ];
+
   return (
     <div className={styles.header}>
       <div className={styles.logoGroup}>
@@ -17,12 +30,7 @@ export default function AdminHeader({ activeTab, setActiveTab }) {
       </div>
 
       <nav className={styles.navbar}>
-        {[
-          { key: "leaders", label: "Leaders" },
-          { key: "events", label: "Events" },
-          { key: "members", label: "Membership Requests" },
-          { key: "reports", label: "Reports" },
-        ].map((tab) => (
+        {tabs.map((tab) => (
           <button
             key={tab.key}
             className={`${styles.navItem} ${
@@ -30,6 +38,7 @@ export default function AdminHeader({ activeTab, setActiveTab }) {
             }`}
             onClick={() => setActiveTab(tab.key)}
           >
+            <span className={styles.icon}>{tab.icon}</span>
             {tab.label}
           </button>
         ))}

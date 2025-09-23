@@ -8,7 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { SCCs } from "./DataFiles/scc";
+import { SCCs } from "./data/scc";
 import SccInfo from "./pages/Scc/SccInfo/SccInfo";
 
 import Login from "@/pages/AdminPanel/pages/Auth/Login";

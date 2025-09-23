@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Groups.module.css";
 import { SectionHeading } from "../../components/Typography/Typography";
-import { groupCardsData } from "../../DataFiles/groupsData";
+import { groupCardsData } from "../../data/groupsData";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 
 import { GroupCards, JoinForm, InfoCard } from "@/pages/Groups/widgets";

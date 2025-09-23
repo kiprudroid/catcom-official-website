@@ -8,7 +8,7 @@ import PatronSaint from "../../../components/SccInfoWidgets/PatronSaint/PatronSa
 import Prayer from "../../../components/SccInfoWidgets/Prayer/Prayer";
 
 import { SccExecutiveCard } from "@/components/SccInfoWidgets/SccExecutiveCard/SccExecutiveCard";
-import { sccExecutive } from "@/DataFiles/data";
+import { sccExecutive } from "@/data/data";
 
 const SccInfo = ({
   name,

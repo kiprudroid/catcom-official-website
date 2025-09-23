@@ -6,7 +6,7 @@ import {
   patrons,
   priests,
   catcomExecutive,
-} from "../../DataFiles/data";
+} from "../../data/data";
 import styles from "./About.module.css";
 
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
