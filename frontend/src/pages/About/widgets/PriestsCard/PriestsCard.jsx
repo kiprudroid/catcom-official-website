@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PriestsCard.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
+
 const PriestsCard = ({ priests }) => {
   return (
     <section className={styles.priestsSection}>
@@ -33,14 +34,6 @@ const PriestsCard = ({ priests }) => {
               <h3 className={styles.priestName}>{priest.name}</h3>
               <p className={styles.priestTitle}>{priest.title}</p>
               <p className={styles.priestBio}>{priest.bio}</p>
-
-              <div className={styles.priestSpecialties}>
-                {priest.specialties.map((specialty) => (
-                  <span key={specialty} className={styles.badge}>
-                    {specialty}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>

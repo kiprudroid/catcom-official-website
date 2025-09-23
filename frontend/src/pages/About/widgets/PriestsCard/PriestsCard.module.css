@@ -106,14 +106,6 @@
   margin-bottom: 1rem;
 }
 
-.priestSpecialties {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
 .badge {
   background: #f3f4f6;
   color: #111;

@@ -1,16 +1,13 @@
 export const groupCardsData = [
   {
-    imgSrc: [
-      "/Groups/choir.jpg",
-      "/Groups/Choir1.jpg"
-    ],
+    imgSrc: ["/Groups/choir.jpg", "/Groups/Choir1.jpg"],
     alt: "Choir",
     title: "Choir",
     description:
       "The Catcom Students Choir animates the 9:00am Mass on Sundays and the Wednesday Mass at 6:30pm, they also takes role during community celebrations. The choir always have outdoors video shootings and also have a vibrant online presence.",
   },
   {
-    imgSrc: ["/Groups/pastoral.jpg"],
+    imgSrc: ["/pastoral-team/Pastoral2.jpg", "/pastoral-team/Pastoral1.jpg"],
     alt: "Pastoral Team",
     title: "Pastoral Team",
     description:
@@ -36,10 +33,7 @@ export const groupCardsData = [
       "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis.",
   },
   {
-    imgSrc: [
-      "/Groups/Catcomes.jpg",
-      "/Groups/Catcomes1.jpg"
-    ],
+    imgSrc: ["/Groups/Catcomes1.jpg"],
     alt: "Catcom Enterprise",
     title: "Catcom Enterprise",
     description:
@@ -60,10 +54,7 @@ export const groupCardsData = [
       "They express praise and worship through sacred dance, bringing energy, beauty, and meaning to liturgical celebrations and special events. They are dedicated to enhancing the worship experience through their artistic expression.",
   },
   {
-    imgSrc: [
-      "/Groups/Technical.jpg",
-      "/Groups/Technical1.jpg"
-    ],
+    imgSrc: ["/Groups/Technical.jpg", "/Groups/Technical1.jpg"],
     alt: "Technical Team",
     title: "Technical Team",
     description:

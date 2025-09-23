@@ -16,7 +16,7 @@ function ChurchImage() {
         </Paragraph>
         <Paragraph>
           <a
-            href="https://www.google.com/maps/place/St.+Augustine+Catholic+Church+Juja/"
+            href="https://maps.google.com/maps?cid=549996087219067126"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -1,5 +1,7 @@
 import React from "react";
 import heroImage from "/about-images/hero-image.jpg";
+import churchImage from "/church-images/church5.jpg";
+
 import styles from "./HeroSection.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 
@@ -8,7 +10,7 @@ export const HeroSection = () => {
     <section className={styles.heroSection}>
       <div
         className={styles.heroBackground}
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(${churchImage})` }}
       >
         <div className={styles.heroOverlay}></div>
       </div>

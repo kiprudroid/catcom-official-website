@@ -15,28 +15,23 @@ export const priests = [
     name: "Prof(Fr.) Lawrence Njoroge",
     title: "Chaplaincy",
     bio: "Prof. Fr. Lawrence has dedicated his life to guiding students in faith and academics, offering both spiritual and intellectual mentorship.",
-    specialties: ["Counseling", "Teaching", "Leadership"],
-    yearsOfService: 15,
-    contact: "lawrence.njoroge@catcom.ac.ke",
     image: "/chaplain/fatherLawrence.jpg",
   },
   {
     name: "Fr. Patrick",
+
     title: "Parish Priest",
     bio: "Fr. Patrick provides pastoral care to the parish community, celebrating the sacraments and leading parish missions.",
-    specialties: ["Pastoral Care", "Sacraments", "Community Outreach"],
-    yearsOfService: 10,
-    contact: "patrick@catcom.ac.ke",
-    image: "/chaplain/fatherLawrence.jpg",
+
+    image: "/priests/Fr Patrick.jpg",
   },
   {
     name: "Fr. Bernard",
     title: "Assistant Parish Priest",
     bio: "Fr. Bernard supports parish activities, assists in Masses, and engages with students in their spiritual journey.",
-    specialties: ["Youth Ministry", "Liturgical Service", "Spiritual Guidance"],
-    yearsOfService: 5,
+
     contact: "bernard@catcom.ac.ke",
-    image: "/chaplain/fatherLawrence.jpg",
+    image: "/priests/Fr Ben.jpg",
   },
 ];
 
@@ -119,7 +114,7 @@ export const catcomExecutive = [
     email: "",
   },
   {
-    name: "FirstName Nyongesa",
+    name: "Rodgers Matia",
     position: "Catcom Choir Director",
     bio: "Ensures the choir delivers uplifting liturgical music during masses and events.",
     image: "/leadersImages/matia.jpg",
@@ -127,7 +122,7 @@ export const catcomExecutive = [
     email: "",
   },
   {
-    name: "Hillary Melita Kasaine",
+    name: "Robinson Koskei",
     position: "Catcom Publicity Secretary",
     bio: "Manages CATCOM's publicity and communication to enhance visibility.",
     image: "/leadersImages/Robinson.jpg",
