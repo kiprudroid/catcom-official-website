@@ -7,22 +7,22 @@ const mediaItems = [
   {
     type: "video",
     url: "https://youtu.be/2POCPrNa-do?si=WSkbsUQKdVhXE_PM",
-    title: "KMRM Choir – Nyimbo za Ibada (Live)",
+    title: "KMRM Choir – Tunakushukuru By J. Anari ",
   },
   {
     type: "video",
     url: "https://youtu.be/ze9bEKCiNKk?si=GVR843V_N9BpZTgb",
-    title: "CATCOM Choir – Marian Celebration",
+    title: "CATCOM KMRM Liturgical Dancers – Serebuka By J.Anari",
   },
   {
     type: "video",
     url: "https://youtu.be/lOEYdC2KSHc?si=7tFJtvaOh3X0PNiY",
-    title: "Youth Choir – Praise & Worship Highlights",
+    title: "CATCOM KMRM Liturgical Dancers – Mfalme wa Amani",
   },
   {
     type: "video",
     url: "https://youtu.be/d9PpupEHHwA?si=YV3SBS_j_500VMiI",
-    title: "CATCOM Liturgical Dancers Performance",
+    title: "CATCOM KMRM Liturgical Dancers - Mwokozo Kazaliwa",
   },
 ];
 
