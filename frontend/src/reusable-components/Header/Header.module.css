@@ -82,7 +82,7 @@
   position: absolute;
   top: 100px;
   right: 0;
-  left:0;
+  left: 0;
   background-color: #f5f5f5;
   padding: 1rem;
   z-index: 999;
@@ -92,7 +92,6 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease-in-out;
-
 }
 
 .mobileMenu.show {
@@ -109,11 +108,10 @@
   margin: 0 auto;
   list-style: none;
   width: fit-content;
-  
 }
 
 .mobileNavList li {
-  text-align: left
+  text-align: left;
 }
 
 .mobileNavList a {

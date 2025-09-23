@@ -8,3 +8,11 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/rough-cloth-light.png");
   font-family: "Nunito Sans", sans-serif;
 }
+
+:root {
+  --card-bg: #b9c8c8;
+  --button-bg: #2daab1b7;
+  --header-bg: #cccccc;
+  --background-color: #b9c8c8;
+  --active-link: #2dabb1;
+}
