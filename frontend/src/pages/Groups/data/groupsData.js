@@ -33,14 +33,11 @@ export const groupCardsData = [
       "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis.",
   },
   {
-<<<<<<<< HEAD:frontend/src/data/groupsData.js
-    imgSrc: ["/Groups/Catcomes1.jpg"],
-========
+
     imgSrc: [
       "/Groups/catcomes.jpg",
       "/Groups/Catcomes1.jpg"
     ],
->>>>>>>> groups:frontend/src/pages/Groups/data/groupsData.js
     alt: "Catcom Enterprise",
     title: "Catcom Enterprise",
     description:
@@ -61,14 +58,11 @@ export const groupCardsData = [
       "They express praise and worship through sacred dance, bringing energy, beauty, and meaning to liturgical celebrations and special events. They are dedicated to enhancing the worship experience through their artistic expression.",
   },
   {
-<<<<<<<< HEAD:frontend/src/data/groupsData.js
-    imgSrc: ["/Groups/technical.jpg", "/Groups/Technical1.jpg"],
-========
+
     imgSrc: [
       "/Groups/technical.jpg",
       "/Groups/Technical1.jpg"
     ],
->>>>>>>> groups:frontend/src/pages/Groups/data/groupsData.js
     alt: "Technical Team",
     title: "Technical Team",
     description:
@@ -76,16 +70,15 @@ export const groupCardsData = [
   },
   {
     imgSrc: [
-      "/Groups/Tournament.png",
-      "/Groups/Tournament1.png",
-      "/Groups/Tournament2.jpg",
-      "/Groups/Tournament3.jpg",
-      "/Groups/Tournament4.png",
+      "/Groups/Catcomfc.jpg",
+      "/Groups/Catcomfc1.jpg",
+      "/Groups/Catcomfc2.jpg",
+      "/Groups/Catcomfc3.jpg"
     ],
-    alt: "Tournament FC",
-    title: "Tournament FC",
+    alt: "Catcom FC",
+    title: "Catcom FC",
     description:
-      "The Tournament FC is a vibrant community of football enthusiasts who come together to share their passion for the game. They organize regular matches, tournaments, and training sessions, fostering teamwork and sportsmanship among members.",
+      "The Catcom FC is a vibrant community of football enthusiasts who come together to share their passion for the game. They organize regular matches, Catcoms, and training sessions, fostering teamwork and sportsmanship among members.",
   },
   {
     imgSrc: [

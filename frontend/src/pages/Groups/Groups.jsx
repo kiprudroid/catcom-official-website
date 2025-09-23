@@ -5,7 +5,7 @@ import JoinForm from "./widgets/JoinForm/JoinForm";
 import InfoCard from "./widgets/InfoCard/InfoCard";
 import { groupCardsData } from "./data/groupsData";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
-import GroupCards from "./widgets/GroupCard/GroupCards";
+import GroupCards from "./widgets/GroupCards/GroupCards";
 
 function Groups() {
   return (
