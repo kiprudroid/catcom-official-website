@@ -44,7 +44,15 @@ export const groupCardsData = [
       "This team comprises Catcom treasurers and secretaries who oversee the planning, coordination, and execution of CATCOM projects during events. They ensure proper resource management, budgeting, and logistical support, helping to bring CATCOM’s initiatives to life with excellence and accountability.",
   },
   {
-    imgSrc: ["/Groups/bps.jpg"],
+    imgSrc: [
+      "/Groups/bps.jpg",
+      "/Groups/bps1.jpg",
+      "/Groups/bps2.jpg",
+      "/Groups/bps3.jpg",
+      "/Groups/bps4.jpg",
+      "/Groups/bps5.jpg",
+      "/Groups/bps6.jpg"
+  ],
     alt: "Bible Prayer Service",
     title: "Bible Prayer Service",
     description:
@@ -78,7 +86,7 @@ export const groupCardsData = [
     alt: "Catcom FC",
     title: "Catcom FC",
     description:
-      "The Catcom FC is a vibrant community of football enthusiasts who come together to share their passion for the game. They organize regular matches, Catcoms, and training sessions, fostering teamwork and sportsmanship among members.",
+      "The Catcom FC is a vibrant community of football enthusiasts who come together from all SCCs to share their passion for the game. They organize regular matches, Catcoms, and training sessions, fostering teamwork and sportsmanship among members.",
   },
   {
     imgSrc: [
