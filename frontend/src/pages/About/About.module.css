@@ -4,11 +4,14 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .widget {
   width: 90%;
-  background: #c8d8dc;
+  background-color: var(--card-bg);
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
