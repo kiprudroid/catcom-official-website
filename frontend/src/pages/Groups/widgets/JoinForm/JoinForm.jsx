@@ -1,10 +1,33 @@
 import styles from "./JoinForm.module.css";
 import React, { useState, useEffect } from "react";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "../../../../components/Typography/Typography";
 
 function JoinForm() {
+  const [warning, setWarning] = useState(null);
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+   setWarning("🚧 This Feature is under development")
+  };
+  //   const form = e.target.closest("form");
+  //   const firstName = form.querySelector("input[name='fname']").value.trim();
+  //   const lastName = form.querySelector("input[name='lname']").value.trim();  
+  //   const phone = form.querySelector("input[name='phone']").value.trim();
+  //   const email = form.querySelector("input[name='email']").value.trim();
+  //   const gender = form.querySelector("input[name='gender']").value.trim();
+  //   const college = form.querySelector("select[name='college']").value;
+  //   const groups = form.querySelectorAll("input[name='groups']:checked");
+
+  //   if (!firstName || !lastName || !phone || !email || !gender || !college || groups.length === 0) {
+  //     setWarning("⚠️ Kindly fill all the details required");
+  //     return;
+  //   }
+
+  //   setWarning("🚧 This Feature is under development");
+  // };
+
   return (
-    <form className={styles.formGrid}>
+    <form className={styles.formGrid} >
       <SectionHeading as="h2">Joining a Group</SectionHeading>
       <Paragraph>
         To join a group, please fill out the form below and select the group(s)
@@ -16,11 +39,11 @@ function JoinForm() {
           <label htmlFor="name">
             <Paragraph>First Name</Paragraph>
           </label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="fname" />
           <label htmlFor="name">
             <Paragraph>Last Name</Paragraph>
           </label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="lname" />
           <label htmlFor="phone">
             <Paragraph>Phone Number</Paragraph>
           </label>
@@ -128,8 +151,18 @@ function JoinForm() {
           </div>
         </div>
       </div>
-      <button className={styles.joinBtn}>Join Group</button>
+      <button 
+      className={styles.joinBtn}
+        type="submit"
+        onClick={handleSubmit}
+      > Join Group(s)
+      </button>
+      {warning && (
+  <div className={styles.warningBar}>
+    {warning}
+  </div>
+)}
     </form>
   );
-}
+};
 export default JoinForm;

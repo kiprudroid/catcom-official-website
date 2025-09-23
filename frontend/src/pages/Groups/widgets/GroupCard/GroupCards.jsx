@@ -1,9 +1,9 @@
 import React from "react";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "../../../../components/Typography/Typography";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styles from "./GroupCards.module.css";
-import { groupCardsData } from "../../../DataFiles/groupsData";
+import { groupCardsData } from "../../data/groupsData";
 
 const GroupCards = () => {
   return (
@@ -22,7 +22,7 @@ const GroupCards = () => {
                 showStatus={false}
                 infiniteLoop
                 autoPlay
-                interval={4000}
+                interval={3500}
                 className={styles.carousel}
               >
                 {images.map((src, i) => (

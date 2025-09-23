@@ -1,6 +1,6 @@
 import styles from "./InfoCard.module.css";
 import React, { useState, useEffect } from "react";
-import { SectionHeading, Paragraph } from "../../Typography/Typography";
+import { SectionHeading, Paragraph } from "../../../../components/Typography/Typography";
 
 function InfoCard() {
   return (

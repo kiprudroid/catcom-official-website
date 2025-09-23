@@ -37,7 +37,7 @@ export const groupCardsData = [
   },
   {
     imgSrc: [
-      "/Groups/Catcomes.jpg",
+      "/Groups/catcomes.jpg",
       "/Groups/Catcomes1.jpg"
     ],
     alt: "Catcom Enterprise",
@@ -61,7 +61,7 @@ export const groupCardsData = [
   },
   {
     imgSrc: [
-      "/Groups/Technical.jpg",
+      "/Groups/technical.jpg",
       "/Groups/Technical1.jpg"
     ],
     alt: "Technical Team",
@@ -81,5 +81,14 @@ export const groupCardsData = [
     title: "Tournament FC",
     description:
       "The Tournament FC is a vibrant community of football enthusiasts who come together to share their passion for the game. They organize regular matches, tournaments, and training sessions, fostering teamwork and sportsmanship among members.",
+  },
+  {
+    imgSrc: [
+      
+    ],
+    alt: "WebTeam",
+    title: "WebTeam",
+    description:
+      "This team is responsible for managing and maintaining the online presence of Catcom. They handle website updates, social media engagement, and digital communications to ensure that members stay informed and connected.",
   },
 ];

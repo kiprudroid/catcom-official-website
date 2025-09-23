@@ -72,3 +72,12 @@ select {
 .joinBtn:hover {
   background: #124346;
 }
+.warningBar {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+  background: #fff3cd;
+  width: fit-content;
+  color: #664d03;
+  font-weight: 500;
+}
