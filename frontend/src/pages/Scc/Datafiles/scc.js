@@ -123,14 +123,9 @@ export const SCCs = [
       "Family outings",
     ],
     sccPhotos: [
-      "sccPictures/stVeronica/picture1.png",
-      "sccPictures/stVeronica/picture2.png",
-      "sccPictures/stVeronica/picture3.png",
-      "sccPictures/stVeronica/picture4.png",
-      "sccPictures/stVeronica/picture5.png",
-      "sccPictures/stVeronica/picture6.png",
-      "sccPictures/stVeronica/picture7.png",
-      "sccPictures/stVeronica/picture8.png",
+      "/sccPictures/stVeronica/St-veronica.jpg",
+      "/sccPictures/stVeronica/St-veronica2.jpg",
+      "/sccPictures/stVeronica/St-veronica3.jpg",
     ],
     aboutPatronSaint:
       "Saint Veronicah is also known as Berenike.She was in the 1st century AD in Jerusalem.Saint Veronica feast day is 12th July and she is the patron saint of maids, parsonage housekeepers, photographers, rectoryhousekeepers, seamstresses, washerwomen,against bleeding, against hemorraghes, domestic workers, dying people, laundry workers and linen weavers. Saint Veronicah is known as the woman who offered a cloth to Jesus so he could wipe His face on the way to His crucifixion.Saint Veronicah is not mentioned in the Bible, but is known to us by Catholic tradition and in the Sixth Station of the Cross, 'Veronica Wipes the Face of Jesus.' ",
@@ -287,12 +282,12 @@ export const sccCards = [
   {
     path: "st-therese",
     name: "St. Therese of the child Jesus",
-    images: ["sccPictures/stTherese/Picture2.png"],
+    images: ["/sccPictures/stTherese/Picture1.jpg"],
   },
   {
     path: "st-veronica",
     name: "St. Veronica",
-    images: ["sccPictures/stVeronica/picture2.png"],
+    images: ["/sccPictures/stVeronica/St-veronica.jpg"],
   },
   {
     path: "st-charles",

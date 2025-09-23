@@ -6,17 +6,19 @@ import {
   patrons,
   priests,
   catcomExecutive,
-} from  "../../DataFiles/data"
+} from "../../data/data";
 import styles from "./About.module.css";
 
-import { HeroSection } from "../../components/AboutWidgets/HeroSection/HeroSection";
-import { Heritage } from "../../components/AboutWidgets/Heritage/Heritage";
-import { MissionVision } from "../../components/AboutWidgets/MissionVision/MissionVision";
-
-import { PriestsCard } from "../../components/AboutWidgets/PriestsCard/PriestsCard";
-import { PatronsCard } from "../../components/AboutWidgets/PatronsCard/PatronsCard";
-import { ExecutiveCards } from "../../components/AboutWidgets/ExecutiveCards/ExecutiveCards";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
+
+import {
+  HeroSection,
+  Heritage,
+  MissionVision,
+  PriestsCard,
+  PatronsCard,
+  ExecutiveCards,
+} from "@/pages/About/widgets";
 
 const AboutPage = () => {
   return (

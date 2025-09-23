@@ -10,8 +10,7 @@ import {
   SccExecutiveCard,
 } from "@/pages/Scc/SccInfo/widgets";
 
-// import { SccExecutiveCard } from "@/pages/Scc/SccInfo/widgets/SccInfoWidgets/SccExecutiveCard/SccExecutiveCard";
-import { sccExecutive } from "@/DataFiles/data";
+import { sccExecutive } from "@/data/data";
 
 const SccInfo = ({
   name,
