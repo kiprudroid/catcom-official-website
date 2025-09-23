@@ -33,7 +33,14 @@ export const groupCardsData = [
       "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis.",
   },
   {
+<<<<<<<< HEAD:frontend/src/data/groupsData.js
     imgSrc: ["/Groups/Catcomes1.jpg"],
+========
+    imgSrc: [
+      "/Groups/catcomes.jpg",
+      "/Groups/Catcomes1.jpg"
+    ],
+>>>>>>>> groups:frontend/src/pages/Groups/data/groupsData.js
     alt: "Catcom Enterprise",
     title: "Catcom Enterprise",
     description:
@@ -54,7 +61,14 @@ export const groupCardsData = [
       "They express praise and worship through sacred dance, bringing energy, beauty, and meaning to liturgical celebrations and special events. They are dedicated to enhancing the worship experience through their artistic expression.",
   },
   {
+<<<<<<<< HEAD:frontend/src/data/groupsData.js
     imgSrc: ["/Groups/technical.jpg", "/Groups/Technical1.jpg"],
+========
+    imgSrc: [
+      "/Groups/technical.jpg",
+      "/Groups/Technical1.jpg"
+    ],
+>>>>>>>> groups:frontend/src/pages/Groups/data/groupsData.js
     alt: "Technical Team",
     title: "Technical Team",
     description:
@@ -72,5 +86,14 @@ export const groupCardsData = [
     title: "Tournament FC",
     description:
       "The Tournament FC is a vibrant community of football enthusiasts who come together to share their passion for the game. They organize regular matches, tournaments, and training sessions, fostering teamwork and sportsmanship among members.",
+  },
+  {
+    imgSrc: [
+      
+    ],
+    alt: "WebTeam",
+    title: "WebTeam",
+    description:
+      "This team is responsible for managing and maintaining the online presence of Catcom. They handle website updates, social media engagement, and digital communications to ensure that members stay informed and connected.",
   },
 ];

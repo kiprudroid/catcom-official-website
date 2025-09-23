@@ -5,7 +5,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styles from "./GroupCards.module.css";
 
 import { groupCardsData } from "@/data/groupsData";
-
 const GroupCards = () => {
   return (
     <div className={styles.groupGrid}>
@@ -23,7 +22,7 @@ const GroupCards = () => {
                 showStatus={false}
                 infiniteLoop
                 autoPlay
-                interval={4000}
+                interval={3500}
                 className={styles.carousel}
               >
                 {images.map((src, i) => (
