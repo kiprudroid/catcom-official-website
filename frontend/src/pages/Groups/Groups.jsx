@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Groups.module.css";
 import { SectionHeading } from "../../components/Typography/Typography";
-import JoinForm from "./widgets/JoinForm/JoinForm";
-import InfoCard from "./widgets/InfoCard/InfoCard";
-import { groupCardsData } from "./data/groupsData";
+
+import { groupCardsData } from "./data/data";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
-import GroupCards from "./widgets/GroupCards/GroupCards";
+
+import { GroupCards, JoinForm, InfoCard } from "@/pages/Groups/widgets";
 
 function Groups() {
   return (

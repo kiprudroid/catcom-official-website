@@ -1,12 +1,5 @@
 import React from "react";
-import Header from "../../reusable-components/Header/Header";
-import Footer from "../../reusable-components/Footer/Footer";
-import {
-  communities,
-  patrons,
-  priests,
-  catcomExecutive,
-} from "../../data/data";
+
 import styles from "./About.module.css";
 
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
@@ -19,6 +12,8 @@ import {
   PatronsCard,
   ExecutiveCards,
 } from "@/pages/About/widgets";
+
+import { patrons, priests, catcomExecutive } from "@/pages/About/data/data";
 
 const AboutPage = () => {
   return (

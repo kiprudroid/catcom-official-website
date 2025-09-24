@@ -33,11 +33,7 @@ export const groupCardsData = [
       "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis.",
   },
   {
-
-    imgSrc: [
-      "/Groups/catcomes.jpg",
-      "/Groups/Catcomes1.jpg"
-    ],
+    imgSrc: ["/Groups/catcomes.jpg", "/Groups/Catcomes1.jpg"],
     alt: "Catcom Enterprise",
     title: "Catcom Enterprise",
     description:
@@ -51,8 +47,8 @@ export const groupCardsData = [
       "/Groups/bps3.jpg",
       "/Groups/bps4.jpg",
       "/Groups/bps5.jpg",
-      "/Groups/bps6.jpg"
-  ],
+      "/Groups/bps6.jpg",
+    ],
     alt: "Bible Prayer Service",
     title: "Bible Prayer Service",
     description:
@@ -66,11 +62,7 @@ export const groupCardsData = [
       "They express praise and worship through sacred dance, bringing energy, beauty, and meaning to liturgical celebrations and special events. They are dedicated to enhancing the worship experience through their artistic expression.",
   },
   {
-
-    imgSrc: [
-      "/Groups/technical.jpg",
-      "/Groups/Technical1.jpg"
-    ],
+    imgSrc: ["/Groups/technical.jpg", "/Groups/Technical1.jpg"],
     alt: "Technical Team",
     title: "Technical Team",
     description:
@@ -81,7 +73,7 @@ export const groupCardsData = [
       "/Groups/Catcomfc.jpg",
       "/Groups/Catcomfc1.jpg",
       "/Groups/Catcomfc2.jpg",
-      "/Groups/Catcomfc3.jpg"
+      "/Groups/Catcomfc3.jpg",
     ],
     alt: "Catcom FC",
     title: "Catcom FC",
@@ -89,11 +81,9 @@ export const groupCardsData = [
       "The Catcom FC is a vibrant community of football enthusiasts who come together from all SCCs to share their passion for the game. They organize regular matches, Catcoms, and training sessions, fostering teamwork and sportsmanship among members.",
   },
   {
-    imgSrc: [
-      
-    ],
-    alt: "WebTeam",
-    title: "WebTeam",
+    imgSrc: [],
+    alt: "Website Team",
+    title: "Website Team",
     description:
       "This team is responsible for managing and maintaining the online presence of Catcom. They handle website updates, social media engagement, and digital communications to ensure that members stay informed and connected.",
   },

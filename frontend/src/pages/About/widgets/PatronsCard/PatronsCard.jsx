@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./PatronsCard.module.css";
-import { Mail } from "lucide-react";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 
 const PatronsCard = ({ patrons }) => {
