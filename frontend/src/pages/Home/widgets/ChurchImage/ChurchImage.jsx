@@ -1,15 +1,42 @@
 import React from "react";
+import Slider from "react-slick";
 import styles from "./ChurchImage.module.css";
-import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
+import { Paragraph } from "@/components/Typography/Typography";
+
+const images = [
+  "/others/st_augustine.jpg",
+  "/church-images/church2.jpg",
+  "/church-images/church5.jpg",
+  "/church-images/church1.jpg",
+  "/church-images/church4.jpg",
+  "/church-images/church6.jpg",
+];
 
 function ChurchImage() {
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    fade: true,
+    speed: 1000,
+  };
+
   return (
     <div className={styles.imgContainer}>
-      <img
-        className={styles.churchImage}
-        src="/others/st_augustine.jpg"
-        alt="St Augustine Church Image"
-      />
+      <Slider {...settings}>
+        {images.map((src, idx) => (
+          <div key={idx}>
+            <img
+              className={styles.churchImage}
+              src={src}
+              alt="St Augustine Church Image"
+            />
+          </div>
+        ))}
+      </Slider>
+
       <div className={styles.imageLabel}>
         <Paragraph className={styles.imageLabelTitle}>
           St Augustine – JUJA
