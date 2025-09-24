@@ -37,8 +37,9 @@
 
 .eventGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  width: 100%;
 }
 
 .eventCard {
@@ -130,15 +131,6 @@
   color: #ffd700;
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 1.6rem;
-  }
-  .subTitle {
-    font-size: 1.3rem;
-  }
-}
-
 .emptyMsg {
   display: flex;
   flex-direction: column;
@@ -155,6 +147,7 @@
   border: 1px dashed rgba(255, 215, 0, 0.3);
   animation: fadeIn 0.6s ease-in;
 }
+
 .subMsg {
   font-size: 1rem;
   color: #aaa;
@@ -178,87 +171,109 @@
     transform: translateY(0);
   }
 }
-
-/* === Mobile (Phones) === */
-@media screen and (max-width: 600px) {
+/* === Small phones (up to 480px) === */
+@media screen and (max-width: 480px) {
   .calendarWrapper {
     padding: 1.2rem;
-    margin: 1rem;
+    width: 90%;
   }
-
   .title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
   }
-
   .subTitle {
     font-size: 1.1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
-
   .eventCard {
-    padding: 1rem;
+    padding: 0.9rem;
   }
-
   .dateBadge {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
   }
-
-  .eventTitle {
-    font-size: 1rem;
-  }
-
   .contacts {
-    font-size: 0.85rem;
-    padding: 1rem;
+    font-size: 0.8rem;
+    padding: 0.9rem;
   }
 }
 
-/* === Tablets & Small Laptops === */
-@media screen and (min-width: 601px) and (max-width: 1024px) {
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .calendarWrapper {
+    padding: 1.6rem;
+    margin: 1.2rem auto;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .subTitle {
+    font-size: 1.2rem;
+  }
+  .eventCard {
+    padding: 1rem;
+  }
+  .contacts {
+    font-size: 0.85rem;
+  }
+}
+
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   .calendarWrapper {
     padding: 2rem;
     margin: 1.5rem auto;
   }
-
   .title {
     font-size: 1.8rem;
   }
-
   .subTitle {
     font-size: 1.3rem;
   }
-
   .eventCard {
-    padding: 1.1rem;
+    padding: 1rem;
   }
-
   .contacts {
     font-size: 0.9rem;
   }
 }
 
-/* === Desktops & Large Screens === */
-@media screen and (min-width: 1025px) {
+/* === Desktops (1025px – 1440px) === */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
   .calendarWrapper {
     padding: 2.5rem;
     margin: 2rem auto;
   }
-
   .title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
-
   .subTitle {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
-
   .eventCard {
-    padding: 1.2rem;
+    padding: 1.1rem;
   }
-
   .contacts {
     font-size: 0.95rem;
+  }
+}
+
+/* === Large desktops (1441px and above) === */
+@media screen and (min-width: 1441px) {
+  .calendarWrapper {
+    padding: 3rem;
+    margin: 2.5rem auto;
+  }
+  .title {
+    font-size: 2.4rem;
+  }
+  .subTitle {
+    font-size: 1.7rem;
+  }
+  .eventCard {
+    padding: 1.3rem;
+  }
+  .contacts {
+    font-size: 1rem;
   }
 }

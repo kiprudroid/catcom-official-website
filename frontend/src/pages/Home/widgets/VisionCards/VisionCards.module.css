@@ -1,5 +1,7 @@
 .visionContainer {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   width: 100%;
 }
@@ -11,6 +13,7 @@
   padding: 1.5rem;
   margin-right: 1.5rem;
   width: 50%;
+  height: 200px;
 }
 
 .card:hover {
@@ -25,15 +28,28 @@
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 600px) {
+/* === Small phones (up to 480px) === */
+@media screen and (max-width: 480px) {
   .visionContainer {
-    /* display: flex; */
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
   }
 
   .card {
     width: 90%;
+    margin-right: 0;
+  }
+}
+
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .visionContainer {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card {
+    width: 80%;
+    margin-right: 0;
   }
 }

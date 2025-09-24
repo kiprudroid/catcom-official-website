@@ -13,8 +13,7 @@ const VisionCards = () => {
         <Paragraph className={styles.textContent}>
           We are a vibrant Catholic Community that encourages healthy growth
           spiritually, socially, and academically, with the ultimate goal of
-          encountering Christ in our daily lives. The community supports us in
-          recognizing our inherent vocation bestowed upon us by God.
+          encountering Christ in our daily lives.
         </Paragraph>
       </div>
       <div className={styles.card}>

@@ -24,7 +24,7 @@
 .mvDivider {
   width: 4rem;
   height: 4px;
-  background: linear-gradient(135deg, #2dabb1, #1c6f74);
+  background: var(--divider-bg);
 
   border-radius: 999px;
   margin: 0 auto 2rem;

@@ -24,17 +24,9 @@ const Heritage = () => {
           </p>
 
           <p>
-            Through decades of service, CATCOM has been a beacon of hope,
-            providing guidance, support, and fellowship to thousands of
-            students. Our heritage is built on the foundation of Christ&apos;s
+          Our heritage is built on the foundation of Christ&apos;s
             teachings, the wisdom of the Church, and the commitment of
             generations of faithful students and clergy.
-          </p>
-
-          <p>
-            Today, we continue this sacred tradition, embracing both our rich
-            history and our vision for the future — always guided by our core
-            values of faith, service, and community.
           </p>
         </div>
       </div>

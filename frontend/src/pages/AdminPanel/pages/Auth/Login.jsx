@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
+import { SectionHeading } from "@/components/Typography/Typography";
 
-const DUMMY_EMAIL = "admin@catcom.test";
-const DUMMY_PASSWORD = "P@ssw0rd!";
+const DUMMY_EMAIL = "admin@catcom";
+const DUMMY_PASSWORD = "admin1234";
 
 export default function Login({ onLogin }) {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -28,7 +29,7 @@ export default function Login({ onLogin }) {
   return (
     <div className={styles.loginContainer}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h1>Admin Login</h1>
+        <SectionHeading fontSize="2rem">Catcom Admin Login</SectionHeading>
         <input
           type="email"
           name="email"

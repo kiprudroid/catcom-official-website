@@ -31,14 +31,14 @@
 .form button {
   padding: 0.6rem;
   border: none;
-  background: #007bff;
+  background: var(--button-bg);
   color: white;
   border-radius: 6px;
   cursor: pointer;
 }
 
 .form button:hover {
-  background: #0056b3;
+  background: var(--active-link);
 }
 
 .error {

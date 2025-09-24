@@ -5,7 +5,8 @@ export const priests = [
     name: "Prof(Fr.) Lawrence Njoroge",
     title: "Chaplaincy",
     bio: "Prof. Fr. Lawrence has dedicated his life to guiding students in faith and academics, offering both spiritual and intellectual mentorship.",
-    image: "/chaplain/fatherLawrence.jpg",
+    // image: "/chaplain/fatherLawrence.jpg",
+    image: "/priests/Fr Lawrence.jpg",
   },
   {
     name: "Fr. Patrick",
@@ -65,14 +66,14 @@ export const catcomExecutive = [
   {
     name: "Eliza Chiru",
     position: "Catcom Secretary",
-    bio: "Keeps records, manages communications, and ensures CATCOM operations run smoothly.",
+    bio: `Records executive meeting minutes, coordinates Wednesday and Sunday announcements, oversees SCC secretaries, serves as ex-officio member of CATCOMES, and collaborates closely with the executive team.`,
     image: "/leadersImages/eliza.jpg",
     phone: "+254 725026216",
   },
   {
     name: "Terryann Wanjohi",
     position: "Catcom Treasurer",
-    bio: "Manages CATCOM finances, ensuring accountability and transparency.",
+    bio: `Keeps financial records, prepares budgets, collects and safeguards funds, makes payments, and reports finances. Ensures transparency, updates members on financial matters, and supports the executive in planning and using resources wisely.`,
     image: "/leadersImages/terry.jpg",
     phone: "+254 746402544",
   },

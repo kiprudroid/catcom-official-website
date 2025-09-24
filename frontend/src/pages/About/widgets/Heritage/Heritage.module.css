@@ -4,7 +4,7 @@
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .heritageText {
@@ -23,7 +23,7 @@
 .heritageDivider {
   width: 4rem;
   height: 4px;
-  background: linear-gradient(90deg, #ffd700, #ff6600, #ff1493);
+  background: var(--divider-bg);
   border-radius: 999px;
   margin-bottom: 1.5rem;
 }
