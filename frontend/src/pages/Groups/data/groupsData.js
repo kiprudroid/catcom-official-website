@@ -26,12 +26,16 @@ export const groupCardsData = [
       "This team consist of Catcom Catering secretaries and Project managers. They promote unity and compassion by reaching out to members in times of need, joy, or crisis be it, illnesses, or bereavement. They also support the community through various charitable initiatives and organize various projects and drives to assist those in need.",
   },
   {
-    imgSrc: ["/Groups/CL.jpg", "/Groups/CL1.jpg"],
+    imgSrc: [
+      "/Groups/CL.jpg",
+       "/Groups/CL1.jpg",
+      "/Groups/CL2.jpg"
+      ],
     alt: "Communion and Liberation",
     title: "Communion and Liberation",
     description:
-      "This is a Religious movement focused on living out the Christian faith in daily life through community, personal witness, and catechesis.",
-  },
+    "CL is a Catholic movement founded by Fr. Luigi Giussani that helps students see faith as an encounter with Christ lived in daily life. Its main activities include the School of Community (weekly discussions), charitable works, holidays, hikes, prayer, and friendship. It enables students to discover that Christianity embraces all of reality, offering true freedom and meaning in every aspect of life."
+    },
   {
 
     imgSrc: [
@@ -51,7 +55,6 @@ export const groupCardsData = [
       "/Groups/bps3.jpg",
       "/Groups/bps4.jpg",
       "/Groups/bps5.jpg",
-      "/Groups/bps6.jpg"
   ],
     alt: "Bible Prayer Service",
     title: "Bible Prayer Service",
@@ -59,7 +62,13 @@ export const groupCardsData = [
       "This is a group that fosters spiritual growth through regular Bible study, reflections, and intercessory prayers, helping members deepen their relationship with God. They meet on Sunday evenings for prayers and fellowship, where they share spiritual experiences, insights, and support one another in their faith journeys.",
   },
   {
-    imgSrc: ["/Groups/dancers.jpg"],
+    imgSrc: [
+      "/Groups/dancers.jpg",
+      "/Groups/dancers1.jpg",
+      "/Groups/dancers2.jpg"
+      ,
+    
+    ],
     alt: "Liturgical Dancers",
     title: "Liturgical Dancers",
     description:
