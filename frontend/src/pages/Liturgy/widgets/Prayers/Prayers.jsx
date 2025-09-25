@@ -17,7 +17,10 @@ function Prayers() {
   );
 
   // react-select options
-  const options = sortedPrayers.map((p, i) => ({ value: i, label: p.title }));
+  const options = sortedPrayers.map((prayer, index) => ({
+    value: index,
+    label: prayer.title,
+  }));
 
   return (
     <div className={styles.container}>
