@@ -8,7 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { SCCs } from "@/pages/Scc/Datafiles/scc";
+import { SCCs } from "@/pages/Scc/data/scc";
 import SccInfo from "./pages/Scc/SccInfo/SccInfo";
 
 import Login from "@/pages/AdminPanel/pages/Auth/Login";
@@ -50,6 +50,7 @@ function App() {
                 aboutPatronSaint={scc.aboutPatronSaint}
                 prayer={scc.prayer}
                 image={scc.image}
+                leaders={scc.leaders}
               />
             }
           />
