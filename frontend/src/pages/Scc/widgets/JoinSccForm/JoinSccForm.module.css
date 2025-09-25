@@ -117,8 +117,43 @@ select {
   }
 }
 
-/* Tablet: ≤ 1024px */
-@media (max-width: 1024px) {
+/* === Large desktops (1441px and above) === */
+@media screen and (min-width: 1441px) {
+  .inputRow {
+    gap: 2.5rem;
+  }
+
+  .formCol,
+  .inputCol {
+    flex: 1 1 48%;
+    min-width: unset;
+  }
+
+  .joinBtn {
+    width: 300px;
+    font-size: 1.3rem;
+  }
+}
+
+/* === Desktops (1025px – 1440px) === */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .inputRow {
+    gap: 1.5rem;
+  }
+
+  .formCol,
+  .inputCol {
+    flex: 1 1 48%;
+    min-width: unset;
+  }
+
+  .joinBtn {
+    width: 250px;
+    font-size: 1.2rem;
+  }
+}
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   .inputRow {
     flex-direction: column;
     gap: 1rem;
@@ -136,8 +171,8 @@ select {
   }
 }
 
-/* Mobile: ≤ 600px */
-@media (max-width: 600px) {
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
   .joinForm {
     padding: 1rem;
     max-height: none;
@@ -173,3 +208,13 @@ select {
     padding: 0.45rem;
   }
 }
+
+/* === Small phones (up to 480px) === */
+@media screen and (max-width: 480px) {
+  .warningBox {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    max-width: 100%;
+  }
+}
+  

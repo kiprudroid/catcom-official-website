@@ -16,8 +16,18 @@
 .exec {
   width: 92%;
 }
+@media screen and (min-width: 1441px) {
+  .gridContainer {
+    margin-left: 2rem;
+    gap: 2rem;
+  }
+
+  .card {
+    width: 80%;
+  }
+}
 /* Tablets  */
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
   .gridContainer {
     margin-left: 1rem;
     gap: 1.5rem;
@@ -29,8 +39,8 @@
 }
 
 /* Phones */
-@media screen and (max-width: 600px) {
-  .gridContainer {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .gridContainer {
     margin-left: 0;
     padding: 0 1rem;
     gap: 1rem;
@@ -38,5 +48,28 @@
 
   .card {
     width: 90%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .gridContainer {
+    margin-left: 0;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+    .gridContainer {
+    margin-left: 0;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 100%;
   }
 }

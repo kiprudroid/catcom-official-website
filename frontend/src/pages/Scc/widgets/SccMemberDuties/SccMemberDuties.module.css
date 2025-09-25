@@ -41,7 +41,38 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+@media screen and (min-width: 1441px) {
+  .membersDutiesList {
+    grid-template-columns: repeat(3, 2fr, 1fr);
+    grid-auto-rows: auto;
+  }
+
+  .sccMembersDuties {
+    padding: 2rem;
+  }
+
+  .dutyItem {
+    font-size: 1.1rem;
+    padding: 1rem 1.2rem;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .membersDutiesList {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+  }
+
+  .sccMembersDuties {
+    padding: 1.5rem;
+  }
+
+  .dutyItem {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   .membersDutiesList {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
@@ -56,3 +87,39 @@
     padding: 0.8rem 1rem;
   }
 }
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .membersDutiesList {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 1rem;
+  }
+
+  .sccMembersDuties {
+    padding: 1rem;
+  }
+
+  .dutyItem {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+    gap: 0.6rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .membersDutiesList {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 0.8rem;
+  }
+
+  .sccMembersDuties {
+    padding: 0.8rem;
+  }
+
+  .dutyItem {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    gap: 0.5rem;
+  }
+}
+
+

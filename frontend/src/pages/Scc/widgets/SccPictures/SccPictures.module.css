@@ -21,15 +21,34 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
-
-@media (max-width: 1024px) {
+@media screen and (min-width: 1441px) {
   .sccCardsWrapper {
+    gap: 2rem;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .sccCardsWrapper {
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .sccCardsWrapper {
+    gap: 1.5rem;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .sccCardsWrapper {
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .sccCardsWrapper {
+    gap: 1rem;
     grid-template-columns: 1fr;
   }
 }
+@media screen and (max-width: 480px) {
+    .sccCardsWrapper {
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+}
+
