@@ -109,7 +109,7 @@
 @media screen and (min-width: 1441px) {
   .groupGrid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
     padding: 0 1rem;
   }
 
@@ -127,8 +127,28 @@
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   .groupGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 0 0.75rem;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .cardDesc {
+    font-size: 0.9rem;
+  }
+}
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .groupGrid {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 0.5rem;
+  }
+
+  .cardContent {
+    padding: 1.2rem;
   }
 
   .cardTitle {

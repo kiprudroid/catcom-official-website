@@ -33,6 +33,12 @@
     gap: 2rem;
   }
 }
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .gridContainer {
+    gap: 1.5rem;
+  }
+  
+}
 @media screen and (max-width: 480px) {
   .gridContainer {
     gap: 1rem;
