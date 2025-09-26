@@ -29,14 +29,16 @@ export const SccExecutiveCard = ({ executives }) => {
               </div>
 
               <h3>{exec.name}</h3>
-              <p className={styles.position}>{exec.position}</p>
+
+              <p className={styles.position}>{exec.role}</p>
+
             </div>
 
             <div className={styles.executiveBody}>
               <div className={styles.contact}>
                 <h3 className={styles.contactBtn}>
                   <Phone size={14} />
-                  0778764747
+                  {exec.contact}
                 </h3>
               </div>
             </div>

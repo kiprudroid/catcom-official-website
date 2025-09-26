@@ -152,27 +152,83 @@
   opacity: 1;
 }
 
-@media (max-width: 768px) {
+/* === Small phones (up to 480px) === */
+@media screen and (max-width: 480px) {
   .cardBody {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 
-  .activityButton {
-    padding: 14px;
+  .photosColumn {
+    order: -1;
+    margin-bottom: 1.5rem;
+    min-height: 260px;
   }
 
-  .activitiesInner {
-    grid-template-columns: 1fr;
+  .activitiesColumn {
+    order: 2;
+  }
+  
+}
+
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .cardBody {
+    display: flex;
+    flex-direction: column;
   }
 
-  .dateBadge {
-    top: 6px;
-    left: 6px;
-    padding: 3px 7px;
-    font-size: 0.7rem;
+  .photosColumn {
+    order: -1;
+    margin-bottom: 1.5rem;
+    min-height: 260px;
   }
 
-  .slideshowImage {
-    height: auto;
+  .activitiesColumn {
+    order: 2;
   }
+  
+}
+
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .cardBody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .photosColumn {
+    order: -1;
+    margin-bottom: 1.5rem;
+    min-height: 260px;
+  }
+
+  .activitiesColumn {
+    order: 2;
+  }
+ 
+}
+
+/* === Desktops (1025px – 1440px) === */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .cardBody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .photosColumn {
+    order: -1;
+    margin-bottom: 1.5rem;
+    min-height: 260px;
+  }
+
+  .activitiesColumn {
+    order: 2;
+  }
+  
+}
+
+/* === Large desktops (1441px and above) === */
+@media screen and (min-width: 1441px) {
+  
 }
