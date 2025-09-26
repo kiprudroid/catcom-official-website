@@ -75,7 +75,7 @@ export const SCCs = [
     image: "others/gptSaint.webp",
     about:
       "The SCC consists of students from the first year to the fifth year. We also have an alumni wing that plays a major role in the growth and functionality of the SCC. It is founded on love, unity, and support for one another. Above all, it is also rooted in our Catholic faith and trust in God. The actvities by the SCC range from our normal indoor meetings on Thursdays at 6 pm., and Sundays after mass to outdoor activities planned by the members through the various committees formed. These activities include hikes, charity works, bike rides, color fests, and social days. The activities aim to grow the members' bond and give back to the community. We also have families that meet on different days of the week and plan out their activities. On  Thursdays, we mainly have discussions, debates, karaoke, game nights, and trivia",
-    families: [],
+    families: ["Family 1", "Family 1"],
     activities: [
       "Karaoke night",
       "Social day",
@@ -187,7 +187,7 @@ export const SCCs = [
     image: "PatronSaints/SaintVeronica.jpg",
     about:
       "ST Veronicah SCC was formed in the year 2010 around September. Before then, there were only 5 SCCs: St Mary's, St Martin, St Charles Lwanga, St Paul (nicknamed CMA) and St Jude. Due to the increase in number of CATCOM members, it was suggested that more SCC's be formed to accommodate more catcomers. The then chairman, Erick Otieno appointed a committee to come up with the structure. The report suggested that there be added three more SCC's. two to cater for those residing in University hostels and an additional one to cater for those renting outside the University. Three SCC's were formed namely: St Veronica SCC, St Stephen SCC and St Therese of the Child Jesus SCC.At around November the same year, the SCC was commissioned by the then Father in Charge, Rev Fr Francis Kiarie, St Augustine Parish. Worth noting, Irene was the first chair lady, and during her time the families were formed. Then the scc could meet once in a week on Thursdays at the halls of residence from 7:00 PM. Later on, the meeting was transferred to lecture halls e.g. SCC, NCLB.",
-    families: ["Priscila and Aquila", "", "", ""],
+    families: ["Priscila and Aquila", "Jacob and Rachael", "", ""],
     activities: [
       "Games night",
       "Trivia",
@@ -208,7 +208,7 @@ export const SCCs = [
       "Prayer to Saint Veronica My Jesus, Saint Veronica served You on the way to Calvary by wiping Your beloved face with a towel on which Your sacred image then appeared. She protected this treasure, and whenever people touched it, they were miraculously healed. I ask her to pray for the growth of my ability to see Your sacred image in others, to recognize their hurts, to stop and join them on their difficult journeys, and to feel the same compassion for them as she did for You. Show me how to wipe their faces, serve their needs, and heal their wounds, reminding me that as I do this for them, I also do this for You. Saint Veronica, pray for me. Amen.",
 
     leaders :[
-  { name: "Eric Ondieki", role: "Moderator", contact: "" },
+  { name: "Harrison Mwai", role: "Moderator", contact: "0718589587" },
   { name: "Eric Maina", role: "Coordinator", contact: "0700466197" },
   { name: "Lynne Kipsang’", role: "Treasurer", contact: "0725774288" },
   { name: "Grace Magaju", role: "Secretary", contact: "0114489244" },
@@ -222,7 +222,7 @@ export const SCCs = [
     image: "PatronSaints/SaintCharles.jpg",
     about:
       "This is a vibrant, faith-filled Christian community where love abounds, joy overflows, and prayer is at the heart of everything we do! We are more than just a group, we are a family united in Christ, supporting and uplifting one another in faith. Here, you will find a warm, special, and spirit-filled atmosphere where you can grow, worship, and experience God's love in a powerful way. Whether you are seeking encouragement, fellowship, or a deeper connection with God, you are welcome just as you are!. Our vision reaches beyond the horizon, where challenges dissolve intoopportunities and the seeds of today blossom into a future brighter than we ever imagined.",
-    families: [],
+    families: ["Vatican","Hope","Gaudete"],
     activities: [
       "Joint events with other SCCs",
       "Games night",
@@ -243,7 +243,7 @@ export const SCCs = [
     prayer:
       "Saint Charles Lwanga, you embraced suffering and death for your faith, shining brightly as a beacon of hope in the face of persecution. Your unwavering love for Christ inspires us to live lives of integrity and courage. Pray for us, that we may have the strength to stand firm in our faith, to follow Christ's teachings, and to bear witness to the Gospel, even in the face of adversity. Amen",
     leaders:  [
-  { name: "Isaac Kang'ethe", role: "Moderator", contact: "" },
+  { name: "Isaac Kang'ethe", role: "Moderator", contact: "0798600145" },
   { name: "Paul Rafiki", role: "Coordinator", contact: "0769748874" },
   { name: "Eucabeth Awino", role: "Treasurer", contact: "0794594042" },
   { name: "Elizabeth Muema", role: "Secretary", contact: "0798055905" },
@@ -257,6 +257,7 @@ export const SCCs = [
     image: "PatronSaints/SaintStephen.jpg",
     about:
       "St Stephen Small Christian Community (SCC) is a faith-based group within JKUAT Catholic Community, focused on fostering spiritual growth, fellowship, and service among its members.The SCC is a vibrant community comprising of 50 -60 active members. It thrives due to the strong bonds that exist in our individual families.Families include Capernaum Canaan Antioch Bethlehem.It aims at creating ties that are helpful both spiritually, mentally and physically. We hope to ensure continuity of the community by creating a safe space for our members.",
+    families: ["Capernaum", "Canaan", "Antioch", "Bethlehem"],
     activities: [
       "bike riding",
       "spiritual discussions",
@@ -284,7 +285,7 @@ export const SCCs = [
     prayer:
       "O glorious St. Stephen, first martyr for the faith, you who were filled with grace and power, and who, even in the face of death, prayed for your persecutors, intercede for us. Grant that we may imitate your courage and steadfastness in our own lives, always choosing to follow the truth and love even our enemies. Help us to be faithful witnesses to Christ, and to seek forgiveness, not only for ourselves, but for those who have wronged us. St. Stephen, pray for us, that we may one day join you in heaven, praising God eternally. Amen.",
     leaders : [
-  { name: "Stanely Omondi", role: "Moderator", contact: "0743317264" },
+  { name: "Stanley Omondi", role: "Moderator", contact: "0743317264" },
   { name: "Talyanne Okoth", role: "Coordinator", contact: "0799051473" },
   { name: "Steve Mbuvi", role: "Treasurer", contact: "0798922752" },
   { name: "Emma Chebet", role: "Secretary", contact: "0724721655" },

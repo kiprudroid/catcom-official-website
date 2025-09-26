@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./PatronSaint.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 
-const PatronSaint= ({ image, name, aboutPatronSaint, }) => {
+const PatronSaint= ({ image, name, aboutPatronSaint, className}) => {
   return (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${className}`}>
     <div className={styles.patronSaintWrapper}>
       <div className={styles.patronSaintImage}>
         <img

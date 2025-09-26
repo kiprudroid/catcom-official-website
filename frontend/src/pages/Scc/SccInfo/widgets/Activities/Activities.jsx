@@ -36,7 +36,7 @@ const ActivityItem = ({ activity }) => {
   );
 };
 
-const Activities = ({ activities = [], sccPhotos = [] }) => {
+const Activities = ({ activities = [], sccPhotos = [] ,className}) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -50,7 +50,7 @@ const Activities = ({ activities = [], sccPhotos = [] }) => {
   };
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${className}`}>
       <div className={styles.cardHeader}>
         <SectionHeading as="h2">Activities & Photos</SectionHeading>
       </div>
