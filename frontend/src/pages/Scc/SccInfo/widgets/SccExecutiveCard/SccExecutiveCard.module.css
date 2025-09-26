@@ -1,6 +1,6 @@
 .container {
-  width: 100%;
-  border-radius: 8px;
+  max-width: 1200px;  
+  margin: 0 auto;
 }
 
 .sectionHeader {
@@ -108,21 +108,13 @@
   }
 }
 
-/* Tablets (portrait & small landscape) */
-@media screen and (max-width: 1024px) {
-  .executivesGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
 
-  .avatar {
-    width: 130px;
-    height: 130px;
-  }
-}
 
-/* Phones */
-@media screen and (max-width: 600px) {
+
+
+/*new*/
+/* === Small phones (up to 480px) === */
+@media screen and (max-width: 480px) {
   .executivesGrid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -141,4 +133,59 @@
     font-size: 0.85rem;
     padding: 0.4rem 0.8rem;
   }
+  .container{
+    width: 80%;
+  }
+}
+
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .container{
+    width: 80%;
+    padding: 1rem;
+  }
+  .executivesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .executiveCard {
+    padding: 1rem;
+  }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .contactBtn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .card{
+    width: 80%;
+  }
+}
+
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+ .executivesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .avatar {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* === Desktops (1025px – 1440px) === */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  
+}
+
+/* === Large desktops (1441px and above) === */
+@media screen and (min-width: 1441px) {
+  
 }

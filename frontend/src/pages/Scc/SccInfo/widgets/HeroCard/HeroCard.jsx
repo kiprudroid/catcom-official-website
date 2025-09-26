@@ -5,9 +5,9 @@ import {
   Paragraph,
 } from "@/components/Typography/Typography";
 
-const HeroCard = ({ name, about }) => {
+const HeroCard = ({ name, about, className }) => {
   return (
-    <div className={styles.hero}>
+    <div className={`${styles.hero} ${className || ''}`}>
       <SectionHeading as="h1">
         <div className={styles.title}>{name}</div>
       </SectionHeading>

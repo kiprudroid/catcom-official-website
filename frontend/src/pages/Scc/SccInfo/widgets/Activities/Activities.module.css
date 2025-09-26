@@ -1,7 +1,6 @@
-.card {
-  width: 100%;
-  border-radius: 8px;
-  padding: 1rem;
+.card {  
+  max-width: 1200px;
+  border-radius: 8px; 
   background: #fff;
 }
 
@@ -154,6 +153,10 @@
 
 /* === Small phones (up to 480px) === */
 @media screen and (max-width: 480px) {
+  .card{
+    width: 80%;
+    padding: 1rem;
+  }
   .cardBody {
     display: flex;
     flex-direction: column;
@@ -173,6 +176,10 @@
 
 /* === Tablets (481px – 768px) === */
 @media screen and (min-width: 481px) and (max-width: 768px) {
+  .card{
+    width: 80%;
+    padding: 1rem;
+  }
   .cardBody {
     display: flex;
     flex-direction: column;

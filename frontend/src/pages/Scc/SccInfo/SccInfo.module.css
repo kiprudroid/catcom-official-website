@@ -1,4 +1,4 @@
-.gridContainer {
+.gridContainer {  
   display: flex;
   flex-direction: column;  
   width: 100%;  
@@ -10,11 +10,10 @@
   border-radius: 8px;
   margin: auto;
   margin-top: 2rem;
+  padding: 2rem;
   
 }
-.exec{
-  padding: 1rem   ; 
-}
+
 
 /* === Small phones (up to 480px) === */
 @media screen and (max-width: 480px) {
