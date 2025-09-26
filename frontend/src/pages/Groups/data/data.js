@@ -16,9 +16,7 @@ export const groupCardsData = [
   {
     imgSrc: [
       "/Groups/welfare.jpg",
-      "/Groups/welfare1.jpg",
-      "/Groups/welfare2.jpg",
-      "/Groups/welfare3.jpg",
+      "/Groups/welfare1.jpg"
     ],
     alt: "Welfare",
     title: "Welfare",
@@ -28,8 +26,7 @@ export const groupCardsData = [
   {
     imgSrc: [
       "/Groups/CL.jpg",
-       "/Groups/CL1.jpg",
-      "/Groups/CL2.jpg"
+       "/Groups/CL1.jpg"
       ],
     alt: "Communion and Liberation",
     title: "Communion and Liberation",
