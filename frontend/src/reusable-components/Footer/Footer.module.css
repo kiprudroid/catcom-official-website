@@ -127,8 +127,8 @@
   .footerContainer {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "location quick-links"
-      "contact contact";
+      "location location"
+      "quick-links contact";
     text-align: center;
   }
 

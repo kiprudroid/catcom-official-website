@@ -1,9 +1,6 @@
 .card {
-  width: 100%;
-  background: #fff;
-  border-radius: 16px;
-  padding: 1rem;
-
+  max-width: 1200px;
+  background: #fff;  
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -20,7 +17,6 @@
 .patronSaintImage {
   display: flex;
   border-radius: 8px;
-
   justify-content: center;
   align-items: center;
   padding: auto;
@@ -46,7 +42,15 @@
   height: 92%;
 }
 
-@media (max-width: 768px) {
+
+
+/*new*/
+/* === Small phones (up to 480px) === */
+@media screen and (max-width: 480px) {
+  .card {
+    width: 80%;
+    padding: 1rem;
+  }
   .patronSaintWrapper {
     grid-template-columns: 1fr;
     height: auto; /* allow auto height on mobile */
@@ -59,4 +63,41 @@
   .patronSaintText {
     height: auto;
   }
+  
+}
+
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .card {
+    width: 80%;
+    padding: 1rem;
+  }
+  .patronSaintWrapper {
+    grid-template-columns: 1fr;
+    height: auto; /* allow auto height on mobile */
+  }
+
+  .patronSaintImage img {
+    max-height: 280px;
+  }
+
+  .patronSaintText {
+    height: auto;
+  }
+  
+}
+
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+ 
+}
+
+/* === Desktops (1025px – 1440px) === */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  
+}
+
+/* === Large desktops (1441px and above) === */
+@media screen and (min-width: 1441px) {
+  
 }

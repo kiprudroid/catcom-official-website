@@ -25,27 +25,28 @@ const SccInfo = ({
   return (
     <DashboardLayout>
       <div className={styles.gridContainer}>
-        <div className={styles.card}>
-          <HeroCard name={name} about={about} />
-        </div>
-        <div className={styles.card}>
-          <Activities activities={activities} sccPhotos={sccPhotos} />
-        </div>
+        
+          <HeroCard name={name} about={about} className={styles.card} />
+        
+       
+          <Activities activities={activities} sccPhotos={sccPhotos}  className={styles.card}/>
+        
 
-        <div className={`${styles.card} ${styles.exec}`}>
-          <SccExecutiveCard executives={leaders} />
-        </div>
-
-        <div className={styles.card}>
+       
+          <SccExecutiveCard executives={leaders} className={styles.card}/>
+        
+       
           <PatronSaint
             image={image}
             name={name}
             aboutPatronSaint={aboutPatronSaint}
+             className={styles.card}
           />
-        </div>
-        <div className={styles.card}>
-          <Prayer name={name} prayer={prayer} />
-        </div>
+        
+        
+          <Prayer name={name} prayer={prayer}  className={styles.card}/>
+
+
         <BackButton />
       </div>
     </DashboardLayout>

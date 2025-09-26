@@ -1,12 +1,10 @@
 .hero {
-  width: 100%;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  align-items: center;  
   background: #fff;
   border-radius: 8px;
+  max-width: 1200px;
 }
 
 .title {
@@ -17,4 +15,34 @@
 .about {
   padding: 0.05rem;
   text-align: center;
+}
+/* === Small phones (up to 480px) === */
+@media screen and (max-width: 480px) {
+  .hero {
+    width: 80%;
+    padding: 1rem;
+  }
+}
+
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .hero {
+    width: 80%;
+    padding: 1rem;
+  }
+}
+
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+ 
+}
+
+/* === Desktops (1025px – 1440px) === */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  
+}
+
+/* === Large desktops (1441px and above) === */
+@media screen and (min-width: 1441px) {
+  
 }

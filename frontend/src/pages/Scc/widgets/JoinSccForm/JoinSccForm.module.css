@@ -216,5 +216,39 @@ select {
     padding: 0.6rem 0.8rem;
     max-width: 100%;
   }
+  .joinForm {
+    padding: 1rem;
+    max-height: none;
+  }
+
+  .formRow,
+  .inputRow {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .formCol,
+  .inputCol {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .joinBtn {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+
+  label,
+  .checkboxGroup label {
+    font-size: 1rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select {
+    font-size: 0.95rem;
+    padding: 0.45rem;
+  }
 }
   
