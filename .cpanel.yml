@@ -1,21 +1,22 @@
 deployment:
-  tasks:
-    # set deploy path to your hosting root
-    - export DEPLOYPATH=/home3/jkuatca1/public_html/
+tasks:
+# set deploy path to your hosting root
+- export DEPLOYPATH=/home3/jkuatca1/public_html
 
-    # move into your frontend folder
-    - cd frontend
+# move into frontend folder
+- cd frontend
 
-    # install production dependencies
-    - /usr/local/bin/npm ci --omit=dev
+# install dependencies (production only)
+- /usr/local/bin/npm ci --omit=dev
 
-    # build the Vite React app
-    - /usr/local/bin/npm run build
+# build the Vite React app
+- /usr/local/bin/npm run build
 
-    # clean old files in public_html
-    - /bin/rm -rf $DEPLOYPATH/*
+# clean old files in public_html
+- /bin/rm -rf $DEPLOYPATH/*
 
-    # copy fresh build output
-    - /bin/cp -R dist/* $DEPLOYPATH
-    # if the file/folder doesn’t exist, serve index.html instead
-    - /bin/echo "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} -f [OR]\nRewriteCond %{REQUEST_FILENAME} -d\nRewriteRule ^ - [L]\nRewriteRule ^ index.html [L]" > $DEPLOYPATH/.htaccess
+# copy fresh build output
+- /bin/cp -R dist/* $DEPLOYPATH/
+
+# add .htaccess for React Router SPA fallback
+- /bin/echo "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} -f [OR]\nRewriteCond %{REQUEST_FILENAME} -d\nRewriteRule ^ - [L]\nRewriteRule ^ index.html [L]" > $DEPLOYPATH/.htaccess
