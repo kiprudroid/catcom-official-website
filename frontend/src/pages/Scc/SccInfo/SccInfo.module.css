@@ -1,75 +1,42 @@
 .gridContainer {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
-  margin-left: 2rem;
-  align-items: stretch;
-  justify-content: center;
+  flex-direction: column;  
+  width: 100%;  
 }
 
 .card {
   width: 90%;
   background-color: #b9c8c8;
   border-radius: 8px;
+  margin: auto;
+  margin-top: 2rem;
+  
 }
-.exec {
-  width: 92%;
-}
-@media screen and (min-width: 1441px) {
-  .gridContainer {
-    margin-left: 2rem;
-    gap: 2rem;
-  }
-
-  .card {
-    width: 80%;
-  }
-}
-/* Tablets  */
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  .gridContainer {
-    margin-left: 1rem;
-    gap: 1.5rem;
-  }
-
-  .card {
-    width: 95%;
-  }
+.exec{
+  padding: 1rem   ; 
 }
 
-/* Phones */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .gridContainer {
-    margin-left: 0;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-
-  .card {
-    width: 90%;
-  }
-}
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    .gridContainer {
-    margin-left: 0;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-
-  .card {
-    width: 100%;
-  }
-}
+/* === Small phones (up to 480px) === */
 @media screen and (max-width: 480px) {
-    .gridContainer {
-    margin-left: 0;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
+  
+}
 
-  .card {
-    width: 100%;
-  }
+/* === Tablets (481px – 768px) === */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  
+}
+
+/* === Small laptops (769px – 1024px) === */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+ 
+}
+
+/* === Desktops (1025px – 1440px) === */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  
+}
+
+/* === Large desktops (1441px and above) === */
+@media screen and (min-width: 1441px) {
+  
 }

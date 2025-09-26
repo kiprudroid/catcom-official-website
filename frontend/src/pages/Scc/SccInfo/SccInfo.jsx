@@ -20,6 +20,7 @@ const SccInfo = ({
   aboutPatronSaint,
   prayer,
   image,
+  leaders,
 }) => {
   return (
     <DashboardLayout>
@@ -32,7 +33,7 @@ const SccInfo = ({
         </div>
 
         <div className={`${styles.card} ${styles.exec}`}>
-          <SccExecutiveCard executives={sccExecutive} />
+          <SccExecutiveCard executives={leaders} />
         </div>
 
         <div className={styles.card}>

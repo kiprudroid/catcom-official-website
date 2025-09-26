@@ -10,6 +10,7 @@ const images = [
   "/church-images/church1.jpg",
   "/church-images/church4.jpg",
   "/church-images/church6.jpg",
+  "/church-images/church7.jpg",
 ];
 
 function ChurchImage() {
@@ -18,7 +19,7 @@ function ChurchImage() {
     arrows: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 2500,
     fade: true,
     speed: 1000,
   };
@@ -26,11 +27,11 @@ function ChurchImage() {
   return (
     <div className={styles.imgContainer}>
       <Slider {...settings}>
-        {images.map((src, idx) => (
+        {images.map((image, idx) => (
           <div key={idx}>
             <img
               className={styles.churchImage}
-              src={src}
+              src={image}
               alt="St Augustine Church Image"
             />
           </div>

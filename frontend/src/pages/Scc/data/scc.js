@@ -36,6 +36,38 @@ export const SCCs = [
       "St Martin (1579-1639) was born in Lima, Peru. He was the illegitimate son of a nobleman and possibly an African woman slave. He had a younger sister but soon after her birth, their father abandoned them.St Martin grew up in poverty with his mother who, unable to support him, sent him for two years to a Care School and then to work and train with a barber/surgeon.St Martin devoted his life to the sick, the poor and praying to the Blessed Sacrament. As a Lay Brother, he begged for alms to feed the hungry, the sick and his Dominican community. Often when there was no more space in their infirmary, he would give patients his own small bed.",
     prayer:
       "O glorious Saint Martin, whose burning charity embraced all, especially the poor and needy, we humbly turn to you for your intercession. May we, like you, be moved by compassion and generosity, and may we always strive to follow your example of humility and service to others. Saint Martin, pray for us, that we may be made worthy of the promises of Christ. Amen",
+    leaders: [
+      {
+        name: "Noel Orwa",
+        role: "Moderator",
+        contact: "0796534560",
+      },
+      {
+        name: "Alex Karanja",
+        role: "Coordinator",
+        contact: "0112921242",
+      },
+      {
+        name: "Erementiana Vaati Kiendi",
+        role: "Treasurer",
+        contact: "0110045675",
+      },
+      {
+        name: "Elizabeth Kerubo",
+        role: "Secretary",
+        contact: "0748979530",
+      },
+      {
+        name: "Brian Mwangi",
+        role: "Project Manager",
+        contact: "0741837883",
+      },
+      {
+        name: "Gladys Muriithi",
+        role: "Catering Secretary",
+        contact: "0748121319",
+      },
+    ],
   },
   {
     path: "mmog",
@@ -65,6 +97,38 @@ export const SCCs = [
       "Mary was a first-century Jewish woman of Nazareth, the wife of Joseph and the mother of Jesus. She is an important figure of Christianity, venerated under various titles such as virgin or queen, many of them mentioned in the Litany of Loreto. God's “first” thought in creating was Jesus. Jesus, the incarnate Word, is the one who could give God perfect love and worship on behalf of all creation. As Jesus was “first” in God's mind, Mary was “second” insofar as she was chosen from all eternity to be his mother.",
     prayer:
       "Hail Mary, full of grace, the Lord is with thee; blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen ",
+    leaders: [
+      {
+        name: "Charles Muriithi",
+        role: "Moderator",
+        contact: "0707344566",
+      },
+      {
+        name: "Lynnmary Mukuhi",
+        role: "Coordinator",
+        contact: "0758298537",
+      },
+      {
+        name: "Margaret Muthoni",
+        role: "Treasurer",
+        contact: "0798403047",
+      },
+      {
+        name: "Angela Munga",
+        role: "Secretary",
+        contact: "0710590927",
+      },
+      {
+        name: "Peter Karuri",
+        role: "Project Manager",
+        contact: "0712378103",
+      },
+      {
+        name: "Vincent Gakinya",
+        role: "Catering Secretary",
+        contact: "0777265856",
+      },
+    ],
   },
   {
     path: "st-therese",
@@ -105,6 +169,17 @@ export const SCCs = [
       "St Therese of Lisieux, also known as the little flower lived a very short simple but adventurous and profound life in her time. Born in 1873 she went on to become one of the Carmalite nuns at age 15 where she embarked on a path of humility and childlike trust and fondness to Jesus Christ.Her approach, “The Little Way” of doing small things with extraordinary love has become a legacy that we embrace in our daily spiritual life. She lived for 24 years on earth but her spirit lives on in us and in heaven",
     prayer:
       "Teach us how to open our hearts without reserve to the Holy Spirit as you did ,to seek and find God's will in all the crises and choices, in all the joys and disappointments of our lives. Gain for us too, the Grace to do His will with courage and untroubled hearts so that we may radiate a joy and a gladness like yours in the service of Our Lord.Amen",
+    leaders: [
+      { name: "Titus Cheruiyot", role: "Moderator", contact: "0711719857" },
+      { name: "Carol Omondi", role: "Coordinator", contact: "0736538190" },
+      { name: "Olivia Jalon", role: "Treasurer", contact: "0721116414" },      
+      { name: "Lucy Agwaya", role: "Project Manager", contact: "0739107577" },
+      {
+        name: "Catherine Mbithi",
+        role: "Catering Secretary",
+        contact: "0703600774",
+      },
+    ],
   },
   {
     path: "st-veronica",
@@ -130,7 +205,16 @@ export const SCCs = [
     aboutPatronSaint:
       "Saint Veronicah is also known as Berenike.She was in the 1st century AD in Jerusalem.Saint Veronica feast day is 12th July and she is the patron saint of maids, parsonage housekeepers, photographers, rectoryhousekeepers, seamstresses, washerwomen,against bleeding, against hemorraghes, domestic workers, dying people, laundry workers and linen weavers. Saint Veronicah is known as the woman who offered a cloth to Jesus so he could wipe His face on the way to His crucifixion.Saint Veronicah is not mentioned in the Bible, but is known to us by Catholic tradition and in the Sixth Station of the Cross, 'Veronica Wipes the Face of Jesus.' ",
     prayer:
-      "Prayer to Saint VeronicaO My Jesus, Saint Veronica served You on the way to Calvary by wiping Your beloved face with a towel on which Your sacred image then appeared. She protected this treasure, and whenever people touched it, they were miraculously healed. I ask her to pray for the growth of my ability to see Your sacred image in others, to recognize their hurts, to stop and join them on their difficult journeys, and to feel the same compassion for them as she did for You. Show me how to wipe their faces, serve their needs, and heal their wounds, reminding me that as I do this for them, I also do this for You. Saint Veronica, pray for me. Amen.",
+      "Prayer to Saint Veronica My Jesus, Saint Veronica served You on the way to Calvary by wiping Your beloved face with a towel on which Your sacred image then appeared. She protected this treasure, and whenever people touched it, they were miraculously healed. I ask her to pray for the growth of my ability to see Your sacred image in others, to recognize their hurts, to stop and join them on their difficult journeys, and to feel the same compassion for them as she did for You. Show me how to wipe their faces, serve their needs, and heal their wounds, reminding me that as I do this for them, I also do this for You. Saint Veronica, pray for me. Amen.",
+
+    leaders :[
+  { name: "Eric Ondieki", role: "Moderator", contact: "" },
+  { name: "Eric Maina", role: "Coordinator", contact: "0700466197" },
+  { name: "Lynne Kipsang’", role: "Treasurer", contact: "0725774288" },
+  { name: "Grace Magaju", role: "Secretary", contact: "0114489244" },
+  { name: "Andrian Mutwii", role: "Project Manager", contact: "0703892984" },
+  { name: "Marie Matheri", role: "Catering Secretary", contact: "0704443722" }
+],
   },
   {
     path: "st-charles",
@@ -158,6 +242,14 @@ export const SCCs = [
       "Saint Charles Lwanga, born in 1860 in Buganda (modern-day Uganda), was a Christian convert and one of the 22 Catholic martyrs who died for their faith under King Mwanga II's persecution. Serving as a page in the royal court, he became a leader among the Christian converts and protected young boys from the king's immoral advances. Amid growing hostility, he was baptized and encouraged his fellow believers to remain steadfast. Arrested and condemned, he was burned alive on June 3, 1886, at Namugongo, showing immense courage and devotion until his last breath. Canonized by Pope Paul VI in 1964, he is honored as the patron saint of youth, converts, and African Catholics. His feast day, celebrated with his fellow martyrs, remains a significant event in Uganda and beyond, inspiring Christians to stand firm in their faith despite persecution",
     prayer:
       "Saint Charles Lwanga, you embraced suffering and death for your faith, shining brightly as a beacon of hope in the face of persecution. Your unwavering love for Christ inspires us to live lives of integrity and courage. Pray for us, that we may have the strength to stand firm in our faith, to follow Christ's teachings, and to bear witness to the Gospel, even in the face of adversity. Amen",
+    leaders:  [
+  { name: "Isaac Kang'ethe", role: "Moderator", contact: "" },
+  { name: "Paul Rafiki", role: "Coordinator", contact: "0769748874" },
+  { name: "Eucabeth Awino", role: "Treasurer", contact: "0794594042" },
+  { name: "Elizabeth Muema", role: "Secretary", contact: "0798055905" },
+  { name: "Onesmus Kibaki", role: "Project Manager", contact: "0708301797" },
+  { name: "Hillary Melita", role: "Catering Secretary", contact: "0743382152" }
+]
   },
   {
     path: "st-stephen",
@@ -191,6 +283,13 @@ export const SCCs = [
       "Saint Stephen, the first Christian martyr, was one of the first deacons of the Church, chosen to assist the apostles in serving the poor and ensuring fair resource distribution. Known for his deep faith, wisdom, and ability to perform miracles, he became a prominent preacher, which led to opposition from Jewish synagogues. Accused of blasphemy, he was brought before the Sanhedrin, where he delivered a speech recounting Israel's history and condemning the religious leaders for resisting God's will. Enraged, they dragged him outside Jerusalem and stoned him to death, during which he prayed for his persecutors.Among those witnessing his execution was Saul of Tarsus, who later became Saint Paul.feast day is celebrated on December 26",
     prayer:
       "O glorious St. Stephen, first martyr for the faith, you who were filled with grace and power, and who, even in the face of death, prayed for your persecutors, intercede for us. Grant that we may imitate your courage and steadfastness in our own lives, always choosing to follow the truth and love even our enemies. Help us to be faithful witnesses to Christ, and to seek forgiveness, not only for ourselves, but for those who have wronged us. St. Stephen, pray for us, that we may one day join you in heaven, praising God eternally. Amen.",
+    leaders : [
+  { name: "Stanely Omondi", role: "Moderator", contact: "0743317264" },
+  { name: "Talyanne Okoth", role: "Coordinator", contact: "0799051473" },
+  { name: "Steve Mbuvi", role: "Treasurer", contact: "0798922752" },
+  { name: "Emma Chebet", role: "Secretary", contact: "0724721655" },
+  { name: "Joan Njeri", role: "Project Manager", contact: "0714651133" }  
+],
   },
   {
     path: "st-jude",
@@ -229,6 +328,14 @@ export const SCCs = [
       "St. Jude is the Patron Saint of Hope and impossible causes and one of Jesus' original twelve Apostles.He preached the Gospel with great passion, often in the most difficult circumstances. Through the power of the Holy Spirit, he made profound differences in people's lives as he offered them the Word of God. The Gospel tells us that St. Jude was a brother of St. James the Less, also one of the Apostles. They are described in the Gospel of Matthew as the 'brethren' of Jesus, probably cousins.",
     prayer:
       "Most holy Apostle, St. Jude, faithful servant and friend of Jesus, I place myself into your hands at this difficult time.Help me to know that I am not alone. Please pray for me, asking God to send me comfort for my sorrows, bravery for my fears, and healing for my suffering. Ask our loving God to strengthen my faith and give me the courage to accept His Will for my life. Thank you, St. Jude, for the hope you offer to all who believe in you. Amen.",
+    leaders: [
+  { name: "Sylvia Muita", role: "Moderator", contact: "0791424530" },
+  { name: "Ronney Agrey", role: "Coordinator", contact: "0791820794" },
+  { name: "Faith Munini", role: "Treasurer", contact: "0792699315" },
+  { name: "Joyline Bosibori", role: "Secretary", contact: "0756250906" },
+  { name: "Tony Kioko", role: "Project Manager", contact: "0115048934" },
+  { name: "Eve Maina", role: "Catering Secretary", contact: "0757939845" }
+],
   },
   {
     path: "st-paul",
@@ -264,6 +371,14 @@ export const SCCs = [
       "Saint Paul, originally named Saul, was born around 5 AD in Tarsus, a prominent city in modern-day Turkey. He came from a devout Jewish background, was a Roman citizen, and was highly educated in Jewish law under the renowned rabbi Gamaliel. As a Pharisee, he zealously upheld the Mosaic Law and initially persecuted early Christians, believing them to be a threat to Judaism.His life dramatically changed on the road to Damascus when he had a vision of Jesus. This experience left him temporarily blind, but after three days, he regained his sight and converted to Christianity. Taking the name Paul, he dedicated his life to spreading the gospel.",
     prayer:
       "Holy St. Paul, you taught others about the saving message of Jesus, intercede for us so that Christ may live in us. Help us to know and imitate you and your love for Jesus. It is through your writings that many people have come to know Jesus, may all people know and glorify God through your writings and intercession.",
+    leaders :[
+  { name: "Laban Wangai", role: "Moderator", contact: "0759736333" },
+  { name: "Lucy Musomi", role: "Coordinator", contact: "0746428115" },
+  { name: "Maureen Mwihaki", role: "Treasurer", contact: "0702411216" },
+  { name: "Lillian Vivian", role: "Secretary", contact: "0768951560" },
+  { name: "Venadette Kerubo", role: "Project Manager", contact: "0113459538" },
+  { name: "Francis Mutuku", role: "Catering Secretary", contact: "0740504734" }
+],
   },
 ];
 
