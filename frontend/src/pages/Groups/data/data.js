@@ -34,7 +34,7 @@ export const groupCardsData = [
     alt: "Communion and Liberation",
     title: "Communion and Liberation",
     description:
-    "CL is a Catholic movement founded by Fr. Luigi Giussani that helps students see faith as an encounter with Christ lived in daily life. Its main activities include the School of Community (weekly discussions), charitable works, holidays, hikes, prayer, and friendship. It enables students to discover that Christianity embraces all of reality, offering true freedom and meaning in every aspect of life."
+    "CL was founded by Fr. Luigi Giussani that helps students see faith as an encounter with Christ lived in daily life. Its main activities include the School of Community (weekly discussions), charitable works, holidays, hikes, prayer, and friendship. It enables students to discover that Christianity embraces all of reality, offering true freedom and meaning in every aspect of life."
     },
   {
     imgSrc: ["/Groups/catcomes.jpg", "/Groups/Catcomes1.jpg"],
@@ -49,7 +49,6 @@ export const groupCardsData = [
       "/Groups/bps1.jpg",
       "/Groups/bps2.jpg",
       "/Groups/bps3.jpg",
-      "/Groups/bps4.jpg",
       "/Groups/bps5.jpg",
   ],
     alt: "Bible Prayer Service",
@@ -75,7 +74,7 @@ export const groupCardsData = [
     alt: "Technical Team",
     title: "Technical Team",
     description:
-      "The Technical group handles sound, projection, and media support during services and events, ensuring smooth and impactful communication during worship and gatherings. They also engage in technical trainings such as trainings on websites development, they are responsible for maintaining the church's online presence.",
+      "The Technical group handles sound, projection, and media support during services and events, ensuring smooth and impactful communication during worship and gatherings. They also engage in technical trainings on websites development, and are responsible for maintaining the church's online presence.",
   },
   {
     imgSrc: [
