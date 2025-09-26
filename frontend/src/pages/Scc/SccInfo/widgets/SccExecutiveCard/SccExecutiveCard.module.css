@@ -1,6 +1,11 @@
 .container {
   max-width: 1200px;  
   margin: 0 auto;
+  background-color: var(--card-bg);
+  width: 100%;
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
 }
 
 .sectionHeader {
