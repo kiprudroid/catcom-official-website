@@ -14,25 +14,19 @@ export const groupCardsData = [
       "The pastoral team provides spiritual guidance, coordinates retreats and mass animations processes, formations, and supports the faith journey of members through teaching about the Catholic faith and prayer.",
   },
   {
-    imgSrc: [
-      "/Groups/welfare.jpg",
-      "/Groups/welfare1.jpg"
-    ],
+    imgSrc: ["/Groups/welfare.jpg", "/Groups/welfare1.jpg"],
     alt: "Welfare",
     title: "Welfare",
     description:
       "This team consist of Catcom Catering secretaries and Project managers. They promote unity and compassion by reaching out to members in times of need, joy, or crisis be it, illnesses, or bereavement. They also support the community through various charitable initiatives and organize various projects and drives to assist those in need.",
   },
   {
-    imgSrc: [
-      "/Groups/CL.jpg",
-       "/Groups/CL1.jpg"
-      ],
+    imgSrc: ["/Groups/CL.jpg", "/Groups/CL1.jpg"],
     alt: "Communion and Liberation",
     title: "Communion and Liberation",
     description:
-    "CL was founded by Fr. Luigi Giussani that helps students see faith as an encounter with Christ lived in daily life. Its main activities include the School of Community (weekly discussions), charitable works, holidays, hikes, prayer, and friendship. It enables students to discover that Christianity embraces all of reality, offering true freedom and meaning in every aspect of life."
-    },
+      "CL was founded by Fr. Luigi Giussani that helps students see faith as an encounter with Christ lived in daily life. Its main activities include the School of Community (weekly discussions), charitable works, holidays, hikes, prayer, and friendship. It enables students to discover that Christianity embraces all of reality, offering true freedom and meaning in every aspect of life.",
+  },
   {
     imgSrc: ["/Groups/catcomes.jpg", "/Groups/Catcomes1.jpg"],
     alt: "Catcom Enterprise",
@@ -47,7 +41,7 @@ export const groupCardsData = [
       "/Groups/bps2.jpg",
       "/Groups/bps3.jpg",
       "/Groups/bps5.jpg",
-  ],
+    ],
     alt: "Bible Prayer Service",
     title: "Bible Prayer Service",
     description:
@@ -57,9 +51,7 @@ export const groupCardsData = [
     imgSrc: [
       "/Groups/dancers.jpg",
       "/Groups/dancers1.jpg",
-      "/Groups/dancers2.jpg"
-      ,
-    
+      "/Groups/dancers2.jpg",
     ],
     alt: "Liturgical Dancers",
     title: "Liturgical Dancers",
@@ -86,7 +78,10 @@ export const groupCardsData = [
       "The Catcom FC is a vibrant community of football enthusiasts who come together from all SCCs to share their passion for the game. They organize regular matches, Catcoms, and training sessions, fostering teamwork and sportsmanship among members.",
   },
   {
-    imgSrc: [],
+    imgSrc: [
+      "/Groups/website/web1.jpg",      
+      "/Groups/website/web4.jpg",
+    ],
     alt: "Website Team",
     title: "Website Team",
     description:
