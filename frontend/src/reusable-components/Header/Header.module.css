@@ -34,15 +34,16 @@
 
 .catcomLogo {
   width: 90px;
-  height: 80px;
+  height: 90px;
   object-fit: contain;
   margin-right: 0.6rem;
   background: #cccccc;
+  border-radius: 50%;
 }
 
 .title {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: black;
 }
 

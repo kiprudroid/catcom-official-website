@@ -19,6 +19,7 @@
   width: 120px;
   height: auto;
   margin-bottom: 1rem;
+  border-radius: 50%;
 }
 
 .location {
