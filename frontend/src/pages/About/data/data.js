@@ -49,7 +49,7 @@ export const patrons = [
 
 export const catcomExecutive = [
   {
-    name: "Stephen Mutwiwa Mutie",
+    name: "Titus Cheruiyot",
     position: "Catcom Moderator",
     bio: `Ensures proper coordination of activities to achieve mission and aims, chairs executive meetings, represents the community in Parish Pastoral Council, and acts as official spokesperson.
     `,

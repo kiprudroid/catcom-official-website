@@ -20,12 +20,12 @@ export const SccExecutiveCard = ({ executives }) => {
           >
             <div className={styles.executiveHeader}>
               <div className={styles.avatar}>
-                {/* <img
+                <img
                   src={exec.image}
                   alt={exec.name}
                   className={styles.execImg}
-                /> */}
-                <FaUserCircle className={styles.avatarIcon} />
+                />
+                {/* <FaUserCircle className={styles.avatarIcon} /> */}
               </div>
 
               <h3>{exec.name}</h3>
@@ -35,12 +35,12 @@ export const SccExecutiveCard = ({ executives }) => {
             </div>
 
             <div className={styles.executiveBody}>
-              <div className={styles.contact}>
+              {/* <div className={styles.contact}>
                 <h3 className={styles.contactBtn}>
                   <Phone size={14} />
                   {exec.contact}
                 </h3>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}

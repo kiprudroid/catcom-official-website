@@ -38,34 +38,34 @@ export const SCCs = [
       "O glorious Saint Martin, whose burning charity embraced all, especially the poor and needy, we humbly turn to you for your intercession. May we, like you, be moved by compassion and generosity, and may we always strive to follow your example of humility and service to others. Saint Martin, pray for us, that we may be made worthy of the promises of Christ. Amen",
     leaders: [
       {
-        name: "Noel Orwa",
-        role: "Moderator",
-        contact: "0796534560",
-      },
-      {
         name: "Alex Karanja",
+        role: "Moderator",
+        image: "sccPictures/stMartin/leaders/AlexKaranja.jpeg",
+      },
+      {
+        name: "Kelvin Macharia",
         role: "Coordinator",
-        contact: "0112921242",
+        image: "sccPictures/stMartin/leaders/KelvinMacharia.jpeg",
       },
       {
-        name: "Erementiana Vaati Kiendi",
+        name: "Scholastica Osebe",
         role: "Treasurer",
-        contact: "0110045675",
+        image: "sccPictures/stMartin/leaders/ScholasticaOsebe.jpeg",
       },
       {
-        name: "Elizabeth Kerubo",
+        name: "Rehema Nkirote Mwenda",
         role: "Secretary",
-        contact: "0748979530",
+        image: "sccPictures/stMartin/leaders/RehemaNkirote.jpeg",
       },
       {
-        name: "Brian Mwangi",
+        name: "Jovial Ann Wairimu Mutua",
         role: "Project Manager",
-        contact: "0741837883",
+        image: "sccPictures/stMartin/leaders/JovialAnn.jpeg",
       },
       {
-        name: "Gladys Muriithi",
+        name: "Grace Mutheu",
         role: "Catering Secretary",
-        contact: "0748121319",
+        image: "sccPictures/stMartin/leaders/GraceMutheu.jpeg",
       },
     ],
   },
