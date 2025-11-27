@@ -57,24 +57,23 @@ export const catcomExecutive = [
     
   },
   {
-    name: "Ann Mutua",
+    name: "Joan Ngugi",
     position: "Catcom Vice Moderator",
     bio: `Serves as ex-officio member in welfare and enterprises, assists the moderator, coordinates SCC leaders, compiles reports, heads committees, organizes offertory and events, ensures collections, links community and executive, and chairs SCC meetings.`,
-    image: "/leadersImages/anne-mutua.jpeg",
-    
+    image: "/leadersImages/joan-ngugi.jpeg",
+  },
+  {
+    name: "Anastacia Mutua",
+    position: "Catcom Secretary",
+    bio: `Records executive meeting minutes, coordinates Wednesday and Sunday announcements, oversees SCC secretaries, serves as ex-officio member of CATCOMES, and collaborates closely with the executive team.`,
+    image: "/leadersImages/anne-mutua.jpeg",    
   },
   {
     name: "Ann Njoroge",
-    position: "Catcom Secretary",
-    bio: `Records executive meeting minutes, coordinates Wednesday and Sunday announcements, oversees SCC secretaries, serves as ex-officio member of CATCOMES, and collaborates closely with the executive team.`,
-    image: "/leadersImages/ann-njoroge.jpeg",    
-  },
-  {
-    name: "Joan Ngugi",
     position: "Catcom Treasurer",
     bio: `Keeps financial records, prepares budgets, collects and safeguards funds, makes payments, and reports finances. Ensures transparency, updates members on financial matters, and supports the executive in planning and using resources wisely.`,
-    image: "/leadersImages/joan-ngugi.jpeg",
-    
+    image: "/leadersImages/ann-njoroge.jpeg",
+
   },
   {
     name: "Wilfred Wandera",
