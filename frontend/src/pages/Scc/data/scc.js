@@ -99,34 +99,34 @@ export const SCCs = [
       "Hail Mary, full of grace, the Lord is with thee; blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen ",
     leaders: [
       {
-        name: "Charles Muriithi",
+        name: "John Mwanza",
         role: "Moderator",
-        contact: "0707344566",
+        image: "sccPictures/MMOG/leaders/john-mwiwa-mwanza.jpeg",
       },
       {
-        name: "Lynnmary Mukuhi",
+        name: "Kevin Onyango",
         role: "Coordinator",
-        contact: "0758298537",
+        image: "sccPictures/MMOG/leaders/onyango-kelvin.jpeg",
       },
       {
-        name: "Margaret Muthoni",
+        name: "Belinda Kiplagat",
         role: "Treasurer",
-        contact: "0798403047",
+        image: "sccPictures/MMOG/leaders/belinda-jepkogei-kiplagat.jpeg",
       },
       {
-        name: "Angela Munga",
+        name: "Anthony Wamaitha",
         role: "Secretary",
-        contact: "0710590927",
+        image: "sccPictures/MMOG/leaders/antony-wamaitha.jpeg",
       },
       {
-        name: "Peter Karuri",
+        name: "Kelvin Kipyator",
         role: "Project Manager",
-        contact: "0712378103",
+        image: "sccPictures/MMOG/leaders/kelvin-kipyator.jpeg",
       },
       {
-        name: "Vincent Gakinya",
+        name: "Nekesa Ann Sharline",
         role: "Catering Secretary",
-        contact: "0777265856",
+        image: "sccPictures/MMOG/leaders/nekesa-ann-sharline.jpeg",
       },
     ],
   },
@@ -279,12 +279,12 @@ export const SCCs = [
     prayer:
       "Saint Charles Lwanga, you embraced suffering and death for your faith, shining brightly as a beacon of hope in the face of persecution. Your unwavering love for Christ inspires us to live lives of integrity and courage. Pray for us, that we may have the strength to stand firm in our faith, to follow Christ's teachings, and to bear witness to the Gospel, even in the face of adversity. Amen",
     leaders:  [
-  { name: "Isaac Kang'ethe", role: "Moderator", contact: "0798600145" },
-  { name: "Paul Rafiki", role: "Coordinator", contact: "0769748874" },
-  { name: "Eucabeth Awino", role: "Treasurer", contact: "0794594042" },
-  { name: "Elizabeth Muema", role: "Secretary", contact: "0798055905" },
-  { name: "Onesmus Kibaki", role: "Project Manager", contact: "0708301797" },
-  { name: "Hillary Melita", role: "Catering Secretary", contact: "0743382152" }
+  { name: "Rafiki Paul", role: "Moderator", image: "/sccPictures/stCharles/leaders/rafiki-paul.jpeg"},
+  { name: "Andy Ogana", role: "Coordinator", image: "/sccPictures/stCharles/leaders/andy-ogana.jpeg" },
+  { name: "Hellen Bernice", role: "Treasurer", image: "/sccPictures/stCharles/leaders/hellen-bernice.jpeg" },
+  { name: "Sylvia Adhiambo", role: "Secretary", image: "/sccPictures/stCharles/leaders/sylvia-adhiambo.jpeg" },
+  { name: "Immaculate Mukai Kyalo", role: "Project Manager", image: "/sccPictures/stCharles/leaders/immaculate-mukai-kyalo.jpeg" },
+  { name: "Immaculate Kimani", role: "Catering Secretary", image: "/sccPictures/stCharles/leaders/immaculate-kimani.jpeg" }
 ]
   },
   {
@@ -386,12 +386,12 @@ export const SCCs = [
     prayer:
       "Most holy Apostle, St. Jude, faithful servant and friend of Jesus, I place myself into your hands at this difficult time.Help me to know that I am not alone. Please pray for me, asking God to send me comfort for my sorrows, bravery for my fears, and healing for my suffering. Ask our loving God to strengthen my faith and give me the courage to accept His Will for my life. Thank you, St. Jude, for the hope you offer to all who believe in you. Amen.",
     leaders: [
-  { name: "Sylvia Muita", role: "Moderator", contact: "0791424530" },
-  { name: "Ronney Agrey", role: "Coordinator", contact: "0791820794" },
-  { name: "Faith Munini", role: "Treasurer", contact: "0792699315" },
-  { name: "Joyline Bosibori", role: "Secretary", contact: "0756250906" },
-  { name: "Tony Kioko", role: "Project Manager", contact: "0115048934" },
-  { name: "Eve Maina", role: "Catering Secretary", contact: "0757939845" }
+  { name: "Ben Lutyo", role: "Moderator", image: "/sccPictures/stJude/leaders/ben-lutyo.jpeg" },
+  { name: "Brian Mwendwa", role: "Coordinator", image: "/sccPictures/stJude/leaders/brian-mwendwa.jpeg" },
+  { name: "Felister Mukiri", role: "Treasurer", image: "/sccPictures/stJude/leaders/felista-mukiri-kabweria.jpeg" },
+  { name: "Charlene Munene", role: "Secretary", image: "/sccPictures/stJude/leaders/charlene-wanjiru-munene.jpeg" },
+  { name: "Alvin Mecca", role: "Project Manager", image: "/sccPictures/stJude/leaders/alvin-mecca.jpeg" },
+  { name: "Laureen Wangari", role: "Catering Secretary", image: "/sccPictures/stJude/leaders/laureen-wangari.jpeg" }
 ],
   },
   {
