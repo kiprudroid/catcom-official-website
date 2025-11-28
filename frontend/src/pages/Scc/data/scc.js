@@ -114,7 +114,7 @@ export const SCCs = [
         image: "sccPictures/MMOG/leaders/belinda-jepkogei-kiplagat.jpeg",
       },
       {
-        name: "Anthony Wamaitha",
+        name: "Antony Wamaitha",
         role: "Secretary",
         image: "sccPictures/MMOG/leaders/antony-wamaitha.jpeg",
       },

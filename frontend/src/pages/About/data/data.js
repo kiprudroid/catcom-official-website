@@ -63,7 +63,7 @@ export const catcomExecutive = [
     image: "/leadersImages/joan-ngugi.jpeg",
   },
   {
-    name: "Anastacia Mutua",
+    name: "Annastacia Mutua",
     position: "Catcom Secretary",
     bio: `Records executive meeting minutes, coordinates Wednesday and Sunday announcements, oversees SCC secretaries, serves as ex-officio member of CATCOMES, and collaborates closely with the executive team.`,
     image: "/leadersImages/anne-mutua.jpeg",    
@@ -83,7 +83,7 @@ export const catcomExecutive = [
     
   },
   {
-    name: "Bernard Nderitu",
+    name: "Benard Ndiritu",
     position: "Catcom Pastoral Secretary",
     bio: `Oversees spiritual activities by safeguarding traditions, organizing catechism, coordinating sacraments, leading outreach, managing literature, and evaluating programs to recommend improvements that strengthen faith and community growth.`,
     image: "/leadersImages/benard-ndiritu.jpg",
