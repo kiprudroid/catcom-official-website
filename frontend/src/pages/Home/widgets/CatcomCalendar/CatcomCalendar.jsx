@@ -322,13 +322,10 @@ const CatcomCalendar = () => {
 
       <div className={styles.contacts}>
         <Paragraph>
-          <strong>Stephen Mutwiwa Mutie (Moderator)</strong> – 0798715858
+          <strong>Wilfred Wandera (Organising Secretary)</strong> – 0715115907
         </Paragraph>
         <Paragraph>
-          <strong>Sophie Kathambi (V. Moderator)</strong> – 0797872432
-        </Paragraph>
-        <Paragraph>
-          <strong>Alvin Muthoni (OS)</strong> – 0793661637
+          <strong>Hillary Kasaine (Publicity Secretary)</strong> – 0743382152
         </Paragraph>
       </div>
     </div>
