@@ -1,22 +1,50 @@
+# .cpanel.yml — place this file only in the main branch (or any branch you push code to)
+
 deployment:
-tasks:
-# set deploy path to your hosting root
-- export DEPLOYPATH=/home3/jkuatca1/public_html
+  enabled: true
+  branch: deploy                          # cPanel will pull from this branch
+  tasks:
+    # Set deployment target
+    - export DEPLOYPATH=/home3/jkuatca1/public_html
 
-# move into frontend folder
-- cd frontend
+    # Completely wipe existing public_html content
+    - /bin/rm -rf $DEPLOYPATH/* || true
+    - /bin/rm -f $DEPLOYPATH/.* || true   # remove hidden files too (like .htaccess)
 
-# install dependencies (production only)
-- /usr/local/bin/npm ci --omit=dev
+    # Copy everything from the deploy branch directly to public_html
+    - /bin/cp -R $CPANEL_DEPLOYMENT_SOURCE/* $DEPLOYPATH/
+    - /bin/cp -R $CPANEL_DEPLOYMENT_SOURCE/.* $DEPLOYPATH/ 2>/dev/null || true
 
-# build the Vite React app
-- /usr/local/bin/npm run build
+    # Fix permissions
+    - /usr/bin/find $DEPLOYPATH -type d -exec /bin/chmod 755 {} \;
+    - /usr/bin/find $DEPLOYPATH -type f -exec /bin/chmod 644 {} \;
 
-# clean old files in public_html
-- /bin/rm -rf $DEPLOYPATH/*
+    # React Router SPA fallback .htaccess (only if not already present in deploy branch)
+    - |
+      if [ ! -f $DEPLOYPATH/.htaccess ]; then
+        /bin/echo "RewriteEngine On
+      RewriteBase /
+      RewriteCond %{REQUEST_FILENAME} -f [OR]
+      RewriteCond %{REQUEST_FILENAME} -d
+      RewriteRule ^ - [L]
+      RewriteRule ^ index.html [L]" > $DEPLOYPATH/.htaccess
+      fi
 
-# copy fresh build output
-- /bin/cp -R dist/* $DEPLOYPATH/
-
-# add .htaccess for React Router SPA fallback
-- /bin/echo "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} -f [OR]\nRewriteCond %{REQUEST_FILENAME} -d\nRewriteRule ^ - [L]\nRewriteRule ^ index.html [L]" > $DEPLOYPATH/.htaccess
+# Optional: auto-build and update deploy branch when main receives a push
+hooks:
+  post-clone:
+    - exec: |
+        if [ "$CPANEL_GIT_BRANCH" = "main" ]; then
+          echo "Detected push to main → rebuilding and updating deploy branch"
+          cd frontend
+          /usr/local/bin/npm ci --omit=dev
+          /usr/local/bin/npm run build
+          git checkout deploy 2>/dev/null || git checkout -b deploy
+          git rm -rf . > /dev/null 2>&1 || true
+          cp -r dist/* .
+          cp dist/.htaccess . 2>/dev/null || true
+          git add -A
+          git commit -m "Auto-deploy build $(date +%Y-%m-%d_%H%M%S)" || echo "No changes"
+          git push --force origin deploy
+          echo "deploy branch updated and ready for deployment"
+        fi
