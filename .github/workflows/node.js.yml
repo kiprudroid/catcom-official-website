@@ -47,8 +47,7 @@ jobs:
           # copy build output into deploy branch
           cp -r /tmp/buildtemp/dist/* .
           cp -f /tmp/buildtemp/.htaccess . || true
-          cp -f /tmp/buildtemp/.cpanel.yml . || true
-
+          cp -f /tmp/buildtemp/.cpanel.yml .cpanel.yml      
           git add .
           git commit -m "Deploy" || true
           git push origin deploy --force
