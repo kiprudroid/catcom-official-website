@@ -32,6 +32,7 @@ jobs:
           mkdir -p /tmp/buildtemp
           cp -r frontend/dist /tmp/buildtemp/
           cp frontend/public/.htaccess /tmp/buildtemp/ || true
+          cp .cpanel.yml /tmp/buildtemp/ || true
 
           # configure git user
           git config user.name "github-actions"
