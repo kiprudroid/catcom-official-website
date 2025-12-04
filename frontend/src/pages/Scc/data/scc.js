@@ -53,7 +53,7 @@ export const SCCs = [
         image: "sccPictures/stMartin/leaders/ScholasticaOsebe.jpeg",
       },
       {
-        name: "Rehema Nkirote Mwenda",
+        name: "Rehema Nkirote",
         role: "Secretary",
         image: "sccPictures/stMartin/leaders/RehemaNkirote.jpeg",
       },
