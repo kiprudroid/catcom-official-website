@@ -30,7 +30,7 @@ jobs:
           git config user.email "github-actions@github.com"
           git checkout deploy || git checkout -b deploy
           git rm -r . || true
-          cp -r frontend/dist/.. .
+          cp -r frontend/dist/* .
           git add .
           git commit -m "Deploy" || true
           git push origin deploy --force
