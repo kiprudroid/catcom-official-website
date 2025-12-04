@@ -17,22 +17,34 @@ jobs:
           node-version: 18
 
       - name: Install frontend
-        working-directory: ./frontend
         run: npm ci
+        working-directory: frontend
 
       - name: Build frontend
-        working-directory: ./frontend
         run: npm run build
+        working-directory: frontend
 
       - name: Push build to deploy branch
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+
+          # stash built files into a temp directory BEFORE wiping anything
+          mkdir buildtemp
+          cp -r frontend/dist buildtemp/
+          cp frontend/public/.htaccess buildtemp/ || true
+
+          # switch to deploy branch
           git checkout deploy || git checkout -b deploy
+          
+          # wipe deploy branch completely
           git rm -rf . || true
           git clean -fdx || true
-          cp -r frontend/dist/* .
-          cp -f frontend/public/.htaccess . || true
+
+          # copy build output into clean deploy branch
+          cp -r buildtemp/dist/* .
+          cp -f buildtemp/.htaccess . || true
+
           git add .
           git commit -m "Deploy" || true
           git push origin deploy --force
