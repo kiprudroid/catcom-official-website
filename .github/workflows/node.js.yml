@@ -31,7 +31,7 @@ jobs:
           git checkout deploy || git checkout -b deploy
           git rm -rf . || true
           cp -r frontend/dist/* .
-          cp -f frontend/.htaccess . || true
+          cp -f frontend/public/.htaccess . || true
           git add .
           git commit -m "Deploy" || true
           git push origin deploy --force
