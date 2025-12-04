@@ -8,15 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install frontend
+      - name: Install frontend dependencies
         run: npm ci
         working-directory: frontend
 
@@ -24,26 +26,27 @@ jobs:
         run: npm run build
         working-directory: frontend
 
-      - name: Push build to deploy branch
+      - name: Prepare build for deploy
         run: |
+          # create temp folder outside repo so it survives branch switch
+          mkdir -p /tmp/buildtemp
+          cp -r frontend/dist /tmp/buildtemp/
+          cp frontend/public/.htaccess /tmp/buildtemp/ || true
+
+          # configure git user
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          # stash built files into a temp directory BEFORE wiping anything
-          mkdir buildtemp
-          cp -r frontend/dist buildtemp/
-          cp frontend/public/.htaccess buildtemp/ || true
-
           # switch to deploy branch
           git checkout deploy || git checkout -b deploy
-          
-          # wipe deploy branch completely
+
+          # remove old files
           git rm -rf . || true
           git clean -fdx || true
 
-          # copy build output into clean deploy branch
-          cp -r buildtemp/dist/* .
-          cp -f buildtemp/.htaccess . || true
+          # copy build output into deploy branch
+          cp -r /tmp/buildtemp/dist/* .
+          cp -f /tmp/buildtemp/.htaccess . || true
 
           git add .
           git commit -m "Deploy" || true
