@@ -1,0 +1,43 @@
+# .cpanel.yml — place ONLY in the main branch root (not in deploy branch)
+
+deployment:
+  enabled: true
+  branch: deploy
+  tasks:
+    - export DEPLOYPATH=/home3/jkuatca1/public_html
+
+    # Full wipe of public_html (including hidden files)
+    - /bin/rm -rf $DEPLOYPATH/* || true
+    - /bin/rm -f $DEPLOYPATH/.* || true
+
+    # Copy everything from deploy branch (already contains built files + .cpanel.yml is NOT copied)
+    - /bin/cp -R $CPANEL_DEPLOYMENT_SOURCE/* $DEPLOYPATH/ 2>/dev/null || true
+    - /bin/cp -R $CPANEL_DEPLOYMENT_SOURCE/.[^.]* $DEPLOYPATH/ 2>/dev/null || true
+
+    # Fix permissions
+    - /usr/bin/find $DEPLOYPATH -type d -exec /bin/chmod 755 {} \;
+    - /usr/bin/find $DEPLOYPATH -type f -exec /bin/chmod 644 {} \;
+
+# Auto-build and update deploy branch when pushing to main
+hooks:
+  post-clone:
+    - exec: |
+        if [ "$CPANEL_GIT_BRANCH" = "main" ]; then
+          echo "Push to main detected → building and updating deploy branch"
+          cd frontend
+          /usr/local/bin/npm ci --omit=dev
+          /usr/local/bin/npm run build
+
+          git checkout deploy 2>/dev/null || git checkout -b deploy
+          git rm -rqf . > /dev/null 2>&1 || true
+          cp -r dist/* .
+          cp dist/.htaccess . 2>/dev/null || true
+
+          # Remove .cpanel.yml from deploy branch if it somehow exists
+          git rm -f .cpanel.yml 2>/dev/null || true
+
+          git add -A
+          git commit -m "Auto-deploy build $(date +%Y-%m-%d_%H%M%S)" || echo "No changes to commit"
+          git push --force origin deploy
+          echo "deploy branch updated"
+        fi
