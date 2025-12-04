@@ -59,6 +59,7 @@ export const SCCs = [
       },
       {
         name: "Jovial Ann Wairimu Mutua",
+        
         role: "Project Manager",
         image: "sccPictures/stMartin/leaders/JovialAnn.jpeg",
       },
