@@ -1,9 +1,10 @@
-Middleware functions used globally or in routes, such as:
+<!-- Purpose -->
 
-Authentication
+Runs before controllers
 
+<!-- Examples -->
+
+Auth middleware
+Admin checks
 Error handling
-
-Logging
-
 Request validation

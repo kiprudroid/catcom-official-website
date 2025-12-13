@@ -1,4 +1,8 @@
-// src/app.js
+// Purpose
+// App configuration
+// Middlewares
+// Routes registration
+
 import express from "express";
 import routes from "./routes/index.js";
 import { errorHandler } from "./middleware/errorHandler.js";
