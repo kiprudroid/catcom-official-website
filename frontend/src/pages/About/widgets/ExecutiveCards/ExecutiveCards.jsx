@@ -41,12 +41,12 @@ const ExecutiveCards = ({ executives }) => {
               <div className={styles.executiveBody}>
                 <p className={styles.bio}>{exec.bio}</p>
 
-                <div className={styles.contact}>
+                {/* <div className={styles.contact}>
                   <h3 className={styles.contactBtn}>
                     <Phone size={14} />
                     {exec.phone}
                   </h3>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
