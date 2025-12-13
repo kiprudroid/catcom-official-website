@@ -29,12 +29,12 @@ CREATE TABLE daily_mass_readings (
 
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
-    event_date UNIQUE DATE  NOT NULL,
+    event_date DATE  NOT NULL UNIQUE ,
     activity VARCHAR(100) UNIQUE NOT NULL,
-    venue VARCHAR(100) NOT NULL,
-)
+    venue VARCHAR(100) NOT NULL
+);
 
-
+CREATE TYPE gender_type AS ENUM ('male', 'female', 'other');
 create table join_scc (
     user_id SERIAL PRIMARY KEY,
     first_name varchar(50) not null,
@@ -42,11 +42,11 @@ create table join_scc (
     phone_number varchar(15),
     email varchar(100) not null unique,
     year_joined int,
-    gender enum('male', 'female', 'other'),
+    gender gender_type, 
     scc_name varchar(100) not null
 );
 
-create table scc_executive (
+create table scc_execut (
     exec_id SERIAL PRIMARY KEY,
     exec_first_name varchar(50) not null,
     exec_last_name varchar(50) not null,
