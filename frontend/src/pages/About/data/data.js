@@ -49,81 +49,77 @@ export const patrons = [
 
 export const catcomExecutive = [
   {
-    name: "Stephen Mutwiwa Mutie",
+    name: "Titus Cheruiyot",
     position: "Catcom Moderator",
     bio: `Ensures proper coordination of activities to achieve mission and aims, chairs executive meetings, represents the community in Parish Pastoral Council, and acts as official spokesperson.
     `,
-    image: "/leadersImages/mutwiwa.jpg",
-    phone: "+254 798715858",
+    image: "/leadersImages/titus-cheruiyot.jpeg",
+    
   },
   {
-    name: "Sophie Kathambi",
+    name: "Joan Ngugi",
     position: "Catcom Vice Moderator",
     bio: `Serves as ex-officio member in welfare and enterprises, assists the moderator, coordinates SCC leaders, compiles reports, heads committees, organizes offertory and events, ensures collections, links community and executive, and chairs SCC meetings.`,
-    image: "/leadersImages/sophie.jpg",
-    phone: "+254 797872432",
+    image: "/leadersImages/joan-ngugi.jpeg",
   },
   {
-    name: "Eliza Chiru",
+    name: "Annastacia Mutua",
     position: "Catcom Secretary",
     bio: `Records executive meeting minutes, coordinates Wednesday and Sunday announcements, oversees SCC secretaries, serves as ex-officio member of CATCOMES, and collaborates closely with the executive team.`,
-    image: "/leadersImages/eliza.jpg",
-    phone: "+254 725026216",
+    image: "/leadersImages/anne-mutua.jpeg",    
   },
   {
-    name: "Terryann Wanjohi",
+    name: "Ann Njoroge",
     position: "Catcom Treasurer",
     bio: `Keeps financial records, prepares budgets, collects and safeguards funds, makes payments, and reports finances. Ensures transparency, updates members on financial matters, and supports the executive in planning and using resources wisely.`,
-    image: "/leadersImages/terry.jpg",
-    phone: "+254 746402544",
-  },
-  {
-    name: "Alvin Muthoni",
-    position: "Catcom Organizing Secretary",
-    bio: `Serves as liaison with university administration, coordinates logistics of activities including venue bookings, spearheads event planning committees, and ensures timely preparation, smooth execution, and effective follow-up for all community events.`,
-    image: "/leadersImages/alvin.jpg",
-    phone: "+254 793661637",
-  },
-  {
-    name: "Bernard Nderitu",
-    position: "Catcom Pastoral Secretary",
-    bio: `Oversees spiritual activities by safeguarding traditions, organizing catechism, coordinating sacraments, leading outreach, managing literature, and evaluating programs to recommend improvements that strengthen faith and community growth.`,
-    image: "/leadersImages/nderitu.jpg",
-    phone: "+254 796820460",
-  },
-  {
-    name: "Albanus Timona",
-    position: "Catcom Choir Moderator",
-    bio: `Provides comprehensive oversight of choir activities, represents the choir in parish and community meetings, leads outdoor planning and events, and ensures smooth coordination while supporting members with patriotism and dedication.`,
-    image: "/leadersImages/engineerTim.jpg",
-    phone: "+254 743458439",
-  },
-  {
-    name: "Rodgers Matia",
-    position: "Catcom Choir Director",
-    bio: `Leads rehearsals, selects music, teaches vocal technique, interprets scores, guides expression, coordinates performances, manages logistics, and inspires teamwork to achieve artistic excellence and foster growth and community.`,
-    image: "/leadersImages/matia.jpg",
-    phone: "+254 796784081",
-  },
-  {
-    name: "Robinson Koskei",
-    position: "Catcom Publicity Secretary",
-    bio: `Ensures posters for all events, manages social media and content, circulates messages, forms planning committees with the Organizing Secretary, and provides required documents to support effective event preparation.`,
-    image: "/leadersImages/Robinson.jpg",
-    phone: "+254 743382152",
+    image: "/leadersImages/ann-njoroge.jpeg",
+
   },
   {
     name: "Wilfred Wandera",
-    position: "Catcom Technical Secretary",
-    bio: `Manages the technical team handling community public address systems. Oversees equipment allocation to SCCs. Supervises the website team and serves as an ex-officio member of the Catcom football club.`,
-    image: "/leadersImages/wandera.jpg",
-    phone: "+254 715115907",
+    position: "Catcom Organizing Secretary",
+    bio: `Serves as liaison with university administration, coordinates logistics of activities including venue bookings, spearheads event planning committees, and ensures timely preparation, smooth execution, and effective follow-up for all community events.`,
+    image: "/leadersImages/wilfred-wandera.jpeg",
+    
   },
   {
-    name: "Sarah Okello",
+    name: "Benard Ndiritu",
+    position: "Catcom Pastoral Secretary",
+    bio: `Oversees spiritual activities by safeguarding traditions, organizing catechism, coordinating sacraments, leading outreach, managing literature, and evaluating programs to recommend improvements that strengthen faith and community growth.`,
+    image: "/leadersImages/benard-ndiritu.jpg",
+   
+  },
+  {
+    name: "Stephen Vincent",
+    position: "Catcom Choir Moderator",
+    bio: `Provides comprehensive oversight of choir activities, represents the choir in parish and community meetings, leads outdoor planning and events, and ensures smooth coordination while supporting members with patriotism and dedication.`,
+    image: "/leadersImages/stephen-vincent.jpeg",
+    
+  },
+  {
+    name: "Lawrence Makau",
+    position: "Catcom Choir Director",
+    bio: `Leads rehearsals, selects music, teaches vocal technique, interprets scores, guides expression, coordinates performances, manages logistics, and inspires teamwork to achieve artistic excellence and foster growth and community.`,
+    image: "/leadersImages/makau-lawrence-nzau.jpeg",
+    
+  },
+  {
+    name: "Hillary Kasaine",
+    position: "Catcom Publicity Secretary",
+    bio: `Supervises creation of posters for all events, manages social media and content, circulates messages, forms planning committees with the Organizing Secretary, and provides required documents to support effective event preparation.`,
+    image: "/leadersImages/hillary-kasaine.jpeg",
+    
+  },
+  {
+    name: "Faith Kitave",
+    position: "Catcom Technical Secretary",
+    bio: `Manages the technical team handling community public address systems. Oversees equipment allocation to SCCs. Supervises the website team and serves as an ex-officio member of the Catcom football club.`,
+    image: "/leadersImages/faith-kitave.jpeg",    
+  },
+  {
+    name: "Catherine Mbithi",
     position: "Catcom Catering Secretary",
     bio: `Responsible for meals and refreshments during activities and meetings, manages catering facilities and office cleanliness, heads the Welfare Committee supporting needy students, and advises the executive on catering needs through welfare projects.`,
-    image: "/leadersImages/sarahOkello.jpg",
-    phone: "+254 113764124",
+    image: "/leadersImages/catherine-mbithi.jpeg",    
   },
 ];
