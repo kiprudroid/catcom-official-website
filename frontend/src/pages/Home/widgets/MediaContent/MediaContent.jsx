@@ -16,13 +16,8 @@ const mediaItems = [
   },
   {
     type: "video",
-    url: "https://youtu.be/lOEYdC2KSHc?si=7tFJtvaOh3X0PNiY",
-    title: "CATCOM KMRM Liturgical Dancers – Mfalme wa Amani",
-  },
-  {
-    type: "video",
-    url: "https://youtu.be/d9PpupEHHwA?si=YV3SBS_j_500VMiI",
-    title: "CATCOM KMRM Liturgical Dancers - Mwokozo Kazaliwa",
+    url: "https://youtu.be/X2JpwESCYcI?si=k5H_V-o4nHaeXtkv",
+    title: "KMRM Choir - Mtu na Mwenzake By Abel Wafula",
   },
 ];
 
