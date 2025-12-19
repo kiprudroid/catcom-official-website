@@ -22,4 +22,12 @@ const db = new Pool({
   },
 });
 
+db.on('connect', (client) => {
+  console.log('Connected to the database');
+});
+
+db.on('error', (err, client) => {
+  console.error('Unexpected error on idle client', err);
+});
+
 export default db;
