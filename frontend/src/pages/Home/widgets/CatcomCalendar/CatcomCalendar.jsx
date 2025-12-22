@@ -261,7 +261,7 @@ const CatcomCalendar = () => {
   return (
     <div className={styles.calendarWrapper}>
       <SectionHeading as="h2" className={styles.title}>
-        JKUAT CATCOM <span>Sept – Dec 2025</span> Semester Calendar
+        JKUAT CATCOM <span>Jan – June 2026</span> Semester Calendar
       </SectionHeading>
 
       <div className={styles.subSection}>
