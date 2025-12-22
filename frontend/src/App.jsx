@@ -22,7 +22,12 @@ import {
   NotFound,
   AdminPanel,
 } from "@/pages";
-import { Members, Reports } from "@/pages/AdminPanel/pages";
+import {
+  EventsSection,
+  LeadersSection,
+  Members,
+  Reports,
+} from "@/pages/AdminPanel/pages";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -63,12 +68,15 @@ function App() {
 
         <Route
           path="/admin"
-          element={
-            isAuthenticated ? <AdminPanel /> : <Navigate to="/login" replace />
-          }
+          // element={
+          //   isAuthenticated ? <AdminPanel /> : <Navigate to="/login" replace />
+          // }
+          element={<AdminPanel />}
         >
-          {/* <Route path="members" element={<Members />} />
-          <Route path="reports" element={<Reports />} /> */}
+          <Route path="members" element={<Members />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="leaders" element={<LeadersSection />} />
+          <Route path="events" element={<EventsSection />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </>

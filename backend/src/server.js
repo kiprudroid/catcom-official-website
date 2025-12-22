@@ -1,4 +1,6 @@
-import app from "./src/app.js";
+// Purpose -  Start the server
+
+import app from "./app.js";
 import dotenv from "dotenv";
 
 dotenv.config();
