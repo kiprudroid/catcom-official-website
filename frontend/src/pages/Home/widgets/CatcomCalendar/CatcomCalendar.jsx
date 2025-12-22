@@ -12,6 +12,12 @@ import {
 let events = [
   // === Activities ===
   {
+    title: "Finalists Dinner ",
+    date: "2026-01-16",
+    venue: "Rainbow Ruiru Resort",
+    category: "Activity",
+  },
+  {
     title: "Reunion ",
     date: "2026-02-26",
     venue: "SPA/LH",
@@ -92,7 +98,7 @@ let events = [
     category: "Mass Animation",
   },
   {
-    title: "Finalist",
+    title: "Finalists",
     date: "2026-01-18",
     venue: "St. Augustine",
     category: "Mass Animation",
