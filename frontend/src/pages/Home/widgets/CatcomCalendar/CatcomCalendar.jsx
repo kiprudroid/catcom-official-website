@@ -20,7 +20,7 @@ let events = [
   {
     title: "Reunion ",
     date: "2026-02-26",
-    venue: "SPA/LH",
+    venue: "SCC 100",
     category: "Activity",
   },
   {
@@ -42,8 +42,14 @@ let events = [
     category: "Activity",
   },
   {
-    title: "Tournaments",
-    date: "2026-03-20 & 2026-03-21",
+    title: "Tournament Day 1",
+    date: "2026-03-20",
+    venue: "JKUAT Main Pitch",
+    category: "Activity",
+  },
+  {
+    title: "Tournament Day 2",
+    date: "2026-03-21",
     venue: "JKUAT Main Pitch",
     category: "Activity",
   },
@@ -78,7 +84,7 @@ let events = [
     category: "Activity",
   },
   {
-    title: "KMRM Choir Concert",
+    title: "Surprise Event",
     date: "2026-05-02",
     venue: "To Be Determined",
     category: "Activity",
