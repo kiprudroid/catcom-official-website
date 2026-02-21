@@ -1,7 +1,7 @@
 // import {getJoinGroups, createJoinGroup} from "../services/joinGroup.service.js";
-import { getJoinGroupsServices as getJoinGroups, createJoinGroupsServices as createJoinGroup, deleteJoinGroupServices as deleteJoinGroup } from "../services/joinGroup.service.js";
+import { getJoinGroupsServices as getJoinGroups, createJoinGroupsServices as createJoinGroup, deleteJoinGroupServices as deleteJoinGroup } from "../services/join-group.service.js";
 
-const getJoinGroupsController = async (req, res) => {
+const getJoinGroupController = async (req, res) => {
   try {
     const joinGroups = await getJoinGroups();
     res.json(joinGroups);
@@ -30,7 +30,7 @@ const deleteJoinGroupController = async (req, res) => {
 };
 
 export default {
-  getJoinGroups: getJoinGroupsController,
+  getJoinGroups: getJoinGroupController,
   createJoinGroup: createJoinGroupController,
   deleteJoinGroup: deleteJoinGroupController
 };

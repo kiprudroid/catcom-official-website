@@ -43,10 +43,6 @@ fetch("/api/events", {
 
 
 
-
-
-
-
 migrations define the database structure
 • models talk to the database
 • services apply church rules and logic
