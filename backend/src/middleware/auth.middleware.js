@@ -1,9 +1,34 @@
-export const requireAuth = (req, res, next) => {
-  const token = req.headers.authorization;
+import { verifyAccessToken } from '../models/auth.model.js';
 
-  if (!token) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+export const authenticateToken = async (req, res, next) => {
+    try {
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 
-  next();
+        if (!token) {
+            return res.status(401).json({ message: 'Access token required' });
+        }
+
+        const decoded = verifyAccessToken(token);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        return res.status(403).json({ message: 'Invalid or expired token' });
+    }
+};
+
+export const authorizeRoles = (...allowedRoles) => {
+    return (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({ message: 'Authentication required' });
+        }
+
+        if (!allowedRoles.includes(req.user.role)) {
+            return res.status(403).json({ 
+                message: 'You do not have permission to access this resource' 
+            });
+        }
+
+        next();
+    };
 };

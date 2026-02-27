@@ -21,8 +21,8 @@ export const getLeaders = async () => {
     );
     return result.rows;
     } catch (error) {
-        console.log("Database Error " + error.message);
-        
+        console.log(`Database Error : ${error.message}`);
+        throw new Error(`Failed to retrieve your records`);
     }
     
     

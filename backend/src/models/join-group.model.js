@@ -1,18 +1,18 @@
 import db from "../config/db.config.js";
 
 export const createJoinGroup = async (data) => {
-    const { user_id, full_name, phone_number, email, gender, college, group_joined } = data; 
+    const { full_name, phone_number, email, gender, college, group_joined } = data; 
     const query = `
-    INSERT INTO groups (user_id, full_name, phone_number, email, gender, college, group_joined)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    INSERT INTO groups (full_name, phone_number, email, gender, college, group_joined)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *
     `;
 
-    const values = [user_id, full_name, phone_number, email, gender, college, group_joined];
+    const values = [full_name, phone_number, email, gender, college, group_joined];
     const result = await db.query(query, values);
 
     return result.rows[0];
-}   ;
+};
 
 export const getJoinGroups = async () => {
     try {
@@ -22,11 +22,12 @@ export const getJoinGroups = async () => {
     return result.rows;
     } catch (error) {
         console.log("Database Error " + error.message);
+        throw new Error ("Failed to retrieve your records");
     }
 
 };
 
-export const deletejoinGroup = async (id) => {
+export const deleteJoinGroups = async (id) => {
     const query = `
     DELETE FROM groups WHERE user_id = $1
     `;

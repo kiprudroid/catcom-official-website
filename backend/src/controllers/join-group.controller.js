@@ -1,5 +1,5 @@
 // import {getJoinGroups, createJoinGroup} from "../services/joinGroup.service.js";
-import { getJoinGroupsServices as getJoinGroups, createJoinGroupsServices as createJoinGroup, deleteJoinGroupServices as deleteJoinGroup } from "../services/joinGroup.service.js";
+import { getJoinGroupsServices as getJoinGroups, createJoinGroupsServices as createJoinGroup, deleteJoinGroupServices as deleteJoinGroup } from "../services/join-group.service.js";
 
 const getJoinGroupController = async (req, res) => {
   try {

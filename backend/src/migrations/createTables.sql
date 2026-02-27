@@ -45,15 +45,15 @@ create table join_scc (
     scc_name varchar(100) not null
 );
 
-create table scc_execut (
+create table scc_executive (
     exec_id SERIAL PRIMARY KEY,
+	  scc_name varchar(50),
     exec_first_name varchar(50) not null,
     exec_last_name varchar(50) not null,
     position varchar(50) not null,
     phone_number varchar(15),
     exec_image varchar(255)
 );
-
 
 CREATE TABLE groups (
     user_id SERIAL PRIMARY KEY,
@@ -73,3 +73,26 @@ CREATE TABLE executive_leaders (
     exec_description VARCHAR(255),
     image_url VARCHAR(255)
 );
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,  
+  role VARCHAR(50) DEFAULT 'user',
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE refresh_tokens (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  token TEXT NOT NULL UNIQUE,
+  expires_at TIMESTAMP NOT NULL,
+  revoked BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_refresh_tokens_user_id ON refresh_tokens(user_id);
+CREATE INDEX idx_refresh_tokens_token ON refresh_tokens(token);
+
