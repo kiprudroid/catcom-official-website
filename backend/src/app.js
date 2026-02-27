@@ -17,8 +17,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", eventsRouter);
 app.use("/api", leadersRouter);
-app.use("/api", joinSccRouter);
+app.use("/api/scc", joinSccRouter);
 app.use("/api", groupsRouter);
+// app.use("/api", groupsRouter);
 //app.use(errorHandler);
 
 export default app;
