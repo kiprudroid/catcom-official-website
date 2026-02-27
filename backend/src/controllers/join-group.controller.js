@@ -30,7 +30,7 @@ const deleteJoinGroupController = async (req, res) => {
 };
 
 export default {
-  getJoinGroups: getJoinGroupController,
+  getJoinGroup: getJoinGroupController,
   createJoinGroup: createJoinGroupController,
   deleteJoinGroup: deleteJoinGroupController
 };
