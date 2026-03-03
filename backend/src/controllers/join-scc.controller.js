@@ -1,4 +1,4 @@
-import{getJoinSCCServices as getJoinSCC, createJoinSCCServices as createJoinSCC, deleteJoinSCCServices as deleteJoinSCC}from"../services/join-scc.service.js";
+import{getJoinSCC, createJoinSCC, deleteJoinSCC}from"../services/join-scc.service.js";
 
  const getJoinSCCController=async(req,res)=>{
     try{const joinscc=await getJoinSCC();

@@ -7,7 +7,7 @@ const router = Router();
 
 // GET JOIN GROUPS
 
-router.get('/join-group', joinGroupsController.getJoinGroups)
+router.get('/join-group', joinGroupsController.getJoinGroup)
 
 //POST JOIN GROUPS
 router.post('/join-group', joinGroupsController.createJoinGroup)

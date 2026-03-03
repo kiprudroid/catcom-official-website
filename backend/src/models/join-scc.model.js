@@ -26,7 +26,7 @@ export const getJoinSCC = async () => {
 
 export const deleteJoinSCC = async (id) => {
     const query = `
-    DELETE FROM join_scc WHERE id = $1  
+    DELETE FROM join_scc WHERE user_id = $1  
     `;
     const values = [id];
     await db.query(query, values);
