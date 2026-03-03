@@ -4,7 +4,7 @@
 // Routes registration
 
 import express from "express";
-import eventsRouter from "./routes/events.routes.js";
+import eventsRouter from "./routes/event.routes.js";
 import leadersRouter from "./routes/leaders.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import joinSccRouter from "./routes/join-scc.routes.js"
@@ -21,13 +21,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", eventsRouter);
 app.use("/api", leadersRouter);
-app.use("/api/scc",joinSccRouter)
 app.use("/api", sccLeadersRouter)
 app.use("/api", groupsRouter);
-//`app.use(errorHandler);
 app.use("/api", authRouter);
 app.use("/api", joinSccRouter);
-app.use("/api", groupsRouter);
 app.use("/api", readingsRouter);
 
 export default app;
