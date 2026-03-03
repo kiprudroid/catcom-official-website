@@ -1,3 +1,4 @@
+<<<<<<< HEAD:backend/src/services/joinscc.service.js
 import {
   createJoinScc as createJoinSccModel,
   findAllJoinScc,
@@ -26,6 +27,18 @@ export const createJoinScc = async (data) => {
   }
 
   return await createJoinSccModel(data);
+=======
+import * as JoinSCCModel from '../models/join-scc.model.js';
+
+export const createJoinSCCServices = async (data) => {
+    if (!data) {
+        throw new Error("No data provided");
+    }
+    if (!data.first_name || !data.last_name || !data.phone_number || !data.email || !data.year_joined || !data.gender || !data.scc_name) {  
+        throw new Error("Missing required fields");
+    }
+    return await JoinSCCModel.createJoinSCC(data);
+>>>>>>> cf3e1a90b3de206b5fd100cdba1eebb44f9df8d2:backend/src/services/join-scc.service.js
 };
 
 /**
