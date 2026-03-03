@@ -1,23 +1,32 @@
 import pool from "../config/db.config.js";
 
+/**
+ * Insert a new event into the database
+ */
 export const createEvent = async (data) => {
-  const { event_date, activity, venue } = data;
+  const { title, event_date, event_time, venue } = data;
 
   const query = `
-    INSERT INTO events (event_date, activity, venue)
-    VALUES ($1, $2, $3)
-    RETURNING *
+    INSERT INTO events (title, event_date, event_time, venue)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;
   `;
 
-  const values = [event_date, activity, venue];
-  const result = await pool.query(query, values);
+  const values = [title, event_date, event_time, venue];
+  const { rows } = await pool.query(query, values);
 
-  return result.rows[0];
+  return rows[0];
 };
 
-export const getAllEvents = async () => {
-  const result = await pool.query(
-    "SELECT * FROM events ORDER BY event_date ASC"
-  );
-  return result.rows;
+/**
+ * Fetch all events ordered by date
+ */
+export const findAllEvents = async () => {
+  const query = `
+    SELECT * FROM events
+    ORDER BY event_date ASC, event_time ASC;
+  `;
+
+  const { rows } = await pool.query(query);
+  return rows;
 };

@@ -1,32 +1,42 @@
-import{getJoinSCCServices as getJoinSCC, createJoinSCCServices as createJoinSCC, deleteJoinSCCServices as deleteJoinSCC}from"../services/joinscc.service.js";
+import {
+  createJoinScc,
+  getAllJoinScc,
+  deleteJoinScc,
+} from "../services/joinScc.service.js";
 
- const getJoinSCCControllers=async(req,res)=>{
-    try{const joinscc=await getJoinSCC();
-        res.status(200).json(joinscc);
-    }
-    catch(error){res.status(500).json({message:error.message});
-}
-}
- const createJoinSCCControllers=async(req,res)=>{
-    try{
-        const joinscc=await createJoinSCC(req.body);
-        res.status(201).json(joinscc);
-    }
-    catch(error){res.status(500).json({message:error.message});
-}
-}
- const deleteJoinSCCControllers=async(req,res)=>{
-    try{
-        const{id}=req.params;
-        await deleteJoinSCC(id);
-        res.status(204).send();
-    }catch(error){
-        res.status(500).json({message:error.message});
-    }
-}
+/**
+ * POST /join-sccs
+ */
+export const createJoinSccController = async (req, res) => {
+  try {
+    const result = await createJoinScc(req.body);
+    return res.status(201).json(result);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
 
-export default{
-    getJoinSCC: getJoinSCCControllers,
-    createJoinSCC: createJoinSCCControllers,
-    deleteJoinSCC: deleteJoinSCCControllers
-}
+/**
+ * GET /join-sccs
+ */
+export const getAllJoinSccController = async (req, res) => {
+  try {
+    const result = await getAllJoinScc();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+/**
+ * DELETE /join-sccs/:id
+ */
+export const deleteJoinSccController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await deleteJoinScc(id);
+    return res.status(204).send();
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};

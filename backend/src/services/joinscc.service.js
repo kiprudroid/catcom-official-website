@@ -1,18 +1,47 @@
-import * as JoinSCCModel from '../models/joinscc.model.js';
+import {
+  createJoinScc as createJoinSccModel,
+  findAllJoinScc,
+  deleteJoinSccById,
+} from "../models/joinScc.model.js";
 
-export const createJoinSCCServices = async (data) => {
-    if (!data) {
-        throw new Error("No data provided");
-    }
-    if (!data.user_id || !data.full_name || !data.phone_number || !data.email || !data.year_study || !data.gender || !data.scc_name) {  
-        throw new Error("Missing required fields");
-    }
-    return await JoinSCCModel.createJoinSCC(data);
+/**
+ *  logic + validation for creating Join SCC
+ */
+export const createJoinScc = async (data) => {
+  if (!data) {
+    throw new Error("No data provided");
+  }
+
+  const { full_name, phone_number, email, year_study, gender, scc_name } = data;
+
+  if (
+    !full_name ||
+    !phone_number ||
+    !email ||
+    !year_study ||
+    !gender ||
+    !scc_name
+  ) {
+    throw new Error("Missing required fields");
+  }
+
+  return await createJoinSccModel(data);
 };
-export const getJoinSCCServices = async () => {
-    return await JoinSCCModel.getJoinSCC();
-}
 
-export const deleteJoinSCCServices = async (id) => {
-    return await JoinSCCModel.deleteJoinSCC(id);
-}
+/**
+ * Get all Join SCC entries
+ */
+export const getAllJoinScc = async () => {
+  return await findAllJoinScc();
+};
+
+/**
+ * Delete Join SCC entry by ID
+ */
+export const deleteJoinScc = async (id) => {
+  if (!id) {
+    throw new Error("ID is required");
+  }
+
+  return await deleteJoinSccById(id);
+};

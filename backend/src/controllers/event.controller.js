@@ -1,19 +1,30 @@
-import * as EventService from "../services/event.service.js";
+import {
+  createEventService,
+  getAllEventsService,
+} from "../services/event.service.js";
 
-export const createEvent = async (req, res) => {
+/**
+ * POST /events
+ * Create a new event (Admin form submission)
+ */
+export const createEvents = async (req, res) => {
   try {
-    const event = await EventService.createEventService(req.body);
-    res.status(201).json(event);
+    const result = await createEventService(req.body);
+    return res.status(201).json(result);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
-export const getEvents = async (req, res) => {
+/**
+ * GET /events
+ * Fetch all events for display
+ */
+export const getAllEvents = async (req, res) => {
   try {
-    const events = await EventService.getEventsService();
-    res.json(events);
+    const result = await getAllEventsService();
+    return res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: "Server error" });
   }
 };

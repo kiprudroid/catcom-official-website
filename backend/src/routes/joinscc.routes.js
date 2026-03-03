@@ -1,14 +1,25 @@
-import { Router } from "express"; 
-import joinSCCController from "../controllers/joinscc.controller.js";       
+import { Router } from "express";
+import {
+  createJoinSccController,
+  getAllJoinSccController,
+  deleteJoinSccController,
+} from "../controllers/joinscc.controller.js";
 
 const router = Router();
-// ENDPOINTS FOR JOIN SCC
 
-// GET JOIN SCC ENTRIES
-router.get("/joinscc", joinSCCController.getJoinSCC);
-// POST JOIN SCC ENTRY
-router.post("/joinscc", joinSCCController.createJoinSCC);
-// DELETE JOIN SCC ENTRY
-router.delete("/joinscc/:id", joinSCCController.deleteJoinSCC);     
+/**
+ * GET /api/join-sccs
+ */
+router.get("/join-sccs", getAllJoinSccController);
+
+/**
+ * POST /api/join-sccs
+ */
+router.post("/join-sccs", createJoinSccController);
+
+/**
+ * DELETE /api/join-sccs/:id
+ */
+router.delete("/join-sccs/:id", deleteJoinSccController);
 
 export default router;

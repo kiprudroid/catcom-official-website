@@ -27,11 +27,14 @@ CREATE TABLE daily_mass_readings (
 );
 
 
+-- new table
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
-    event_date DATE  NOT NULL UNIQUE ,
-    activity VARCHAR(100) UNIQUE NOT NULL,
-    venue VARCHAR(100) NOT NULL
+    title VARCHAR(150) NOT NULL,
+    event_date DATE NOT NULL,
+    event_time TIME NOT NULL,
+    venue VARCHAR(150) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TYPE gender_type AS ENUM ('male', 'female', 'other');

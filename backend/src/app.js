@@ -4,7 +4,7 @@
 // Routes registration
 
 import express from "express";
-import eventsRouter from "./routes/events.routes.js";
+import eventsRouter from "./routes/event.routes.js";
 import leadersRouter from "./routes/leaders.routes.js";
 import joinsccRouter from "./routes/joinscc.routes.js";
 //import { errorHandler } from "./middleware/errorHandler.js";
@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", eventsRouter);
 app.use("/api", leadersRouter);
-app.use("/api/scc", joinsccRouter);
+app.use("/api", joinsccRouter);
 // app.use("/api", groupsRouter);
 //app.use(errorHandler);
 
