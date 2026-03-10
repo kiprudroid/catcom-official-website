@@ -1,11 +1,11 @@
 import {
-  getsccLeadersServices as getsccLeader,
-  createsccLeadersServices as createsccLeader,
-  updatesccLeadersServices as updatesccLeader,
-  deletesccLeadersServices as deletesccLeader,
+  getSccLeadersServices as getsccLeader,
+  createSccLeadersServices as createsccLeader,
+  updateSccLeadersServices as updatesccLeader,
+  deleteSccLeadersServices as deletesccLeader,
 } from "../services/sccleaders.service.js";
 
-const getsccLeaderController = async (req, res) => {
+export const getsccLeaderController = async (req, res) => {
   const { scc_name } = req.params;
   try {
     const leaders = await getsccLeader(scc_name);
@@ -15,7 +15,7 @@ const getsccLeaderController = async (req, res) => {
   }
 };
 
-const createsccLeaderController = async (req, res) => {
+export const createsccLeaderController = async (req, res) => {
   try {
     const sccleader = await createsccLeader(req.body);
     res.status(201).json(sccleader);
@@ -24,7 +24,7 @@ const createsccLeaderController = async (req, res) => {
   }
 };
 
-const updatesccLeaderController = async (req, res) => {
+export const updatesccLeaderController = async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -49,7 +49,7 @@ const updatesccLeaderController = async (req, res) => {
   }
 };
 
-const deletesccLeaderController = async (req, res) => {
+export const deletesccLeaderController = async (req, res) => {
   try {
     const { id } = req.params;
     const { scc_name } = req.params;
@@ -58,11 +58,4 @@ const deletesccLeaderController = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Server error: " + error.message });
   }
-};
-
-export default {
-  getsccLeader: getsccLeaderController,
-  createsccLeader: createsccLeaderController,
-  updatesccLeader: updatesccLeaderController,
-  deletesccLeader: deletesccLeaderController,
 };
