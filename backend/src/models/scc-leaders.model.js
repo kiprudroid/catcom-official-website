@@ -39,6 +39,20 @@ export const getsccLeaders = async (scc_name) => {
     
 };
 
+//update scc leaders
+export const updatesccLeader = async (id, data) => {
+    const { exec_first_name, exec_last_name, scc_name, position, phone_number, exec_image } = data;
+    const query = `
+    UPDATE scc_executive SET exec_first_name = $1, exec_last_name = $2, scc_name = $3, position = $4, phone_number = $5, exec_image = $6 WHERE exec_id = $7
+    RETURNING *
+    `;
+
+    const values = [exec_first_name, exec_last_name, scc_name, position, phone_number, exec_image, id];
+    const result = await db.query(query, values);
+
+    return result.rows[0];
+};
+
 export const deletesccLeader = async (id, scc_name) => {
     const query = `
     DELETE FROM scc_executive WHERE exec_id = $1 AND scc_name = $2;

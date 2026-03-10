@@ -14,6 +14,9 @@ router.get('/scc-leaders/:scc_name', sccleadersController.getsccLeader)
 //POST LEADERS
 router.post('/scc-leaders', sccleadersController.createsccLeader)
 
+//UPDATE LEADERS
+router.put('/scc-leaders/:id', sccleadersController.updatesccLeader)
+
 //DELETE LEADERS
 router.delete('/scc-leaders/:scc_name/:id', sccleadersController.deletesccLeader)
 
