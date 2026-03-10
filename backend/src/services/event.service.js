@@ -15,6 +15,9 @@ export const createEventService = async (data) => {
   return await createEvent(data);
 };
 
-export const getAllEventsService = async () => {
+/**
+ * Business logic for fetching all events
+ */
+export const getAllEvents = async () => {
   return await findAllEvents();
 };

@@ -18,7 +18,7 @@ const db = new Pool({
   statement_timeout: 0, // No timeout
   idle_in_transaction_session_timeout: 600000, // 10 minutes
   ssl: {
-    require: true,
+    require: false,
   },
 });
 
