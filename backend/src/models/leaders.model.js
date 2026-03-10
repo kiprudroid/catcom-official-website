@@ -1,6 +1,6 @@
 import db from "../config/db.config.js";
 
-export const createLeader = async (data) => {
+export const createLeaderModel = async (data) => {
     const { full_name, post_title, exec_description, image_url } = data; 
     const query = `
     INSERT INTO executive_leaders (full_name, post_title, exec_description, image_url)
@@ -14,7 +14,7 @@ export const createLeader = async (data) => {
     return result.rows[0];
 };
 
-export const getLeaders = async () => {
+export const getLeadersModel = async () => {
     try {
         const result = await db.query(
         "SELECT * FROM executive_leaders ORDER BY full_name ASC"
@@ -28,7 +28,20 @@ export const getLeaders = async () => {
     
 };
 
-export const deleteLeader = async (id) => {
+export const updateLeaderModel = async (id, data) => {
+    const { full_name, post_title, exec_description, image_url } = data;
+    const query = `
+    UPDATE executive_leaders SET full_name = $1, post_title = $2, exec_description = $3, image_url = $4 WHERE user_id = $5
+    RETURNING *
+    `;
+
+    const values = [full_name, post_title, exec_description, image_url, id];
+    const result = await db.query(query, values);
+
+    return result.rows[0];
+};
+
+export const deleteLeaderModel = async (id) => {
     const query = `
     DELETE FROM executive_leaders WHERE user_id = $1
     `;

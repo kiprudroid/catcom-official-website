@@ -7,7 +7,7 @@ import express from "express";
 import eventsRouter from "./routes/event.routes.js";
 import leadersRouter from "./routes/leaders.routes.js";
 import authRouter from "./routes/auth.routes.js";
-import joinSccsRouter from "./routes/join-scc.routes.js";
+import joinSccRouter from "./routes/join-scc.routes.js";
 import sccLeadersRouter from "./routes/scc-leaders.routes.js";
 import groupsRouter from "./routes/join-group.routes.js";
 import readingsRouter from "./routes/readings.routes.js";
@@ -24,7 +24,11 @@ app.use("/api", leadersRouter);
 app.use("/api", sccLeadersRouter);
 app.use("/api", groupsRouter);
 app.use("/api", authRouter);
-app.use("/api", joinSccsRouter);
+app.use("/api", joinSccRouter);
 app.use("/api", readingsRouter);
+
+app.use((req, res) => {
+  res.status(404).json({ message: "Not Found" });
+});
 
 export default app;
