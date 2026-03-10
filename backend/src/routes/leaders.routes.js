@@ -1,5 +1,14 @@
 import {Router} from 'express';
-import leadersController from "../controllers/leaders.controller.js";
+
+import {
+  getLeaderController as getLeader,
+  createLeaderController as createLeader,
+  updateLeaderController as updateLeader,
+  deleteLeaderController as deleteLeader
+} from '../controllers/leaders.controller.js'
+
+
+
 
 const router = Router();
 
@@ -7,12 +16,15 @@ const router = Router();
 
 // GET LEADERS
 
-router.get('/leaders', leadersController.getLeader)
+router.get('/leaders', getLeader)
 
 //POST LEADERS
-router.post('/leaders', leadersController.createLeader)
+router.post('/leaders', createLeader)
+
+//UPDATE LEADERS
+router.put('/leaders/:id', updateLeader)
 
 //DELETE LEADERS
-router.delete('/leaders/:id', leadersController.deleteLeader)
+router.delete('/leaders/:id', deleteLeader)
 
 export default router;
