@@ -1,11 +1,8 @@
 import db from "../config/db.config.js";
 
-/**
- * Insert a new Join SCC record into the database
- */
-export const createJoinScc = async (payload) => {
-  const { full_name, phone_number, email, year_study, gender, scc_name } =
-    payload;
+
+export const createJoinSCC = async (payload) => {
+  const { full_name, phone_number, email, year_study, gender, scc_name } = payload;
 
   const query = `
     INSERT INTO join_scc (full_name, phone_number, email, year_study, gender, scc_name)
@@ -14,37 +11,37 @@ export const createJoinScc = async (payload) => {
   `;
 
   const values = [full_name, phone_number, email, year_study, gender, scc_name];
-  const { rows } = await db.query(query, values);
-
-  return rows[0];
+  try {
+    const { rows } = await db.query(query, values);
+    return rows[0];
+  } catch (error) {
+    throw new Error(`Database error: ${error.message}`);
+  }
 };
 
 /**
  * Fetch all Join SCC records
  */
-export const findAllJoinScc = async () => {
+export const getJoinSCC = async () => {
   const query = `
     SELECT * FROM join_scc
     ORDER BY full_name ASC;
   `;
+  try {
+    const { rows } = await db.query(query);
+    return rows;
+  } catch (error) {
+    throw new Error(`Database error: ${error.message}`);
+  }
 };
 
 export const deleteJoinSCC = async (id) => {
   const query = `
-    DELETE FROM join_scc WHERE user_id = $1
-    `;
-  const values = [id];
-  await db.query(query, values);
-};
-
-/**
- * Delete a Join SCC record by ID
- */
-export const deleteJoinSccById = async (id) => {
-  const query = `
-    DELETE FROM join_scc
-    WHERE user_id = $1;
+    DELETE FROM join_scc WHERE user_id = $1;
   `;
-
-  await db.query(query, [id]);
+  try {
+    await db.query(query, [id]);
+  } catch (error) {
+    throw new Error(`Database error: ${error.message}`);
+  }
 };
