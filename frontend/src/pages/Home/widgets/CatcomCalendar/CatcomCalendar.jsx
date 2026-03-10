@@ -9,6 +9,8 @@ import {
   FaCalendarCheck,
 } from "react-icons/fa";
 
+import { fetchEvents } from "@/api/events.api";
+
 let events = [
   // === Activities ===
   {
@@ -254,15 +256,36 @@ const formatDate = (dateStr) => {
 
 const CatcomCalendar = () => {
   const activities = sortByDate(
-    filterUpcoming(events.filter((e) => e.category === "Activity"))
+    filterUpcoming(events.filter((e) => e.category === "Activity")),
   );
 
   const masses = sortByDate(
-    filterUpcoming(events.filter((e) => e.category === "Mass Animation"))
+    filterUpcoming(events.filter((e) => e.category === "Mass Animation")),
   );
 
   const [showActivities, setShowActivities] = useState(false);
   const [showMasses, setShowMasses] = useState(false);
+
+  // --------------Implementation---------------
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const data = await fetchEvents();
+        setEvents(data);
+      } catch (err) {
+        console.error("Error fetching events:", err);
+      }
+    };
+    loadEvents();
+  }, []);
+
+  // const activities = sortByDate(
+  //   filterUpcoming(events.filter((e) => e.category === "Activity")),
+  // );
+  // const masses = sortByDate(
+  //   filterUpcoming(events.filter((e) => e.category === "Mass Animation")),
+  // );
 
   return (
     <div className={styles.calendarWrapper}>

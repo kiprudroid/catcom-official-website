@@ -1,21 +1,12 @@
 import { Router } from "express";
 import {
-  createEvents,
-  getAllEvents,
+  createEventController,
+  getAllEventsController,
 } from "../controllers/event.controller.js";
 
 const router = Router();
 
-/**
- * GET /api/events
- * Fetch all events
- */
-router.get("/events", getAllEvents);
-
-/**
- * POST /api/events
- * Create event from admin form
- */
-router.post("/events", createEvents);
+router.get("/events", getAllEventsController);
+router.post("/events", createEventController);
 
 export default router;
