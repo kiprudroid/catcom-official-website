@@ -17,7 +17,7 @@ export const createJoinSCCServices = async (data) => {
   return await JoinSCCModel.createJoinSCC(data);
 };
 
-export const getJoinSCCServices = async () => {
+export const getAllJoinSCCServices = async () => {
   return await JoinSCCModel.getJoinSCC();
 };
 
