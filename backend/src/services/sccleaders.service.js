@@ -1,6 +1,13 @@
-import * as sccLeadersModel from "../models/scc-leaders.model.js"
+// import * as sccLeadersModel from "../models/scc-leaders.model.js"
+// 
+import {
+  createSccLeaderModel as createSccLeader,
+  getSccLeadersModel as getSccLeaders,
+  updateSccLeaderModel as updateSccLeader,
+  deleteSccLeaderModel as deleteSccLeader
+} from "../models/scc-leaders.model.js"
 
-export const createsccLeadersServices = async (data) => {
+export const createSccLeadersServices = async (data) => {
     if (!data) {
         throw new Error("No data provided");
     }
@@ -8,16 +15,27 @@ export const createsccLeadersServices = async (data) => {
         throw new Error("Missing required fields");
     }
 
-    return await sccLeadersModel.createsccLeader(data)
+    return await createSccLeader(data)
 
 }
-export const getsccLeadersServices = async (scc_name) => {
-    return await sccLeadersModel.getsccLeaders(scc_name)
+export const getSccLeadersServices = async (scc_name) => {
+    return await getSccLeaders(scc_name)
 
 }
+export const updateSccLeadersServices = async (id, data) => {
+    if (!id || !data) {
+        throw new Error("Leader ID and data required");
+    }
+    if (!data.exec_first_name || !data.exec_last_name ||!data.scc_name|| !data.position ) {  
+        throw new Error("Missing required fields");
+    }
 
-export const deletesccLeadersServices = async (id, scc_name) => {
+  return await updateSccLeader(id, data)
+  
+}
+
+export const deleteSccLeadersServices = async (id, scc_name) => {
     if (!id || !scc_name) throw new Error("Leader ID and SCC name required");
-    return await sccLeadersModel.deletesccLeader(id, scc_name);
+    return await deleteSccLeader(id, scc_name);
 }
 

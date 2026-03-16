@@ -1,12 +1,12 @@
 import {
-  getJoinSCCServices as getJoinSCC,
+  getAllJoinSCCServices as getAllJoinSCC,
   createJoinSCCServices as createJoinSCC,
   deleteJoinSCCServices as deleteJoinSCC,
 } from "../services/join-scc.service.js";
 
-export const getJoinSCCController = async (req, res) => {
+export const getAllJoinSCCController = async (req, res) => {
   try {
-    const joinscc = await getJoinSCC();
+    const joinscc = await getAllJoinSCC();
     res.status(200).json(joinscc);
   } catch (error) {
     res.status(500).json({ message: error.message });

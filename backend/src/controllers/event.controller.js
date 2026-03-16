@@ -3,11 +3,7 @@ import {
   getAllEventsService,
 } from "../services/event.service.js";
 
-/**
- * POST /events
- * Create a new event (Admin form submission)
- */
-export const createEvents = async (req, res) => {
+export const createEventController = async (req, res) => {
   try {
     const result = await createEventService(req.body);
     return res.status(201).json(result);
@@ -16,11 +12,7 @@ export const createEvents = async (req, res) => {
   }
 };
 
-/**
- * GET /events
- * Fetch all events for display
- */
-export const getAllEvents = async (req, res) => {
+export const getAllEventsController = async (req, res) => {
   try {
     const result = await getAllEventsService();
     return res.status(200).json(result);

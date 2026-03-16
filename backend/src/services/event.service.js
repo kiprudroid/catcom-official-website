@@ -1,25 +1,18 @@
 import { createEvent, findAllEvents } from "../models/event.model.js";
 
-/**
- * Business logic for creating an event
- */
 export const createEventService = async (data) => {
-  if (!data) {
-    throw new Error("No data provided");
+  if (
+    !data ||
+    !data.title ||
+    !data.event_date ||
+    !data.event_time ||
+    !data.venue
+  ) {
+    throw new Error(
+      "All fields are required: title, event_date, event_time, venue",
+    );
   }
-
-  const { title, event_date, event_time, venue } = data;
-
-  if (!title || !event_date || !event_time || !venue) {
-    throw new Error("All fields are required: title, date, time, venue");
-  }
-
-  return await createEvent({
-    title,
-    event_date,
-    event_time,
-    venue,
-  });
+  return await createEvent(data);
 };
 
 /**
