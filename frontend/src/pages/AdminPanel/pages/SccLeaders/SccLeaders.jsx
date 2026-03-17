@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./SccLeaders.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
 import {
@@ -9,6 +9,29 @@ import {
 } from "@/api/sccLeaders.api";
 
 export default function SccLeaders() {
+  const SCC_OPTIONS = useMemo(
+    () => [
+      { value: "all", label: "All" },
+      { value: "St. Martin De Porres", label: "St. Martin De Porres" },
+      { value: "Mary Mother of God", label: "Mary Mother of God" },
+      {
+        value: "St. Therese of the child Jesus",
+        label: "St. Therese of the child Jesus",
+      },
+      { value: "St. Veronica", label: "St. Veronica" },
+      { value: "St Charles Lwanga", label: "St Charles Lwanga" },
+      { value: "St. Stephen", label: "St. Stephen" },
+      { value: "St. Jude", label: "St. Jude" },
+      { value: "St. Paul", label: "St. Paul" },
+    ],
+    [],
+  );
+
+  const normalizeSccName = (name) =>
+    String(name || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
   const EMPTY_FORM = {
     exec_full_name: "",
     position: "",
@@ -16,7 +39,7 @@ export default function SccLeaders() {
     image_url: "",
   };
 
-  const [SccLeaders, setSccLeaders] = useState([]);
+  const [sccLeaders, setSccLeaders] = useState([]);
   const [form, setForm] = useState(EMPTY_FORM);
   const [imageFile, setImageFile] = useState(null);
   const [editingId, setEditingId] = useState(null);
@@ -24,8 +47,9 @@ export default function SccLeaders() {
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [currentScc, setCurrentScc] = useState("all");
 
-  // ✅ Fetch data
+  //Fetch data
   useEffect(() => {
     const loadSccLeaders = async () => {
       setLoading(true);
@@ -45,14 +69,14 @@ export default function SccLeaders() {
     loadSccLeaders();
   }, []);
 
-  // ✅ Reset form
+  //Reset form
   const resetForm = () => {
     setForm(EMPTY_FORM);
     setImageFile(null);
     setEditingId(null);
   };
 
-  // ✅ Handle input change
+  // Handle input change
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
 
@@ -64,7 +88,7 @@ export default function SccLeaders() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Start editing
+  // Start editing
   const startEdit = (leader) => {
     setEditingId(leader.exec_id);
     setError("");
@@ -73,19 +97,19 @@ export default function SccLeaders() {
       exec_full_name: leader.exec_full_name || "",
       position: leader.position || "",
       scc_name: leader.scc_name || "",
-      image_url: leader.image_url || "",
+      image_url: leader.exec_image || "",
     });
 
     setImageFile(null);
   };
 
-  // ✅ Cancel edit
+  // Cancel edit
   const cancelEdit = () => {
     resetForm();
     setError("");
   };
 
-  // ✅ Update state after create/update
+  // Update state after create/update
   const upsertLeaderInState = (savedLeader) => {
     const savedId = savedLeader.exec_id;
     if (!savedId) return false;
@@ -103,7 +127,7 @@ export default function SccLeaders() {
     return true;
   };
 
-  // ✅ Submit (Create / Update)
+  //  Submit (Create / Update)
   const submitLeader = async (e) => {
     e.preventDefault();
     if (submitting) return;
@@ -142,19 +166,20 @@ export default function SccLeaders() {
       resetForm();
     } catch (err) {
       console.error("Error submitting leader:", err);
+
       setError(err?.message || "Error submitting leader");
     } finally {
       setSubmitting(false);
     }
   };
 
-  // ✅ Delete leader
+  // Delete leader
   const removeSccLeader = async (id) => {
     if (!id) return;
 
     setError("");
 
-    const previous = SccLeaders;
+    const previous = sccLeaders;
 
     // optimistic update
     setSccLeaders((prev) => prev.filter((l) => l.exec_id !== id));
@@ -177,7 +202,6 @@ export default function SccLeaders() {
       {error && <p className={styles.error}>{error}</p>}
       {loading && <p>Loading...</p>}
 
-      {/* ✅ Form */}
       <form onSubmit={submitLeader} className={styles.form}>
         <input
           name="exec_full_name"
@@ -195,14 +219,21 @@ export default function SccLeaders() {
           required
         />
 
-        <textarea
+        <select
           name="scc_name"
           value={form.scc_name}
           onChange={handleChange}
-          placeholder="SCC name"
-          rows={3}
           required
-        />
+        >
+          <option value="" disabled>
+            Select SCC
+          </option>
+          {SCC_OPTIONS.filter((opt) => opt.value !== "all").map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
 
         <input
           type="file"
@@ -224,45 +255,66 @@ export default function SccLeaders() {
         </div>
       </form>
 
-      {/* ✅ List */}
+      {/* Filter */}
+      <div className={styles.actions}>
+        <label>
+          Filter by SCC:{" "}
+          <select
+            value={currentScc}
+            onChange={(e) => setCurrentScc(e.target.value)}
+          >
+            {SCC_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      {/* List */}
       <ul className={styles.list}>
-        {SccLeaders.map((l) => {
-          const id = l.exec_id;
+        {sccLeaders
+          .filter((l) => {
+            if (currentScc === "all") return true;
+            return (
+              normalizeSccName(l.scc_name) === normalizeSccName(currentScc)
+            );
+          })
+          .map((l) => {
+            const id = l.exec_id;
 
-          return (
-            <li key={id} className={styles.listItem}>
-              <div className={styles.listRow}>
-                <div className={styles.listLeft}>
-                  {l.image_url && (
-                    <img
-                      src={`http://localhost:5000${l.image_url}`}
-                      alt={l.exec_full_name || "leader"}
-                      className={styles.avatar}
-                    />
-                  )}
+            return (
+              <li key={id} className={styles.listItem}>
+                <div className={styles.listRow}>
+                  <div className={styles.listLeft}>
+                    {l.exec_image && (
+                      <img
+                        src={`http://localhost:5000${l.exec_image}`}
+                        alt={l.exec_full_name || "leader"}
+                        className={styles.avatar}
+                      />
+                    )}
 
-                  <div>
-                    <strong>{l.exec_full_name}</strong> —{" "}
-                    <span className={styles.role}>{l.position}</span>
-                    <p className={styles.desc}>{l.scc_name}</p>
+                    <div>
+                      <strong>{l.exec_full_name}</strong> —{" "}
+                      <span className={styles.role}>{l.position}</span>
+                      <p className={styles.desc}>{l.scc_name}</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.actions}>
+                    <button type="button" onClick={() => startEdit(l)}>
+                      Edit
+                    </button>
+                    <button type="button" onClick={() => removeSccLeader(id)}>
+                      Delete
+                    </button>
                   </div>
                 </div>
-
-                <div className={styles.actions}>
-                  <button type="button" onClick={() => startEdit(l)}>
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => removeSccLeader(id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </li>
-          );
-        })}
+              </li>
+            );
+          })}
       </ul>
     </section>
   );

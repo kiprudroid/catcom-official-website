@@ -28,6 +28,7 @@ export default function LeadersSection() {
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [currentScc, setCurrentScc] = useState(null);
 
   useEffect(() => {
     const loadLeaders = async () => {
@@ -181,6 +182,8 @@ export default function LeadersSection() {
 
       {error ? <p className={styles.error}>{error}</p> : null}
       {loading ? <p>Loading...</p> : null}
+      
+      
 
       <form onSubmit={submitLeader} className={styles.form}>
         <input

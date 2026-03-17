@@ -50,9 +50,8 @@ create table join_scc (
 
 create table scc_executive (
     exec_id SERIAL PRIMARY KEY,
-	  scc_name varchar(50),
-    exec_first_name varchar(50) not null,
-    exec_last_name varchar(50) not null,
+	scc_name varchar(50),
+    exec_full_name varchar(50) not null,    
     position varchar(50) not null,
     phone_number varchar(15),
     exec_image varchar(255)

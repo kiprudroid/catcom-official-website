@@ -23,8 +23,8 @@ export default function AdminPanel() {
         return <Members />;
       case "reports":
         return <Reports />;
-     // case "SccLeaders":
-      //  return <SccLeaders />;
+      case "SccLeaders":
+        return <SccLeaders />;
       default:
         return <LeadersSection />;
     }
