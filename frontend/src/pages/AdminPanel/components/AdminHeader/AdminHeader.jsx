@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./AdminHeader.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
 import {
+  FaUser,
   FaUsers,
   FaCalendarAlt,
   FaUserCheck,
@@ -10,7 +11,8 @@ import {
 
 export default function AdminHeader({ activeTab, setActiveTab }) {
   const tabs = [
-    { key: "leaders", label: "Leaders", icon: <FaUsers /> },
+    { key: "leaders", label: "Leaders", icon: <FaUser /> },
+    { key: "SccLeaders", label: "Scc Leaders", icon: <FaUsers /> },
     { key: "events", label: "Events", icon: <FaCalendarAlt /> },
     { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
     { key: "reports", label: "Reports", icon: <FaChartBar /> },

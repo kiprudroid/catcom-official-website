@@ -11,7 +11,7 @@ export const createSccLeadersServices = async (data) => {
     if (!data) {
         throw new Error("No data provided");
     }
-    if (!data.exec_first_name || !data.exec_last_name ||!data.scc_name|| !data.position ) {  
+    if (!data.exec_full_name ||!data.scc_name|| !data.position ) {  
         throw new Error("Missing required fields");
     }
 
@@ -26,7 +26,7 @@ export const updateSccLeadersServices = async (id, data) => {
     if (!id || !data) {
         throw new Error("Leader ID and data required");
     }
-    if (!data.exec_first_name || !data.exec_last_name ||!data.scc_name|| !data.position ) {  
+    if (!data.exec_full_name ||!data.scc_name|| !data.position ) {  
         throw new Error("Missing required fields");
     }
 

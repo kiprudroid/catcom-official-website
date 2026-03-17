@@ -28,16 +28,14 @@ export const updatesccLeaderController = async (req, res) => {
   try {
     const { id } = req.params;
     const {
-      exec_first_name,
-      exec_last_name,
+      exec_full_name,
       scc_name,
       position,
       phone_number,
       exec_image,
     } = req.body;
     await updatesccLeader(id, {
-      exec_first_name,
-      exec_last_name,
+      exec_full_name,
       scc_name,
       position,
       phone_number,
