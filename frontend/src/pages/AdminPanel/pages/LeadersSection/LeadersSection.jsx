@@ -1,144 +1,271 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./LeadersSection.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
+import {
+  fetchLeaders,
+  createLeader,
+  updateLeader,
+  deleteLeader as deleteLeaderApi,
+} from "@/api/leaders.api";
 
 export default function LeadersSection() {
-  const [leaders, setLeaders] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("admin_leaders")) || [];
-    } catch {
-      return [];
-    }
-  });
+  const EMPTY_FORM = {
+    full_name: "",
+    post_title: "",
+    exec_description: "",
+    image_url: "",
+  };
 
-  const [leaderForm, setLeaderForm] = useState({
-    name: "",
-    role: "",
-    description: "",
-    email: "",
-    photo: null,
-  });
-  const [editingLeader, setEditingLeader] = useState(null);
+  const [leaders, setLeaders] = useState([]);
+  const [form, setForm] = useState(EMPTY_FORM);
+
+  // Keep the selected file separate from text fields (multipart upload)
+  const [imageFile, setImageFile] = useState(null);
+
+  // we keep the id we are editing; null means "create" mode
+  const [editingId, setEditingId] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [currentScc, setCurrentScc] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem("admin_leaders", JSON.stringify(leaders));
-  }, [leaders]);
+    const loadLeaders = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const data = await fetchLeaders();
+        setLeaders(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Error fetching leaders:", err);
+        setError(err?.message || "Error fetching leaders");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadLeaders();
+  }, []);
+
+  const resetForm = () => {
+    setForm(EMPTY_FORM);
+    setImageFile(null);
+    setEditingId(null);
+  };
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "photo" && files?.[0]) {
-      const reader = new FileReader();
-      reader.onload = () =>
-        setLeaderForm((s) => ({ ...s, photo: reader.result }));
-      reader.readAsDataURL(files[0]);
-    } else {
-      setLeaderForm((s) => ({ ...s, [name]: value }));
+    const { name, value, type, files } = e.target;
+
+    if (type === "file") {
+      setImageFile(files?.[0] ?? null);
+      return;
     }
+
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const submitLeader = (e) => {
-    e.preventDefault();
-    if (editingLeader !== null) {
-      setLeaders((prev) => {
-        const updated = [...prev];
-        updated[editingLeader] = leaderForm;
-        return updated;
-      });
-      setEditingLeader(null);
-    } else {
-      setLeaders((prev) => [...prev, leaderForm]);
-    }
-    setLeaderForm({
-      name: "",
-      role: "",
-      description: "",
-      email: "",
-      photo: null,
+  const startEdit = (leader) => {
+    // Some APIs return `id` while others use `user_id`.
+    const id = leader?.user_id ?? leader?.id ?? null;
+
+    setEditingId(id);
+    setError("");
+
+    setForm({
+      full_name: leader?.full_name ?? "",
+      post_title: leader?.post_title ?? "",
+      exec_description: leader?.exec_description ?? "",
+      image_url: leader?.image_url ?? "",
     });
+
+    // When editing, we only upload a new image if the user selects one.
+    setImageFile(null);
   };
 
-  const deleteLeader = (idx) =>
-    setLeaders((prev) => prev.filter((_, i) => i !== idx));
-  const editLeader = (idx) => {
-    setLeaderForm(leaders[idx]);
-    setEditingLeader(idx);
+  const cancelEdit = () => {
+    resetForm();
+    setError("");
+  };
+
+  const upsertLeaderInState = (savedLeader, fallbackId) => {
+    const savedId =
+      savedLeader?.user_id ?? savedLeader?.id ?? fallbackId ?? null;
+
+    if (savedId == null) {
+      // If backend returns a non-standard shape, safest is re-fetch.
+      return false;
+    }
+
+    setLeaders((prev) => {
+      const idx = prev.findIndex((l) => (l?.user_id ?? l?.id) === savedId);
+      if (idx === -1) return [savedLeader, ...prev];
+      const copy = [...prev];
+      copy[idx] = savedLeader;
+      return copy;
+    });
+
+    return true;
+  };
+
+  const submitLeader = async (e) => {
+    e.preventDefault();
+    if (submitting) return;
+
+    setSubmitting(true);
+    setError("");
+
+    // multipart payload
+    const fd = new FormData();
+    fd.append("full_name", form.full_name);
+    fd.append("post_title", form.post_title);
+    fd.append("exec_description", form.exec_description);
+
+    // Optional: allow backend to keep existing image on update if no new file is provided.
+    if (imageFile) fd.append("image", imageFile);
+
+    try {
+      if (editingId == null) {
+        const created = await createLeader(fd);
+
+        const ok = upsertLeaderInState(created, null);
+        if (!ok) {
+          const data = await fetchLeaders();
+          setLeaders(Array.isArray(data) ? data : []);
+        }
+
+        resetForm();
+        return;
+      }
+
+      const updated = await updateLeader(editingId, fd);
+
+      const ok = upsertLeaderInState(updated, editingId);
+      if (!ok) {
+        const data = await fetchLeaders();
+        setLeaders(Array.isArray(data) ? data : []);
+      }
+
+      resetForm();
+    } catch (err) {
+      console.error("Error submitting leader:", err);
+      setError(err?.message || "Error submitting leader");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const removeLeader = async (idLike) => {
+    const id = idLike ?? null;
+    if (id == null) return;
+
+    setError("");
+
+    // optimistic update
+    const previous = leaders;
+    setLeaders((prev) => prev.filter((l) => (l?.user_id ?? l?.id) !== id));
+
+    try {
+      await deleteLeaderApi(id);
+      if (editingId === id) resetForm();
+    } catch (err) {
+      console.error("Error deleting leader:", err);
+      setLeaders(previous);
+      setError(err?.message || "Error deleting leader");
+    }
   };
 
   return (
     <section className={styles.section}>
       <SectionHeading>Leaders</SectionHeading>
 
+      {error ? <p className={styles.error}>{error}</p> : null}
+      {loading ? <p>Loading...</p> : null}
+      
+      
+
       <form onSubmit={submitLeader} className={styles.form}>
         <input
-          name="name"
-          value={leaderForm.name}
+          name="full_name"
+          value={form.full_name}
           onChange={handleChange}
-          placeholder="Name"
+          placeholder="Full name"
           required
         />
+
         <input
-          name="role"
-          value={leaderForm.role}
+          name="post_title"
+          value={form.post_title}
           onChange={handleChange}
-          placeholder="Role"
+          placeholder="Post title"
           required
         />
+
         <textarea
-          name="description"
-          value={leaderForm.description}
+          name="exec_description"
+          value={form.exec_description}
           onChange={handleChange}
-          placeholder="Role description"
-          rows="3"
+          placeholder="Executive description"
+          rows={3}
           required
         />
-        <input
-          name="email"
-          type="email"
-          value={leaderForm.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-        />
+
+        {/* multipart file upload field (must match backend multer: .single("image")) */}
         <input
           type="file"
-          name="photo"
+          name="image"
           accept="image/*"
           onChange={handleChange}
         />
-        {leaderForm.photo && (
-          <img
-            src={leaderForm.photo}
-            alt="preview"
-            className={styles.preview}
-          />
-        )}
-        <button type="submit">
-          {editingLeader !== null ? "Update Leader" : "Add Leader"}
-        </button>
+
+        <div className={styles.actions}>
+          <button type="submit" disabled={submitting}>
+            {editingId != null ? "Update Leader" : "Add Leader"}
+          </button>
+
+          {editingId != null ? (
+            <button type="button" onClick={cancelEdit} disabled={submitting}>
+              Cancel
+            </button>
+          ) : null}
+        </div>
       </form>
 
       <ul className={styles.list}>
-        {leaders.map((l, idx) => (
-          <li key={idx} className={styles.listItem}>
-            <div className={styles.listRow}>
-              <div className={styles.listLeft}>
-                {l.photo && (
-                  <img src={l.photo} alt={l.name} className={styles.avatar} />
-                )}
-                <div>
-                  <strong>{l.name}</strong> —{" "}
-                  <span className={styles.role}>{l.role}</span>
-                  <p className={styles.desc}>{l.description}</p>
-                  <small>{l.email}</small>
+        {leaders.map((l) => {
+          const id = l?.user_id ?? l?.id;
+          return (
+            <li key={id} className={styles.listItem}>
+              <div className={styles.listRow}>
+                <div className={styles.listLeft}>
+                  {l?.image_url ? (
+                    <img
+                      src={`http://localhost:5000${l.image_url}`}
+                      alt={l?.full_name || "leader"}
+                      className={styles.avatar}
+                    />
+                  ) : null}
+
+                  <div>
+                    <strong>{l?.full_name}</strong> —{" "}
+                    <span className={styles.role}>{l?.post_title}</span>
+                    <p className={styles.desc}>{l?.exec_description}</p>
+                  </div>
+                </div>
+
+                <div className={styles.actions}>
+                  <button type="button" onClick={() => startEdit(l)}>
+                    Edit
+                  </button>
+                  <button type="button" onClick={() => removeLeader(id)}>
+                    Delete
+                  </button>
                 </div>
               </div>
-              <div className={styles.actions}>
-                <button onClick={() => editLeader(idx)}>Edit</button>
-                <button onClick={() => deleteLeader(idx)}>Delete</button>
-              </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );

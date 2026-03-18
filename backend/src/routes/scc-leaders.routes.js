@@ -1,5 +1,4 @@
-import {Router} from 'express';
-//import sccleadersController from "../controllers/scc-leaders.controller.js";
+import { Router } from "express";
 
 import {
   getsccLeaderController as getsccLeader,
@@ -8,24 +7,33 @@ import {
   deletesccLeaderController as deletesccLeader,
 } from "../controllers/scc-leaders.controller.js";
 
+import { uploadSccLeaderImage } from "../middleware/upload.middleware.js";
 
 const router = Router();
 
-// ENDPOINTS FOR LEADERS
+// ENDPOINTS FOR SCC LEADERS
 
-// GET LEADERS
-router.get('/scc-leaders', getsccLeader)
+// GET ALL SCC LEADERS
+router.get("/scc-leaders", getsccLeader);
 
-// GET SPECIFIC SCC LEADERS
-router.get('/scc-leaders/:scc_name', getsccLeader)
+// GET SCC LEADERS BY SCC NAME
+router.get("/scc-leaders/:scc_name", getsccLeader);
 
-//POST LEADERS
-router.post('/scc-leaders', createsccLeader)
+// CREATE SCC LEADER (multipart form: fields + image)
+router.post(
+  "/scc-leaders",
+  uploadSccLeaderImage.single("image"),
+  createsccLeader,
+);
 
-//UPDATE LEADERS
-router.put('/scc-leaders/:id',updatesccLeader)
+// UPDATE SCC LEADER (multipart form: fields + image (optional))
+router.put(
+  "/scc-leaders/:id",
+  uploadSccLeaderImage.single("image"),
+  updatesccLeader,
+);
 
-//DELETE LEADERS
-router.delete('/scc-leaders/:scc_name/:id',deletesccLeader)
+// DELETE SCC LEADER (by id)
+router.delete("/scc-leaders/:id", deletesccLeader);
 
 export default router;
