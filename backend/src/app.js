@@ -16,6 +16,7 @@ import readingsRouter from "./routes/readings.routes.js";
 
 //import { errorHandler } from "./middleware/errorHandler.js";
 import cors from "cors";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
@@ -38,6 +39,8 @@ app.use("/api", groupsRouter);
 app.use("/api", authRouter);
 app.use("/api", joinSccRouter);
 app.use("/api", readingsRouter);
+
+app.use(errorHandler);
 
 //404 not found
 app.use((req, res) => {
