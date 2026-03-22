@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SccMemberDuties.module.css";
-import { Paragraph, SectionHeading } from "../../../../components/Typography/Typography";
+import { SectionHeading } from "../../../../components/Typography/Typography";
 import { FaCheckCircle } from "react-icons/fa";
 
 const SccMemberDuties = ({ className }) => {
@@ -21,16 +21,14 @@ const SccMemberDuties = ({ className }) => {
         What SCC Members Should Do
       </SectionHeading>
 
-      <Paragraph>
-        <ul className={styles.membersDutiesList}>
-          {duties.map((duty, index) => (
-            <li key={index} className={styles.dutyItem}>
-              <FaCheckCircle className={styles.icon} />
-              <span>{duty}</span>
-            </li>
-          ))}
-        </ul>
-      </Paragraph>
+      <ul className={styles.membersDutiesList}>
+        {duties.map((duty, index) => (
+          <li key={index} className={styles.dutyItem}>
+            <FaCheckCircle className={styles.icon} />
+            <span>{duty}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

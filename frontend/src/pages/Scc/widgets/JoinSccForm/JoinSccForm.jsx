@@ -1,6 +1,9 @@
 import styles from "./JoinSccForm.module.css";
 import React, { useState } from "react";
-import { SectionHeading, Paragraph,} from "./../../../../components/Typography/Typography";
+import {
+  SectionHeading,
+  Paragraph,
+} from "./../../../../components/Typography/Typography";
 import { createJoinScc } from "@/api/joinScc.api";
 
 function JoinSccForm({ className }) {
@@ -29,12 +32,13 @@ function JoinSccForm({ className }) {
     e.preventDefault();
 
     const payload = {
-      full_name: `${formData.first_name.trim()} ${formData.last_name.trim()}`.trim(),
+      full_name:
+        `${formData.first_name.trim()} ${formData.last_name.trim()}`.trim(),
       phone_number: formData.phone_number,
       email: formData.email,
-      year_study: formData.year_study,
-      gender: formData.gender,
-      scc_name: " ",
+      year_study: Number(formData.year_study),
+      gender: String(formData.gender).trim().toLowerCase(),
+      scc_name: "TBD",
     };
 
     try {
@@ -48,9 +52,8 @@ function JoinSccForm({ className }) {
         email: "",
         year_study: "",
         gender: "",
-        scc_name: "",
+        scc_name: " ",
       });
-
     } catch (err) {
       alert("Failed to submit request");
       console.error(err);
@@ -58,7 +61,9 @@ function JoinSccForm({ className }) {
   };
 
   return (
-    <div className={`${styles.formGrid} ${styles.joinForm} ${className ?? ""}`.trim()}>
+    <div
+      className={`${styles.formGrid} ${styles.joinForm} ${className ?? ""}`.trim()}
+    >
       <SectionHeading as="h2">Joining an SCC</SectionHeading>
       <Paragraph className={styles.subtitle}>
         To join an SCC, please fill out the form below
@@ -67,7 +72,9 @@ function JoinSccForm({ className }) {
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label><Paragraph>First Name</Paragraph></label>
+            <label>
+              <Paragraph>First Name</Paragraph>
+            </label>
             <input
               name="first_name"
               placeholder=" "
@@ -77,7 +84,9 @@ function JoinSccForm({ className }) {
             />
           </div>
           <div className={styles.inputCol}>
-            <label><Paragraph>Last Name</Paragraph></label>
+            <label>
+              <Paragraph>Last Name</Paragraph>
+            </label>
             <input
               name="last_name"
               placeholder=" "
@@ -90,7 +99,9 @@ function JoinSccForm({ className }) {
 
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label><Paragraph>Phone Number</Paragraph></label>
+            <label>
+              <Paragraph>Phone Number</Paragraph>
+            </label>
             <input
               name="phone_number"
               placeholder=" "
@@ -100,7 +111,9 @@ function JoinSccForm({ className }) {
             />
           </div>
           <div className={styles.inputCol}>
-            <label><Paragraph>Your E-mail</Paragraph></label>
+            <label>
+              <Paragraph>Your E-mail</Paragraph>
+            </label>
             <input
               name="email"
               placeholder=" "
@@ -113,7 +126,9 @@ function JoinSccForm({ className }) {
 
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label><Paragraph>Year of Study</Paragraph></label>
+            <label>
+              <Paragraph>Year of Study</Paragraph>
+            </label>
             <select
               name="year_study"
               value={formData.year_study}
@@ -121,16 +136,18 @@ function JoinSccForm({ className }) {
               required
             >
               <option value="">Select Year</option>
-              <option value="1st">1st</option>
-              <option value="2nd">2nd</option>
-              <option value="3rd">3rd</option>
-              <option value="4th">4th</option>
-              <option value="5th">5th</option>
-              <option value="6th">6th</option>
+              <option value="1">1st</option>
+              <option value="2">2nd</option>
+              <option value="3">3rd</option>
+              <option value="4">4th</option>
+              <option value="5">5th</option>
+              <option value="6">6th</option>
             </select>
           </div>
           <div className={styles.inputCol}>
-            <label><Paragraph>Gender</Paragraph></label>
+            <label>
+              <Paragraph>Gender</Paragraph>
+            </label>
             <select
               name="gender"
               value={formData.gender}
@@ -138,15 +155,17 @@ function JoinSccForm({ className }) {
               required
             >
               <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
             </select>
           </div>
         </div>
 
-        
+       
+
         <Paragraph className={styles.infoText}>
-          After submitting, you will be contacted and informed of the SCC to join.
+          After submitting, you will be contacted and informed of the SCC to
+          join.
         </Paragraph>
 
         <div className={styles.buttonRow}>
