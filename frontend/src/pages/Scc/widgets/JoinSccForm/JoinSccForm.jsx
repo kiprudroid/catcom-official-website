@@ -1,59 +1,116 @@
 import styles from "./JoinSccForm.module.css";
-import React, { useState, useEffect } from "react";
-import {
-  SectionHeading,
-  Paragraph,
-} from "./../../../../components/Typography/Typography";
+import React, { useState } from "react";
+import { SectionHeading, Paragraph } from "./../../../../components/Typography/Typography";
+import { createJoinScc } from "@/api/joinScc.api";
 
 function JoinSccForm({ className }) {
-  const [warning, setWarning] = useState(null);
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    email: "",
+    year_study: "",
+    gender: "",
+  });
 
-  const showWarning = (msg) => {
-    setWarning(msg);
-    setTimeout(() => setWarning(null), 3500);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      full_name: `${formData.first_name.trim()} ${formData.last_name.trim()}`.trim(),
+      phone_number: formData.phone_number,
+      email: formData.email,
+      year_study: formData.year_study,
+      gender: formData.gender,
+    };
+
+    try {
+      await createJoinScc(payload);
+
+      setFormData({
+        first_name: "",
+        last_name: "",
+        phone_number: "",
+        email: "",
+        year_study: "",
+        gender: "",
+      });
+
+    } catch (err) {
+      console.error("Submission error:", err?.response?.data ?? err.message ?? err);
+      alert("Failed to submit request. Please try again.");
+    }
   };
 
   return (
-    <form className={`${styles.formGrid} ${styles.joinForm} `}>
-
+    <div className={`${styles.formGrid} ${styles.joinForm} ${className ?? ""}`.trim()}>
       <SectionHeading as="h2">Joining an SCC</SectionHeading>
-      <Paragraph>To join an SCC, please fill out the form below</Paragraph>
+      <Paragraph className={styles.subtitle}>
+        To join an SCC, please fill out the form below
+      </Paragraph>
 
-      <div className={styles.formCol}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label htmlFor="firstName">
-              <Paragraph>First Name</Paragraph>
-            </label>
-            <input type="text" id="firstName" name="firstName" />
+            <label><Paragraph>First Name</Paragraph></label>
+            <input
+              name="first_name"
+              placeholder=" "
+              value={formData.first_name}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className={styles.inputCol}>
-            <label htmlFor="lastName">
-              <Paragraph>Last Name</Paragraph>
-            </label>
-            <input type="text" id="lastName" name="lastName" />
+            <label><Paragraph>Last Name</Paragraph></label>
+            <input
+              name="last_name"
+              placeholder=" "
+              value={formData.last_name}
+              onChange={handleChange}
+              required
+            />
           </div>
         </div>
+
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label htmlFor="phone">
-              <Paragraph>Phone Number</Paragraph>
-            </label>
-            <input type="text" id="phone" name="phone" />
+            <label><Paragraph>Phone Number</Paragraph></label>
+            <input
+              name="phone_number"
+              placeholder=" "
+              value={formData.phone_number}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className={styles.inputCol}>
-            <label htmlFor="email">
-              <Paragraph>Your E-mail</Paragraph>
-            </label>
-            <input type="email" id="email" name="email" />
+            <label><Paragraph>Your E-mail</Paragraph></label>
+            <input
+              name="email"
+              type="email"
+              placeholder=" "
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
         </div>
+
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label htmlFor="yearOfStudy">
-              <Paragraph>Year of Study</Paragraph>
-            </label>
-            <select id="yearOfStudy" name="yearOfStudy">
+            <label><Paragraph>Year of Study</Paragraph></label>
+            <select
+              name="year_study"
+              value={formData.year_study}
+              onChange={handleChange}
+              required
+            >
               <option value="">Select Year</option>
               <option value="1st">1st</option>
               <option value="2nd">2nd</option>
@@ -64,34 +121,32 @@ function JoinSccForm({ className }) {
             </select>
           </div>
           <div className={styles.inputCol}>
-            <label htmlFor="gender">
-              <Paragraph>Gender</Paragraph>
-            </label>
-            <select id="gender" name="gender">
+            <label><Paragraph>Gender</Paragraph></label>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              required
+            >
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
           </div>
         </div>
-      </div>
-      <Paragraph
-        style={{ marginTop: "1rem", fontSize: "1rem", color: "#124346" }}
-      >
-        After submitting, you will be contacted and informed of the SCC to join.
-      </Paragraph>
-      <div className={styles.buttonRow}>
-        <button
-          type="button"
-          className={styles.joinBtn}
-          onClick={() => showWarning(`🚧 This Feature is under development`)}
-        >
-          Join SCC
-        </button>
 
-      </div>
-              {warning && <div className={styles.warningBox}>{warning}</div>}
-    </form>
+        <Paragraph className={styles.infoText}>
+          After submitting, you will be contacted and assigned an SCC.
+        </Paragraph>
+
+        <div className={styles.buttonRow}>
+          <button className={styles.joinBtn} type="submit">
+            Join SCC
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
+
 export default JoinSccForm;
