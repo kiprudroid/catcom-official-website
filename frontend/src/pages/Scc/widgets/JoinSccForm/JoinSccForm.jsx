@@ -1,6 +1,6 @@
 import styles from "./JoinSccForm.module.css";
 import React, { useState } from "react";
-import { SectionHeading, Paragraph,} from "./../../../../components/Typography/Typography";
+import { SectionHeading, Paragraph } from "./../../../../components/Typography/Typography";
 import { createJoinScc } from "@/api/joinScc.api";
 
 function JoinSccForm({ className }) {
@@ -11,20 +11,13 @@ function JoinSccForm({ className }) {
     email: "",
     year_study: "",
     gender: "",
-    scc_name: "",
   });
 
-  // handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -34,13 +27,11 @@ function JoinSccForm({ className }) {
       email: formData.email,
       year_study: formData.year_study,
       gender: formData.gender,
-      scc_name: " ",
     };
 
     try {
       await createJoinScc(payload);
 
-      // reset form
       setFormData({
         first_name: "",
         last_name: "",
@@ -48,12 +39,11 @@ function JoinSccForm({ className }) {
         email: "",
         year_study: "",
         gender: "",
-        scc_name: "",
       });
 
     } catch (err) {
-      alert("Failed to submit request");
-      console.error(err);
+      console.error("Submission error:", err?.response?.data ?? err.message ?? err);
+      alert("Failed to submit request. Please try again.");
     }
   };
 
@@ -103,6 +93,7 @@ function JoinSccForm({ className }) {
             <label><Paragraph>Your E-mail</Paragraph></label>
             <input
               name="email"
+              type="email"
               placeholder=" "
               value={formData.email}
               onChange={handleChange}
@@ -144,9 +135,8 @@ function JoinSccForm({ className }) {
           </div>
         </div>
 
-        
         <Paragraph className={styles.infoText}>
-          After submitting, you will be contacted and informed of the SCC to join.
+          After submitting, you will be contacted and assigned an SCC.
         </Paragraph>
 
         <div className={styles.buttonRow}>

@@ -16,7 +16,9 @@ export const fetchJoinSccs = async () => {
 export const createJoinScc = async (payload) => {
   const res = await fetch(`http://localhost:5000/api/join-sccs`, {
     method: "POST",
-    headers: { "Accept": "application/json" },
+    headers: { "Accept": "application/json" ,
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(payload),
   });
 
