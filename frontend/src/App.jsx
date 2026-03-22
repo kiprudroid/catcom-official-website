@@ -27,6 +27,7 @@ import {
   LeadersSection,
   Members,
   Reports,
+  JoinSccsSection,
 } from "@/pages/AdminPanel/pages";
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
           <Route path="reports" element={<Reports />} />
           <Route path="leaders" element={<LeadersSection />} />
           <Route path="events" element={<EventsSection />} />
+          <Route path="join-sccs" element={<JoinSccsSection />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </>
