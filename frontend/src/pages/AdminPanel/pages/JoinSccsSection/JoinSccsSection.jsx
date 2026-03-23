@@ -1,80 +1,162 @@
 import React, { useState, useEffect } from "react";
 import { SectionHeading, Paragraph } from "../../../../components/Typography/Typography";
-import { fetchJoinSccs, deleteJoinScc } from "@/api/joinScc.api";
+import { fetchJoinSccs, deleteJoinScc, assignScc } from "@/api/joinScc.api";
 import styles from "./JoinSccsSection.module.css";
+
+const SCC_OPTIONS = [
+  "St. Charles SCC",
+  "St. Jude SCC",
+  "St. Martin SCC",
+  "St. Paul SCC",
+  "St. Stephen SCC",
+  "St. Therese SCC",
+  "St. Veronica SCC",
+  "MMOG SCC",
+];
 
 function JoinSccsSection() {
   const [joinRequests, setJoinRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [assigning, setAssigning] = useState({}); 
+
+  const loadJoinRequests = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchJoinSccs();
+      setJoinRequests(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadJoinRequests = async () => {
-      try {
-        setLoading(true);
-        const data = await fetchJoinSccs();
-        setJoinRequests(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     loadJoinRequests();
   }, []);
 
   const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this request?")) return;
     try {
       await deleteJoinScc(id);
-      // Refresh the list
-      const updated = await fetchJoinSccs();
-      setJoinRequests(updated);
-      alert("Request deleted successfully!");
+      await loadJoinRequests();
     } catch (err) {
       alert("Failed to delete request");
       console.error(err);
     }
   };
 
-  // Group requests by SCC
-  const groupedRequests = joinRequests.reduce((acc, request) => {
-    if (!acc[request.scc_name]) {
-      acc[request.scc_name] = [];
+  const handleAssign = async (id) => {
+    const scc = assigning[id];
+    if (!scc) return alert("Please select an SCC first.");
+    try {
+      await assignScc(id, scc);
+      await loadJoinRequests();
+      setAssigning((prev) => { const n = { ...prev }; delete n[id]; return n; });
+    } catch (err) {
+      alert("Failed to assign SCC");
+      console.error(err);
     }
-    acc[request.scc_name].push(request);
+  };
+
+  // Filter by search query
+  const filtered = joinRequests.filter((r) =>
+    r.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    r.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Group by scc_name
+  const grouped = filtered.reduce((acc, r) => {
+    const key = r.scc_name || "TBD";
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(r);
     return acc;
   }, {});
 
-  if (loading) {
-    return <Paragraph>Loading join requests...</Paragraph>;
-  }
+  // Show TBD group first, then alphabetical
+  const sortedGroups = Object.keys(grouped).sort((a, b) => {
+    if (a === "TBD") return -1;
+    if (b === "TBD") return 1;
+    return a.localeCompare(b);
+  });
 
-  if (error) {
-    return <Paragraph style={{ color: "red" }}>Error: {error}</Paragraph>;
-  }
+  if (loading) return <Paragraph>Loading join requests...</Paragraph>;
+  if (error) return <Paragraph style={{ color: "red" }}>Error: {error}</Paragraph>;
 
   return (
     <div className={styles.adminPanel}>
-      <SectionHeading as="h2">Join SCC Admin Panel</SectionHeading>
+      <SectionHeading as="h2">Join SCC Requests</SectionHeading>
 
-      {Object.keys(groupedRequests).length === 0 ? (
-        <Paragraph>No join requests yet.</Paragraph>
+      {/* Search Bar */}
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          placeholder="Search by name "
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className={styles.searchInput}
+        />
+        {searchQuery && (
+          <button className={styles.clearBtn} onClick={() => setSearchQuery("")}>✕</button>
+        )}
+      </div>
+
+      <Paragraph className={styles.totalCount}>
+        Total requests: {filtered.length}
+      </Paragraph>
+
+      {sortedGroups.length === 0 ? (
+        <Paragraph>No join requests found.</Paragraph>
       ) : (
-        Object.entries(groupedRequests).map(([scc, requests]) => (
+        sortedGroups.map((scc) => (
           <div key={scc} className={styles.sccGroup}>
-            <SectionHeading as="h3">{scc}</SectionHeading>
-            <div className={styles.requestsList}>
-              {requests.map((request) => (
-                <div key={request.user_id} className={styles.requestItem}>
-                  <Paragraph><strong>Name:</strong> {request.full_name}</Paragraph>
-                  <Paragraph><strong>Phone:</strong> {request.phone_number}</Paragraph>
-                  <Paragraph><strong>Email:</strong> {request.email}</Paragraph>
-                  <Paragraph><strong>Year:</strong> {request.year_study}</Paragraph>
-                  <Paragraph><strong>Gender:</strong> {request.gender}</Paragraph>
+            <div className={styles.sccGroupHeader}>
+              <SectionHeading as="h3">{scc}</SectionHeading>
+              <span className={styles.badge}>{grouped[scc].length}</span>
+            </div>
+
+            <div className={styles.requestsGrid}>
+              {grouped[scc].map((request) => (
+                <div key={request.user_id} className={styles.requestCard}>
+                  <div className={styles.cardHeader}>
+                    <strong>{request.full_name}</strong>
+                    <span className={`${styles.sccTag} ${request.scc_name === "TBD" ? styles.tbdTag : styles.assignedTag}`}>
+                      {request.scc_name}
+                    </span>
+                  </div>
+
+                  <Paragraph>📞 {request.phone_number}</Paragraph>
+                  <Paragraph>✉️ {request.email}</Paragraph>
+                  <Paragraph>📚 Year {request.year_study}</Paragraph>
+                  <Paragraph>👤 {request.gender}</Paragraph>
+
+                  {/* Assign SCC */}
+                  <div className={styles.assignRow}>
+                    <select
+                      value={assigning[request.user_id] || ""}
+                      onChange={(e) =>
+                        setAssigning((prev) => ({ ...prev, [request.user_id]: e.target.value }))
+                      }
+                      className={styles.assignSelect}
+                    >
+                      <option value="">Assign SCC...</option>
+                      {SCC_OPTIONS.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                    <button
+                      className={styles.assignBtn}
+                      onClick={() => handleAssign(request.user_id)}
+                    >
+                      Assign
+                    </button>
+                  </div>
+
                   <button
+                    className={styles.deleteBtn}
                     onClick={() => handleDelete(request.user_id)}
-                    className={styles.deleteButton}
                   >
                     Delete
                   </button>

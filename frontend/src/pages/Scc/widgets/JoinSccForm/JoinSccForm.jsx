@@ -1,7 +1,45 @@
-import styles from "./JoinSccForm.module.css";
 import React, { useState } from "react";
-import { SectionHeading, Paragraph } from "./../../../../components/Typography/Typography";
+import {
+  SectionHeading,
+  Paragraph,
+} from "./../../../../components/Typography/Typography";
 import { createJoinScc } from "@/api/joinScc.api";
+import styles from "./JoinSccForm.module.css";
+
+function Modal({ type, onClose }) {
+  const isSuccess = type === "success";
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+        <div
+          className={styles.modalIcon}
+          style={{ background: isSuccess ? "#22c55e" : "#ef4444" }}
+        >
+          {isSuccess ? "✓" : "✕"}
+        </div>
+
+        <p className={styles.modalTitle}>
+          {isSuccess ? "Request Submitted!" : "Email Already Used"}
+        </p>
+
+        <p className={styles.modalMessage}>
+          {isSuccess
+            ? "You have successfully submitted your request to join an SCC. You will be contacted and assigned an SCC soon."
+            : "This email address has already been used to submit a join request. Please use a different email address."}
+        </p>
+
+        <button
+          className={styles.modalBtn}
+          style={{ background: isSuccess ? "#22c55e" : "#ef4444" }}
+          onClick={onClose}
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function JoinSccForm({ className }) {
   const [formData, setFormData] = useState({
@@ -12,6 +50,8 @@ function JoinSccForm({ className }) {
     year_study: "",
     gender: "",
   });
+
+  const [modal, setModal] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +67,7 @@ function JoinSccForm({ className }) {
       email: formData.email,
       year_study: formData.year_study,
       gender: formData.gender,
+      scc_name: "TBD",
     };
 
     try {
@@ -41,14 +82,18 @@ function JoinSccForm({ className }) {
         gender: "",
       });
 
+      setModal("success");
     } catch (err) {
-      console.error("Submission error:", err?.response?.data ?? err.message ?? err);
-      alert("Failed to submit request. Please try again.");
+      console.error(err);
+      setModal("error");
     }
   };
 
   return (
     <div className={`${styles.formGrid} ${styles.joinForm} ${className ?? ""}`.trim()}>
+
+      {modal && <Modal type={modal} onClose={() => setModal(null)} />}
+
       <SectionHeading as="h2">Joining an SCC</SectionHeading>
       <Paragraph className={styles.subtitle}>
         To join an SCC, please fill out the form below
@@ -60,7 +105,7 @@ function JoinSccForm({ className }) {
             <label><Paragraph>First Name</Paragraph></label>
             <input
               name="first_name"
-              placeholder=" "
+              placeholder="First Name"
               value={formData.first_name}
               onChange={handleChange}
               required
@@ -70,7 +115,7 @@ function JoinSccForm({ className }) {
             <label><Paragraph>Last Name</Paragraph></label>
             <input
               name="last_name"
-              placeholder=" "
+              placeholder="Last Name"
               value={formData.last_name}
               onChange={handleChange}
               required
@@ -83,7 +128,7 @@ function JoinSccForm({ className }) {
             <label><Paragraph>Phone Number</Paragraph></label>
             <input
               name="phone_number"
-              placeholder=" "
+              placeholder="Phone Number"
               value={formData.phone_number}
               onChange={handleChange}
               required
@@ -94,7 +139,7 @@ function JoinSccForm({ className }) {
             <input
               name="email"
               type="email"
-              placeholder=" "
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
               required
@@ -112,12 +157,12 @@ function JoinSccForm({ className }) {
               required
             >
               <option value="">Select Year</option>
-              <option value="1st">1st</option>
-              <option value="2nd">2nd</option>
-              <option value="3rd">3rd</option>
-              <option value="4th">4th</option>
-              <option value="5th">5th</option>
-              <option value="6th">6th</option>
+              <option value="1">1st</option>
+              <option value="2">2nd</option>
+              <option value="3">3rd</option>
+              <option value="4">4th</option>
+              <option value="5">5th</option>
+              <option value="6">6th</option>
             </select>
           </div>
           <div className={styles.inputCol}>
@@ -129,16 +174,12 @@ function JoinSccForm({ className }) {
               required
             >
               <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
             </select>
           </div>
         </div>
-
-        <Paragraph className={styles.infoText}>
-          After submitting, you will be contacted and assigned an SCC.
-        </Paragraph>
-
+        
         <div className={styles.buttonRow}>
           <button className={styles.joinBtn} type="submit">
             Join SCC

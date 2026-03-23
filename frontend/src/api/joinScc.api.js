@@ -1,8 +1,8 @@
 import { API_BASE } from "./apiClient";
-
+const API_URL = `${API_BASE}/join-sccs`;
 
 export const fetchJoinSccs = async () => {
-  const res = await fetch(`http://localhost:5000/api/join-sccs`, {
+  const res = await fetch(`${API_URL}`, {
     method: "GET",
    headers: { "Accept": "application/json" }
   });
@@ -14,7 +14,7 @@ export const fetchJoinSccs = async () => {
 };
 
 export const createJoinScc = async (payload) => {
-  const res = await fetch(`http://localhost:5000/api/join-sccs`, {
+  const res = await fetch(`${API_URL}`, {
     method: "POST",
     headers: { "Accept": "application/json" ,
       "Content-Type": "application/json"
@@ -32,7 +32,7 @@ export const createJoinScc = async (payload) => {
 };
 
 export const deleteJoinScc = async (id) => {
-  const res = await fetch(`http://localhost:5000/api/join-sccs/${id}`, {
+  const res = await fetch(`${API_URL}/${id}`, {
     method: "DELETE",
   });
 
@@ -40,4 +40,20 @@ export const deleteJoinScc = async (id) => {
     const text = await res.text();
     throw new Error(`Failed to delete join request: ${text}`);
   }
+};
+
+export const assignScc = async (id, scc_name) => {
+  const res = await fetch(`${API_URL}/${id}`, {
+    method: "PATCH", 
+    headers: { "Accept": "application/json" ,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ scc_name }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Failed to assign SCC: ${text}`);
+  }
+  return res.json();
 };

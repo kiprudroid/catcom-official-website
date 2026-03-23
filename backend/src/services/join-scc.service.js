@@ -20,6 +20,12 @@ export const createJoinSCCServices = async (data) => {
 export const getAllJoinSCCServices = async () => {
   return await JoinSCCModel.getJoinSCC();
 };
+export const assignSCCServices = async (id, scc_name) => {
+  if (!id || !scc_name) {
+    throw new Error("ID and scc_name are required");
+  } 
+  return await JoinSCCModel.assignSCC(id, scc_name);
+};
 
 export const deleteJoinSCCServices = async (id) => {
   return await JoinSCCModel.deleteJoinSCC(id);
