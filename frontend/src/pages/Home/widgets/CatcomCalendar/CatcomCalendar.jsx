@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CatcomCalendar.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import {

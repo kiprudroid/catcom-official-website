@@ -8,6 +8,7 @@ import {
   LeadersSection,
   EventsSection,
   SccLeaders,
+  JoinGroup,
 } from "@/pages/AdminPanel/pages";
 
 export default function AdminPanel() {
@@ -25,6 +26,8 @@ export default function AdminPanel() {
         return <Reports />;
       case "SccLeaders":
         return <SccLeaders />;
+      case "joinGroup":
+        return <JoinGroup />;
       default:
         return <LeadersSection />;
     }

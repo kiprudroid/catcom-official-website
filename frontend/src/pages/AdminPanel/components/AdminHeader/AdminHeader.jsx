@@ -16,6 +16,7 @@ export default function AdminHeader({ activeTab, setActiveTab }) {
     { key: "events", label: "Events", icon: <FaCalendarAlt /> },
     { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
     { key: "reports", label: "Reports", icon: <FaChartBar /> },
+    { key: "joinGroup", label: "Join Group", icon: <FaUserCheck /> },
   ];
 
   return (
