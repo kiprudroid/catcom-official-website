@@ -4,3 +4,4 @@ export { default as EventsSection } from "./EventsSection";
 export { default as LeadersSection } from "./LeadersSection";
 export { default as SccLeaders } from "./SccLeaders";
 export { default as JoinGroup } from "./JoinGroup";
+export { default as JoinSccsSection } from "./JoinSccsSection";
