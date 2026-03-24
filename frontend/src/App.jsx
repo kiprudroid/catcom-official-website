@@ -56,6 +56,7 @@ function App() {
                 prayer={scc.prayer}
                 image={scc.image}
                 leaders={scc.leaders}
+                path={scc.path}
               />
             }
           />
