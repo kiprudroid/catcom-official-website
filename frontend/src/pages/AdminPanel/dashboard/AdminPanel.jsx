@@ -28,15 +28,12 @@ export default function AdminPanel({ onLogout }) {
         return <Reports />;
       case "SccLeaders":
         return <SccLeaders />;
-<<<<<<< HEAD
       case "otherTools":
         return <OtherTools />;
-=======
       case "joinGroup":
         return <JoinGroup />;
       case "joinSccs":
         return <JoinSccsSection />;
->>>>>>> b4764ad952f1064ff18c76ca33f17b4604db9b84
       default:
         return <LeadersSection />;
     }
