@@ -12,17 +12,17 @@ export default function SccLeaders() {
   const SCC_OPTIONS = useMemo(
     () => [
       { value: "all", label: "All" },
-      { value: "St. Martin De Porres", label: "St. Martin De Porres" },
-      { value: "Mary Mother of God", label: "Mary Mother of God" },
+      { value: "st-martin", label: "St. Martin De Porres" },
+      { value: "mmog", label: "Mary Mother of God" },
       {
-        value: "St. Therese of the child Jesus",
+        value: "st-therese",
         label: "St. Therese of the child Jesus",
       },
-      { value: "St. Veronica", label: "St. Veronica" },
-      { value: "St Charles Lwanga", label: "St Charles Lwanga" },
-      { value: "St. Stephen", label: "St. Stephen" },
-      { value: "St. Jude", label: "St. Jude" },
-      { value: "St. Paul", label: "St. Paul" },
+      { value: "st-veronica", label: "St. Veronica" },
+      { value: "st-charles", label: "St Charles Lwanga" },
+      { value: "st-stephen", label: "St. Stephen" },
+      { value: "st-jude", label: "St. Jude" },
+      { value: "st-paul", label: "St. Paul" },
     ],
     [],
   );

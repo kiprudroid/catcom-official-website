@@ -1,33 +1,77 @@
 import styles from "./JoinForm.module.css";
-import React, { useState, useEffect } from "react";
-import { SectionHeading, Paragraph } from "../../../../components/Typography/Typography";
+import React, { useState } from "react";
+import {
+  SectionHeading,
+  Paragraph,
+} from "../../../../components/Typography/Typography";
+import { createJoinGroup } from "@/api/joinGroup.api";
+
+const initialForm = {
+  fname: "",
+  lname: "",
+  phone: "",
+  email: "",
+  gender: "",
+  college: "",
+  groups: [],
+};
 
 function JoinForm() {
+  const [form, setForm] = useState(initialForm);
   const [warning, setWarning] = useState(null);
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-   setWarning("🚧 This Feature is under development")
+  const [success, setSuccess] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
-  //   const form = e.target.closest("form");
-  //   const firstName = form.querySelector("input[name='fname']").value.trim();
-  //   const lastName = form.querySelector("input[name='lname']").value.trim();  
-  //   const phone = form.querySelector("input[name='phone']").value.trim();
-  //   const email = form.querySelector("input[name='email']").value.trim();
-  //   const gender = form.querySelector("input[name='gender']").value.trim();
-  //   const college = form.querySelector("select[name='college']").value;
-  //   const groups = form.querySelectorAll("input[name='groups']:checked");
 
-  //   if (!firstName || !lastName || !phone || !email || !gender || !college || groups.length === 0) {
-  //     setWarning("⚠️ Kindly fill all the details required");
-  //     return;
-  //   }
+  const handleGroupChange = (e) => {
+    const { value, checked } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      groups: checked
+        ? [...prev.groups, value]
+        : prev.groups.filter((g) => g !== value),
+    }));
+  };
 
-  //   setWarning("🚧 This Feature is under development");
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setWarning(null);
+    setSuccess(null);
+
+    if (
+      !form.fname ||
+      !form.lname ||
+      !form.phone ||
+      !form.email ||
+      !form.gender ||
+      !form.college ||
+      form.groups.length === 0
+    ) {
+      setWarning(
+        "⚠️ Please fill all required fields and choose at least one group.",
+      );
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await createJoinGroup(form); // ✅ API client handles field mapping
+      setSuccess("✅ Request sent successfully. We'll contact you soon.");
+      setForm(initialForm);
+    } catch (error) {
+      setWarning("❌ " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <form className={styles.formGrid} >
+    <form className={styles.formGrid}>
       <SectionHeading as="h2">Joining a Group</SectionHeading>
       <Paragraph>
         To join a group, please fill out the form below and select the group(s)
@@ -36,133 +80,151 @@ function JoinForm() {
 
       <div className={styles.formRow}>
         <div className={styles.formCol}>
-          <label htmlFor="name">
+          <label htmlFor="fname">
             <Paragraph>First Name</Paragraph>
           </label>
-          <input type="text" id="name" name="fname" />
-          <label htmlFor="name">
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            value={form.fname}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="lname">
             <Paragraph>Last Name</Paragraph>
           </label>
-          <input type="text" id="name" name="lname" />
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            value={form.lname}
+            onChange={handleChange}
+          />
+
           <label htmlFor="phone">
             <Paragraph>Phone Number</Paragraph>
           </label>
-          <input type="text" id="phone" name="phone" />
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={form.phone}
+            onChange={handleChange}
+          />
+
           <label htmlFor="email">
             <Paragraph>Your E-mail</Paragraph>
           </label>
-          <input type="email" id="email" name="email" />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+          />
+
           <label htmlFor="gender">
             <Paragraph>Gender</Paragraph>
           </label>
-          <input type="text" id="gender" name="gender" />
+          <input
+            type="text"
+            id="gender"
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
+          />
+
           <label htmlFor="college">
             <Paragraph>College</Paragraph>
           </label>
-          <select id="college" name="college">
+          <select
+            id="college"
+            name="college"
+            value={form.college}
+            onChange={handleChange}
+          >
             <option value="">
               <Paragraph>Select College</Paragraph>
             </option>
-            <option value="">
+            <option value="COHES">
               <Paragraph>COHES</Paragraph>
             </option>
-            <option value="Male">
+            <option value="COPAS">
               <Paragraph>COPAS</Paragraph>
             </option>
-            <option value="Female">
+            <option value="COANRE">
               <Paragraph>COANRE</Paragraph>
             </option>
-            <option value="">
+            <option value="COETEC">
               <Paragraph>COETEC</Paragraph>
             </option>
-            <option value="Male">
+            <option value="COHRED">
               <Paragraph>COHRED</Paragraph>
             </option>
           </select>
         </div>
+
         <div className={styles.formCol}>
           <label className={styles.groupLabel}>
             <SectionHeading>Select Which Group(s) to Join</SectionHeading>
           </label>
           <div className={styles.checkboxGroup}>
-            <div>
-              <input type="checkbox" id="choir" name="groups" value="Choir" />
-              <label htmlFor="choir">
-                <Paragraph>Choir</Paragraph>
-              </label>
-            </div>
-
-            <div>
-              <input
-                type="checkbox"
-                id="pastoral"
-                name="groups"
-                value="Pastoral"
-              />
-              <label htmlFor="pastoral">
-                <Paragraph>Pastoral</Paragraph>
-              </label>
-            </div>
-
-            <div>
-              <input
-                type="checkbox"
-                id="BPS"
-                name="groups"
-                value="Bible Prayer Service"
-              />
-              <label htmlFor="BPS">
-                <Paragraph>Bible Prayer Service</Paragraph>
-              </label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="technical"
-                name="groups"
-                value="technical"
-              />
-              <label htmlFor="technical">
-                <Paragraph>Technical Team</Paragraph>
-              </label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="liturgical dancers"
-                name="groups"
-                value="liturgical dancers"
-              />
-              <label htmlFor="liturgical dancers">
-                <Paragraph>Liturgical Dancers</Paragraph>
-              </label>
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                id="communion and liberation"
-                name="groups"
-                value="communion and liberation"
-              />
-              <label htmlFor="communion and liberation">
-                <Paragraph>Communion and Liberation</Paragraph>
-              </label>
-            </div>
+            {[
+              { id: "choir", value: "Choir", label: "Choir" },
+              { id: "pastoral", value: "Pastoral", label: "Pastoral" },
+              {
+                id: "BPS",
+                value: "Bible Prayer Service",
+                label: "Bible Prayer Service",
+              },
+              {
+                id: "technical",
+                value: "Technical Team",
+                label: "Technical Team",
+              },
+              {
+                id: "liturgical-dancers",
+                value: "Liturgical Dancers",
+                label: "Liturgical Dancers",
+              },
+              {
+                id: "communion-and-liberation",
+                value: "Communion and Liberation",
+                label: "Communion and Liberation",
+              },
+            ].map(({ id, value, label }) => (
+              <div key={id}>
+                <input
+                  type="checkbox"
+                  id={id}
+                  name="groups"
+                  value={value}
+                  checked={form.groups.includes(value)}
+                  onChange={handleGroupChange}
+                />
+                <label htmlFor={id}>
+                  <Paragraph>{label}</Paragraph>
+                </label>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-      <button 
-      className={styles.joinBtn}
+
+      <button
+        className={styles.joinBtn}
         type="submit"
         onClick={handleSubmit}
-      > Join Group(s)
+        disabled={loading}
+      >
+        {loading ? "Submitting..." : "Join Group(s)"}
       </button>
-      {warning && (
-  <div className={styles.warningBar}>
-    {warning}
-  </div>
-)}
+
+      {warning && <div className={styles.warningBar}>{warning}</div>}
+      {success && <div className={styles.successBar}>{success}</div>}
     </form>
   );
-};
+}
+
 export default JoinForm;

@@ -28,11 +28,13 @@ import {
   LeadersSection,
   Members,
   Reports,
+  JoinSccsSection,
 } from "@/pages/AdminPanel/pages";
 
 // ── Check token in localStorage ───────────────────────────────────
 const isLoggedIn = () => !!localStorage.getItem("token");
 
+<<<<<<< HEAD
 // ── Protected: redirects to fallback if not logged in ─────────────
 const Protected = ({ children, fallback }) =>
   isLoggedIn() ? children : <Navigate to={fallback} replace />;
@@ -40,6 +42,60 @@ const Protected = ({ children, fallback }) =>
 // ── Router created ONCE outside React — prevents infinite re-render
 const router = createBrowserRouter(
   createRoutesFromElements(
+=======
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<Home />} />
+        <Route path="/liturgy" element={<Liturgy />} />
+        <Route path="/scc" element={<Scc />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/groups" element={<Groups />} />
+        {SCCs.map((scc) => (
+          <Route
+            key={scc.name}
+            path={scc.path}
+            element={
+              <SccInfo
+                name={scc.name}
+                about={scc.about}
+                activities={scc.activities}
+                sccPhotos={scc.sccPhotos}
+                aboutPatronSaint={scc.aboutPatronSaint}
+                prayer={scc.prayer}
+                image={scc.image}
+                leaders={scc.leaders}
+                path={scc.path}
+              />
+            }
+          />
+        ))}
+
+        <Route
+          path="/login"
+          element={<Login onLogin={() => setIsAuthenticated(true)} />}
+        />
+
+        <Route
+          path="/admin"
+          // element={
+          //   isAuthenticated ? <AdminPanel /> : <Navigate to="/login" replace />
+          // }
+          element={<AdminPanel />}
+        >
+          <Route path="members" element={<Members />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="leaders" element={<LeadersSection />} />
+          <Route path="events" element={<EventsSection />} />
+          <Route path="join-sccs" element={<JoinSccsSection />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </>
+    )
+  );
+
+  return (
+>>>>>>> b4764ad952f1064ff18c76ca33f17b4604db9b84
     <>
       {/* ── Public ───────────────────────────────────────── */}
       <Route path="/" element={<Home />} />
