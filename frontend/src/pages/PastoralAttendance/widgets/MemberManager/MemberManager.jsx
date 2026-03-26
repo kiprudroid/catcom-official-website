@@ -3,13 +3,11 @@ import styles from "./MemberManager.module.css";
 import { FaPlus, FaTrash, FaUserAlt } from "react-icons/fa";
 
 const ROLES = [
+  "Pastoral Secretary",
   "Coordinator",
   "Secretary",
   "Treasurer",
-  "Liturgy",
-  "Hospitality",
-  "Social",
-  "Publicity",
+  "Liturgist",
   "Member",
 ];
 

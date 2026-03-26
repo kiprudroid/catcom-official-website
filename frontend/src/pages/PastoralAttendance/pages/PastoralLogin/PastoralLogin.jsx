@@ -41,7 +41,7 @@ const PastoralLogin = () => {
     <div className={styles.page}>
       <div className={styles.card}>
         <FaCross className={styles.logo} />
-        <h1 className={styles.title}>Pastoral Admin</h1>
+        <h1 className={styles.title}>Pastoral Team Admin</h1>
         <p className={styles.sub}>JKUAT CATCOM — Attendance System</p>
 
         <form className={styles.form} onSubmit={handleSubmit}>
