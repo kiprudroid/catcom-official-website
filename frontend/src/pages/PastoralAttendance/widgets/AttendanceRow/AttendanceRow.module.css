@@ -1,0 +1,27 @@
+.status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.present {
+  background: #c8f7c5;
+}
+
+.absent {
+  background: #f7c5c5;
+}
+
+.apology {
+  background: #ffe9a8;
+}
+
+.warning {
+  background: #fff4e5;
+}
+
+.select {
+  padding: 6px;
+  border-radius: 6px;
+}

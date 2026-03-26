@@ -1,20 +1,17 @@
 import { API_BASE } from "./apiClient";
 
-// Fetch all events
 export const fetchEvents = async () => {
   const res = await fetch(`${API_BASE}/events`);
   if (!res.ok) throw new Error("Failed to fetch events");
   return res.json();
 };
 
-// Fetch a single event by ID
 export const fetchEventById = async (id) => {
   const res = await fetch(`${API_BASE}/events/${id}`);
   if (!res.ok) throw new Error("Failed to fetch event");
   return res.json();
 };
 
-// Create a new event
 export const createEvent = async (eventData) => {
   const res = await fetch(`${API_BASE}/events`, {
     method: "POST",
@@ -25,7 +22,6 @@ export const createEvent = async (eventData) => {
   return res.json();
 };
 
-// Update an existing event
 export const updateEvent = async (id, eventData) => {
   const res = await fetch(`${API_BASE}/events/${id}`, {
     method: "PUT",
@@ -36,7 +32,6 @@ export const updateEvent = async (id, eventData) => {
   return res.json();
 };
 
-// Delete an event
 export const deleteEvent = async (id) => {
   const res = await fetch(`${API_BASE}/events/${id}`, {
     method: "DELETE",

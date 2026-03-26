@@ -1,108 +1,233 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import styles from "./EventsSection.module.css";
-import { SectionHeading } from "@/components/Typography/Typography";
+import {
+  fetchEvents,
+  updateEvent,
+  deleteEvent,
+  createEvent,
+} from "@/api/events.api";
 
-export default function EventsSection() {
-  const [events, setEvents] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("admin_events")) || [];
-    } catch {
-      return [];
-    }
-  });
+const CATEGORIES = ["Activity", "Mass Animation"];
 
-  const [eventForm, setEventForm] = useState({
-    title: "",
-    date: "",
-    venue: "",
-    time: "",
-  });
+const emptyForm = {
+  title: "",
+  event_date: "",
+  event_time: "",
+  venue: "",
+  category: "Activity",
+};
+
+const EventSection = () => {
+  const [events, setEvents] = useState([]);
+  const [form, setForm] = useState(emptyForm);
   const [editingEvent, setEditingEvent] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const loadEvents = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchEvents();
+      setEvents(data);
+    } catch {
+      toast.error("Failed to load events");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    localStorage.setItem("admin_events", JSON.stringify(events));
-  }, [events]);
+    loadEvents();
+  }, []);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEventForm((s) => ({ ...s, [name]: value }));
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const submitEvent = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editingEvent !== null) {
-      setEvents((prev) => {
-        const updated = [...prev];
-        updated[editingEvent] = eventForm;
-        return updated;
-      });
+    try {
+      if (editingEvent) {
+        setEvents((prev) =>
+          prev.map((ev) =>
+            ev.id === editingEvent.id ? { ...ev, ...form } : ev,
+          ),
+        );
+        await updateEvent(editingEvent.id, form);
+        toast.success("Event updated");
+      } else {
+        const newEvent = await createEvent(form);
+        setEvents((prev) => [...prev, newEvent]);
+        toast.success("Event created");
+      }
+      setModalOpen(false);
       setEditingEvent(null);
-    } else {
-      setEvents((prev) => [...prev, eventForm]);
+      setForm(emptyForm);
+    } catch {
+      toast.error("Operation failed");
+      loadEvents();
     }
-    setEventForm({ title: "", date: "", venue: "", time: "" });
   };
 
-  const deleteEvent = (idx) =>
-    setEvents((prev) => prev.filter((_, i) => i !== idx));
-  const editEvent = (idx) => {
-    setEventForm(events[idx]);
-    setEditingEvent(idx);
+  const handleEdit = (event) => {
+    setEditingEvent(event);
+    setForm({
+      title: event.title,
+      event_date: event.event_date,
+      event_time: event.event_time,
+      venue: event.venue,
+      category: event.category || "Activity",
+    });
+    setModalOpen(true);
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this event?")) return;
+    const previous = events;
+    try {
+      setEvents((prev) => prev.filter((ev) => ev.id !== id));
+      await deleteEvent(id);
+      toast.success("Event deleted");
+    } catch {
+      toast.error("Delete failed");
+      setEvents(previous);
+    }
+  };
+
+  const openCreateModal = () => {
+    setEditingEvent(null);
+    setForm(emptyForm);
+    setModalOpen(true);
   };
 
   return (
-    <section className={styles.section}>
-      <SectionHeading>Events</SectionHeading>
-
-      <form onSubmit={submitEvent} className={styles.form}>
-        <input
-          name="title"
-          value={eventForm.title}
-          onChange={handleChange}
-          placeholder="Title"
-          required
-        />
-        <input
-          name="date"
-          type="date"
-          value={eventForm.date}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="venue"
-          value={eventForm.venue}
-          onChange={handleChange}
-          placeholder="Venue"
-          required
-        />
-        <input
-          name="time"
-          type="time"
-          value={eventForm.time}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">
-          {editingEvent !== null ? "Update Event" : "Add Event"}
+    <div className={styles.section}>
+      <div className={styles.header}>
+        <h2>Events Management</h2>
+        <button className={styles.createBtn} onClick={openCreateModal}>
+          + Create Event
         </button>
-      </form>
+      </div>
 
-      <ul className={styles.list}>
-        {events.map((ev, idx) => (
-          <li key={idx} className={styles.listItem}>
-            <div className={styles.listRow}>
-              <div>
-                <strong>{ev.title}</strong> — {ev.date} @ {ev.venue} ({ev.time})
+      {loading ? (
+        <div className={styles.spinner}>Loading events...</div>
+      ) : (
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Venue</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {events.map((event) => (
+              <tr key={event.id}>
+                <td>{event.title}</td>
+                <td>
+                  <span
+                    className={`${styles.categoryBadge} ${event.category === "Mass Animation" ? styles.mass : styles.activity}`}
+                  >
+                    {event.category}
+                  </span>
+                </td>
+                <td>{event.event_date}</td>
+                <td>{event.event_time}</td>
+                <td>{event.venue}</td>
+                <td className={styles.actions}>
+                  <button
+                    className={styles.editBtn}
+                    onClick={() => handleEdit(event)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className={styles.deleteBtn}
+                    onClick={() => handleDelete(event.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      {modalOpen && (
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modal}>
+            <h3>{editingEvent ? "Edit Event" : "Create Event"}</h3>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <input
+                name="title"
+                placeholder="Title"
+                value={form.title}
+                onChange={handleChange}
+                required
+              />
+
+              <select
+                name="category"
+                value={form.category}
+                onChange={handleChange}
+                required
+                className={styles.select}
+              >
+                {CATEGORIES.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+
+              <input
+                type="date"
+                name="event_date"
+                value={form.event_date}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="time"
+                name="event_time"
+                value={form.event_time}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                name="venue"
+                placeholder="Venue"
+                value={form.venue}
+                onChange={handleChange}
+                required
+              />
+
+              <div className={styles.modalActions}>
+                <button className={styles.submitBtn} type="submit">
+                  {editingEvent ? "Update" : "Create"}
+                </button>
+                <button
+                  className={styles.cancelBtn}
+                  type="button"
+                  onClick={() => setModalOpen(false)}
+                >
+                  Cancel
+                </button>
               </div>
-              <div className={styles.actions}>
-                <button onClick={() => editEvent(idx)}>Edit</button>
-                <button onClick={() => deleteEvent(idx)}>Delete</button>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
   );
-}
+};
+
+export default EventSection;
+

@@ -7,6 +7,7 @@ import {
   FaCalendarAlt,
   FaUserCheck,
   FaChartBar,
+  FaTools,
 } from "react-icons/fa";
 
 export default function AdminHeader({ activeTab, setActiveTab }) {
@@ -16,6 +17,7 @@ export default function AdminHeader({ activeTab, setActiveTab }) {
     { key: "events", label: "Events", icon: <FaCalendarAlt /> },
     { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
     { key: "reports", label: "Reports", icon: <FaChartBar /> },
+    { key: "otherTools", label: "Other Tools", icon: <FaTools /> },
   ];
 
   return (

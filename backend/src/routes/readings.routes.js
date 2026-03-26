@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import getReadings from '../controllers/readings.controllers.js';
+import { Router } from "express";
+import getReadings from "../controllers/readings.controllers.js";
 
 const router = Router();
 
@@ -7,6 +7,6 @@ const router = Router();
 
 // GET READINGS
 
-router.get('/readings', getReadings);
+router.get("/readings", getReadings);
 
 export default router;

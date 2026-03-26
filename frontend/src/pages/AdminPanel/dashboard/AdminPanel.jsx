@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./AdminPanel.module.css";
 import { AdminHeader } from "@/pages/AdminPanel/components";
+import OtherTools from "@/pages/AdminPanel/pages/OtherTools/OtherTools";
 
 import {
   Members,
@@ -10,7 +11,7 @@ import {
   SccLeaders,
 } from "@/pages/AdminPanel/pages";
 
-export default function AdminPanel() {
+export default function AdminPanel({ onLogout }) {
   const [activeTab, setActiveTab] = useState("leaders");
 
   const renderActiveTab = () => {
@@ -25,6 +26,8 @@ export default function AdminPanel() {
         return <Reports />;
       case "SccLeaders":
         return <SccLeaders />;
+      case "otherTools":
+        return <OtherTools />;
       default:
         return <LeadersSection />;
     }

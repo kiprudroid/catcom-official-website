@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Route,
-  Routes,
   Navigate,
   createBrowserRouter,
   createRoutesFromElements,
@@ -10,8 +9,8 @@ import {
 
 import { SCCs } from "@/pages/Scc/data/scc";
 import SccInfo from "./pages/Scc/SccInfo/SccInfo";
-
 import Login from "@/pages/AdminPanel/pages/Auth/Login";
+import { PastoralLogin } from "@/pages/PastoralAttendance/pages";
 
 import {
   Home,
@@ -21,7 +20,9 @@ import {
   Scc,
   NotFound,
   AdminPanel,
+  PastoralAttendance,
 } from "@/pages";
+
 import {
   EventsSection,
   LeadersSection,
@@ -29,65 +30,81 @@ import {
   Reports,
 } from "@/pages/AdminPanel/pages";
 
-function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!localStorage.getItem("token")
-  );
+// ── Check token in localStorage ───────────────────────────────────
+const isLoggedIn = () => !!localStorage.getItem("token");
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route path="/" element={<Home />} />
-        <Route path="/liturgy" element={<Liturgy />} />
-        <Route path="/scc" element={<Scc />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/groups" element={<Groups />} />
-        {SCCs.map((scc) => (
-          <Route
-            key={scc.name}
-            path={scc.path}
-            element={
-              <SccInfo
-                name={scc.name}
-                about={scc.about}
-                activities={scc.activities}
-                sccPhotos={scc.sccPhotos}
-                aboutPatronSaint={scc.aboutPatronSaint}
-                prayer={scc.prayer}
-                image={scc.image}
-                leaders={scc.leaders}
-              />
-            }
-          />
-        ))}
+// ── Protected: redirects to fallback if not logged in ─────────────
+const Protected = ({ children, fallback }) =>
+  isLoggedIn() ? children : <Navigate to={fallback} replace />;
 
-        <Route
-          path="/login"
-          element={<Login onLogin={() => setIsAuthenticated(true)} />}
-        />
-
-        <Route
-          path="/admin"
-          // element={
-          //   isAuthenticated ? <AdminPanel /> : <Navigate to="/login" replace />
-          // }
-          element={<AdminPanel />}
-        >
-          <Route path="members" element={<Members />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="leaders" element={<LeadersSection />} />
-          <Route path="events" element={<EventsSection />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </>
-    )
-  );
-
-  return (
+// ── Router created ONCE outside React — prevents infinite re-render
+const router = createBrowserRouter(
+  createRoutesFromElements(
     <>
-      <RouterProvider router={router} />
-    </>
-  );
+      {/* ── Public ───────────────────────────────────────── */}
+      <Route path="/" element={<Home />} />
+      <Route path="/liturgy" element={<Liturgy />} />
+      <Route path="/scc" element={<Scc />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/groups" element={<Groups />} />
+
+      {SCCs.map((scc) => (
+        <Route
+          key={scc.name}
+          path={scc.path}
+          element={
+            <SccInfo
+              name={scc.name}
+              about={scc.about}
+              activities={scc.activities}
+              sccPhotos={scc.sccPhotos}
+              aboutPatronSaint={scc.aboutPatronSaint}
+              prayer={scc.prayer}
+              image={scc.image}
+              leaders={scc.leaders}
+            />
+          }
+        />
+      ))}
+
+      {/* ── Login pages (public) ─────────────────────────── */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/pastoral-login" element={<PastoralLogin />} />
+
+      {/* ── Admin panel (protected) ──────────────────────── */}
+      {/* <Route
+        path="/admin"
+        element={
+          <Protected fallback="/login">
+            <AdminPanel />
+          </Protected>
+        }
+      > */}
+
+      <Route path="/admin" element={<AdminPanel />}>
+        <Route path="members" element={<Members />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="leaders" element={<LeadersSection />} />
+        <Route path="events" element={<EventsSection />} />
+      </Route>
+
+      {/* ── Pastoral attendance (protected) ──────────────── */}
+      <Route
+        path="/attendance-admin"
+        element={
+          <Protected fallback="/pastoral-login">
+            <PastoralAttendance />
+          </Protected>
+        }
+      />
+
+      <Route path="*" element={<NotFound />} />
+    </>,
+  ),
+);
+
+function App() {
+  return <RouterProvider router={router} />;
 }
 
 export default App;
