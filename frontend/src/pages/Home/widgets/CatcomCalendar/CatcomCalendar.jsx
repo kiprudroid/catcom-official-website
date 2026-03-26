@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
-=======
-import { useEffect, useState } from "react";
->>>>>>> b4764ad952f1064ff18c76ca33f17b4604db9b84
 import styles from "./CatcomCalendar.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import {
