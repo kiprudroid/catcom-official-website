@@ -10,7 +10,7 @@ import {
 import { SCCs } from "@/pages/Scc/data/scc";
 import SccInfo from "./pages/Scc/SccInfo/SccInfo";
 import Login from "@/pages/AdminPanel/pages/Auth/Login";
-import { PastoralLogin } from "@/pages/PastoralAttendance/pages";
+import { AttendanceLogin } from "@/pages/AttendanceAdmin/pages";
 
 import {
   Home,
@@ -20,7 +20,7 @@ import {
   Scc,
   NotFound,
   AdminPanel,
-  PastoralAttendance,
+  AttendanceAdmin,
 } from "@/pages";
 
 import {
@@ -28,17 +28,23 @@ import {
   LeadersSection,
   Members,
   Reports,
-  JoinSccsSection,
 } from "@/pages/AdminPanel/pages";
 
-// ── Check token in localStorage ───────────────────────────────────
-const isLoggedIn = () => !!localStorage.getItem("token");
+// Auth helpers — read from separate localStorage keys
+const isAdminLoggedIn = () => !!localStorage.getItem("token");
+const isAttendanceLoggedIn = () => !!localStorage.getItem("attendance_token");
 
-// ── Protected: redirects to fallback if not logged in ─────────────
-const Protected = ({ children, fallback }) =>
-  isLoggedIn() ? children : <Navigate to={fallback} replace />;
+const ProtectedAdmin = ({ children }) =>
+  isAdminLoggedIn() ? children : <Navigate to="/login" replace />;
 
-// ── Router created ONCE outside React — prevents infinite re-render
+const ProtectedAttendance = ({ children }) =>
+  isAttendanceLoggedIn() ? (
+    children
+  ) : (
+    <Navigate to="/attendance-login" replace />
+  );
+
+// Router created ONCE at module level — prevents infinite re-render loop
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -68,34 +74,32 @@ const router = createBrowserRouter(
         />
       ))}
 
-      {/* ── Login pages (public) ─────────────────────────── */}
+      {/* ── Login pages ──────────────────────────────────── */}
       <Route path="/login" element={<Login />} />
-      <Route path="/pastoral-login" element={<PastoralLogin />} />
+      <Route path="/attendance-login" element={<AttendanceLogin />} />
 
-      {/* ── Admin panel (protected) ──────────────────────── */}
-      {/* <Route
+      {/* ── Main admin panel (protected) ─────────────────── */}
+      <Route
         path="/admin"
         element={
-          <Protected fallback="/login">
+          <ProtectedAdmin>
             <AdminPanel />
-          </Protected>
+          </ProtectedAdmin>
         }
-      > */}
-
-      <Route path="/admin" element={<AdminPanel />}>
+      >
         <Route path="members" element={<Members />} />
         <Route path="reports" element={<Reports />} />
         <Route path="leaders" element={<LeadersSection />} />
         <Route path="events" element={<EventsSection />} />
       </Route>
 
-      {/* ── Pastoral attendance (protected) ──────────────── */}
+      {/* ── Attendance admin (protected, separate token) ──── */}
       <Route
         path="/attendance-admin"
         element={
-          <Protected fallback="/pastoral-login">
-            <PastoralAttendance />
-          </Protected>
+          <ProtectedAttendance>
+            <AttendanceAdmin />
+          </ProtectedAttendance>
         }
       />
 

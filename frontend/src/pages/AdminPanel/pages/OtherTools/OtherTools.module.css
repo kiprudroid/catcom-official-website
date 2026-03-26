@@ -1,21 +1,23 @@
 .wrapper {
-  padding: 8px 4px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  padding: 4px 0;
 }
 
 .header {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .title {
   font-size: 20px;
   font-weight: 800;
   color: #1c3a3a;
-  margin: 0;
+  margin: 0 0 4px;
 }
 
 .sub {
@@ -24,85 +26,311 @@
   margin: 0;
 }
 
-.grid {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  background: #f9fafb;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 18px 20px;
-  transition:
-    box-shadow 0.15s,
-    border-color 0.15s;
-}
-
-.card:hover {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  border-color: #d1d5db;
-}
-
-.iconWrap {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.info {
-  flex: 1;
-  min-width: 0;
-}
-
-.toolTitle {
-  font-size: 15px;
-  font-weight: 700;
-  color: #1c3a3a;
-  margin: 0 0 3px;
-}
-
-.toolDesc {
-  font-size: 13px;
-  color: #6b7280;
-  margin: 0;
-}
-
-.btn {
+.newBtn {
   display: flex;
   align-items: center;
   gap: 7px;
+  background: #1c3a3a;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.newBtn:hover {
+  background: #2dabb1;
+}
+
+/* ── Create/Edit form ─────────────────────────────────────────── */
+.groupForm {
+  background: #f8fafc;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.formTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c3a3a;
+  margin: 0 0 12px;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1;
+  min-width: 160px;
+  padding: 9px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1c3a3a;
+  background: white;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: #2dabb1;
+}
+
+.select {
+  padding: 9px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1c3a3a;
+  background: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.saveBtn {
+  background: #2dabb1;
+  color: white;
   border: none;
   border-radius: 8px;
   padding: 9px 18px;
   font-size: 13px;
   font-weight: 700;
-  color: white;
   cursor: pointer;
-  transition: opacity 0.15s;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover:not(:disabled) {
+  background: #1c9097;
+}
+.saveBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background: none;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cancelBtn:hover {
+  border-color: #9ca3af;
+}
+.cancelBtn.danger:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+/* ── Group list ───────────────────────────────────────────────── */
+.groupList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groupCard {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  transition: box-shadow 0.15s;
+}
+
+.groupCard:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.groupRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.groupIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #e0f2fe;
+  color: #2dabb1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
   flex-shrink: 0;
 }
 
-.btn:hover {
-  opacity: 0.85;
+.groupInfo {
+  flex: 1;
+  min-width: 0;
 }
 
-@media (max-width: 500px) {
-  .card {
-    flex-wrap: wrap;
-  }
+.groupName {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c3a3a;
+  margin-bottom: 5px;
+}
 
-  .btn {
-    width: 100%;
-    justify-content: center;
-  }
+.groupMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.typePill {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.typePill.committee {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.typePill.scc {
+  background: #dcfce7;
+  color: #15803d;
+}
+.typePill.pastoral {
+  background: #fce7f3;
+  color: #9d174d;
+}
+.typePill.other {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.memberCount {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.adminEmail {
+  font-size: 12px;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.groupActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 6px 9px;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.iconBtn:hover {
+  background: #f3f4f6;
+  color: #1c3a3a;
+}
+.iconBtn.danger:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fee2e2;
+}
+.iconBtn.active {
+  background: #e0f2fe;
+  color: #2dabb1;
+  border-color: #2dabb1;
+}
+
+/* ── Admin panel ──────────────────────────────────────────────── */
+.adminPanel {
+  border-top: 1.5px solid #f3f4f6;
+  background: #f8fafc;
+  padding: 16px 18px;
+}
+
+.adminPanelTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.adminInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.adminEmailLabel {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.adminEmailValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1c3a3a;
+}
+
+.adminFormRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.noAdmin {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0 0 10px;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #9ca3af;
+  font-size: 14px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1.5px dashed #e5e7eb;
+}
+
+.loading {
+  color: #9ca3af;
+  font-size: 14px;
+  padding: 20px;
 }

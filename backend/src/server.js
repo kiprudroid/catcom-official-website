@@ -1,9 +1,8 @@
-// Purpose -  Start the server
+import dotenv from "dotenv";
+dotenv.config(); // ← must be first
+console.log("JWT_SECRET:", process.env.JWT_SECRET); // ← add this
 
 import app from "./app.js";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
