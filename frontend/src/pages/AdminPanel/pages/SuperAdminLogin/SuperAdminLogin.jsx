@@ -54,7 +54,7 @@ export default function SuperAdminLogin({ onLogin }) {
   const typePillColor = {
     committee: { bg: "#dbeafe", color: "#1d4ed8" },
     scc: { bg: "#dcfce7", color: "#15803d" },
-    pastoral: { bg: "#fce7f3", color: "#9d174d" },
+    group: { bg: "#fce7f3", color: "#9d174d" },
     other: { bg: "#f3f4f6", color: "#374151" },
   };
 
