@@ -2,16 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./OtherTools.module.css";
 import toast from "react-hot-toast";
-import {
-  FaClipboardList,
-  FaExternalLinkAlt,
-  FaPlus,
-  FaTrash,
-  FaEdit,
-  FaKey,
-  FaChevronDown,
-  FaChevronUp,
-} from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import { GroupForm, GroupCard } from "./widgets/index.js";
 import {
   fetchAttendanceGroups,
   createGroup,
@@ -23,8 +15,6 @@ import {
   fetchGroupAdmin,
 } from "@/api/attendance.api";
 
-const GROUP_TYPES = ["committee", "scc", "pastoral", "other"];
-
 const emptyGroupForm = { name: "", type: "committee" };
 const emptyAdminForm = { email: "", password: "" };
 
@@ -35,9 +25,14 @@ const OtherTools = () => {
   const [editingGroup, setEditingGroup] = useState(null);
   const [showGroupForm, setShowGroupForm] = useState(false);
   const [expandedGroup, setExpandedGroup] = useState(null);
-  const [adminForms, setAdminForms] = useState({}); // keyed by group_id
-  const [groupAdmins, setGroupAdmins] = useState({}); // keyed by group_id
+  const [adminForms, setAdminForms] = useState({});
+  const [groupAdmins, setGroupAdmins] = useState({});
+  const [showPasswords, setShowPasswords] = useState({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    loadGroups();
+  }, []);
 
   const loadGroups = async () => {
     try {
@@ -50,29 +45,16 @@ const OtherTools = () => {
     }
   };
 
-  useEffect(() => {
-    loadGroups();
-  }, []);
-
   const loadGroupAdmin = async (group_id) => {
     try {
       const admin = await fetchGroupAdmin(group_id);
-      setGroupAdmins((prev) => ({ ...prev, [group_id]: admin }));
+      setGroupAdmins((prev) => ({ ...prev, [group_id]: admin || null }));
     } catch {
       setGroupAdmins((prev) => ({ ...prev, [group_id]: null }));
     }
   };
 
-  const handleExpandGroup = (group_id) => {
-    if (expandedGroup === group_id) {
-      setExpandedGroup(null);
-    } else {
-      setExpandedGroup(group_id);
-      loadGroupAdmin(group_id);
-    }
-  };
-
-  // ── Group CRUD ──────────────────────────────────────────────────
+  // ── Group CRUD ────────────────────────────────────────────────────
 
   const handleGroupSubmit = async (e) => {
     e.preventDefault();
@@ -91,8 +73,8 @@ const OtherTools = () => {
       setGroupForm(emptyGroupForm);
       setEditingGroup(null);
       setShowGroupForm(false);
-    } catch {
-      toast.error("Failed to save group");
+    } catch (err) {
+      toast.error(err.message || "Failed to save group");
     }
   };
 
@@ -109,12 +91,21 @@ const OtherTools = () => {
       await deleteGroup(id);
       setGroups((prev) => prev.filter((g) => g.id !== id));
       toast.success("Group deleted");
-    } catch {
-      toast.error("Failed to delete group");
+    } catch (err) {
+      toast.error(err.message || "Failed to delete group");
     }
   };
 
-  // ── Admin account CRUD ──────────────────────────────────────────
+  const handleExpandGroup = (group_id) => {
+    if (expandedGroup === group_id) {
+      setExpandedGroup(null);
+    } else {
+      setExpandedGroup(group_id);
+      loadGroupAdmin(group_id);
+    }
+  };
+
+  // ── Admin account CRUD ────────────────────────────────────────────
 
   const handleAdminFormChange = (group_id, field, value) => {
     setAdminForms((prev) => ({
@@ -123,8 +114,16 @@ const OtherTools = () => {
     }));
   };
 
+  const handleTogglePassword = (key) => {
+    setShowPasswords((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
   const handleCreateAdmin = async (group_id) => {
     const form = adminForms[group_id] || {};
+    if (!form.email || !form.password)
+      return toast.error("Email and password are required");
+    if (form.password.length < 6)
+      return toast.error("Password must be at least 6 characters");
     try {
       const admin = await createGroupAdmin(group_id, {
         email: form.email,
@@ -133,13 +132,15 @@ const OtherTools = () => {
       setGroupAdmins((prev) => ({ ...prev, [group_id]: admin }));
       setAdminForms((prev) => ({ ...prev, [group_id]: emptyAdminForm }));
       toast.success("Admin account created");
-    } catch {
-      toast.error("Failed to create admin account");
+    } catch (err) {
+      toast.error(err.message || "Failed to create admin account");
     }
   };
 
   const handleUpdatePassword = async (group_id) => {
     const form = adminForms[group_id] || {};
+    if (!form.password || form.password.length < 6)
+      return toast.error("Password must be at least 6 characters");
     try {
       await updateGroupAdminPassword(group_id, form.password);
       setAdminForms((prev) => ({
@@ -147,8 +148,8 @@ const OtherTools = () => {
         [group_id]: { ...prev[group_id], password: "" },
       }));
       toast.success("Password updated");
-    } catch {
-      toast.error("Failed to update password");
+    } catch (err) {
+      toast.error(err.message || "Failed to update password");
     }
   };
 
@@ -158,8 +159,8 @@ const OtherTools = () => {
       await deleteGroupAdmin(group_id);
       setGroupAdmins((prev) => ({ ...prev, [group_id]: null }));
       toast.success("Admin account removed");
-    } catch {
-      toast.error("Failed to remove admin account");
+    } catch (err) {
+      toast.error(err.message || "Failed to remove admin account");
     }
   };
 
@@ -187,216 +188,44 @@ const OtherTools = () => {
         </button>
       </div>
 
-      {/* ── Create/Edit group form ─────────────────────────────── */}
       {showGroupForm && (
-        <form className={styles.groupForm} onSubmit={handleGroupSubmit}>
-          <h3 className={styles.formTitle}>
-            {editingGroup ? "Edit Group" : "Create New Group"}
-          </h3>
-          <div className={styles.formRow}>
-            <input
-              className={styles.input}
-              placeholder="Group name (e.g. Welfare Committee)"
-              value={groupForm.name}
-              onChange={(e) =>
-                setGroupForm((p) => ({ ...p, name: e.target.value }))
-              }
-              required
-            />
-            <select
-              className={styles.select}
-              value={groupForm.type}
-              onChange={(e) =>
-                setGroupForm((p) => ({ ...p, type: e.target.value }))
-              }
-            >
-              {GROUP_TYPES.map((t) => (
-                <option key={t} value={t}>
-                  {t.charAt(0).toUpperCase() + t.slice(1)}
-                </option>
-              ))}
-            </select>
-            <button className={styles.saveBtn} type="submit">
-              {editingGroup ? "Update" : "Create"}
-            </button>
-            <button
-              className={styles.cancelBtn}
-              type="button"
-              onClick={() => {
-                setShowGroupForm(false);
-                setEditingGroup(null);
-              }}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
+        <GroupForm
+          groupForm={groupForm}
+          setGroupForm={setGroupForm}
+          editingGroup={editingGroup}
+          onSubmit={handleGroupSubmit}
+          onCancel={() => {
+            setShowGroupForm(false);
+            setEditingGroup(null);
+          }}
+        />
       )}
 
-      {/* ── Groups list ───────────────────────────────────────────── */}
       {groups.length === 0 ? (
         <div className={styles.empty}>
           No groups yet. Create one above to get started.
         </div>
       ) : (
         <div className={styles.groupList}>
-          {groups.map((group) => {
-            const isExpanded = expandedGroup === group.id;
-            const admin = groupAdmins[group.id];
-            const adminForm = adminForms[group.id] || emptyAdminForm;
-
-            return (
-              <div key={group.id} className={styles.groupCard}>
-                {/* Group header row */}
-                <div className={styles.groupRow}>
-                  <div className={styles.groupIcon}>
-                    <FaClipboardList />
-                  </div>
-                  <div className={styles.groupInfo}>
-                    <span className={styles.groupName}>{group.name}</span>
-                    <div className={styles.groupMeta}>
-                      <span
-                        className={`${styles.typePill} ${styles[group.type]}`}
-                      >
-                        {group.type}
-                      </span>
-                      <span className={styles.memberCount}>
-                        {group.member_count || 0} members
-                      </span>
-                      {group.admin_email && (
-                        <span className={styles.adminEmail}>
-                          {group.admin_email}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className={styles.groupActions}>
-                    <button
-                      className={styles.iconBtn}
-                      title="Open attendance"
-                      onClick={() => navigate("/attendance-login")}
-                    >
-                      <FaExternalLinkAlt />
-                    </button>
-                    <button
-                      className={styles.iconBtn}
-                      title="Edit group"
-                      onClick={() => handleEditGroup(group)}
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      className={`${styles.iconBtn} ${styles.danger}`}
-                      title="Delete group"
-                      onClick={() => handleDeleteGroup(group.id)}
-                    >
-                      <FaTrash />
-                    </button>
-                    <button
-                      className={`${styles.iconBtn} ${isExpanded ? styles.active : ""}`}
-                      title="Manage admin account"
-                      onClick={() => handleExpandGroup(group.id)}
-                    >
-                      <FaKey />
-                      {isExpanded ? (
-                        <FaChevronUp style={{ fontSize: 10 }} />
-                      ) : (
-                        <FaChevronDown style={{ fontSize: 10 }} />
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Admin account management panel */}
-                {isExpanded && (
-                  <div className={styles.adminPanel}>
-                    <h4 className={styles.adminPanelTitle}>Admin Account</h4>
-                    {admin ? (
-                      <div className={styles.adminExisting}>
-                        <div className={styles.adminInfo}>
-                          <span className={styles.adminEmailLabel}>
-                            Current email:
-                          </span>
-                          <span className={styles.adminEmailValue}>
-                            {admin.email}
-                          </span>
-                        </div>
-                        <div className={styles.adminFormRow}>
-                          <input
-                            className={styles.input}
-                            type="password"
-                            placeholder="New password"
-                            value={adminForm.password}
-                            onChange={(e) =>
-                              handleAdminFormChange(
-                                group.id,
-                                "password",
-                                e.target.value,
-                              )
-                            }
-                          />
-                          <button
-                            className={styles.saveBtn}
-                            onClick={() => handleUpdatePassword(group.id)}
-                            disabled={!adminForm.password}
-                          >
-                            Update Password
-                          </button>
-                          <button
-                            className={`${styles.cancelBtn} ${styles.danger}`}
-                            onClick={() => handleDeleteAdmin(group.id)}
-                          >
-                            <FaTrash /> Remove
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className={styles.adminCreate}>
-                        <p className={styles.noAdmin}>
-                          No admin account yet. Create one:
-                        </p>
-                        <div className={styles.adminFormRow}>
-                          <input
-                            className={styles.input}
-                            type="email"
-                            placeholder="Admin email"
-                            value={adminForm.email}
-                            onChange={(e) =>
-                              handleAdminFormChange(
-                                group.id,
-                                "email",
-                                e.target.value,
-                              )
-                            }
-                          />
-                          <input
-                            className={styles.input}
-                            type="password"
-                            placeholder="Password (min 6 chars)"
-                            value={adminForm.password}
-                            onChange={(e) =>
-                              handleAdminFormChange(
-                                group.id,
-                                "password",
-                                e.target.value,
-                              )
-                            }
-                          />
-                          <button
-                            className={styles.saveBtn}
-                            onClick={() => handleCreateAdmin(group.id)}
-                            disabled={!adminForm.email || !adminForm.password}
-                          >
-                            Create Account
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          {groups.map((group) => (
+            <GroupCard
+              key={group.id}
+              group={group}
+              isExpanded={expandedGroup === group.id}
+              admin={groupAdmins[group.id]}
+              adminForm={adminForms[group.id] || emptyAdminForm}
+              showPasswords={showPasswords}
+              onExpand={handleExpandGroup}
+              onEdit={handleEditGroup}
+              onDelete={handleDeleteGroup}
+              onNavigate={() => navigate("/attendance-login")}
+              onFormChange={handleAdminFormChange}
+              onTogglePassword={handleTogglePassword}
+              onCreateAdmin={handleCreateAdmin}
+              onUpdatePassword={handleUpdatePassword}
+              onDeleteAdmin={handleDeleteAdmin}
+            />
+          ))}
         </div>
       )}
     </div>

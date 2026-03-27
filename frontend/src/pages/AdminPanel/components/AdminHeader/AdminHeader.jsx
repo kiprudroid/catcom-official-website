@@ -9,9 +9,10 @@ import {
   FaChartBar,
   FaTools,
   FaUserPlus,
+  FaSignOutAlt,
 } from "react-icons/fa";
 
-export default function AdminHeader({ activeTab, setActiveTab }) {
+export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
   const tabs = [
     { key: "leaders", label: "Leaders", icon: <FaUser /> },
     { key: "SccLeaders", label: "Scc Leaders", icon: <FaUsers /> },
@@ -25,24 +26,29 @@ export default function AdminHeader({ activeTab, setActiveTab }) {
 
   return (
     <div className={styles.header}>
-      <div className={styles.logoGroup}>
-        <img
-          src="/others/catcom-logo.png"
-          alt="CATCOM Logo"
-          className={styles.logo}
-        />
-        <SectionHeading className={styles.title}>
-          JKUAT CATCOM ADMIN PANEL
-        </SectionHeading>
+      <div className={styles.topRow}>
+        <div className={styles.logoGroup}>
+          <img
+            src="/others/catcom-logo.png"
+            alt="CATCOM Logo"
+            className={styles.logo}
+          />
+          <SectionHeading className={styles.title}>
+            JKUAT CATCOM ADMIN PANEL
+          </SectionHeading>
+        </div>
+
+        <button className={styles.signOutBtn} onClick={onLogout}>
+          <FaSignOutAlt />
+          Sign Out
+        </button>
       </div>
 
       <nav className={styles.navbar}>
         {tabs.map((tab) => (
           <button
             key={tab.key}
-            className={`${styles.navItem} ${
-              activeTab === tab.key ? styles.active : ""
-            }`}
+            className={`${styles.navItem} ${activeTab === tab.key ? styles.active : ""}`}
             onClick={() => setActiveTab(tab.key)}
           >
             <span className={styles.icon}>{tab.icon}</span>

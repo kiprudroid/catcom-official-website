@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import * as Model from "../models/attendance.model.js";
 
-const VALID_TYPES = ["committee", "scc", "pastoral", "other"];
+const VALID_TYPES = ["committee", "scc", "group", "other"];
 const VALID_STATUSES = ["present", "absent", "apology"];
 
 // ── Groups ────────────────────────────────────────────────────────

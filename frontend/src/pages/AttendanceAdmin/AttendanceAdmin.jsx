@@ -4,15 +4,6 @@ import styles from "./AttendanceAdmin.module.css";
 import toast from "react-hot-toast";
 import { FaSignOutAlt } from "react-icons/fa";
 
-// import AttendanceWidgets from "./widgets/AttendanceWidgets/AttendanceWidgets";
-// import AttendanceChart from "./widgets/AttendanceChart/AttendanceChart";
-// import MeetingSelector from "./widgets/MeetingSelector/MeetingSelector";
-// import MembersAtRisk from "./widgets/MembersAtRisk/MembersAtRisk";
-// import MemberManager from "./widgets/MemberManager/MemberManager";
-// import AttendanceTable from "./widgets/AttendanceTable/AttendanceTable";
-// import Spinner from "./widgets/Spinner/Spinner";
-// import SaveButton from "./widgets/SaveButton/SaveButton";
-
 import {
   AttendanceChart,
   AttendanceWidgets,
@@ -175,6 +166,8 @@ const AttendanceAdmin = () => {
       <AttendanceTable
         members={membersWithAttendance}
         updateAttendance={updateAttendance}
+        meetingDate={meetingDate}
+        groupName={group.name}
       />
     </div>
   );

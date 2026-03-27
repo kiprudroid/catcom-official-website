@@ -9,7 +9,7 @@ import {
 
 import { SCCs } from "@/pages/Scc/data/scc";
 import SccInfo from "./pages/Scc/SccInfo/SccInfo";
-import Login from "@/pages/AdminPanel/pages/Auth/Login";
+import { SuperAdminLogin } from "@/pages/AdminPanel/pages";
 import { AttendanceLogin } from "@/pages/AttendanceAdmin/pages";
 
 import {
@@ -75,7 +75,7 @@ const router = createBrowserRouter(
       ))}
 
       {/* ── Login pages ──────────────────────────────────── */}
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<SuperAdminLogin />} />
       <Route path="/attendance-login" element={<AttendanceLogin />} />
 
       {/* ── Main admin panel (protected) ─────────────────── */}

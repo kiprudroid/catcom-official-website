@@ -55,7 +55,14 @@ export const getGroupAdmin = async (req, res, next) => {
 
 export const createGroupAdmin = async (req, res, next) => {
   try {
-    res.status(201).json(await Service.createGroupAdmin(req.body));
+    // group_id comes from URL params, email+password from body
+    res.status(201).json(
+      await Service.createGroupAdmin({
+        group_id: req.params.group_id, // ← was missing
+        email: req.body.email,
+        password: req.body.password,
+      }),
+    );
   } catch (err) {
     next(err);
   }
@@ -98,8 +105,7 @@ export const loginGroupAdmin = async (req, res, next) => {
 
 export const getMembers = async (req, res, next) => {
   try {
-    // group_id comes from JWT (req.user) for group admins
-    const group_id = req.params.group_id || req.user.group_id;
+    const group_id = req.user.group_id;
     res.json(await Service.getMembersByGroup(group_id));
   } catch (err) {
     next(err);

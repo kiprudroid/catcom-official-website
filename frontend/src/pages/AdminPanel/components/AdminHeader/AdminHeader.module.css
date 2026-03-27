@@ -7,6 +7,14 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* ── Top row: logo + sign out ─────────────────────────────────── */
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .logoGroup {
   display: flex;
   align-items: center;
@@ -24,6 +32,30 @@
   font-weight: 700;
 }
 
+.signOutBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  font-family: "Nunito Sans";
+}
+
+.signOutBtn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+/* ── Nav tabs ─────────────────────────────────────────────────── */
 .navbar {
   display: flex;
   gap: 12px;
@@ -57,4 +89,22 @@
   font-size: 1.2rem;
   display: flex;
   align-items: center;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .topRow {
+    flex-wrap: wrap;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+  .title {
+    font-size: 1.1rem;
+  }
+  .signOutBtn {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
 }
