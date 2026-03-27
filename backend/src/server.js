@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 dotenv.config(); // ← must be first
-console.log("JWT_SECRET:", process.env.JWT_SECRET); // ← add this
 
 import app from "./app.js";
 
