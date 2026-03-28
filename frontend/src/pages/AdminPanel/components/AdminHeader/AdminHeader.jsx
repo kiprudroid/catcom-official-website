@@ -10,6 +10,7 @@ import {
   FaTools,
   FaUserPlus,
   FaSignOutAlt,
+  FaPhotoVideo,
 } from "react-icons/fa";
 
 export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
@@ -22,6 +23,7 @@ export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
     { key: "reports", label: "Reports", icon: <FaChartBar /> },
     { key: "otherTools", label: "Other Tools", icon: <FaTools /> },
     { key: "joinGroup", label: "Join Group", icon: <FaUserCheck /> },
+    { key: "media", label: "Media", icon: <FaPhotoVideo /> },
   ];
 
   return (

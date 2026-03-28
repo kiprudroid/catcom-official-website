@@ -8,7 +8,8 @@ import joinSccRouter from "./routes/join-scc.routes.js";
 import sccLeadersRouter from "./routes/scc-leaders.routes.js";
 import groupsRouter from "./routes/join-group.routes.js";
 import readingsRouter from "./routes/readings.routes.js";
-import attendanceRouter from "./routes/attendance.routes.js"; // ← replaces pastoral routers
+import attendanceRouter from "./routes/attendance.routes.js";
+import mediaRouter from "./routes/media.routes.js"; // ← new
 import cors from "cors";
 import { errorHandler } from "./middleware/errorHandler.js";
 
@@ -29,7 +30,8 @@ app.use("/api", groupsRouter);
 app.use("/api", authRouter);
 app.use("/api", joinSccRouter);
 app.use("/api", readingsRouter);
-app.use("/api", attendanceRouter); // ← replaces pastoralRouter + pastoralAuthRouter
+app.use("/api", attendanceRouter);
+app.use("/api", mediaRouter); 
 
 app.use(errorHandler);
 

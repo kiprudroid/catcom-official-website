@@ -12,6 +12,7 @@ import {
   SccLeaders,
   JoinGroup,
   JoinSccsSection,
+  MediaSection,
 } from "@/pages/AdminPanel/pages";
 
 export default function AdminPanel({ onLogout }) {
@@ -42,6 +43,8 @@ export default function AdminPanel({ onLogout }) {
         return <JoinGroup />;
       case "joinSccs":
         return <JoinSccsSection />;
+      case "media":
+        return <MediaSection />;
       default:
         return <LeadersSection />;
     }
