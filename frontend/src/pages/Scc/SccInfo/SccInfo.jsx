@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SccInfo.module.css";
 import DashboardLayout from "../../../layouts/dashboard-layout/DashboardLayout";
 import {
@@ -9,8 +9,8 @@ import {
   Prayer,
   SccExecutiveCard,
 } from "@/pages/Scc/SccInfo/widgets";
+import { fetchSpecificSccLeaders } from "@/api/sccLeaders.api";
 
-import { sccExecutive } from "@/data/data";
 
 const SccInfo = ({
   name,
@@ -20,8 +20,32 @@ const SccInfo = ({
   aboutPatronSaint,
   prayer,
   image,
-  leaders,
+  path,
 }) => {
+  
+  const [leaders, setLeaders] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const loadLeaders = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const data = await fetchSpecificSccLeaders(path);
+        setLeaders(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Error fetching leaders:", err);
+        setError(err?.message || "Error fetching leaders");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadLeaders();
+  }, []);
+  
   return (
     <DashboardLayout>
       <div className={styles.gridContainer}>

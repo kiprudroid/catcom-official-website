@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./AdminPanel.module.css";
 import { AdminHeader } from "@/pages/AdminPanel/components";
+import OtherTools from "@/pages/AdminPanel/pages/OtherTools/OtherTools";
+import { useNavigate } from "react-router-dom";
 
 import {
   Members,
@@ -10,10 +12,18 @@ import {
   SccLeaders,
   JoinGroup,
   JoinSccsSection,
+  MediaSection,
 } from "@/pages/AdminPanel/pages";
 
-export default function AdminPanel() {
+export default function AdminPanel({ onLogout }) {
   const [activeTab, setActiveTab] = useState("leaders");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    if (onLogout) onLogout();
+    navigate("/login", { replace: true });
+  };
 
   const renderActiveTab = () => {
     switch (activeTab) {
@@ -27,10 +37,14 @@ export default function AdminPanel() {
         return <Reports />;
       case "SccLeaders":
         return <SccLeaders />;
+      case "otherTools":
+        return <OtherTools />;
       case "joinGroup":
         return <JoinGroup />;
       case "joinSccs":
         return <JoinSccsSection />;
+      case "media":
+        return <MediaSection />;
       default:
         return <LeadersSection />;
     }
@@ -39,7 +53,11 @@ export default function AdminPanel() {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <AdminHeader activeTab={activeTab} setActiveTab={setActiveTab} />
+        <AdminHeader
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          onLogout={handleLogout}
+        />
         <div className={styles.sectionWrapper}>{renderActiveTab()}</div>
       </div>
     </div>
