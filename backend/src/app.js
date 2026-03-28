@@ -31,7 +31,7 @@ app.use("/api", authRouter);
 app.use("/api", joinSccRouter);
 app.use("/api", readingsRouter);
 app.use("/api", attendanceRouter);
-app.use("/api", mediaRouter); 
+app.use("/api", mediaRouter);
 
 app.use(errorHandler);
 
