@@ -1,5 +1,5 @@
 import { API_BASE } from "./apiClient";
-
+const API_URL = `${API_BASE}/join-sccs`;
 
 export const fetchJoinSccs = async () => {
   const res = await fetch(`${API_URL}`, {
@@ -18,7 +18,9 @@ export const fetchJoinSccs = async () => {
 export const createJoinScc = async (payload) => {
   const res = await fetch(`${API_URL}`, {
     method: "POST",
-    headers: { "Accept": "application/json" },
+    headers: { "Accept": "application/json" ,
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(payload),
   });
 
