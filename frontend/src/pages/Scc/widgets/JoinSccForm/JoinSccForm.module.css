@@ -12,7 +12,6 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
-  /* max-width: 900px; */
   margin: 0 auto;
   padding: 0;
   background: transparent;
@@ -21,12 +20,88 @@
 }
 
 
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modalBox {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.2s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.modalIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.modalMessage {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.modalBtn {
+  margin-top: 0.5rem;
+  padding: 0.65rem 2.5rem;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.modalBtn:hover {
+  opacity: 0.88;
+}
+
+/* ===================== FORM ===================== */
+
 .inputRow {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-
 
 .inputCol {
   display: flex;
@@ -34,12 +109,10 @@
   gap: 0.35rem;
 }
 
-
 label {
   font-weight: 500;
   color: #000;
 }
-
 
 input,
 select {
@@ -52,7 +125,6 @@ select {
   transition: all 0.2s ease;
 }
 
-/* === FOCUS STATE === */
 input:focus,
 select:focus {
   outline: none;
@@ -60,28 +132,18 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(45, 171, 177, 0.15);
 }
 
-/* === TEXT STYLING === */
 .subtitle {
   font-size: 0.95rem;
   color: #000;
   margin-bottom: 0.5rem;
 }
 
-.infoText {
-  font-size: 0.9rem;
-  color: #000;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* === BUTTON ROW === */
 .buttonRow {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
 
-/* === BUTTON === */
 .joinBtn {
   min-width: 180px;
   padding: 0.7rem 2rem;
@@ -99,7 +161,6 @@ select:focus {
   background: #1e8a8f;
 }
 
-/* === OPTIONAL WARNING BOX === */
 .warningBox {
   background: #fff3cd;
   color: #856404;
@@ -111,56 +172,25 @@ select:focus {
   border: 1px solid #ffeeba;
 }
 
-/* ================= RESPONSIVENESS ================= */
+/* ===================== RESPONSIVE ===================== */
 
-/* === Large desktops === */
 @media screen and (min-width: 1441px) {
-  .inputRow {
-    gap: 2rem;
-  }
-
-  .joinBtn {
-    font-size: 1.1rem;
-  }
+  .inputRow { gap: 2rem; }
+  .joinBtn { font-size: 1.1rem; }
 }
 
-/* === Desktops === */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
-  .inputRow {
-    gap: 1.5rem;
-  }
+  .inputRow { gap: 1.5rem; }
 }
 
-/* === Tablets & small laptops === */
 @media screen and (max-width: 1024px) {
-  .inputRow {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .joinBtn {
-    width: 100%;
-  }
+  .inputRow { grid-template-columns: 1fr; gap: 1rem; }
+  .joinBtn { width: 100%; }
 }
 
-/* === Mobile === */
 @media screen and (max-width: 480px) {
-  .formGrid {
-    padding: 1rem;
-  }
-
-  .form {
-    gap: 1.2rem;
-  }
-
-  input,
-  select {
-    font-size: 0.9rem;
-    padding: 0.55rem;
-  }
-
-  .joinBtn {
-    font-size: 1rem;
-    padding: 0.65rem;
-  }
+  .formGrid { padding: 1rem; }
+  .form { gap: 1.2rem; }
+  input, select { font-size: 0.9rem; padding: 0.55rem; }
+  .joinBtn { font-size: 1rem; padding: 0.65rem; }
 }

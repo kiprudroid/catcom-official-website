@@ -1,11 +1,45 @@
-
-import styles from "./JoinSccForm.module.css";
 import React, { useState } from "react";
 import {
   SectionHeading,
   Paragraph,
 } from "./../../../../components/Typography/Typography";
 import { createJoinScc } from "@/api/joinScc.api";
+import styles from "./JoinSccForm.module.css";
+
+function Modal({ type, onClose }) {
+  const isSuccess = type === "success";
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+        <div
+          className={styles.modalIcon}
+          style={{ background: isSuccess ? "#22c55e" : "#ef4444" }}
+        >
+          {isSuccess ? "✓" : "✕"}
+        </div>
+
+        <p className={styles.modalTitle}>
+          {isSuccess ? "Request Submitted!" : "Email Already Used"}
+        </p>
+
+        <p className={styles.modalMessage}>
+          {isSuccess
+            ? "You have successfully submitted your request to join an SCC. You will be contacted and assigned an SCC soon."
+            : "This email address has already been used to submit a join request. Please use a different email address."}
+        </p>
+
+        <button
+          className={styles.modalBtn}
+          style={{ background: isSuccess ? "#22c55e" : "#ef4444" }}
+          onClick={onClose}
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function JoinSccForm({ className }) {
   const [formData, setFormData] = useState({
@@ -15,37 +49,30 @@ function JoinSccForm({ className }) {
     email: "",
     year_study: "",
     gender: "",
-    scc_name: "",
   });
 
-  // handle input change
+  const [modal, setModal] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
-      full_name:
-        `${formData.first_name.trim()} ${formData.last_name.trim()}`.trim(),
+      full_name: `${formData.first_name.trim()} ${formData.last_name.trim()}`.trim(),
       phone_number: formData.phone_number,
       email: formData.email,
-      year_study: Number(formData.year_study),
-      gender: String(formData.gender).trim().toLowerCase(),
+      year_study: formData.year_study,
+      gender: formData.gender,
       scc_name: "TBD",
     };
 
     try {
       await createJoinScc(payload);
 
-      // reset form
       setFormData({
         first_name: "",
         last_name: "",
@@ -53,18 +80,20 @@ function JoinSccForm({ className }) {
         email: "",
         year_study: "",
         gender: "",
-        scc_name: " ",
       });
+
+      setModal("success");
     } catch (err) {
-      alert("Failed to submit request");
       console.error(err);
+      setModal("error");
     }
   };
 
   return (
-    <div
-      className={`${styles.formGrid} ${styles.joinForm} ${className ?? ""}`.trim()}
-    >
+    <div className={`${styles.formGrid} ${styles.joinForm} ${className ?? ""}`.trim()}>
+
+      {modal && <Modal type={modal} onClose={() => setModal(null)} />}
+
       <SectionHeading as="h2">Joining an SCC</SectionHeading>
       <Paragraph className={styles.subtitle}>
         To join an SCC, please fill out the form below
@@ -73,24 +102,20 @@ function JoinSccForm({ className }) {
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label>
-              <Paragraph>First Name</Paragraph>
-            </label>
+            <label><Paragraph>First Name</Paragraph></label>
             <input
               name="first_name"
-              placeholder=" "
+              placeholder="First Name"
               value={formData.first_name}
               onChange={handleChange}
               required
             />
           </div>
           <div className={styles.inputCol}>
-            <label>
-              <Paragraph>Last Name</Paragraph>
-            </label>
+            <label><Paragraph>Last Name</Paragraph></label>
             <input
               name="last_name"
-              placeholder=" "
+              placeholder="Last Name"
               value={formData.last_name}
               onChange={handleChange}
               required
@@ -100,24 +125,21 @@ function JoinSccForm({ className }) {
 
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label>
-              <Paragraph>Phone Number</Paragraph>
-            </label>
+            <label><Paragraph>Phone Number</Paragraph></label>
             <input
               name="phone_number"
-              placeholder=" "
+              placeholder="Phone Number"
               value={formData.phone_number}
               onChange={handleChange}
               required
             />
           </div>
           <div className={styles.inputCol}>
-            <label>
-              <Paragraph>Your E-mail</Paragraph>
-            </label>
+            <label><Paragraph>Your E-mail</Paragraph></label>
             <input
               name="email"
-              placeholder=" "
+              type="email"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
               required
@@ -127,9 +149,7 @@ function JoinSccForm({ className }) {
 
         <div className={styles.inputRow}>
           <div className={styles.inputCol}>
-            <label>
-              <Paragraph>Year of Study</Paragraph>
-            </label>
+            <label><Paragraph>Year of Study</Paragraph></label>
             <select
               name="year_study"
               value={formData.year_study}
@@ -146,9 +166,7 @@ function JoinSccForm({ className }) {
             </select>
           </div>
           <div className={styles.inputCol}>
-            <label>
-              <Paragraph>Gender</Paragraph>
-            </label>
+            <label><Paragraph>Gender</Paragraph></label>
             <select
               name="gender"
               value={formData.gender}
@@ -161,14 +179,7 @@ function JoinSccForm({ className }) {
             </select>
           </div>
         </div>
-
-       
-
-        <Paragraph className={styles.infoText}>
-          After submitting, you will be contacted and informed of the SCC to
-          join.
-        </Paragraph>
-
+        
         <div className={styles.buttonRow}>
           <button className={styles.joinBtn} type="submit">
             Join SCC

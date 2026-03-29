@@ -31,11 +31,13 @@ CREATE TABLE daily_mass_readings (
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
+    category VARCHAR(50) NOT NULL,
     event_date DATE NOT NULL,
     event_time TIME NOT NULL,
     venue VARCHAR(150) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 CREATE TYPE gender_type AS ENUM ('male', 'female', 'other');
 create table join_scc (
@@ -50,9 +52,8 @@ create table join_scc (
 
 create table scc_executive (
     exec_id SERIAL PRIMARY KEY,
-	  scc_name varchar(50),
-    exec_first_name varchar(50) not null,
-    exec_last_name varchar(50) not null,
+	scc_name varchar(50),
+    exec_full_name varchar(50) not null,    
     position varchar(50) not null,
     phone_number varchar(15),
     exec_image varchar(255)
@@ -99,3 +100,28 @@ CREATE TABLE refresh_tokens (
 CREATE INDEX idx_refresh_tokens_user_id ON refresh_tokens(user_id);
 CREATE INDEX idx_refresh_tokens_token ON refresh_tokens(token);
 
+
+
+
+----------- PASTORAL ATTENDANCE --------------
+
+-- Pastoral Members table
+CREATE TABLE pastoral_members (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    role VARCHAR(255) NOT NULL,
+    status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'removed')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Attendance table
+CREATE TABLE attendance (
+    id SERIAL PRIMARY KEY,
+    member_id INTEGER REFERENCES pastoral_members(id) ON DELETE CASCADE,
+    date DATE NOT NULL,
+    status VARCHAR(20) DEFAULT 'present' CHECK (status IN ('present', 'absent', 'apology')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(member_id, date)
+);
