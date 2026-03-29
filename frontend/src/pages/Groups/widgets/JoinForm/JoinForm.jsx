@@ -60,7 +60,7 @@ function JoinForm() {
     setLoading(true);
 
     try {
-      await createJoinGroup(form); // ✅ API client handles field mapping
+      await createJoinGroup(form);
       setSuccess("✅ Request sent successfully. We'll contact you soon.");
       setForm(initialForm);
     } catch (error) {
@@ -80,89 +80,92 @@ function JoinForm() {
 
       <div className={styles.formRow}>
         <div className={styles.formCol}>
-          <label htmlFor="fname">
-            <Paragraph>First Name</Paragraph>
-          </label>
-          <input
-            type="text"
-            id="fname"
-            name="fname"
-            value={form.fname}
-            onChange={handleChange}
-          />
+          <div className={styles.fieldGroup}>
+            <label htmlFor="fname">
+              <Paragraph>First Name</Paragraph>
+            </label>
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              value={form.fname}
+              onChange={handleChange}
+            />
+          </div>
 
-          <label htmlFor="lname">
-            <Paragraph>Last Name</Paragraph>
-          </label>
-          <input
-            type="text"
-            id="lname"
-            name="lname"
-            value={form.lname}
-            onChange={handleChange}
-          />
+          <div className={styles.fieldGroup}>
+            <label htmlFor="lname">
+              <Paragraph>Last Name</Paragraph>
+            </label>
+            <input
+              type="text"
+              id="lname"
+              name="lname"
+              value={form.lname}
+              onChange={handleChange}
+            />
+          </div>
 
-          <label htmlFor="phone">
-            <Paragraph>Phone Number</Paragraph>
-          </label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-          />
+          <div className={styles.fieldGroup}>
+            <label htmlFor="phone">
+              <Paragraph>Phone Number</Paragraph>
+            </label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+            />
+          </div>
 
-          <label htmlFor="email">
-            <Paragraph>Your E-mail</Paragraph>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-          />
+          <div className={styles.fieldGroup}>
+            <label htmlFor="email">
+              <Paragraph>Your E-mail</Paragraph>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+            />
+          </div>
 
-          <label htmlFor="gender">
-            <Paragraph>Gender</Paragraph>
-          </label>
-          <input
-            type="text"
-            id="gender"
-            name="gender"
-            value={form.gender}
-            onChange={handleChange}
-          />
+          <div className={styles.fieldGroup}>
+            <label htmlFor="gender">
+              <Paragraph>Gender</Paragraph>
+            </label>
+            <select
+              id="gender"
+              name="gender"
+              value={form.gender}
+              onChange={handleChange}
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
 
-          <label htmlFor="college">
-            <Paragraph>College</Paragraph>
-          </label>
-          <select
-            id="college"
-            name="college"
-            value={form.college}
-            onChange={handleChange}
-          >
-            <option value="">
-              <Paragraph>Select College</Paragraph>
-            </option>
-            <option value="COHES">
-              <Paragraph>COHES</Paragraph>
-            </option>
-            <option value="COPAS">
-              <Paragraph>COPAS</Paragraph>
-            </option>
-            <option value="COANRE">
-              <Paragraph>COANRE</Paragraph>
-            </option>
-            <option value="COETEC">
-              <Paragraph>COETEC</Paragraph>
-            </option>
-            <option value="COHRED">
-              <Paragraph>COHRED</Paragraph>
-            </option>
-          </select>
+          <div className={styles.fieldGroup}>
+            <label htmlFor="college">
+              <Paragraph>College</Paragraph>
+            </label>
+            <select
+              id="college"
+              name="college"
+              value={form.college}
+              onChange={handleChange}
+            >
+              <option value="">Select College</option>
+              <option value="COHES">COHES</option>
+              <option value="COPAS">COPAS</option>
+              <option value="COANRE">COANRE</option>
+              <option value="COETEC">COETEC</option>
+              <option value="COHRED">COHRED</option>
+            </select>
+          </div>
         </div>
 
         <div className={styles.formCol}>
