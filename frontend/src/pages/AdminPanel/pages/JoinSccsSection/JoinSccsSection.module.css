@@ -76,7 +76,7 @@
 }
 
 .tbdTag { background: #d6ce6e; color: #241502; }
-.assignedTag { background: #dcfce7; color: #166534; }
+.assignedTag { background: #4caf50; color: white; }
 
 .assignRow {
   display: flex;
