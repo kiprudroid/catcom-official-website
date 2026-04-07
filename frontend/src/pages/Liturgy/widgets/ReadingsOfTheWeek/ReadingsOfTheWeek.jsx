@@ -1,33 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ReadingsOfTheWeek.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import { FaPlus } from "react-icons/fa";
-
-const readings = [
-  {
-    title: "1st Reading",
-    reference: "Mal 3:1-4",
-    image: "/litugy-images/Bible.jpg",
-  },
-  {
-    title: "Responsorial Psalms",
-    reference: "Psalms 3:1-4",
-    image: "/litugy-images/Bible.jpg",
-  },
-  {
-    title: "2nd Reading",
-    reference: "Heb 2:14-18",
-    image: "/litugy-images/Bible.jpg",
-  },
-  {
-    title: "Gospel",
-    reference: "Luke 2:22-40",
-    image: "/litugy-images/Bible.jpg",
-  },
-];
+import { fetchReadings } from "@/api/readings.api";
 
 const ReadingOfTheWeek = () => {
   const [warning, setWarning] = useState(null);
+  const [reading, setReading] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
+  //fetchReadings
+  useEffect(() => {
+    const loadReadings = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const data = await fetchReadings();
+        setReading(data);
+      } catch (err) {
+        console.error("Error fetching Readings:", err);
+        setError(err?.message || "Error fetching Readings");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadReadings();
+  }, []);
+
+  console.log(reading);
+  const sections = Array.isArray(reading?.sections) ? reading.sections : [];
 
   const showWarning = (msg) => {
     setWarning(msg);
@@ -37,31 +42,51 @@ const ReadingOfTheWeek = () => {
   return (
     <div className={styles.readingBox}>
       <SectionHeading as="h2">Readings of the Day</SectionHeading>
-
-      {warning && <div className={styles.warningBox}>{warning}</div>}
+      {reading?.title && <SectionHeading>{reading.title}</SectionHeading>}
 
       <div className={styles.grid}>
-        {readings.map((reading, idx) => (
+        {sections.map((section, idx) => (
           <div key={idx} className={styles.card}>
             <div className={styles.imageWrapper}>
               <img
-                src={reading.image}
-                alt={reading.title}
+                src="/litugy-images/Bible.jpg"
+                alt={section.header}
                 className={styles.image}
               />
               <div className={styles.overlay}></div>
               <div
                 className={styles.cardHeader}
                 onClick={() =>
-                  showWarning(`🚧 This Feature is under development`)
+                  setExpandedIndex((current) => (current === idx ? null : idx))
                 }
               >
                 <Paragraph className={styles.cardTitle}>
-                  <strong>{reading.title}:</strong> {reading.reference}
+                  <strong>{section.header}</strong>
                 </Paragraph>
+                {Array.isArray(section.readings) &&
+                  section.readings[0]?.verses?.[0]?.text && (
+                    <Paragraph>{section.readings[0].verses[0].text}</Paragraph>
+                  )}
                 <FaPlus />
               </div>
             </div>
+            {expandedIndex === idx && (
+              <div className={styles.cardContent}>
+                <SectionHeading>
+                  <strong>{section.header}</strong>
+                </SectionHeading>
+                {Array.isArray(section.readings) &&
+                  section.readings.map((item, itemIdx) => (
+                    <div key={itemIdx}>
+                      <Paragraph>{item.text}</Paragraph>
+                      {Array.isArray(item.verses) &&
+                        item.verses.map((verse, verseIdx) => (
+                          <Paragraph key={verseIdx}>{verse.text}</Paragraph>
+                        ))}
+                    </div>
+                  ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
