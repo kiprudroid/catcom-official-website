@@ -43,6 +43,7 @@ export const SccExecutiveCard = ({ executives }) => {
               </div> */}
             </div>
           </div>
+          
         ))}
       </div>
     </div>

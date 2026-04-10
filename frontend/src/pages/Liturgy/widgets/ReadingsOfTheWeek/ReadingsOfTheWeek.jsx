@@ -4,174 +4,181 @@ import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import { FaPlus } from "react-icons/fa";
 import { fetchReadings } from "@/api/readings.api";
 
-const normalizeSpacing = (text = "") => text.replace(/\s+/g, " ").trim();
+const normalizeWhitespace = (text = "") => text.replace(/\s+/g, " ").trim();
 
-const splitSentences = (text = "") =>
-  normalizeSpacing(text)
+const tokenizeSentences = (text = "") =>
+  normalizeWhitespace(text)
     .match(/[^.!?]+[.!?]+|[^.!?]+$/g)
     ?.map((s) => s.trim()) || [];
 
-const mergeIntoFixedCount = (parts, targetCount) => {
-  if (parts.length <= targetCount) return parts;
-
-  const merged = [];
-  let cursor = 0;
-
-  for (let i = 0; i < targetCount; i += 1) {
-    const remainingParts = parts.length - cursor;
-    const remainingSlots = targetCount - i;
-    const take = Math.ceil(remainingParts / remainingSlots);
-    merged.push(
-      parts
-        .slice(cursor, cursor + take)
-        .join(" ")
-        .trim(),
-    );
-    cursor += take;
-  }
-
-  return merged.filter(Boolean);
+const isResponseSentence = (sentence = "") => {
+  const value = normalizeWhitespace(sentence);
+  return /^R\./i.test(value) || /^or:\s*R\./i.test(value);
 };
 
-const splitLongestPartByComma = (parts) => {
-  let bestIndex = -1;
-  let bestWordCount = -1;
+const collectResponseBlock = (sentences = [], startIndex = 0) => {
+  const block = [];
+  let index = startIndex;
 
-  parts.forEach((part, idx) => {
-    if (!part.includes(",")) return;
-    const words = part.split(/\s+/).filter(Boolean).length;
-    if (words > bestWordCount) {
-      bestWordCount = words;
-      bestIndex = idx;
+  if (!isResponseSentence(sentences[index])) {
+    return { blockText: "", nextIndex: startIndex + 1 };
+  }
+
+  block.push(sentences[index]);
+  index += 1;
+
+  while (
+    index < sentences.length &&
+    /^or:\s*R\./i.test(normalizeWhitespace(sentences[index]))
+  ) {
+    block.push(sentences[index]);
+    index += 1;
+  }
+
+  return {
+    blockText: normalizeWhitespace(block.join(" ")),
+    nextIndex: index,
+  };
+};
+
+const splitAtBalancedComma = (text = "") => {
+  const normalized = normalizeWhitespace(text);
+  const chunks = normalized.split(/,\s+/).filter(Boolean);
+
+  if (chunks.length < 2) return [normalized];
+
+  const midpoint = Math.ceil(chunks.length / 2);
+  const leftRaw = chunks.slice(0, midpoint).join(", ").trim();
+  const rightRaw = chunks.slice(midpoint).join(", ").trim();
+
+  const left = /[,:;.!?]$/.test(leftRaw) ? leftRaw : `${leftRaw},`;
+  const right = rightRaw;
+
+  return [left, right].filter(Boolean);
+};
+
+const sentenceToDisplayLines = (sentence = "") => {
+  const normalized = normalizeWhitespace(sentence);
+  if (!normalized) return [];
+
+  const semicolonParts =
+    normalized
+      .match(/[^;]+;?|[^;]+$/g)
+      ?.map((part) => normalizeWhitespace(part))
+      .filter(Boolean) || [];
+
+  const lines = [];
+  semicolonParts.forEach((part) => {
+    const wordCount = part.split(/\s+/).filter(Boolean).length;
+    if (part.includes(",") && wordCount > 10) {
+      lines.push(...splitAtBalancedComma(part));
+    } else {
+      lines.push(part);
     }
   });
 
-  if (bestIndex === -1) return null;
-
-  const candidate = parts[bestIndex];
-  const commaSlices = candidate
-    .split(/,\s+/)
-    .map((slice) => slice.trim())
-    .filter(Boolean);
-
-  if (commaSlices.length < 2) return null;
-
-  const middle = Math.ceil(commaSlices.length / 2);
-  const left = `${commaSlices.slice(0, middle).join(",")},`.trim();
-  const right = commaSlices.slice(middle).join(", ").trim();
-
-  const next = [...parts];
-  next.splice(bestIndex, 1, left, right);
-  return next.filter(Boolean);
+  return lines.filter(Boolean);
 };
 
-const splitDisplayLines = (text = "") => {
-  const normalized = normalizeSpacing(text);
-  if (!normalized) return ["", "", "", ""];
+const buildDisplayLinesForStanza = (stanzaSentences = []) => {
+  const lines = stanzaSentences.flatMap((sentence) =>
+    sentenceToDisplayLines(sentence),
+  );
+  if (lines.length) return lines;
 
-  const strongParts = normalized
-    .split(/(?<=[.;:!?])\s+/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  let parts = strongParts.length ? [...strongParts] : [normalized];
-
-  // Prefer punctuation-aware shape first.
-  while (parts.length < 4) {
-    const next = splitLongestPartByComma(parts);
-    if (!next) break;
-    parts = next;
-  }
-
-  if (parts.length > 4) {
-    parts = mergeIntoFixedCount(parts, 4);
-  }
-
-  // Strict mode: always return exactly 4 lines.
-  if (parts.length !== 4) {
-    const words = normalized.split(/\s+/).filter(Boolean);
-    const strict = [];
-    let cursor = 0;
-
-    for (let i = 0; i < 4; i += 1) {
-      const remainingWords = words.length - cursor;
-      const remainingSlots = 4 - i;
-      const take =
-        remainingWords > 0 ? Math.ceil(remainingWords / remainingSlots) : 0;
-
-      strict.push(
-        words
-          .slice(cursor, cursor + take)
-          .join(" ")
-          .trim(),
-      );
-
-      cursor += take;
-    }
-
-    parts = strict;
-  }
-
-  return parts.map((line) => normalizeSpacing(line));
+  const fallback = normalizeWhitespace(stanzaSentences.join(" "));
+  return fallback ? [fallback] : [];
 };
 
-const extractResponseAndBodyFromChunk = (chunk = "") => {
-  const sentences = splitSentences(chunk);
-  if (!sentences.length) return { response: "", body: "" };
+const pickCanonicalResponse = (responses = []) => {
+  if (!responses.length) return "";
 
-  const responseParts = [];
-  let index = 0;
+  const counts = new Map();
+  const order = [];
 
-  if (/^R\./i.test(sentences[0])) {
-    responseParts.push(sentences[0]);
-    index = 1;
+  responses.forEach((response) => {
+    const key = normalizeWhitespace(response).toLowerCase();
+    if (!key) return;
 
-    while (index < sentences.length && /^or:\s*R\./i.test(sentences[index])) {
-      responseParts.push(sentences[index]);
-      index += 1;
+    if (!counts.has(key)) {
+      counts.set(key, { count: 1, value: normalizeWhitespace(response) });
+      order.push(key);
+    } else {
+      counts.set(key, {
+        ...counts.get(key),
+        count: counts.get(key).count + 1,
+      });
     }
+  });
+
+  let winnerKey = order[0];
+  order.forEach((key) => {
+    const current = counts.get(key);
+    const winner = counts.get(winnerKey);
+
+    if (!winner || current.count > winner.count) {
+      winnerKey = key;
+    }
+  });
+
+  return counts.get(winnerKey)?.value || "";
+};
+
+const buildFallbackStanzas = (sentences = []) => {
+  if (!sentences.length) return [];
+
+  const stanzas = [];
+  for (let i = 0; i < sentences.length; i += 2) {
+    stanzas.push(sentences.slice(i, i + 2));
   }
-
-  const response = responseParts.join(" ").trim();
-  const body = sentences.slice(index).join(" ").trim();
-
-  return { response, body };
+  return stanzas;
 };
 
 const parseResponsorialPsalm = (text = "") => {
-  const normalized = normalizeSpacing(text);
-  const markerRegex = /\bR\.\s*(?:\([^)]+\)\s*)?/gi;
-  const markers = [...normalized.matchAll(markerRegex)];
+  const normalized = normalizeWhitespace(text);
+  if (!normalized) return { response: "", stanzas: [] };
 
-  if (!markers.length) {
-    return {
-      response: "",
-      stanzas: splitDisplayLines(normalized).length
-        ? [splitDisplayLines(normalized)]
-        : [],
-    };
+  const sentences = tokenizeSentences(normalized);
+  if (!sentences.length) return { response: "", stanzas: [] };
+
+  const responses = [];
+  const stanzaSentenceGroups = [];
+  let currentStanza = [];
+  let index = 0;
+
+  while (index < sentences.length) {
+    const sentence = normalizeWhitespace(sentences[index]);
+
+    if (isResponseSentence(sentence)) {
+      if (currentStanza.length) {
+        stanzaSentenceGroups.push(currentStanza);
+        currentStanza = [];
+      }
+
+      const { blockText, nextIndex } = collectResponseBlock(sentences, index);
+      if (blockText) responses.push(blockText);
+      index = nextIndex;
+      continue;
+    }
+
+    currentStanza.push(sentence);
+    index += 1;
   }
 
-  const chunks = markers.map((match, idx) => {
-    const start = match.index;
-    const end =
-      idx + 1 < markers.length ? markers[idx + 1].index : normalized.length;
-    return normalized.slice(start, end).trim();
-  });
+  if (currentStanza.length) {
+    stanzaSentenceGroups.push(currentStanza);
+  }
 
-  let canonicalResponse = "";
-  const stanzas = [];
+  const groupedStanzas = stanzaSentenceGroups.length
+    ? stanzaSentenceGroups
+    : buildFallbackStanzas(sentences);
 
-  chunks.forEach((chunk) => {
-    const { response, body } = extractResponseAndBodyFromChunk(chunk);
-    if (!canonicalResponse && response) canonicalResponse = response;
-
-    const lines = splitDisplayLines(body);
-    if (lines.length) stanzas.push(lines);
-  });
+  const stanzas = groupedStanzas
+    .map((group) => buildDisplayLinesForStanza(group))
+    .filter((lines) => lines.length > 0);
 
   return {
-    response: canonicalResponse,
+    response: pickCanonicalResponse(responses),
     stanzas,
   };
 };
@@ -183,7 +190,6 @@ const ReadingOfTheWeek = () => {
   const [error, setError] = useState("");
   const [expandedIndex, setExpandedIndex] = useState(null);
 
-  //fetchReadings
   useEffect(() => {
     const loadReadings = async () => {
       setLoading(true);
@@ -203,7 +209,6 @@ const ReadingOfTheWeek = () => {
     loadReadings();
   }, []);
 
-  console.log(reading);
   const sections = Array.isArray(reading?.sections) ? reading.sections : [];
 
   const showWarning = (msg) => {
@@ -215,6 +220,9 @@ const ReadingOfTheWeek = () => {
     <div className={styles.readingBox}>
       <SectionHeading as="h2">Readings of the Day</SectionHeading>
       {reading?.title && <SectionHeading>{reading.title}</SectionHeading>}
+      {warning && <Paragraph>{warning}</Paragraph>}
+      {loading && <Paragraph>Loading readings...</Paragraph>}
+      {error && <Paragraph>{error}</Paragraph>}
 
       <div className={styles.grid}>
         {sections.map((section, idx) => (
@@ -228,9 +236,13 @@ const ReadingOfTheWeek = () => {
               <div className={styles.overlay}></div>
               <div
                 className={styles.cardHeader}
-                onClick={() =>
-                  setExpandedIndex((current) => (current === idx ? null : idx))
-                }
+                onClick={() => {
+                  if (!section) {
+                    showWarning("Unable to open this reading right now.");
+                    return;
+                  }
+                  setExpandedIndex((current) => (current === idx ? null : idx));
+                }}
               >
                 <Paragraph className={styles.cardTitle}>
                   <strong>{section.header}</strong>
@@ -242,11 +254,13 @@ const ReadingOfTheWeek = () => {
                 <FaPlus />
               </div>
             </div>
+
             {expandedIndex === idx && (
               <div className={styles.cardContent}>
                 <SectionHeading>
                   <strong>{section.header}</strong>
                 </SectionHeading>
+
                 {Array.isArray(section.readings) &&
                   section.readings.map((item, itemIdx) => {
                     const isResponsorialPsalm =
@@ -255,23 +269,28 @@ const ReadingOfTheWeek = () => {
 
                     if (isResponsorialPsalm && typeof item?.text === "string") {
                       const parsedPsalm = parseResponsorialPsalm(item.text);
+                      const hasParsedStanzas = parsedPsalm.stanzas.length > 0;
 
                       return (
                         <div key={itemIdx}>
-                          {parsedPsalm.stanzas.map((stanzaLines, stanzaIdx) => (
-                            <div key={stanzaIdx}>
-                              {stanzaLines.map((line, lineIdx) => (
-                                <Paragraph key={`${stanzaIdx}-${lineIdx}`}>
-                                  {line}
-                                </Paragraph>
-                              ))}
-                              {parsedPsalm.response && (
-                                <Paragraph>
-                                  <strong>{parsedPsalm.response}</strong>
-                                </Paragraph>
-                              )}
-                            </div>
-                          ))}
+                          {hasParsedStanzas &&
+                            parsedPsalm.stanzas.map(
+                              (stanzaLines, stanzaIdx) => (
+                                <div key={stanzaIdx}>
+                                  {stanzaLines.map((line, lineIdx) => (
+                                    <Paragraph key={`${stanzaIdx}-${lineIdx}`}>
+                                      {line}
+                                    </Paragraph>
+                                  ))}
+                                  {parsedPsalm.response && (
+                                    <Paragraph>
+                                      <strong>{parsedPsalm.response}</strong>
+                                    </Paragraph>
+                                  )}
+                                </div>
+                              ),
+                            )}
+
                           {Array.isArray(item.verses) &&
                             item.verses.map((verse, verseIdx) => (
                               <Paragraph key={verseIdx}>{verse.text}</Paragraph>
