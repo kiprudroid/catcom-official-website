@@ -12,7 +12,7 @@ function formatLocalDateYYYYMMDD(date) {
 async function loadMassReadings() {
     if (cachedMassReadings) return cachedMassReadings;
 
-    const massJsonUrl = new URL('../readings/mass.json', import.meta.url);
+    const massJsonUrl = new URL('../data/readings/mass.json', import.meta.url);
     const raw = await readFile(massJsonUrl, 'utf8');
     const parsed = JSON.parse(raw);
     cachedMassReadings = parsed;
