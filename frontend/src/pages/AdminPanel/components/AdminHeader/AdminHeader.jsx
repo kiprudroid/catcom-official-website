@@ -19,7 +19,7 @@ export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
     { key: "SccLeaders", label: "Scc Leaders", icon: <FaUsers /> },
     { key: "events", label: "Events", icon: <FaCalendarAlt /> },
     { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
-    { key: "joinSccs", label: "Join SCCs", icon: <FaUserPlus /> },
+    { key: "joinSccs", label: "View SCC", icon: <FaUserPlus /> },
     { key: "reports", label: "Reports", icon: <FaChartBar /> },
     { key: "otherTools", label: "Other Tools", icon: <FaTools /> },
     { key: "joinGroup", label: "Join Group", icon: <FaUserCheck /> },
