@@ -11,9 +11,9 @@ const VisionCards = () => {
           What are we?
         </SectionHeading>
         <Paragraph className={styles.textContent}>
-          We are a vibrant Catholic Community that encourages healthy growth
-          spiritually, socially, and academically, with the ultimate goal of
-          encountering Christ in our daily lives.
+          We are a vibrant JKUAT Catholic Community that encourages healthy
+          growth spiritually, socially, and academically, with the ultimate goal
+          of encountering Christ in our daily lives.
         </Paragraph>
       </div>
       <div className={styles.card}>
