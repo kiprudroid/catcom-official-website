@@ -1,0 +1,40 @@
+.gridScrollArea {
+  position: relative;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #2dabb1 #f3f4f6;
+}
+
+.gridScrollArea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.gridScrollArea::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.gridScrollArea::-webkit-scrollbar-thumb {
+  background: #2dabb1;
+  border-radius: 10px;
+  border: 2px solid #f3f4f6;
+}
+
+.gridScrollArea::-webkit-scrollbar-thumb:hover {
+  background: #1c3a3a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 4px 2px; /* prevent card box-shadows from clipping */
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -6,11 +6,10 @@ import {
   FaTiktok,
   FaInstagram,
   FaBullhorn,
-  FaSearch,
-  FaTimes,
   FaImage,
 } from "react-icons/fa";
-import { fetchPublicMedia, getImageUrl } from "@/api/media.api";
+import { fetchPublicMedia } from "@/api/media.api";
+import { SearchBar, Filters, Loading, EmptyState, MediaGrid } from "./widgets";
 
 const FILTERS = [
   { key: "all", label: "All", icon: null },
@@ -21,139 +20,20 @@ const FILTERS = [
   { key: "poster", label: "Poster", icon: <FaImage /> },
 ];
 
-const toEmbedUrl = (url) => {
-  if (!url) return null;
-  if (url.includes("youtu.be")) {
-    const id = url.split("youtu.be/")[1].split("?")[0];
-    return `https://www.youtube.com/embed/${id}`;
-  }
-  if (url.includes("watch?v=")) {
-    const id = url.split("watch?v=")[1].split("&")[0];
-    return `https://www.youtube.com/embed/${id}`;
-  }
-  return url;
-};
-
-const typeIcon = {
-  youtube: <FaYoutube className={styles.typeIconYt} />,
-  tiktok: <FaTiktok className={styles.typeIconTt} />,
-  instagram: <FaInstagram className={styles.typeIconIg} />,
-  announcement: <FaBullhorn className={styles.typeIconAn} />,
-  poster: <FaImage className={styles.typeIconPoster} />,
-};
-
-const MediaCard = ({ item }) => {
-  if (item.type === "youtube") {
-    return (
-      <div className={styles.card}>
-        <div className={styles.videoWrapper}>
-          <iframe
-            src={toEmbedUrl(item.url)}
-            title={item.title}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-        <div className={styles.cardBody}>
-          <span className={styles.typeBadge} data-type="youtube">
-            {typeIcon.youtube} YouTube
-          </span>
-          <p className={styles.cardTitle}>{item.title}</p>
-          {item.description && (
-            <p className={styles.cardDesc}>{item.description}</p>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (item.type === "announcement") {
-    return (
-      <div className={`${styles.card} ${styles.announcementCard}`}>
-        <div className={styles.announcementHeader}>
-          <FaBullhorn className={styles.announcementIcon} />
-          <span className={styles.typeBadge} data-type="announcement">
-            Announcement
-          </span>
-        </div>
-        <p className={styles.announcementTitle}>{item.title}</p>
-        {item.description && (
-          <p className={styles.announcementBody}>{item.description}</p>
-        )}
-        <span className={styles.announcementDate}>
-          {new Date(item.created_at).toLocaleDateString(undefined, {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          })}
-        </span>
-      </div>
-    );
-  }
-
-  if (item.type === "poster") {
-    // ── FIX: resolve server-relative path to full URL ──
-    const imageUrl = getImageUrl(item.thumbnail);
-    return (
-      <div className={`${styles.card} ${styles.posterCard}`}>
-        <div className={styles.posterImageWrap}>
-          <img src={imageUrl} alt={item.title} className={styles.posterImage} />
-        </div>
-        <div className={styles.cardBody}>
-          <span className={styles.typeBadge} data-type="poster">
-            <FaImage /> Poster
-          </span>
-          <p className={styles.cardTitle}>{item.title}</p>
-          {item.description && (
-            <p className={styles.cardDesc}>{item.description}</p>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  // TikTok / Instagram — link card
-  const platformIcon =
-    item.type === "tiktok" ? typeIcon.tiktok : typeIcon.instagram;
-  const platformLabel = item.type === "tiktok" ? "TikTok" : "Instagram";
-  const platformColor = item.type === "tiktok" ? "#010101" : "#e1306c";
-
-  return (
-    <a
-      href={item.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${styles.card} ${styles.linkCard}`}
-      style={{ "--platform-color": platformColor }}
-    >
-      <div className={styles.linkCardIcon}>{platformIcon}</div>
-      <div className={styles.cardBody}>
-        <span className={styles.typeBadge} data-type={item.type}>
-          {platformIcon} {platformLabel}
-        </span>
-        <p className={styles.cardTitle}>{item.title}</p>
-        {item.description && (
-          <p className={styles.cardDesc}>{item.description}</p>
-        )}
-        <span className={styles.linkHint}>Tap to open ↗</span>
-      </div>
-    </a>
-  );
-};
-
 const MediaContent = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("all");
   const [search, setSearch] = useState("");
-  const [searchInput, setSearchInput] = useState("");
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
       const data = await fetchPublicMedia({ type: activeFilter, search });
-      setItems(data);
+      const sorted = [...data].sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at),
+      );
+      setItems(sorted);
     } catch {
       // silent
     } finally {
@@ -165,13 +45,8 @@ const MediaContent = () => {
     load();
   }, [load]);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch(searchInput.trim());
-  };
-
-  const clearSearch = () => {
-    setSearchInput("");
+  const handleFilterChange = (key) => {
+    setActiveFilter(key);
     setSearch("");
   };
 
@@ -181,65 +56,19 @@ const MediaContent = () => {
         Media &amp; Announcements
       </SectionHeading>
 
-      {/* Search */}
-      <form className={styles.searchRow} onSubmit={handleSearch}>
-        <div className={styles.searchWrap}>
-          <FaSearch className={styles.searchIcon} />
-          <input
-            className={styles.searchInput}
-            placeholder="Search videos, announcements…"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-          {searchInput && (
-            <button
-              type="button"
-              className={styles.clearBtn}
-              onClick={clearSearch}
-            >
-              <FaTimes />
-            </button>
-          )}
-        </div>
-        <button className={styles.searchBtn} type="submit">
-          Search
-        </button>
-      </form>
+      <SearchBar onSearch={setSearch} />
 
-      {/* Filters */}
-      <div className={styles.filters}>
-        {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            className={`${styles.filterBtn} ${activeFilter === f.key ? styles.filterActive : ""}`}
-            onClick={() => {
-              setActiveFilter(f.key);
-              setSearch("");
-              setSearchInput("");
-            }}
-          >
-            {f.icon && <span>{f.icon}</span>}
-            {f.label}
-          </button>
-        ))}
-      </div>
+      <Filters
+        filters={FILTERS}
+        activeFilter={activeFilter}
+        onChange={handleFilterChange}
+      />
 
-      {/* Grid */}
-      {loading ? (
-        <div className={styles.loading}>
-          <div className={styles.spinner} />
-        </div>
-      ) : items.length === 0 ? (
-        <div className={styles.empty}>
-          No {activeFilter === "all" ? "media" : activeFilter} content yet.
-        </div>
-      ) : (
-        <div className={styles.grid}>
-          {items.map((item) => (
-            <MediaCard key={item.id} item={item} />
-          ))}
-        </div>
-      )}
+      {loading && <Loading />}
+
+      {!loading && items.length === 0 && <EmptyState type={activeFilter} />}
+
+      {!loading && items.length > 0 && <MediaGrid items={items} />}
     </div>
   );
 };

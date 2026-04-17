@@ -1,0 +1,130 @@
+.section {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+/* ── Photo header — same pattern as Litany ── */
+.sectionHeader {
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Faded rosary background — slightly different position for variety */
+.sectionHeader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/litugy-images/rosary.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  filter: brightness(0.3) saturate(0.6);
+  transition: filter 0.4s ease;
+}
+
+.sectionHeader:hover::before {
+  filter: brightness(0.38) saturate(0.75);
+}
+
+/* Warm gold-teal gradient overlay — different from litany's cool teal */
+.sectionHeader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 171, 177, 0.2) 0%,
+    rgba(92, 60, 20, 0.45) 100%
+  );
+}
+
+.toggleBtn {
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+  width: 100%;
+}
+
+.headerIcon {
+  font-size: 1.8rem;
+  color: rgba(255, 220, 150, 0.9);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.headerText {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.headerSubtitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* ── Body ── */
+.body {
+  background: linear-gradient(180deg, #fffbf0 0%, #ffffff 100%);
+  padding: 1.5rem;
+  border-top: 3px solid #d97706;
+}
+
+.prayerGrid {
+  column-count: 3;
+  column-gap: 2rem;
+  padding: 0.5rem 0;
+}
+
+.prayerLine {
+  break-inside: avoid;
+  display: block;
+  margin-bottom: 0.6rem;
+  line-height: 1.55;
+  font-size: 0.92rem;
+  color: #374151;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  transition: background 0.15s;
+  cursor: default;
+}
+
+.prayerLine:hover {
+  background: rgba(217, 119, 6, 0.06);
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .prayerGrid {
+    column-count: 1;
+  }
+
+  .headerText {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .prayerGrid {
+    column-count: 2;
+  }
+}

@@ -1,0 +1,147 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  transition: box-shadow 0.15s;
+}
+
+.row:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.unpublished {
+  opacity: 0.6;
+}
+
+.rowIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.rowThumbnail {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  border: 1px solid #e5e7eb;
+}
+
+.rowInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.rowTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c3a3a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowUrl {
+  font-size: 11px;
+  color: #2dabb1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowDesc {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.rowMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.statusBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.pub {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.draft {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.rowDate {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.rowActions {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 6px 8px;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.iconBtn:hover {
+  background: #f3f4f6;
+  color: #1c3a3a;
+}
+
+.iconBtn.danger:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #9ca3af;
+  font-size: 14px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1.5px dashed #e5e7eb;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .rowMeta {
+    flex-direction: row;
+    align-items: center;
+  }
+}

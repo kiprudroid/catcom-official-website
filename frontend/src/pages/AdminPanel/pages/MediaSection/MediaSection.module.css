@@ -1,5 +1,4 @@
-/* ── existing styles (unchanged) ─────────────────────────────── */
-.wrapper {
+/* .wrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -47,7 +46,6 @@
   background: #2dabb1;
 }
 
-/* ── Form ─────────────────────────────────────────────────────── */
 .form {
   background: #f8fafc;
   border: 1.5px solid #e5e7eb;
@@ -171,7 +169,6 @@
   color: #374151;
 }
 
-/* ── Poster upload ─────────────────────────────────────────────── */
 .hiddenFileInput {
   display: none;
 }
@@ -255,7 +252,6 @@
   background: rgba(239, 68, 68, 0.85);
 }
 
-/* ── Controls ─────────────────────────────────────────────────── */
 .controls {
   display: flex;
   flex-direction: column;
@@ -344,7 +340,6 @@
   color: white;
 }
 
-/* ── List rows ────────────────────────────────────────────────── */
 .list {
   display: flex;
   flex-direction: column;
@@ -375,7 +370,6 @@
   flex-shrink: 0;
 }
 
-/* Poster thumbnail in list row */
 .rowThumbnail {
   width: 44px;
   height: 44px;
@@ -498,4 +492,58 @@
     flex-direction: row;
     align-items: center;
   }
+} */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 4px 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1c3a3a;
+  margin: 0 0 4px;
+}
+
+.sub {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.newBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #1c3a3a;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.newBtn:hover {
+  background: #2dabb1;
+}
+
+.loading {
+  color: #9ca3af;
+  font-size: 14px;
+  padding: 20px;
 }

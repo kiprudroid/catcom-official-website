@@ -1,0 +1,168 @@
+.card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
+  top: 0;
+  left: 0;
+}
+
+.cardBody {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c3a3a;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cardDesc {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.typeBadge[data-type="youtube"] {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.typeBadge[data-type="tiktok"] {
+  background: #f3f4f6;
+  color: #111;
+}
+
+.typeBadge[data-type="instagram"] {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.typeBadge[data-type="announcement"] {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.typeBadge[data-type="poster"] {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+/* ── Announcement card ── */
+.announcementCard {
+  background: linear-gradient(135deg, #eff6ff 0%, #fff 60%);
+  border: 1.5px solid #bfdbfe;
+  padding: 20px;
+}
+
+.announcementHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.announcementIcon {
+  font-size: 22px;
+  color: #2563eb;
+}
+
+.announcementTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1c3a3a;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.announcementBody {
+  font-size: 14px;
+  color: #374151;
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+/* ── Poster card ── */
+.posterCard {
+  overflow: hidden;
+}
+
+.posterImageWrap {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.posterImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Link card (TikTok / Instagram) ── */
+.linkCard {
+  cursor: pointer;
+  border: 1.5px solid #e5e7eb;
+}
+
+.linkCard:hover {
+  border-color: #2dabb1;
+}
+
+.linkCardIcon {
+  padding: 20px 16px 0;
+  font-size: 32px;
+}
+
+.linkHint {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: auto;
+}

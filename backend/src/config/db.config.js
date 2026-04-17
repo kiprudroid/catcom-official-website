@@ -1,26 +1,27 @@
 import pg from "pg";
-import env from "dotenv";
-
-env.config();
 
 const { Pool } = pg;
 
-// Neon connection
-const db = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  statement_timeout: 0, // No timeout
-  idle_in_transaction_session_timeout: 600000, // 10 minutes
-  ssl: {
-    require: false,
-  },
-});
+const globalForDb = globalThis;
 
-db.on("connect", (client) => {
-  console.log("Connected to the database");
-});
+const db =
+  globalForDb.__pgPool ??
+  new Pool({
+    connectionString: process.env.DATABASE_URL,
+    statement_timeout: 0,
+    idle_in_transaction_session_timeout: 600000,
+    ssl:
+      process.env.NODE_ENV === "production"
+        ? { rejectUnauthorized: false }
+        : false,
+  });
 
-db.on("error", (err, client) => {
-  console.error("Unexpected error on idle client", err);
+if (process.env.NODE_ENV !== "production") {
+  globalForDb.__pgPool = db;
+}
+
+db.on("error", (err) => {
+  console.error("Unexpected DB error", err);
 });
 
 export default db;
