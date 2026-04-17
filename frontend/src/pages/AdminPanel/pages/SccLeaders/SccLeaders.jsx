@@ -7,6 +7,8 @@ import {
   updateSccLeader,
   deleteSccLeader as deleteSccLeaderApi,
 } from "@/api/sccLeaders.api";
+import { BACKEND_URL } from "@/data/urlClient";
+
 
 export default function SccLeaders() {
   const SCC_OPTIONS = useMemo(
@@ -243,7 +245,7 @@ export default function SccLeaders() {
         />
 
         <div className={styles.actions}>
-          <button type="submit" disabled={submitting}>
+          <button type="submit" disabled={submitting} className={styles.actionButton}>
             {editingId !== null ? "Update SCC Leader" : "Add SCC Leader"}
           </button>
 
@@ -290,7 +292,7 @@ export default function SccLeaders() {
                   <div className={styles.listLeft}>
                     {l.exec_image && (
                       <img
-                        src={`http://localhost:5000${l.exec_image}`}
+                        src={`${BACKEND_URL}${l.exec_image}`}
                         alt={l.exec_full_name || "leader"}
                         className={styles.avatar}
                       />
@@ -304,10 +306,10 @@ export default function SccLeaders() {
                   </div>
 
                   <div className={styles.actions}>
-                    <button type="button" onClick={() => startEdit(l)}>
+                    <button type="button" className={styles.actionButton} onClick={() => startEdit(l)}>
                       Edit
                     </button>
-                    <button type="button" onClick={() => removeSccLeader(id)}>
+                    <button type="button" className={styles.deleteBtn} onClick={() => removeSccLeader(id)}>
                       Delete
                     </button>
                   </div>

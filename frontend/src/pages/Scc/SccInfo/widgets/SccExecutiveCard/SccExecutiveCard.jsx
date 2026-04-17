@@ -4,7 +4,9 @@ import { Phone } from "lucide-react";
 import { SectionHeading } from "@/components/Typography/Typography";
 import { FaUserCircle } from "react-icons/fa";
 import { BACKEND_URL } from "@/data/urlClient";
-export const SccExecutiveCard = ({ executives }) => {
+import { Paragraph } from "@/components/Typography/Typography";
+
+export const SccExecutiveCard = ({ executives, loading }) => {
   
   return (
     <div className={styles.container}>
@@ -13,6 +15,12 @@ export const SccExecutiveCard = ({ executives }) => {
       </div>
 
       <div className={styles.executivesGrid}>
+        {loading && (
+          <div className={styles.loading}>
+            <SectionHeading>Loading...</SectionHeading>
+          </div>
+        )}
+        
         {executives.map((exec, index) => (
           <div
             key={exec.exec_full_name}

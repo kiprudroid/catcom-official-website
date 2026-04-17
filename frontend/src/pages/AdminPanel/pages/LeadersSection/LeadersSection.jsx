@@ -7,6 +7,7 @@ import {
   updateLeader,
   deleteLeader as deleteLeaderApi,
 } from "@/api/leaders.api";
+import { BACKEND_URL } from "@/data/urlClient";
 
 export default function LeadersSection() {
   const EMPTY_FORM = {
@@ -182,8 +183,6 @@ export default function LeadersSection() {
 
       {error ? <p className={styles.error}>{error}</p> : null}
       {loading ? <p>Loading...</p> : null}
-      
-      
 
       <form onSubmit={submitLeader} className={styles.form}>
         <input
@@ -220,12 +219,12 @@ export default function LeadersSection() {
         />
 
         <div className={styles.actions}>
-          <button type="submit" disabled={submitting}>
+          <button type="submit" className={styles.actionButton}>
             {editingId != null ? "Update Leader" : "Add Leader"}
           </button>
 
           {editingId != null ? (
-            <button type="button" onClick={cancelEdit} disabled={submitting}>
+            <button type="button" onClick={cancelEdit}>
               Cancel
             </button>
           ) : null}
@@ -241,7 +240,7 @@ export default function LeadersSection() {
                 <div className={styles.listLeft}>
                   {l?.image_url ? (
                     <img
-                      src={`http://localhost:5000${l.image_url}`}
+                      src={`${BACKEND_URL}${l.image_url}`}
                       alt={l?.full_name || "leader"}
                       className={styles.avatar}
                     />
@@ -255,10 +254,10 @@ export default function LeadersSection() {
                 </div>
 
                 <div className={styles.actions}>
-                  <button type="button" onClick={() => startEdit(l)}>
+                  <button type="button" onClick={() => startEdit(l)} className={styles.actionButton}>
                     Edit
                   </button>
-                  <button type="button" onClick={() => removeLeader(id)}>
+                  <button type="button" onClick={() => removeLeader(id)} className={styles.deleteBtn}>
                     Delete
                   </button>
                 </div>

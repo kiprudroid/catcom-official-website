@@ -99,7 +99,7 @@ const SccInfo = ({
         
 
        
-          <SccExecutiveCard executives={rankedLeaders} className={styles.card}/>
+          <SccExecutiveCard executives={rankedLeaders} loading={loading} className={styles.card}/>
         
        
           <PatronSaint

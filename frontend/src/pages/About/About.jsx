@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./About.module.css";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 import { fetchLeaders } from "@/api/leaders.api";
+import { SectionHeading } from "@/components/Typography/Typography";
 
 import {
   HeroSection,
@@ -110,7 +111,7 @@ const AboutPage = () => {
 
         <div className={styles.widget}>
           {error ? <p className={styles.error}>{error}</p> : null}
-          {loading ? <p>Loading...</p> : null}
+          {loading ? <SectionHeading className={styles.loading}>Loading...</SectionHeading> : null}
           <ExecutiveCards
             executives={rankedLeaders}
           />
