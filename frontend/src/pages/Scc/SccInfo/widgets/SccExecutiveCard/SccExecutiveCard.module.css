@@ -101,6 +101,14 @@
   background: linear-gradient(90deg, #2575fc, #186266);
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: auto;
+}
+
 /* Animations */
 @keyframes fadeUp {
   from {

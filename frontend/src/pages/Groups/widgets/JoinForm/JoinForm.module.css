@@ -3,68 +3,111 @@
   flex-direction: column;
   gap: 0.75rem;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
+  max-width: 900px;
 }
 
 .formRow {
   margin-top: 1rem;
-  display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
 }
 
 .formCol {
-  flex: 1 1 300px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-.checkboxGroup {
+.fieldGroup {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
-.checkboxGroup > div {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.fieldGroup label {
   margin-bottom: 0;
-}
-
-.checkboxGroup input[type="checkbox"] {
-  accent-color: #2dabb1;
-}
-
-label,
-.checkboxGroup label {
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
-}
-
-.groupLabel {
-  font-weight: 400;
+  font-size: 0.95rem;
+  color: #1a1a1a;
 }
 
 input[type="text"],
 input[type="email"],
 select {
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 0.95rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  color: #1a1a1a;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  outline: none;
+  border-color: #2dabb1;
+}
+
+.groupLabel {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: block;
+  color: #1a1a1a;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.checkboxGroup > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.checkboxGroup input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: #2dabb1;
+  cursor: pointer;
+}
+
+.checkboxGroup label {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  white-space: nowrap;
+  color: #1a1a1a;
+  cursor: pointer;
 }
 
 .joinBtn {
-  width: 250px;
-  display: inline-block;
+  width: 200px;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   padding: 0.65rem 1.5rem;
   background: #2dabb1;
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -72,12 +115,115 @@ select {
 .joinBtn:hover {
   background: #124346;
 }
+
+.joinBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .warningBar {
   margin-top: 1rem;
-  padding: 0.7rem;
+  padding: 0.75rem 1rem;
   border-radius: 8px;
   background: #fff3cd;
   width: fit-content;
   color: #664d03;
   font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.successBar {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: #d1e7dd;
+  width: fit-content;
+  color: #0a3622;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: auto;
+  will-change: opacity;
+}
+
+.modalBox {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.3s ease-out;
+  pointer-events: auto;
+  will-change: transform, opacity;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modalIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.modalMessage {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.modalBtn {
+  margin-top: 0.5rem;
+  padding: 0.65rem 2.5rem;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.modalBtn:hover {
+  opacity: 0.88;
 }

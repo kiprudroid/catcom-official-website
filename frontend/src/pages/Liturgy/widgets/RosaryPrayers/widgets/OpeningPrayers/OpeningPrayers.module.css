@@ -1,0 +1,19 @@
+.opening {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.crossIcon {
+  display: block;
+  margin: 0 auto 1rem auto;
+  font-size: 2.2rem;
+  color: #2dabb1;
+}
+
+.prayerBlock {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}

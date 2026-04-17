@@ -1,0 +1,49 @@
+// import {getJoinGroups, createJoinGroup} from "../services/joinGroup.service.js";
+import {
+  getJoinGroupsServices as getJoinGroups,
+  createJoinGroupsServices as createJoinGroup,
+  assignJoinGroupServices as assignJoinGroup,
+  deleteJoinGroupServices as deleteJoinGroup,
+} from "../services/join-group.service.js";
+
+export const getJoinGroupController = async (req, res) => {
+  try {
+    const joinGroups = await getJoinGroups();
+    res.json(joinGroups);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error : " + error.message });
+  }
+};
+
+export const createJoinGroupController = async (req, res) => {
+  try {
+    const joinGroup = await createJoinGroup(req.body);
+    res.status(201).json(joinGroup);
+  } catch (error) {
+    res.status(500).json({ message: "Server error: " + error.message });
+  }
+};
+
+export const assignJoinGroupController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { group_joined } = req.body;
+    if (!group_joined) {
+      return res.status(400).json({ message: "group_joined is required" });
+    }
+    const updated = await assignJoinGroup(id, group_joined);
+    res.status(200).json(updated);
+  } catch (error) {
+    res.status(500).json({ message: "Server error: " + error.message });
+  }
+};
+
+export const deleteJoinGroupController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await deleteJoinGroup(id);
+    res.status(204).end();
+  } catch (error) {
+    res.status(500).json({ message: "Server error: " + error.message });
+  }
+};

@@ -27,38 +27,42 @@ CREATE TABLE daily_mass_readings (
 );
 
 
+-- new table
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
-    event_date DATE  NOT NULL UNIQUE ,
-    activity VARCHAR(100) UNIQUE NOT NULL,
-    venue VARCHAR(100) NOT NULL
+    title VARCHAR(150) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    event_date DATE NOT NULL,
+    event_time TIME NOT NULL,
+    venue VARCHAR(150) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 CREATE TYPE gender_type AS ENUM ('male', 'female', 'other');
 create table join_scc (
     user_id SERIAL PRIMARY KEY,
-    first_name varchar(50) not null,
-    last_name varchar(50) not null,
+    full_name VARCHAR(100) NOT NULL,
     phone_number varchar(15),
     email varchar(100) not null unique,
-    year_joined int,
+    year_study int,
     gender gender_type, 
     scc_name varchar(100) not null
 );
 
-create table scc_execut (
+create table scc_executive (
     exec_id SERIAL PRIMARY KEY,
-    exec_first_name varchar(50) not null,
-    exec_last_name varchar(50) not null,
+	scc_name varchar(50),
+    exec_full_name varchar(50) not null,    
     position varchar(50) not null,
     phone_number varchar(15),
     exec_image varchar(255)
 );
 
-
 CREATE TABLE groups (
     user_id SERIAL PRIMARY KEY,
-    full_name VARCHAR(100) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     gender VARCHAR(10) NOT NULL,
@@ -72,4 +76,52 @@ CREATE TABLE executive_leaders (
     post_title VARCHAR(100) NOT NULL,
     exec_description VARCHAR(255),
     image_url VARCHAR(255)
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,  
+  role VARCHAR(50) DEFAULT 'user',
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE refresh_tokens (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  token TEXT NOT NULL UNIQUE,
+  expires_at TIMESTAMP NOT NULL,
+  revoked BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_refresh_tokens_user_id ON refresh_tokens(user_id);
+CREATE INDEX idx_refresh_tokens_token ON refresh_tokens(token);
+
+
+
+
+----------- PASTORAL ATTENDANCE --------------
+
+-- Pastoral Members table
+CREATE TABLE pastoral_members (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    role VARCHAR(255) NOT NULL,
+    status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'removed')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Attendance table
+CREATE TABLE attendance (
+    id SERIAL PRIMARY KEY,
+    member_id INTEGER REFERENCES pastoral_members(id) ON DELETE CASCADE,
+    date DATE NOT NULL,
+    status VARCHAR(20) DEFAULT 'present' CHECK (status IN ('present', 'absent', 'apology')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(member_id, date)
 );

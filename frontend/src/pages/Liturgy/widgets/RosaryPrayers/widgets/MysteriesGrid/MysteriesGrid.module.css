@@ -1,0 +1,138 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.imageWrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(30, 41, 59, 0.75);
+  color: #fff;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.cardDays {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.list {
+  padding: 1rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.mystery {
+  margin-bottom: 0.8rem;
+}
+
+.mysteryTitle {
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.detail {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.activeMystery {
+  background: #e0f7f8;
+  border-left: 4px solid #2dabb1;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image {
+    height: 130px;
+  }
+
+  .cardTitle {
+    font-size: 0.9rem;
+  }
+
+  .cardDays {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .image {
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .image {
+    height: 160px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  .image {
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  .image {
+    height: 220px;
+  }
+}

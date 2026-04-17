@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ExecutiveCards.module.css";
 import { Phone } from "lucide-react";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
+import { BACKEND_URL } from "@/data/urlClient";
 
 const ExecutiveCards = ({ executives }) => {
   return (
@@ -21,25 +22,25 @@ const ExecutiveCards = ({ executives }) => {
         <div className={styles.executivesGrid}>
           {executives.map((exec, index) => (
             <div
-              key={exec.name}
+              key={exec.full_name}
               className={styles.executiveCard}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className={styles.executiveHeader}>
                 <div className={styles.avatar}>
                   <img
-                    src={exec.image}
-                    alt={exec.name}
+                    src={`${BACKEND_URL}${exec.image_url}`}
+                    alt={exec.full_name}
                     className={styles.execImg}
                   />
                 </div>
 
-                <h3>{exec.name}</h3>
-                <p className={styles.position}>{exec.position}</p>
+                <h3>{exec.full_name}</h3>
+                <p className={styles.position}>{exec.post_title}</p>
               </div>
 
               <div className={styles.executiveBody}>
-                <p className={styles.bio}>{exec.bio}</p>
+                <p className={styles.bio}>{exec.exec_description}</p>
 
                 {/* <div className={styles.contact}>
                   <h3 className={styles.contactBtn}>

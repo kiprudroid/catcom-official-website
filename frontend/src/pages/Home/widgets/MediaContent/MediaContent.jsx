@@ -1,63 +1,74 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./MediaContent.module.css";
-import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
-import { FaYoutube } from "react-icons/fa";
+import { SectionHeading } from "@/components/Typography/Typography";
+import {
+  FaYoutube,
+  FaTiktok,
+  FaInstagram,
+  FaBullhorn,
+  FaImage,
+} from "react-icons/fa";
+import { fetchPublicMedia } from "@/api/media.api";
+import { SearchBar, Filters, Loading, EmptyState, MediaGrid } from "./widgets";
 
-const mediaItems = [
-  {
-    type: "video",
-    url: "https://youtu.be/2POCPrNa-do?si=WSkbsUQKdVhXE_PM",
-    title: "KMRM Choir – Tunakushukuru By J. Anari ",
-  },
-  {
-    type: "video",
-    url: "https://youtu.be/ze9bEKCiNKk?si=GVR843V_N9BpZTgb",
-    title: "CATCOM KMRM Liturgical Dancers – Serebuka By J.Anari",
-  },
-  {
-    type: "video",
-    url: "https://youtu.be/X2JpwESCYcI?si=k5H_V-o4nHaeXtkv",
-    title: "KMRM Choir - Mtu na Mwenzake By Abel Wafula",
-  },
+const FILTERS = [
+  { key: "all", label: "All", icon: null },
+  { key: "youtube", label: "Videos", icon: <FaYoutube /> },
+  { key: "announcement", label: "Announcements", icon: <FaBullhorn /> },
+  { key: "tiktok", label: "TikTok", icon: <FaTiktok /> },
+  { key: "instagram", label: "Instagram", icon: <FaInstagram /> },
+  { key: "poster", label: "Poster", icon: <FaImage /> },
 ];
 
 const MediaContent = () => {
-  const toEmbedUrl = (url) => {
-    if (url.includes("youtu.be")) {
-      const videoId = url.split("youtu.be/")[1].split("?")[0];
-      return `https://www.youtube.com/embed/${videoId}`;
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [search, setSearch] = useState("");
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    try {
+      const data = await fetchPublicMedia({ type: activeFilter, search });
+      const sorted = [...data].sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at),
+      );
+      setItems(sorted);
+    } catch {
+      // silent
+    } finally {
+      setLoading(false);
     }
-    if (url.includes("watch?v=")) {
-      const videoId = url.split("watch?v=")[1].split("&")[0];
-      return `https://www.youtube.com/embed/${videoId}`;
-    }
-    return url;
+  }, [activeFilter, search]);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const handleFilterChange = (key) => {
+    setActiveFilter(key);
+    setSearch("");
   };
 
   return (
-    <div className={styles.card}>
-      <SectionHeading as="h3" className={styles.cardTitle}>
-        Media Content
+    <div className={styles.wrapper}>
+      <SectionHeading as="h3" className={styles.title}>
+        Media &amp; Announcements
       </SectionHeading>
 
-      <div className={styles.mediaWrapper}>
-        {mediaItems.map((item, index) => (
-          <div key={index} className={styles.videoCard}>
-            <div className={styles.videoWrapper}>
-              <iframe
-                src={toEmbedUrl(item.url)}
-                title={item.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <Paragraph className={styles.videoTitle}>
-              <FaYoutube className={styles.youtubeIcon} /> {item.title}
-            </Paragraph>
-          </div>
-        ))}
-      </div>
+      <SearchBar onSearch={setSearch} />
+
+      <Filters
+        filters={FILTERS}
+        activeFilter={activeFilter}
+        onChange={handleFilterChange}
+      />
+
+      {loading && <Loading />}
+
+      {!loading && items.length === 0 && <EmptyState type={activeFilter} />}
+
+      {!loading && items.length > 0 && <MediaGrid items={items} />}
     </div>
   );
 };

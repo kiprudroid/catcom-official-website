@@ -1,0 +1,32 @@
+import * as JoinSCCModel from "../models/join-scc.model.js";
+
+export const createJoinSCCServices = async (data) => {
+  if (!data) {
+    throw new Error("No data provided");
+  }
+  if (
+    !data.full_name ||
+    !data.phone_number ||
+    !data.email ||
+    !data.year_study ||
+    !data.gender ||
+    !data.scc_name
+  ) {
+    throw new Error("Missing required fields");
+  }
+  return await JoinSCCModel.createJoinSCC(data);
+};
+
+export const getAllJoinSCCServices = async () => {
+  return await JoinSCCModel.getJoinSCC();
+};
+export const assignSCCServices = async (id, scc_name) => {
+  if (!id || !scc_name) {
+    throw new Error("ID and scc_name are required");
+  } 
+  return await JoinSCCModel.assignSCC(id, scc_name);
+};
+
+export const deleteJoinSCCServices = async (id) => {
+  return await JoinSCCModel.deleteJoinSCC(id);
+};

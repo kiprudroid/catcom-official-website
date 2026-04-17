@@ -24,7 +24,9 @@
   border: 1px solid #ccc;
   min-height: 40px;
   box-shadow: none;
-  transition: border 0.2s, box-shadow 0.2s;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
 }
 
 .react-select__control--is-focused {
@@ -57,6 +59,29 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   justify-content: center;
+
+  /* Scroll container */
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+
+  /* Subtle scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #2dabb1 #f0f0f0;
+}
+
+.prayerSection::-webkit-scrollbar {
+  width: 6px;
+}
+
+.prayerSection::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.prayerSection::-webkit-scrollbar-thumb {
+  background-color: #2dabb1;
+  border-radius: 10px;
 }
 
 .card {

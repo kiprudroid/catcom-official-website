@@ -3,8 +3,11 @@ import styles from "./SccExecutiveCard.module.css";
 import { Phone } from "lucide-react";
 import { SectionHeading } from "@/components/Typography/Typography";
 import { FaUserCircle } from "react-icons/fa";
+import { BACKEND_URL } from "@/data/urlClient";
+import { Paragraph } from "@/components/Typography/Typography";
 
-export const SccExecutiveCard = ({ executives }) => {
+export const SccExecutiveCard = ({ executives, loading }) => {
+  
   return (
     <div className={styles.container}>
       <div className={styles.sectionHeader}>
@@ -12,25 +15,31 @@ export const SccExecutiveCard = ({ executives }) => {
       </div>
 
       <div className={styles.executivesGrid}>
+        {loading && (
+          <div className={styles.loading}>
+            <SectionHeading>Loading...</SectionHeading>
+          </div>
+        )}
+        
         {executives.map((exec, index) => (
           <div
-            key={exec.name}
+            key={exec.exec_full_name}
             className={styles.executiveCard}
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className={styles.executiveHeader}>
               <div className={styles.avatar}>
                 <img
-                  src={exec.image}
-                  alt={exec.name}
+                  src={`${BACKEND_URL}${exec.exec_image}`}
+                  alt={exec.exec_full_name}
                   className={styles.execImg}
                 />
                 {/* <FaUserCircle className={styles.avatarIcon} /> */}
               </div>
 
-              <h3>{exec.name}</h3>
+              <h3>{exec.exec_full_name}</h3>
 
-              <p className={styles.position}>{exec.role}</p>
+              <p className={styles.position}>{exec.position}</p>
 
             </div>
 
@@ -43,6 +52,7 @@ export const SccExecutiveCard = ({ executives }) => {
               </div> */}
             </div>
           </div>
+          
         ))}
       </div>
     </div>

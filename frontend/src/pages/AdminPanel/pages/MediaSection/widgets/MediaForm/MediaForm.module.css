@@ -1,0 +1,207 @@
+.form {
+  background: #f8fafc;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c3a3a;
+  margin: 0;
+}
+
+.formRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.grow {
+  flex: 1;
+  min-width: 180px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6b7280;
+}
+
+.input,
+.select,
+.textarea {
+  padding: 9px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1c3a3a;
+  background: white;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: #2dabb1;
+}
+
+.textarea {
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Poster upload ── */
+.hiddenFileInput {
+  display: none;
+}
+
+.dropZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 2px dashed #d1d5db;
+  border-radius: 10px;
+  padding: 28px 20px;
+  background: #fafafa;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.dropZone:hover {
+  border-color: #2dabb1;
+  background: #f0fafa;
+}
+
+.dropIcon {
+  font-size: 28px;
+  color: #9ca3af;
+}
+
+.dropZone:hover .dropIcon {
+  color: #2dabb1;
+}
+
+.dropText {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.dropHint {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.posterPreviewWrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid #e5e7eb;
+}
+
+.posterPreview {
+  display: block;
+  max-height: 200px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.clearPosterBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 11px;
+  transition: background 0.15s;
+}
+
+.clearPosterBtn:hover {
+  background: rgba(239, 68, 68, 0.85);
+}
+
+/* ── Actions ── */
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.btnRow {
+  display: flex;
+  gap: 8px;
+}
+
+.saveBtn {
+  background: #2dabb1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover {
+  background: #1c9097;
+}
+
+.cancelBtn {
+  background: none;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cancelBtn:hover {
+  border-color: #9ca3af;
+  color: #374151;
+}

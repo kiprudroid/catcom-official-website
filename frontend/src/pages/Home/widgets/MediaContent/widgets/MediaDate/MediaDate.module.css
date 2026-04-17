@@ -1,0 +1,10 @@
+.date {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-top: auto;
+  display: inline-block;
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}

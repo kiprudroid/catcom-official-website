@@ -98,6 +98,13 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
+.cardContent {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+  text-align: left;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -1,5 +1,6 @@
 .visionContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
@@ -9,47 +10,45 @@
 .card {
   background: #fff;
   border-radius: 15px;
-  overflow: hidden;
-  padding: 1.5rem;
-  margin-right: 1.5rem;
-  width: 50%;
-  height: 200px;
+  padding: 1rem 1rem 1rem 1.25rem;
+
+  height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Left green accent border */
+  border-left: 4px solid #2dabb1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .card:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.078), 0 0 8px rgba(45, 171, 177, 0.4);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.078),
+    0 0 8px rgba(45, 171, 177, 0.4);
+  border-left-color: #1e8a8f;
 }
 
 .cardTitle {
   color: #2dabb1;
-  font-size: 1.75rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  margin: 0;
+  line-height: 1.2;
 }
 
-/* === Small phones (up to 480px) === */
-@media screen and (max-width: 480px) {
-  .visionContainer {
-    flex-direction: column;
-    justify-content: center;
-  }
+.textContent {
+  font-size: 0.65rem;
+  line-height: 1.35;
 
-  .card {
-    width: 90%;
-    margin-right: 0;
-  }
-}
+  margin: 0.25rem 0 0 0;
 
-/* === Tablets (481px – 768px) === */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .visionContainer {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .card {
-    width: 80%;
-    margin-right: 0;
-  }
+  max-width: 95%;
 }

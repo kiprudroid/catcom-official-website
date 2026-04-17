@@ -1,0 +1,126 @@
+.container {
+  background: #fffbeb;
+  border: 1.5px solid #fcd34d;
+  border-radius: 14px;
+  padding: 18px 22px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.icon {
+  color: #d97706;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #92400e;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.count {
+  background: #d97706;
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 1px 8px;
+  border-radius: 20px;
+}
+
+/* search */
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 14px;
+}
+
+.searchIcon {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 13px;
+}
+
+/* table */
+
+.tableScroll {
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table thead {
+  background: #fef3c7;
+}
+
+.table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #92400e;
+}
+
+.table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #fde68a;
+}
+
+.table tr:hover {
+  background: #fff7ed;
+}
+
+.idx {
+  color: #9ca3af;
+  font-size: 12px;
+  width: 30px;
+}
+
+.name {
+  font-weight: 600;
+  color: #1c3a3a;
+}
+
+.role {
+  color: #6b7280;
+}
+
+.absBadge {
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.empty {
+  text-align: center;
+  padding: 12px;
+  color: #9ca3af;
+}

@@ -1,23 +1,46 @@
-import * as LeadersModel from "../models/leaders.model.js"
+//import * as LeadersModel from "../models/leaders.model.js"
+
+import {
+  createLeaderModel as createLeader,
+  getLeadersModel as getLeaders,
+  updateLeaderModel as updateLeader,
+  deleteLeaderModel as deleteLeader,
+} from "../models/leaders.model.js";
 
 export const createLeadersServices = async (data) => {
-    if (!data) {
-        throw new Error("No data provided");
-    }
-    if (!data.user_id || !data.full_name || !data.exec_description) {  
-        throw new Error("Missing required fields");
-    }
+  if (!data) {
+    throw new Error("No data provided");
+  }
 
-    return await LeadersModel.createLeader(data)
+  // Create requires image_url (it will be set by controller from uploaded file)
+  if (
+    !data.full_name ||
+    !data.exec_description ||
+    !data.post_title ||
+    !data.image_url
+  ) {
+    throw new Error("Missing required fields");
+  }
 
-}
+  return await createLeader(data);
+};
 export const getLeadersServices = async () => {
-    
-    return await LeadersModel.getLeaders()
-    
-}
+  return await getLeaders();
+};
+
+export const updateLeadersServices = async (id, data) => {
+  if (!data) {
+    throw new Error("No data provided");
+  }
+
+  // Update allows image_url to be optional (only required if you are changing it)
+  if (!data.full_name || !data.post_title || !data.exec_description) {
+    throw new Error("Missing required fields");
+  }
+
+  return await updateLeader(id, data);
+};
 
 export const deleteLeadersServices = async (id) => {
-    return await LeadersModel.deleteLeader(id)
-}
-
+  return await deleteLeader(id);
+};
