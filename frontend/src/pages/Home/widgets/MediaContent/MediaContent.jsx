@@ -1,21 +1,3 @@
-// const mediaItems = [
-//   {
-//     type: "video",
-//     url: "https://youtu.be/2POCPrNa-do?si=WSkbsUQKdVhXE_PM",
-//     title: "KMRM Choir – Tunakushukuru By J. Anari ",
-//   },
-//   {
-//     type: "video",
-//     url: "https://youtu.be/ze9bEKCiNKk?si=GVR843V_N9BpZTgb",
-//     title: "CATCOM KMRM Liturgical Dancers – Serebuka By J.Anari",
-//   },
-//   {
-//     type: "video",
-//     url: "https://youtu.be/X2JpwESCYcI?si=k5H_V-o4nHaeXtkv",
-//     title: "KMRM Choir - Mtu na Mwenzake By Abel Wafula",
-//   },
-// ];
-
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "./MediaContent.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
@@ -26,8 +8,9 @@ import {
   FaBullhorn,
   FaSearch,
   FaTimes,
+  FaImage,
 } from "react-icons/fa";
-import { fetchPublicMedia } from "@/api/media.api";
+import { fetchPublicMedia, getImageUrl } from "@/api/media.api";
 
 const FILTERS = [
   { key: "all", label: "All", icon: null },
@@ -35,6 +18,7 @@ const FILTERS = [
   { key: "announcement", label: "Announcements", icon: <FaBullhorn /> },
   { key: "tiktok", label: "TikTok", icon: <FaTiktok /> },
   { key: "instagram", label: "Instagram", icon: <FaInstagram /> },
+  { key: "poster", label: "Poster", icon: <FaImage /> },
 ];
 
 const toEmbedUrl = (url) => {
@@ -55,6 +39,7 @@ const typeIcon = {
   tiktok: <FaTiktok className={styles.typeIconTt} />,
   instagram: <FaInstagram className={styles.typeIconIg} />,
   announcement: <FaBullhorn className={styles.typeIconAn} />,
+  poster: <FaImage className={styles.typeIconPoster} />,
 };
 
 const MediaCard = ({ item }) => {
@@ -103,6 +88,27 @@ const MediaCard = ({ item }) => {
             year: "numeric",
           })}
         </span>
+      </div>
+    );
+  }
+
+  if (item.type === "poster") {
+    // ── FIX: resolve server-relative path to full URL ──
+    const imageUrl = getImageUrl(item.thumbnail);
+    return (
+      <div className={`${styles.card} ${styles.posterCard}`}>
+        <div className={styles.posterImageWrap}>
+          <img src={imageUrl} alt={item.title} className={styles.posterImage} />
+        </div>
+        <div className={styles.cardBody}>
+          <span className={styles.typeBadge} data-type="poster">
+            <FaImage /> Poster
+          </span>
+          <p className={styles.cardTitle}>{item.title}</p>
+          {item.description && (
+            <p className={styles.cardDesc}>{item.description}</p>
+          )}
+        </div>
       </div>
     );
   }

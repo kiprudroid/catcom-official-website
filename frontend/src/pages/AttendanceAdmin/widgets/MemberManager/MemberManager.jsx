@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./MemberManager.module.css";
-import { FaPlus, FaTrash, FaUserAlt } from "react-icons/fa";
+import { FaPlus, FaTrash, FaUserAlt, FaSearch } from "react-icons/fa";
 
 const ROLES = [
   "Pastoral Secretary",
@@ -16,6 +16,8 @@ const MemberManager = ({ members, addMember, removeMember }) => {
   const [role, setRole] = useState("");
   const [customRole, setCustomRole] = useState("");
   const [confirmId, setConfirmId] = useState(null);
+  const [search, setSearch] = useState("");
+  const [filterRole, setFilterRole] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,10 +39,43 @@ const MemberManager = ({ members, addMember, removeMember }) => {
     }
   };
 
+  const filteredMembers = members.filter((m) => {
+    const matchesName = m.name.toLowerCase().includes(search.toLowerCase());
+    const matchesRole = filterRole ? m.role === filterRole : true;
+    return matchesName && matchesRole;
+  });
+
   return (
     <div className={styles.card}>
       <h3 className={styles.title}>Manage Members</h3>
 
+      {/* SEARCH + FILTER */}
+      <div className={styles.searchBar}>
+        <div className={styles.searchInputWrapper}>
+          <FaSearch className={styles.searchIcon} />
+          <input
+            className={styles.searchInput}
+            type="text"
+            placeholder="Search member..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <select
+          className={styles.filterSelect}
+          value={filterRole}
+          onChange={(e) => setFilterRole(e.target.value)}
+        >
+          <option value="">All Roles</option>
+          {ROLES.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* ADD MEMBER FORM */}
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.fields}>
           <input
@@ -81,11 +116,12 @@ const MemberManager = ({ members, addMember, removeMember }) => {
         </button>
       </form>
 
+      {/* MEMBER LIST */}
       <div className={styles.list}>
-        {members.length === 0 && (
-          <p className={styles.empty}>No members added yet.</p>
+        {filteredMembers.length === 0 && (
+          <p className={styles.empty}>No members found.</p>
         )}
-        {members.map((m) => (
+        {filteredMembers.map((m) => (
           <div key={m.id} className={styles.memberRow}>
             <FaUserAlt className={styles.userIcon} />
             <div className={styles.memberInfo}>

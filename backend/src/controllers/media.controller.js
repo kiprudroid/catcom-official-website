@@ -22,7 +22,8 @@ export const getAdminMedia = async (req, res, next) => {
 
 export const createMedia = async (req, res, next) => {
   try {
-    res.status(201).json(await Service.createMedia(req.body));
+    // req.body is parsed by multer; req.file is the uploaded poster (if any)
+    res.status(201).json(await Service.createMedia(req.body, req.file));
   } catch (err) {
     next(err);
   }
@@ -30,7 +31,7 @@ export const createMedia = async (req, res, next) => {
 
 export const updateMedia = async (req, res, next) => {
   try {
-    res.json(await Service.updateMedia(req.params.id, req.body));
+    res.json(await Service.updateMedia(req.params.id, req.body, req.file));
   } catch (err) {
     next(err);
   }

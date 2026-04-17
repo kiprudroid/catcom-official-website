@@ -13,7 +13,7 @@ function Prayers() {
   };
 
   const sortedPrayers = [...prayers].sort((a, b) =>
-    a.title.localeCompare(b.title)
+    a.title.localeCompare(b.title),
   );
 
   // react-select options

@@ -15,7 +15,7 @@ import {
 
 export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
   const tabs = [
-    { key: "leaders", label: "Leaders", icon: <FaUser /> },
+    { key: "leaders", label: "Executive Leaders", icon: <FaUser /> },
     { key: "SccLeaders", label: "Scc Leaders", icon: <FaUsers /> },
     { key: "events", label: "Events", icon: <FaCalendarAlt /> },
     { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },

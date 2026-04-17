@@ -26,6 +26,15 @@ const SccInfo = ({
   const [leaders, setLeaders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  
+  const RANK_MAP = {
+    'moderator': 1,
+    'coordinator': 2,
+    'Secretary': 3,
+    'Treasurer': 4,
+    'Project Manager': 5,
+    'Catering Secretary': 6,    
+  };
 
   useEffect(() => {
     const loadLeaders = async () => {
@@ -35,6 +44,7 @@ const SccInfo = ({
       try {
         const data = await fetchSpecificSccLeaders(path);
         setLeaders(Array.isArray(data) ? data : []);
+        console.log(path);
       } catch (err) {
         console.error("Error fetching leaders:", err);
         setError(err?.message || "Error fetching leaders");
@@ -45,6 +55,38 @@ const SccInfo = ({
 
     loadLeaders();
   }, []);
+  const [rankedLeaders, setRankedLeaders] = useState([]);
+
+  useEffect(() => {
+    if (leaders.length > 0) {
+      
+      const normalizedRankMap = Object.fromEntries(
+        Object.entries(RANK_MAP).map(([key, value]) => [key.toLowerCase(), value])
+      );
+
+      const sortedLeaders = [...leaders].sort((a, b) => {
+      
+        const titleA = a.position?.toLowerCase();
+        const titleB = b.position?.toLowerCase();
+
+        
+        const rankA = normalizedRankMap[titleA] ?? Number.MAX_SAFE_INTEGER;
+        const rankB = normalizedRankMap[titleB] ?? Number.MAX_SAFE_INTEGER;
+
+        if (rankA < rankB) {
+          return -1;
+        }
+        if (rankA > rankB) {
+          return 1;
+        }       
+        return 0;
+      });
+      setRankedLeaders(sortedLeaders);
+    } else {
+     
+      setRankedLeaders([]);
+    }
+  }, [leaders]); 
   
   return (
     <DashboardLayout>
@@ -57,7 +99,7 @@ const SccInfo = ({
         
 
        
-          <SccExecutiveCard executives={leaders} className={styles.card}/>
+          <SccExecutiveCard executives={rankedLeaders} className={styles.card}/>
         
        
           <PatronSaint

@@ -7,6 +7,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaCross,
+  FaPray,
 } from "react-icons/fa";
 
 const openingPrayers = [
@@ -46,7 +47,7 @@ const mysteries = [
       },
       {
         title: "5. Finding in the Temple",
-        detail: "Jesus is found discussing God’s laws in the temple.",
+        detail: "Jesus is found discussing God's laws in the temple.",
       },
     ],
   },
@@ -209,7 +210,7 @@ const additionalPrayers = [
   "St. Veronica, pray for us.",
   "St. Paul, pray for us.",
   "St. Martin De Porres, pray for us.",
-  "St. Mary’s, pray for us.",
+  "St. Mary's, pray for us.",
   "St. Stephen, pray for us.",
   "St. Charles Lwanga, pray for us.",
   "St. Agatha, pray for us.",
@@ -225,7 +226,6 @@ const additionalPrayers = [
 function RosaryPrayers() {
   const [openIndex, setOpenIndex] = useState(null);
   const [currentMystery, setCurrentMystery] = useState({ section: 0, item: 0 });
-
   const [showLitany, setShowLitany] = useState(false);
   const [showAdditional, setShowAdditional] = useState(false);
 
@@ -234,7 +234,6 @@ function RosaryPrayers() {
   const goNext = () => {
     const { section, item } = currentMystery;
     const currentSection = mysteries[section];
-
     if (item < currentSection.items.length - 1) {
       setCurrentMystery({ section, item: item + 1 });
     } else if (section < mysteries.length - 1) {
@@ -245,7 +244,6 @@ function RosaryPrayers() {
 
   const goPrev = () => {
     const { section, item } = currentMystery;
-
     if (item > 0) {
       setCurrentMystery({ section, item: item - 1 });
     } else if (section > 0) {
@@ -339,23 +337,34 @@ function RosaryPrayers() {
         ))}
       </div>
 
-      {/* Litany */}
-      <div className={styles.section}>
-        <button
-          className={styles.toggleButton}
+      {/* ── Litany — redesigned with Marian photo header ── */}
+      <div className={styles.litanySection}>
+        <div
+          className={styles.litanySectionHeader}
           onClick={() => setShowLitany(!showLitany)}
+          role="button"
+          aria-expanded={showLitany}
         >
-          <SectionHeading as="span" className={styles.toggleText}>
-            {showLitany ? "−" : "+"} The Litany of Our Lady
-          </SectionHeading>
-        </button>
+          <button className={styles.litanyToggleBtn}>
+            <FaPray className={styles.litanyIcon} />
+            <span className={styles.litanyToggleText}>
+              {showLitany ? "− " : "+ "}The Litany of Our Lady
+            </span>
+            <span className={styles.litanySubtitle}>
+              Loreto Litany · Ora Pro Nobis
+            </span>
+          </button>
+        </div>
+
         {showLitany && (
-          <div className={styles.gridList}>
-            {litany.map((line, i) => (
-              <Paragraph key={i} className={styles.litany}>
-                {line}
-              </Paragraph>
-            ))}
+          <div className={styles.litanyBody}>
+            <div className={styles.litanyGrid}>
+              {litany.map((line, i) => (
+                <span key={i} className={styles.litanyLine}>
+                  {line}
+                </span>
+              ))}
+            </div>
           </div>
         )}
       </div>

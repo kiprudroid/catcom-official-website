@@ -1,4 +1,3 @@
-//db connection
 import pg from "pg";
 import env from "dotenv";
 
@@ -16,12 +15,12 @@ const db = new Pool({
   },
 });
 
-db.on('connect', (client) => {
-  console.log('Connected to the database');
+db.on("connect", (client) => {
+  console.log("Connected to the database");
 });
 
-db.on('error', (err, client) => {
-  console.error('Unexpected error on idle client', err);
+db.on("error", (err, client) => {
+  console.error("Unexpected error on idle client", err);
 });
 
 export default db;

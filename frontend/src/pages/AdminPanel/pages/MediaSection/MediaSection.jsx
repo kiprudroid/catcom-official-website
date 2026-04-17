@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./MediaSection.module.css";
 import toast from "react-hot-toast";
 import {
@@ -12,6 +12,9 @@ import {
   FaInstagram,
   FaBullhorn,
   FaSearch,
+  FaImage,
+  FaUpload,
+  FaTimes,
 } from "react-icons/fa";
 import {
   fetchAdminMedia,
@@ -19,6 +22,7 @@ import {
   updateMediaItem,
   deleteMediaItem,
   toggleMediaPublished,
+  getImageUrl, // ← FIX: import the helper
 } from "@/api/media.api";
 
 const TYPES = [
@@ -26,6 +30,7 @@ const TYPES = [
   { key: "tiktok", label: "TikTok", icon: <FaTiktok /> },
   { key: "instagram", label: "Instagram", icon: <FaInstagram /> },
   { key: "announcement", label: "Announcement", icon: <FaBullhorn /> },
+  { key: "poster", label: "Poster", icon: <FaImage /> },
 ];
 
 const emptyForm = {
@@ -46,6 +51,10 @@ const MediaSection = () => {
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
 
+  const [posterFile, setPosterFile] = useState(null);
+  const [posterPreview, setPosterPreview] = useState(null);
+  const fileInputRef = useRef(null);
+
   const load = async () => {
     try {
       const data = await fetchAdminMedia({ type: filter, search });
@@ -61,23 +70,66 @@ const MediaSection = () => {
     load();
   }, [filter, search]);
 
+  useEffect(() => {
+    if (form.type !== "poster") {
+      setPosterFile(null);
+      setPosterPreview(null);
+    }
+  }, [form.type]);
+
+  const handlePosterChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please select an image file");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image must be under 5 MB");
+      return;
+    }
+    setPosterFile(file);
+    setPosterPreview(URL.createObjectURL(file));
+  };
+
+  const clearPoster = () => {
+    setPosterFile(null);
+    setPosterPreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      let payload;
+      if (form.type === "poster") {
+        const fd = new FormData();
+        fd.append("type", "poster");
+        fd.append("title", form.title);
+        fd.append("description", form.description);
+        fd.append("published", form.published);
+        if (posterFile) fd.append("poster", posterFile);
+        payload = fd;
+      } else {
+        payload = form;
+      }
+
       if (editing) {
-        const updated = await updateMediaItem(editing.id, form);
+        const updated = await updateMediaItem(editing.id, payload);
         setItems((prev) =>
           prev.map((i) => (i.id === updated.id ? updated : i)),
         );
         toast.success("Updated");
       } else {
-        const created = await createMediaItem(form);
+        const created = await createMediaItem(payload);
         setItems((prev) => [created, ...prev]);
         toast.success("Created");
       }
+
       setForm(emptyForm);
       setEditing(null);
       setShowForm(false);
+      clearPoster();
     } catch (err) {
       toast.error(err.message || "Failed to save");
     }
@@ -92,6 +144,10 @@ const MediaSection = () => {
       description: item.description || "",
       published: item.published,
     });
+    // ── FIX: resolve to full URL for the preview ──
+    if (item.type === "poster" && item.thumbnail) {
+      setPosterPreview(getImageUrl(item.thumbnail));
+    }
     setShowForm(true);
   };
 
@@ -120,12 +176,14 @@ const MediaSection = () => {
     tiktok: <FaTiktok />,
     instagram: <FaInstagram />,
     announcement: <FaBullhorn />,
+    poster: <FaImage />,
   };
   const typeColor = {
     youtube: "#dc2626",
     tiktok: "#111",
     instagram: "#e1306c",
     announcement: "#2563eb",
+    poster: "#7c3aed",
   };
 
   return (
@@ -134,7 +192,8 @@ const MediaSection = () => {
         <div>
           <h2 className={styles.title}>Media &amp; Announcements</h2>
           <p className={styles.sub}>
-            Manage videos, social links and announcements shown on the site.
+            Manage videos, social links, announcements and posters shown on the
+            site.
           </p>
         </div>
         <button
@@ -143,15 +202,19 @@ const MediaSection = () => {
             setShowForm(!showForm);
             setEditing(null);
             setForm(emptyForm);
+            clearPoster();
           }}
         >
           <FaPlus /> Add Item
         </button>
       </div>
 
-      {/* ── Form ────────────────────────────────────────────────── */}
       {showForm && (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit}
+          encType={form.type === "poster" ? "multipart/form-data" : undefined}
+        >
           <h3 className={styles.formTitle}>
             {editing ? "Edit Item" : "Add New Item"}
           </h3>
@@ -188,7 +251,7 @@ const MediaSection = () => {
             </div>
           </div>
 
-          {form.type !== "announcement" && (
+          {form.type !== "announcement" && form.type !== "poster" && (
             <div className={styles.field}>
               <label className={styles.label}>URL</label>
               <input
@@ -207,6 +270,55 @@ const MediaSection = () => {
             </div>
           )}
 
+          {form.type === "poster" && (
+            <div className={styles.field}>
+              <label className={styles.label}>Poster Image</label>
+              {posterPreview ? (
+                <div className={styles.posterPreviewWrapper}>
+                  <img
+                    src={posterPreview}
+                    alt="Poster preview"
+                    className={styles.posterPreview}
+                  />
+                  <button
+                    type="button"
+                    className={styles.clearPosterBtn}
+                    onClick={clearPoster}
+                    title="Remove image"
+                  >
+                    <FaTimes />
+                  </button>
+                </div>
+              ) : (
+                <div
+                  className={styles.dropZone}
+                  onClick={() => fileInputRef.current?.click()}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    const file = e.dataTransfer.files[0];
+                    if (file) handlePosterChange({ target: { files: [file] } });
+                  }}
+                >
+                  <FaUpload className={styles.dropIcon} />
+                  <span className={styles.dropText}>
+                    Click or drag &amp; drop a poster image
+                  </span>
+                  <span className={styles.dropHint}>
+                    JPG, PNG, WEBP · max 5 MB
+                  </span>
+                </div>
+              )}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className={styles.hiddenFileInput}
+                onChange={handlePosterChange}
+              />
+            </div>
+          )}
+
           <div className={styles.field}>
             <label className={styles.label}>
               {form.type === "announcement" ? "Content" : "Caption (optional)"}
@@ -217,7 +329,9 @@ const MediaSection = () => {
               placeholder={
                 form.type === "announcement"
                   ? "Announcement text…"
-                  : "Short caption…"
+                  : form.type === "poster"
+                    ? "Add a caption for this poster…"
+                    : "Short caption…"
               }
               value={form.description}
               onChange={(e) =>
@@ -247,6 +361,7 @@ const MediaSection = () => {
                 onClick={() => {
                   setShowForm(false);
                   setEditing(null);
+                  clearPoster();
                 }}
               >
                 Cancel
@@ -256,7 +371,6 @@ const MediaSection = () => {
         </form>
       )}
 
-      {/* ── Search + filter ──────────────────────────────────────── */}
       <div className={styles.controls}>
         <form
           className={styles.searchRow}
@@ -296,7 +410,6 @@ const MediaSection = () => {
         </div>
       </div>
 
-      {/* ── List ────────────────────────────────────────────────── */}
       {loading ? (
         <p className={styles.loading}>Loading…</p>
       ) : items.length === 0 ? (
@@ -308,12 +421,22 @@ const MediaSection = () => {
               key={item.id}
               className={`${styles.row} ${!item.published ? styles.unpublished : ""}`}
             >
-              <div
-                className={styles.rowIcon}
-                style={{ color: typeColor[item.type] }}
-              >
-                {typeIcon[item.type]}
-              </div>
+              {/* ── FIX: resolve thumbnail URL before rendering ── */}
+              {item.type === "poster" && item.thumbnail ? (
+                <img
+                  src={getImageUrl(item.thumbnail)}
+                  alt={item.title}
+                  className={styles.rowThumbnail}
+                />
+              ) : (
+                <div
+                  className={styles.rowIcon}
+                  style={{ color: typeColor[item.type] }}
+                >
+                  {typeIcon[item.type]}
+                </div>
+              )}
+
               <div className={styles.rowInfo}>
                 <span className={styles.rowTitle}>{item.title}</span>
                 {item.url && (
@@ -333,6 +456,7 @@ const MediaSection = () => {
                   </span>
                 )}
               </div>
+
               <div className={styles.rowMeta}>
                 <span
                   className={`${styles.statusBadge} ${item.published ? styles.pub : styles.draft}`}
@@ -343,6 +467,7 @@ const MediaSection = () => {
                   {new Date(item.created_at).toLocaleDateString()}
                 </span>
               </div>
+
               <div className={styles.rowActions}>
                 <button
                   className={styles.iconBtn}

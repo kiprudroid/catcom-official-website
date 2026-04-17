@@ -26,7 +26,7 @@ const imageFilter = (req, file, cb) => {
 // Storage configuration for leader images
 const leaderStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../../uploads/leaders"));
+    cb(null, path.join(__dirname, "../../public/uploads/leaders"));
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
@@ -37,7 +37,7 @@ const leaderStorage = multer.diskStorage({
 // Storage configuration for SCC leader images
 const sccLeaderStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../../uploads/scc-leaders"));
+    cb(null, path.join(__dirname, "../../public/uploads/scc-leaders"));
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
@@ -54,5 +54,21 @@ export const uploadLeaderImage = multer({
 export const uploadSccLeaderImage = multer({
   storage: sccLeaderStorage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: imageFilter,
+});
+
+const posterStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../../public/uploads/posters"));
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, "poster-" + uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+export const uploadPosterImage = multer({
+  storage: posterStorage,
+  limits: { fileSize: 5 * 1024 * 1024 },
   fileFilter: imageFilter,
 });
