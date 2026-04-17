@@ -3,8 +3,9 @@ import styles from "./SccExecutiveCard.module.css";
 import { Phone } from "lucide-react";
 import { SectionHeading } from "@/components/Typography/Typography";
 import { FaUserCircle } from "react-icons/fa";
-
+import { BACKEND_URL } from "@/data/urlClient";
 export const SccExecutiveCard = ({ executives }) => {
+  
   return (
     <div className={styles.container}>
       <div className={styles.sectionHeader}>
@@ -21,7 +22,7 @@ export const SccExecutiveCard = ({ executives }) => {
             <div className={styles.executiveHeader}>
               <div className={styles.avatar}>
                 <img
-                  src={`http://localhost:5000${exec.exec_image}`}
+                  src={`${BACKEND_URL}${exec.exec_image}`}
                   alt={exec.exec_full_name}
                   className={styles.execImg}
                 />

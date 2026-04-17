@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ExecutiveCards.module.css";
 import { Phone } from "lucide-react";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
+import { BACKEND_URL } from "@/data/urlClient";
 
 const ExecutiveCards = ({ executives }) => {
   return (
@@ -28,7 +29,7 @@ const ExecutiveCards = ({ executives }) => {
               <div className={styles.executiveHeader}>
                 <div className={styles.avatar}>
                   <img
-                    src={`http://localhost:5000${exec.image_url}`}
+                    src={`${BACKEND_URL}${exec.image_url}`}
                     alt={exec.full_name}
                     className={styles.execImg}
                   />
