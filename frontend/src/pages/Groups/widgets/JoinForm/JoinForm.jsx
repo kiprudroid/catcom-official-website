@@ -1,5 +1,5 @@
 import styles from "./JoinForm.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SectionHeading,
   Paragraph,
@@ -18,9 +18,19 @@ const initialForm = {
 
 function JoinForm() {
   const [form, setForm] = useState(initialForm);
-  const [warning, setWarning] = useState(null);
-  const [success, setSuccess] = useState(null);
+  const [modal, setModal] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [modal]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,8 +49,6 @@ function JoinForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setWarning(null);
-    setSuccess(null);
 
     if (
       !form.fname ||
@@ -51,9 +59,11 @@ function JoinForm() {
       !form.college ||
       form.groups.length === 0
     ) {
-      setWarning(
-        "⚠️ Please fill all required fields and choose at least one group.",
-      );
+      setModal({
+        type: "validation",
+        message:
+          "Please fill all required fields and choose at least one group.",
+      });
       return;
     }
 
@@ -61,172 +71,216 @@ function JoinForm() {
 
     try {
       await createJoinGroup(form);
-      setSuccess("✅ Request sent successfully. We'll contact you soon.");
+      setModal({ type: "success" });
       setForm(initialForm);
     } catch (error) {
-      setWarning("❌ " + error.message);
+      setModal({ type: "error", message: error.message });
     } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <form className={styles.formGrid}>
-      <SectionHeading as="h2">Joining a Group</SectionHeading>
-      <Paragraph>
-        To join a group, please fill out the form below and select the group(s)
-        you wish to join.
-      </Paragraph>
+  function Modal({ type, message, onClose }) {
+    const isSuccess = type === "success";
+    const isError = type === "error";
+    const isValidation = type === "validation";
 
-      <div className={styles.formRow}>
-        <div className={styles.formCol}>
-          <div className={styles.fieldGroup}>
-            <label htmlFor="fname">
-              <Paragraph>First Name</Paragraph>
-            </label>
-            <input
-              type="text"
-              id="fname"
-              name="fname"
-              value={form.fname}
-              onChange={handleChange}
-            />
-          </div>
+    let title, msg, color;
 
-          <div className={styles.fieldGroup}>
-            <label htmlFor="lname">
-              <Paragraph>Last Name</Paragraph>
-            </label>
-            <input
-              type="text"
-              id="lname"
-              name="lname"
-              value={form.lname}
-              onChange={handleChange}
-            />
-          </div>
+    if (isSuccess) {
+      title = "Request Submitted!";
+      msg =
+        "You have successfully submitted your request to join the selected group(s). We'll contact you soon.";
+      color = "#22c55e";
+    } else if (isError) {
+      title = "Submission Failed";
+      msg = message || "An error occurred. Please try again.";
+      color = "#ef4444";
+    } else if (isValidation) {
+      title = "Incomplete Form";
+      msg = message || "Please fill all required fields.";
+      color = "#ef4444";
+    }
 
-          <div className={styles.fieldGroup}>
-            <label htmlFor="phone">
-              <Paragraph>Phone Number</Paragraph>
-            </label>
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-            />
+    return (
+      <div className={styles.modalOverlay} onClick={onClose}>
+        <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+          <div className={styles.modalIcon} style={{ background: color }}>
+            {isSuccess ? "✓" : "✕"}
           </div>
-
-          <div className={styles.fieldGroup}>
-            <label htmlFor="email">
-              <Paragraph>Your E-mail</Paragraph>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className={styles.fieldGroup}>
-            <label htmlFor="gender">
-              <Paragraph>Gender</Paragraph>
-            </label>
-            <select
-              id="gender"
-              name="gender"
-              value={form.gender}
-              onChange={handleChange}
-            >
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
-
-          <div className={styles.fieldGroup}>
-            <label htmlFor="college">
-              <Paragraph>College</Paragraph>
-            </label>
-            <select
-              id="college"
-              name="college"
-              value={form.college}
-              onChange={handleChange}
-            >
-              <option value="">Select College</option>
-              <option value="COHES">COHES</option>
-              <option value="COPAS">COPAS</option>
-              <option value="COANRE">COANRE</option>
-              <option value="COETEC">COETEC</option>
-              <option value="COHRED">COHRED</option>
-            </select>
-          </div>
-        </div>
-
-        <div className={styles.formCol}>
-          <label className={styles.groupLabel}>
-            <SectionHeading>Select Which Group(s) to Join</SectionHeading>
-          </label>
-          <div className={styles.checkboxGroup}>
-            {[
-              { id: "choir", value: "Choir", label: "Choir" },
-              { id: "pastoral", value: "Pastoral", label: "Pastoral" },
-              {
-                id: "BPS",
-                value: "Bible Prayer Service",
-                label: "Bible Prayer Service",
-              },
-              {
-                id: "technical",
-                value: "Technical Team",
-                label: "Technical Team",
-              },
-              {
-                id: "liturgical-dancers",
-                value: "Liturgical Dancers",
-                label: "Liturgical Dancers",
-              },
-              {
-                id: "communion-and-liberation",
-                value: "Communion and Liberation",
-                label: "Communion and Liberation",
-              },
-            ].map(({ id, value, label }) => (
-              <div key={id}>
-                <input
-                  type="checkbox"
-                  id={id}
-                  name="groups"
-                  value={value}
-                  checked={form.groups.includes(value)}
-                  onChange={handleGroupChange}
-                />
-                <label htmlFor={id}>
-                  <Paragraph>{label}</Paragraph>
-                </label>
-              </div>
-            ))}
-          </div>
+          <p className={styles.modalTitle}>{title}</p>
+          <p className={styles.modalMessage}>{msg}</p>
+          <button
+            className={styles.modalBtn}
+            style={{ background: color }}
+            onClick={onClose}
+          >
+            OK
+          </button>
         </div>
       </div>
+    );
+  }
 
-      <button
-        className={styles.joinBtn}
-        type="submit"
-        onClick={handleSubmit}
-        disabled={loading}
-      >
-        {loading ? "Submitting..." : "Join Group(s)"}
-      </button>
+  return (
+    <div className={styles.formGrid}>
+      {modal && (
+        <Modal
+          type={modal.type}
+          message={modal.message}
+          onClose={() => setModal(null)}
+        />
+      )}
 
-      {warning && <div className={styles.warningBar}>{warning}</div>}
-      {success && <div className={styles.successBar}>{success}</div>}
-    </form>
+      <form onSubmit={handleSubmit}>
+        <SectionHeading as="h2">Joining a Group</SectionHeading>
+        <Paragraph>
+          To join a group, please fill out the form below and select the
+          group(s) you wish to join.
+        </Paragraph>
+
+        <div className={styles.formRow}>
+          <div className={styles.formCol}>
+            <div className={styles.fieldGroup}>
+              <label htmlFor="fname">
+                <Paragraph>First Name</Paragraph>
+              </label>
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                value={form.fname}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label htmlFor="lname">
+                <Paragraph>Last Name</Paragraph>
+              </label>
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                value={form.lname}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label htmlFor="phone">
+                <Paragraph>Phone Number</Paragraph>
+              </label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label htmlFor="email">
+                <Paragraph>Your E-mail</Paragraph>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label htmlFor="gender">
+                <Paragraph>Gender</Paragraph>
+              </label>
+              <select
+                id="gender"
+                name="gender"
+                value={form.gender}
+                onChange={handleChange}
+              >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div className={styles.fieldGroup}>
+              <label htmlFor="college">
+                <Paragraph>College</Paragraph>
+              </label>
+              <select
+                id="college"
+                name="college"
+                value={form.college}
+                onChange={handleChange}
+              >
+                <option value="">Select College</option>
+                <option value="COHES">COHES</option>
+                <option value="COPAS">COPAS</option>
+                <option value="COANRE">COANRE</option>
+                <option value="COETEC">COETEC</option>
+                <option value="COHRED">COHRED</option>
+              </select>
+            </div>
+          </div>
+
+          <div className={styles.formCol}>
+            <label className={styles.groupLabel}>
+              <SectionHeading>Select Which Group(s) to Join</SectionHeading>
+            </label>
+            <div className={styles.checkboxGroup}>
+              {[
+                { id: "choir", value: "Choir", label: "Choir" },
+                { id: "pastoral", value: "Pastoral", label: "Pastoral" },
+                {
+                  id: "BPS",
+                  value: "Bible Prayer Service",
+                  label: "Bible Prayer Service",
+                },
+                {
+                  id: "technical",
+                  value: "Technical Team",
+                  label: "Technical Team",
+                },
+                {
+                  id: "liturgical-dancers",
+                  value: "Liturgical Dancers",
+                  label: "Liturgical Dancers",
+                },
+                {
+                  id: "communion-and-liberation",
+                  value: "Communion and Liberation",
+                  label: "Communion and Liberation",
+                },
+              ].map(({ id, value, label }) => (
+                <div key={id}>
+                  <input
+                    type="checkbox"
+                    id={id}
+                    name="groups"
+                    value={value}
+                    checked={form.groups.includes(value)}
+                    onChange={handleGroupChange}
+                  />
+                  <label htmlFor={id}>
+                    <Paragraph>{label}</Paragraph>
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <button className={styles.joinBtn} type="submit" disabled={loading}>
+          {loading ? "Submitting..." : "Join Group(s)"}
+        </button>
+      </form>
+    </div>
   );
 }
 

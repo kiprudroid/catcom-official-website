@@ -59,6 +59,20 @@ export const createJoinGroup = async (joinGroupData) => {
 };
 
 // ✅ Delete join group by ID (used by admin panel)
+export const assignJoinGroup = async (id, group_joined) => {
+  if (!id || !group_joined)
+    throw new Error("id and group are required to assign join group request");
+
+  const res = await fetch(`${API_BASE}/join-group/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ group_joined }),
+  });
+
+  await assertOk(res, "Failed to assign join group request");
+  return readJsonIfAny(res);
+};
+
 export const deleteJoinGroup = async (id) => {
   if (id == null) throw new Error("id is required to delete join group");
 

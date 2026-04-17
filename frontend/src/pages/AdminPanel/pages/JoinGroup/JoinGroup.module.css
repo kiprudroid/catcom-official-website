@@ -193,3 +193,34 @@
 .confirmNo:hover {
   background: #d1d5db;
 }
+
+.assignRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.assignSelect {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.assignBtn {
+  padding: 0.45rem 0.85rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.assignBtn:hover {
+  background: #1d4ed8;
+}
