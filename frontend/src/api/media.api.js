@@ -1,5 +1,19 @@
 import { API_BASE } from "./apiClient";
 
+// ── Helper: resolve a server-relative path to a full URL ────────
+// thumbnail is stored as "/uploads/posters/xxx.jpg" (relative to Express).
+// The React dev server is on a different port, so we must prefix with
+// the API origin (everything before /api).
+export const getImageUrl = (relativePath) => {
+  if (!relativePath) return null;
+  // If it's already absolute (e.g. an external http URL) leave it alone
+  if (relativePath.startsWith("http")) return relativePath;
+  // API_BASE is something like "http://localhost:3000/api"
+  // Strip the "/api" suffix to get the origin
+  const origin = API_BASE.replace(/\/api\/?$/, "");
+  return `${origin}${relativePath}`;
+};
+
 const adminHeaders = () => {
   const token = localStorage.getItem("token");
   return token ? { Authorization: `Bearer ${token}` } : {};
@@ -28,20 +42,26 @@ export const fetchAdminMedia = async ({ type, search } = {}) => {
 };
 
 export const createMediaItem = async (data) => {
+  const isFormData = data instanceof FormData;
   const res = await fetch(`${API_BASE}/media`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", ...adminHeaders() },
-    body: JSON.stringify(data),
+    headers: isFormData
+      ? adminHeaders()
+      : { "Content-Type": "application/json", ...adminHeaders() },
+    body: isFormData ? data : JSON.stringify(data),
   });
   if (!res.ok) throw new Error("Failed to create media item");
   return res.json();
 };
 
 export const updateMediaItem = async (id, data) => {
+  const isFormData = data instanceof FormData;
   const res = await fetch(`${API_BASE}/media/${id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json", ...adminHeaders() },
-    body: JSON.stringify(data),
+    headers: isFormData
+      ? adminHeaders()
+      : { "Content-Type": "application/json", ...adminHeaders() },
+    body: isFormData ? data : JSON.stringify(data),
   });
   if (!res.ok) throw new Error("Failed to update media item");
   return res.json();
