@@ -10,6 +10,13 @@ function JoinGroup() {
   const [error, setError] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [confirmId, setConfirmId] = useState(null); // ✅ tracks which row is awaiting confirm
+  const PENDING_PREFIX = "PENDING: ";
+
+  const isPendingRequest = (groupValue) =>
+    typeof groupValue === "string" && groupValue.startsWith(PENDING_PREFIX);
+
+  const getApprovedJoinGroups = (rows) =>
+    rows.filter((row) => !isPendingRequest(row.group_joined));
 
   // ✅ Fetch on mount
   useEffect(() => {
@@ -20,7 +27,7 @@ function JoinGroup() {
   useEffect(() => {
     const q = search.toLowerCase();
     setFiltered(
-      submissions.filter(
+      getApprovedJoinGroups(submissions).filter(
         (s) =>
           s.full_name.toLowerCase().includes(q) ||
           s.email.toLowerCase().includes(q) ||
@@ -68,12 +75,19 @@ function JoinGroup() {
     <div className={styles.adminPage}>
       {/* ── Header ── */}
       <div className={styles.header}>
-        <h1 className={styles.title}>Join Group Submissions</h1>
+        <h1 className={styles.title}>Approved Group Members</h1>
         <button className={styles.refreshBtn} onClick={loadSubmissions}>
           ↻ Refresh
         </button>
       </div>
 
+      <p
+        style={{ color: "#555", marginTop: 0, marginBottom: 12, maxWidth: 600 }}
+      >
+        This page shows only approved group memberships. Admins can remove
+        entries here, but assignment must happen first on the Membership
+        Requests page.
+      </p>
       {/* ── Search ── */}
       <div className={styles.searchBar}>
         <input
@@ -129,10 +143,9 @@ function JoinGroup() {
                       <td>{s.college}</td>
                       <td>{s.group_joined}</td>
                       <td>
-                        {/* ✅ Inline confirm — no popup/modal needed */}
                         {confirmId === s.user_id ? (
                           <div className={styles.confirmInline}>
-                            <span>Sure?</span>
+                            <span>Delete approved member?</span>
                             <button
                               className={styles.confirmYes}
                               onClick={() => handleConfirmDelete(s.user_id)}
