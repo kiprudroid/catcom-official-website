@@ -1,6 +1,5 @@
 import express, { Router } from "express";
 import path from "path";
-import { fileURLToPath } from "url";
 import eventsRouter from "./routes/event.routes.js";
 import leadersRouter from "./routes/leaders.routes.js";
 import authRouter from "./routes/auth.routes.js";
@@ -15,13 +14,19 @@ import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const uploadsDir = path.join(process.cwd(), "public/uploads");
 
 app.use("/uploads", express.static(uploadsDir));
 app.use(cors());
 app.use(express.json());
+
+// Temporary tracing to see exactly what Passenger/LiteSpeed forwards
+app.use((req, _res, next) => {
+  console.log(
+    `[REQ] originalUrl=${req.originalUrl} url=${req.url} baseUrl=${req.baseUrl}`,
+  );
+  next();
+});
 
 // Build one API router
 const apiRouter = Router();
@@ -35,19 +40,32 @@ apiRouter.use(readingsRouter);
 apiRouter.use(attendanceRouter);
 apiRouter.use(mediaRouter);
 
-// Mount for both cases (Passenger strips /backend OR not)
+// Mount for all common path variants
 app.use("/api", apiRouter);
 app.use("/backend/api", apiRouter);
+app.use("/", apiRouter); // fallback if upstream strips both /backend and /api
 
-// Optional health checks
-app.get("/health", (_req, res) => res.json({ ok: true }));
-app.get("/api/health", (_req, res) => res.json({ ok: true }));
-app.get("/backend/api/health", (_req, res) => res.json({ ok: true }));
+// Health checks for each variant
+app.get("/health", (_req, res) =>
+  res.status(200).json({ ok: true, where: "/health" }),
+);
+app.get("/api/health", (_req, res) =>
+  res.status(200).json({ ok: true, where: "/api/health" }),
+);
+app.get("/backend/api/health", (_req, res) =>
+  res.status(200).json({ ok: true, where: "/backend/api/health" }),
+);
 
 app.use(errorHandler);
 
+// 404 with marker + request info for debugging
 app.use((req, res) => {
-  res.status(404).json({ message: "Not Found", url: req.originalUrl });
+  res.status(404).json({
+    message: "Not Found",
+    marker: "backend-routing-v2",
+    originalUrl: req.originalUrl,
+    url: req.url,
+  });
 });
 
 export default app;
