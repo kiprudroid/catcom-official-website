@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import eventsRouter from "./routes/event.routes.js";
@@ -9,7 +9,7 @@ import sccLeadersRouter from "./routes/scc-leaders.routes.js";
 import groupsRouter from "./routes/join-group.routes.js";
 import readingsRouter from "./routes/readings.routes.js";
 import attendanceRouter from "./routes/attendance.routes.js";
-import mediaRouter from "./routes/media.routes.js"; // ← new
+import mediaRouter from "./routes/media.routes.js";
 import cors from "cors";
 import { errorHandler } from "./middleware/errorHandler.js";
 
@@ -23,20 +23,31 @@ app.use("/uploads", express.static(uploadsDir));
 app.use(cors());
 app.use(express.json());
 
-app.use("/api", eventsRouter);
-app.use("/api", leadersRouter);
-app.use("/api", sccLeadersRouter);
-app.use("/api", groupsRouter);
-app.use("/api", authRouter);
-app.use("/api", joinSccRouter);
-app.use("/api", readingsRouter);
-app.use("/api", attendanceRouter);
-app.use("/api", mediaRouter);
+// Build one API router
+const apiRouter = Router();
+apiRouter.use(eventsRouter);
+apiRouter.use(leadersRouter);
+apiRouter.use(sccLeadersRouter);
+apiRouter.use(groupsRouter);
+apiRouter.use(authRouter);
+apiRouter.use(joinSccRouter);
+apiRouter.use(readingsRouter);
+apiRouter.use(attendanceRouter);
+apiRouter.use(mediaRouter);
+
+// Mount for both cases (Passenger strips /backend OR not)
+app.use("/api", apiRouter);
+app.use("/backend/api", apiRouter);
+
+// Optional health checks
+app.get("/health", (_req, res) => res.json({ ok: true }));
+app.get("/api/health", (_req, res) => res.json({ ok: true }));
+app.get("/backend/api/health", (_req, res) => res.json({ ok: true }));
 
 app.use(errorHandler);
 
 app.use((req, res) => {
-  res.status(404).json({ message: "Not Found" });
+  res.status(404).json({ message: "Not Found", url: req.originalUrl });
 });
 
 export default app;
