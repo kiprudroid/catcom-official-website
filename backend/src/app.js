@@ -23,6 +23,14 @@ app.use("/uploads", express.static(uploadsDir));
 app.use(cors());
 app.use(express.json());
 
+//litespeed middleware
+app.use((req, res, next) => {
+  if (req.url.startsWith('/backend/api')) {
+    req.url = req.url.replace('/backend', '');
+  }
+next();
+});
+
 app.use("/api", eventsRouter);
 app.use("/api", leadersRouter);
 app.use("/api", sccLeadersRouter);
