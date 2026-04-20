@@ -1,6 +1,29 @@
+# ------------------------------------------------------------------------------
+# FRONTEND .HTACCESS FOR JKUAT CATCOM
+# This file manages the routing between the React Frontend and Node.js Backend
+# ------------------------------------------------------------------------------
 RewriteEngine On
 RewriteBase /
+
+# 1. API/BACKEND BYPASS
+# Prevents the frontend from handling Node.js API and backend calls.
+RewriteCond %{REQUEST_URI} ^/backend [NC]
+RewriteRule ^ - [L]
+
+RewriteCond %{REQUEST_URI} ^/api [NC]
+RewriteRule ^ - [L]
+
+# 2. STATIC FILE CHECK
+# If the request is for an actual file (image, js, css), serve it directly.
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
+
+# 3. SPA ROUTING (React Router)
+# For all other URLs (e.g., jkuatcatcom.com/about), send the request to index.html.
+# This allows your frontend routing to work without 404ing on page refresh.
 RewriteRule ^ index.html [L]
+
+# ------------------------------------------------------------------------------
+# END OF CONFIGURATION
+# ------------------------------------------------------------------------------
