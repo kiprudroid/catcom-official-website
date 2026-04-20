@@ -9,7 +9,6 @@ const statusMeta = {
   apology: { label: "Apology", cls: styles.statusApology },
 };
 
-/* keep color map here only for the PDF export (browser window, no CSS modules) */
 const PDF_STATUS_COLORS = {
   present: { color: "#16a34a", bg: "#dcfce7" },
   absent: { color: "#dc2626", bg: "#fee2e2" },
@@ -80,8 +79,9 @@ const AttendanceTable = ({
 
     const rows = filteredMembers
       .map((m, i) => {
+        // FIX: fallback to "absent" colours instead of "present"
         const { color, bg } =
-          PDF_STATUS_COLORS[m.attendance] || PDF_STATUS_COLORS.present;
+          PDF_STATUS_COLORS[m.attendance] || PDF_STATUS_COLORS.absent;
         return `
 <tr style="background:${i % 2 === 0 ? "#fff" : "#f9fafb"}">
   <td>${i + 1}</td>
@@ -92,7 +92,7 @@ const AttendanceTable = ({
   <td>${m.role}</td>
   <td>
     <span style="padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;background:${bg};color:${color}">
-      ${statusMeta[m.attendance]?.label}
+      ${statusMeta[m.attendance]?.label ?? "Absent"}
     </span>
   </td>
   <td style="text-align:center;${m.consecutiveAbsence >= 2 ? "color:#ef4444;font-weight:700" : ""}">
@@ -211,7 +211,8 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
           </thead>
           <tbody>
             {filteredMembers.map((member, idx) => {
-              const meta = statusMeta[member.attendance] || statusMeta.present;
+              // FIX: fallback to absent instead of present
+              const meta = statusMeta[member.attendance] ?? statusMeta.absent;
               const isAtRisk = member.consecutiveAbsence >= 2;
 
               return (

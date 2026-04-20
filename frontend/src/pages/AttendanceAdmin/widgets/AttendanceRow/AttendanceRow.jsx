@@ -4,14 +4,17 @@ import styles from "./AttendanceRow.module.css";
 const AttendanceRow = ({ member, updateAttendance }) => {
   const isWarning = member.consecutiveAbsence >= 2;
 
+  //  fall back to "absent" if attendance is somehow undefined
+  const currentStatus = member.attendance ?? "absent";
+
   return (
     <tr className={isWarning ? styles.warning : ""}>
       <td>{member.name}</td>
       <td>{member.role}</td>
 
       <td>
-        <span className={`${styles.status} ${styles[member.attendance]}`}>
-          {member.attendance}
+        <span className={`${styles.status} ${styles[currentStatus]}`}>
+          {currentStatus}
         </span>
       </td>
 
@@ -19,7 +22,7 @@ const AttendanceRow = ({ member, updateAttendance }) => {
 
       <td>
         <select
-          value={member.attendance}
+          value={currentStatus}
           onChange={(e) => updateAttendance(member.id, e.target.value)}
           className={styles.select}
         >

@@ -33,7 +33,6 @@ const AttendanceAdmin = () => {
   );
   const navigate = useNavigate();
 
-  // Read group info from localStorage (set on login)
   const group = JSON.parse(localStorage.getItem("attendance_group") || "{}");
 
   const loadMembers = useCallback(async () => {
@@ -74,7 +73,8 @@ const AttendanceAdmin = () => {
 
   const membersWithAttendance = members.map((m) => ({
     ...m,
-    attendance: attendance[m.id] || "present",
+    // FIX 1: default to "absent" instead of "present" when no record exists
+    attendance: attendance[m.id] ?? "absent",
     consecutiveAbsence: Number(m.consecutive_absences) || 0,
   }));
 
@@ -90,7 +90,8 @@ const AttendanceAdmin = () => {
           markAttendance({
             member_id: m.id,
             date: meetingDate,
-            status: attendance[m.id] || "present",
+            // FIX 2: default to "absent" when saving unset members
+            status: attendance[m.id] ?? "absent",
           }),
         ),
       );
@@ -106,6 +107,8 @@ const AttendanceAdmin = () => {
     try {
       const newMember = await createMember({ name, role });
       setMembers((prev) => [...prev, newMember]);
+      // FIX 3: immediately set new member's attendance to "absent" in local state
+      setAttendance((prev) => ({ ...prev, [newMember.id]: "absent" }));
       toast.success(`${name} added`);
     } catch {
       toast.error("Failed to add member");
