@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 import eventsRouter from "./routes/event.routes.js";
 import leadersRouter from "./routes/leaders.routes.js";
 import authRouter from "./routes/auth.routes.js";
@@ -14,6 +15,8 @@ import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const uploadsDir = path.join(process.cwd(), "public/uploads");
 
 app.use("/uploads", express.static(uploadsDir));
@@ -31,7 +34,6 @@ app.use("/api", attendanceRouter);
 app.use("/api", mediaRouter);
 
 app.use(errorHandler);
-
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not Found" });
