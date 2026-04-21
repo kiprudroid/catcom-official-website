@@ -319,6 +319,7 @@ export const additionalPrayers = [
   "St. Padre Pio, pray for us.",
   "And all you Holy Angels and Saints in Heaven, pray for us.",
   "Prayer for the Beatification of the Servant of God Maurice Michael Cardinal Otunga – O God, you granted your servant Maurice Michael Cardinal Otunga the grace to be an exemplary pastor at the service of the church making him a symbol of humility and love for the poor and the less fortunate in the society while denying and detaching himself from the pleasures of the world, Grant we beseech thee that we may also learn to respond faithfully to the demands of the  christian vocation converting all moments and circumstances of our lives into opportunities of loving you and our neighbours with joy and kindness and of serving the kingdom of God with humilty, we humbly request you to grant your servant Cardinal Otunga a share in the glory of heaven which is promised to those who have served you  well, through his intercession bless the church, our country, our families and grant us the favours we humbly request(`Say your intentions)... Through christ our Lord. Amen.",
-  "For the intentions of the Holy Father – Our Father… Hail Mary…",
-  "For the intercession of the Church against the scourges of the Devil – St. Michael the Archangel, defend us in battle...",
+  `For the intentions of the Holy Father:
+   Our Father... Hail Mary...(x3) Glory be to the Father...`,
+  `For the intercession of the Church against the scourges of the Devil – St. Michael the Archangel, defend us in battle...`,
 ];
