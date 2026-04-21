@@ -37,16 +37,11 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-.hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
-  align-items: stretch;
-  width: 90%;
-}
-
 .fullWidth {
   width: 90%;
+  overflow: visible;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .cardTitle {
@@ -62,6 +57,11 @@
 
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .fullWidth {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
   }
 
   .cardTitle {
