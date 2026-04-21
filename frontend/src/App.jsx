@@ -30,7 +30,6 @@ import {
   Reports,
 } from "@/pages/AdminPanel/pages";
 
-// Auth helpers — read from separate localStorage keys
 const isAdminLoggedIn = () => !!localStorage.getItem("token");
 const isAttendanceLoggedIn = () => !!localStorage.getItem("attendance_token");
 
@@ -44,7 +43,6 @@ const ProtectedAttendance = ({ children }) =>
     <Navigate to="/attendance-login" replace />
   );
 
-// Router created ONCE at module level — prevents infinite re-render loop
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -77,7 +75,12 @@ const router = createBrowserRouter(
 
       {/* ── Login pages ──────────────────────────────────── */}
       <Route path="/login" element={<SuperAdminLogin />} />
+
+      {/* Group picker — landing directly on this page */}
       <Route path="/attendance-login" element={<AttendanceLogin />} />
+
+      {/* Same component, groupId param pre-selects the group and skips the picker */}
+      <Route path="/attendance-login/:groupId" element={<AttendanceLogin />} />
 
       {/* ── Main admin panel (protected) ─────────────────── */}
       <Route

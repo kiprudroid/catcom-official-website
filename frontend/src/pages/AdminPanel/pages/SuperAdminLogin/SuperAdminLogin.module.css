@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .card {
@@ -18,6 +19,7 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -77,6 +79,7 @@
 .input:focus {
   border-color: #2dabb1;
 }
+
 .inputError {
   border-color: #ef4444 !important;
 }
@@ -157,6 +160,7 @@
 .btn:hover:not(:disabled) {
   background: #2dabb1;
 }
+
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -178,7 +182,7 @@
   }
 }
 
-/* ── Group attendance links ───────────────────────────────────── */
+/* ── Group attendance section ─────────────────────────────────── */
 .groupSection {
   width: 100%;
   margin-top: 16px;
@@ -215,6 +219,47 @@
   margin: 0 0 10px;
 }
 
+/* ── Group search ── */
+.groupSearchWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.groupSearchIcon {
+  position: absolute;
+  left: 11px;
+  color: #9ca3af;
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.groupSearchInput {
+  width: 100%;
+  padding: 9px 12px 9px 34px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 9px;
+  font-size: 13px;
+  color: #1c3a3a;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.groupSearchInput:focus {
+  border-color: #2dabb1;
+}
+
+.noResults {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+}
+
+/* ── Group list ── */
 .groupList {
   display: flex;
   flex-direction: column;
