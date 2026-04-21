@@ -4,7 +4,7 @@
   align-items: center;
   margin: 1.5rem 0;
   background: #f8fafc;
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 0rem;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
@@ -36,4 +36,11 @@
   font-size: 0.95rem;
   color: #334155;
   font-weight: bold;
+}
+
+@media screen and (max-width: 480px) {
+  .tracker {
+    display: flex;
+    flex-direction: column;
+  }
 }

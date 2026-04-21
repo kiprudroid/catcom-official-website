@@ -2,6 +2,8 @@
   text-align: center;
   padding: 2rem;
   border-radius: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .headerRow {
@@ -16,10 +18,10 @@
   width: 100%;
   max-width: 300px;
   font-size: 0.95rem;
+  text-align: left;
 }
 
-/* === React Select === */
-.react-select__control {
+:global(.react-select__control) {
   border-radius: 8px;
   border: 1px solid #ccc;
   min-height: 40px;
@@ -29,43 +31,40 @@
     box-shadow 0.2s;
 }
 
-.react-select__control--is-focused {
+:global(.react-select__control--is-focused) {
   border-color: #2dabb1;
   box-shadow: 0 0 0 3px rgba(45, 171, 177, 0.25);
 }
 
-.react-select__placeholder {
+:global(.react-select__placeholder) {
   color: #666;
 }
 
-.react-select__menu {
+:global(.react-select__menu) {
   border-radius: 8px;
   overflow: hidden;
+  text-align: left;
 }
 
-.react-select__option--is-focused {
+:global(.react-select__option--is-focused) {
   background: rgba(45, 171, 177, 0.1);
   color: #2d3436;
 }
 
-.react-select__option--is-selected {
+:global(.react-select__option--is-selected) {
   background: #2dabb1;
   color: #fff;
 }
 
-/* === Cards === */
 .prayerSection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
-  justify-content: center;
-
-  /* Scroll container */
+  width: 100%;
+  box-sizing: border-box;
   max-height: 60vh;
   overflow-y: auto;
-  padding-right: 0.5rem;
-
-  /* Subtle scrollbar styling */
+  padding-right: 0.4rem;
   scrollbar-width: thin;
   scrollbar-color: #2dabb1 #f0f0f0;
 }
@@ -86,12 +85,15 @@
 
 .card {
   border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   background: #fff;
   border: 1px solid #e0e0e0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .card:hover {
@@ -103,50 +105,98 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
 .cardTitle {
   font-weight: bold;
   font-size: 1rem;
-  color: #2c3e50;
+  color: #2dabb1;
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;
 }
 
 .icon {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 0.85rem;
   color: #2dabb1;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  background: rgba(45, 171, 177, 0.1);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Expand/Collapse */
+/* Collapsed: ~2 lines with fade */
 .content {
-  margin-top: 0.5rem;
-  max-height: 1.2rem;
+  margin-top: 0.6rem;
+  max-height: 3.2rem;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   transition: max-height 0.4s ease;
-  color: #333;
+  color: #666;
+  text-align: left;
+  font-size: 0.87rem;
+  line-height: 1.55;
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
 }
 
+/* Expanded: show everything */
 .show {
-  max-height: 550px;
-  white-space: normal;
+  max-height: 900px;
+  color: #333;
+  font-size: 0.92rem;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
-/* === Responsive === */
-@media (max-width: 1024px) and (min-width: 481px) {
+@media screen and (max-width: 480px) {
   .container {
-    padding: 1.5rem;
-    width: 100%;
+    padding: 0.75rem;
   }
 
-  .card {
-    width: 90%;
+  .prayerSection {
+    grid-template-columns: 1fr;
+    max-height: 68vh;
+    padding-right: 0.2rem;
   }
 
   .dropdown {
-    max-width: 250px;
+    max-width: 100%;
+    font-size: 0.88rem;
+  }
+
+  .cardTitle {
+    font-size: 0.92rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 1.25rem;
+  }
+
+  .prayerSection {
+    grid-template-columns: 1fr;
+  }
+
+  .dropdown {
+    max-width: 100%;
     font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .prayerSection {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 }

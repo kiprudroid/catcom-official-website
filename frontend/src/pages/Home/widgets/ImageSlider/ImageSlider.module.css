@@ -12,17 +12,16 @@
   font-weight: bold;
 }
 
-/* Each slide slot — add horizontal padding so images don't touch */
 .slide {
-  padding: 0 8px;
+  padding: 0 6px;
   box-sizing: border-box;
 }
 
 .slideshowImage {
   width: 100%;
-  height: 280px;
+  height: 300px;
   object-fit: cover;
-  object-position: center top; /* favour faces/subjects at the top */
+  object-position: center top;
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
   display: block;
@@ -44,7 +43,7 @@
   opacity: 1;
 }
 
-/* Arrows */
+/* Arrows: small, just outside the track */
 .sliderContainer :global(.slick-prev),
 .sliderContainer :global(.slick-next) {
   z-index: 2;
@@ -53,17 +52,18 @@
 }
 
 .sliderContainer :global(.slick-prev) {
-  left: -32px;
+  left: -30px;
 }
+
 .sliderContainer :global(.slick-next) {
-  right: -32px;
+  right: -30px;
 }
 
 .sliderContainer :global(.slick-prev:before),
 .sliderContainer :global(.slick-next:before) {
-  font-size: 28px;
+  font-size: 26px;
   color: #2dabb1;
-  opacity: 0.8;
+  opacity: 0.85;
   transition:
     color 0.2s ease,
     opacity 0.2s ease;
@@ -75,21 +75,25 @@
   opacity: 1;
 }
 
-/* Add bottom padding so dots don't overlap page content */
 .sliderContainer :global(.slick-list) {
   padding-bottom: 8px;
 }
 
-/* ── Responsive ───────────────────────────────────────────────── */
 @media screen and (max-width: 640px) {
   .slideshowImage {
-    height: 220px;
+    height: 230px;
   }
 
   .sliderContainer :global(.slick-prev) {
-    left: -16px;
+    left: -22px;
   }
+
   .sliderContainer :global(.slick-next) {
-    right: -16px;
+    right: -22px;
+  }
+
+  .sliderContainer :global(.slick-prev:before),
+  .sliderContainer :global(.slick-next:before) {
+    font-size: 20px;
   }
 }

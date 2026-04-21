@@ -18,8 +18,9 @@
   flex-direction: column;
   justify-content: flex-start;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  overflow-x: hidden;
   width: 90%;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
 .readingWeek {
@@ -28,6 +29,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
   width: 90%;
+  box-sizing: border-box;
 }
 
 .warningBox {
@@ -42,25 +44,35 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* === Small phones (up to 480px) === */
 @media screen and (max-width: 480px) {
   .gridContainer {
-    padding: 0.5rem;
+    padding: 0.4rem;
     gap: 1rem;
     width: 100%;
   }
+
+  .widget,
+  .readingWeek {
+    width: 100%;
+    padding: 0.5rem;
+    overflow: visible;
+    min-height: unset;
+  }
 }
 
-/* === Tablets (481px – 768px) === */
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .gridContainer {
     padding: 0.8rem;
     gap: 1.2rem;
+    width: 100%;
+  }
+
+  .widget,
+  .readingWeek {
     width: 95%;
   }
 }
 
-/* === Small laptops (769px – 1024px) === */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .gridContainer {
     padding: 1rem;
@@ -69,7 +81,6 @@
   }
 }
 
-/* === Desktops (1025px – 1440px) === */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   .gridContainer {
     padding: 1.5rem;
@@ -78,7 +89,6 @@
   }
 }
 
-/* === Large desktops (1441px and above) === */
 @media screen and (min-width: 1441px) {
   .gridContainer {
     padding: 2rem;

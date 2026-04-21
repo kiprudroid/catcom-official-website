@@ -1,5 +1,4 @@
 .container {
-  margin: 0 auto;
   line-height: 1.6;
   border-radius: 0.75rem;
   padding: 2rem;
@@ -159,8 +158,8 @@
 /* === Small phones (up to 480px) === */
 @media screen and (max-width: 480px) {
   .container {
-    padding: 1rem;
-    /* width: 95%; */
+    padding-left: 0.02rem;
+    width: 100%;
     justify-content: center;
   }
   .card {

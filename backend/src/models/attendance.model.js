@@ -147,7 +147,8 @@ export const getAttendanceByDateQuery = ({ group_id, date }) =>
     [group_id, date],
   );
 
-export const upsertAttendanceQuery = ({ member_id, date, status }) =>
+// FIX: default status is 'absent' if somehow not provided
+export const upsertAttendanceQuery = ({ member_id, date, status = "absent" }) =>
   pool.query(
     `INSERT INTO attendance_records (member_id, date, status)
      VALUES ($1, $2, $3)

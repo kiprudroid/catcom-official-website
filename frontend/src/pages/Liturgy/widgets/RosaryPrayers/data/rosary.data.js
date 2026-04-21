@@ -19,23 +19,28 @@ export const mysteries = [
     items: [
       {
         title: "1. The Annunciation",
-        detail: "Mary is chosen to be the mother of Jesus.",
+        detail:
+          "Mary said yes. God was asking a great amount of her. She could face disapproval. Joseph could abandon her. She might not be believed. Mary risked a lot because she had faith in God’s goodness. I imagine her kneeling in wonderment at the angel Gabriel... She allows God’s will to be done and with that fiat the salvation of the world is set in motion. I pray that I can put God’s will before my own.",
       },
       {
         title: "2. The Visitation",
-        detail: "Elizabeth recognizes Mary as the mother of our Lord.",
+        detail:
+          "Newly pregnant, Mary walks several days to visit her cousin Elizabeth. She is greeted with great joy and exclaims her Magnificat. While knowing that all will call her blessed, she spends several months serving Elizabeth... Despite her own possible exhaustion and morning sickness, she serves her cousin. I pray that I can serve as Mary did.",
       },
       {
         title: "3. The Nativity",
-        detail: "Jesus is born and laid in a manger.",
+        detail:
+          "Mary and Joseph are far from home and she is about to give birth. They find nowhere to stay. Rather than panicking, they rely on God who leads them to a safe, warm place for his son’s birth. I imagine their worry but also their sense of calm. They know God cares for them and he will not abandon them on this holy journey. I pray for the grace to depend on God completely.",
       },
       {
         title: "4. The Presentation",
-        detail: "Jesus is presented in the Temple of Jerusalem.",
+        detail:
+          "Mary and Joseph obey the law and bring their newborn son to the temple and offer a sacrifice. There they meet Simeon who has waited many years to meet the Messiah... He also warns Mary that her own heart will be pierced. She continues to trust God, not knowing what lies ahead. I pray for trust in God’s plan and patience in waiting for it to unfold.",
       },
       {
         title: "5. Finding in the Temple",
-        detail: "Jesus is found discussing God's laws in the temple.",
+        detail:
+          "After not knowing where he was for three days, Mary and Joseph find Jesus in the temple. I imagine the fear they felt when they realized Jesus was not with them as they returned from Jerusalem... At last they find him in his father’s home. What relief and joy. We look for Jesus too and we can always find him in church. I pray that I will not find reasons to avoid visiting Jesus regularly.",
       },
     ],
   },
@@ -46,23 +51,28 @@ export const mysteries = [
     items: [
       {
         title: "1. The Agony in the Garden",
-        detail: "Jesus prays in Gethsemane before His Passion.",
+        detail:
+          "Jesus knows torture and death lie ahead and he prays that the cup will pass. He also prays God’s will be done. In his agony, he carries the weight of our sins so that we may be saved. I imagine the courage it took to give himself to God’s plan... I pray for the courage to conform to God’s will especially when it may be difficult.",
       },
       {
         title: "2. The Scourging at the Pillar",
-        detail: "Jesus is scourged by soldiers.",
+        detail:
+          "Jesus is brutally tortured to near death. Scourging was more than mere beating; it involved using instruments to inflict the most pain and blood loss possible without actually killing. Jesus was beaten for our sins. His mother watched as her son’s blood spilled on the ground... I pray for forgiveness for my sins, the sins that contributed to the torture of my Lord.",
       },
       {
         title: "3. The Crowning with Thorns",
-        detail: "Jesus is mocked and crowned with thorns.",
+        detail:
+          "Jesus is stripped, reclothed with a scarlet robe and crowned with thorns. He is mocked and spit upon by the soldiers. The people demand his crucifixion. Despite his innocence, he does not defend himself. He is strong in the face of hatred... I pray for courage to defend God’s truth and strength to withstand the criticism and hatred of others.",
       },
       {
         title: "4. The Carrying of the Cross",
-        detail: "Jesus carries the cross to Calvary.",
+        detail:
+          "Jesus’ humiliation continues as he carries the Cross he will be crucified on through the town and people continue to mock him. I imagine the pain of the heavy wood against his back, rubbing against the open wounds from the scourging... Jesus is patient in enduring this suffering for us. I pray for patience in my own times of difficulty.",
       },
       {
         title: "5. The Crucifixion",
-        detail: "Jesus dies on the cross for our salvation.",
+        detail:
+          "Jesus arrives and is nailed to the cross. As he hangs, slowly dying, he is comforted by the presence of Mary, her sister, John and Mary Magdalene. Mary is strong. She has watched him suffer and now die and she never leaves him... I pray in thanksgiving for Christ’s suffering and sacrifice so that I may be saved.",
       },
     ],
   },
@@ -73,23 +83,74 @@ export const mysteries = [
     items: [
       {
         title: "1. The Baptism of the Lord",
-        detail: "Jesus is baptized by John in the Jordan River.",
+        detail: `Though Jesus is without original sin, John 
+        baptizes Him. At that time, he went up 
+        immediately from the water, and behold, the 
+        heavens were opened and he saw the Spirit of 
+        God descending like a dove and behold, a voice 
+        from heaven, saying, ‘This is my beloved Son, 
+        with whom I am well pleased.’ Mt 3:16-17   `,
       },
       {
         title: "2. The Wedding Feast at Cana",
-        detail: "Christ changes water into wine.",
+        detail: `It is here Jesus' public life is put into motion. 
+        Let’s imagine Mary noticing that the wine is 
+        running out and hearing her ask Jesus for help, 
+        confident in his assistance. His respect for 
+        Mary is so high, he performs his first miracle at 
+        her request. Her command, ‘Do whatever he 
+        tells you.’ Jn 2:5, Is for us too. The wine 
+        stewards listen and water is turned into wine. 
+        When we pray the Rosary, she intercedes with her Son on our behalf. Let’s pray to grow closer 
+        to Jesus with Mary's help. `,
       },
       {
         title: "3. The Proclamation of the Kingdom",
-        detail: "Jesus preaches the Good News and forgives sins.",
+        detail: `Jesus went about the land preaching, “The time 
+        is fulfilled, and the kingdom of God is at hand; 
+        repent and believe in the gospel”. Mk 1:15. He 
+        healed the sick and cast out demons. Let’s 
+        imagine the awe of the people watching this 
+        man proclaim the importance of repenting of 
+        our sins as He healed people of their paralysis 
+        or leprosy. He preached about love and 
+        forgiveness. We too need healing and 
+        repentance. Let’s pray for the ability to be 
+        humbly and genuinely sorry for our sins against 
+        others and against the God who loves us and 
+        made us.`,
       },
       {
         title: "4. The Transfiguration",
-        detail: "Jesus is transfigured on Mount Tabor.",
+        detail: `Peter, James and John accompany Jesus up 
+        Mount Tabor. He was transfigured before them, 
+        and his face shone like the sun, and his 
+        garments became white as light. Mt 17:2 and 
+        Moses and Elijah appear. Peter desires to build 
+        tents for them so they may stay. God again 
+        proclaims pleasure in Jesus, His beloved Son 
+        and tells them to listen to Him. Let’s imagine 
+        the disciples seeing Jesus with the prophets of 
+        the past and hearing God's voice. They received 
+        a beautiful gift from God and comforting words 
+        from Jesus to not be afraid. Let’s pray for the 
+        desire to spend time with Christ thinking about 
+        his message and striving for holiness. `,
       },
       {
         title: "5. The Institution of the Eucharist",
-        detail: "At the Last Supper, Christ gives His Body and Blood.",
+        detail: `Jesus took bread, and blessed, and broke it, and 
+        gave it to them, and said, ‘Take; this is my 
+        body.’ He then took a chalice, and when he had 
+        given thanks, he gave it to them, and they all 
+        drank of it. Mk 14:22-23. Jesus gives us the 
+        greatest of gifts in his presence in the 
+        Eucharist-body, blood, soul and divinity. Let’s 
+        reflect on this at every Mass, as we genuflect 
+        before the tabernacle. We are also invited to 
+        visit Jesus in adoration. It takes great faith to 
+        believe in the Real Presence of Christ in the 
+        Eucharist.`,
       },
     ],
   },
@@ -98,19 +159,80 @@ export const mysteries = [
     days: "Sunday and Wednesday",
     image: "/litugy-images/rosary.jpg",
     items: [
-      { title: "1. The Resurrection", detail: "Jesus rises from the dead." },
-      { title: "2. The Ascension", detail: "Jesus ascends into Heaven." },
       {
-        title: "3. The Descent of the Holy Spirit",
-        detail: "The Spirit descends on the Apostles.",
+        title: "1. The Resurrection",
+        detail: `Entering the tomb, they saw a young man 
+        and they were amazed. And he said to 
+        them, ‘Do not be amazed; you seek Jesus 
+        of Nazareth, who was crucified. He has 
+        risen; he is not here.’ Mk 16:5-6. They see 
+        Him on their way to Galilee, and He tells 
+        them to tell the disciples of His 
+        resurrection. Let’s imagine the joy they 
+        feel when they see the one, they love 
+        living again, the celebration of the 
+        disciples and Mary when they can touch 
+        Him and talk to Him. Let’s pray for faith 
+        that we too may one day be with Jesus in 
+        heaven.`,
+      },
+      {
+        title: "2. The Ascension",
+        detail: `So, then the Lord Jesus, after he had 
+        spoken to them, was taken up into heaven, 
+        and sat down at the right hand of God. Mk 
+        16:19, He tells his followers to go and 
+        make disciples. He sends them to the 
+        world to share his story, and he promises 
+        He will always be with them. Let’s 
+        imagine their surprise to see Him lifted 
+        and away to the clouds and their 
+        wonderment as all that occurred, they are 
+        filled with hope and maybe fear. Let’s pray 
+        for hope when we don't know the way 
+        forward or when times seem dark.  `,
+      },
+      {
+        title: "3. The Coming of the Holy Spirit",
+        detail: `The apostles and Mary are hiding in the 
+        upper room in fear of the future. There 
+        appeared to them tongues as of fire, 
+        distributed and resting on each one of 
+        them. Acts 2: They are filled with the gifts 
+        they need to go out into the world: love, 
+        joy, peace, patience, kindness, goodness, 
+        faithfulness, gentleness, and self-control.
+        We receive these same gifts at our baptism 
+        and confirmation. Let’s pray that we can 
+        use these gifts to share the love of Jesus 
+        and the story of his good news.   `,
       },
       {
         title: "4. The Assumption",
-        detail: "Mary is assumed body and soul into Heaven.",
+        detail: `My beloved speaks...to me: ‘Arise, my 
+        love, my dove, my fair one, and come 
+        away for behold the winter is past, the rain 
+        is over and gone.’ Song 2:10-11. Mary is 
+        taken to heaven to her rightful place with 
+        Jesus where she intercedes for us in prayer. 
+        Let’s pray for her intercession and help in 
+        growing closer to Jesus, while asking her 
+        to help us love him more. She will keep 
+        pointing the way toward her son. `,
       },
       {
         title: "5. The Coronation",
-        detail: "Mary is crowned Queen of Heaven and Earth.",
+        detail: `A great sign appeared in heaven, a woman 
+        clothed with the sun, with the moon under 
+        her feet, and on her head a crown of 
+        twelve stars. Rev 12:1. Mary is the Queen 
+        of Heaven and Earth. She listened to God's 
+        will and stayed true to his plan for her life. 
+        Mary was not spared suffering but her 
+        reward in heaven is great. She is our queen 
+        too, and if asked she will help us in all 
+        facets of our life. Let’s pray for her 
+        humility, patience, and trust. `,
       },
     ],
   },
@@ -207,6 +329,7 @@ export const additionalPrayers = [
   "St. Padre Pio, pray for us.",
   "And all you Holy Angels and Saints in Heaven, pray for us.",
   "Prayer for the Beatification of the Servant of God Maurice Michael Cardinal Otunga – O God, you granted your servant Maurice Michael Cardinal Otunga the grace to be an exemplary pastor at the service of the church making him a symbol of humility and love for the poor and the less fortunate in the society while denying and detaching himself from the pleasures of the world, Grant we beseech thee that we may also learn to respond faithfully to the demands of the  christian vocation converting all moments and circumstances of our lives into opportunities of loving you and our neighbours with joy and kindness and of serving the kingdom of God with humilty, we humbly request you to grant your servant Cardinal Otunga a share in the glory of heaven which is promised to those who have served you  well, through his intercession bless the church, our country, our families and grant us the favours we humbly request(`Say your intentions)... Through christ our Lord. Amen.",
-  "For the intentions of the Holy Father – Our Father… Hail Mary…",
-  "For the intercession of the Church against the scourges of the Devil – St. Michael the Archangel, defend us in battle...",
+  `For the intentions of the Holy Father:
+   Our Father... Hail Mary...(x3) Glory be to the Father...`,
+  `For the intercession of the Church against the scourges of the Devil – St. Michael the Archangel, defend us in battle...`,
 ];

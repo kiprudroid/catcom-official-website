@@ -69,3 +69,13 @@ CREATE INDEX IF NOT EXISTS idx_att_admins_email    ON attendance_admins (email);
 --   JOIN attendance_members am ON am.name = (SELECT name FROM pastoral_members WHERE id = a.member_id)
 --   WHERE am.group_id = 1;
 -- ─────────────────────────────────────────────────────────────────
+
+
+-- Migration: change default attendance status from 'present' to 'absent'
+ALTER TABLE attendance_records
+  ALTER COLUMN status SET DEFAULT 'absent';
+
+-- Verify
+-- SELECT column_name, column_default
+-- FROM information_schema.columns
+-- WHERE table_name = 'attendance_records' AND column_name = 'status';

@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./SuperAdminLogin.module.css";
-import { FaEye, FaEyeSlash, FaCross, FaClipboardList } from "react-icons/fa";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaCross,
+  FaClipboardList,
+  FaSearch,
+} from "react-icons/fa";
 import { API_BASE } from "@/api/apiClient";
 import { fetchAttendanceGroups } from "@/api/attendance.api";
 import { useNavigate } from "react-router-dom";
@@ -11,12 +17,13 @@ export default function SuperAdminLogin({ onLogin }) {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [groups, setGroups] = useState([]);
+  const [groupSearch, setGroupSearch] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchAttendanceGroups()
       .then((data) => setGroups(data.filter((g) => g.admin_email)))
-      .catch(() => {}); // silent — links are optional
+      .catch(() => {});
   }, []);
 
   const handleChange = (e) => {
@@ -50,6 +57,15 @@ export default function SuperAdminLogin({ onLogin }) {
       setLoading(false);
     }
   };
+
+  // Navigate directly to the group-specific login page — no picker shown
+  const handleGroupClick = (group) => {
+    navigate(`/attendance-login/${group.id}`);
+  };
+
+  const filteredGroups = groups.filter((g) =>
+    g.name.toLowerCase().includes(groupSearch.toLowerCase()),
+  );
 
   const typePillColor = {
     committee: { bg: "#dbeafe", color: "#1d4ed8" },
@@ -116,35 +132,53 @@ export default function SuperAdminLogin({ onLogin }) {
           </button>
         </form>
 
-        {/* ── Group attendance quick links ─────────────────────── */}
         {groups.length > 0 && (
           <div className={styles.groupSection}>
             <div className={styles.divider}>
               <span>Group Attendance Login</span>
             </div>
             <p className={styles.groupHint}>
-              Not the super admin? Go directly to your group:
+              Not the super admin? Click your group to sign in directly:
             </p>
+
+            {groups.length > 1 && (
+              <div className={styles.groupSearchWrap}>
+                <FaSearch className={styles.groupSearchIcon} />
+                <input
+                  className={styles.groupSearchInput}
+                  placeholder="Search group…"
+                  value={groupSearch}
+                  onChange={(e) => setGroupSearch(e.target.value)}
+                />
+              </div>
+            )}
+
             <div className={styles.groupList}>
-              {groups.map((g) => {
-                const pill = typePillColor[g.type] || typePillColor.other;
-                return (
-                  <button
-                    key={g.id}
-                    className={styles.groupBtn}
-                    onClick={() => navigate("/attendance-login")}
-                  >
-                    <FaClipboardList className={styles.groupBtnIcon} />
-                    <span className={styles.groupBtnName}>{g.name}</span>
-                    <span
-                      className={styles.groupBtnType}
-                      style={{ background: pill.bg, color: pill.color }}
+              {filteredGroups.length === 0 ? (
+                <p className={styles.noResults}>
+                  No groups match "{groupSearch}"
+                </p>
+              ) : (
+                filteredGroups.map((g) => {
+                  const pill = typePillColor[g.type] || typePillColor.other;
+                  return (
+                    <button
+                      key={g.id}
+                      className={styles.groupBtn}
+                      onClick={() => handleGroupClick(g)}
                     >
-                      {g.type}
-                    </span>
-                  </button>
-                );
-              })}
+                      <FaClipboardList className={styles.groupBtnIcon} />
+                      <span className={styles.groupBtnName}>{g.name}</span>
+                      <span
+                        className={styles.groupBtnType}
+                        style={{ background: pill.bg, color: pill.color }}
+                      >
+                        {g.type}
+                      </span>
+                    </button>
+                  );
+                })
+              )}
             </div>
           </div>
         )}
