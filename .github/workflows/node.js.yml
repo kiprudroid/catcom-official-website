@@ -1,0 +1,57 @@
+name: build-deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: frontend
+
+      - name: Build frontend
+        run: npm run build
+        working-directory: frontend
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+          VITE_BACKEND_URL: ${{ secrets.VITE_BACKEND_URL }}
+
+      - name: Prepare build for deploy
+        run: |
+          # create temp folder outside repo so it survives branch switch
+          mkdir -p /tmp/buildtemp
+          cp -r frontend/dist /tmp/buildtemp/
+          cp frontend/public/.htaccess /tmp/buildtemp/ || true
+          cp .cpanel.yml /tmp/buildtemp/ || true
+
+          # configure git user
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          # switch to deploy branch
+          git checkout deploy || git checkout -b deploy
+
+          # remove old files
+          git rm -rf . || true
+          git clean -fdx || true
+
+          # copy build output into deploy branch
+          cp -r /tmp/buildtemp/dist/* .
+          cp -f /tmp/buildtemp/.htaccess . || true
+          cp -f /tmp/buildtemp/.cpanel.yml .cpanel.yml
+          git add .
+          git commit -m "Deploy" || true
+          git push origin deploy --force
