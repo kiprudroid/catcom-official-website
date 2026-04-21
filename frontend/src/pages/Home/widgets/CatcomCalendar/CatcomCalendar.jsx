@@ -7,31 +7,71 @@ import {
   FaPrayingHands,
   FaChevronUp,
   FaCalendarCheck,
+  FaSearch,
+  FaClock,
 } from "react-icons/fa";
 
 import { fetchEvents } from "@/api/events.api";
 
+/* ── helpers ── */
 const sortByDate = (arr) =>
   [...arr].sort((a, b) => new Date(a.event_date) - new Date(b.event_date));
 
 const filterUpcoming = (arr) => {
   const today = new Date();
-  return arr.filter((event) => new Date(event.event_date) >= today);
+  today.setHours(0, 0, 0, 0);
+  return arr.filter((e) => new Date(e.event_date) >= today);
 };
 
-const formatDate = (dateStr) => {
-  const options = { month: "short", day: "numeric" };
-  return new Date(dateStr).toLocaleDateString(undefined, options);
+/**
+ * Full date: "10 May 2026"
+ */
+const formatFullDate = (dateStr) => {
+  if (!dateStr) return "TBA";
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 };
 
+/**
+ * Short badge date: "10 May"
+ */
+const formatBadgeDate = (dateStr) => {
+  if (!dateStr) return "TBA";
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+};
+
+/**
+ * Format time string from backend (HH:MM:SS or HH:MM) → "9:00 AM"
+ */
+const formatTime = (timeStr) => {
+  if (!timeStr) return null;
+  // Handle "HH:MM:SS" or "HH:MM"
+  const [hStr, mStr] = timeStr.split(":");
+  const h = parseInt(hStr, 10);
+  const m = parseInt(mStr, 10);
+  const ampm = h >= 12 ? "PM" : "AM";
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  const mm = String(m).padStart(2, "0");
+  return `${h12}:${mm} ${ampm}`;
+};
+
+/* ── Component ── */
 const CatcomCalendar = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const [showActivities, setShowActivities] = useState(false);
   const [showMasses, setShowMasses] = useState(false);
 
-  // Fetch events from backend
+  const [searchActivities, setSearchActivities] = useState("");
+  const [searchMasses, setSearchMasses] = useState("");
+
   useEffect(() => {
     const loadEvents = async () => {
       try {
@@ -47,7 +87,6 @@ const CatcomCalendar = () => {
     loadEvents();
   }, []);
 
-  // Separate and sort events
   const activities = sortByDate(
     filterUpcoming(events.filter((e) => e.category === "Activity")),
   );
@@ -56,19 +95,39 @@ const CatcomCalendar = () => {
     filterUpcoming(events.filter((e) => e.category === "Mass Animation")),
   );
 
-  if (loading) return <p>Loading events...</p>;
-  if (error) return <p>Error loading events: {error}</p>;
+  const filteredActivities = activities.filter((event) =>
+    `${event.title} ${event.venue}`
+      .toLowerCase()
+      .includes(searchActivities.toLowerCase()),
+  );
+
+  const filteredMasses = masses.filter((event) =>
+    `${event.title} ${event.venue}`
+      .toLowerCase()
+      .includes(searchMasses.toLowerCase()),
+  );
+
+  if (loading)
+    return (
+      <p style={{ color: "#fff", textAlign: "center" }}>Loading events…</p>
+    );
+  if (error)
+    return <p style={{ color: "#f66", textAlign: "center" }}>Error: {error}</p>;
 
   return (
     <div className={styles.calendarWrapper}>
+      {/* ── Title ── */}
       <SectionHeading as="h2" className={styles.title}>
-        JKUAT CATCOM <span>Jan – June 2026</span> Semester Calendar
+        JKUAT CATCOM Calendar
       </SectionHeading>
+      <span className={styles.titleSub}>January – June 2026</span>
 
+      {/* ══════════════ ACTIVITIES ══════════════ */}
       <div className={styles.subSection}>
         <button
           className={styles.dropdownHeader}
           onClick={() => setShowActivities((prev) => !prev)}
+          aria-expanded={showActivities}
         >
           <h3 className={styles.subTitle}>Upcoming Activities</h3>
           {showActivities ? (
@@ -79,39 +138,87 @@ const CatcomCalendar = () => {
         </button>
 
         {showActivities && (
-          <div className={styles.eventGrid}>
-            {activities.length === 0 ? (
-              <p className={styles.emptyMsg}>
-                <FaCalendarCheck className={styles.emptyIcon} />
-                <span>All caught up — new activities coming soon 🎉</span>
-                <small className={styles.subMsg}>
-                  Be sure to check back here or on our website!
-                </small>
-              </p>
-            ) : (
-              activities.map((event) => (
-                <div key={event.id} className={styles.eventCard}>
-                  <div className={styles.dateBadge}>
-                    {formatDate(event.event_date)}
-                  </div>
-                  <div className={styles.eventDetails}>
-                    <h4 className={styles.eventTitle}>{event.title}</h4>
-                    <Paragraph className={styles.meta}>
-                      <FaMapMarkerAlt className={styles.icon} />{" "}
-                      {event.venue || "Venue TBA"}
-                    </Paragraph>
-                  </div>
+          <div className={styles.sectionBody}>
+            {/* Search */}
+            <label className={styles.searchWrapper}>
+              <FaSearch className={styles.searchIcon} aria-hidden="true" />
+              <input
+                type="text"
+                placeholder="Search activity by title or venue…"
+                value={searchActivities}
+                onChange={(e) => setSearchActivities(e.target.value)}
+                className={styles.searchInput}
+                aria-label="Search activities"
+              />
+            </label>
+
+            {/* Cards */}
+            <div className={styles.eventGrid}>
+              {activities.length === 0 ? (
+                <div className={styles.emptyMsg}>
+                  <FaCalendarCheck className={styles.emptyIcon} />
+                  <span>All caught up — new activities coming soon 🎉</span>
+                  <small className={styles.subMsg}>
+                    Check back here or on our website!
+                  </small>
                 </div>
-              ))
-            )}
+              ) : filteredActivities.length === 0 &&
+                searchActivities.trim() !== "" ? (
+                <div className={styles.emptyMsg}>
+                  <FaCalendarCheck className={styles.emptyIcon} />
+                  <span>No matching activities found</span>
+                  <small className={styles.subMsg}>
+                    Try another search term
+                  </small>
+                </div>
+              ) : (
+                filteredActivities.map((event) => {
+                  const time = formatTime(event.event_time);
+                  return (
+                    <div key={event.id} className={styles.eventCard}>
+                      {/* Date badge */}
+                      <div className={styles.dateBadge}>
+                        {formatBadgeDate(event.event_date)}
+                      </div>
+
+                      <div className={styles.eventDetails}>
+                        <h4 className={styles.eventTitle}>{event.title}</h4>
+
+                        {/* Full date */}
+                        <Paragraph className={styles.meta}>
+                          <FaCalendarCheck className={styles.icon} />
+                          {formatFullDate(event.event_date)}
+                        </Paragraph>
+
+                        {/* Time — from backend if available */}
+                        {time && (
+                          <Paragraph className={styles.timeMeta}>
+                            <FaClock className={styles.icon} />
+                            {time}
+                          </Paragraph>
+                        )}
+
+                        {/* Venue */}
+                        <Paragraph className={styles.meta}>
+                          <FaMapMarkerAlt className={styles.icon} />
+                          {event.venue || "Venue TBA"}
+                        </Paragraph>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
           </div>
         )}
       </div>
 
+      {/* ══════════════ MASS ANIMATIONS ══════════════ */}
       <div className={styles.subSection}>
         <button
           className={styles.dropdownHeader}
           onClick={() => setShowMasses((prev) => !prev)}
+          aria-expanded={showMasses}
         >
           <h3 className={styles.subTitle}>Mass Animations Schedule</h3>
           {showMasses ? (
@@ -122,41 +229,82 @@ const CatcomCalendar = () => {
         </button>
 
         {showMasses && (
-          <div className={styles.eventGrid}>
-            {masses.length === 0 ? (
-              <p className={styles.emptyMsg}>
-                <FaPrayingHands className={styles.emptyIcon} />
-                <span>Mass animations will be announced soon 🙏</span>
-                <small className={styles.subMsg}>
-                  Be sure to check back here or on our website!
-                </small>
-              </p>
-            ) : (
-              masses.map((event) => (
-                <div key={event.id} className={styles.eventCard}>
-                  <div className={styles.dateBadge}>
-                    {formatDate(event.event_date)}
-                  </div>
-                  <div className={styles.eventDetails}>
-                    <h4 className={styles.eventTitle}>{event.title}</h4>
-                    <Paragraph className={styles.meta}>
-                      <FaMapMarkerAlt className={styles.icon} />{" "}
-                      {event.venue || "Venue TBA"}
-                    </Paragraph>
-                  </div>
+          <div className={styles.sectionBody}>
+            {/* Search */}
+            <label className={styles.searchWrapper}>
+              <FaSearch className={styles.searchIcon} aria-hidden="true" />
+              <input
+                type="text"
+                placeholder="Search mass animation by typing your SCC name…"
+                value={searchMasses}
+                onChange={(e) => setSearchMasses(e.target.value)}
+                className={styles.searchInput}
+                aria-label="Search mass animations"
+              />
+            </label>
+
+            {/* Cards */}
+            <div className={styles.eventGrid}>
+              {masses.length === 0 ? (
+                <div className={styles.emptyMsg}>
+                  <FaPrayingHands className={styles.emptyIcon} />
+                  <span>Mass animations will be announced soon 🙏</span>
+                  <small className={styles.subMsg}>
+                    Check back here or on our website!
+                  </small>
                 </div>
-              ))
-            )}
+              ) : filteredMasses.length === 0 && searchMasses.trim() !== "" ? (
+                <div className={styles.emptyMsg}>
+                  <FaPrayingHands className={styles.emptyIcon} />
+                  <span>No matching mass animations</span>
+                  <small className={styles.subMsg}>
+                    Try searching by SCC name
+                  </small>
+                </div>
+              ) : (
+                filteredMasses.map((event) => (
+                  <div key={event.id} className={styles.eventCard}>
+                    {/* Date badge */}
+                    <div className={styles.dateBadge}>
+                      {formatBadgeDate(event.event_date)}
+                    </div>
+
+                    <div className={styles.eventDetails}>
+                      <h4 className={styles.eventTitle}>{event.title}</h4>
+
+                      {/* Full date */}
+                      <Paragraph className={styles.meta}>
+                        <FaCalendarCheck className={styles.icon} />
+                        {formatFullDate(event.event_date)}
+                      </Paragraph>
+
+                      {/* Mass time is always 9:00 AM — use backend if provided, else fallback */}
+                      <Paragraph className={styles.timeMeta}>
+                        <FaClock className={styles.icon} />
+                        {formatTime(event.event_time) ?? "9:00 AM"}
+                      </Paragraph>
+
+                      {/* Venue — default to St. Augustine for masses */}
+                      <Paragraph className={styles.meta}>
+                        <FaMapMarkerAlt className={styles.icon} />
+                        {event.venue || "St. Augustine Parish"}
+                      </Paragraph>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         )}
       </div>
 
+      {/* ── Contacts ── */}
       <div className={styles.contacts}>
         <Paragraph>
-          <strong>Wilfred Wandera (Organising Secretary)</strong> – 0715115907
+          <strong>Wilfred Wandera</strong> (Organising Secretary) — 0715 115 907
         </Paragraph>
         <Paragraph>
-          <strong>Hillary Kasaine (Publicity Secretary)</strong> – 0743382152
+          <strong>Hillary Kasaine</strong> (Publicity Secretary) — 0743 382 152
         </Paragraph>
       </div>
     </div>
@@ -164,400 +312,3 @@ const CatcomCalendar = () => {
 };
 
 export default CatcomCalendar;
-
-// --------------BEFORE INTEGRATIONS---------------------------------------
-
-// import React, { useState } from "react";
-// import styles from "./CatcomCalendar.module.css";
-// import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
-// import {
-//   FaMapMarkerAlt,
-//   FaChevronDown,
-//   FaPrayingHands,
-//   FaChevronUp,
-//   FaCalendarCheck,
-// } from "react-icons/fa";
-
-// import { fetchEvents } from "@/api/events.api";
-
-// let events = [
-//   // === Activities ===
-//   {
-//     title: "Finalists Dinner ",
-//     date: "2026-01-16",
-//     venue: "Rainbow Ruiru Resort",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Reunion ",
-//     date: "2026-02-26",
-//     venue: "SCC 100",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Social Day",
-//     date: "2026-02-28",
-//     venue: "JKUAT Rugby Pitch",
-//     category: "Activity",
-//   },
-//   {
-//     title: "CATCOM Talk",
-//     date: "2026-03-08",
-//     venue: "SPA/LH",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Retreat",
-//     date: "2026-03-14",
-//     venue: "To Be Determined",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Tournament Day 1",
-//     date: "2026-03-20",
-//     venue: "JKUAT Main Pitch",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Tournament Day 2",
-//     date: "2026-03-21",
-//     venue: "JKUAT Main Pitch",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Karaoke Night",
-//     date: "2026-03-26",
-//     venue: "SCC 100",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Tournament Finals",
-//     date: "2026-04-04",
-//     venue: "JKUAT Main Pitch",
-//     category: "Activity",
-//   },
-//   {
-//     title: "KMRM Choir Mini Concert",
-//     date: "2026-04-05",
-//     venue: "To Be Determined",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Games Night",
-//     date: "2026-04-16",
-//     venue: "NCLB 1st Floor",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Hike",
-//     date: "2026-04-25",
-//     venue: "To Be Determined",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Surprise Event",
-//     date: "2026-05-02",
-//     venue: "To Be Determined",
-//     category: "Activity",
-//   },
-//   {
-//     title: "Talents Night",
-//     date: "2026-05-15",
-//     venue: "Assembly Hall",
-//     category: "Activity",
-//   },
-
-//   // === Mass Animations ===
-//   {
-//     title: "2nd Mass Leaders",
-//     date: "2026-01-11",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "Finalists",
-//     date: "2026-01-18",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Mother Teresa of Calcutta SCC",
-//     date: "2026-01-25",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Callistus SCC",
-//     date: "2026-02-01",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Agatha SCC",
-//     date: "2026-02-08",
-//     venue: "St Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "International Students",
-//     date: "2026-02-15",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "CATCOMES & Welfare Teams",
-//     date: "2026-02-22",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "CL, Technical & Pastoral Teams",
-//     date: "2026-03-01",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Charles Lwanga SCC",
-//     date: "2026-03-08",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Therese of the Child Jesus SCC",
-//     date: "2026-03-15",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Paul SCC",
-//     date: "2026-03-22",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Padre Pio SCC",
-//     date: "2026-03-29",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "Choir & liturgical dancers",
-//     date: "2026-04-05",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Martin de Porres SCC",
-//     date: "2026-04-12",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Stephen SCC",
-//     date: "2026-04-19",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Jude Thaddeus SCC",
-//     date: "2026-04-26",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "Mary Mother of God SCC",
-//     date: "2026-05-03",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Veronica SCC",
-//     date: "2026-05-10",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "The CATCOM Executive",
-//     date: "2026-05-17",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "St. Charbel SCC",
-//     date: "2026-05-24",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "2nd Mass Men",
-//     date: "2026-05-31",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "2nd Mass Ladies",
-//     date: "2026-06-07",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-//   {
-//     title: "2nd Mass Leaders",
-//     date: "2026-06-14",
-//     venue: "St. Augustine",
-//     category: "Mass Animation",
-//   },
-// ];
-
-// // events = [];
-
-// const sortByDate = (arr) =>
-//   [...arr].sort((a, b) => new Date(a.date) - new Date(b.date));
-
-// const filterUpcoming = (arr) => {
-//   const today = new Date();
-//   return arr.filter((event) => new Date(event.date) >= today);
-// };
-
-// const formatDate = (dateStr) => {
-//   const options = { month: "short", day: "numeric" };
-//   return new Date(dateStr).toLocaleDateString(undefined, options);
-// };
-
-// const CatcomCalendar = () => {
-//   const activities = sortByDate(
-//     filterUpcoming(events.filter((e) => e.category === "Activity")),
-//   );
-
-//   const masses = sortByDate(
-//     filterUpcoming(events.filter((e) => e.category === "Mass Animation")),
-//   );
-
-//   const [showActivities, setShowActivities] = useState(false);
-//   const [showMasses, setShowMasses] = useState(false);
-
-//   // --------------Implementation---------------
-
-//   useEffect(() => {
-//     const loadEvents = async () => {
-//       try {
-//         const data = await fetchEvents();
-//         setEvents(data);
-//       } catch (err) {
-//         console.error("Error fetching events:", err);
-//       }
-//     };
-//     loadEvents();
-//   }, []);
-
-//   // const activities = sortByDate(
-//   //   filterUpcoming(events.filter((e) => e.category === "Activity")),
-//   // );
-//   // const masses = sortByDate(
-//   //   filterUpcoming(events.filter((e) => e.category === "Mass Animation")),
-//   // );
-
-//   return (
-//     <div className={styles.calendarWrapper}>
-//       <SectionHeading as="h2" className={styles.title}>
-//         JKUAT CATCOM <span>Jan – June 2026</span> Semester Calendar
-//       </SectionHeading>
-
-//       <div className={styles.subSection}>
-//         <button
-//           className={styles.dropdownHeader}
-//           onClick={() => setShowActivities((prev) => !prev)}
-//         >
-//           <h3 className={styles.subTitle}>Upcoming Activities</h3>
-//           {showActivities ? (
-//             <FaChevronUp className={styles.chevron} />
-//           ) : (
-//             <FaChevronDown className={styles.chevron} />
-//           )}
-//         </button>
-
-//         {showActivities && (
-//           <div className={styles.eventGrid}>
-//             {activities.length === 0 ? (
-//               <p className={styles.emptyMsg}>
-//                 <FaCalendarCheck className={styles.emptyIcon} />
-//                 <span>All caught up — new activities coming soon 🎉</span>
-//                 <small className={styles.subMsg}>
-//                   Be sure to check back here or on our website!
-//                 </small>
-//               </p>
-//             ) : (
-//               activities.map((event, index) => (
-//                 <div key={`act-${index}`} className={styles.eventCard}>
-//                   <div className={styles.dateBadge}>
-//                     {formatDate(event.date)}
-//                   </div>
-//                   <div className={styles.eventDetails}>
-//                     <h4 className={styles.eventTitle}>{event.title}</h4>
-//                     <Paragraph className={styles.meta}>
-//                       <FaMapMarkerAlt className={styles.icon} />{" "}
-//                       {event.venue || "Venue TBA"}
-//                     </Paragraph>
-//                   </div>
-//                 </div>
-//               ))
-//             )}
-//           </div>
-//         )}
-//       </div>
-
-//       <div className={styles.subSection}>
-//         <button
-//           className={styles.dropdownHeader}
-//           onClick={() => setShowMasses((prev) => !prev)}
-//         >
-//           <h3 className={styles.subTitle}>Mass Animations Schedule</h3>
-//           {showMasses ? (
-//             <FaChevronUp className={styles.chevron} />
-//           ) : (
-//             <FaChevronDown className={styles.chevron} />
-//           )}
-//         </button>
-
-//         {showMasses && (
-//           <div className={styles.eventGrid}>
-//             {masses.length === 0 ? (
-//               <p className={styles.emptyMsg}>
-//                 <FaPrayingHands className={styles.emptyIcon} />
-//                 <span>Mass animations will be announced soon 🙏</span>
-//                 <small className={styles.subMsg}>
-//                   Be sure to check back here or on our website!
-//                 </small>
-//               </p>
-//             ) : (
-//               masses.map((event, index) => (
-//                 <div key={`mass-${index}`} className={styles.eventCard}>
-//                   <div className={styles.dateBadge}>
-//                     {formatDate(event.date)}
-//                   </div>
-//                   <div className={styles.eventDetails}>
-//                     <h4 className={styles.eventTitle}>{event.title}</h4>
-//                     <Paragraph className={styles.meta}>
-//                       <FaMapMarkerAlt className={styles.icon} />{" "}
-//                       {event.venue || "Venue TBA"}
-//                     </Paragraph>
-//                   </div>
-//                 </div>
-//               ))
-//             )}
-//           </div>
-//         )}
-//       </div>
-
-//       <div className={styles.contacts}>
-//         <Paragraph>
-//           <strong>Wilfred Wandera (Organising Secretary)</strong> – 0715115907
-//         </Paragraph>
-//         <Paragraph>
-//           <strong>Hillary Kasaine (Publicity Secretary)</strong> – 0743382152
-//         </Paragraph>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CatcomCalendar;

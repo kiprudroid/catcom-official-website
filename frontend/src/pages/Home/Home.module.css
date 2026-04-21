@@ -57,15 +57,11 @@
 @media screen and (max-width: 480px) {
   .homeContainer {
     padding: 0.5rem;
-    width: 95%;
+    width: 96%;
   }
 
   .hero {
     grid-template-columns: 1fr;
-  }
-
-  .fullWidth {
-    width: 100%;
   }
 
   .cardTitle {

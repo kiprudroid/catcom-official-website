@@ -19,23 +19,28 @@ export const mysteries = [
     items: [
       {
         title: "1. The Annunciation",
-        detail: "Mary is chosen to be the mother of Jesus.",
+        detail:
+          "Mary said yes. God was asking a great amount of her. She could face disapproval. Joseph could abandon her. She might not be believed. Mary risked a lot because she had faith in God’s goodness. I imagine her kneeling in wonderment at the angel Gabriel... She allows God’s will to be done and with that fiat the salvation of the world is set in motion. I pray that I can put God’s will before my own.",
       },
       {
         title: "2. The Visitation",
-        detail: "Elizabeth recognizes Mary as the mother of our Lord.",
+        detail:
+          "Newly pregnant, Mary walks several days to visit her cousin Elizabeth. She is greeted with great joy and exclaims her Magnificat. While knowing that all will call her blessed, she spends several months serving Elizabeth... Despite her own possible exhaustion and morning sickness, she serves her cousin. I pray that I can serve as Mary did.",
       },
       {
         title: "3. The Nativity",
-        detail: "Jesus is born and laid in a manger.",
+        detail:
+          "Mary and Joseph are far from home and she is about to give birth. They find nowhere to stay. Rather than panicking, they rely on God who leads them to a safe, warm place for his son’s birth. I imagine their worry but also their sense of calm. They know God cares for them and he will not abandon them on this holy journey. I pray for the grace to depend on God completely.",
       },
       {
         title: "4. The Presentation",
-        detail: "Jesus is presented in the Temple of Jerusalem.",
+        detail:
+          "Mary and Joseph obey the law and bring their newborn son to the temple and offer a sacrifice. There they meet Simeon who has waited many years to meet the Messiah... He also warns Mary that her own heart will be pierced. She continues to trust God, not knowing what lies ahead. I pray for trust in God’s plan and patience in waiting for it to unfold.",
       },
       {
         title: "5. Finding in the Temple",
-        detail: "Jesus is found discussing God's laws in the temple.",
+        detail:
+          "After not knowing where he was for three days, Mary and Joseph find Jesus in the temple. I imagine the fear they felt when they realized Jesus was not with them as they returned from Jerusalem... At last they find him in his father’s home. What relief and joy. We look for Jesus too and we can always find him in church. I pray that I will not find reasons to avoid visiting Jesus regularly.",
       },
     ],
   },
@@ -46,23 +51,28 @@ export const mysteries = [
     items: [
       {
         title: "1. The Agony in the Garden",
-        detail: "Jesus prays in Gethsemane before His Passion.",
+        detail:
+          "Jesus knows torture and death lie ahead and he prays that the cup will pass. He also prays God’s will be done. In his agony, he carries the weight of our sins so that we may be saved. I imagine the courage it took to give himself to God’s plan... I pray for the courage to conform to God’s will especially when it may be difficult.",
       },
       {
         title: "2. The Scourging at the Pillar",
-        detail: "Jesus is scourged by soldiers.",
+        detail:
+          "Jesus is brutally tortured to near death. Scourging was more than mere beating; it involved using instruments to inflict the most pain and blood loss possible without actually killing. Jesus was beaten for our sins. His mother watched as her son’s blood spilled on the ground... I pray for forgiveness for my sins, the sins that contributed to the torture of my Lord.",
       },
       {
         title: "3. The Crowning with Thorns",
-        detail: "Jesus is mocked and crowned with thorns.",
+        detail:
+          "Jesus is stripped, reclothed with a scarlet robe and crowned with thorns. He is mocked and spit upon by the soldiers. The people demand his crucifixion. Despite his innocence, he does not defend himself. He is strong in the face of hatred... I pray for courage to defend God’s truth and strength to withstand the criticism and hatred of others.",
       },
       {
         title: "4. The Carrying of the Cross",
-        detail: "Jesus carries the cross to Calvary.",
+        detail:
+          "Jesus’ humiliation continues as he carries the Cross he will be crucified on through the town and people continue to mock him. I imagine the pain of the heavy wood against his back, rubbing against the open wounds from the scourging... Jesus is patient in enduring this suffering for us. I pray for patience in my own times of difficulty.",
       },
       {
         title: "5. The Crucifixion",
-        detail: "Jesus dies on the cross for our salvation.",
+        detail:
+          "Jesus arrives and is nailed to the cross. As he hangs, slowly dying, he is comforted by the presence of Mary, her sister, John and Mary Magdalene. Mary is strong. She has watched him suffer and now die and she never leaves him... I pray in thanksgiving for Christ’s suffering and sacrifice so that I may be saved.",
       },
     ],
   },
