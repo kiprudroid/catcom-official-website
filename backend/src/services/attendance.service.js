@@ -78,7 +78,7 @@ export const loginGroupAdmin = async ({ email, password }) => {
   };
 };
 
-// ── Group Admin Management (called by super admin) ────────────────
+// ── Group Admin Management ────────────────────────────────────────
 
 export const createGroupAdmin = async ({ group_id, email, password }) => {
   if (!group_id || !email || !password) {
@@ -157,9 +157,15 @@ export const getAttendanceByDate = async ({ group_id, date }) => {
   return rows;
 };
 
-export const markAttendance = async ({ member_id, date, status, group_id }) => {
-  if (!member_id || !date || !status) {
-    throw new Error("member_id, date, and status are required");
+// FIX: default status to "absent" if not provided
+export const markAttendance = async ({
+  member_id,
+  date,
+  status = "absent",
+  group_id,
+}) => {
+  if (!member_id || !date) {
+    throw new Error("member_id and date are required");
   }
   if (!VALID_STATUSES.includes(status)) {
     throw new Error("status must be present, absent, or apology");

@@ -3,13 +3,18 @@ import styles from "./MemberManager.module.css";
 import { FaPlus, FaTrash, FaUserAlt, FaSearch } from "react-icons/fa";
 
 const ROLES = [
-  "Pastoral Secretary",
+  "Catering Secretary",
+  "Chairperson",
   "Coordinator",
-  "Secretary",
-  "Treasurer",
   "Liturgist",
   "Member",
-];
+  "Moderator",
+  "Organising Secretary",
+  "Pastoral Secretary",
+  "Project Manager",
+  "Secretary",
+  "Treasurer",
+].sort();
 
 const MemberManager = ({ members, addMember, removeMember }) => {
   const [name, setName] = useState("");

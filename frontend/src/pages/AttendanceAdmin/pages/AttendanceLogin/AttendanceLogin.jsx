@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { FaCross, FaEye, FaEyeSlash, FaChevronRight } from "react-icons/fa";
 import styles from "./AttendanceLogin.module.css";
 import {
@@ -9,6 +9,7 @@ import {
 import toast from "react-hot-toast";
 
 const AttendanceLogin = () => {
+  const { groupId } = useParams();
   const [groups, setGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [password, setPassword] = useState("");
@@ -19,10 +20,22 @@ const AttendanceLogin = () => {
 
   useEffect(() => {
     fetchAttendanceGroups()
-      .then((data) => setGroups(data.filter((g) => g.admin_email)))
+      .then((data) => {
+        const filtered = data.filter((g) => g.admin_email);
+        setGroups(filtered);
+
+        if (groupId) {
+          const match = filtered.find((g) => String(g.id) === String(groupId));
+          if (match) {
+            setSelectedGroup(match);
+          } else {
+            toast.error("Group not found");
+          }
+        }
+      })
       .catch(() => toast.error("Failed to load groups"))
       .finally(() => setLoadingGroups(false));
-  }, []);
+  }, [groupId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,9 +75,13 @@ const AttendanceLogin = () => {
     <div className={styles.page}>
       <div className={styles.card}>
         <FaCross className={styles.logo} />
-        <h1 className={styles.title}>Group Attendance</h1>
+        <h1 className={styles.title}>
+          {selectedGroup ? selectedGroup.name : "Group Attendance"}
+        </h1>
         <p className={styles.sub}>
-          JKUAT CATCOM — Select your group to sign in
+          {selectedGroup
+            ? "Enter your group password to continue"
+            : "JKUAT CATCOM — Select your group to sign in"}
         </p>
 
         {loadingGroups ? (
@@ -101,22 +118,6 @@ const AttendanceLogin = () => {
         ) : (
           /* ── Step 2: enter password ───────────────────────── */
           <form className={styles.form} onSubmit={handleSubmit}>
-            <button
-              type="button"
-              className={styles.backBtn}
-              onClick={() => {
-                setSelectedGroup(null);
-                setPassword("");
-              }}
-            >
-              ← Back
-            </button>
-
-            <div className={styles.selectedGroup}>
-              <span className={styles.selectedLabel}>Signing in as</span>
-              <span className={styles.selectedName}>{selectedGroup.name}</span>
-            </div>
-
             <div className={styles.field}>
               <label className={styles.label}>Password</label>
               <div className={styles.pwWrap}>
@@ -144,8 +145,29 @@ const AttendanceLogin = () => {
               {loading && <span className={styles.spinner} />}
               {loading ? "Signing in…" : "Sign In"}
             </button>
+
+            {groupId ? (
+              <Link to="/attendance-login" className={styles.backBtn}>
+                ← Choose a different group
+              </Link>
+            ) : (
+              <button
+                type="button"
+                className={styles.backBtn}
+                onClick={() => {
+                  setSelectedGroup(null);
+                  setPassword("");
+                }}
+              >
+                ← Back
+              </button>
+            )}
           </form>
         )}
+
+        <Link to="/login" className={styles.adminLink}>
+          Admin login →
+        </Link>
       </div>
     </div>
   );
