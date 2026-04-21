@@ -1,43 +1,22 @@
-# .cpanel.yml — place ONLY in the main branch root (not in deploy branch)
-
 deployment:
-  enabled: true
-  branch: deploy
-  tasks:
-    - export DEPLOYPATH=/home3/jkuatca1/public_html
+tasks:
+# set deploy path to your hosting root
+- export DEPLOYPATH=/home3/jkuatca1/public_html
 
-    # Full wipe of public_html (including hidden files)
-    - /bin/rm -rf $DEPLOYPATH/* || true
-    - /bin/rm -f $DEPLOYPATH/.* || true
+# move into frontend folder
+- cd frontend
 
-    # Copy everything from deploy branch (already contains built files + .cpanel.yml is NOT copied)
-    - /bin/cp -R $CPANEL_DEPLOYMENT_SOURCE/* $DEPLOYPATH/ 2>/dev/null || true
-    - /bin/cp -R $CPANEL_DEPLOYMENT_SOURCE/.[^.]* $DEPLOYPATH/ 2>/dev/null || true
+# install dependencies (production only)
+- /usr/local/bin/npm ci --omit=dev
 
-    # Fix permissions
-    - /usr/bin/find $DEPLOYPATH -type d -exec /bin/chmod 755 {} \;
-    - /usr/bin/find $DEPLOYPATH -type f -exec /bin/chmod 644 {} \;
+# build the Vite React app
+- /usr/local/bin/npm run build
 
-# Auto-build and update deploy branch when pushing to main
-hooks:
-  post-clone:
-    - exec: |
-        if [ "$CPANEL_GIT_BRANCH" = "main" ]; then
-          echo "Push to main detected → building and updating deploy branch"
-          cd frontend
-          /usr/local/bin/npm ci --omit=dev
-          /usr/local/bin/npm run build
+# clean old files in public_html
+- /bin/rm -rf $DEPLOYPATH/*
 
-          git checkout deploy 2>/dev/null || git checkout -b deploy
-          git rm -rqf . > /dev/null 2>&1 || true
-          cp -r dist/* .
-          cp dist/.htaccess . 2>/dev/null || true
+# copy fresh build output
+- /bin/cp -R dist/* $DEPLOYPATH/
 
-          # Remove .cpanel.yml from deploy branch if it somehow exists
-          git rm -f .cpanel.yml 2>/dev/null || true
-
-          git add -A
-          git commit -m "Auto-deploy build $(date +%Y-%m-%d_%H%M%S)" || echo "No changes to commit"
-          git push --force origin deploy
-          echo "deploy branch updated"
-        fi
+# add .htaccess for React Router SPA fallback
+- /bin/echo "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} -f [OR]\nRewriteCond %{REQUEST_FILENAME} -d\nRewriteRule ^ - [L]\nRewriteRule ^ index.html [L]" > $DEPLOYPATH/.htaccess
