@@ -128,7 +128,6 @@
   line-height: 1.6;
 }
 
-/* ── Poster card ── */
 .posterCard {
   overflow: hidden;
 }
@@ -144,25 +143,4 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* ── Link card (TikTok / Instagram) ── */
-.linkCard {
-  cursor: pointer;
-  border: 1.5px solid #e5e7eb;
-}
-
-.linkCard:hover {
-  border-color: #2dabb1;
-}
-
-.linkCardIcon {
-  padding: 20px 16px 0;
-  font-size: 32px;
-}
-
-.linkHint {
-  font-size: 11px;
-  color: #9ca3af;
-  margin-top: auto;
 }

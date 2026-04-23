@@ -11,6 +11,14 @@ import { API_BASE } from "@/api/apiClient";
 import { fetchAttendanceGroups } from "@/api/attendance.api";
 import { useNavigate } from "react-router-dom";
 
+const GROUP_FILTERS = [
+  { key: "all", label: "All" },
+  { key: "committee", label: "Committee" },
+  { key: "scc", label: "SCC" },
+  { key: "group", label: "Group" },
+  { key: "other", label: "Other" },
+];
+
 export default function SuperAdminLogin({ onLogin }) {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -19,6 +27,7 @@ export default function SuperAdminLogin({ onLogin }) {
   const [groups, setGroups] = useState([]);
   const [groupSearch, setGroupSearch] = useState("");
   const navigate = useNavigate();
+  const [groupFilter, setGroupFilter] = useState("all");
 
   useEffect(() => {
     fetchAttendanceGroups()
@@ -63,16 +72,20 @@ export default function SuperAdminLogin({ onLogin }) {
     navigate(`/attendance-login/${group.id}`);
   };
 
-  const filteredGroups = groups.filter((g) =>
-    g.name.toLowerCase().includes(groupSearch.toLowerCase()),
-  );
-
   const typePillColor = {
     committee: { bg: "#dbeafe", color: "#1d4ed8" },
     scc: { bg: "#dcfce7", color: "#15803d" },
     group: { bg: "#fce7f3", color: "#9d174d" },
     other: { bg: "#f3f4f6", color: "#374151" },
   };
+
+  const filteredGroups = groups.filter((g) => {
+    const matchesSearch = g.name
+      .toLowerCase()
+      .includes(groupSearch.toLowerCase());
+    const matchesFilter = groupFilter === "all" || g.type === groupFilter;
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className={styles.page}>
@@ -141,23 +154,42 @@ export default function SuperAdminLogin({ onLogin }) {
               Not the super admin? Click your group to sign in directly:
             </p>
 
-            {groups.length > 1 && (
-              <div className={styles.groupSearchWrap}>
-                <FaSearch className={styles.groupSearchIcon} />
-                <input
-                  className={styles.groupSearchInput}
-                  placeholder="Search group…"
-                  value={groupSearch}
-                  onChange={(e) => setGroupSearch(e.target.value)}
-                />
-              </div>
-            )}
+            {/* Search */}
+            <div className={styles.groupSearchWrap}>
+              <FaSearch className={styles.groupSearchIcon} />
+              <input
+                className={styles.groupSearchInput}
+                placeholder="Search group…"
+                value={groupSearch}
+                onChange={(e) => setGroupSearch(e.target.value)}
+              />
+              {groupSearch && (
+                <button
+                  className={styles.groupSearchClear}
+                  onClick={() => setGroupSearch("")}
+                >
+                  ×
+                </button>
+              )}
+            </div>
 
-            <div className={styles.groupList}>
+            {/* Filter pills */}
+            <div className={styles.groupFilters}>
+              {GROUP_FILTERS.map((f) => (
+                <button
+                  key={f.key}
+                  className={`${styles.groupFilterBtn} ${groupFilter === f.key ? styles.groupFilterActive : ""}`}
+                  onClick={() => setGroupFilter(f.key)}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Scrollable list */}
+            <div className={styles.groupListWrap}>
               {filteredGroups.length === 0 ? (
-                <p className={styles.noResults}>
-                  No groups match "{groupSearch}"
-                </p>
+                <p className={styles.noResults}>No groups match your search.</p>
               ) : (
                 filteredGroups.map((g) => {
                   const pill = typePillColor[g.type] || typePillColor.other;
