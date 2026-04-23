@@ -13,7 +13,7 @@ import { SearchBar, Filters, Loading, EmptyState, MediaGrid } from "./widgets";
 
 const FILTERS = [
   { key: "all", label: "All", icon: null },
-  { key: "youtube", label: "Videos", icon: <FaYoutube /> },
+  { key: "youtube", label: "YouTube", icon: <FaYoutube /> },
   { key: "announcement", label: "Announcements", icon: <FaBullhorn /> },
   { key: "tiktok", label: "TikTok", icon: <FaTiktok /> },
   { key: "instagram", label: "Instagram", icon: <FaInstagram /> },
