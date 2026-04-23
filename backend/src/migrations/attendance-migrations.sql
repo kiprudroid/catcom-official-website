@@ -3,12 +3,12 @@
 -- Run once. Safe to re-run (IF NOT EXISTS everywhere).
 -- ─────────────────────────────────────────────────────────────────
 
--- 1. Groups (committees, SCCs, pastoral team, etc.)
+-- 1. Groups (committees, SCCs, groups, etc.)
 CREATE TABLE IF NOT EXISTS attendance_groups (
   id         SERIAL PRIMARY KEY,
   name       VARCHAR(150) NOT NULL,
   type       VARCHAR(50)  NOT NULL DEFAULT 'committee'
-             CHECK (type IN ('committee', 'scc', 'pastoral', 'other')),
+             CHECK (type IN ('committee', 'scc', 'group', 'other')),
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -54,22 +54,6 @@ CREATE INDEX IF NOT EXISTS idx_att_records_date    ON attendance_records (date);
 CREATE INDEX IF NOT EXISTS idx_att_records_member  ON attendance_records (member_id);
 CREATE INDEX IF NOT EXISTS idx_att_admins_group    ON attendance_admins (group_id);
 CREATE INDEX IF NOT EXISTS idx_att_admins_email    ON attendance_admins (email);
-
--- ─────────────────────────────────────────────────────────────────
--- NOTE: The old pastoral_members + attendance tables can be kept or
--- dropped once you've migrated existing data to the new schema.
--- To migrate existing pastoral data, run:
---
--- INSERT INTO attendance_groups (name, type) VALUES ('Pastoral Team', 'pastoral');
--- INSERT INTO attendance_members (group_id, name, role, status, created_at)
---   SELECT 1, name, role, status, created_at FROM pastoral_members;
--- INSERT INTO attendance_records (member_id, date, status, created_at)
---   SELECT am.id, ar.date, ar.status, ar.created_at
---   FROM attendance a
---   JOIN attendance_members am ON am.name = (SELECT name FROM pastoral_members WHERE id = a.member_id)
---   WHERE am.group_id = 1;
--- ─────────────────────────────────────────────────────────────────
-
 
 -- Migration: change default attendance status from 'present' to 'absent'
 ALTER TABLE attendance_records
