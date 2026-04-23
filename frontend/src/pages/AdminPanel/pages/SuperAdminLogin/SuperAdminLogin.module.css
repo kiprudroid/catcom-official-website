@@ -251,6 +251,84 @@
   border-color: #2dabb1;
 }
 
+.groupSearchClear {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.groupSearchClear:hover {
+  color: #1c3a3a;
+}
+
+.groupFilters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.groupFilterBtn {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.groupFilterBtn:hover {
+  border-color: #2dabb1;
+  color: #2dabb1;
+}
+
+.groupFilterActive {
+  background: #1c3a3a;
+  border-color: #1c3a3a;
+  color: white;
+}
+
+.groupFilterActive:hover {
+  background: #2dabb1;
+  border-color: #2dabb1;
+}
+
+/* Scrollable list */
+.groupListWrap {
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-right: 3px;
+}
+
+.groupListWrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.groupListWrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.groupListWrap::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.groupListWrap::-webkit-scrollbar-thumb:hover {
+  background: #2dabb1;
+}
+
 .noResults {
   font-size: 12px;
   color: #9ca3af;
