@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./OtherTools.module.css";
 import toast from "react-hot-toast";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaSearch } from "react-icons/fa";
 import { GroupForm, GroupCard } from "./widgets/index.js";
 import {
   fetchAttendanceGroups,
@@ -18,6 +18,14 @@ import {
 const emptyGroupForm = { name: "", type: "committee" };
 const emptyAdminForm = { email: "", password: "" };
 
+const FILTERS = [
+  { key: "all", label: "All" },
+  { key: "committee", label: "Committee" },
+  { key: "scc", label: "SCC" },
+  { key: "group", label: "Group" },
+  { key: "other", label: "Other" },
+];
+
 const OtherTools = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,6 +36,8 @@ const OtherTools = () => {
   const [adminForms, setAdminForms] = useState({});
   const [groupAdmins, setGroupAdmins] = useState({});
   const [showPasswords, setShowPasswords] = useState({});
+  const [search, setSearch] = useState("");
+  const [activeFilter, setActiveFilter] = useState("all");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,8 +63,6 @@ const OtherTools = () => {
       setGroupAdmins((prev) => ({ ...prev, [group_id]: null }));
     }
   };
-
-  // ── Group CRUD ────────────────────────────────────────────────────
 
   const handleGroupSubmit = async (e) => {
     e.preventDefault();
@@ -104,8 +112,6 @@ const OtherTools = () => {
       loadGroupAdmin(group_id);
     }
   };
-
-  // ── Admin account CRUD ────────────────────────────────────────────
 
   const handleAdminFormChange = (group_id, field, value) => {
     setAdminForms((prev) => ({
@@ -164,6 +170,12 @@ const OtherTools = () => {
     }
   };
 
+  const filteredGroups = groups.filter((g) => {
+    const matchesSearch = g.name.toLowerCase().includes(search.toLowerCase());
+    const matchesFilter = activeFilter === "all" || g.type === activeFilter;
+    return matchesSearch && matchesFilter;
+  });
+
   if (loading) return <p className={styles.loading}>Loading groups…</p>;
 
   return (
@@ -201,31 +213,75 @@ const OtherTools = () => {
         />
       )}
 
+      {/* ── Search + Filter toolbar ── */}
+      <div className={styles.toolbar}>
+        <div className={styles.searchWrap}>
+          <FaSearch className={styles.searchIcon} />
+          <input
+            className={styles.searchInput}
+            placeholder="Search groups…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          {search && (
+            <button className={styles.clearBtn} onClick={() => setSearch("")}>
+              ×
+            </button>
+          )}
+        </div>
+
+        <div className={styles.filters}>
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              className={`${styles.filterBtn} ${activeFilter === f.key ? styles.filterActive : ""}`}
+              onClick={() => setActiveFilter(f.key)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Results count ── */}
+      {groups.length > 0 && (
+        <p className={styles.resultCount}>
+          {filteredGroups.length} of {groups.length} group
+          {groups.length !== 1 ? "s" : ""}
+        </p>
+      )}
+
       {groups.length === 0 ? (
         <div className={styles.empty}>
           No groups yet. Create one above to get started.
         </div>
+      ) : filteredGroups.length === 0 ? (
+        <div className={styles.empty}>
+          No groups match your search or filter.
+        </div>
       ) : (
-        <div className={styles.groupList}>
-          {groups.map((group) => (
-            <GroupCard
-              key={group.id}
-              group={group}
-              isExpanded={expandedGroup === group.id}
-              admin={groupAdmins[group.id]}
-              adminForm={adminForms[group.id] || emptyAdminForm}
-              showPasswords={showPasswords}
-              onExpand={handleExpandGroup}
-              onEdit={handleEditGroup}
-              onDelete={handleDeleteGroup}
-              onNavigate={() => navigate("/attendance-login")}
-              onFormChange={handleAdminFormChange}
-              onTogglePassword={handleTogglePassword}
-              onCreateAdmin={handleCreateAdmin}
-              onUpdatePassword={handleUpdatePassword}
-              onDeleteAdmin={handleDeleteAdmin}
-            />
-          ))}
+        <div className={styles.groupListWrap}>
+          <div className={styles.groupList}>
+            {filteredGroups.map((group) => (
+              <GroupCard
+                key={group.id}
+                group={group}
+                isExpanded={expandedGroup === group.id}
+                admin={groupAdmins[group.id]}
+                adminForm={adminForms[group.id] || emptyAdminForm}
+                showPasswords={showPasswords}
+                onExpand={handleExpandGroup}
+                onEdit={handleEditGroup}
+                onDelete={handleDeleteGroup}
+                onNavigate={() => navigate("/attendance-login")}
+                onFormChange={handleAdminFormChange}
+                onTogglePassword={handleTogglePassword}
+                onCreateAdmin={handleCreateAdmin}
+                onUpdatePassword={handleUpdatePassword}
+                onDeleteAdmin={handleDeleteAdmin}
+              />
+            ))}
+          </div>
         </div>
       )}
     </div>
