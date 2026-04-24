@@ -5,6 +5,7 @@
   margin-top: 1.5rem;
   width: 100%;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .card {
@@ -95,6 +96,26 @@
   padding: 0.5rem;
 }
 
+.mystery {
+  margin-bottom: 0.8rem;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.5rem;
+  transition: background 0.15s;
+}
+
+.mystery:hover {
+  background: #f0fdfe;
+}
+
+.activeMystery {
+  background: #e0f7f8;
+  border-left: 4px solid #2dabb1;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
 @media screen and (max-width: 480px) {
   .grid {
     grid-template-columns: 1fr;

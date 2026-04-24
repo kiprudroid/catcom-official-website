@@ -29,6 +29,7 @@ const FILTERS = [
 const OtherTools = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [savingGroup, setSavingGroup] = useState(false);
   const [groupForm, setGroupForm] = useState(emptyGroupForm);
   const [editingGroup, setEditingGroup] = useState(null);
   const [showGroupForm, setShowGroupForm] = useState(false);
@@ -66,6 +67,7 @@ const OtherTools = () => {
 
   const handleGroupSubmit = async (e) => {
     e.preventDefault();
+    setSavingGroup(true);
     try {
       if (editingGroup) {
         const updated = await updateGroup(editingGroup.id, groupForm);
@@ -83,6 +85,8 @@ const OtherTools = () => {
       setShowGroupForm(false);
     } catch (err) {
       toast.error(err.message || "Failed to save group");
+    } finally {
+      setSavingGroup(false);
     }
   };
 
@@ -210,10 +214,10 @@ const OtherTools = () => {
             setShowGroupForm(false);
             setEditingGroup(null);
           }}
+          loading={savingGroup}
         />
       )}
 
-      {/* ── Search + Filter toolbar ── */}
       <div className={styles.toolbar}>
         <div className={styles.searchWrap}>
           <FaSearch className={styles.searchIcon} />
@@ -229,7 +233,6 @@ const OtherTools = () => {
             </button>
           )}
         </div>
-
         <div className={styles.filters}>
           {FILTERS.map((f) => (
             <button
@@ -243,7 +246,6 @@ const OtherTools = () => {
         </div>
       </div>
 
-      {/* ── Results count ── */}
       {groups.length > 0 && (
         <p className={styles.resultCount}>
           {filteredGroups.length} of {groups.length} group

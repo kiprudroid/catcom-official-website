@@ -4,12 +4,13 @@
   align-items: center;
   margin: 1.5rem 0;
   background: #f8fafc;
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
   color: #1e293b;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 .navBtn {
