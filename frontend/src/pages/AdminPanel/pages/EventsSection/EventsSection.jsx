@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import styles from "./EventsSection.module.css";
+import { FaSpinner } from "react-icons/fa";
 import {
   fetchEvents,
   updateEvent,
   deleteEvent,
   createEvent,
 } from "@/api/events.api";
-
-const CATEGORIES = ["Activity", "Mass Animation"];
+import { EventTable, EventModal, EventToolbar } from "./widgets/index.js";
 
 const emptyForm = {
   title: "",
@@ -23,7 +23,11 @@ const EventSection = () => {
   const [form, setForm] = useState(emptyForm);
   const [editingEvent, setEditingEvent] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const loadEvents = async () => {
     try {
@@ -47,6 +51,7 @@ const EventSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSaving(true);
     try {
       if (editingEvent) {
         setEvents((prev) =>
@@ -67,6 +72,8 @@ const EventSection = () => {
     } catch {
       toast.error("Operation failed");
       loadEvents();
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -85,6 +92,7 @@ const EventSection = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this event?")) return;
     const previous = events;
+    setDeletingId(id);
     try {
       setEvents((prev) => prev.filter((ev) => ev.id !== id));
       await deleteEvent(id);
@@ -92,142 +100,75 @@ const EventSection = () => {
     } catch {
       toast.error("Delete failed");
       setEvents(previous);
+    } finally {
+      setDeletingId(null);
     }
   };
 
-  const openCreateModal = () => {
-    setEditingEvent(null);
-    setForm(emptyForm);
-    setModalOpen(true);
-  };
+  const filteredEvents = events.filter((ev) => {
+    const matchesSearch =
+      ev.title.toLowerCase().includes(search.toLowerCase()) ||
+      ev.venue.toLowerCase().includes(search.toLowerCase());
+    const matchesFilter =
+      activeFilter === "all" || ev.category === activeFilter;
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className={styles.section}>
       <div className={styles.header}>
         <h2>Events Management</h2>
-        <button className={styles.createBtn} onClick={openCreateModal}>
+        <button
+          className={styles.createBtn}
+          onClick={() => {
+            setEditingEvent(null);
+            setForm(emptyForm);
+            setModalOpen(true);
+          }}
+        >
           + Create Event
         </button>
       </div>
 
+      <EventToolbar
+        search={search}
+        onSearch={setSearch}
+        activeFilter={activeFilter}
+        onFilter={setActiveFilter}
+        totalCount={events.length}
+        filteredCount={filteredEvents.length}
+      />
+
       {loading ? (
-        <div className={styles.spinner}>Loading events...</div>
+        <div className={styles.loadingWrap}>
+          <FaSpinner className={styles.spinnerIcon} />
+          <span>Loading events…</span>
+        </div>
+      ) : filteredEvents.length === 0 ? (
+        <div className={styles.empty}>
+          No events match your search or filter.
+        </div>
       ) : (
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Venue</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {events.map((event) => (
-              <tr key={event.id}>
-                <td>{event.title}</td>
-                <td>
-                  <span
-                    className={`${styles.categoryBadge} ${event.category === "Mass Animation" ? styles.mass : styles.activity}`}
-                  >
-                    {event.category}
-                  </span>
-                </td>
-                <td>{event.event_date}</td>
-                <td>{event.event_time}</td>
-                <td>{event.venue}</td>
-                <td className={styles.actions}>
-                  <button
-                    className={styles.editBtn}
-                    onClick={() => handleEdit(event)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className={styles.deleteBtn}
-                    onClick={() => handleDelete(event.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <EventTable
+          events={filteredEvents}
+          deletingId={deletingId}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       )}
 
       {modalOpen && (
-        <div className={styles.modalBackdrop}>
-          <div className={styles.modal}>
-            <h3>{editingEvent ? "Edit Event" : "Create Event"}</h3>
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <input
-                name="title"
-                placeholder="Title"
-                value={form.title}
-                onChange={handleChange}
-                required
-              />
-
-              <select
-                name="category"
-                value={form.category}
-                onChange={handleChange}
-                required
-                className={styles.select}
-              >
-                {CATEGORIES.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-
-              <input
-                type="date"
-                name="event_date"
-                value={form.event_date}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                type="time"
-                name="event_time"
-                value={form.event_time}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="venue"
-                placeholder="Venue"
-                value={form.venue}
-                onChange={handleChange}
-                required
-              />
-
-              <div className={styles.modalActions}>
-                <button className={styles.submitBtn} type="submit">
-                  {editingEvent ? "Update" : "Create"}
-                </button>
-                <button
-                  className={styles.cancelBtn}
-                  type="button"
-                  onClick={() => setModalOpen(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <EventModal
+          editingEvent={editingEvent}
+          form={form}
+          saving={saving}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          onClose={() => setModalOpen(false)}
+        />
       )}
     </div>
   );
 };
 
 export default EventSection;
-
