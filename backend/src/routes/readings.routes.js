@@ -1,12 +1,12 @@
 import { Router } from "express";
-import getReadings from "../controllers/readings.controllers.js";
+import {
+  getReadings,
+  getReadingsByDate,
+} from "../controllers/readings.controllers.js";
 
 const router = Router();
 
-// ENDPOINTS FOR READINGS
-
-// GET READINGS
-
 router.get("/readings", getReadings);
+router.get("/readings/:date", getReadingsByDate);
 
 export default router;
