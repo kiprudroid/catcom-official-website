@@ -3,7 +3,13 @@ import styles from "./MysteriesGrid.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-const MysteriesGrid = ({ mysteries, openIndex, currentMystery, onToggle }) => {
+const MysteriesGrid = ({
+  mysteries,
+  openIndex,
+  currentMystery,
+  onToggle,
+  onSelectMystery,
+}) => {
   return (
     <div className={styles.grid}>
       {mysteries.map((section, idx) => (
@@ -25,22 +31,25 @@ const MysteriesGrid = ({ mysteries, openIndex, currentMystery, onToggle }) => {
 
           {openIndex === idx && (
             <ul className={styles.list}>
-              {section.items.map((mystery, i) => (
-                <li
-                  key={i}
-                  className={`${styles.mystery} ${
-                    currentMystery.section === idx && currentMystery.item === i
-                      ? styles.activeMystery
-                      : ""
-                  }`}
-                >
-                  <Paragraph>
-                    <span className={styles.mysteryTitle}>{mystery.title}</span>
-                    <br />
-                    <span className={styles.detail}>{mystery.detail}</span>
-                  </Paragraph>
-                </li>
-              ))}
+              {section.items.map((mystery, i) => {
+                const isActive =
+                  currentMystery.section === idx && currentMystery.item === i;
+                return (
+                  <li
+                    key={i}
+                    className={`${styles.mystery} ${isActive ? styles.activeMystery : ""}`}
+                    onClick={() => onSelectMystery?.({ section: idx, item: i })}
+                  >
+                    <Paragraph>
+                      <span className={styles.mysteryTitle}>
+                        {mystery.title}
+                      </span>
+                      <br />
+                      <span className={styles.detail}>{mystery.detail}</span>
+                    </Paragraph>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>

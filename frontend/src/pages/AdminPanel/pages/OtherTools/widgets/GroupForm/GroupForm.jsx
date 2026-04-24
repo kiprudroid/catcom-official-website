@@ -9,6 +9,7 @@ const GroupForm = ({
   editingGroup,
   onSubmit,
   onCancel,
+  loading,
 }) => (
   <form className={styles.container} onSubmit={onSubmit}>
     <h3 className={styles.title}>
@@ -21,11 +22,13 @@ const GroupForm = ({
         value={groupForm.name}
         onChange={(e) => setGroupForm((p) => ({ ...p, name: e.target.value }))}
         required
+        disabled={loading}
       />
       <select
         className={styles.select}
         value={groupForm.type}
         onChange={(e) => setGroupForm((p) => ({ ...p, type: e.target.value }))}
+        disabled={loading}
       >
         {GROUP_TYPES.map((t) => (
           <option key={t} value={t}>
@@ -33,10 +36,24 @@ const GroupForm = ({
           </option>
         ))}
       </select>
-      <button className={styles.saveBtn} type="submit">
-        {editingGroup ? "Update" : "Create"}
+      <button className={styles.saveBtn} type="submit" disabled={loading}>
+        {loading ? (
+          <>
+            <span className={styles.spinner} />
+            {editingGroup ? "Updating…" : "Creating…"}
+          </>
+        ) : editingGroup ? (
+          "Update"
+        ) : (
+          "Create"
+        )}
       </button>
-      <button className={styles.cancelBtn} type="button" onClick={onCancel}>
+      <button
+        className={styles.cancelBtn}
+        type="button"
+        onClick={onCancel}
+        disabled={loading}
+      >
         Cancel
       </button>
     </div>

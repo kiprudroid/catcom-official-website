@@ -3,6 +3,7 @@
   border-radius: 0.75rem;
   padding: 2rem;
   width: 95%;
+  cursor: pointer;
 }
 
 .title {
