@@ -101,27 +101,3 @@ CREATE INDEX idx_refresh_tokens_user_id ON refresh_tokens(user_id);
 CREATE INDEX idx_refresh_tokens_token ON refresh_tokens(token);
 
 
-
-
------------ PASTORAL ATTENDANCE --------------
-
--- Pastoral Members table
-CREATE TABLE pastoral_members (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    role VARCHAR(255) NOT NULL,
-    status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'removed')),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Attendance table
-CREATE TABLE attendance (
-    id SERIAL PRIMARY KEY,
-    member_id INTEGER REFERENCES pastoral_members(id) ON DELETE CASCADE,
-    date DATE NOT NULL,
-    status VARCHAR(20) DEFAULT 'present' CHECK (status IN ('present', 'absent', 'apology')),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(member_id, date)
-);

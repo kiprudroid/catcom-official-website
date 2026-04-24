@@ -68,7 +68,6 @@
   padding: 20px;
 }
 
-/* ── Toolbar (search + filters) ── */
 .toolbar {
   display: flex;
   flex-direction: column;
@@ -124,7 +123,6 @@
   color: #1c3a3a;
 }
 
-/* ── Filter pills ── */
 .filters {
   display: flex;
   gap: 8px;
@@ -160,14 +158,12 @@
   color: white;
 }
 
-/* ── Results count ── */
 .resultCount {
   font-size: 12px;
   color: #9ca3af;
   margin: 0;
 }
 
-/* ── Scrollable group list ── */
 .groupListWrap {
   max-height: 560px;
   overflow-y: auto;
