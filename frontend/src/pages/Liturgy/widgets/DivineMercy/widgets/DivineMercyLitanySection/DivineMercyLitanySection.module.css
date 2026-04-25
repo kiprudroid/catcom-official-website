@@ -18,34 +18,29 @@
   overflow: hidden;
 }
 
-/* Faded Marian/rosary background image */
 .litanySectionHeader::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/liturgy-images/rosary.jpg");
+  background-image: url("/liturgy-images/divine-mercy.jpg");
   background-size: cover;
-  background-position: center top;
-  filter: brightness(0.35) saturate(0.7);
+  background-position: center center;
+  filter: brightness(0.5) saturate(0.8);
   transition: filter 0.4s ease;
 }
 
 .litanySectionHeader:hover::before {
-  filter: brightness(0.42) saturate(0.8);
+  filter: brightness(0.6) saturate(0.9);
 }
 
-/* Teal gradient overlay */
 .litanySectionHeader::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(45, 171, 177, 0.25) 0%,
-    rgba(30, 41, 59, 0.55) 100%
-  );
+  background: linear-gradient(180deg, rgba(10, 5, 5, 0.45) 100%);
 }
 
+/* ── Toggle button ───────────────────────────────────── */
 .litanyToggleBtn {
   position: relative;
   z-index: 1;
@@ -62,8 +57,8 @@
 
 .litanyIcon {
   font-size: 2rem;
-  color: rgba(255, 255, 255, 0.85);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  color: rgba(255, 200, 200, 0.9);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
 }
 
 .litanyToggleText {
@@ -76,16 +71,17 @@
 
 .litanySubtitle {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 220, 220, 0.75);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
+/* ── Body ────────────────────────────────────────────── */
 .litanyBody {
-  background: linear-gradient(180deg, #f0fafa 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
   padding: 1.5rem;
-  border-top: 3px solid #2dabb1;
+  border-top: 3px solid #b22222;
 }
 
 .litanyGrid {
@@ -98,24 +94,23 @@
   break-inside: avoid;
   display: block;
   margin-bottom: 0.55rem;
-  line-height: 1.55;
+  line-height: 1.6;
   font-size: 0.92rem;
-  color: #334155;
+  color: #3d1a1a;
   padding: 0.3rem 0.75rem;
   border-radius: 4px;
   transition: background 0.15s;
 }
 
 .litanyLine:hover {
-  background: rgba(45, 171, 177, 0.08);
+  background: rgba(178, 34, 34, 0.07);
 }
 
-/* Responsive */
+/* ── Responsive ──────────────────────────────────────── */
 @media screen and (max-width: 480px) {
   .litanyGrid {
     column-count: 1;
   }
-
   .litanyToggleText {
     font-size: 1rem;
   }
