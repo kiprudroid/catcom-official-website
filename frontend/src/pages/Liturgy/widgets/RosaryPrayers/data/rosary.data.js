@@ -15,7 +15,7 @@ export const mysteries = [
   {
     title: "Joyful Mysteries",
     days: "Monday and Saturday",
-    image: "/litugy-images/rosary.jpg",
+    image: "/liturgy-images/rosary.jpg",
     items: [
       {
         title: "1. The Annunciation",
@@ -47,7 +47,7 @@ export const mysteries = [
   {
     title: "Sorrowful Mysteries",
     days: "Tuesday and Friday",
-    image: "/litugy-images/rosary.jpg",
+    image: "/liturgy-images/rosary.jpg",
     items: [
       {
         title: "1. The Agony in the Garden",
@@ -79,7 +79,7 @@ export const mysteries = [
   {
     title: "Luminous Mysteries",
     days: "Thursday",
-    image: "/litugy-images/rosary.jpg",
+    image: "/liturgy-images/rosary.jpg",
     items: [
       {
         title: "1. The Baptism of the Lord",
@@ -157,7 +157,7 @@ export const mysteries = [
   {
     title: "Glorious Mysteries",
     days: "Sunday and Wednesday",
-    image: "/litugy-images/rosary.jpg",
+    image: "/liturgy-images/rosary.jpg",
     items: [
       {
         title: "1. The Resurrection",

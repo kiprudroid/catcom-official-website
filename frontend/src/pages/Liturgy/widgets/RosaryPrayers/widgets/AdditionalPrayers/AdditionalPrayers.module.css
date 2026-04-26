@@ -5,9 +5,9 @@
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   position: relative;
+  cursor: pointer;
 }
 
-/* ── Photo header — same pattern as Litany ── */
 .sectionHeader {
   position: relative;
   min-height: 120px;
@@ -18,12 +18,11 @@
   overflow: hidden;
 }
 
-/* Faded rosary background — slightly different position for variety */
 .sectionHeader::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/litugy-images/rosary.jpg");
+  background-image: url("/liturgy-images/rosary.jpg");
   background-size: cover;
   background-position: center 60%;
   filter: brightness(0.3) saturate(0.6);
@@ -34,7 +33,6 @@
   filter: brightness(0.38) saturate(0.75);
 }
 
-/* Warm gold-teal gradient overlay — different from litany's cool teal */
 .sectionHeader::after {
   content: "";
   position: absolute;
@@ -82,7 +80,6 @@
   text-transform: uppercase;
 }
 
-/* ── Body ── */
 .body {
   background: linear-gradient(180deg, #fffbf0 0%, #ffffff 100%);
   padding: 1.5rem;
@@ -112,7 +109,6 @@
   background: rgba(217, 119, 6, 0.06);
 }
 
-/* Responsive */
 @media screen and (max-width: 480px) {
   .prayerGrid {
     column-count: 1;

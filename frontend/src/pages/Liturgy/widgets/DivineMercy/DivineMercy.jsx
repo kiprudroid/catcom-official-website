@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./DivineMercy.module.css";
 import { FaPrayingHands } from "react-icons/fa";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
+import { DivineMercyLitanySection } from "@/pages/Liturgy/widgets/DivineMercy/widgets";
 
 function DivineMercy() {
   return (
@@ -42,6 +43,7 @@ function DivineMercy() {
           the whole world.”
         </Paragraph>
       </div>
+      <DivineMercyLitanySection />
     </div>
   );
 }

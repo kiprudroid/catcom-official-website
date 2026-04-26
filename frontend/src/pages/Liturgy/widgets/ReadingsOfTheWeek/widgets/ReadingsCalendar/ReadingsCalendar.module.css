@@ -1,0 +1,135 @@
+.calendar {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  border: 1.5px solid #e5e7eb;
+}
+
+.calHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.navBtn {
+  background: #f0f0f0;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.navBtn:hover {
+  border-color: #2dabb1;
+  background: #e0f7f8;
+}
+
+.navBtn svg {
+  display: block;
+  color: #1c3a3a;
+  fill: #1c3a3a;
+}
+
+.navBtn:hover svg {
+  color: #2dabb1;
+  fill: #2dabb1;
+}
+
+.monthLabel {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c3a3a;
+}
+
+.dayNames {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.dayName {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  padding: 4px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.cell:hover:not(:disabled):not(.selected) {
+  background: #f0fdfe;
+  color: #2dabb1;
+}
+
+.cell.empty {
+  cursor: default;
+  pointer-events: none;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.today {
+  background: #e0f7f8;
+  color: #2dabb1;
+  font-weight: 700;
+}
+
+.selected {
+  background: #2dabb1 !important;
+  color: white !important;
+  font-weight: 700;
+}
+
+.fetchBtn {
+  width: 100%;
+  margin-top: 14px;
+  background: #2dabb1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.fetchBtn:hover {
+  background: #1c9097;
+}

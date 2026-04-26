@@ -2,6 +2,7 @@
   text-align: center;
   padding: 2rem;
   border-radius: 0.75rem;
+  cursor: pointer;
 }
 
 .grid {
@@ -9,6 +10,128 @@
   grid-template-columns: repeat(2, minmax(320px, 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
+}
+
+.calendarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 0;
+  position: relative;
+  z-index: 100;
+}
+
+.calendarDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  animation: fadeIn 0.2s ease;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+}
+.calendarToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c3a3a;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.calendarToggle:hover {
+  border-color: #2dabb1;
+  color: #2dabb1;
+}
+
+.chevron {
+  font-size: 11px;
+  transition: transform 0.2s;
+  transform: rotate(180deg);
+}
+
+.chevronOpen {
+  transform: rotate(0deg);
+}
+
+.calendarDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  animation: fadeIn 0.2s ease;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+}
+
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 2rem;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.spinner {
+  animation: spin 0.7s linear infinite;
+  font-size: 18px;
+  color: #2dabb1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #dc2626;
+  font-weight: 500;
+  max-width: 480px;
+  margin: 1rem auto;
+}
+
+.errorDot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #dc2626;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card {
