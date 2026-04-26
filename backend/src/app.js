@@ -20,7 +20,11 @@ const __dirname = path.dirname(__filename);
 const uploadsDir = path.join(process.cwd(), "public/uploads");
 
 app.use("/uploads", express.static(uploadsDir));
-app.use(cors());
+
+if (process.env.NODE_ENV !== "development") {
+  app.use(cors({ origin: "https://jkuatcatcom.com" }));
+}
+
 app.use(express.json());
 
 app.use("/api", eventsRouter);
