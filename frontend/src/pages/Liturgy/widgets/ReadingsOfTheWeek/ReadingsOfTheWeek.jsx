@@ -257,7 +257,7 @@ const ReadingOfTheWeek = () => {
             <div key={idx} className={styles.card}>
               <div className={styles.imageWrapper}>
                 <img
-                  src="/litugy-images/Bible.jpg"
+                  src="/liturgy-images/Bible.jpg"
                   alt={section.header}
                   className={styles.image}
                 />
