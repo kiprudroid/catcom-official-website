@@ -26,6 +26,7 @@ const GroupCard = ({
   onCreateAdmin,
   onUpdatePassword,
   onDeleteAdmin,
+  adminSaving,
 }) => (
   <div className={styles.card}>
     <div className={styles.row}>
@@ -35,13 +36,16 @@ const GroupCard = ({
 
       <div className={styles.info}>
         <span className={styles.name}>{group.name}</span>
+
         <div className={styles.meta}>
           <span className={`${styles.typePill} ${styles[group.type]}`}>
             {group.type}
           </span>
+
           <span className={styles.memberCount}>
             {group.member_count || 0} members
           </span>
+
           {group.admin_email && (
             <span className={styles.adminEmail}>{group.admin_email}</span>
           )}
@@ -56,6 +60,7 @@ const GroupCard = ({
         >
           <FaExternalLinkAlt />
         </button>
+
         <button
           className={styles.iconBtn}
           title="Edit group"
@@ -63,6 +68,7 @@ const GroupCard = ({
         >
           <FaEdit />
         </button>
+
         <button
           className={`${styles.iconBtn} ${styles.danger}`}
           title="Delete group"
@@ -70,6 +76,7 @@ const GroupCard = ({
         >
           <FaTrash />
         </button>
+
         <button
           className={`${styles.iconBtn} ${isExpanded ? styles.active : ""}`}
           title="Manage admin account"
@@ -96,6 +103,7 @@ const GroupCard = ({
         onCreateAdmin={onCreateAdmin}
         onUpdatePassword={onUpdatePassword}
         onDeleteAdmin={onDeleteAdmin}
+        adminSaving={adminSaving}
       />
     )}
   </div>

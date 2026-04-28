@@ -39,6 +39,7 @@ const OtherTools = () => {
   const [showPasswords, setShowPasswords] = useState({});
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
+  const [adminSaving, setAdminSaving] = useState({}); // { [group_id]: "creating" | "updating" | null }
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,11 +75,11 @@ const OtherTools = () => {
         setGroups((prev) =>
           prev.map((g) => (g.id === updated.id ? updated : g)),
         );
-        toast.success("Group updated");
+        toast.success("Group updated successfully");
       } else {
         const newGroup = await createGroup(groupForm);
         setGroups((prev) => [...prev, newGroup]);
-        toast.success("Group created");
+        toast.success("Group created successfully");
       }
       setGroupForm(emptyGroupForm);
       setEditingGroup(null);
@@ -134,6 +135,7 @@ const OtherTools = () => {
       return toast.error("Email and password are required");
     if (form.password.length < 6)
       return toast.error("Password must be at least 6 characters");
+    setAdminSaving((prev) => ({ ...prev, [group_id]: "creating" }));
     try {
       const admin = await createGroupAdmin(group_id, {
         email: form.email,
@@ -141,9 +143,11 @@ const OtherTools = () => {
       });
       setGroupAdmins((prev) => ({ ...prev, [group_id]: admin }));
       setAdminForms((prev) => ({ ...prev, [group_id]: emptyAdminForm }));
-      toast.success("Admin account created");
+      toast.success("Admin account created successfully");
     } catch (err) {
       toast.error(err.message || "Failed to create admin account");
+    } finally {
+      setAdminSaving((prev) => ({ ...prev, [group_id]: null }));
     }
   };
 
@@ -151,15 +155,18 @@ const OtherTools = () => {
     const form = adminForms[group_id] || {};
     if (!form.password || form.password.length < 6)
       return toast.error("Password must be at least 6 characters");
+    setAdminSaving((prev) => ({ ...prev, [group_id]: "updating" }));
     try {
       await updateGroupAdminPassword(group_id, form.password);
       setAdminForms((prev) => ({
         ...prev,
         [group_id]: { ...prev[group_id], password: "" },
       }));
-      toast.success("Password updated");
+      toast.success("Password updated successfully");
     } catch (err) {
       toast.error(err.message || "Failed to update password");
+    } finally {
+      setAdminSaving((prev) => ({ ...prev, [group_id]: null }));
     }
   };
 
@@ -281,6 +288,8 @@ const OtherTools = () => {
                 onCreateAdmin={handleCreateAdmin}
                 onUpdatePassword={handleUpdatePassword}
                 onDeleteAdmin={handleDeleteAdmin}
+                // NEW: pass per-group admin saving state
+                adminSaving={adminSaving[group.id] || null}
               />
             ))}
           </div>

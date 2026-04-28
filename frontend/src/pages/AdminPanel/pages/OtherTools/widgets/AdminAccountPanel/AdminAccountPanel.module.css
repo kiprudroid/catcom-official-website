@@ -137,6 +137,29 @@
   margin: 0 0 10px;
 }
 
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.saveBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
 @media (max-width: 600px) {
   .formRow {
     flex-direction: column;
