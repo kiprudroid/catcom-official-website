@@ -77,38 +77,7 @@ export const mysteries = [
       },
     ],
   },
-  {
-    title: "Sorrowful Mysteries",
-    days: "Tuesday and Friday",
-    image: "/liturgy-images/rosary.jpg",
-    items: [
-      {
-        title: "1. The Agony in the Garden",
-        detail:
-          "Jesus knows torture and death lie ahead and he prays that the cup will pass. He also prays God’s will be done. In his agony, he carries the weight of our sins so that we may be saved. I imagine the courage it took to give himself to God’s plan... I pray for the courage to conform to God’s will especially when it may be difficult.",
-      },
-      {
-        title: "2. The Scourging at the Pillar",
-        detail:
-          "Jesus is brutally tortured to near death. Scourging was more than mere beating; it involved using instruments to inflict the most pain and blood loss possible without actually killing. Jesus was beaten for our sins. His mother watched as her son’s blood spilled on the ground... I pray for forgiveness for my sins, the sins that contributed to the torture of my Lord.",
-      },
-      {
-        title: "3. The Crowning with Thorns",
-        detail:
-          "Jesus is stripped, reclothed with a scarlet robe and crowned with thorns. He is mocked and spit upon by the soldiers. The people demand his crucifixion. Despite his innocence, he does not defend himself. He is strong in the face of hatred... I pray for courage to defend God’s truth and strength to withstand the criticism and hatred of others.",
-      },
-      {
-        title: "4. The Carrying of the Cross",
-        detail:
-          "Jesus’ humiliation continues as he carries the Cross he will be crucified on through the town and people continue to mock him. I imagine the pain of the heavy wood against his back, rubbing against the open wounds from the scourging... Jesus is patient in enduring this suffering for us. I pray for patience in my own times of difficulty.",
-      },
-      {
-        title: "5. The Crucifixion",
-        detail:
-          "Jesus arrives and is nailed to the cross. As he hangs, slowly dying, he is comforted by the presence of Mary, her sister, John and Mary Magdalene. Mary is strong. She has watched him suffer and now die and she never leaves him... I pray in thanksgiving for Christ’s suffering and sacrifice so that I may be saved.",
-      },
-    ],
-  },
+
   {
     title: "Luminous Mysteries",
     days: "Thursday",
@@ -184,6 +153,38 @@ export const mysteries = [
         visit Jesus in adoration. It takes great faith to 
         believe in the Real Presence of Christ in the 
         Eucharist.`,
+      },
+    ],
+  },
+  {
+    title: "Sorrowful Mysteries",
+    days: "Tuesday and Friday",
+    image: "/liturgy-images/rosary.jpg",
+    items: [
+      {
+        title: "1. The Agony in the Garden",
+        detail:
+          "Jesus knows torture and death lie ahead and he prays that the cup will pass. He also prays God’s will be done. In his agony, he carries the weight of our sins so that we may be saved. I imagine the courage it took to give himself to God’s plan... I pray for the courage to conform to God’s will especially when it may be difficult.",
+      },
+      {
+        title: "2. The Scourging at the Pillar",
+        detail:
+          "Jesus is brutally tortured to near death. Scourging was more than mere beating; it involved using instruments to inflict the most pain and blood loss possible without actually killing. Jesus was beaten for our sins. His mother watched as her son’s blood spilled on the ground... I pray for forgiveness for my sins, the sins that contributed to the torture of my Lord.",
+      },
+      {
+        title: "3. The Crowning with Thorns",
+        detail:
+          "Jesus is stripped, reclothed with a scarlet robe and crowned with thorns. He is mocked and spit upon by the soldiers. The people demand his crucifixion. Despite his innocence, he does not defend himself. He is strong in the face of hatred... I pray for courage to defend God’s truth and strength to withstand the criticism and hatred of others.",
+      },
+      {
+        title: "4. The Carrying of the Cross",
+        detail:
+          "Jesus’ humiliation continues as he carries the Cross he will be crucified on through the town and people continue to mock him. I imagine the pain of the heavy wood against his back, rubbing against the open wounds from the scourging... Jesus is patient in enduring this suffering for us. I pray for patience in my own times of difficulty.",
+      },
+      {
+        title: "5. The Crucifixion",
+        detail:
+          "Jesus arrives and is nailed to the cross. As he hangs, slowly dying, he is comforted by the presence of Mary, her sister, John and Mary Magdalene. Mary is strong. She has watched him suffer and now die and she never leaves him... I pray in thanksgiving for Christ’s suffering and sacrifice so that I may be saved.",
       },
     ],
   },

@@ -10,10 +10,7 @@ const db =
     connectionString: process.env.DATABASE_URL,
     statement_timeout: 0,
     idle_in_transaction_session_timeout: 600000,
-    ssl:
-      process.env.NODE_ENV === "production"
-        ? { rejectUnauthorized: false }
-        : false,
+    ssl:false,
   });
 
 if (process.env.NODE_ENV !== "production") {

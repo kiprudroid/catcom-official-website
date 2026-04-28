@@ -77,6 +77,23 @@
   margin-bottom: 0.8rem;
   width: 100%;
   box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.5rem;
+  border-left: 4px solid transparent;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.mystery:hover {
+  background: #e0f7f8;
+  border-left: 4px solid #2dabb1;
+}
+
+.activeMystery {
+  background: #e0f7f8;
+  border-left: 4px solid #2dabb1;
 }
 
 .mysteryTitle {
@@ -89,55 +106,23 @@
   font-size: 0.9rem;
 }
 
-.activeMystery {
-  background: #e0f7f8;
-  border-left: 4px solid #2dabb1;
-  border-radius: 6px;
-  padding: 0.5rem;
-}
-
-.mystery {
-  margin-bottom: 0.8rem;
-  width: 100%;
-  box-sizing: border-box;
-  cursor: pointer;
-  border-radius: 6px;
-  padding: 0.5rem;
-  transition: background 0.15s;
-}
-
-.mystery:hover {
-  background: #f0fdfe;
-}
-
-.activeMystery {
-  background: #e0f7f8;
-  border-left: 4px solid #2dabb1;
-  border-radius: 6px;
-  padding: 0.5rem;
-}
 @media screen and (max-width: 480px) {
   .grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-
   .image {
     height: 140px;
   }
-
   .overlay {
     padding: 0.6rem;
   }
-
   .cardTitle {
     font-size: 0.85rem;
   }
-
   .cardDays {
     font-size: 0.75rem;
   }
-
   .list {
     padding: 0.75rem;
   }
@@ -147,7 +132,6 @@
   .grid {
     grid-template-columns: 1fr;
   }
-
   .image {
     height: 160px;
   }
@@ -157,7 +141,6 @@
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
-
   .image {
     height: 170px;
   }
@@ -167,7 +150,6 @@
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
-
   .image {
     height: 200px;
   }
@@ -177,7 +159,6 @@
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
-
   .image {
     height: 220px;
   }
