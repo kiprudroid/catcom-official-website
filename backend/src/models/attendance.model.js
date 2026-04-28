@@ -1,7 +1,5 @@
 import pool from "../config/db.config.js";
 
-// ── Groups ────────────────────────────────────────────────────────
-
 export const getAllGroupsQuery = () =>
   pool.query(`
     SELECT
@@ -20,23 +18,18 @@ export const getGroupByIdQuery = (id) =>
 
 export const createGroupQuery = ({ name, type }) =>
   pool.query(
-    `INSERT INTO attendance_groups (name, type)
-     VALUES ($1, $2) RETURNING *`,
+    `INSERT INTO attendance_groups (name, type) VALUES ($1, $2) RETURNING *`,
     [name, type],
   );
 
 export const updateGroupQuery = ({ id, name, type }) =>
   pool.query(
-    `UPDATE attendance_groups
-     SET name = $1, type = $2, updated_at = NOW()
-     WHERE id = $3 RETURNING *`,
+    `UPDATE attendance_groups SET name = $1, type = $2, updated_at = NOW() WHERE id = $3 RETURNING *`,
     [name, type, id],
   );
 
 export const deleteGroupQuery = (id) =>
   pool.query(`DELETE FROM attendance_groups WHERE id = $1 RETURNING *`, [id]);
-
-// ── Group Admins ──────────────────────────────────────────────────
 
 export const getAdminByEmailQuery = (email) =>
   pool.query(
@@ -63,9 +56,7 @@ export const createAdminQuery = ({ group_id, email, hashedPassword }) =>
 
 export const updateAdminPasswordQuery = ({ id, hashedPassword }) =>
   pool.query(
-    `UPDATE attendance_admins
-     SET password = $1, updated_at = NOW()
-     WHERE id = $2 RETURNING id, group_id, email`,
+    `UPDATE attendance_admins SET password = $1, updated_at = NOW() WHERE id = $2 RETURNING id, group_id, email`,
     [hashedPassword, id],
   );
 
@@ -73,8 +64,6 @@ export const deleteAdminQuery = (group_id) =>
   pool.query(`DELETE FROM attendance_admins WHERE group_id = $1 RETURNING *`, [
     group_id,
   ]);
-
-// ── Members ───────────────────────────────────────────────────────
 
 export const getMembersByGroupQuery = (group_id) =>
   pool.query(
@@ -100,27 +89,34 @@ export const getMembersByGroupQuery = (group_id) =>
     [group_id],
   );
 
-export const addMemberQuery = ({ group_id, name, role }) =>
+export const addMemberQuery = ({ group_id, name, phone, role }) =>
   pool.query(
-    `INSERT INTO attendance_members (group_id, name, role)
-     VALUES ($1, $2, $3) RETURNING *`,
-    [group_id, name, role],
+    `INSERT INTO attendance_members (group_id, name, phone, role)
+     VALUES ($1, $2, $3, $4) RETURNING *`,
+    [group_id, name, phone || null, role],
   );
 
-export const updateMemberQuery = ({ id, group_id, name, role }) => {
+export const updateMemberQuery = ({ id, group_id, name, phone, role }) => {
   const fields = [];
   const values = [];
   let idx = 1;
+
   if (name !== undefined) {
     fields.push(`name = $${idx++}`);
     values.push(name);
+  }
+  if (phone !== undefined) {
+    fields.push(`phone = $${idx++}`);
+    values.push(phone || null);
   }
   if (role !== undefined) {
     fields.push(`role = $${idx++}`);
     values.push(role);
   }
+
   fields.push(`updated_at = NOW()`);
   values.push(id, group_id);
+
   return pool.query(
     `UPDATE attendance_members SET ${fields.join(", ")}
      WHERE id = $${idx++} AND group_id = $${idx} RETURNING *`,
@@ -135,11 +131,9 @@ export const removeMemberQuery = ({ id, group_id }) =>
     [id, group_id],
   );
 
-// ── Attendance Records ────────────────────────────────────────────
-
 export const getAttendanceByDateQuery = ({ group_id, date }) =>
   pool.query(
-    `SELECT ar.*, m.name, m.role
+    `SELECT ar.*, m.name, m.phone, m.role
      FROM attendance_records ar
      JOIN attendance_members m ON m.id = ar.member_id
      WHERE m.group_id = $1 AND ar.date = $2
@@ -147,7 +141,6 @@ export const getAttendanceByDateQuery = ({ group_id, date }) =>
     [group_id, date],
   );
 
-// FIX: default status is 'absent' if somehow not provided
 export const upsertAttendanceQuery = ({ member_id, date, status = "absent" }) =>
   pool.query(
     `INSERT INTO attendance_records (member_id, date, status)
