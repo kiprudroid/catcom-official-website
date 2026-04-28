@@ -2,12 +2,45 @@ export const openingPrayers = [
   {
     title: "Invocation",
     text: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+    type: "all",
   },
   {
     title: "Penitential Rite",
-    text: `Leader: Brethren, to prepare ourselves to meditate on the Holy Rosary, let us acknowledge our failures and ask the Lord for pardon and strength.
-    
-All: I confess to Almighty God and to you, my brothers and sisters... through my fault, through my fault, through my most grievous fault... Therefore I ask Blessed Mary ever Virgin, all the Angels and Saints, and you, my brothers and sisters, to pray for me to the Lord our God.`,
+    leader:
+      "Brethren, to prepare ourselves to meditate on the Holy Rosary, let us acknowledge our failures and ask the Lord for pardon and strength.",
+    pause: "All pause for a while.",
+    response:
+      "O my God, I am heartfully sorry for having offended thee, and I detest all my sins because of Thy just punishment, but most of all because I have offended Thee, my God, who is all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more, and to avoid the near occasion of sin. Amen.",
+    type: "leader-all",
+  },
+  {
+    title: "The Apostles' Creed",
+    text: "I believe in God, the Father Almighty, Creator of Heaven and earth; and in Jesus Christ, His only Son, Our Lord, who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into Hell. On the third day He rose again from the dead; He ascended into Heaven and is seated at the right hand of God the Father Almighty; from there He will come to judge the living and the dead. I believe in the Holy Spirit, the holy Catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and the life everlasting. Amen.",
+    type: "all",
+  },
+  {
+    title: "Opening Decade",
+    subtitle: "For Faith, Hope and Charity",
+    prayers: [
+      { label: "Our Father", text: "Our Father, who art in Heaven…" },
+      {
+        label: "Hail Mary (×3)",
+        text: "Hail Mary, full of grace, the Lord is with you…  (prayed three times)",
+      },
+      {
+        label: "Glory Be",
+        text: "Glory be to the Father and to the Son and to the Holy Spirit, as it was in the beginning, is now and ever shall be world without end. Amen.",
+      },
+      {
+        label: "Fatima Prayer",
+        text: "Oh, my Jesus, forgive us our sins, save us from the fires of hell, lead all souls into heaven, especially those who are in most need of your mercy.",
+      },
+      {
+        label: "Eternal Rest",
+        text: "For the faithfully departed souls, eternal rest grant unto them O Lord, and may perpetual light shine upon them. May they rest in peace. Amen.",
+      },
+    ],
+    type: "prayers-list",
   },
 ];
 

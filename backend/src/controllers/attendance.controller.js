@@ -1,7 +1,5 @@
 import * as Service from "../services/attendance.service.js";
 
-// ── Groups (super admin) ──────────────────────────────────────────
-
 export const getGroups = async (req, res, next) => {
   try {
     res.json(await Service.getAllGroups());
@@ -43,8 +41,6 @@ export const deleteGroup = async (req, res, next) => {
   }
 };
 
-// ── Group Admin Management (super admin) ──────────────────────────
-
 export const getGroupAdmin = async (req, res, next) => {
   try {
     res.json(await Service.getGroupAdmin(req.params.group_id));
@@ -55,10 +51,9 @@ export const getGroupAdmin = async (req, res, next) => {
 
 export const createGroupAdmin = async (req, res, next) => {
   try {
-    // group_id comes from URL params, email+password from body
     res.status(201).json(
       await Service.createGroupAdmin({
-        group_id: req.params.group_id, // ← was missing
+        group_id: req.params.group_id,
         email: req.body.email,
         password: req.body.password,
       }),
@@ -90,8 +85,6 @@ export const deleteGroupAdmin = async (req, res, next) => {
   }
 };
 
-// ── Group Admin Login (public) ────────────────────────────────────
-
 export const loginGroupAdmin = async (req, res, next) => {
   try {
     const result = await Service.loginGroupAdmin(req.body);
@@ -101,12 +94,9 @@ export const loginGroupAdmin = async (req, res, next) => {
   }
 };
 
-// ── Members (group admin) ─────────────────────────────────────────
-
 export const getMembers = async (req, res, next) => {
   try {
-    const group_id = req.user.group_id;
-    res.json(await Service.getMembersByGroup(group_id));
+    res.json(await Service.getMembersByGroup(req.user.group_id));
   } catch (err) {
     next(err);
   }
@@ -114,8 +104,11 @@ export const getMembers = async (req, res, next) => {
 
 export const createMember = async (req, res, next) => {
   try {
-    const group_id = req.user.group_id;
-    res.status(201).json(await Service.addMember({ group_id, ...req.body }));
+    res
+      .status(201)
+      .json(
+        await Service.addMember({ group_id: req.user.group_id, ...req.body }),
+      );
   } catch (err) {
     next(err);
   }
@@ -123,9 +116,12 @@ export const createMember = async (req, res, next) => {
 
 export const updateMember = async (req, res, next) => {
   try {
-    const group_id = req.user.group_id;
     res.json(
-      await Service.updateMember({ id: req.params.id, group_id, ...req.body }),
+      await Service.updateMember({
+        id: req.params.id,
+        group_id: req.user.group_id,
+        ...req.body,
+      }),
     );
   } catch (err) {
     next(err);
@@ -134,20 +130,24 @@ export const updateMember = async (req, res, next) => {
 
 export const deleteMember = async (req, res, next) => {
   try {
-    const group_id = req.user.group_id;
-    res.json(await Service.removeMember({ id: req.params.id, group_id }));
+    res.json(
+      await Service.removeMember({
+        id: req.params.id,
+        group_id: req.user.group_id,
+      }),
+    );
   } catch (err) {
     next(err);
   }
 };
 
-// ── Attendance (group admin) ──────────────────────────────────────
-
 export const getAttendance = async (req, res, next) => {
   try {
-    const group_id = req.user.group_id;
     res.json(
-      await Service.getAttendanceByDate({ group_id, date: req.params.date }),
+      await Service.getAttendanceByDate({
+        group_id: req.user.group_id,
+        date: req.params.date,
+      }),
     );
   } catch (err) {
     next(err);
@@ -156,8 +156,12 @@ export const getAttendance = async (req, res, next) => {
 
 export const upsertAttendance = async (req, res, next) => {
   try {
-    const group_id = req.user.group_id;
-    res.json(await Service.markAttendance({ group_id, ...req.body }));
+    res.json(
+      await Service.markAttendance({
+        group_id: req.user.group_id,
+        ...req.body,
+      }),
+    );
   } catch (err) {
     next(err);
   }
