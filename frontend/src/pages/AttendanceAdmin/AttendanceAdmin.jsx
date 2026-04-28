@@ -104,17 +104,17 @@ const AttendanceAdmin = () => {
     }
   };
 
-  const handleAddMember = async ({ name, role }) => {
+  const handleAddMember = async ({ name, phone, role }) => {
     try {
-      const newMember = await createMember({ name, role });
+      const newMember = await createMember({ name, phone, role });
       setMembers((prev) => [...prev, newMember]);
-      // FIX 3: immediately set new member's attendance to "absent" in local state
       setAttendance((prev) => ({ ...prev, [newMember.id]: "absent" }));
       toast.success(`${name} added`);
     } catch {
       toast.error("Failed to add member");
     }
   };
+
   const handleUpdateMember = async (id, data) => {
     try {
       const updated = await updateMemberById(id, data);
