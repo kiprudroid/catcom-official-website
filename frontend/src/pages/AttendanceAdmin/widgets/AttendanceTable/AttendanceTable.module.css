@@ -12,8 +12,6 @@
   margin: 0;
 }
 
-/* ── Search bar ─────────────────────────────────────── */
-
 .searchBar {
   display: flex;
   gap: 8px;
@@ -48,7 +46,6 @@
 .searchInput::placeholder {
   color: #9ca3af;
 }
-
 .searchInput:focus {
   box-shadow: 0 0 0 2px #1c3a3a33;
 }
@@ -73,8 +70,6 @@
 .roleFilter:focus {
   box-shadow: 0 0 0 2px #1c3a3a33;
 }
-
-/* ── Header row ─────────────────────────────────────── */
 
 .headerRow {
   display: flex;
@@ -104,8 +99,6 @@
   background: #244a4a;
 }
 
-/* ── Table ──────────────────────────────────────────── */
-
 .tableScroll {
   max-height: 420px;
   overflow-y: auto;
@@ -116,7 +109,7 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 620px;
+  min-width: 700px;
 }
 
 .table thead tr {
@@ -180,7 +173,43 @@
   font-size: 13px;
 }
 
-/* ── Status badge ───────────────────────────────────── */
+.phoneCell {
+  white-space: nowrap;
+}
+
+.phoneBtn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1c3a3a;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: monospace;
+  letter-spacing: 0.03em;
+}
+
+.phoneBtn:hover {
+  border-color: #2dabb1;
+  color: #2dabb1;
+  background: #e6f7f8;
+}
+
+.phoneCopied {
+  border-color: #16a34a !important;
+  color: #16a34a !important;
+  background: #dcfce7 !important;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+.phoneEmpty {
+  color: #d1d5db;
+  font-size: 13px;
+}
 
 .statusBadge {
   display: inline-block;
@@ -194,18 +223,14 @@
   color: #16a34a;
   background: #dcfce7;
 }
-
 .statusAbsent {
   color: #dc2626;
   background: #fee2e2;
 }
-
 .statusApology {
   color: #d97706;
   background: #fef3c7;
 }
-
-/* ── Absence count ──────────────────────────────────── */
 
 .absCount {
   text-align: center;
@@ -215,8 +240,6 @@
 .absHigh {
   color: #ef4444;
 }
-
-/* ── Toggle button group ────────────────────────────── */
 
 .toggle {
   display: flex;
@@ -243,7 +266,6 @@
 .toggleBtn:last-child {
   border-right: none;
 }
-
 .toggleBtn:hover {
   background: #f3f4f6;
 }
@@ -253,20 +275,16 @@
   color: #16a34a;
   font-weight: 700;
 }
-
 .active_absent {
   background: #fee2e2;
   color: #dc2626;
   font-weight: 700;
 }
-
 .active_apology {
   background: #fef3c7;
   color: #d97706;
   font-weight: 700;
 }
-
-/* ── Empty state ────────────────────────────────────── */
 
 .empty {
   background: white;
@@ -277,8 +295,6 @@
   font-size: 14px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
 }
-
-/* ── Responsive ─────────────────────────────────────── */
 
 @media (max-width: 600px) {
   .toggleBtn {

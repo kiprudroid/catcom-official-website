@@ -10,8 +10,6 @@ const adminHeaders = () => {
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
-// ── Public ────────────────────────────────────────────────────────
-
 export const fetchAttendanceGroups = async () => {
   const res = await fetch(`${API_BASE}/attendance/groups`);
   if (!res.ok) throw new Error("Failed to fetch groups");
@@ -30,8 +28,6 @@ export const loginAttendanceAdmin = async ({ email, password }) => {
   }
   return res.json();
 };
-
-// ── Super admin: group management ─────────────────────────────────
 
 export const createGroup = async (data) => {
   const res = await fetch(`${API_BASE}/attendance/groups`, {
@@ -61,8 +57,6 @@ export const deleteGroup = async (id) => {
   if (!res.ok) throw new Error("Failed to delete group");
   return res.json();
 };
-
-// ── Super admin: group admin account management ───────────────────
 
 export const fetchGroupAdmin = async (group_id) => {
   const res = await fetch(`${API_BASE}/attendance/groups/${group_id}/admin`, {
@@ -101,8 +95,6 @@ export const deleteGroupAdmin = async (group_id) => {
   return res.json();
 };
 
-// ── Group admin: members ──────────────────────────────────────────
-
 export const fetchMembers = async () => {
   const res = await fetch(`${API_BASE}/attendance/members`, {
     headers: authHeaders(),
@@ -121,6 +113,16 @@ export const createMember = async (data) => {
   return res.json();
 };
 
+export const updateMemberById = async (id, data) => {
+  const res = await fetch(`${API_BASE}/attendance/members/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to update member");
+  return res.json();
+};
+
 export const deleteMember = async (id) => {
   const res = await fetch(`${API_BASE}/attendance/members/${id}`, {
     method: "DELETE",
@@ -129,8 +131,6 @@ export const deleteMember = async (id) => {
   if (!res.ok) throw new Error("Failed to remove member");
   return res.json();
 };
-
-// ── Group admin: attendance ───────────────────────────────────────
 
 export const fetchAttendanceByDate = async (date) => {
   const res = await fetch(`${API_BASE}/attendance/records/${date}`, {
@@ -149,4 +149,3 @@ export const markAttendance = async (data) => {
   if (!res.ok) throw new Error("Failed to mark attendance");
   return res.json();
 };
-
