@@ -12,6 +12,7 @@ const AdminAccountPanel = ({
   onCreateAdmin,
   onUpdatePassword,
   onDeleteAdmin,
+  adminSaving,
 }) => {
   const showNewPw = showPasswords[`new_${groupId}`];
   const showUpdatePw = showPasswords[`update_${groupId}`];
@@ -26,6 +27,7 @@ const AdminAccountPanel = ({
             <span className={styles.emailLabel}>Email:</span>
             <span className={styles.emailValue}>{admin.email}</span>
           </div>
+
           <div className={styles.formRow}>
             <div className={styles.pwWrap}>
               <input
@@ -45,14 +47,24 @@ const AdminAccountPanel = ({
                 {showUpdatePw ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
+
+            {/* ✅ UPDATED BUTTON */}
             <button
               className={styles.saveBtn}
               type="button"
               onClick={() => onUpdatePassword(groupId)}
-              disabled={!adminForm.password}
+              disabled={!adminForm.password || adminSaving === "updating"}
             >
-              Update Password
+              {adminSaving === "updating" ? (
+                <>
+                  <span className={styles.spinner} />
+                  Updating…
+                </>
+              ) : (
+                "Update Password"
+              )}
             </button>
+
             <button
               className={styles.dangerBtn}
               type="button"
@@ -65,6 +77,7 @@ const AdminAccountPanel = ({
       ) : (
         <div>
           <p className={styles.noAdmin}>No admin account yet. Create one:</p>
+
           <div className={styles.formRow}>
             <input
               className={styles.input}
@@ -73,6 +86,7 @@ const AdminAccountPanel = ({
               value={adminForm.email}
               onChange={(e) => onFormChange(groupId, "email", e.target.value)}
             />
+
             <div className={styles.pwWrap}>
               <input
                 className={styles.input}
@@ -91,13 +105,25 @@ const AdminAccountPanel = ({
                 {showNewPw ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
+
             <button
               className={styles.saveBtn}
               type="button"
               onClick={() => onCreateAdmin(groupId)}
-              disabled={!adminForm.email || !adminForm.password}
+              disabled={
+                !adminForm.email ||
+                !adminForm.password ||
+                adminSaving === "creating"
+              }
             >
-              Create Account
+              {adminSaving === "creating" ? (
+                <>
+                  <span className={styles.spinner} />
+                  Creating…
+                </>
+              ) : (
+                "Create Account"
+              )}
             </button>
           </div>
         </div>
