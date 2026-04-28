@@ -21,6 +21,7 @@ import {
   createMember,
   deleteMember,
   markAttendance,
+  updateMemberById,
 } from "@/api/attendance.api";
 
 const AttendanceAdmin = () => {
@@ -114,6 +115,21 @@ const AttendanceAdmin = () => {
       toast.error("Failed to add member");
     }
   };
+  const handleUpdateMember = async (id, data) => {
+    try {
+      const updated = await updateMemberById(id, data);
+
+      setMembers((prev) =>
+        prev.map((member) =>
+          member.id === id ? { ...member, ...updated } : member,
+        ),
+      );
+
+      toast.success("Member updated");
+    } catch {
+      toast.error("Failed to update member");
+    }
+  };
 
   const handleRemoveMember = async (id) => {
     try {
@@ -163,6 +179,7 @@ const AttendanceAdmin = () => {
           members={members}
           addMember={handleAddMember}
           removeMember={handleRemoveMember}
+          updateMember={handleUpdateMember}
         />
       </div>
 

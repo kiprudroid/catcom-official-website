@@ -23,6 +23,7 @@ const AttendanceTable = ({
 }) => {
   const [search, setSearch] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
+  const [copiedId, setCopiedId] = useState(null);
 
   const roles = [...new Set(members.map((m) => m.role))];
 
@@ -32,17 +33,32 @@ const AttendanceTable = ({
     return matchName && matchRole;
   });
 
-  /* ── CSV download ─────────────────────────────────── */
+  const copyPhone = (id, phone) => {
+    if (!phone) return;
+    navigator.clipboard.writeText(phone).then(() => {
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 1800);
+    });
+  };
+
   const downloadCSV = () => {
     const meta = [
       [`Group,${groupName || "Unknown"}`],
       [`Date,${meetingDate || "Unknown"}`],
       [],
     ];
-    const header = ["#", "Name", "Role", "Status", "Consecutive Absences"];
+    const header = [
+      "#",
+      "Name",
+      "Phone",
+      "Role",
+      "Status",
+      "Consecutive Absences",
+    ];
     const rows = filteredMembers.map((m, i) => [
       i + 1,
       m.name,
+      m.phone || "",
       m.role,
       m.attendance,
       m.consecutiveAbsence,
@@ -62,7 +78,6 @@ const AttendanceTable = ({
     URL.revokeObjectURL(url);
   };
 
-  /* ── PDF download ─────────────────────────────────── */
   const downloadPDF = () => {
     const present = filteredMembers.filter(
       (m) => m.attendance === "present",
@@ -79,7 +94,6 @@ const AttendanceTable = ({
 
     const rows = filteredMembers
       .map((m, i) => {
-        // FIX: fallback to "absent" colours instead of "present"
         const { color, bg } =
           PDF_STATUS_COLORS[m.attendance] || PDF_STATUS_COLORS.absent;
         return `
@@ -89,6 +103,7 @@ const AttendanceTable = ({
     <strong>${m.name}</strong>
     ${m.consecutiveAbsence >= 2 ? '<span style="margin-left:6px;color:#d97706;font-size:11px;font-weight:700">(At Risk)</span>' : ""}
   </td>
+  <td>${m.phone || "—"}</td>
   <td>${m.role}</td>
   <td>
     <span style="padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;background:${bg};color:${color}">
@@ -132,7 +147,7 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
 </div>
 <table>
   <thead>
-    <tr><th>#</th><th>Name</th><th>Role</th><th>Status</th><th>Consec. Absences</th></tr>
+    <tr><th>#</th><th>Name</th><th>Phone</th><th>Role</th><th>Status</th><th>Consec. Absences</th></tr>
   </thead>
   <tbody>${rows}</tbody>
 </table>
@@ -150,7 +165,6 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
     }, 600);
   };
 
-  /* ── Empty state ──────────────────────────────────── */
   if (members.length === 0) {
     return (
       <div className={styles.empty}>
@@ -159,7 +173,6 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
     );
   }
 
-  /* ── Main render ──────────────────────────────────── */
   return (
     <div className={styles.wrapper}>
       <div className={styles.headerRow}>
@@ -174,7 +187,6 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
         </div>
       </div>
 
-      {/* SEARCH + FILTER */}
       <div className={styles.searchBar}>
         <input
           className={styles.searchInput}
@@ -196,13 +208,13 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
         </select>
       </div>
 
-      {/* TABLE */}
       <div className={styles.tableScroll}>
         <table className={styles.table}>
           <thead>
             <tr>
               <th>#</th>
               <th>Name</th>
+              <th>Phone</th>
               <th>Role</th>
               <th>Status</th>
               <th>Consec. Absences</th>
@@ -211,7 +223,6 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
           </thead>
           <tbody>
             {filteredMembers.map((member, idx) => {
-              // FIX: fallback to absent instead of present
               const meta = statusMeta[member.attendance] ?? statusMeta.absent;
               const isAtRisk = member.consecutiveAbsence >= 2;
 
@@ -226,6 +237,20 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
                     {member.name}
                     {isAtRisk && (
                       <span className={styles.riskBadge}>At Risk</span>
+                    )}
+                  </td>
+
+                  <td className={styles.phoneCell}>
+                    {member.phone ? (
+                      <button
+                        className={`${styles.phoneBtn} ${copiedId === member.id ? styles.phoneCopied : ""}`}
+                        onClick={() => copyPhone(member.id, member.phone)}
+                        title="Click to copy"
+                      >
+                        {copiedId === member.id ? "Copied!" : member.phone}
+                      </button>
+                    ) : (
+                      <span className={styles.phoneEmpty}>—</span>
                     )}
                   </td>
 

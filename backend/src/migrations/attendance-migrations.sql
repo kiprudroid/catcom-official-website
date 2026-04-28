@@ -35,6 +35,9 @@ CREATE TABLE IF NOT EXISTS attendance_members (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE attendance_members
+  ADD COLUMN IF NOT EXISTS phone VARCHAR(10);
+
 -- 4. Attendance records — scoped to member (which is scoped to group)
 CREATE TABLE IF NOT EXISTS attendance_records (
   id         SERIAL PRIMARY KEY,
