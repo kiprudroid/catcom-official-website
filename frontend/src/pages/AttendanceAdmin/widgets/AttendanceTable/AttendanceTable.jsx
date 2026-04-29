@@ -47,6 +47,7 @@ const AttendanceTable = ({
       [`Date,${meetingDate || "Unknown"}`],
       [],
     ];
+
     const header = [
       "#",
       "Name",
@@ -55,6 +56,7 @@ const AttendanceTable = ({
       "Status",
       "Consecutive Absences",
     ];
+
     const rows = filteredMembers.map((m, i) => [
       i + 1,
       m.name,
@@ -63,6 +65,7 @@ const AttendanceTable = ({
       m.attendance,
       m.consecutiveAbsence,
     ]);
+
     const csv = [
       ...meta.map((r) => r.join(",")),
       header.map((c) => `"${c}"`).join(","),
@@ -71,10 +74,12 @@ const AttendanceTable = ({
 
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
+
     const a = document.createElement("a");
     a.href = url;
     a.download = `${(groupName || "attendance").replace(/\s+/g, "_")}_${meetingDate || "date"}.csv`;
     a.click();
+
     URL.revokeObjectURL(url);
   };
 
@@ -88,6 +93,7 @@ const AttendanceTable = ({
     const apology = filteredMembers.filter(
       (m) => m.attendance === "apology",
     ).length;
+
     const rate = filteredMembers.length
       ? Math.round((present / filteredMembers.length) * 100)
       : 0;
@@ -96,12 +102,19 @@ const AttendanceTable = ({
       .map((m, i) => {
         const { color, bg } =
           PDF_STATUS_COLORS[m.attendance] || PDF_STATUS_COLORS.absent;
+
+        const isAtRisk = m.consecutiveAbsence >= 3;
+
         return `
 <tr style="background:${i % 2 === 0 ? "#fff" : "#f9fafb"}">
   <td>${i + 1}</td>
   <td>
     <strong>${m.name}</strong>
-    ${m.consecutiveAbsence >= 2 ? '<span style="margin-left:6px;color:#d97706;font-size:11px;font-weight:700">(At Risk)</span>' : ""}
+    ${
+      isAtRisk
+        ? '<span style="margin-left:6px;color:#d97706;font-size:11px;font-weight:700">(At Risk)</span>'
+        : ""
+    }
   </td>
   <td>${m.phone || "—"}</td>
   <td>${m.role}</td>
@@ -110,7 +123,7 @@ const AttendanceTable = ({
       ${statusMeta[m.attendance]?.label ?? "Absent"}
     </span>
   </td>
-  <td style="text-align:center;${m.consecutiveAbsence >= 2 ? "color:#ef4444;font-weight:700" : ""}">
+  <td style="text-align:center;${isAtRisk ? "color:#ef4444;font-weight:700" : ""}">
     ${m.consecutiveAbsence}
   </td>
 </tr>`;
@@ -135,23 +148,38 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
 </style>
 </head>
 <body>
+
 <div class="header">
-  <h1>JKUAT CATCOM — ${groupName || "Group"} Attendance</h1>
+  <h1>${groupName || "Group"} Attendance</h1>
   <p>Meeting Date: <strong>${meetingDate || "N/A"}</strong> · Total Members: <strong>${filteredMembers.length}</strong></p>
 </div>
+
 <div class="summary">
   <span class="chip" style="background:#dcfce7;color:#16a34a">✓ Present: ${present}</span>
   <span class="chip" style="background:#fee2e2;color:#dc2626">✗ Absent: ${absent}</span>
   <span class="chip" style="background:#fef3c7;color:#d97706">~ Apology: ${apology}</span>
   <span class="chip" style="background:#f3f4f6;color:#374151">Rate: ${rate}%</span>
 </div>
+
 <table>
-  <thead>
-    <tr><th>#</th><th>Name</th><th>Phone</th><th>Role</th><th>Status</th><th>Consec. Absences</th></tr>
-  </thead>
-  <tbody>${rows}</tbody>
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Phone</th>
+<th>Role</th>
+<th>Status</th>
+<th>Consec. Absences</th>
+</tr>
+</thead>
+
+<tbody>${rows}</tbody>
 </table>
-<div class="footer">Generated: ${new Date().toLocaleString()} · JKUAT CATCOM Attendance System</div>
+
+<div class="footer">
+Generated: ${new Date().toLocaleString()}
+</div>
+
 </body>
 </html>`;
 
@@ -159,6 +187,7 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
     win.document.write(html);
     win.document.close();
     win.focus();
+
     setTimeout(() => {
       win.print();
       win.close();
@@ -177,6 +206,7 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
     <div className={styles.wrapper}>
       <div className={styles.headerRow}>
         <h3 className={styles.heading}>Attendance Register</h3>
+
         <div className={styles.actions}>
           <button className={styles.downloadBtn} onClick={downloadCSV}>
             ↓ CSV
@@ -190,10 +220,11 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
       <div className={styles.searchBar}>
         <input
           className={styles.searchInput}
-          placeholder="Search member by name..."
+          placeholder="Search member..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+
         <select
           className={styles.roleFilter}
           value={roleFilter}
@@ -221,10 +252,15 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
               <th>Mark</th>
             </tr>
           </thead>
+
           <tbody>
             {filteredMembers.map((member, idx) => {
               const meta = statusMeta[member.attendance] ?? statusMeta.absent;
-              const isAtRisk = member.consecutiveAbsence >= 2;
+
+              const isAtRisk =
+                member.consecutiveAbsence >= 3 &&
+                (!member.lastFollowUp ||
+                  new Date(member.lastFollowUp) < new Date(meetingDate));
 
               return (
                 <tr
@@ -243,9 +279,10 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
                   <td className={styles.phoneCell}>
                     {member.phone ? (
                       <button
-                        className={`${styles.phoneBtn} ${copiedId === member.id ? styles.phoneCopied : ""}`}
+                        className={`${styles.phoneBtn} ${
+                          copiedId === member.id ? styles.phoneCopied : ""
+                        }`}
                         onClick={() => copyPhone(member.id, member.phone)}
-                        title="Click to copy"
                       >
                         {copiedId === member.id ? "Copied!" : member.phone}
                       </button>
@@ -273,7 +310,9 @@ td{padding:9px 12px;border-bottom:1px solid #f3f4f6}
                       {STATUS_OPTIONS.map((s) => (
                         <button
                           key={s}
-                          className={`${styles.toggleBtn} ${member.attendance === s ? styles[`active_${s}`] : ""}`}
+                          className={`${styles.toggleBtn} ${
+                            member.attendance === s ? styles[`active_${s}`] : ""
+                          }`}
                           onClick={() => updateAttendance(member.id, s)}
                         >
                           {s.charAt(0).toUpperCase() + s.slice(1)}
