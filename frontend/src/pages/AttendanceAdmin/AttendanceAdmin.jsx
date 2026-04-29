@@ -22,6 +22,7 @@ import {
   deleteMember,
   markAttendance,
   updateMemberById,
+  markMemberFollowUp,
 } from "@/api/attendance.api";
 
 const AttendanceAdmin = () => {
@@ -32,8 +33,8 @@ const AttendanceAdmin = () => {
   const [meetingDate, setMeetingDate] = useState(
     new Date().toISOString().split("T")[0],
   );
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const group = JSON.parse(localStorage.getItem("attendance_group") || "{}");
 
   const loadMembers = useCallback(async () => {
@@ -74,9 +75,9 @@ const AttendanceAdmin = () => {
 
   const membersWithAttendance = members.map((m) => ({
     ...m,
-    // FIX 1: default to "absent" instead of "present" when no record exists
     attendance: attendance[m.id] ?? "absent",
     consecutiveAbsence: Number(m.consecutive_absences) || 0,
+    lastFollowUp: m.last_follow_up,
   }));
 
   const updateAttendance = (memberId, status) => {
@@ -91,7 +92,6 @@ const AttendanceAdmin = () => {
           markAttendance({
             member_id: m.id,
             date: meetingDate,
-            // default to "absent" when saving unset members
             status: attendance[m.id] ?? "absent",
           }),
         ),
@@ -101,6 +101,22 @@ const AttendanceAdmin = () => {
       toast.error("Failed to save attendance");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleFollowUp = async (id) => {
+    try {
+      await markMemberFollowUp(id);
+
+      setMembers((prev) =>
+        prev.map((m) =>
+          m.id === id ? { ...m, last_follow_up: new Date().toISOString() } : m,
+        ),
+      );
+
+      toast.success("Follow up recorded");
+    } catch {
+      toast.error("Failed to mark follow up");
     }
   };
 
@@ -118,13 +134,9 @@ const AttendanceAdmin = () => {
   const handleUpdateMember = async (id, data) => {
     try {
       const updated = await updateMemberById(id, data);
-
       setMembers((prev) =>
-        prev.map((member) =>
-          member.id === id ? { ...member, ...updated } : member,
-        ),
+        prev.map((m) => (m.id === id ? { ...m, ...updated } : m)),
       );
-
       toast.success("Member updated");
     } catch {
       toast.error("Failed to update member");
@@ -158,6 +170,7 @@ const AttendanceAdmin = () => {
           <h1 className={styles.title}>{group.name || "Group"} Attendance</h1>
           {group.type && <span className={styles.typeBadge}>{group.type}</span>}
         </div>
+
         <div className={styles.topActions}>
           <MeetingSelector
             meetingDate={meetingDate}
@@ -171,7 +184,12 @@ const AttendanceAdmin = () => {
       </div>
 
       <AttendanceWidgets members={membersWithAttendance} />
-      <MembersAtRisk members={membersWithAttendance} />
+
+      <MembersAtRisk
+        members={membersWithAttendance}
+        onFollowUp={handleFollowUp}
+        meetingDate={meetingDate}
+      />
 
       <div className={styles.splitRow}>
         <AttendanceChart members={membersWithAttendance} />

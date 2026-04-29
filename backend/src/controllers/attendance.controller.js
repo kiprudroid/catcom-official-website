@@ -166,3 +166,16 @@ export const upsertAttendance = async (req, res, next) => {
     next(err);
   }
 };
+
+export const markFollowUp = async (req, res, next) => {
+  try {
+    res.json(
+      await Service.markMemberFollowUp({
+        id: req.params.id,
+        group_id: req.user.group_id,
+      }),
+    );
+  } catch (err) {
+    next(err);
+  }
+};

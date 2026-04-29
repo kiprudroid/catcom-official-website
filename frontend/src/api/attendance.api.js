@@ -149,3 +149,13 @@ export const markAttendance = async (data) => {
   if (!res.ok) throw new Error("Failed to mark attendance");
   return res.json();
 };
+
+export const markMemberFollowUp = async (id) => {
+  const res = await fetch(`${API_BASE}/attendance/members/${id}/follow-up`, {
+    method: "PUT",
+    headers: authHeaders(),
+  });
+
+  if (!res.ok) throw new Error("Failed to mark follow up");
+  return res.json();
+};

@@ -68,24 +68,25 @@ export const deleteAdminQuery = (group_id) =>
 export const getMembersByGroupQuery = (group_id) =>
   pool.query(
     `SELECT
-       m.*,
-       (
-         SELECT COUNT(*) FROM attendance_records ar
-         WHERE ar.member_id = m.id
-           AND ar.status = 'absent'
-           AND ar.date >= CURRENT_DATE - INTERVAL '60 days'
-       ) AS recent_absences,
-       (
-         WITH recent AS (
-           SELECT status FROM attendance_records
-           WHERE member_id = m.id
-           ORDER BY date DESC LIMIT 5
-         )
-         SELECT COUNT(*) FROM recent WHERE status = 'absent'
-       ) AS consecutive_absences
-     FROM attendance_members m
-     WHERE m.group_id = $1 AND m.status = 'active'
-     ORDER BY m.name ASC`,
+    m.*,
+    m.last_follow_up,
+    (
+      SELECT COUNT(*) FROM attendance_records ar
+      WHERE ar.member_id = m.id
+        AND ar.status = 'absent'
+        AND ar.date >= CURRENT_DATE - INTERVAL '60 days'
+    ) AS recent_absences,
+    (
+      WITH recent AS (
+        SELECT status FROM attendance_records
+        WHERE member_id = m.id
+        ORDER BY date DESC LIMIT 5
+      )
+      SELECT COUNT(*) FROM recent WHERE status = 'absent'
+    ) AS consecutive_absences
+  FROM attendance_members m
+  WHERE m.group_id = $1 AND m.status = 'active'
+  ORDER BY m.name ASC`,
     [group_id],
   );
 
@@ -149,4 +150,13 @@ export const upsertAttendanceQuery = ({ member_id, date, status = "absent" }) =>
      DO UPDATE SET status = EXCLUDED.status, updated_at = NOW()
      RETURNING *`,
     [member_id, date, status],
+  );
+
+export const markFollowUpQuery = (id, group_id) =>
+  pool.query(
+    `UPDATE attendance_members
+       SET last_follow_up = NOW(), updated_at = NOW()
+       WHERE id = $1 AND group_id = $2
+       RETURNING *`,
+    [id, group_id],
   );
