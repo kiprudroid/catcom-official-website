@@ -30,11 +30,13 @@ export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
     <div className={styles.header}>
       <div className={styles.topRow}>
         <div className={styles.logoGroup}>
+          <a href="https://www.jkuatcatcom.com">
           <img
             src="/others/catcom-logo.png"
             alt="CATCOM Logo"
             className={styles.logo}
           />
+          </a>
           <SectionHeading className={styles.title}>
             JKUAT CATCOM ADMIN PANEL
           </SectionHeading>
