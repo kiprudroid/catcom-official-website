@@ -1,0 +1,139 @@
+.wrapper {
+  position: relative;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  transition: border-color 0.15s;
+}
+
+.wrapper:focus-within {
+  border-color: #2dabb1;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+}
+
+.toolBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+  transition:
+    background 0.12s,
+    color 0.12s;
+  flex-shrink: 0;
+}
+
+.toolBtn:hover {
+  background: #f3f4f6;
+  color: #1c3a3a;
+}
+
+.toolBtnActive {
+  background: #e0f7f8;
+  color: #2dabb1;
+}
+
+.toolBtnActive:hover {
+  background: #c8f0f1;
+  color: #1c9097;
+}
+
+.toolBtnDanger {
+  color: #ef4444;
+}
+
+.toolBtnDanger:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.sep {
+  width: 1px;
+  height: 18px;
+  background: #e5e7eb;
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+.editorContent {
+  position: relative;
+}
+
+.editorContent :global(.ProseMirror) {
+  min-height: calc(var(--min-rows, 4) * 1.6em + 16px);
+  padding: 10px 12px;
+  outline: none;
+  font-size: 13px;
+  color: #1c3a3a;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+.editorContent :global(.ProseMirror) p {
+  margin: 0 0 6px;
+}
+
+.editorContent :global(.ProseMirror) p:last-child {
+  margin-bottom: 0;
+}
+
+.editorContent :global(.ProseMirror) strong {
+  font-weight: 700;
+  color: #111827;
+}
+
+.editorContent :global(.ProseMirror) em {
+  font-style: italic;
+}
+
+.editorContent :global(.ProseMirror) u {
+  text-decoration: underline;
+}
+
+.editorContent :global(.ProseMirror) mark {
+  background: #fef08a;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.editorContent :global(.ProseMirror) a {
+  color: #2dabb1;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.editorContent :global(.ProseMirror) a:hover {
+  color: #1c9097;
+}
+
+.editorContent :global(.ProseMirror) ul {
+  padding-left: 20px;
+  margin: 4px 0;
+}
+
+.editorContent :global(.ProseMirror) li {
+  margin-bottom: 2px;
+}
+
+.placeholder {
+  position: absolute;
+  top: calc(6px + 10px);
+  left: 12px;
+  font-size: 13px;
+  color: #9ca3af;
+  pointer-events: none;
+  user-select: none;
+}

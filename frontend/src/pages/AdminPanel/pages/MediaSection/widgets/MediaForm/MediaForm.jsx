@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./MediaForm.module.css";
-import { FaUpload, FaTimes } from "react-icons/fa";
+import { FaUpload, FaTimes, FaSpinner } from "react-icons/fa";
+import { RichTextEditor } from "@/pages/AdminPanel/pages/MediaSection/widgets";
 
 const TYPES = [
   { key: "youtube", label: "YouTube" },
@@ -19,6 +20,7 @@ const MediaForm = ({
   onClearPoster,
   onSubmit,
   onCancel,
+  submitting = false,
 }) => {
   const fileInputRef = useRef(null);
 
@@ -40,6 +42,7 @@ const MediaForm = ({
             className={styles.select}
             value={form.type}
             onChange={(e) => setForm((p) => ({ ...p, type: e.target.value }))}
+            disabled={submitting}
           >
             {TYPES.map((t) => (
               <option key={t.key} value={t.key}>
@@ -57,11 +60,12 @@ const MediaForm = ({
             value={form.title}
             onChange={(e) => setForm((p) => ({ ...p, title: e.target.value }))}
             required
+            disabled={submitting}
           />
         </div>
       </div>
 
-      {/* URL — hidden for announcement and poster */}
+      {/* URL */}
       {form.type !== "announcement" && form.type !== "poster" && (
         <div className={styles.field}>
           <label className={styles.label}>URL</label>
@@ -73,6 +77,7 @@ const MediaForm = ({
             value={form.url}
             onChange={(e) => setForm((p) => ({ ...p, url: e.target.value }))}
             required
+            disabled={submitting}
           />
         </div>
       )}
@@ -81,7 +86,6 @@ const MediaForm = ({
       {form.type === "poster" && (
         <div className={styles.field}>
           <label className={styles.label}>Poster Image</label>
-
           {posterPreview ? (
             <div className={styles.posterPreviewWrapper}>
               <img
@@ -116,7 +120,6 @@ const MediaForm = ({
               <span className={styles.dropHint}>JPG, PNG, WEBP · max 5 MB</span>
             </div>
           )}
-
           <input
             ref={fileInputRef}
             type="file"
@@ -132,9 +135,9 @@ const MediaForm = ({
         <label className={styles.label}>
           {form.type === "announcement" ? "Content" : "Caption (optional)"}
         </label>
-        <textarea
-          className={styles.textarea}
-          rows={3}
+        <RichTextEditor
+          value={form.description}
+          onChange={(html) => setForm((p) => ({ ...p, description: html }))}
           placeholder={
             form.type === "announcement"
               ? "Announcement text…"
@@ -142,10 +145,7 @@ const MediaForm = ({
                 ? "Add a caption for this poster…"
                 : "Short caption…"
           }
-          value={form.description}
-          onChange={(e) =>
-            setForm((p) => ({ ...p, description: e.target.value }))
-          }
+          minRows={form.type === "announcement" ? 6 : 3}
         />
       </div>
 
@@ -158,15 +158,34 @@ const MediaForm = ({
             onChange={(e) =>
               setForm((p) => ({ ...p, published: e.target.checked }))
             }
+            disabled={submitting}
           />
           Publish immediately
         </label>
 
         <div className={styles.btnRow}>
-          <button className={styles.saveBtn} type="submit">
-            {editing ? "Update" : "Create"}
+          <button
+            className={styles.saveBtn}
+            type="submit"
+            disabled={submitting}
+          >
+            {submitting ? (
+              <>
+                <FaSpinner className={styles.spinIcon} />
+                {editing ? "Updating…" : "Creating…"}
+              </>
+            ) : editing ? (
+              "Update"
+            ) : (
+              "Create"
+            )}
           </button>
-          <button className={styles.cancelBtn} type="button" onClick={onCancel}>
+          <button
+            className={styles.cancelBtn}
+            type="button"
+            onClick={onCancel}
+            disabled={submitting}
+          >
             Cancel
           </button>
         </div>

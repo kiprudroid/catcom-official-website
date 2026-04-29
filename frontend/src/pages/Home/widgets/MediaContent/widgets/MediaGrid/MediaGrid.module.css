@@ -1,6 +1,6 @@
 .gridScrollArea {
   position: relative;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 10px);
   overflow-y: auto;
 
   scrollbar-width: thin;
@@ -30,7 +30,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  padding: 4px 2px; /* prevent card box-shadows from clipping */
+  padding: 4px 2px;
 }
 
 @media (max-width: 600px) {

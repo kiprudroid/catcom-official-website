@@ -151,6 +151,42 @@ const getTodayString = () => {
   return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
 };
 
+//  Normalize reading headers so "Reading 1", "Reading I", "Reading 2",
+const ORDINAL_MAP = {
+  1: "First",
+  i: "First",
+  2: "Second",
+  ii: "Second",
+  3: "Third",
+  iii: "Third",
+  4: "Fourth",
+  iv: "Fourth",
+};
+
+const normalizeReadingHeader = (header = "") => {
+  const trimmed = header.trim();
+
+  // Already in the correct form e.g. "First Reading", "Second Reading"
+  if (/^(First|Second|Third|Fourth)\s+Reading$/i.test(trimmed)) {
+    // Capitalise correctly and return
+    return trimmed.replace(
+      /^(\w+)/,
+      (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(),
+    );
+  }
+
+  // "Reading 1", "Reading 2", "Reading I", "Reading II", "Reading i" etc.
+  const match = trimmed.match(/^Reading\s+([IiVv\d]+)$/i);
+  if (match) {
+    const key = match[1].toLowerCase();
+    const ordinal = ORDINAL_MAP[key];
+    if (ordinal) return `${ordinal} Reading`;
+  }
+
+  // Anything else — return as-is so we don't break Psalm / Gospel / etc.
+  return trimmed;
+};
+
 const ReadingOfTheWeek = () => {
   const [reading, setReading] = useState({});
   const [loading, setLoading] = useState(false);
@@ -194,13 +230,12 @@ const ReadingOfTheWeek = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, [showCalendar]);
 
-  // selecting a date does NOT close the calendar — user must press Fetch
   const handleDateSelect = (date) => {
     setSelectedDate(date);
   };
 
   const handleFetch = () => {
-    loadReadings(selectedDate); // closes calendar inside loadReadings
+    loadReadings(selectedDate);
   };
 
   const sections = Array.isArray(reading?.sections) ? reading.sections : [];
@@ -253,90 +288,96 @@ const ReadingOfTheWeek = () => {
 
       {!loading && !error && sections.length > 0 && (
         <div className={styles.grid}>
-          {sections.map((section, idx) => (
-            <div key={idx} className={styles.card}>
-              <div className={styles.imageWrapper}>
-                <img
-                  src="/liturgy-images/Bible.jpg"
-                  alt={section.header}
-                  className={styles.image}
-                />
-                <div className={styles.overlay} />
-                <div
-                  className={styles.cardHeader}
-                  onClick={() =>
-                    setExpandedIndex((c) => (c === idx ? null : idx))
-                  }
-                >
-                  <Paragraph className={styles.cardTitle}>
-                    <strong>{section.header}</strong>
-                  </Paragraph>
-                  {Array.isArray(section.readings) &&
-                    section.readings[0]?.verses?.[0]?.text && (
-                      <Paragraph>
-                        {section.readings[0].verses[0].text}
-                      </Paragraph>
-                    )}
-                  <FaPlus />
+          {sections.map((section, idx) => {
+            const displayHeader = normalizeReadingHeader(section.header);
+
+            return (
+              <div key={idx} className={styles.card}>
+                <div className={styles.imageWrapper}>
+                  <img
+                    src="/liturgy-images/Bible.jpg"
+                    alt={displayHeader}
+                    className={styles.image}
+                  />
+                  <div className={styles.overlay} />
+                  <div
+                    className={styles.cardHeader}
+                    onClick={() =>
+                      setExpandedIndex((c) => (c === idx ? null : idx))
+                    }
+                  >
+                    <Paragraph className={styles.cardTitle}>
+                      <strong>{displayHeader}</strong>
+                    </Paragraph>
+                    {Array.isArray(section.readings) &&
+                      section.readings[0]?.verses?.[0]?.text && (
+                        <Paragraph>
+                          {section.readings[0].verses[0].text}
+                        </Paragraph>
+                      )}
+                    <FaPlus />
+                  </div>
                 </div>
-              </div>
 
-              {expandedIndex === idx && (
-                <div className={styles.cardContent}>
-                  <SectionHeading>
-                    <strong>{section.header}</strong>
-                  </SectionHeading>
-                  {Array.isArray(section.readings) &&
-                    section.readings.map((item, itemIdx) => {
-                      const isResponsorialPsalm =
-                        /responsorial psalm/i.test(section?.header || "") ||
-                        section?.type === "PSALM";
+                {expandedIndex === idx && (
+                  <div className={styles.cardContent}>
+                    <SectionHeading>
+                      <strong>{displayHeader}</strong>
+                    </SectionHeading>
+                    {Array.isArray(section.readings) &&
+                      section.readings.map((item, itemIdx) => {
+                        const isResponsorialPsalm =
+                          /responsorial psalm/i.test(section?.header || "") ||
+                          section?.type === "PSALM";
 
-                      if (
-                        isResponsorialPsalm &&
-                        typeof item?.text === "string"
-                      ) {
-                        const parsedPsalm = parseResponsorialPsalm(item.text);
+                        if (
+                          isResponsorialPsalm &&
+                          typeof item?.text === "string"
+                        ) {
+                          const parsedPsalm = parseResponsorialPsalm(item.text);
+                          return (
+                            <div key={itemIdx}>
+                              {parsedPsalm.stanzas.map(
+                                (stanzaLines, stanzaIdx) => (
+                                  <div key={stanzaIdx}>
+                                    {stanzaLines.map((line, lineIdx) => (
+                                      <Paragraph
+                                        key={`${stanzaIdx}-${lineIdx}`}
+                                      >
+                                        {line}
+                                      </Paragraph>
+                                    ))}
+                                    {parsedPsalm.response && (
+                                      <Paragraph>
+                                        <strong>{parsedPsalm.response}</strong>
+                                      </Paragraph>
+                                    )}
+                                  </div>
+                                ),
+                              )}
+                              {Array.isArray(item.verses) &&
+                                item.verses.map((verse, vi) => (
+                                  <Paragraph key={vi}>{verse.text}</Paragraph>
+                                ))}
+                            </div>
+                          );
+                        }
+
                         return (
                           <div key={itemIdx}>
-                            {parsedPsalm.stanzas.map(
-                              (stanzaLines, stanzaIdx) => (
-                                <div key={stanzaIdx}>
-                                  {stanzaLines.map((line, lineIdx) => (
-                                    <Paragraph key={`${stanzaIdx}-${lineIdx}`}>
-                                      {line}
-                                    </Paragraph>
-                                  ))}
-                                  {parsedPsalm.response && (
-                                    <Paragraph>
-                                      <strong>{parsedPsalm.response}</strong>
-                                    </Paragraph>
-                                  )}
-                                </div>
-                              ),
-                            )}
+                            <Paragraph>{item.text}</Paragraph>
                             {Array.isArray(item.verses) &&
                               item.verses.map((verse, vi) => (
                                 <Paragraph key={vi}>{verse.text}</Paragraph>
                               ))}
                           </div>
                         );
-                      }
-
-                      return (
-                        <div key={itemIdx}>
-                          <Paragraph>{item.text}</Paragraph>
-                          {Array.isArray(item.verses) &&
-                            item.verses.map((verse, vi) => (
-                              <Paragraph key={vi}>{verse.text}</Paragraph>
-                            ))}
-                        </div>
-                      );
-                    })}
-                </div>
-              )}
-            </div>
-          ))}
+                      })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
