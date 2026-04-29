@@ -35,6 +35,11 @@ router.delete(
 router.get("/attendance/members", verifyGroupAdmin, C.getMembers);
 router.post("/attendance/members", verifyGroupAdmin, C.createMember);
 router.put("/attendance/members/:id", verifyGroupAdmin, C.updateMember);
+router.put(
+  "/attendance/members/:id/follow-up",
+  verifyGroupAdmin,
+  C.markFollowUp,
+);
 router.delete("/attendance/members/:id", verifyGroupAdmin, C.deleteMember);
 router.get("/attendance/records/:date", verifyGroupAdmin, C.getAttendance);
 router.post("/attendance/records", verifyGroupAdmin, C.upsertAttendance);

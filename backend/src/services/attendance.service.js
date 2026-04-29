@@ -182,3 +182,9 @@ export const markAttendance = async ({
   });
   return rows[0];
 };
+
+export const markMemberFollowUp = async ({ id, group_id }) => {
+  const { rows } = await Model.markFollowUpQuery(id, group_id);
+  if (!rows[0]) throw new Error("Member not found");
+  return rows[0];
+};

@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import styles from "./MembersAtRisk.module.css";
 import { FaExclamationTriangle, FaSearch, FaCheck } from "react-icons/fa";
 
-const MembersAtRisk = ({ members }) => {
+const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
   const [search, setSearch] = useState("");
-  const [dismissed, setDismissed] = useState(new Set());
   const [copiedId, setCopiedId] = useState(null);
+  const [loadingId, setLoadingId] = useState(null); // 👈 key fix
 
-  const atRisk = members.filter(
-    (m) => m.consecutiveAbsence >= 2 && !dismissed.has(m.id),
-  );
+  const atRisk = members.filter((m) => {
+    const missed = m.consecutiveAbsence >= 3;
+    const lastFollowUp = m.lastFollowUp ? new Date(m.lastFollowUp) : null;
+    const meeting = meetingDate ? new Date(meetingDate) : new Date();
+
+    return missed && (!lastFollowUp || lastFollowUp < meeting);
+  });
 
   const filtered = atRisk.filter((m) =>
     m.name.toLowerCase().includes(search.toLowerCase()),
@@ -23,15 +27,19 @@ const MembersAtRisk = ({ members }) => {
     });
   };
 
-  const dismiss = (id) => {
-    setDismissed((prev) => new Set([...prev, id]));
+  const handleClick = async (id) => {
+    try {
+      setLoadingId(id);
+      await onFollowUp(id);
+    } finally {
+      setLoadingId(null);
+    }
   };
 
   if (atRisk.length === 0) return null;
 
   return (
     <div className={styles.container}>
-      {/* HEADER */}
       <div className={styles.header}>
         <FaExclamationTriangle className={styles.icon} />
         <h3 className={styles.title}>
@@ -40,7 +48,6 @@ const MembersAtRisk = ({ members }) => {
         </h3>
       </div>
 
-      {/* SEARCH */}
       <div className={styles.searchBar}>
         <FaSearch className={styles.searchIcon} />
         <input
@@ -51,7 +58,6 @@ const MembersAtRisk = ({ members }) => {
         />
       </div>
 
-      {/* TABLE */}
       <div className={styles.tableScroll}>
         <table className={styles.table}>
           <thead>
@@ -77,16 +83,20 @@ const MembersAtRisk = ({ members }) => {
             {filtered.map((m, i) => (
               <tr key={m.id}>
                 <td className={styles.idx}>{i + 1}</td>
-                <td className={styles.name}>{m.name}</td>
+
+                <td className={styles.name}>
+                  <span>{m.name}</span>
+                </td>
+
                 <td className={styles.role}>{m.role}</td>
 
-                {/* Phone — click to copy */}
                 <td className={styles.phoneCell}>
                   {m.phone ? (
                     <button
-                      className={`${styles.phoneBtn} ${copiedId === m.id ? styles.phoneCopied : ""}`}
+                      className={`${styles.phoneBtn} ${
+                        copiedId === m.id ? styles.phoneCopied : ""
+                      }`}
                       onClick={() => copyPhone(m.id, m.phone)}
-                      title="Click to copy"
                     >
                       {copiedId === m.id ? "Copied!" : m.phone}
                     </button>
@@ -95,20 +105,25 @@ const MembersAtRisk = ({ members }) => {
                   )}
                 </td>
 
-                <td>
+                <td className={styles.missedCell}>
                   <span className={styles.absBadge}>
                     {m.consecutiveAbsence} missed
                   </span>
                 </td>
 
-                {/* Followed up — removes from list for this session */}
-                <td>
+                <td className={styles.followedCell}>
                   <button
                     className={styles.dismissBtn}
-                    onClick={() => dismiss(m.id)}
-                    title="Mark as followed up — removes from this list"
+                    onClick={() => handleClick(m.id)}
+                    disabled={loadingId === m.id}
                   >
-                    <FaCheck /> Done
+                    {loadingId === m.id ? (
+                      "Saving..."
+                    ) : (
+                      <>
+                        <FaCheck /> Done
+                      </>
+                    )}
                   </button>
                 </td>
               </tr>
@@ -118,8 +133,7 @@ const MembersAtRisk = ({ members }) => {
       </div>
 
       <p className={styles.hint}>
-        "Followed Up" hides the member from this list until the page reloads.
-        Their absence count resets automatically once they attend a meeting.
+        Members remain at risk until marked as followed up for this meeting.
       </p>
     </div>
   );
