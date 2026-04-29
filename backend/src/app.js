@@ -21,10 +21,12 @@ const uploadsDir = path.join(process.cwd(), "public/uploads");
 
 app.use("/uploads", express.static(uploadsDir));
 
-if (process.env.NODE_ENV !== "development") {
-  app.use(cors({ origin: "https://jkuatcatcom.com" }));
-}
-
+//allowing all origins in dev 
+app.use(cors({
+  origin: process.env.NODE_ENV === "development"
+    ? "*"
+    : "https://jkuatcatcom.com"
+}));
 app.use(express.json());
 
 app.use("/api", eventsRouter);
