@@ -25,7 +25,7 @@ app.use("/uploads", express.static(uploadsDir));
 app.use(cors({
   origin: process.env.NODE_ENV === "development"
     ? "*"
-    : "https://jkuatcatcom.com"
+    : ["https://jkuatcatcom.com", "https://www.jkuatcatcom.com"]
 }));
 app.use(express.json());
 
