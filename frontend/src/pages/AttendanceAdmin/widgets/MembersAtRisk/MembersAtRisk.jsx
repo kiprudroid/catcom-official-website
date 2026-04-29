@@ -36,7 +36,7 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
     }
   };
 
-  if (atRisk.length === 0) return null;
+  if (members.length === 0) return null;
 
   return (
     <div className={styles.container}>
@@ -113,17 +113,22 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
 
                 <td className={styles.followedCell}>
                   <button
-                    className={styles.dismissBtn}
+                    className={`${styles.dismissBtn} ${
+                      loadingId === m.id ? styles.loadingBtn : ""
+                    }`}
                     onClick={() => handleClick(m.id)}
                     disabled={loadingId === m.id}
                   >
-                    {loadingId === m.id ? (
-                      "Saving..."
-                    ) : (
-                      <>
-                        <FaCheck /> Done
-                      </>
-                    )}
+                    <span className={styles.btnContent}>
+                      {loadingId === m.id ? (
+                        <span className={styles.spinner}></span>
+                      ) : (
+                        <>
+                          <FaCheck />
+                          <span>Done</span>
+                        </>
+                      )}
+                    </span>
                   </button>
                 </td>
               </tr>

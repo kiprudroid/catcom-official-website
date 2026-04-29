@@ -217,6 +217,32 @@
   border-color: #16a34a;
 }
 
+.btnContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #bbf7d0;
+  border-top: 2px solid #16a34a;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingBtn {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .empty {
   text-align: center;
   padding: 14px;
@@ -230,4 +256,36 @@
   color: #9ca3af;
   font-style: italic;
   line-height: 1.5;
+}
+
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 40px;
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  width: 180px;
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+  width: 120px;
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+  width: 140px;
+}
+
+.table th:nth-child(5),
+.table td:nth-child(5) {
+  width: 100px;
+  text-align: center;
+}
+
+.table th:nth-child(6),
+.table td:nth-child(6) {
+  width: 140px;
+  text-align: center;
 }
