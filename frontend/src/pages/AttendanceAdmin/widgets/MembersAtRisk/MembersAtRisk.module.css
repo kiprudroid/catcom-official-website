@@ -36,8 +36,6 @@
   border-radius: 20px;
 }
 
-/* search */
-
 .searchBar {
   display: flex;
   align-items: center;
@@ -60,8 +58,6 @@
   flex: 1;
   font-size: 13px;
 }
-
-/* table */
 
 .tableScroll {
   max-height: 180px;
@@ -123,4 +119,68 @@
   text-align: center;
   padding: 12px;
   color: #9ca3af;
+}
+
+.phoneCell {
+  white-space: nowrap;
+}
+
+.phoneBtn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 12px;
+  color: #2dabb1;
+  cursor: pointer;
+  transition:
+    background 0.12s,
+    color 0.12s;
+  white-space: nowrap;
+}
+
+.phoneBtn:hover {
+  background: #e0f7f8;
+  border-color: #2dabb1;
+}
+
+.phoneCopied {
+  background: #dcfce7 !important;
+  color: #16a34a !important;
+  border-color: #16a34a !important;
+}
+
+.phoneEmpty {
+  color: #d1d5db;
+  font-size: 13px;
+}
+
+.dismissBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid #d1fae5;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #16a34a;
+  cursor: pointer;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+  white-space: nowrap;
+}
+
+.dismissBtn:hover {
+  background: #dcfce7;
+  border-color: #16a34a;
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #9ca3af;
+  font-style: italic;
 }

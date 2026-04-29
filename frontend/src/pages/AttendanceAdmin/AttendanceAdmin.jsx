@@ -91,7 +91,7 @@ const AttendanceAdmin = () => {
           markAttendance({
             member_id: m.id,
             date: meetingDate,
-            // FIX 2: default to "absent" when saving unset members
+            // default to "absent" when saving unset members
             status: attendance[m.id] ?? "absent",
           }),
         ),
