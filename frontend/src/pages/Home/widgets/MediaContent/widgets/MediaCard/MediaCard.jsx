@@ -18,6 +18,21 @@ const toEmbedUrl = (url) => {
   return url;
 };
 
+/**
+ * Renders item.description as rich HTML (from the Tiptap editor).
+ * Falls back gracefully if description is plain text or empty.
+ */
+
+const RichBody = ({ html, className }) => {
+  if (!html) return null;
+  return (
+    <div
+      className={`${styles.richBody} ${className ?? ""}`}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+};
+
 const MediaCard = ({ item }) => {
   if (item.type === "youtube") {
     return (
@@ -36,9 +51,7 @@ const MediaCard = ({ item }) => {
             <FaYoutube /> YouTube
           </span>
           <p className={styles.cardTitle}>{item.title}</p>
-          {item.description && (
-            <p className={styles.cardDesc}>{item.description}</p>
-          )}
+          <RichBody html={item.description} className={styles.cardDesc} />
           <MediaDate date={item.created_at} />
         </div>
       </div>
@@ -55,9 +68,7 @@ const MediaCard = ({ item }) => {
           </span>
         </div>
         <p className={styles.announcementTitle}>{item.title}</p>
-        {item.description && (
-          <p className={styles.announcementBody}>{item.description}</p>
-        )}
+        <RichBody html={item.description} className={styles.announcementBody} />
         <MediaDate date={item.created_at} />
       </div>
     );
@@ -78,9 +89,7 @@ const MediaCard = ({ item }) => {
             <FaImage /> Poster
           </span>
           <p className={styles.cardTitle}>{item.title}</p>
-          {item.description && (
-            <p className={styles.cardDesc}>{item.description}</p>
-          )}
+          <RichBody html={item.description} className={styles.cardDesc} />
           <MediaDate date={item.created_at} />
         </div>
       </div>

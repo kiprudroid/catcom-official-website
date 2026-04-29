@@ -29,7 +29,12 @@ const MediaSection = () => {
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
 
-  // Poster state lives here and is passed down to MediaForm
+  // ── Per-action loading states ──────────────────────────────────────────────
+  const [submitting, setSubmitting] = useState(false); // create / update
+  const [deletingId, setDeletingId] = useState(null); // id being deleted
+  const [togglingId, setTogglingId] = useState(null); // id being toggled
+
+  // Poster state
   const [posterFile, setPosterFile] = useState(null);
   const [posterPreview, setPosterPreview] = useState(null);
 
@@ -48,7 +53,6 @@ const MediaSection = () => {
     load();
   }, [filter, search]);
 
-  // Clear poster when type changes away from poster
   useEffect(() => {
     if (form.type !== "poster") {
       setPosterFile(null);
@@ -78,6 +82,7 @@ const MediaSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
     try {
       let payload;
       if (form.type === "poster") {
@@ -110,6 +115,8 @@ const MediaSection = () => {
       clearPoster();
     } catch (err) {
       toast.error(err.message || "Failed to save");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -130,21 +137,27 @@ const MediaSection = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this item?")) return;
+    setDeletingId(id);
     try {
       await deleteMediaItem(id);
       setItems((prev) => prev.filter((i) => i.id !== id));
       toast.success("Deleted");
     } catch {
       toast.error("Failed to delete");
+    } finally {
+      setDeletingId(null);
     }
   };
 
   const handleToggle = async (id) => {
+    setTogglingId(id);
     try {
       const updated = await toggleMediaPublished(id);
       setItems((prev) => prev.map((i) => (i.id === updated.id ? updated : i)));
     } catch {
       toast.error("Failed to toggle");
+    } finally {
+      setTogglingId(null);
     }
   };
 
@@ -189,6 +202,7 @@ const MediaSection = () => {
           onClearPoster={clearPoster}
           onSubmit={handleSubmit}
           onCancel={handleCancel}
+          submitting={submitting} // ← new
         />
       )}
 
@@ -208,6 +222,8 @@ const MediaSection = () => {
           onEdit={handleEdit}
           onDelete={handleDelete}
           onToggle={handleToggle}
+          deletingId={deletingId}
+          togglingId={togglingId}
         />
       )}
     </div>
