@@ -150,12 +150,12 @@ export const markAttendance = async (data) => {
   return res.json();
 };
 
-export const markMemberFollowUp = async (id) => {
+export const markMemberFollowUp = async (id, meetingDate) => {
   const res = await fetch(`${API_BASE}/attendance/members/${id}/follow-up`, {
     method: "PUT",
-    headers: authHeaders(),
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ meetingDate }),
   });
-
   if (!res.ok) throw new Error("Failed to mark follow up");
   return res.json();
 };

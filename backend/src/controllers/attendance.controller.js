@@ -173,6 +173,8 @@ export const markFollowUp = async (req, res, next) => {
       await Service.markMemberFollowUp({
         id: req.params.id,
         group_id: req.user.group_id,
+        // meetingDate must be sent in the request body from the frontend
+        meetingDate: req.body.meetingDate,
       }),
     );
   } catch (err) {

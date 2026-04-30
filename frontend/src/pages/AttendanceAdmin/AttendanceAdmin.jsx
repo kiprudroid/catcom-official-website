@@ -77,6 +77,7 @@ const AttendanceAdmin = () => {
     ...m,
     attendance: attendance[m.id] ?? "absent",
     consecutiveAbsence: Number(m.consecutive_absences) || 0,
+    recentAbsences: Number(m.recent_absences) || 0,
     lastFollowUp: m.last_follow_up,
   }));
 
@@ -104,13 +105,17 @@ const AttendanceAdmin = () => {
     }
   };
 
+  // meetingDate is now passed so the backend stores the correct date
+  // as last_follow_up (not server NOW()), fixing at-risk logic for past meetings.
   const handleFollowUp = async (id) => {
     try {
-      await markMemberFollowUp(id);
+      await markMemberFollowUp(id, meetingDate);
 
       setMembers((prev) =>
         prev.map((m) =>
-          m.id === id ? { ...m, last_follow_up: new Date().toISOString() } : m,
+          m.id === id
+            ? { ...m, last_follow_up: meetingDate, consecutive_absences: 0 }
+            : m,
         ),
       );
 

@@ -5,9 +5,6 @@ import * as Model from "../models/attendance.model.js";
 const VALID_TYPES = ["committee", "scc", "group", "other"];
 const VALID_STATUSES = ["present", "absent", "apology"];
 
-// 07x + 7 digits  = 10 total  (Safaricom, Airtel, Telkom 07x)
-// 010x + 6 digits = 10 total  (Airtel 010x)
-// 011x + 6 digits = 10 total  (Airtel/Telkom 011x)
 const KENYAN_PHONE = /^(07[0-9]\d{7}|01[01][0-9]\d{6})$/;
 
 const validatePhone = (phone) => {
@@ -183,8 +180,9 @@ export const markAttendance = async ({
   return rows[0];
 };
 
-export const markMemberFollowUp = async ({ id, group_id }) => {
-  const { rows } = await Model.markFollowUpQuery(id, group_id);
+export const markMemberFollowUp = async ({ id, group_id, meetingDate }) => {
+  if (!meetingDate) throw new Error("meetingDate is required");
+  const { rows } = await Model.markFollowUpQuery(id, group_id, meetingDate);
   if (!rows[0]) throw new Error("Member not found");
   return rows[0];
 };
