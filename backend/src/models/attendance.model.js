@@ -68,25 +68,47 @@ export const deleteAdminQuery = (group_id) =>
 export const getMembersByGroupQuery = (group_id) =>
   pool.query(
     `SELECT
-    m.*,
-    m.last_follow_up,
-    (
-      SELECT COUNT(*) FROM attendance_records ar
-      WHERE ar.member_id = m.id
-        AND ar.status = 'absent'
-        AND ar.date >= CURRENT_DATE - INTERVAL '60 days'
-    ) AS recent_absences,
-    (
-      WITH recent AS (
-        SELECT status FROM attendance_records
-        WHERE member_id = m.id
-        ORDER BY date DESC LIMIT 5
-      )
-      SELECT COUNT(*) FROM recent WHERE status = 'absent'
-    ) AS consecutive_absences
-  FROM attendance_members m
-  WHERE m.group_id = $1 AND m.status = 'active'
-  ORDER BY m.name ASC`,
+      m.*,
+      m.last_follow_up,
+
+      -- Total absences in the last 60 days (regardless of streak)
+      (
+        SELECT COUNT(*)
+        FROM attendance_records ar
+        WHERE ar.member_id = m.id
+          AND ar.status = 'absent'
+          AND ar.date >= CURRENT_DATE - INTERVAL '60 days'
+      ) AS recent_absences,
+
+      -- True consecutive absences: count absences from latest record backwards
+      -- stopping at the first non-absence. Resets after last_follow_up date.
+      (
+        WITH ordered AS (
+          SELECT
+            status,
+            date,
+            ROW_NUMBER() OVER (ORDER BY date DESC) AS rn
+          FROM attendance_records
+          WHERE member_id = m.id
+            -- Only count records after the last follow-up (streak resets on follow-up)
+            AND (m.last_follow_up IS NULL OR date > m.last_follow_up::date)
+          ORDER BY date DESC
+        ),
+        -- Find how many leading rows are absent before first non-absent
+        streak AS (
+          SELECT status
+          FROM ordered
+          WHERE rn <= COALESCE(
+            (SELECT MIN(rn) - 1 FROM ordered WHERE status != 'absent'),
+            (SELECT COUNT(*) FROM ordered)  -- all are absent
+          )
+        )
+        SELECT COUNT(*) FROM streak WHERE status = 'absent'
+      ) AS consecutive_absences
+
+    FROM attendance_members m
+    WHERE m.group_id = $1 AND m.status = 'active'
+    ORDER BY m.name ASC`,
     [group_id],
   );
 
@@ -152,11 +174,11 @@ export const upsertAttendanceQuery = ({ member_id, date, status = "absent" }) =>
     [member_id, date, status],
   );
 
-export const markFollowUpQuery = (id, group_id) =>
+export const markFollowUpQuery = (id, group_id, meetingDate) =>
   pool.query(
     `UPDATE attendance_members
-       SET last_follow_up = NOW(), updated_at = NOW()
+       SET last_follow_up = $3::date, updated_at = NOW()
        WHERE id = $1 AND group_id = $2
        RETURNING *`,
-    [id, group_id],
+    [id, group_id, meetingDate],
   );
