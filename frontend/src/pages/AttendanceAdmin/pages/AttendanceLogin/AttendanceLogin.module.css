@@ -1,19 +1,19 @@
 .page {
   min-height: 100vh;
-  background: #f0f4f8;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f0f4f8;
   padding: 20px;
 }
 
 .card {
   background: white;
-  border-radius: 18px;
-  padding: 48px 40px;
+  border-radius: 20px;
+  padding: 36px 32px 28px;
   width: 100%;
-  max-width: 420px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,43 +21,143 @@
 }
 
 .logo {
-  font-size: 52px;
+  font-size: 38px;
   color: #2dabb1;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 2px 8px rgba(45, 171, 177, 0.3));
+  margin-bottom: 4px;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   color: #1c3a3a;
   margin: 0;
-}
-
-.sub {
-  font-size: 13px;
-  color: #9ca3af;
-  margin: 0 0 20px;
   text-align: center;
 }
 
-/* ── Group list ───────────────────────────────────────────────── */
-.groupList {
+.sub {
+  font-size: 13.5px;
+  color: #6b7280;
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.loadingText {
+  color: #9ca3af;
+  font-size: 14px;
+  padding: 16px 0;
+}
+
+.noGroups {
+  color: #9ca3af;
+  font-size: 13px;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.groupSection {
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.searchWrap {
+  display: flex;
+  align-items: center;
   gap: 8px;
+  background: #f8fafc;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px 14px;
+  transition: border-color 0.15s;
+}
+
+.searchWrap:focus-within {
+  border-color: #2dabb1;
+}
+
+.searchIcon {
+  font-size: 18px;
+  color: #9ca3af;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #1c3a3a;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+/* Type filter chips */
+.filterChips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.chip:hover {
+  border-color: #2dabb1;
+  color: #2dabb1;
+}
+
+.chipActive {
+  background: #1c3a3a;
+  border-color: #1c3a3a;
+  color: white;
+  font-weight: 700;
+}
+
+/* Group list */
+.groupList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.groupList::-webkit-scrollbar {
+  width: 4px;
+}
+.groupList::-webkit-scrollbar-track {
+  background: transparent;
+}
+.groupList::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
 }
 
 .groupBtn {
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #f9fafb;
+  gap: 10px;
+  width: 100%;
+  background: white;
   border: 1.5px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 13px 16px;
+  border-radius: 12px;
+  padding: 14px 16px;
   cursor: pointer;
   transition: all 0.15s;
   text-align: left;
@@ -65,132 +165,98 @@
 
 .groupBtn:hover {
   border-color: #2dabb1;
-  background: #f0fdfe;
+  background: #f0fdfd;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(45, 171, 177, 0.12);
 }
 
-.groupBtnLeft {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.groupIcon {
+  color: #2dabb1;
+  font-size: 16px;
+  flex-shrink: 0;
 }
 
 .groupBtnName {
-  font-size: 14px;
+  flex: 1;
+  font-size: 15px;
   font-weight: 700;
   color: #1c3a3a;
 }
 
 .groupBtnType {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 20px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
 }
 
 .chevron {
-  font-size: 12px;
   color: #9ca3af;
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
-/* ── Password step ────────────────────────────────────────────── */
+/* ── Password step ────────────────────────────── */
+
 .form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.backBtn {
-  background: none;
-  border: none;
-  color: #2dabb1;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0;
-  text-align: left;
-  width: fit-content;
-  text-decoration: none;
-}
-
-.backBtn:hover {
-  text-decoration: underline;
-}
-
-.selectedGroup {
-  background: #f0fdfe;
-  border: 1.5px solid #a5f3fc;
-  border-radius: 10px;
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.selectedLabel {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #0891b2;
-}
-
-.selectedName {
-  font-size: 15px;
-  font-weight: 800;
-  color: #1c3a3a;
+  gap: 14px;
+  margin-top: 6px;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .label {
   font-size: 12px;
   font-weight: 700;
+  color: #374151;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #6b7280;
+  letter-spacing: 0.06em;
 }
 
 .pwWrap {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .input {
   width: 100%;
-  padding: 10px 42px 10px 14px;
+  padding: 11px 44px 11px 14px;
   border: 1.5px solid #e5e7eb;
-  border-radius: 9px;
+  border-radius: 10px;
   font-size: 14px;
   color: #1c3a3a;
   outline: none;
-  transition: border-color 0.15s;
   box-sizing: border-box;
+  transition: border-color 0.15s;
+  background: #f8fafc;
 }
 
 .input:focus {
   border-color: #2dabb1;
+  background: white;
 }
 
 .eyeBtn {
   position: absolute;
-  right: 12px;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
-  color: #9ca3af;
   cursor: pointer;
+  color: #9ca3af;
   font-size: 15px;
+  padding: 0;
   display: flex;
   align-items: center;
-  padding: 0;
-  transition: color 0.15s;
 }
 
 .eyeBtn:hover {
@@ -198,6 +264,11 @@
 }
 
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
   background: #1c3a3a;
   color: white;
   border: none;
@@ -206,12 +277,7 @@
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   transition: background 0.15s;
-  width: 100%;
 }
 
 .btn:hover:not(:disabled) {
@@ -224,13 +290,12 @@
 }
 
 .spinner {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-top-color: white;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
-  flex-shrink: 0;
 }
 
 @keyframes spin {
@@ -239,23 +304,32 @@
   }
 }
 
-.loadingText,
-.noGroups {
+.backBtn {
+  background: none;
+  border: none;
+  color: #6b7280;
   font-size: 13px;
-  color: #9ca3af;
+  cursor: pointer;
   text-align: center;
-  padding: 12px 0;
+  padding: 0;
+  text-decoration: none;
+  transition: color 0.15s;
+  display: block;
+  width: 100%;
 }
 
-/* ── Admin login back link ────────────────────────────────────── */
+.backBtn:hover {
+  color: #1c3a3a;
+}
+
+/* ── Admin link ───────────────────────────────── */
+
 .adminLink {
-  margin-top: 16px;
-  font-size: 12px;
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
   color: #9ca3af;
   text-decoration: none;
-  border-top: 1px solid #f3f4f6;
-  padding-top: 14px;
-  width: 100%;
   text-align: center;
   transition: color 0.15s;
 }
@@ -264,8 +338,31 @@
   color: #2dabb1;
 }
 
+/* ── Mobile ───────────────────────────────────── */
+
 @media (max-width: 480px) {
   .card {
-    padding: 36px 24px;
+    padding: 28px 18px 22px;
+  }
+
+  .title {
+    font-size: 19px;
+  }
+
+  .groupBtn {
+    padding: 12px 13px;
+  }
+
+  .groupBtnName {
+    font-size: 14px;
+  }
+
+  .filterChips {
+    gap: 6px;
+  }
+
+  .chip {
+    padding: 4px 12px;
+    font-size: 12px;
   }
 }

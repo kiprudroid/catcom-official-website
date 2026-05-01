@@ -182,3 +182,29 @@ export const markFollowUpQuery = (id, group_id, meetingDate) =>
        RETURNING *`,
     [id, group_id, meetingDate],
   );
+
+export const getAttendanceByRangeQuery = (group_id, startDate, endDate) =>
+  pool.query(
+    `SELECT
+      m.id,
+      m.name,
+      m.role,
+      m.phone,
+      COUNT(ar.id)                                              AS total_meetings,
+      COUNT(ar.id) FILTER (WHERE ar.status = 'present')        AS present_count,
+      COUNT(ar.id) FILTER (WHERE ar.status = 'absent')         AS absent_count,
+      COUNT(ar.id) FILTER (WHERE ar.status = 'apology')        AS apology_count,
+      ROUND(
+        COUNT(ar.id) FILTER (WHERE ar.status = 'present')::numeric
+        / NULLIF(COUNT(ar.id), 0) * 100
+      , 1)                                                      AS attendance_rate
+    FROM attendance_members m
+    LEFT JOIN attendance_records ar
+      ON ar.member_id = m.id
+      AND ar.date BETWEEN $2 AND $3
+    WHERE m.group_id = $1
+      AND m.status   = 'active'
+    GROUP BY m.id, m.name, m.role, m.phone
+    ORDER BY m.name ASC`,
+    [group_id, startDate, endDate],
+  );

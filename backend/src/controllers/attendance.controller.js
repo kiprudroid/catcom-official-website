@@ -181,3 +181,18 @@ export const markFollowUp = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getAttendanceRange = async (req, res, next) => {
+  try {
+    const { start, end } = req.query;
+    res.json(
+      await Service.getAttendanceByRange({
+        group_id: req.user.group_id,
+        startDate: start,
+        endDate: end,
+      }),
+    );
+  } catch (err) {
+    next(err);
+  }
+};
