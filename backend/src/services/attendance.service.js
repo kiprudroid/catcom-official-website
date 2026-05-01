@@ -186,3 +186,19 @@ export const markMemberFollowUp = async ({ id, group_id, meetingDate }) => {
   if (!rows[0]) throw new Error("Member not found");
   return rows[0];
 };
+
+export const getAttendanceByRange = async ({
+  group_id,
+  startDate,
+  endDate,
+}) => {
+  if (!startDate || !endDate)
+    throw new Error("startDate and endDate are required");
+  if (startDate > endDate) throw new Error("startDate must be before endDate");
+  const { rows } = await Model.getAttendanceByRangeQuery(
+    group_id,
+    startDate,
+    endDate,
+  );
+  return rows;
+};

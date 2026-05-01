@@ -67,11 +67,11 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
             <tr>
               <th className={styles.thIdx}>#</th>
               <th className={styles.thName}>Name</th>
-              <th className={styles.thRole}>Role</th>
               <th className={styles.thPhone}>Phone</th>
+              <th className={styles.thCenter}>Followed Up</th>
+              <th className={styles.thRole}>Role</th>
               <th className={styles.thCenter}>Consecutive Absences</th>
               <th className={styles.thCenter}>Absences (Last 60 Days)</th>
-              <th className={styles.thCenter}>Followed Up</th>
             </tr>
           </thead>
 
@@ -92,11 +92,7 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
               filtered.map((m, i) => (
                 <tr key={m.id} className={styles.row}>
                   <td className={styles.tdIdx}>{i + 1}</td>
-
                   <td className={styles.tdName}>{m.name}</td>
-
-                  <td className={styles.tdRole}>{m.role}</td>
-
                   <td className={styles.tdPhone}>
                     {m.phone ? (
                       <button
@@ -111,19 +107,6 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
                       <span className={styles.phoneEmpty}>—</span>
                     )}
                   </td>
-
-                  <td className={styles.tdCenter}>
-                    <span className={styles.absBadge}>
-                      {m.consecutiveAbsence} missed
-                    </span>
-                  </td>
-
-                  <td className={styles.tdCenter}>
-                    <span className={styles.recentBadge}>
-                      {m.recentAbsences ?? 0}
-                    </span>
-                  </td>
-
                   <td className={styles.tdCenter}>
                     <button
                       className={styles.dismissBtn}
@@ -138,6 +121,17 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
                         </>
                       )}
                     </button>
+                  </td>
+                  <td className={styles.tdRole}>{m.role}</td>
+                  <td className={styles.tdCenter}>
+                    <span className={styles.absBadge}>
+                      {m.consecutiveAbsence} missed
+                    </span>
+                  </td>
+                  <td className={styles.tdCenter}>
+                    <span className={styles.recentBadge}>
+                      {m.recentAbsences ?? 0}
+                    </span>
                   </td>
                 </tr>
               ))

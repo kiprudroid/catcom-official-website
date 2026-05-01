@@ -1,0 +1,213 @@
+.row td {
+  padding: 11px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 13.5px;
+  color: #374151;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.row:last-child td {
+  border-bottom: none;
+}
+
+.row:hover td {
+  background: #f9fafb;
+}
+
+.riskRow td {
+  background: #fffbeb;
+}
+
+.riskRow:hover td {
+  background: #fef9c3;
+}
+
+
+.idx {
+  color: #9ca3af;
+  font-size: 12px;
+  text-align: center;
+  width: 36px;
+  min-width: 36px;
+}
+
+.nameCell {
+  min-width: 130px;
+  max-width: 180px;
+}
+
+.name {
+  font-weight: 600;
+  color: #1c3a3a;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.riskBadge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #d97706;
+  background: #fef3c7;
+  padding: 2px 7px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.markCell {
+  min-width: 210px;
+}
+
+.toggle {
+  display: inline-flex;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.toggleBtn {
+  border: none;
+  background: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #6b7280;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  border-right: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.toggleBtn:last-child {
+  border-right: none;
+}
+
+.toggleBtn:hover {
+  background: #f3f4f6;
+}
+
+.active_present {
+  background: #dcfce7;
+  color: #16a34a;
+  font-weight: 700;
+}
+.active_absent {
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+}
+.active_apology {
+  background: #fef3c7;
+  color: #d97706;
+  font-weight: 700;
+}
+
+.lockedCell {
+  display: block;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.phoneCell {
+  min-width: 120px;
+}
+
+.phoneBtn {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1c3a3a;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: monospace;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.phoneBtn:hover {
+  border-color: #2dabb1;
+  color: #2dabb1;
+  background: #e6f7f8;
+}
+
+.phoneCopied {
+  border-color: #16a34a !important;
+  color: #16a34a !important;
+  background: #dcfce7 !important;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+.phoneEmpty {
+  color: #d1d5db;
+  font-size: 13px;
+}
+
+.roleCell {
+  min-width: 100px;
+  color: #6b7280;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.statusPresent {
+  color: #16a34a;
+  background: #dcfce7;
+}
+.statusAbsent {
+  color: #dc2626;
+  background: #fee2e2;
+}
+.statusApology {
+  color: #d97706;
+  background: #fef3c7;
+}
+
+.absCount {
+  text-align: center;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.absHigh {
+  color: #ef4444;
+}
+
+@media (max-width: 600px) {
+  .toggleBtn {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .markCell {
+    min-width: 180px;
+  }
+}
