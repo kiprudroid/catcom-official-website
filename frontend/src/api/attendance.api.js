@@ -159,3 +159,12 @@ export const markMemberFollowUp = async (id, meetingDate) => {
   if (!res.ok) throw new Error("Failed to mark follow up");
   return res.json();
 };
+
+export const fetchAttendanceByRange = async (startDate, endDate) => {
+  const res = await fetch(
+    `${API_BASE}/attendance/records/range?start=${startDate}&end=${endDate}`,
+    { headers: authHeaders() },
+  );
+  if (!res.ok) throw new Error("Failed to fetch range report");
+  return res.json();
+};
