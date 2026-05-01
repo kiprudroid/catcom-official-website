@@ -2,13 +2,20 @@ import React, { useEffect, useMemo, useState } from "react";
 import styles from "./SccLeaders.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
 import {
+  FaEdit,
+  FaSearch,
+  FaTrash,
+  FaUserTie,
+  FaRegBuilding,
+  FaBriefcase,
+} from "react-icons/fa";
+import {
   fetchSccLeaders,
   createSccLeader,
   updateSccLeader,
   deleteSccLeader as deleteSccLeaderApi,
 } from "@/api/sccLeaders.api";
 import { BACKEND_URL } from "@/data/urlClient";
-
 
 export default function SccLeaders() {
   const SCC_OPTIONS = useMemo(
@@ -50,6 +57,7 @@ export default function SccLeaders() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [currentScc, setCurrentScc] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   //Fetch data
   useEffect(() => {
@@ -211,6 +219,7 @@ export default function SccLeaders() {
           onChange={handleChange}
           placeholder="Full name"
           required
+          className={styles.formInput}
         />
 
         <input
@@ -219,6 +228,7 @@ export default function SccLeaders() {
           onChange={handleChange}
           placeholder="Position"
           required
+          className={styles.formInput}
         />
 
         <select
@@ -226,6 +236,7 @@ export default function SccLeaders() {
           value={form.scc_name}
           onChange={handleChange}
           required
+          className={styles.formSelect}
         >
           <option value="" disabled>
             Select SCC
@@ -242,28 +253,39 @@ export default function SccLeaders() {
           name="image"
           accept="image/*"
           onChange={handleChange}
+          className={styles.fileInput}
         />
 
         <div className={styles.actions}>
-          <button type="submit" disabled={submitting} className={styles.actionButton}>
+          <button
+            type="submit"
+            disabled={submitting}
+            className={styles.actionButton}
+          >
             {editingId !== null ? "Update SCC Leader" : "Add SCC Leader"}
           </button>
 
           {editingId !== null && (
-            <button type="button" onClick={cancelEdit} disabled={submitting}>
+            <button
+              type="button"
+              onClick={cancelEdit}
+              disabled={submitting}
+              className={styles.cancelButton}
+            >
               Cancel
             </button>
           )}
         </div>
       </form>
 
-      {/* Filter */}
-      <div className={styles.actions}>
-        <label>
-          Filter by SCC:{" "}
+      {/* Filter + Search */}
+      <div className={styles.filterRow}>
+        <label className={styles.filterGroup}>
+          <span>Filter by SCC:</span>
           <select
             value={currentScc}
             onChange={(e) => setCurrentScc(e.target.value)}
+            className={styles.filterSelect}
           >
             {SCC_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -272,52 +294,94 @@ export default function SccLeaders() {
             ))}
           </select>
         </label>
+
+        <div className={styles.searchField}>
+          <FaSearch className={styles.searchIcon} />
+          <input
+            type="search"
+            placeholder="Search by name"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+        </div>
       </div>
 
       {/* List */}
-      <ul className={styles.list}>
-        {sccLeaders
-          .filter((l) => {
-            if (currentScc === "all") return true;
-            return (
-              normalizeSccName(l.scc_name) === normalizeSccName(currentScc)
-            );
-          })
-          .map((l) => {
-            const id = l.exec_id;
+      <div className={styles.listWrapper}>
+        <ul className={`${styles.list} ${styles.listScrollable}`}>
+          {sccLeaders
+            .filter((l) => {
+              const matchesScc =
+                currentScc === "all" ||
+                normalizeSccName(l.scc_name) === normalizeSccName(currentScc);
 
-            return (
-              <li key={id} className={styles.listItem}>
-                <div className={styles.listRow}>
-                  <div className={styles.listLeft}>
-                    {l.exec_image && (
-                      <img
-                        src={`${BACKEND_URL}${l.exec_image}`}
-                        alt={l.exec_full_name || "leader"}
-                        className={styles.avatar}
-                      />
-                    )}
+              const matchesSearch = normalizeSccName(l.exec_full_name).includes(
+                normalizeSccName(searchTerm),
+              );
 
-                    <div>
-                      <strong>{l.exec_full_name}</strong> —{" "}
-                      <span className={styles.role}>{l.position}</span>
-                      <p className={styles.desc}>{l.scc_name}</p>
+              return matchesScc && matchesSearch;
+            })
+            .map((l) => {
+              const id = l.exec_id;
+
+              return (
+                <li key={id} className={styles.listItem}>
+                  <div className={styles.listRow}>
+                    <div className={styles.listLeft}>
+                      {l.exec_image ? (
+                        <img
+                          src={`${BACKEND_URL}${l.exec_image}`}
+                          alt={l.exec_full_name || "leader"}
+                          className={styles.avatar}
+                        />
+                      ) : (
+                        <div className={styles.avatarFallback}>
+                          <FaUserTie />
+                        </div>
+                      )}
+
+                      <div className={styles.cardContent}>
+                        <div className={styles.cardName}>
+                          {l.exec_full_name}
+                        </div>
+                        <div className={styles.badges}>
+                          <span className={styles.badge}>
+                            <FaBriefcase />
+                            {l.position}
+                          </span>
+                          <span className={styles.badgeAlt}>
+                            <FaRegBuilding />
+                            {l.scc_name}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={styles.actions}>
+                      <button
+                        type="button"
+                        className={styles.actionButton}
+                        onClick={() => startEdit(l)}
+                      >
+                        <FaEdit />
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.deleteBtn}
+                        onClick={() => removeSccLeader(id)}
+                      >
+                        <FaTrash />
+                        Delete
+                      </button>
                     </div>
                   </div>
-
-                  <div className={styles.actions}>
-                    <button type="button" className={styles.actionButton} onClick={() => startEdit(l)}>
-                      Edit
-                    </button>
-                    <button type="button" className={styles.deleteBtn} onClick={() => removeSccLeader(id)}>
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-      </ul>
+                </li>
+              );
+            })}
+        </ul>
+      </div>
     </section>
   );
 }
