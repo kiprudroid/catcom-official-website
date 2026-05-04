@@ -18,7 +18,6 @@
   overflow: hidden;
 }
 
-/* Faded Marian/rosary background image */
 .litanySectionHeader::before {
   content: "";
   position: absolute;
@@ -34,7 +33,6 @@
   filter: brightness(0.42) saturate(0.8);
 }
 
-/* Teal gradient overlay */
 .litanySectionHeader::after {
   content: "";
   position: absolute;
@@ -86,6 +84,9 @@
   background: linear-gradient(180deg, #f0fafa 0%, #ffffff 100%);
   padding: 1.5rem;
   border-top: 3px solid #2dabb1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .litanyGrid {
@@ -110,7 +111,89 @@
   background: rgba(45, 171, 177, 0.08);
 }
 
-/* Responsive */
+.mercyLine {
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+.lambBlock {
+  border-left: 3px solid #2dabb1;
+  border-radius: 0 8px 8px 0;
+  background: rgba(45, 171, 177, 0.05);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.lambLine {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.closingBlock {
+  border-left: 3px solid #6366f1;
+  border-radius: 0 8px 8px 0;
+  background: rgba(99, 102, 241, 0.04);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.closingLine {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.65;
+}
+
+.hailHolyQueenBlock {
+  background: rgba(139, 92, 246, 0.05);
+  border-left: 3px solid #7c3aed;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+}
+
+.hailHolyQueenTitle {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #5b21b6;
+  margin-bottom: 0.5rem;
+}
+
+.hailHolyQueenText {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+.memorareBlock {
+  background: rgba(217, 119, 6, 0.05);
+  border-left: 3px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+}
+
+.memorareTitle {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #92400e;
+  margin-bottom: 0.5rem;
+}
+
+.memorareText {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.65;
+}
+
 @media screen and (max-width: 480px) {
   .litanyGrid {
     column-count: 1;

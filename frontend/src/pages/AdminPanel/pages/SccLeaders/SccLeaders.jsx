@@ -8,6 +8,7 @@ import {
   FaUserTie,
   FaRegBuilding,
   FaBriefcase,
+  FaSpinner,
 } from "react-icons/fa";
 import {
   fetchSccLeaders,
@@ -58,6 +59,7 @@ export default function SccLeaders() {
   const [error, setError] = useState("");
   const [currentScc, setCurrentScc] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [editSpinnerId, setEditSpinnerId] = useState(null);
 
   //Fetch data
   useEffect(() => {
@@ -117,6 +119,16 @@ export default function SccLeaders() {
   const cancelEdit = () => {
     resetForm();
     setError("");
+  };
+
+  const handleEditClick = (leader) => {
+    if (!leader?.exec_id) return;
+    setEditSpinnerId(leader.exec_id);
+    startEdit(leader);
+
+    window.setTimeout(() => {
+      setEditSpinnerId((prev) => (prev === leader.exec_id ? null : prev));
+    }, 700);
   };
 
   // Update state after create/update
@@ -210,8 +222,6 @@ export default function SccLeaders() {
       <SectionHeading>SCC Leaders</SectionHeading>
 
       {error && <p className={styles.error}>{error}</p>}
-      {loading && <p>Loading...</p>}
-
       <form onSubmit={submitLeader} className={styles.form}>
         <input
           name="exec_full_name"
@@ -262,7 +272,16 @@ export default function SccLeaders() {
             disabled={submitting}
             className={styles.actionButton}
           >
-            {editingId !== null ? "Update SCC Leader" : "Add SCC Leader"}
+            {submitting ? (
+              <>
+                <FaSpinner
+                  className={`${styles.spinner} ${styles.spinnerSm}`}
+                />
+                {editingId !== null ? "Updating..." : "Adding..."}
+              </>
+            ) : (
+              <>{editingId !== null ? "Update SCC Leader" : "Add SCC Leader"}</>
+            )}
           </button>
 
           {editingId !== null && (
@@ -309,78 +328,90 @@ export default function SccLeaders() {
 
       {/* List */}
       <div className={styles.listWrapper}>
-        <ul className={`${styles.list} ${styles.listScrollable}`}>
-          {sccLeaders
-            .filter((l) => {
-              const matchesScc =
-                currentScc === "all" ||
-                normalizeSccName(l.scc_name) === normalizeSccName(currentScc);
+        {loading ? (
+          <div className={styles.spinnerWrap}>
+            <FaSpinner className={`${styles.spinner} ${styles.spinnerLg}`} />
+          </div>
+        ) : (
+          <ul className={`${styles.list} ${styles.listScrollable}`}>
+            {sccLeaders
+              .filter((l) => {
+                const matchesScc =
+                  currentScc === "all" ||
+                  normalizeSccName(l.scc_name) === normalizeSccName(currentScc);
 
-              const matchesSearch = normalizeSccName(l.exec_full_name).includes(
-                normalizeSccName(searchTerm),
-              );
+                const matchesSearch = normalizeSccName(
+                  l.exec_full_name,
+                ).includes(normalizeSccName(searchTerm));
 
-              return matchesScc && matchesSearch;
-            })
-            .map((l) => {
-              const id = l.exec_id;
+                return matchesScc && matchesSearch;
+              })
+              .map((l) => {
+                const id = l.exec_id;
 
-              return (
-                <li key={id} className={styles.listItem}>
-                  <div className={styles.listRow}>
-                    <div className={styles.listLeft}>
-                      {l.exec_image ? (
-                        <img
-                          src={`${BACKEND_URL}${l.exec_image}`}
-                          alt={l.exec_full_name || "leader"}
-                          className={styles.avatar}
-                        />
-                      ) : (
-                        <div className={styles.avatarFallback}>
-                          <FaUserTie />
-                        </div>
-                      )}
+                return (
+                  <li key={id} className={styles.listItem}>
+                    <div className={styles.listRow}>
+                      <div className={styles.listLeft}>
+                        {l.exec_image ? (
+                          <img
+                            src={`${BACKEND_URL}${l.exec_image}`}
+                            alt={l.exec_full_name || "leader"}
+                            className={styles.avatar}
+                          />
+                        ) : (
+                          <div className={styles.avatarFallback}>
+                            <FaUserTie />
+                          </div>
+                        )}
 
-                      <div className={styles.cardContent}>
-                        <div className={styles.cardName}>
-                          {l.exec_full_name}
-                        </div>
-                        <div className={styles.badges}>
-                          <span className={styles.badge}>
-                            <FaBriefcase />
-                            {l.position}
-                          </span>
-                          <span className={styles.badgeAlt}>
-                            <FaRegBuilding />
-                            {l.scc_name}
-                          </span>
+                        <div className={styles.cardContent}>
+                          <div className={styles.cardName}>
+                            {l.exec_full_name}
+                          </div>
+                          <div className={styles.badges}>
+                            <span className={styles.badge}>
+                              <FaBriefcase />
+                              {l.position}
+                            </span>
+                            <span className={styles.badgeAlt}>
+                              <FaRegBuilding />
+                              {l.scc_name}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className={styles.actions}>
-                      <button
-                        type="button"
-                        className={styles.actionButton}
-                        onClick={() => startEdit(l)}
-                      >
-                        <FaEdit />
-                        Edit
-                      </button>
-                      <button
-                        type="button"
-                        className={styles.deleteBtn}
-                        onClick={() => removeSccLeader(id)}
-                      >
-                        <FaTrash />
-                        Delete
-                      </button>
+                      <div className={styles.actions}>
+                        <button
+                          type="button"
+                          className={styles.actionButton}
+                          onClick={() => handleEditClick(l)}
+                        >
+                          {editSpinnerId === id ? (
+                            <FaSpinner
+                              className={`${styles.spinner} ${styles.spinnerSm}`}
+                            />
+                          ) : (
+                            <FaEdit />
+                          )}
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          className={styles.deleteBtn}
+                          onClick={() => removeSccLeader(id)}
+                        >
+                          <FaTrash />
+                          Delete
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              );
-            })}
-        </ul>
+                  </li>
+                );
+              })}
+          </ul>
+        )}
       </div>
     </section>
   );

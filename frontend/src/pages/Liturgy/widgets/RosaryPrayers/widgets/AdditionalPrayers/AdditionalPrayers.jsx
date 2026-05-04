@@ -7,6 +7,32 @@ import { additionalPrayers } from "@/pages/Liturgy/widgets/RosaryPrayers/data/ro
 const AdditionalPrayers = () => {
   const [show, setShow] = useState(false);
 
+  const renderItem = (item, i) => {
+    if (item.type === "saint" || item.type === "invocation") {
+      return (
+        <Paragraph key={i} className={styles.prayerLine}>
+          {item.text}
+        </Paragraph>
+      );
+    }
+
+    if (item.type === "leader") {
+      return (
+        <div key={i} className={styles.leaderBlock}>
+          <span className={styles.leaderLabel}>LEADER</span>
+          <Paragraph className={styles.leaderText}>{item.text}</Paragraph>
+        </div>
+      );
+    }
+
+    return (
+      <div key={i} className={styles.prayerBlock}>
+        {item.title && <p className={styles.prayerTitle}>{item.title}</p>}
+        <Paragraph className={styles.prayerText}>{item.text}</Paragraph>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.section}>
       <div
@@ -29,11 +55,14 @@ const AdditionalPrayers = () => {
       {show && (
         <div className={styles.body}>
           <div className={styles.prayerGrid}>
-            {additionalPrayers.map((line, i) => (
-              <Paragraph key={i} className={styles.prayerLine}>
-                {line}
-              </Paragraph>
-            ))}
+            {additionalPrayers
+              .filter((p) => p.type === "saint" || p.type === "invocation")
+              .map((item, i) => renderItem(item, i))}
+          </div>
+          <div className={styles.fullPrayers}>
+            {additionalPrayers
+              .filter((p) => p.type !== "saint" && p.type !== "invocation")
+              .map((item, i) => renderItem(item, `full-${i}`))}
           </div>
         </div>
       )}
