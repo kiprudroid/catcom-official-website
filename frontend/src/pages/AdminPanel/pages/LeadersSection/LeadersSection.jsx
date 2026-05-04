@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./LeadersSection.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
+import { FaSpinner } from "react-icons/fa";
 import {
   fetchLeaders,
   createLeader,
@@ -30,6 +31,7 @@ export default function LeadersSection() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [currentScc, setCurrentScc] = useState(null);
+  const [editSpinnerId, setEditSpinnerId] = useState(null);
 
   useEffect(() => {
     const loadLeaders = async () => {
@@ -88,6 +90,18 @@ export default function LeadersSection() {
   const cancelEdit = () => {
     resetForm();
     setError("");
+  };
+
+  const handleEditClick = (leader) => {
+    const id = leader?.user_id ?? leader?.id ?? null;
+    if (id == null) return;
+
+    setEditSpinnerId(id);
+    startEdit(leader);
+
+    window.setTimeout(() => {
+      setEditSpinnerId((prev) => (prev === id ? null : prev));
+    }, 700);
   };
 
   const upsertLeaderInState = (savedLeader, fallbackId) => {
@@ -182,8 +196,6 @@ export default function LeadersSection() {
       <SectionHeading>Leaders</SectionHeading>
 
       {error ? <p className={styles.error}>{error}</p> : null}
-      {loading ? <p>Loading...</p> : null}
-
       <form onSubmit={submitLeader} className={styles.form}>
         <input
           name="full_name"
@@ -219,8 +231,21 @@ export default function LeadersSection() {
         />
 
         <div className={styles.actions}>
-          <button type="submit" className={styles.actionButton}>
-            {editingId != null ? "Update Leader" : "Add Leader"}
+          <button
+            type="submit"
+            className={styles.actionButton}
+            disabled={submitting}
+          >
+            {submitting ? (
+              <>
+                <FaSpinner
+                  className={`${styles.spinner} ${styles.spinnerSm}`}
+                />
+                {editingId != null ? "Updating..." : "Adding..."}
+              </>
+            ) : (
+              <>{editingId != null ? "Update Leader" : "Add Leader"}</>
+            )}
           </button>
 
           {editingId != null ? (
@@ -231,41 +256,60 @@ export default function LeadersSection() {
         </div>
       </form>
 
-      <ul className={styles.list}>
-        {leaders.map((l) => {
-          const id = l?.user_id ?? l?.id;
-          return (
-            <li key={id} className={styles.listItem}>
-              <div className={styles.listRow}>
-                <div className={styles.listLeft}>
-                  {l?.image_url ? (
-                    <img
-                      src={`${BACKEND_URL}${l.image_url}`}
-                      alt={l?.full_name || "leader"}
-                      className={styles.avatar}
-                    />
-                  ) : null}
+      {loading ? (
+        <div className={styles.spinnerWrap}>
+          <FaSpinner className={`${styles.spinner} ${styles.spinnerLg}`} />
+        </div>
+      ) : (
+        <ul className={styles.list}>
+          {leaders.map((l) => {
+            const id = l?.user_id ?? l?.id;
+            return (
+              <li key={id} className={styles.listItem}>
+                <div className={styles.listRow}>
+                  <div className={styles.listLeft}>
+                    {l?.image_url ? (
+                      <img
+                        src={`${BACKEND_URL}${l.image_url}`}
+                        alt={l?.full_name || "leader"}
+                        className={styles.avatar}
+                      />
+                    ) : null}
 
-                  <div>
-                    <strong>{l?.full_name}</strong> —{" "}
-                    <span className={styles.role}>{l?.post_title}</span>
-                    <p className={styles.desc}>{l?.exec_description}</p>
+                    <div>
+                      <strong>{l?.full_name}</strong> —{" "}
+                      <span className={styles.role}>{l?.post_title}</span>
+                      <p className={styles.desc}>{l?.exec_description}</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.actions}>
+                    <button
+                      type="button"
+                      onClick={() => handleEditClick(l)}
+                      className={styles.actionButton}
+                    >
+                      {editSpinnerId === id ? (
+                        <FaSpinner
+                          className={`${styles.spinner} ${styles.spinnerSm}`}
+                        />
+                      ) : null}
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => removeLeader(id)}
+                      className={styles.deleteBtn}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
-
-                <div className={styles.actions}>
-                  <button type="button" onClick={() => startEdit(l)} className={styles.actionButton}>
-                    Edit
-                  </button>
-                  <button type="button" onClick={() => removeLeader(id)} className={styles.deleteBtn}>
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </section>
   );
 }
