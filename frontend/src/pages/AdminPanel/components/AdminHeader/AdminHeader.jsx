@@ -15,15 +15,15 @@ import {
 } from "react-icons/fa";
 
 const tabs = [
+  { key: "events", label: "Events", icon: <FaCalendarAlt /> },
+  { key: "other-tools", label: "Other Tools", icon: <FaTools /> },
+  { key: "media", label: "Media", icon: <FaPhotoVideo /> },
   { key: "leaders", label: "Executive Leaders", icon: <FaUser /> },
   { key: "scc-leaders", label: "SCC Leaders", icon: <FaUsers /> },
-  { key: "events", label: "Events", icon: <FaCalendarAlt /> },
   { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
   { key: "join-sccs", label: "View SCC", icon: <FaUserPlus /> },
-  { key: "reports", label: "Reports", icon: <FaChartBar /> },
-  { key: "other-tools", label: "Other Tools", icon: <FaTools /> },
   { key: "join-group", label: "Join Group", icon: <FaUserCheck /> },
-  { key: "media", label: "Media", icon: <FaPhotoVideo /> },
+  { key: "reports", label: "Reports", icon: <FaChartBar /> },
 ];
 
 export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
