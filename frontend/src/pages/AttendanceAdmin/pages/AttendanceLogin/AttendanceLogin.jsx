@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { FaCross, FaEye, FaEyeSlash, FaChevronRight } from "react-icons/fa";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaChevronRight,
+  FaClipboardList,
+} from "react-icons/fa";
+import { FaCross } from "react-icons/fa";
 import styles from "./AttendanceLogin.module.css";
 import {
   loginAttendanceAdmin,
   fetchAttendanceGroups,
 } from "@/api/attendance.api";
 import toast from "react-hot-toast";
+
+const TYPE_FILTERS = ["All", "Committee", "SCC", "Group", "Other"];
 
 const AttendanceLogin = () => {
   const { groupId } = useParams();
@@ -16,6 +24,8 @@ const AttendanceLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingGroups, setLoadingGroups] = useState(true);
+  const [search, setSearch] = useState("");
+  const [typeFilter, setTypeFilter] = useState("All");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,14 +33,10 @@ const AttendanceLogin = () => {
       .then((data) => {
         const filtered = data.filter((g) => g.admin_email);
         setGroups(filtered);
-
         if (groupId) {
           const match = filtered.find((g) => String(g.id) === String(groupId));
-          if (match) {
-            setSelectedGroup(match);
-          } else {
-            toast.error("Group not found");
-          }
+          if (match) setSelectedGroup(match);
+          else toast.error("Group not found");
         }
       })
       .catch(() => toast.error("Failed to load groups"))
@@ -64,12 +70,20 @@ const AttendanceLogin = () => {
     }
   };
 
-  const typePillColor = {
+  const typePillStyle = {
     committee: { bg: "#dbeafe", color: "#1d4ed8" },
-    scc: { bg: "#dcfce7", color: "#15803d" },
+    scc: { bg: "#ccfbf1", color: "#0f766e" },
     group: { bg: "#fce7f3", color: "#9d174d" },
     other: { bg: "#f3f4f6", color: "#374151" },
   };
+
+  const filteredGroups = groups.filter((g) => {
+    const matchSearch = g.name.toLowerCase().includes(search.toLowerCase());
+    const matchType =
+      typeFilter === "All" ||
+      g.type?.toLowerCase() === typeFilter.toLowerCase();
+    return matchSearch && matchType;
+  });
 
   return (
     <div className={styles.page}>
@@ -92,31 +106,62 @@ const AttendanceLogin = () => {
           </p>
         ) : !selectedGroup ? (
           /* ── Step 1: pick a group ─────────────────────────── */
-          <div className={styles.groupList}>
-            {groups.map((g) => {
-              const pill = typePillColor[g.type] || typePillColor.other;
-              return (
+          <div className={styles.groupSection}>
+            {/* Search */}
+            <div className={styles.searchWrap}>
+              <span className={styles.searchIcon}>⌕</span>
+              <input
+                className={styles.searchInput}
+                placeholder="Search group..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+
+            {/* Type filter chips */}
+            <div className={styles.filterChips}>
+              {TYPE_FILTERS.map((f) => (
                 <button
-                  key={g.id}
-                  className={styles.groupBtn}
-                  onClick={() => setSelectedGroup(g)}
+                  key={f}
+                  className={`${styles.chip} ${typeFilter === f ? styles.chipActive : ""}`}
+                  onClick={() => setTypeFilter(f)}
                 >
-                  <div className={styles.groupBtnLeft}>
-                    <span className={styles.groupBtnName}>{g.name}</span>
-                    <span
-                      className={styles.groupBtnType}
-                      style={{ background: pill.bg, color: pill.color }}
-                    >
-                      {g.type}
-                    </span>
-                  </div>
-                  <FaChevronRight className={styles.chevron} />
+                  {f}
                 </button>
-              );
-            })}
+              ))}
+            </div>
+
+            {/* Group list */}
+            <div className={styles.groupList}>
+              {filteredGroups.length === 0 ? (
+                <p className={styles.noGroups}>No groups match your search.</p>
+              ) : (
+                filteredGroups.map((g) => {
+                  const pill =
+                    typePillStyle[g.type?.toLowerCase()] || typePillStyle.other;
+                  return (
+                    <button
+                      key={g.id}
+                      className={styles.groupBtn}
+                      onClick={() => setSelectedGroup(g)}
+                    >
+                      <FaClipboardList className={styles.groupIcon} />
+                      <span className={styles.groupBtnName}>{g.name}</span>
+                      <span
+                        className={styles.groupBtnType}
+                        style={{ background: pill.bg, color: pill.color }}
+                      >
+                        {g.type?.toUpperCase()}
+                      </span>
+                      <FaChevronRight className={styles.chevron} />
+                    </button>
+                  );
+                })
+              )}
+            </div>
           </div>
         ) : (
-          /* ── Step 2: enter password ───────────────────────── */
+          /* ── Step 2: enter password ── */
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.field}>
               <label className={styles.label}>Password</label>

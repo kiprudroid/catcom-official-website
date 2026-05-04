@@ -25,6 +25,9 @@ import {
   markMemberFollowUp,
 } from "@/api/attendance.api";
 
+// Standalone util — no component import, no circular dependency risk
+import { recordSaveTimestamp } from "@/utils/attendanceLock";
+
 const AttendanceAdmin = () => {
   const [members, setMembers] = useState([]);
   const [attendance, setAttendance] = useState({});
@@ -97,6 +100,8 @@ const AttendanceAdmin = () => {
           }),
         ),
       );
+      // Stamp the save time — AttendanceTable reads this to enforce the 12h lock
+      recordSaveTimestamp(meetingDate);
       toast.success("Attendance saved");
     } catch {
       toast.error("Failed to save attendance");
@@ -105,12 +110,9 @@ const AttendanceAdmin = () => {
     }
   };
 
-  // meetingDate is now passed so the backend stores the correct date
-  // as last_follow_up (not server NOW()), fixing at-risk logic for past meetings.
   const handleFollowUp = async (id) => {
     try {
       await markMemberFollowUp(id, meetingDate);
-
       setMembers((prev) =>
         prev.map((m) =>
           m.id === id
@@ -118,7 +120,6 @@ const AttendanceAdmin = () => {
             : m,
         ),
       );
-
       toast.success("Follow up recorded");
     } catch {
       toast.error("Failed to mark follow up");
