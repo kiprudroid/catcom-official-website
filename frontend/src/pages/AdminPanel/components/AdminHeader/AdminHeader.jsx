@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AdminHeader.module.css";
-import { SectionHeading } from "@/components/Typography/Typography";
 import {
   FaUser,
   FaUsers,
@@ -11,53 +10,105 @@ import {
   FaUserPlus,
   FaSignOutAlt,
   FaPhotoVideo,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 
+const tabs = [
+  { key: "leaders", label: "Executive Leaders", icon: <FaUser /> },
+  { key: "scc-leaders", label: "SCC Leaders", icon: <FaUsers /> },
+  { key: "events", label: "Events", icon: <FaCalendarAlt /> },
+  { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
+  { key: "join-sccs", label: "View SCC", icon: <FaUserPlus /> },
+  { key: "reports", label: "Reports", icon: <FaChartBar /> },
+  { key: "other-tools", label: "Other Tools", icon: <FaTools /> },
+  { key: "join-group", label: "Join Group", icon: <FaUserCheck /> },
+  { key: "media", label: "Media", icon: <FaPhotoVideo /> },
+];
+
 export default function AdminHeader({ activeTab, setActiveTab, onLogout }) {
-  const tabs = [
-    { key: "leaders", label: "Executive Leaders", icon: <FaUser /> },
-    { key: "SccLeaders", label: "Scc Leaders", icon: <FaUsers /> },
-    { key: "events", label: "Events", icon: <FaCalendarAlt /> },
-    { key: "members", label: "Membership Requests", icon: <FaUserCheck /> },
-    { key: "joinSccs", label: "View SCC", icon: <FaUserPlus /> },
-    { key: "reports", label: "Reports", icon: <FaChartBar /> },
-    { key: "otherTools", label: "Other Tools", icon: <FaTools /> },
-    { key: "joinGroup", label: "Join Group", icon: <FaUserCheck /> },
-    { key: "media", label: "Media", icon: <FaPhotoVideo /> },
-  ];
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleTab = (key) => {
+    setActiveTab(key);
+    setMenuOpen(false);
+  };
 
   return (
-    <div className={styles.header}>
-      <div className={styles.topRow}>
-        <div className={styles.logoGroup}>
-          <img
-            src="/others/catcom-logo.png"
-            alt="CATCOM Logo"
-            className={styles.logo}
-          />
-          <SectionHeading className={styles.title}>
-            JKUAT CATCOM ADMIN PANEL
-          </SectionHeading>
+    <>
+      <header className={styles.header}>
+        <div className={styles.topBar}>
+          <div className={styles.brand}>
+            <img
+              src="/others/catcom-logo.png"
+              alt="CATCOM Logo"
+              className={styles.logo}
+            />
+            <div className={styles.brandText}>
+              <span className={styles.brandName}>CATCOM</span>
+              <span className={styles.brandSub}>Admin Panel · JKUAT</span>
+            </div>
+          </div>
+
+          <div className={styles.topActions}>
+            <button className={styles.signOutBtn} onClick={onLogout}>
+              <FaSignOutAlt />
+              <span>Sign Out</span>
+            </button>
+            <button
+              className={styles.menuToggle}
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
 
-        <button className={styles.signOutBtn} onClick={onLogout}>
-          <FaSignOutAlt />
-          Sign Out
-        </button>
-      </div>
+        <nav className={styles.navbar}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              className={`${styles.navItem} ${activeTab === tab.key ? styles.active : ""}`}
+              onClick={() => handleTab(tab.key)}
+            >
+              <span className={styles.icon}>{tab.icon}</span>
+              <span className={styles.label}>{tab.label}</span>
+              {activeTab === tab.key && <span className={styles.activePill} />}
+            </button>
+          ))}
+        </nav>
+      </header>
 
-      <nav className={styles.navbar}>
+      {/* Mobile drawer — rendered outside header so it overlays content */}
+      {menuOpen && (
+        <div
+          className={styles.mobileOverlay}
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+      <div
+        className={`${styles.mobileDrawer} ${menuOpen ? styles.drawerOpen : ""}`}
+      >
+        <div className={styles.drawerHeader}>
+          <span className={styles.drawerTitle}>Navigation</span>
+          <button
+            className={styles.drawerClose}
+            onClick={() => setMenuOpen(false)}
+          >
+            <FaTimes />
+          </button>
+        </div>
         {tabs.map((tab) => (
           <button
             key={tab.key}
-            className={`${styles.navItem} ${activeTab === tab.key ? styles.active : ""}`}
-            onClick={() => setActiveTab(tab.key)}
+            className={`${styles.drawerItem} ${activeTab === tab.key ? styles.drawerActive : ""}`}
+            onClick={() => handleTab(tab.key)}
           >
-            <span className={styles.icon}>{tab.icon}</span>
+            <span className={styles.drawerIcon}>{tab.icon}</span>
             {tab.label}
           </button>
         ))}
-      </nav>
-    </div>
+      </div>
+    </>
   );
 }

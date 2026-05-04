@@ -28,7 +28,13 @@ import {
   LeadersSection,
   Members,
   Reports,
+  SccLeaders,
+  JoinGroup,
+  JoinSccsSection,
+  MediaSection,
 } from "@/pages/AdminPanel/pages";
+
+import OtherTools from "@/pages/AdminPanel/pages/OtherTools/OtherTools";
 
 const isAdminLoggedIn = () => !!localStorage.getItem("token");
 const isAttendanceLoggedIn = () => !!localStorage.getItem("attendance_token");
@@ -46,7 +52,6 @@ const ProtectedAttendance = ({ children }) =>
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      {/* ── Public ───────────────────────────────────────── */}
       <Route path="/" element={<Home />} />
       <Route path="/liturgy" element={<Liturgy />} />
       <Route path="/scc" element={<Scc />} />
@@ -73,16 +78,10 @@ const router = createBrowserRouter(
         />
       ))}
 
-      {/* ── Login pages ──────────────────────────────────── */}
       <Route path="/login" element={<SuperAdminLogin />} />
-
-      {/* Group picker — landing directly on this page */}
       <Route path="/attendance-login" element={<AttendanceLogin />} />
-
-      {/* Same component, groupId param pre-selects the group and skips the picker */}
       <Route path="/attendance-login/:groupId" element={<AttendanceLogin />} />
 
-      {/* ── Main admin panel (protected) ─────────────────── */}
       <Route
         path="/admin"
         element={
@@ -91,13 +90,18 @@ const router = createBrowserRouter(
           </ProtectedAdmin>
         }
       >
-        <Route path="members" element={<Members />} />
-        <Route path="reports" element={<Reports />} />
+        <Route index element={<Navigate to="leaders" replace />} />
         <Route path="leaders" element={<LeadersSection />} />
+        <Route path="scc-leaders" element={<SccLeaders />} />
         <Route path="events" element={<EventsSection />} />
+        <Route path="members" element={<Members />} />
+        <Route path="join-sccs" element={<JoinSccsSection />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="other-tools" element={<OtherTools />} />
+        <Route path="join-group" element={<JoinGroup />} />
+        <Route path="media" element={<MediaSection />} />
       </Route>
 
-      {/* ── Attendance admin (protected, separate token) ──── */}
       <Route
         path="/attendance-admin"
         element={
