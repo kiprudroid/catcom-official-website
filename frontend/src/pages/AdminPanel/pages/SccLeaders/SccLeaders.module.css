@@ -18,7 +18,7 @@
     padding: 1rem;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--card-bg);
 }
 
 .formInput,
@@ -27,7 +27,7 @@
     padding: 0.6rem 0.75rem;
     border-radius: 8px;
     border: 1px solid #d0d7de;
-    background: var(--card-bg);
+    background: #fff;
     color: inherit;
     outline: none;
     width: 100%;
@@ -51,7 +51,7 @@
     padding: 0.6rem 0.75rem;
     border-radius: 8px;
     border: 1px solid #d0d7de;
-    background: var(--card-bg);
+    background: #fff;
     color: inherit;
     outline: none;
     transition:
@@ -316,6 +316,31 @@
 
 .deleteBtn:hover {
     background: #fca5a5;
+}
+
+@keyframes sccSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: sccSpin 0.8s linear infinite;
+}
+
+.spinnerSm {
+    font-size: 1rem;
+}
+
+.spinnerLg {
+    font-size: 1.5rem;
+}
+
+.spinnerWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
 }
 
 @media (max-width: 900px) {
