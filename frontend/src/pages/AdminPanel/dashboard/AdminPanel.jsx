@@ -1,23 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./AdminPanel.module.css";
 import { AdminHeader } from "@/pages/AdminPanel/components";
-import OtherTools from "@/pages/AdminPanel/pages/OtherTools/OtherTools";
-import { useNavigate } from "react-router-dom";
-
-import {
-  Members,
-  Reports,
-  LeadersSection,
-  EventsSection,
-  SccLeaders,
-  JoinGroup,
-  JoinSccsSection,
-  MediaSection,
-} from "@/pages/AdminPanel/pages";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 
 export default function AdminPanel({ onLogout }) {
-  const [activeTab, setActiveTab] = useState("leaders");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const activeTab = location.pathname.split("/").pop();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -25,29 +15,8 @@ export default function AdminPanel({ onLogout }) {
     navigate("/login", { replace: true });
   };
 
-  const renderActiveTab = () => {
-    switch (activeTab) {
-      case "leaders":
-        return <LeadersSection />;
-      case "events":
-        return <EventsSection />;
-      case "members":
-        return <Members />;
-      case "reports":
-        return <Reports />;
-      case "SccLeaders":
-        return <SccLeaders />;
-      case "otherTools":
-        return <OtherTools />;
-      case "joinGroup":
-        return <JoinGroup />;
-      case "joinSccs":
-        return <JoinSccsSection />;
-      case "media":
-        return <MediaSection />;
-      default:
-        return <LeadersSection />;
-    }
+  const handleTabChange = (tabKey) => {
+    navigate(`/admin/${tabKey}`);
   };
 
   return (
@@ -55,10 +24,12 @@ export default function AdminPanel({ onLogout }) {
       <div className={styles.card}>
         <AdminHeader
           activeTab={activeTab}
-          setActiveTab={setActiveTab}
+          setActiveTab={handleTabChange}
           onLogout={handleLogout}
         />
-        <div className={styles.sectionWrapper}>{renderActiveTab()}</div>
+        <div className={styles.sectionWrapper}>
+          <Outlet />
+        </div>
       </div>
     </div>
   );
