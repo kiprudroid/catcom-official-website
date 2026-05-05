@@ -17,6 +17,7 @@ const AttendanceRow = ({
   copiedId,
   onCopyPhone,
   onUpdateAttendance,
+  groupType,
 }) => {
   const meta = statusMeta[member.attendance] ?? statusMeta.absent;
   const isAtRisk =
@@ -67,6 +68,16 @@ const AttendanceRow = ({
       </td>
 
       <td className={styles.roleCell}>{member.role}</td>
+
+      {groupType === "scc" && (
+        <td className={styles.familyCell}>
+          {member.family_name ? (
+            <span className={styles.familyBadge}>{member.family_name}</span>
+          ) : (
+            <span className={styles.phoneEmpty}>—</span>
+          )}
+        </td>
+      )}
 
       <td>
         <span className={`${styles.statusBadge} ${meta.cls}`}>

@@ -21,9 +21,6 @@ const sanitizePhone = (val) =>
     .replace(/\D/g, "")
     .slice(0, 10);
 
-// 07x + 7 digits = 10 total  (Safaricom, Airtel, Telkom)
-// 010x + 6 digits = 10 total (Airtel)
-// 011x + 6 digits = 10 total (Airtel/Telkom)
 const KENYAN_PHONE = /^(07[0-9]\d{7}|01[01][0-9]\d{6})$/;
 
 const isValidPhone = (phone) => {
@@ -31,11 +28,20 @@ const isValidPhone = (phone) => {
   return KENYAN_PHONE.test(phone);
 };
 
-const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
+const MemberManager = ({
+  members,
+  addMember,
+  removeMember,
+  updateMember,
+  groupType,
+}) => {
+  const isSCC = groupType === "scc";
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [customRole, setCustomRole] = useState("");
+  const [familyName, setFamilyName] = useState("");
   const [confirmId, setConfirmId] = useState(null);
   const [search, setSearch] = useState("");
   const [filterRole, setFilterRole] = useState("");
@@ -45,6 +51,7 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
   const [editPhone, setEditPhone] = useState("");
   const [editRole, setEditRole] = useState("");
   const [editCustomRole, setEditCustomRole] = useState("");
+  const [editFamilyName, setEditFamilyName] = useState("");
 
   const [adding, setAdding] = useState(false);
   const [updating, setUpdating] = useState(false);
@@ -64,10 +71,12 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
         name: name.trim(),
         phone: sanitizePhone(phone),
         role: finalRole,
+        family_name: isSCC ? familyName.trim() || null : null,
       });
       setName("");
       setPhone("");
       setRole("");
+      setFamilyName("");
       setCustomRole("");
     } finally {
       setAdding(false);
@@ -95,6 +104,7 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
     setEditPhone(sanitizePhone(m.phone));
     setEditRole(ROLES.includes(m.role) ? m.role : "custom");
     setEditCustomRole(ROLES.includes(m.role) ? "" : m.role);
+    setEditFamilyName(m.family_name || "");
   };
 
   const handleEditSave = async (e) => {
@@ -111,6 +121,7 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
         name: editName.trim(),
         phone: sanitizePhone(editPhone),
         role: finalRole,
+        family_name: isSCC ? editFamilyName.trim() || null : undefined,
       });
       setEditTarget(null);
     } finally {
@@ -162,7 +173,7 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
           />
           <input
             className={styles.input}
-            placeholder="07XXXXXXXX or 011XXXXXXX"
+            placeholder="Phone number ... 07XXXXXXXX or 011XXXXXXX"
             value={phone}
             onChange={(e) => setPhone(sanitizePhone(e.target.value))}
             onPaste={(e) => {
@@ -172,6 +183,14 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
             inputMode="numeric"
             maxLength={10}
           />
+          {isSCC && (
+            <input
+              className={styles.input}
+              placeholder="Family name (optional)"
+              value={familyName}
+              onChange={(e) => setFamilyName(e.target.value)}
+            />
+          )}
           <select
             className={styles.select}
             value={role}
@@ -212,7 +231,10 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
             <div className={styles.memberInfo}>
               <span className={styles.memberName}>{m.name}</span>
               {m.phone && <span className={styles.memberPhone}>{m.phone}</span>}
-              <span className={styles.memberRole}>{m.role}</span>
+              <span className={styles.memberRole}>
+                {m.role}
+                {isSCC && m.family_name ? ` · ${m.family_name}` : ""}
+              </span>
             </div>
             <div className={styles.rowActions}>
               <button
@@ -277,6 +299,14 @@ const MemberManager = ({ members, addMember, removeMember, updateMember }) => {
                   inputMode="numeric"
                   maxLength={10}
                 />
+                {isSCC && (
+                  <input
+                    className={styles.input}
+                    placeholder="Family name (optional)"
+                    value={editFamilyName}
+                    onChange={(e) => setEditFamilyName(e.target.value)}
+                  />
+                )}
                 <select
                   className={styles.select}
                   value={editRole}

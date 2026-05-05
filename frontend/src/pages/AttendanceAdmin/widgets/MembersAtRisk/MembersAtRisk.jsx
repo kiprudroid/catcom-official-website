@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import styles from "./MembersAtRisk.module.css";
 import { FaExclamationTriangle, FaSearch, FaCheck } from "react-icons/fa";
 
-const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
+const MembersAtRisk = ({ members, onFollowUp, meetingDate, groupType }) => {
   const [search, setSearch] = useState("");
   const [copiedId, setCopiedId] = useState(null);
   const [loadingId, setLoadingId] = useState(null);
+
+  const isSCC = groupType === "scc";
+  const colSpan = isSCC ? 8 : 7;
 
   const atRisk = members.filter((m) => {
     const missed = m.consecutiveAbsence >= 3;
@@ -47,7 +50,6 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
         </h3>
       </div>
 
-      {/* Search only shown when there's someone to search */}
       {atRisk.length > 0 && (
         <div className={styles.searchBar}>
           <FaSearch className={styles.searchIcon} />
@@ -60,7 +62,6 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
         </div>
       )}
 
-      {/* Table always renders so headers are always visible */}
       <div className={styles.tableScroll}>
         <table className={styles.table}>
           <thead>
@@ -70,6 +71,7 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
               <th className={styles.thPhone}>Phone</th>
               <th className={styles.thCenter}>Followed Up</th>
               <th className={styles.thRole}>Role</th>
+              {isSCC && <th className={styles.thCenter}>Family Name</th>}
               <th className={styles.thCenter}>Consecutive Absences</th>
               <th className={styles.thCenter}>Absences (Last 60 Days)</th>
             </tr>
@@ -78,13 +80,13 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
           <tbody>
             {atRisk.length === 0 ? (
               <tr>
-                <td colSpan="7" className={styles.allClearRow}>
+                <td colSpan={colSpan} className={styles.allClearRow}>
                   ✓ No members at risk — all caught up!
                 </td>
               </tr>
             ) : filtered.length === 0 ? (
               <tr>
-                <td colSpan="7" className={styles.emptyRow}>
+                <td colSpan={colSpan} className={styles.emptyRow}>
                   No members match your search
                 </td>
               </tr>
@@ -123,6 +125,17 @@ const MembersAtRisk = ({ members, onFollowUp, meetingDate }) => {
                     </button>
                   </td>
                   <td className={styles.tdRole}>{m.role}</td>
+                  {isSCC && (
+                    <td className={styles.tdCenter}>
+                      {m.family_name ? (
+                        <span className={styles.familyBadge}>
+                          {m.family_name}
+                        </span>
+                      ) : (
+                        <span className={styles.phoneEmpty}>—</span>
+                      )}
+                    </td>
+                  )}
                   <td className={styles.tdCenter}>
                     <span className={styles.absBadge}>
                       {m.consecutiveAbsence} missed

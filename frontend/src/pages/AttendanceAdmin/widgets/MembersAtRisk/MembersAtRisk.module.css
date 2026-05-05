@@ -37,15 +37,22 @@
   border-radius: 20px;
 }
 
+/* Row that holds one or two search bars — they share space equally */
+.searchRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
 .searchBar {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex: 1;
   background: white;
   border: 1px solid #fcd34d;
   border-radius: 8px;
   padding: 6px 10px;
-  margin-bottom: 14px;
 }
 
 .searchIcon {
@@ -92,7 +99,6 @@
   letter-spacing: 0.06em;
   color: #92400e;
   white-space: nowrap;
-  line-height: 1.3;
   vertical-align: bottom;
 }
 
@@ -100,6 +106,7 @@
   padding: 9px 10px;
   border-bottom: 1px solid #fde68a;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .table tr:last-child td {
@@ -112,7 +119,7 @@
 
 .thIdx {
   text-align: center;
-  width: 32px;
+  width: 40px;
 }
 .thName {
   text-align: left;
@@ -136,18 +143,15 @@
 .tdName {
   font-weight: 600;
   color: #1c3a3a;
-  white-space: nowrap;
 }
 
 .tdRole {
   color: #6b7280;
-  white-space: nowrap;
 }
 
 .tdPhone {
   white-space: nowrap;
 }
-
 .tdCenter {
   text-align: center;
 }
@@ -167,6 +171,17 @@
   display: inline-block;
   background: #f3f4f6;
   color: #6b7280;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.familyBadge {
+  display: inline-block;
+  background: #ede9fe;
+  color: #6d28d9;
   font-weight: 600;
   font-size: 11px;
   padding: 3px 10px;
@@ -258,6 +273,10 @@
 @media (max-width: 600px) {
   .container {
     padding: 14px 12px;
+  }
+
+  .searchRow {
+    flex-direction: column;
   }
 
   .table th,

@@ -125,7 +125,13 @@ export const getMembersByGroup = async (group_id) => {
   return rows;
 };
 
-export const addMember = async ({ group_id, name, phone, role }) => {
+export const addMember = async ({
+  group_id,
+  name,
+  phone,
+  role,
+  family_name,
+}) => {
   if (!name?.trim() || !role?.trim())
     throw new Error("name and role are required");
   const cleanPhone = validatePhone(phone);
@@ -134,11 +140,19 @@ export const addMember = async ({ group_id, name, phone, role }) => {
     name: name.trim(),
     phone: cleanPhone,
     role: role.trim(),
+    family_name: family_name?.trim() || null,
   });
   return rows[0];
 };
 
-export const updateMember = async ({ id, group_id, name, phone, role }) => {
+export const updateMember = async ({
+  id,
+  group_id,
+  name,
+  phone,
+  role,
+  family_name,
+}) => {
   const cleanPhone = phone !== undefined ? validatePhone(phone) : undefined;
   const { rows } = await Model.updateMemberQuery({
     id,
@@ -146,6 +160,8 @@ export const updateMember = async ({ id, group_id, name, phone, role }) => {
     name,
     phone: cleanPhone,
     role,
+    family_name:
+      family_name !== undefined ? family_name?.trim() || null : undefined,
   });
   if (!rows[0]) throw new Error("Member not found");
   return rows[0];

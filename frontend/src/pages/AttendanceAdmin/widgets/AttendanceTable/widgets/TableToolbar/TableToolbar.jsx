@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./TableToolbar.module.css";
+import { FaSearch } from "react-icons/fa";
 
 const TableToolbar = ({
   search,
@@ -13,7 +14,12 @@ const TableToolbar = ({
   locked,
   groupName,
   meetingDate,
+  familyFilter,
+  onFamilyFilterChange,
+  groupType,
 }) => {
+  const isSCC = groupType === "scc";
+
   return (
     <div className={styles.toolbar}>
       <div className={styles.headerRow}>
@@ -39,13 +45,23 @@ const TableToolbar = ({
       </div>
 
       <div className={styles.searchBar}>
-        <span className={styles.searchIcon}>⌕</span>
-        <input
-          className={styles.searchInput}
-          placeholder="Search member..."
-          value={search}
-          onChange={(e) => onSearchChange(e.target.value)}
-        />
+        <div className={styles.searchWrap}>
+          <FaSearch className={styles.searchIcon} />
+          <input
+            className={styles.searchInput}
+            placeholder="Search member..."
+            value={search}
+            onChange={(e) => onSearchChange(e.target.value)}
+          />
+        </div>
+        {isSCC && (
+          <input
+            className={styles.familyInput}
+            placeholder="Filter by family name…"
+            value={familyFilter}
+            onChange={(e) => onFamilyFilterChange(e.target.value)}
+          />
+        )}
         <select
           className={styles.roleFilter}
           value={roleFilter}
