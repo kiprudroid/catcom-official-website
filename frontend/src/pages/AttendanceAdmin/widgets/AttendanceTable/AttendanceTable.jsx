@@ -11,9 +11,11 @@ const AttendanceTable = ({
   updateAttendance,
   meetingDate,
   groupName,
+  groupType,
 }) => {
   const [search, setSearch] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
+  const [familyFilter, setFamilyFilter] = useState("");
   const [copiedId, setCopiedId] = useState(null);
   const [showRange, setShowRange] = useState(false);
 
@@ -23,7 +25,10 @@ const AttendanceTable = ({
   const filteredMembers = members.filter((m) => {
     const matchName = m.name.toLowerCase().includes(search.toLowerCase());
     const matchRole = roleFilter ? m.role === roleFilter : true;
-    return matchName && matchRole;
+    const matchFamily = familyFilter
+      ? (m.family_name || "").toLowerCase().includes(familyFilter.toLowerCase())
+      : true;
+    return matchName && matchRole && matchFamily;
   });
 
   const copyPhone = (id, phone) => {
@@ -67,6 +72,9 @@ const AttendanceTable = ({
         locked={locked}
         groupName={groupName}
         meetingDate={meetingDate}
+        familyFilter={familyFilter}
+        onFamilyFilterChange={setFamilyFilter}
+        groupType={groupType}
       />
 
       <div className={styles.tableScroll}>
@@ -78,6 +86,9 @@ const AttendanceTable = ({
               <th className={styles.thMark}>Mark Attendance</th>
               <th className={styles.thPhone}>Phone</th>
               <th className={styles.thRole}>Role</th>
+              {groupType === "scc" && (
+                <th className={styles.thFamily}>Family</th>
+              )}
               <th className={styles.thStatus}>Status</th>
               <th className={styles.thAbs}>Consecutive Absences</th>
               <th className={styles.thRecent}>Absences in Last 60 Days</th>
@@ -94,6 +105,7 @@ const AttendanceTable = ({
                 copiedId={copiedId}
                 onCopyPhone={copyPhone}
                 onUpdateAttendance={updateAttendance}
+                groupType={groupType}
               />
             ))}
           </tbody>

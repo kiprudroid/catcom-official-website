@@ -112,14 +112,21 @@ export const getMembersByGroupQuery = (group_id) =>
     [group_id],
   );
 
-export const addMemberQuery = ({ group_id, name, phone, role }) =>
+export const addMemberQuery = ({ group_id, name, phone, role, family_name }) =>
   pool.query(
-    `INSERT INTO attendance_members (group_id, name, phone, role)
-     VALUES ($1, $2, $3, $4) RETURNING *`,
-    [group_id, name, phone || null, role],
+    `INSERT INTO attendance_members (group_id, name, phone, role, family_name)
+     VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+    [group_id, name, phone || null, role, family_name || null],
   );
 
-export const updateMemberQuery = ({ id, group_id, name, phone, role }) => {
+export const updateMemberQuery = ({
+  id,
+  group_id,
+  name,
+  phone,
+  role,
+  family_name,
+}) => {
   const fields = [];
   const values = [];
   let idx = 1;
@@ -135,6 +142,10 @@ export const updateMemberQuery = ({ id, group_id, name, phone, role }) => {
   if (role !== undefined) {
     fields.push(`role = $${idx++}`);
     values.push(role);
+  }
+  if (family_name !== undefined) {
+    fields.push(`family_name = $${idx++}`);
+    values.push(family_name || null);
   }
 
   fields.push(`updated_at = NOW()`);

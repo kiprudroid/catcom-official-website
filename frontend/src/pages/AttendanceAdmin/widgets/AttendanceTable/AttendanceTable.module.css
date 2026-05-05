@@ -6,6 +6,7 @@
 }
 
 .tableScroll {
+  position: relative;
   width: 100%;
   overflow-x: auto;
   overflow-y: auto;
@@ -15,13 +16,8 @@
   border: 1px solid #f3f4f6;
 }
 
-.tableScroll {
-  position: relative;
-}
-
 .table {
   width: 100%;
-  min-width: 680px;
   border-collapse: collapse;
   table-layout: auto;
 }
@@ -46,30 +42,24 @@
   vertical-align: bottom;
 }
 
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
 .thIdx {
-  width: 36px;
-}
-.thName {
-  width: 150px;
-}
-.thMark {
-  width: 210px;
-}
-.thPhone {
-  width: 130px;
-}
-.thRole {
-  width: 110px;
-}
-.thStatus {
-  width: 100px;
-}
-.thAbs {
-  width: 130px;
   text-align: center;
+  width: 40px;
 }
+
+.thAbs,
 .thRecent {
-  width: 150px;
   text-align: center;
 }
 
@@ -91,13 +81,5 @@
 
   .tableScroll {
     max-height: 380px;
-  }
-
-  .table {
-    min-width: 600px;
-  }
-
-  .thMark {
-    width: 180px;
   }
 }
