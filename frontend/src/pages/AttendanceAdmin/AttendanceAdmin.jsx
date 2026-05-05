@@ -25,7 +25,6 @@ import {
   markMemberFollowUp,
 } from "@/api/attendance.api";
 
-// Standalone util — no component import, no circular dependency risk
 import { recordSaveTimestamp } from "@/utils/attendanceLock";
 
 const AttendanceAdmin = () => {
@@ -100,7 +99,6 @@ const AttendanceAdmin = () => {
           }),
         ),
       );
-      // Stamp the save time — AttendanceTable reads this to enforce the 12h lock
       recordSaveTimestamp(meetingDate);
       toast.success("Attendance saved");
     } catch {
@@ -126,9 +124,9 @@ const AttendanceAdmin = () => {
     }
   };
 
-  const handleAddMember = async ({ name, phone, role }) => {
+  const handleAddMember = async ({ name, phone, role, family_name }) => {
     try {
-      const newMember = await createMember({ name, phone, role });
+      const newMember = await createMember({ name, phone, role, family_name });
       setMembers((prev) => [...prev, newMember]);
       setAttendance((prev) => ({ ...prev, [newMember.id]: "absent" }));
       toast.success(`${name} added`);
@@ -195,6 +193,7 @@ const AttendanceAdmin = () => {
         members={membersWithAttendance}
         onFollowUp={handleFollowUp}
         meetingDate={meetingDate}
+        groupType={group.type}
       />
 
       <div className={styles.splitRow}>
@@ -204,6 +203,7 @@ const AttendanceAdmin = () => {
           addMember={handleAddMember}
           removeMember={handleRemoveMember}
           updateMember={handleUpdateMember}
+          groupType={group.type}
         />
       </div>
 
@@ -212,6 +212,7 @@ const AttendanceAdmin = () => {
         updateAttendance={updateAttendance}
         meetingDate={meetingDate}
         groupName={group.name}
+        groupType={group.type}
       />
     </div>
   );

@@ -39,9 +39,11 @@ ALTER TABLE attendance_members
   ADD COLUMN IF NOT EXISTS phone VARCHAR(10);
 
 
-
 ALTER TABLE attendance_members
 ADD COLUMN last_follow_up TIMESTAMP;
+
+ALTER TABLE attendance_members
+  ADD COLUMN IF NOT EXISTS family_name VARCHAR(150);
 
 -- 4. Attendance records — scoped to member (which is scoped to group)
 CREATE TABLE IF NOT EXISTS attendance_records (

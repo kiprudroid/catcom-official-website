@@ -1,30 +1,27 @@
 .toolbar {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
   margin-bottom: 16px;
 }
 
 .headerRow {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
+  margin-bottom: 12px;
 }
 
 .heading {
   font-size: 15px;
   font-weight: 700;
   color: #1c3a3a;
-  margin: 0;
+  margin: 0 0 2px;
 }
 
 .lockedNotice {
-  margin: 3px 0 0;
   font-size: 12px;
-  color: #9ca3af;
-  font-style: italic;
+  color: #b45309;
+  margin: 4px 0 0;
 }
 
 .actions {
@@ -34,113 +31,125 @@
   align-items: center;
 }
 
-.downloadBtn {
-  background: #1c3a3a;
-  color: white;
-  border: none;
-  padding: 7px 13px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-  white-space: nowrap;
-}
-
-.downloadBtn:hover {
-  background: #2dabb1;
-}
-
-.downloadBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .rangeBtn {
-  background: white;
-  color: #2dabb1;
+  padding: 7px 14px;
+  border-radius: 8px;
   border: 1.5px solid #2dabb1;
-  padding: 6px 13px;
-  font-size: 12px;
+  background: transparent;
+  color: #2dabb1;
+  font-size: 13px;
   font-weight: 600;
-  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.15s;
   white-space: nowrap;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .rangeBtn:hover {
-  background: #e6f7f8;
+  background: #e0f7f8;
 }
 
+.downloadBtn {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.downloadBtn:hover {
+  background: #f3f4f6;
+}
+
+/* ── Search bar ── */
 .searchBar {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   align-items: center;
-  gap: 0;
-  background: #f8fafc;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 6px 10px;
-  transition: border-color 0.15s;
 }
 
-.searchBar:focus-within {
-  border-color: #2dabb1;
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 150px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 5px;
 }
 
 .searchIcon {
-  font-size: 17px;
   color: #9ca3af;
-  padding: 0 6px 0 2px;
+  font-size: 14px;
   flex-shrink: 0;
 }
 
 .searchInput {
-  flex: 1;
-  padding: 6px 8px;
   border: none;
-  background: transparent;
-  font-size: 13.5px;
   outline: none;
-  color: #1c3a3a;
+  background: transparent;
+  font-size: 13px;
+  color: #1f2937;
+  width: 100%;
   min-width: 0;
 }
 
-.searchInput::placeholder {
-  color: #9ca3af;
+.familyInput {
+  flex: 1 1 150px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: #1f2937;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.familyInput:focus {
+  border-color: #2dabb1;
 }
 
 .roleFilter {
-  flex: 0 0 auto;
-  padding: 6px 28px 6px 10px;
-  border: none;
-  border-left: 1.5px solid #e5e7eb;
-  border-radius: 0 8px 8px 0;
+  flex: 0 1 150px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 7px 10px;
   font-size: 13px;
-  background: white;
-  color: #1c3a3a;
-  cursor: pointer;
+  color: #374151;
   outline: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  max-width: 140px;
+  cursor: pointer;
 }
 
-@media (max-width: 480px) {
-  .actions {
-    gap: 6px;
-  }
+.roleFilter:focus {
+  border-color: #2dabb1;
+}
 
-  .downloadBtn,
-  .rangeBtn {
-    padding: 6px 10px;
-    font-size: 11px;
-  }
-
+/* ── Mobile: all filters go full width ── */
+@media (max-width: 560px) {
+  .searchWrap,
+  .familyInput,
   .roleFilter {
-    max-width: 110px;
-    font-size: 12px;
+    flex: 1 1 100%;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .rangeBtn,
+  .downloadBtn {
+    flex: 1 1 auto;
+    text-align: center;
   }
 }
