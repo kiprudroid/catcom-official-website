@@ -2,6 +2,7 @@
   margin-bottom: 16px;
 }
 
+/* ── Header row ── */
 .headerRow {
   display: flex;
   align-items: flex-start;
@@ -77,7 +78,7 @@
 .purposeSectionHeader {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   margin-bottom: 12px;
 }
 
@@ -87,6 +88,12 @@
   color: #065f46;
   text-transform: uppercase;
   letter-spacing: 0.07em;
+}
+
+.purposeHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .savedBadge {
@@ -109,6 +116,76 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* ── Edit button ── */
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1.5px solid #d1d5db;
+  background: #ffffff;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
+}
+.editBtn:hover:not(:disabled) {
+  border-color: #2dabb1;
+  color: #2dabb1;
+  background: #f0fdf9;
+}
+.editBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── VIEW mode ── */
+.purposeViewRow {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  animation: fadeIn 0.2s ease;
+}
+
+.purposeViewField {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.purposeViewLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.purposeViewText {
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 500;
+}
+
+.emptyText {
+  color: #9ca3af;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── EDIT mode ── */
+.purposeEditBlock {
+  animation: fadeIn 0.18s ease;
 }
 
 .purposeRow {
@@ -177,6 +254,121 @@
   box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.12);
 }
 
+/* ── Edit action buttons ── */
+.purposeEditActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.saveDetailsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #2dabb1;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+}
+.saveDetailsBtn:hover:not(:disabled) {
+  background: #259aa0;
+}
+.saveDetailsBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: transparent;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+.cancelBtn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+.cancelBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Spinners ── */
+
+/* Inside teal "Save Details" button — white on teal */
+.btnSpinner {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.btnSpinner::before,
+.btnSpinner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+.btnSpinner::before {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.btnSpinner::after {
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-right-color: rgba(255, 255, 255, 0.5);
+  animation: spinDual 0.65s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Inside ghost "Edit" button — teal on white */
+.editSpinner {
+  position: relative;
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+.editSpinner::before,
+.editSpinner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+.editSpinner::before {
+  border: 1.5px solid rgba(45, 171, 177, 0.2);
+}
+.editSpinner::after {
+  border: 1.5px solid transparent;
+  border-top-color: #2dabb1;
+  border-right-color: rgba(45, 171, 177, 0.5);
+  animation: spinDual 0.65s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes spinDual {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* ── Search bar ── */
 .searchBar {
   display: flex;
@@ -242,6 +434,7 @@
   border-color: #2dabb1;
 }
 
+/* ── Mobile ── */
 @media (max-width: 560px) {
   .searchWrap,
   .familyInput,
@@ -257,7 +450,6 @@
     flex: 1 1 auto;
     text-align: center;
   }
-
   .purposeRow {
     flex-direction: column;
     gap: 6px;
@@ -276,5 +468,9 @@
   }
   .purposeSectionHeader {
     margin-bottom: 8px;
+  }
+  .purposeViewRow {
+    flex-direction: column;
+    gap: 12px;
   }
 }
