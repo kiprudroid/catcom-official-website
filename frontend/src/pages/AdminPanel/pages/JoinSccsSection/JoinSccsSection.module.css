@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 
-/* ── Header ── */
 .pageHeader {
   display: flex;
   align-items: flex-start;
@@ -63,7 +62,6 @@
   background: #374151;
 }
 
-/* ── SCC accordion groups ── */
 .sccGroup {
   margin-bottom: 1.75rem;
   border: 1px solid #e5e7eb;
@@ -116,9 +114,9 @@
   font-weight: 600;
 }
 
-/* ── Table ── */
 .tableWrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
@@ -240,7 +238,6 @@
   color: #be185d;
 }
 
-/* ── Row actions ── */
 .deleteBtn {
   padding: 0.3rem 0.7rem;
   background: #fee2e2;
@@ -304,7 +301,6 @@
   background: #d1d5db;
 }
 
-/* ── States ── */
 .stateContainer {
   display: flex;
   flex-direction: column;
@@ -339,4 +335,136 @@
   color: #b91c1c;
   border-radius: 8px;
   padding: 1rem 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .adminPanel {
+    padding: 1rem 1rem;
+  }
+
+  .pageHeader {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .pageTitle {
+    font-size: 1.35rem;
+  }
+
+  .headerActions {
+    width: 100%;
+  }
+
+  .exportBtn,
+  .refreshBtn {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .table th:nth-child(6),
+  .table td:nth-child(6) {
+    /* Gender */
+    display: none;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.6rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .adminPanel {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .pageTitle {
+    font-size: 1.2rem;
+  }
+
+  .exportBtn,
+  .refreshBtn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .sccGroup {
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+
+  .sccGroupHeader {
+    padding: 0.7rem 1rem;
+  }
+
+  .sccName {
+    font-size: 0.9rem;
+  }
+
+  .table th:nth-child(5),
+  .table td:nth-child(5),
+  .table th:nth-child(6),
+  .table td:nth-child(6) {
+    display: none;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.55rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .nameCell {
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  .memberBtn {
+    gap: 0.4rem;
+    padding: 0.2rem 0.3rem;
+  }
+
+  .avatar {
+    width: 26px;
+    height: 26px;
+    font-size: 0.72rem;
+  }
+
+  .memberName {
+    font-size: 0.8rem;
+  }
+
+  .indexCell {
+    width: 24px;
+    font-size: 0.75rem;
+  }
+
+  .deleteBtn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .confirmInline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .stateContainer {
+    padding: 2.5rem 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .table th:nth-child(4),
+  .table td:nth-child(4) {
+    display: none;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.4rem;
+  }
 }
