@@ -42,12 +42,19 @@ router.put(
 );
 router.delete("/attendance/members/:id", verifyGroupAdmin, C.deleteMember);
 
-// /range MUST come before /:date — Express matches routes top to bottom,
-// so if /:date came first it would capture the word "range" as a date param
-// and getAttendanceRange would never be reached.
+router.get(
+  "/attendance/meetings/:date",
+  verifyGroupAdmin,
+  C.getMeetingPurposeHandler,
+);
+router.post(
+  "/attendance/meetings",
+  verifyGroupAdmin,
+  C.upsertMeetingPurposeHandler,
+);
+
 router.get("/attendance/records/range", verifyGroupAdmin, C.getAttendanceRange);
 router.get("/attendance/records/:date", verifyGroupAdmin, C.getAttendance);
-
 router.post("/attendance/records", verifyGroupAdmin, C.upsertAttendance);
 
 export default router;

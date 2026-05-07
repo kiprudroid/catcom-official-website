@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./AttendanceTable.module.css";
 import { isLocked } from "@/utils/attendanceLock";
 import { exportSingleCSV, exportSinglePDF } from "./utils/attendanceExport";
+import { fetchMeetingPurpose, saveMeetingPurpose } from "@/api/attendance.api";
 import RangeReportModal from "./widgets/RangeReportModal";
 import TableToolbar from "./widgets/TableToolbar";
 import AttendanceRow from "./widgets/AttendanceRow";
@@ -18,9 +19,62 @@ const AttendanceTable = ({
   const [familyFilter, setFamilyFilter] = useState("");
   const [copiedId, setCopiedId] = useState(null);
   const [showRange, setShowRange] = useState(false);
+  const [meetingPurpose, setMeetingPurpose] = useState("");
+  const [meetingActivities, setMeetingActivities] = useState("");
+  const [purposeSaved, setPurposeSaved] = useState(false);
+  const [saveTimer, setSaveTimer] = useState(null);
 
   const locked = isLocked(meetingDate);
   const roles = [...new Set(members.map((m) => m.role))];
+  const purposeFilled = !!meetingPurpose.trim();
+
+  useEffect(() => {
+    if (!meetingDate) return;
+    setMeetingPurpose("");
+    setMeetingActivities("");
+    setPurposeSaved(false);
+    fetchMeetingPurpose(meetingDate)
+      .then((data) => {
+        if (data?.purpose) {
+          setMeetingPurpose(data.purpose);
+          setPurposeSaved(true);
+        }
+        if (data?.activities) setMeetingActivities(data.activities);
+      })
+      .catch(() => {});
+  }, [meetingDate]);
+
+  const persistPurpose = useCallback(
+    (purpose, activities) => {
+      if (!meetingDate || !purpose.trim()) return;
+      if (saveTimer) clearTimeout(saveTimer);
+      const t = setTimeout(async () => {
+        try {
+          await saveMeetingPurpose({ date: meetingDate, purpose, activities });
+          setPurposeSaved(true);
+        } catch {}
+      }, 800);
+      setSaveTimer(t);
+    },
+    [meetingDate, saveTimer],
+  );
+
+  const handlePurposeChange = (val) => {
+    setMeetingPurpose(val);
+    setPurposeSaved(false);
+    persistPurpose(val, meetingActivities);
+  };
+
+  const handleActivitiesChange = (val) => {
+    setMeetingActivities(val);
+    setPurposeSaved(false);
+    persistPurpose(meetingPurpose, val);
+  };
+
+  const handleUpdateAttendance = (id, status) => {
+    if (!purposeFilled) return;
+    updateAttendance(id, status);
+  };
 
   const filteredMembers = members.filter((m) => {
     const matchName = m.name.toLowerCase().includes(search.toLowerCase());
@@ -63,10 +117,22 @@ const AttendanceTable = ({
         onRoleFilterChange={setRoleFilter}
         roles={roles}
         onDownloadCSV={() =>
-          exportSingleCSV(filteredMembers, groupName, meetingDate)
+          exportSingleCSV(
+            filteredMembers,
+            groupName,
+            meetingDate,
+            meetingPurpose,
+            meetingActivities,
+          )
         }
         onDownloadPDF={() =>
-          exportSinglePDF(filteredMembers, groupName, meetingDate)
+          exportSinglePDF(
+            filteredMembers,
+            groupName,
+            meetingDate,
+            meetingPurpose,
+            meetingActivities,
+          )
         }
         onShowRange={() => setShowRange(true)}
         locked={locked}
@@ -75,9 +141,23 @@ const AttendanceTable = ({
         familyFilter={familyFilter}
         onFamilyFilterChange={setFamilyFilter}
         groupType={groupType}
+        meetingPurpose={meetingPurpose}
+        onMeetingPurposeChange={handlePurposeChange}
+        meetingActivities={meetingActivities}
+        onMeetingActivitiesChange={handleActivitiesChange}
+        purposeSaved={purposeSaved}
       />
 
-      <div className={styles.tableScroll}>
+      {!purposeFilled && !locked && (
+        <div className={styles.purposeGate}>
+          ☝ Fill in the <strong>Purpose of Meeting</strong> above before marking
+          attendance.
+        </div>
+      )}
+
+      <div
+        className={`${styles.tableScroll} ${!purposeFilled && !locked ? styles.tableBlurred : ""}`}
+      >
         <table className={styles.table}>
           <thead>
             <tr className={styles.headerRow}>
@@ -100,11 +180,11 @@ const AttendanceTable = ({
                 key={member.id}
                 member={member}
                 idx={idx}
-                locked={locked}
+                locked={locked || !purposeFilled}
                 meetingDate={meetingDate}
                 copiedId={copiedId}
                 onCopyPhone={copyPhone}
-                onUpdateAttendance={updateAttendance}
+                onUpdateAttendance={handleUpdateAttendance}
                 groupType={groupType}
               />
             ))}

@@ -4,7 +4,6 @@ import * as Model from "../models/attendance.model.js";
 
 const VALID_TYPES = ["committee", "scc", "group", "other"];
 const VALID_STATUSES = ["present", "absent", "apology"];
-
 const KENYAN_PHONE = /^(07[0-9]\d{7}|01[01][0-9]\d{6})$/;
 
 const validatePhone = (phone) => {
@@ -217,4 +216,27 @@ export const getAttendanceByRange = async ({
     endDate,
   );
   return rows;
+};
+
+export const getMeetingPurpose = async ({ group_id, date }) => {
+  if (!date) throw new Error("date is required");
+  const { rows } = await Model.getMeetingByDateQuery({ group_id, date });
+  return rows[0] || null;
+};
+
+export const upsertMeetingPurpose = async ({
+  group_id,
+  date,
+  purpose,
+  activities,
+}) => {
+  if (!date) throw new Error("date is required");
+  if (!purpose?.trim()) throw new Error("purpose is required");
+  const { rows } = await Model.upsertMeetingQuery({
+    group_id,
+    date,
+    purpose,
+    activities,
+  });
+  return rows[0];
 };
