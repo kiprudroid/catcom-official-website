@@ -45,7 +45,6 @@
     background 0.15s,
     color 0.15s;
 }
-
 .rangeBtn:hover {
   background: #e0f7f8;
 }
@@ -62,9 +61,120 @@
   white-space: nowrap;
   transition: background 0.15s;
 }
-
 .downloadBtn:hover {
   background: #f3f4f6;
+}
+
+/* ── Purpose section ── */
+.purposeSection {
+  background: linear-gradient(135deg, #f0fdf9 0%, #f8fafc 100%);
+  border: 1.5px solid #d1fae5;
+  border-radius: 12px;
+  padding: 14px 16px 16px;
+  margin-bottom: 14px;
+}
+
+.purposeSectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.purposeSectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #065f46;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.savedBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #16a34a;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  padding: 2px 9px;
+  border-radius: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.purposeRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.purposeField {
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.purposeLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.required {
+  color: #ef4444;
+  font-size: 13px;
+}
+
+.purposeTextarea {
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: #1f2937;
+  background: #ffffff;
+  outline: none;
+  resize: vertical;
+  min-height: 72px;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.55;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.purposeTextarea:focus {
+  border-color: #2dabb1;
+  box-shadow: 0 0 0 3px rgba(45, 171, 177, 0.12);
+}
+.purposeTextarea:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  resize: none;
+}
+.purposeTextareaEmpty {
+  border-color: #fbbf24;
+  background: #fffbeb;
+}
+.purposeTextareaEmpty:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.12);
 }
 
 /* ── Search bar ── */
@@ -83,7 +193,7 @@
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 5px;
+  padding: 5px 8px;
 }
 
 .searchIcon {
@@ -113,7 +223,6 @@
   outline: none;
   transition: border-color 0.15s;
 }
-
 .familyInput:focus {
   border-color: #2dabb1;
 }
@@ -129,27 +238,43 @@
   outline: none;
   cursor: pointer;
 }
-
 .roleFilter:focus {
   border-color: #2dabb1;
 }
 
-/* ── Mobile: all filters go full width ── */
 @media (max-width: 560px) {
   .searchWrap,
   .familyInput,
   .roleFilter {
     flex: 1 1 100%;
   }
-
   .actions {
     width: 100%;
     justify-content: flex-start;
   }
-
   .rangeBtn,
   .downloadBtn {
     flex: 1 1 auto;
     text-align: center;
+  }
+
+  .purposeRow {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .purposeSection {
+    padding: 10px 12px 12px;
+    margin-bottom: 10px;
+  }
+  .purposeField {
+    flex: 0 0 auto;
+  }
+  .purposeTextarea {
+    min-height: unset;
+    height: 64px;
+    resize: none;
+  }
+  .purposeSectionHeader {
+    margin-bottom: 8px;
   }
 }

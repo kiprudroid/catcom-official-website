@@ -168,3 +168,21 @@ export const fetchAttendanceByRange = async (startDate, endDate) => {
   if (!res.ok) throw new Error("Failed to fetch range report");
   return res.json();
 };
+
+export const fetchMeetingPurpose = async (date) => {
+  const res = await fetch(`${API_BASE}/attendance/meetings/${date}`, {
+    headers: authHeaders(),
+  });
+  if (!res.ok) throw new Error("Failed to fetch meeting purpose");
+  return res.json();
+};
+
+export const saveMeetingPurpose = async ({ date, purpose, activities }) => {
+  const res = await fetch(`${API_BASE}/attendance/meetings`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ date, purpose, activities }),
+  });
+  if (!res.ok) throw new Error("Failed to save meeting purpose");
+  return res.json();
+};

@@ -19,7 +19,6 @@
   box-shadow: none;
 }
 
-
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -49,8 +48,14 @@
 }
 
 @keyframes popIn {
-  from { transform: scale(0.85); opacity: 0; }
-  to   { transform: scale(1);    opacity: 1; }
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .modalIcon {
@@ -90,12 +95,9 @@
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-
 .modalBtn:hover {
   opacity: 0.88;
 }
-
-/* ===================== FORM ===================== */
 
 .inputRow {
   display: grid;
@@ -109,9 +111,21 @@
   gap: 0.35rem;
 }
 
-label {
-  font-weight: 500;
-  color: #000;
+.fieldError {
+  font-size: 0.78rem;
+  color: #dc2626;
+  margin-top: 0.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.fieldError::before {
+  content: "⚠ ";
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+  background: #fff5f5 !important;
 }
 
 input,
@@ -123,6 +137,7 @@ select {
   font-size: 0.95rem;
   background: #ffffff;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 input:focus,
@@ -156,41 +171,53 @@ select:focus {
   cursor: pointer;
   transition: 0.2s ease;
 }
-
 .joinBtn:hover {
   background: #1e8a8f;
 }
-
-.warningBox {
-  background: #fff3cd;
-  color: #856404;
-  font-size: 0.9rem;
-  padding: 0.7rem 1rem;
-  margin: 1rem auto;
-  max-width: 500px;
-  border-radius: 6px;
-  border: 1px solid #ffeeba;
+.joinBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-/* ===================== RESPONSIVE ===================== */
-
 @media screen and (min-width: 1441px) {
-  .inputRow { gap: 2rem; }
-  .joinBtn { font-size: 1.1rem; }
+  .inputRow {
+    gap: 2rem;
+  }
+  .joinBtn {
+    font-size: 1.1rem;
+  }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
-  .inputRow { gap: 1.5rem; }
+  .inputRow {
+    gap: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-  .inputRow { grid-template-columns: 1fr; gap: 1rem; }
-  .joinBtn { width: 100%; }
+  .inputRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .joinBtn {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 480px) {
-  .formGrid { padding: 1rem; }
-  .form { gap: 1.2rem; }
-  input, select { font-size: 0.9rem; padding: 0.55rem; }
-  .joinBtn { font-size: 1rem; padding: 0.65rem; }
+  .formGrid {
+    padding: 1rem;
+  }
+  .form {
+    gap: 1.2rem;
+  }
+  input,
+  select {
+    font-size: 0.9rem;
+    padding: 0.55rem;
+  }
+  .joinBtn {
+    font-size: 1rem;
+    padding: 0.65rem;
+  }
 }

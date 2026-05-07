@@ -3,128 +3,8 @@
   display: flex;
   flex-direction: column;
 }
-.slideshowActivityRow {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 2rem;
-  height: auto;
-}
-.slideShow {
-  flex: 0 0 60%;
-  max-width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  position: relative;
-  background: #fff;
-}
-.sliderContainer {
-  width: 100%;
-}
 
-.families {
-  box-sizing: border-box;
-  flex: 0 0 35%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem;
-  width: 100%;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-height: 500px;
-}
-.activities {
-  width: 100%;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-top: 2rem;
-}
-.familiesGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;  
-}
-.familyCard {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1.5px 6px rgba(45, 171, 177, 0.1), 0 1px 3px rgba(0, 0, 0, 0.07);
-  padding: 0.6rem 0.8rem;
-  min-width: 100px;
-  text-align: center;
-  border: 1px solid #b2ebf2;
-  font-weight: 600;
-  color: #2dabb1;
-  font-size: 1.05rem;
-  transition: box-shadow 0.18s, transform 0.18s;
-  cursor: pointer;
-  margin-bottom: 0;
-  word-wrap: break-word;
-
-}
-.familyCard:hover {
-  box-shadow: 0 4px 16px rgba(45, 171, 177, 0.13), 0 2px 8px rgba(0, 0, 0, 0.09);
-  transform: translateY(-2px) scale(1.03);
-}
-.sccContentRow {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  box-sizing: border-box;
-  justify-content: space-between;
-}
-
-.slideshowImage {
-  width: 100%;
-  height: 500px;
-  margin: auto;
-  display: block;
-  object-fit: cover;
-}
-.imageWrapper {
-  height: 100%;
-  position: relative;
-  display: flex !important; /* Override slick-slider default */
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-}
-
-.activitiesList {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1rem;
-  list-style: none;
-}
-.activityCard {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1.5px 6px rgba(45, 171, 177, 0.1), 0 1px 3px rgba(0, 0, 0, 0.07);
-  padding: 0.6rem 0.8rem;
-  min-width: 0;
-  text-align: center;
-  border: 1px solid #b2ebf2;
-  font-weight: 600;
-  color: #2dabb1;
-  font-size: 1.05rem;
-  transition: box-shadow 0.18s, transform 0.18s;
-  cursor: pointer;
-  margin-bottom: 0;
-}
-.activityCard:hover {
-  box-shadow: 0 4px 16px rgba(45, 171, 177, 0.13), 0 2px 8px rgba(0, 0, 0, 0.09);
-  transform: translateY(-2px) scale(1.03);
-}
-.familyText {
-  font-size: 16px;
-  color: #2dabb1;
-  white-space: nowrap;
-}
-
+/* ── Header ── */
 .navigationButtonsAndHeading {
   display: flex;
   justify-content: space-between;
@@ -133,187 +13,348 @@
   padding: 0 1rem;
   box-sizing: border-box;
   margin-bottom: 1rem;
+  gap: 1rem;
 }
+
+.centeredText {
+  text-align: center;
+  flex: 1;
+}
+
 .sccNavigationButton {
-  background: #2dabb1ff;
+  background: #2dabb1;
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: background 0.2s;
 }
-.nextArrow,
-.prevArrow {
-  font-size: 24px;
-  font-weight: bold;
-}
-
 .sccNavigationButton:hover {
-  background: rgba(45, 171, 177, 1);
+  background: #1e8a8f;
 }
 
-.prevButton {
-  left: 10px;
+/* ── Main row ── */
+.slideshowActivityRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+  align-items: flex-start;
 }
 
-.nextButton {
-  right: 10px;
+/* ── Slideshow column ── */
+.slideShow {
+  flex: 0 0 60%;
+  max-width: 60%;
+  box-sizing: border-box;
+}
+
+/* Outer wrapper: positions arrows on sides */
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* 2-column photo pair */
+.photoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.imageWrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 4 / 3;
+  background: #e5e7eb;
+}
+
+.slideshowImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.slideshowImage:hover {
+  transform: scale(1.03);
+}
+
+/* Side arrows */
+.sliderArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(45, 171, 177, 0.85);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.sliderArrow:hover {
+  background: #1e8a8f;
+}
+.sliderPrev {
+  left: -18px;
+}
+.sliderNext {
+  right: -18px;
+}
+
+/* Dot indicators */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #b2ebf2;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.dotActive {
+  background: #2dabb1;
+  transform: scale(1.25);
+}
+
+.noImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px dashed #d1d5db;
+}
+
+/* ── Families ── */
+.families {
+  box-sizing: border-box;
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.familiesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.familyCard {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow:
+    0 1.5px 6px rgba(45, 171, 177, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.07);
+  padding: 0.6rem 0.8rem;
+  min-width: 100px;
+  text-align: center;
+  border: 1px solid #b2ebf2;
+  font-weight: 600;
+  color: #2dabb1;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition:
+    box-shadow 0.18s,
+    transform 0.18s;
+  word-wrap: break-word;
+}
+.familyCard:hover {
+  box-shadow:
+    0 4px 16px rgba(45, 171, 177, 0.13),
+    0 2px 8px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .familyText {
   font-size: 16px;
   color: #2dabb1;
   white-space: nowrap;
+  margin: 0;
 }
 
-.centeredText {
-  text-align: center;
-  width: auto;
+/* ── Activities ── */
+.sccContentRow {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
 }
+
+.activities {
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.activitiesList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activityCard {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow:
+    0 1.5px 6px rgba(45, 171, 177, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.07);
+  padding: 0.6rem 0.8rem;
+  text-align: center;
+  border: 1px solid #b2ebf2;
+  font-weight: 600;
+  color: #2dabb1;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition:
+    box-shadow 0.18s,
+    transform 0.18s;
+}
+.activityCard:hover {
+  box-shadow:
+    0 4px 16px rgba(45, 171, 177, 0.13),
+    0 2px 8px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ── Responsive ── */
 
 @media screen and (min-width: 1441px) {
-  .slideshowActivityRow {
-    display: flex;
-    flex-direction: row;
-  }
-  .slideShow, .families {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
   .slideShow {
-    height: auto;
+    flex: 0 0 55%;
+    max-width: 55%;
   }
-  .slideshowImage {
-    height: auto;
-    max-height: 500px;
+  .families {
+    flex: 0 0 40%;
   }
   .activitiesList {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: center;   /* center the grid */
-    gap: 1rem;
-  }
-  .activityCard {
-    flex: 0 0 45%;
-    margin: 0.5rem;
-    min-width: 100px;
   }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
-    .slideshowActivityRow {
-    display: flex;
+  .slideshowActivityRow {
     flex-direction: column;
   }
-  .slideShow, .families {
+  .slideShow,
+  .families {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .slideShow {
-    height: auto;
-  }
-  .slideshowImage {
-    height: auto;
-    max-height: 400px;
+  .families {
+    max-height: none;
   }
   .activitiesList {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: center;   /* center the grid */
-    gap: 1rem;
-  }
-  .activityCard {
-    flex: 0 0 45%;
-    margin: 0.5rem;
-    min-width: 100px;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .slideshowActivityRow {
-    display: flex;
+  .slideshowActivityRow {
     flex-direction: column;
   }
-  .slideShow, .families {
+  .slideShow,
+  .families {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .slideShow {
-    height: auto;
-  }
-  .slideshowImage {
-    height: auto;
-    max-height: 400px;
+  .families {
+    max-height: none;
   }
   .activitiesList {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: center;   /* center the grid */
-    gap: 1rem;
-  }
-  .activityCard {
-    flex: 0 0 45%;
-    margin: 0.5rem;
-    min-width: 100px;
   }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-    .slideshowActivityRow {
-    display: flex;
+  .slideshowActivityRow {
     flex-direction: column;
   }
-  .slideShow, .families {
+  .slideShow,
+  .families {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .slideShow {
-    height: auto;
-  }
-  .slideshowImage {
-    height: auto;
-    max-height: 300px;
+  .families {
+    max-height: none;
   }
   .activitiesList {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    justify-content: center;   /* center the grid */
-    gap: 1rem;
-  }
-  .activityCard {
-    flex: 0 0 45%;
-    margin: 0.5rem;
-    min-width: 100px;
   }
 }
 
 @media screen and (max-width: 480px) {
-    .slideshowActivityRow {
-    display: flex;
+  .navigationButtonsAndHeading {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  .centeredText {
+    order: -1;
+    width: 100%;
+  }
+  .sccNavigationButton {
+    width: 100%;
+    text-align: center;
+  }
+  .slideshowActivityRow {
     flex-direction: column;
   }
-  .slideShow, .families {
+  .slideShow,
+  .families {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  .slideShow {
-    height: auto;
+  .families {
+    max-height: none;
   }
-  .slideshowImage {
-    height: auto;
-    max-height: 250px;
+  .sliderPrev {
+    left: -12px;
+  }
+  .sliderNext {
+    right: -12px;
   }
   .activitiesList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    justify-content: center;   /* center the grid */
-    gap: 1rem;
-  }
-  .activityCard {
-    flex: 0 0 45%;
-    margin: 0.5rem;
-    min-width: 100px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }

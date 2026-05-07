@@ -1,2 +1,0 @@
-ALTER TABLE attendance_members
-  ADD COLUMN IF NOT EXISTS phone VARCHAR(10);

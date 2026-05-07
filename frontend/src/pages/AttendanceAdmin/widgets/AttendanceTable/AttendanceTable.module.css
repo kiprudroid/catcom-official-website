@@ -5,6 +5,20 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
 }
 
+.purposeGate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #fffbeb;
+  border: 1px dashed #f59e0b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #92400e;
+  margin-bottom: 10px;
+}
+
 .tableScroll {
   position: relative;
   width: 100%;
@@ -14,6 +28,14 @@
   -webkit-overflow-scrolling: touch;
   border-radius: 8px;
   border: 1px solid #f3f4f6;
+  transition: filter 0.2s;
+}
+
+.tableBlurred {
+  filter: blur(2px);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
 }
 
 .table {
@@ -78,7 +100,6 @@
     padding: 14px 12px;
     border-radius: 10px;
   }
-
   .tableScroll {
     max-height: 380px;
   }

@@ -12,11 +12,14 @@ const TableToolbar = ({
   onDownloadPDF,
   onShowRange,
   locked,
-  groupName,
-  meetingDate,
   familyFilter,
   onFamilyFilterChange,
   groupType,
+  meetingPurpose,
+  onMeetingPurposeChange,
+  meetingActivities,
+  onMeetingActivitiesChange,
+  purposeSaved,
 }) => {
   const isSCC = groupType === "scc";
 
@@ -41,6 +44,43 @@ const TableToolbar = ({
           <button className={styles.downloadBtn} onClick={onDownloadPDF}>
             ↓ PDF
           </button>
+        </div>
+      </div>
+
+      <div className={styles.purposeSection}>
+        <div className={styles.purposeSectionHeader}>
+          <span className={styles.purposeSectionTitle}>📋 Meeting Details</span>
+          {purposeSaved && <span className={styles.savedBadge}>✓ Saved</span>}
+        </div>
+        <div className={styles.purposeRow}>
+          <div className={styles.purposeField}>
+            <label className={styles.purposeLabel}>
+              Purpose of Meeting <span className={styles.required}>*</span>
+            </label>
+            <textarea
+              className={`${styles.purposeTextarea} ${
+                !meetingPurpose?.trim() && !locked
+                  ? styles.purposeTextareaEmpty
+                  : ""
+              }`}
+              placeholder="e.g. Weekly fellowship and prayer session…"
+              value={meetingPurpose || ""}
+              onChange={(e) => onMeetingPurposeChange(e.target.value)}
+              disabled={locked}
+              rows={3}
+            />
+          </div>
+          <div className={styles.purposeField}>
+            <label className={styles.purposeLabel}>Activities Done</label>
+            <textarea
+              className={styles.purposeTextarea}
+              placeholder="e.g. Bible study, worship, announcements, play games..."
+              value={meetingActivities || ""}
+              onChange={(e) => onMeetingActivitiesChange(e.target.value)}
+              disabled={locked}
+              rows={3}
+            />
+          </div>
         </div>
       </div>
 
