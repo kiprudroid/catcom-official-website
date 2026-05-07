@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Members.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
@@ -9,39 +9,16 @@ import {
 } from "@/api/joinGroup.api";
 import { fetchJoinSccs, deleteJoinScc, assignScc } from "@/api/joinScc.api";
 
-function lastNDaysDate(n) {
-  const d = new Date();
-  d.setDate(d.getDate() - n);
-  return d;
-}
-
-const SCC_OPTIONS = [
-  "St. Charles SCC",
-  "St. Jude SCC",
-  "St. Martin SCC",
-  "St. Paul SCC",
-  "St. Stephen SCC",
-  "St. Therese SCC",
-  "St. Veronica SCC",
-  "MMOG SCC",
-];
-
-const GROUP_OPTIONS = [
-  "Choir",
-  "Pastoral",
-  "Bible Prayer Service",
-  "Technical Team",
-  "Liturgical Dancers",
-  "Communion and Liberation",
-];
-
-const PENDING_PREFIX = "PENDING: ";
-
-const isGroupJoinPending = (value) =>
-  typeof value === "string" && value.startsWith(PENDING_PREFIX);
-
-const stripPendingPrefix = (value) =>
-  isGroupJoinPending(value) ? value.slice(PENDING_PREFIX.length) : value;
+import {
+  ToastNotification,
+  MemberModal,
+  RequestsTable,
+} from "@/pages/AdminPanel/pages/Members/widgets";
+import {
+  lastNDaysDate,
+  isGroupJoinPending,
+  stripPendingPrefix,
+} from "./utils/requestHelpers";
 
 export default function Members() {
   const [requests, setRequests] = useState(() => {
@@ -51,7 +28,6 @@ export default function Members() {
       return [];
     }
   });
-
   const [joinRequests, setJoinRequests] = useState([]);
   const [groupJoinRequests, setGroupJoinRequests] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -59,16 +35,27 @@ export default function Members() {
   const [searchQuery, setSearchQuery] = useState("");
   const [assigning, setAssigning] = useState({});
   const [groupAssigning, setGroupAssigning] = useState({});
-  const [filterRange, setFilterRange] = useState("all"); // all, 1, 7, 30
-  const [filterType, setFilterType] = useState("all"); // all, joinSCC, joinGroup
+  const [filterRange, setFilterRange] = useState("all");
+  const [filterType, setFilterType] = useState("all");
+  const [toastMsg, setToastMsg] = useState(null);
+  const [showNotifDot, setShowNotifDot] = useState(false);
+  const prevTotalRef = useRef(null);
+  const toastTimer = useRef(null);
 
-  // accept / reject actions
+  const [selectedMember, setSelectedMember] = useState(null);
+
   const accept = (id) => setRequests((prev) => prev.filter((r) => r.id !== id));
   const reject = (id) => setRequests((prev) => prev.filter((r) => r.id !== id));
 
   useEffect(() => {
     localStorage.setItem("admin_pending_requests", JSON.stringify(requests));
   }, [requests]);
+
+  const showToast = (msg) => {
+    setToastMsg(msg);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToastMsg(null), 4000);
+  };
 
   const loadJoinRequests = async () => {
     try {
@@ -78,9 +65,21 @@ export default function Members() {
         fetchJoinGroups(),
       ]);
       setJoinRequests(sccData || []);
-      setGroupJoinRequests(
-        (groupData || []).filter((req) => isGroupJoinPending(req.group_joined)),
+      const pendingGroups = (groupData || []).filter((r) =>
+        isGroupJoinPending(r.group_joined),
       );
+      setGroupJoinRequests(pendingGroups);
+
+      const sccPending = (sccData || []).filter(
+        (r) => r.scc_name === "TBD",
+      ).length;
+      const total = sccPending + pendingGroups.length + requests.length;
+      if (prevTotalRef.current !== null && total > prevTotalRef.current) {
+        const diff = total - prevTotalRef.current;
+        setShowNotifDot(true);
+        showToast(`${diff} new request${diff > 1 ? "s" : ""} arrived`);
+      }
+      prevTotalRef.current = total;
     } catch (err) {
       setError(err.message);
     } finally {
@@ -90,21 +89,19 @@ export default function Members() {
 
   useEffect(() => {
     loadJoinRequests();
+    const interval = setInterval(loadJoinRequests, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleDelete = async (id, type) => {
     if (!window.confirm("Are you sure you want to delete this request?"))
       return;
     try {
-      if (type === "joinGroup") {
-        await deleteJoinGroup(id);
-      } else {
-        await deleteJoinScc(id);
-      }
+      if (type === "joinGroup") await deleteJoinGroup(id);
+      else await deleteJoinScc(id);
       await loadJoinRequests();
-    } catch (err) {
+    } catch {
       alert("Failed to delete request");
-      console.error(err);
     }
   };
 
@@ -119,38 +116,32 @@ export default function Members() {
         delete n[id];
         return n;
       });
-    } catch (err) {
+    } catch {
       alert("Failed to assign SCC");
-      console.error(err);
     }
   };
 
   const handleAssignGroup = async (id, requestData) => {
     let group = groupAssigning[id];
-
-    // If not explicitly selected, use the first requested group from the request
     if (!group && requestData?.group_joined) {
-      const requestedGroups = stripPendingPrefix(requestData.group_joined);
-      group = requestedGroups.split(", ")[0].trim();
+      group = stripPendingPrefix(requestData.group_joined)
+        .split(", ")[0]
+        .trim();
     }
-
     if (!group) return alert("No group to assign.");
-
     try {
       await assignJoinGroup(id, group);
       await loadJoinRequests();
       setGroupAssigning((prev) => {
-        const next = { ...prev };
-        delete next[id];
-        return next;
+        const n = { ...prev };
+        delete n[id];
+        return n;
       });
-    } catch (err) {
+    } catch {
       alert("Failed to assign group request");
-      console.error(err);
     }
   };
 
-  // Filter join requests: only unassigned and by search query
   const filteredJoinRequests = joinRequests.filter(
     (r) =>
       r.scc_name === "TBD" &&
@@ -159,7 +150,6 @@ export default function Members() {
   );
 
   const allRequests = useMemo(() => {
-    const dummy = requests.map((r) => ({ ...r, type: "dummy" }));
     const joinScc = filteredJoinRequests.map((r) => ({
       id: r.user_id,
       name: r.full_name,
@@ -168,16 +158,27 @@ export default function Members() {
       type: "joinScc",
       ...r,
     }));
-    const joinGroupReqs = groupJoinRequests.map((r) => ({
-      id: r.user_id,
-      name: r.full_name,
-      requestedAt: new Date().toISOString(),
-      note: `Requested: ${stripPendingPrefix(r.group_joined)} (auto-assign on approve)`,
-      type: "joinGroup",
-      ...r,
-    }));
-    return [...requests, ...joinScc, ...joinGroupReqs];
-  }, [requests, filteredJoinRequests, groupJoinRequests]);
+    const joinGroupReqs = groupJoinRequests
+      .filter(
+        (r) =>
+          r.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          r.email?.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+      .map((r) => ({
+        id: r.user_id,
+        name: r.full_name,
+        requestedAt: new Date().toISOString(),
+        note: `Join Group: ${stripPendingPrefix(r.group_joined)}`,
+        type: "joinGroup",
+        ...r,
+      }));
+    const localReqs = requests.filter(
+      (r) =>
+        (r.name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (r.email || "").toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+    return [...localReqs, ...joinScc, ...joinGroupReqs];
+  }, [requests, filteredJoinRequests, groupJoinRequests, searchQuery]);
 
   const filteredByType = useMemo(() => {
     if (filterType === "all") return allRequests;
@@ -190,141 +191,82 @@ export default function Members() {
 
   const finalFiltered = useMemo(() => {
     if (filterRange === "all") return filteredByType;
-    const days = Number(filterRange);
-    const cutoff = lastNDaysDate(days);
+    const cutoff = lastNDaysDate(Number(filterRange));
     return filteredByType.filter((r) => new Date(r.requestedAt) >= cutoff);
   }, [filteredByType, filterRange]);
 
+  const totalPending = allRequests.length;
+
   return (
     <div className={styles.container}>
+      <ToastNotification message={toastMsg} />
+
       <div className={styles.topbar}>
         <div className={styles.logoGroup}>
           <Link to="/admin" className={styles.backLink}>
             ← Back to Admin
           </Link>
-          <SectionHeading>Membership Requests</SectionHeading>
-          <p style={{ color: "#555", marginTop: 8, maxWidth: 600 }}>
-            Pending join-group requests arrive here for admin review. When a
-            request is approved, it will be forwarded to the Join Group page as
-            an approved member.
+          <div className={styles.titleRow}>
+            <SectionHeading>Join Requests</SectionHeading>
+            {totalPending > 0 && (
+              <button
+                className={styles.notifBadge}
+                onClick={() => setShowNotifDot(false)}
+                title="Click to dismiss"
+              >
+                {showNotifDot && <span className={styles.notifPulse} />}
+                {totalPending}
+              </button>
+            )}
+          </div>
+          <p className={styles.pageDesc}>
+            Pending join requests arrive here for admin review. Approved
+            requests are forwarded to the Join Group page.
           </p>
         </div>
-      </div>
-
-      <section className={styles.section}>
-        <div
-          style={{
-            marginBottom: 12,
-            display: "flex",
-            gap: "12px",
-            alignItems: "center",
+        <button
+          className={styles.refreshBtn}
+          onClick={() => {
+            loadJoinRequests();
+            setShowNotifDot(false);
           }}
         >
-          <label>Show:</label>
-          <select
-            value={filterRange}
-            onChange={(e) => setFilterRange(e.target.value)}
-          >
-            <option value="all">All time</option>
-            <option value="1">Last 24 hours</option>
-            <option value="7">Last 7 days</option>
-            <option value="30">Last 30 days</option>
-          </select>
-          <select
-            value={filterType}
-            onChange={(e) => setFilterType(e.target.value)}
-          >
-            <option value="all">All requests</option>
-            <option value="joinSCC">Join SCC requests</option>
-            <option value="joinGroup">Join group requests</option>
-          </select>
+          ↻ Refresh
+        </button>
+      </div>
 
-           
-        </div>
+      <RequestsTable
+        rows={finalFiltered}
+        loading={loading}
+        error={error}
+        filterRange={filterRange}
+        filterType={filterType}
+        searchQuery={searchQuery}
+        assigning={assigning}
+        groupAssigning={groupAssigning}
+        onFilterRangeChange={setFilterRange}
+        onFilterTypeChange={setFilterType}
+        onSearchChange={setSearchQuery}
+        onAssigningChange={(id, val) =>
+          setAssigning((prev) => ({ ...prev, [id]: val }))
+        }
+        onGroupAssigningChange={(id, val) =>
+          setGroupAssigning((prev) => ({ ...prev, [id]: val }))
+        }
+        onAssign={handleAssign}
+        onAssignGroup={handleAssignGroup}
+        onDelete={handleDelete}
+        onAccept={accept}
+        onReject={reject}
+        onRowClick={setSelectedMember}
+      />
 
-        <ul className={styles.list}>
-          {finalFiltered.length === 0 && <div>No requests found.</div>}
-          {finalFiltered.map((r) => (
-            <li key={`${r.type}-${r.id}`} className={styles.listItem}>
-              <div className={styles.listRow}>
-                <div>
-                  <strong>{r.name}</strong>
-                  <div style={{ fontSize: 12, color: "#666" }}>
-                    {new Date(r.requestedAt).toLocaleString()} - {r.note}
-                  </div>
-                </div>
-                <div className={styles.actions}>
-                  {r.type === "joinScc" ? (
-                    <>
-                      <select
-                        value={assigning[r.id] || ""}
-                        onChange={(e) =>
-                          setAssigning((prev) => ({
-                            ...prev,
-                            [r.id]: e.target.value,
-                          }))
-                        }
-                        style={{ marginRight: 8, padding: "4px" }}
-                      >
-                        <option value="">Assign SCC...</option>
-                        {SCC_OPTIONS.map((s) => (
-                          <option key={s} value={s}>
-                            {s}
-                          </option>
-                        ))}
-                      </select>
-                      <button onClick={() => handleAssign(r.id)}>Assign</button>
-                    </>
-                  ) : r.type === "joinGroup" ? (
-                    <>
-                      <select
-                        value={
-                          groupAssigning[r.id] ||
-                          stripPendingPrefix(r.group_joined)
-                            .split(", ")[0]
-                            .trim()
-                        }
-                        onChange={(e) =>
-                          setGroupAssigning((prev) => ({
-                            ...prev,
-                            [r.id]: e.target.value,
-                          }))
-                        }
-                        style={{ marginRight: 8, padding: "4px" }}
-                      >
-                        {stripPendingPrefix(r.group_joined)
-                          .split(", ")
-                          .map((g) => (
-                            <option key={g.trim()} value={g.trim()}>
-                              {g.trim()}
-                            </option>
-                          ))}
-                        <option value="">---</option>
-                        {GROUP_OPTIONS.map((group) => (
-                          <option key={group} value={group}>
-                            {group}
-                          </option>
-                        ))}
-                      </select>
-                      <button onClick={() => handleAssignGroup(r.id, r)}>
-                        Approve
-                      </button>
-                      <button onClick={() => handleDelete(r.id, "joinGroup")}>
-                        Reject
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button onClick={() => accept(r.id)}>Accept</button>
-                      <button onClick={() => reject(r.id)}>Reject</button>
-                    </>
-                  )}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {selectedMember && (
+        <MemberModal
+          member={selectedMember}
+          onClose={() => setSelectedMember(null)}
+        />
+      )}
     </div>
   );
 }

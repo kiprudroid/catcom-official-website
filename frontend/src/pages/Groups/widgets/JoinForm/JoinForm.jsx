@@ -16,17 +16,78 @@ const initialForm = {
   groups: [],
 };
 
+const KENYAN_PHONE_REGEX = /^(?:0)(7[0-9]{8}|1[01][0-9]{7})$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const NAME_REGEX = /^[A-Za-z\s'-]+$/;
+
+function validate(form) {
+  const errors = {};
+  if (!form.fname.trim()) errors.fname = "First name is required";
+  else if (!NAME_REGEX.test(form.fname))
+    errors.fname = "Name must contain letters only";
+  if (!form.lname.trim()) errors.lname = "Last name is required";
+  else if (!NAME_REGEX.test(form.lname))
+    errors.lname = "Name must contain letters only";
+  if (!form.phone.trim()) errors.phone = "Phone number is required";
+  else if (!KENYAN_PHONE_REGEX.test(form.phone.replace(/\s/g, "")))
+    errors.phone = "Enter a valid Kenyan number (07xxxxxxxx or 011xxxxxxxx)";
+  if (!form.email.trim()) errors.email = "Email is required";
+  else if (!EMAIL_REGEX.test(form.email))
+    errors.email = "Enter a valid email address";
+  if (!form.gender) errors.gender = "Please select your gender";
+  if (!form.college) errors.college = "Please select your college";
+  if (form.groups.length === 0)
+    errors.groups = "Please select at least one group";
+  return errors;
+}
+
+function FieldError({ msg }) {
+  if (!msg) return null;
+  return <span className={styles.fieldError}>{msg}</span>;
+}
+
+function Modal({ type, message, onClose }) {
+  const isSuccess = type === "success";
+  const color = isSuccess ? "#22c55e" : "#ef4444";
+  const title = isSuccess
+    ? "Request Submitted!"
+    : type === "validation"
+      ? "Incomplete Form"
+      : "Submission Failed";
+  const msg = isSuccess
+    ? "You have successfully submitted your request to join the selected group(s). We'll contact you soon."
+    : message || "Please check your details and try again.";
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalIcon} style={{ background: color }}>
+          {isSuccess ? "✓" : "✕"}
+        </div>
+        <p className={styles.modalTitle}>{title}</p>
+        <p className={styles.modalMessage}>{msg}</p>
+        <button
+          className={styles.modalBtn}
+          style={{ background: color }}
+          onClick={onClose}
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function JoinForm() {
   const [form, setForm] = useState(initialForm);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [modal, setModal] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (modal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    if (modal) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -34,45 +95,62 @@ function JoinForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    let sanitized = value;
+    if (name === "fname" || name === "lname") {
+      sanitized = value.replace(/[^A-Za-z\s'-]/g, "");
+    }
+    if (name === "phone") {
+      sanitized = value.replace(/\D/g, "").slice(0, 10);
+    }
+    setForm((prev) => ({ ...prev, [name]: sanitized }));
+    if (touched[name]) {
+      const newErrors = validate({ ...form, [name]: sanitized });
+      setErrors((prev) => ({ ...prev, [name]: newErrors[name] }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const newErrors = validate(form);
+    setErrors((prev) => ({ ...prev, [name]: newErrors[name] }));
   };
 
   const handleGroupChange = (e) => {
     const { value, checked } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      groups: checked
-        ? [...prev.groups, value]
-        : prev.groups.filter((g) => g !== value),
-    }));
+    const newGroups = checked
+      ? [...form.groups, value]
+      : form.groups.filter((g) => g !== value);
+    setForm((prev) => ({ ...prev, groups: newGroups }));
+    if (touched.groups) {
+      setErrors((prev) => ({
+        ...prev,
+        groups:
+          newGroups.length === 0
+            ? "Please select at least one group"
+            : undefined,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (
-      !form.fname ||
-      !form.lname ||
-      !form.phone ||
-      !form.email ||
-      !form.gender ||
-      !form.college ||
-      form.groups.length === 0
-    ) {
-      setModal({
-        type: "validation",
-        message:
-          "Please fill all required fields and choose at least one group.",
-      });
-      return;
-    }
+    const allTouched = Object.keys(initialForm).reduce(
+      (acc, k) => ({ ...acc, [k]: true }),
+      { groups: true },
+    );
+    setTouched(allTouched);
+    const validationErrors = validate(form);
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) return;
 
     setLoading(true);
-
     try {
       await createJoinGroup(form);
       setModal({ type: "success" });
       setForm(initialForm);
+      setErrors({});
+      setTouched({});
     } catch (error) {
       setModal({ type: "error", message: error.message });
     } finally {
@@ -80,47 +158,49 @@ function JoinForm() {
     }
   };
 
-  function Modal({ type, message, onClose }) {
-    const isSuccess = type === "success";
-    const isError = type === "error";
-    const isValidation = type === "validation";
+  const fields = [
+    {
+      id: "fname",
+      label: "First Name",
+      type: "text",
+      placeholder: "e.g. Jane",
+    },
+    {
+      id: "lname",
+      label: "Last Name",
+      type: "text",
+      placeholder: "e.g. Wanjiru",
+    },
+    {
+      id: "phone",
+      label: "Phone Number",
+      type: "text",
+      placeholder: "07xxxxxxxx or 011xxxxxxxx",
+    },
+    {
+      id: "email",
+      label: "Email Address",
+      type: "email",
+      placeholder: "jane@gmail.com",
+    },
+  ];
 
-    let title, msg, color;
-
-    if (isSuccess) {
-      title = "Request Submitted!";
-      msg =
-        "You have successfully submitted your request to join the selected group(s). We'll contact you soon.";
-      color = "#22c55e";
-    } else if (isError) {
-      title = "Submission Failed";
-      msg = message || "An error occurred. Please try again.";
-      color = "#ef4444";
-    } else if (isValidation) {
-      title = "Incomplete Form";
-      msg = message || "Please fill all required fields.";
-      color = "#ef4444";
-    }
-
-    return (
-      <div className={styles.modalOverlay} onClick={onClose}>
-        <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
-          <div className={styles.modalIcon} style={{ background: color }}>
-            {isSuccess ? "✓" : "✕"}
-          </div>
-          <p className={styles.modalTitle}>{title}</p>
-          <p className={styles.modalMessage}>{msg}</p>
-          <button
-            className={styles.modalBtn}
-            style={{ background: color }}
-            onClick={onClose}
-          >
-            OK
-          </button>
-        </div>
-      </div>
-    );
-  }
+  const groups = [
+    { id: "choir", value: "Choir", label: "Choir" },
+    { id: "pastoral", value: "Pastoral", label: "Pastoral" },
+    { id: "BPS", value: "Bible Prayer Service", label: "Bible Prayer Service" },
+    { id: "technical", value: "Technical Team", label: "Technical Team" },
+    {
+      id: "liturgical-dancers",
+      value: "Liturgical Dancers",
+      label: "Liturgical Dancers",
+    },
+    {
+      id: "communion-and-liberation",
+      value: "Communion and Liberation",
+      label: "Communion and Liberation",
+    },
+  ];
 
   return (
     <div className={styles.formGrid}>
@@ -132,68 +212,41 @@ function JoinForm() {
         />
       )}
 
-      <form onSubmit={handleSubmit}>
-        <SectionHeading as="h2">Joining a Group</SectionHeading>
+      <form onSubmit={handleSubmit} noValidate>
+        <SectionHeading as="h2">Join a Group</SectionHeading>
         <Paragraph>
-          To join a group, please fill out the form below and select the
-          group(s) you wish to join.
+          Fill out the form below to request to join one or more CATCOM groups.
         </Paragraph>
 
         <div className={styles.formRow}>
           <div className={styles.formCol}>
-            <div className={styles.fieldGroup}>
-              <label htmlFor="fname">
-                <Paragraph>First Name</Paragraph>
-              </label>
-              <input
-                type="text"
-                id="fname"
-                name="fname"
-                value={form.fname}
-                onChange={handleChange}
-              />
-            </div>
+            {fields.map(({ id, label, type, placeholder }) => (
+              <div
+                key={id}
+                className={`${styles.fieldGroup} ${errors[id] && touched[id] ? styles.fieldError_wrap : ""}`}
+              >
+                <label htmlFor={id}>
+                  <Paragraph>{label}</Paragraph>
+                </label>
+                <input
+                  type={type}
+                  id={id}
+                  name={id}
+                  value={form[id]}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder={placeholder}
+                  maxLength={id === "phone" ? 10 : undefined}
+                  inputMode={id === "phone" ? "numeric" : undefined}
+                  className={errors[id] && touched[id] ? styles.inputError : ""}
+                />
+                <FieldError msg={touched[id] ? errors[id] : ""} />
+              </div>
+            ))}
 
-            <div className={styles.fieldGroup}>
-              <label htmlFor="lname">
-                <Paragraph>Last Name</Paragraph>
-              </label>
-              <input
-                type="text"
-                id="lname"
-                name="lname"
-                value={form.lname}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className={styles.fieldGroup}>
-              <label htmlFor="phone">
-                <Paragraph>Phone Number</Paragraph>
-              </label>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className={styles.fieldGroup}>
-              <label htmlFor="email">
-                <Paragraph>Your E-mail</Paragraph>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className={styles.fieldGroup}>
+            <div
+              className={`${styles.fieldGroup} ${errors.gender && touched.gender ? styles.fieldError_wrap : ""}`}
+            >
               <label htmlFor="gender">
                 <Paragraph>Gender</Paragraph>
               </label>
@@ -202,14 +255,21 @@ function JoinForm() {
                 name="gender"
                 value={form.gender}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                className={
+                  errors.gender && touched.gender ? styles.inputError : ""
+                }
               >
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
+              <FieldError msg={touched.gender ? errors.gender : ""} />
             </div>
 
-            <div className={styles.fieldGroup}>
+            <div
+              className={`${styles.fieldGroup} ${errors.college && touched.college ? styles.fieldError_wrap : ""}`}
+            >
               <label htmlFor="college">
                 <Paragraph>College</Paragraph>
               </label>
@@ -218,6 +278,10 @@ function JoinForm() {
                 name="college"
                 value={form.college}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                className={
+                  errors.college && touched.college ? styles.inputError : ""
+                }
               >
                 <option value="">Select College</option>
                 <option value="COHES">COHES</option>
@@ -226,39 +290,19 @@ function JoinForm() {
                 <option value="COETEC">COETEC</option>
                 <option value="COHRED">COHRED</option>
               </select>
+              <FieldError msg={touched.college ? errors.college : ""} />
             </div>
           </div>
 
           <div className={styles.formCol}>
             <label className={styles.groupLabel}>
-              <SectionHeading>Select Which Group(s) to Join</SectionHeading>
+              <SectionHeading>Select Group(s) to Join</SectionHeading>
             </label>
-            <div className={styles.checkboxGroup}>
-              {[
-                { id: "choir", value: "Choir", label: "Choir" },
-                { id: "pastoral", value: "Pastoral", label: "Pastoral" },
-                {
-                  id: "BPS",
-                  value: "Bible Prayer Service",
-                  label: "Bible Prayer Service",
-                },
-                {
-                  id: "technical",
-                  value: "Technical Team",
-                  label: "Technical Team",
-                },
-                {
-                  id: "liturgical-dancers",
-                  value: "Liturgical Dancers",
-                  label: "Liturgical Dancers",
-                },
-                {
-                  id: "communion-and-liberation",
-                  value: "Communion and Liberation",
-                  label: "Communion and Liberation",
-                },
-              ].map(({ id, value, label }) => (
-                <div key={id}>
+            <div
+              className={`${styles.checkboxGroup} ${errors.groups && touched.groups ? styles.checkboxError : ""}`}
+            >
+              {groups.map(({ id, value, label }) => (
+                <div key={id} className={styles.checkboxItem}>
                   <input
                     type="checkbox"
                     id={id}
@@ -266,6 +310,7 @@ function JoinForm() {
                     value={value}
                     checked={form.groups.includes(value)}
                     onChange={handleGroupChange}
+                    onBlur={() => setTouched((p) => ({ ...p, groups: true }))}
                   />
                   <label htmlFor={id}>
                     <Paragraph>{label}</Paragraph>
@@ -273,11 +318,12 @@ function JoinForm() {
                 </div>
               ))}
             </div>
+            <FieldError msg={touched.groups ? errors.groups : ""} />
           </div>
         </div>
 
         <button className={styles.joinBtn} type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Join Group(s)"}
+          {loading ? "Submitting…" : "Join Group(s)"}
         </button>
       </form>
     </div>

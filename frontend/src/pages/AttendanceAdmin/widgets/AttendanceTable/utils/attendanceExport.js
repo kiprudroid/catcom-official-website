@@ -12,11 +12,11 @@ export const PDF_STATUS_COLORS = {
   apology: { color: "#d97706", bg: "#fef3c7" },
 };
 
-// ─── CSV helper ─────────────────────
+// ─── CSV helper
 
 export const csvCell = (val) => `"${String(val ?? "").replace(/"/g, '""')}"`;
 
-// ─── Single-date CSV export ───────────
+// ─── Single-date CSV export
 
 export const exportSingleCSV = (members, groupName, meetingDate) => {
   const meta = [
@@ -56,15 +56,42 @@ export const exportSingleCSV = (members, groupName, meetingDate) => {
   );
 };
 
-// ─── Single-date PDF export ───────────────
+// ─── Single-date PDF export
 
-export const exportSinglePDF = (members, groupName, meetingDate) => {
+export const exportSinglePDF = (
+  members,
+  groupName,
+  meetingDate,
+  meetingPurpose,
+  meetingActivities,
+) => {
   const present = members.filter((m) => m.attendance === "present").length;
   const absent = members.filter((m) => m.attendance === "absent").length;
   const apology = members.filter((m) => m.attendance === "apology").length;
   const rate = members.length
     ? Math.round((present / members.length) * 100)
     : 0;
+
+  const meetingDetailsBlock = meetingPurpose
+    ? `
+    <div class="details-box">
+      <div class="details-row">
+        <div class="details-field">
+          <span class="details-label">Purpose of Meeting</span>
+          <p class="details-value">${meetingPurpose}</p>
+        </div>
+        ${
+          meetingActivities
+            ? `
+        <div class="details-field">
+          <span class="details-label">Activities Done</span>
+          <p class="details-value">${meetingActivities}</p>
+        </div>`
+            : ""
+        }
+      </div>
+    </div>`
+    : "";
 
   const rows = members
     .map((m, i) => {
@@ -87,9 +114,15 @@ export const exportSinglePDF = (members, groupName, meetingDate) => {
 <style>
   @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
   body{font-family:'Segoe UI',sans-serif;padding:36px;color:#1c3a3a;margin:0;}
-  h1{font-size:20px;font-weight:800;margin:0 0 4px;}p{font-size:13px;color:#6b7280;margin:0;}
-  .summary{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap;}
+  h1{font-size:20px;font-weight:800;margin:0 0 4px;}
+  p{font-size:13px;color:#6b7280;margin:0;}
+  .summary{display:flex;gap:10px;margin:16px 0 20px;flex-wrap:wrap;}
   .chip{padding:5px 14px;border-radius:8px;font-size:12px;font-weight:700;}
+  .details-box{background:#f0fdf9;border:1.5px solid #d1fae5;border-radius:10px;padding:12px 16px;margin:14px 0 20px;}
+  .details-row{display:flex;gap:24px;flex-wrap:wrap;}
+  .details-field{flex:1 1 200px;display:flex;flex-direction:column;gap:3px;}
+  .details-label{font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.08em;}
+  .details-value{font-size:13px;color:#1f2937;line-height:1.55;margin:0;font-weight:500;}
   table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px;}
   th{background:#1c3a3a;color:white;padding:9px 12px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.07em;}
   td{padding:9px 12px;border-bottom:1px solid #f3f4f6;}
@@ -103,6 +136,7 @@ export const exportSinglePDF = (members, groupName, meetingDate) => {
   <span class="chip" style="background:#fef3c7;color:#d97706">~ Apology: ${apology}</span>
   <span class="chip" style="background:#f3f4f6;color:#374151">Rate: ${rate}%</span>
 </div>
+${meetingDetailsBlock}
 <table><thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Role</th><th>Status</th><th>Consec. Absences</th><th>Recent (60d)</th></tr></thead>
 <tbody>${rows}</tbody></table>
 <div class="footer">Generated: ${new Date().toLocaleString()}</div>

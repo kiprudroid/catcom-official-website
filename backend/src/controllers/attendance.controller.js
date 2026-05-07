@@ -173,7 +173,6 @@ export const markFollowUp = async (req, res, next) => {
       await Service.markMemberFollowUp({
         id: req.params.id,
         group_id: req.user.group_id,
-        // meetingDate must be sent in the request body from the frontend
         meetingDate: req.body.meetingDate,
       }),
     );
@@ -192,6 +191,32 @@ export const getAttendanceRange = async (req, res, next) => {
         endDate: end,
       }),
     );
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getMeetingPurposeHandler = async (req, res, next) => {
+  try {
+    const result = await Service.getMeetingPurpose({
+      group_id: req.user.group_id,
+      date: req.params.date,
+    });
+    res.json(result || { purpose: "", activities: "" });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const upsertMeetingPurposeHandler = async (req, res, next) => {
+  try {
+    const result = await Service.upsertMeetingPurpose({
+      group_id: req.user.group_id,
+      date: req.body.date,
+      purpose: req.body.purpose,
+      activities: req.body.activities,
+    });
+    res.json(result);
   } catch (err) {
     next(err);
   }

@@ -2,6 +2,7 @@
   margin-bottom: 16px;
 }
 
+/* ── Header row ── */
 .headerRow {
   display: flex;
   align-items: flex-start;
@@ -45,7 +46,6 @@
     background 0.15s,
     color 0.15s;
 }
-
 .rangeBtn:hover {
   background: #e0f7f8;
 }
@@ -62,12 +62,319 @@
   white-space: nowrap;
   transition: background 0.15s;
 }
-
 .downloadBtn:hover {
   background: #f3f4f6;
 }
 
-/* ── Search bar ── */
+/* ── Purpose section ── */
+.purposeSection {
+  background: linear-gradient(135deg, #f0fdf9 0%, #f8fafc 100%);
+  border: 1.5px solid #d1fae5;
+  border-radius: 12px;
+  padding: 14px 16px 16px;
+  margin-bottom: 14px;
+  height: auto;
+  min-height: 0;
+}
+
+.purposeSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.purposeSectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #065f46;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.purposeHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.savedBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #16a34a;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  padding: 2px 9px;
+  border-radius: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Edit button ── */
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1.5px solid #d1d5db;
+  background: #ffffff;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
+}
+.editBtn:hover:not(:disabled) {
+  border-color: #2dabb1;
+  color: #2dabb1;
+  background: #f0fdf9;
+}
+.editBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── VIEW mode ── */
+.purposeViewRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeIn 0.2s ease;
+  height: auto;
+  min-height: 0;
+}
+
+.purposeViewField {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: auto;
+  min-height: 0;
+}
+
+.purposeViewLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.purposeViewText {
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 500;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.emptyText {
+  color: #9ca3af;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── EDIT mode ── */
+.purposeEditBlock {
+  animation: fadeIn 0.18s ease;
+}
+
+.purposeRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.purposeField {
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.purposeLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.required {
+  color: #ef4444;
+  font-size: 13px;
+}
+
+.purposeTextarea {
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: #1f2937;
+  background: #ffffff;
+  outline: none;
+  resize: vertical;
+  min-height: 72px;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.55;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.purposeTextarea:focus {
+  border-color: #2dabb1;
+  box-shadow: 0 0 0 3px rgba(45, 171, 177, 0.12);
+}
+.purposeTextarea:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  resize: none;
+}
+.purposeTextareaEmpty {
+  border-color: #fbbf24;
+  background: #fffbeb;
+}
+.purposeTextareaEmpty:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.12);
+}
+
+/* ── Edit action buttons ── */
+.purposeEditActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.saveDetailsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #2dabb1;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+}
+.saveDetailsBtn:hover:not(:disabled) {
+  background: #259aa0;
+}
+.saveDetailsBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: transparent;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+.cancelBtn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+.cancelBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Spinners ── */
+.btnSpinner {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.btnSpinner::before,
+.btnSpinner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+.btnSpinner::before {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.btnSpinner::after {
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-right-color: rgba(255, 255, 255, 0.5);
+  animation: spinDual 0.65s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.editSpinner {
+  position: relative;
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+.editSpinner::before,
+.editSpinner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+.editSpinner::before {
+  border: 1.5px solid rgba(45, 171, 177, 0.2);
+}
+.editSpinner::after {
+  border: 1.5px solid transparent;
+  border-top-color: #2dabb1;
+  border-right-color: rgba(45, 171, 177, 0.5);
+  animation: spinDual 0.65s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes spinDual {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .searchBar {
   display: flex;
   flex-wrap: wrap;
@@ -83,7 +390,7 @@
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 5px;
+  padding: 5px 8px;
 }
 
 .searchIcon {
@@ -113,7 +420,6 @@
   outline: none;
   transition: border-color 0.15s;
 }
-
 .familyInput:focus {
   border-color: #2dabb1;
 }
@@ -129,27 +435,56 @@
   outline: none;
   cursor: pointer;
 }
-
 .roleFilter:focus {
   border-color: #2dabb1;
 }
 
-/* ── Mobile: all filters go full width ── */
+/* ── Mobile ── */
 @media (max-width: 560px) {
   .searchWrap,
   .familyInput,
   .roleFilter {
     flex: 1 1 100%;
   }
-
   .actions {
     width: 100%;
     justify-content: flex-start;
   }
-
   .rangeBtn,
   .downloadBtn {
     flex: 1 1 auto;
     text-align: center;
+  }
+  .purposeSection {
+    padding: 10px 12px 12px;
+    margin-bottom: 10px;
+    height: auto;
+    min-height: 0;
+  }
+  .purposeRow {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .purposeField {
+    flex: 0 0 auto;
+  }
+  .purposeTextarea {
+    min-height: unset;
+    height: 64px;
+    resize: none;
+  }
+  .purposeSectionHeader {
+    margin-bottom: 8px;
+  }
+  .purposeViewRow {
+    flex-direction: column;
+    gap: 8px;
+    height: auto;
+    min-height: 0;
+  }
+  .purposeViewField {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: 0;
   }
 }

@@ -41,6 +41,12 @@
   color: #1a1a1a;
 }
 
+.fieldError_wrap input,
+.fieldError_wrap select {
+  border-color: #ef4444 !important;
+  background: #fff5f5;
+}
+
 input[type="text"],
 input[type="email"],
 select {
@@ -52,6 +58,7 @@ select {
   box-sizing: border-box;
   background: #fff;
   color: #1a1a1a;
+  transition: border-color 0.15s;
 }
 
 input[type="text"]:focus,
@@ -59,6 +66,23 @@ input[type="email"]:focus,
 select:focus {
   outline: none;
   border-color: #2dabb1;
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+  background: #fff5f5 !important;
+}
+
+.fieldError {
+  font-size: 0.78rem;
+  color: #dc2626;
+  margin-top: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.fieldError::before {
+  content: "⚠ ";
 }
 
 .groupLabel {
@@ -72,9 +96,20 @@ select:focus {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.25rem;
+  transition: border-color 0.15s;
 }
 
-.checkboxGroup > div {
+.checkboxError {
+  border-color: #ef4444;
+  background: #fff5f5;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+.checkboxItem {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -111,36 +146,12 @@ select:focus {
   cursor: pointer;
   transition: background 0.2s;
 }
-
 .joinBtn:hover {
   background: #124346;
 }
-
 .joinBtn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.warningBar {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  background: #fff3cd;
-  width: fit-content;
-  color: #664d03;
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.successBar {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  background: #d1e7dd;
-  width: fit-content;
-  color: #0a3622;
-  font-weight: 500;
-  font-size: 0.9rem;
 }
 
 .modalOverlay {
@@ -154,8 +165,6 @@ select:focus {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  pointer-events: auto;
-  will-change: opacity;
 }
 
 .modalBox {
@@ -171,8 +180,6 @@ select:focus {
   gap: 1rem;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
   animation: popIn 0.3s ease-out;
-  pointer-events: auto;
-  will-change: transform, opacity;
 }
 
 @keyframes popIn {
@@ -204,7 +211,6 @@ select:focus {
   color: #111;
   margin: 0;
 }
-
 .modalMessage {
   font-size: 0.95rem;
   color: #555;
@@ -223,7 +229,6 @@ select:focus {
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-
 .modalBtn:hover {
   opacity: 0.88;
 }

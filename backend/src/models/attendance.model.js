@@ -219,3 +219,22 @@ export const getAttendanceByRangeQuery = (group_id, startDate, endDate) =>
     ORDER BY m.name ASC`,
     [group_id, startDate, endDate],
   );
+
+export const upsertMeetingQuery = ({ group_id, date, purpose, activities }) =>
+  pool.query(
+    `INSERT INTO attendance_meetings (group_id, date, purpose, activities)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (group_id, date)
+       DO UPDATE SET
+         purpose    = EXCLUDED.purpose,
+         activities = EXCLUDED.activities,
+         updated_at = NOW()
+       RETURNING *`,
+    [group_id, date, purpose || null, activities || null],
+  );
+
+export const getMeetingByDateQuery = ({ group_id, date }) =>
+  pool.query(
+    `SELECT * FROM attendance_meetings WHERE group_id = $1 AND date = $2`,
+    [group_id, date],
+  );
