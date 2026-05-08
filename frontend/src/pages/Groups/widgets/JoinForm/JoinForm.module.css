@@ -117,7 +117,7 @@ select:focus {
   width: 100%;
 }
 
-.checkboxGroup input[type="checkbox"] {
+.checkboxGroup input[type="radio"] {
   flex-shrink: 0;
   width: 16px;
   height: 16px;

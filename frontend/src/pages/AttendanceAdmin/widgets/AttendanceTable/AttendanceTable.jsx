@@ -76,14 +76,18 @@ const AttendanceTable = ({
     updateAttendance(id, status);
   };
 
-  const filteredMembers = members.filter((m) => {
-    const matchName = m.name.toLowerCase().includes(search.toLowerCase());
-    const matchRole = roleFilter ? m.role === roleFilter : true;
-    const matchFamily = familyFilter
-      ? (m.family_name || "").toLowerCase().includes(familyFilter.toLowerCase())
-      : true;
-    return matchName && matchRole && matchFamily;
-  });
+  const filteredMembers = members
+    .filter((m) => {
+      const matchName = m.name.toLowerCase().includes(search.toLowerCase());
+      const matchRole = roleFilter ? m.role === roleFilter : true;
+      const matchFamily = familyFilter
+        ? (m.family_name || "")
+            .toLowerCase()
+            .includes(familyFilter.toLowerCase())
+        : true;
+      return matchName && matchRole && matchFamily;
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const copyPhone = (id, phone) => {
     if (!phone) return;
