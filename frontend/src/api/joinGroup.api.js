@@ -24,7 +24,6 @@ const readJsonIfAny = async (res) => {
   return res.json();
 };
 
-// ✅ Fetch all join groups (used by admin panel)
 export const fetchJoinGroups = async () => {
   const res = await fetch(`${API_BASE}/join-group`, {
     method: "GET",
@@ -35,17 +34,16 @@ export const fetchJoinGroups = async () => {
   return readJsonIfAny(res);
 };
 
-// ✅ Create join group — maps frontend fields to backend field names
 export const createJoinGroup = async (joinGroupData) => {
   const { fname, lname, phone, email, gender, college, groups } = joinGroupData;
 
   const payload = {
     full_name: `${fname} ${lname}`.trim(), // backend expects one full_name string
-    phone_number: phone, // backend expects phone_number
+    phone_number: phone,
     email,
     gender,
     college,
-    group_joined: groups.join(", "), // backend expects a string, not array
+    group_joined: Array.isArray(groups) ? groups.join(", ") : groups, // handles both string (radio) and array (checkbox)
   };
 
   const res = await fetch(`${API_BASE}/join-group`, {
@@ -58,7 +56,6 @@ export const createJoinGroup = async (joinGroupData) => {
   return readJsonIfAny(res);
 };
 
-// ✅ Delete join group by ID (used by admin panel)
 export const assignJoinGroup = async (id, group_joined) => {
   if (!id || !group_joined)
     throw new Error("id and group are required to assign join group request");
