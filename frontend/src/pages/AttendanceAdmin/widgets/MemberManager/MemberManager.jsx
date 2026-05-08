@@ -1,32 +1,12 @@
 import React, { useState } from "react";
+import { FaUsers, FaUserAlt } from "react-icons/fa";
+import {
+  MemberRow,
+  MemberSearch,
+  AddMemberForm,
+  EditMemberModal,
+} from "./widgets";
 import styles from "./MemberManager.module.css";
-import { FaPlus, FaTrash, FaUserAlt, FaSearch, FaEdit } from "react-icons/fa";
-
-const ROLES = [
-  "Catering Secretary",
-  "Chairperson",
-  "Coordinator",
-  "Liturgist",
-  "Member",
-  "Moderator",
-  "Organising Secretary",
-  "Pastoral Secretary",
-  "Project Manager",
-  "Secretary",
-  "Treasurer",
-].sort();
-
-const sanitizePhone = (val) =>
-  String(val ?? "")
-    .replace(/\D/g, "")
-    .slice(0, 10);
-
-const KENYAN_PHONE = /^(07[0-9]\d{7}|01[01][0-9]\d{6})$/;
-
-const isValidPhone = (phone) => {
-  if (!phone) return true;
-  return KENYAN_PHONE.test(phone);
-};
 
 const MemberManager = ({
   members,
@@ -37,51 +17,11 @@ const MemberManager = ({
 }) => {
   const isSCC = groupType === "scc";
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [role, setRole] = useState("");
-  const [customRole, setCustomRole] = useState("");
-  const [familyName, setFamilyName] = useState("");
-  const [confirmId, setConfirmId] = useState(null);
   const [search, setSearch] = useState("");
   const [filterRole, setFilterRole] = useState("");
-
-  const [editTarget, setEditTarget] = useState(null);
-  const [editName, setEditName] = useState("");
-  const [editPhone, setEditPhone] = useState("");
-  const [editRole, setEditRole] = useState("");
-  const [editCustomRole, setEditCustomRole] = useState("");
-  const [editFamilyName, setEditFamilyName] = useState("");
-
-  const [adding, setAdding] = useState(false);
-  const [updating, setUpdating] = useState(false);
+  const [confirmId, setConfirmId] = useState(null);
   const [removingId, setRemovingId] = useState(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const finalRole = role === "custom" ? customRole.trim() : role;
-    if (!name.trim() || !finalRole) return;
-    if (!isValidPhone(phone)) {
-      alert("Enter a valid Kenyan number (e.g. 07XXXXXXXX or 0117XXXXXX)");
-      return;
-    }
-    try {
-      setAdding(true);
-      await addMember({
-        name: name.trim(),
-        phone: sanitizePhone(phone),
-        role: finalRole,
-        family_name: isSCC ? familyName.trim() || null : null,
-      });
-      setName("");
-      setPhone("");
-      setRole("");
-      setFamilyName("");
-      setCustomRole("");
-    } finally {
-      setAdding(false);
-    }
-  };
+  const [editTarget, setEditTarget] = useState(null);
 
   const handleRemove = async (id) => {
     if (confirmId === id) {
@@ -98,37 +38,6 @@ const MemberManager = ({
     }
   };
 
-  const openEdit = (m) => {
-    setEditTarget(m);
-    setEditName(m.name);
-    setEditPhone(sanitizePhone(m.phone));
-    setEditRole(ROLES.includes(m.role) ? m.role : "custom");
-    setEditCustomRole(ROLES.includes(m.role) ? "" : m.role);
-    setEditFamilyName(m.family_name || "");
-  };
-
-  const handleEditSave = async (e) => {
-    e.preventDefault();
-    const finalRole = editRole === "custom" ? editCustomRole.trim() : editRole;
-    if (!editName.trim() || !finalRole) return;
-    if (!isValidPhone(editPhone)) {
-      alert("Enter a valid Kenyan number (e.g. 07XXXXXXXX or 0117XXXXXX)");
-      return;
-    }
-    try {
-      setUpdating(true);
-      await updateMember(editTarget.id, {
-        name: editName.trim(),
-        phone: sanitizePhone(editPhone),
-        role: finalRole,
-        family_name: isSCC ? editFamilyName.trim() || null : undefined,
-      });
-      setEditTarget(null);
-    } finally {
-      setUpdating(false);
-    }
-  };
-
   const filteredMembers = members.filter((m) => {
     const matchesName = m.name.toLowerCase().includes(search.toLowerCase());
     const matchesRole = filterRole ? m.role === filterRole : true;
@@ -137,219 +46,63 @@ const MemberManager = ({
 
   return (
     <div className={styles.card}>
-      <h3 className={styles.title}>Manage Members</h3>
-
-      <div className={styles.searchBar}>
-        <div className={styles.searchInputWrapper}>
-          <FaSearch className={styles.searchIcon} />
-          <input
-            className={styles.searchInput}
-            type="text"
-            placeholder="Search member..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+      <div className={`${styles.section} ${styles.sectionMembers}`}>
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionIcon}>
+            <FaUsers size={14} />
+          </div>
+          <div>
+            <h3 className={styles.sectionTitle}>Members</h3>
+            <p className={styles.sectionSub}>{members.length} total</p>
+          </div>
         </div>
-        <select
-          className={styles.filterSelect}
-          value={filterRole}
-          onChange={(e) => setFilterRole(e.target.value)}
-        >
-          <option value="">All Roles</option>
-          {ROLES.map((r) => (
-            <option key={r}>{r}</option>
+
+        <MemberSearch
+          search={search}
+          filterRole={filterRole}
+          onSearchChange={setSearch}
+          onFilterChange={setFilterRole}
+        />
+
+        <div className={styles.list}>
+          {filteredMembers.length === 0 && (
+            <p className={styles.empty}>No members found.</p>
+          )}
+          {filteredMembers.map((m) => (
+            <MemberRow
+              key={m.id}
+              member={m}
+              isSCC={isSCC}
+              confirmId={confirmId}
+              removingId={removingId}
+              onEdit={setEditTarget}
+              onRemove={handleRemove}
+            />
           ))}
-        </select>
+        </div>
       </div>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.fields}>
-          <input
-            className={styles.input}
-            placeholder="Full name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <input
-            className={styles.input}
-            placeholder="Phone number ... 07XXXXXXXX or 011XXXXXXX"
-            value={phone}
-            onChange={(e) => setPhone(sanitizePhone(e.target.value))}
-            onPaste={(e) => {
-              e.preventDefault();
-              setPhone(sanitizePhone(e.clipboardData.getData("text")));
-            }}
-            inputMode="numeric"
-            maxLength={10}
-          />
-          {isSCC && (
-            <input
-              className={styles.input}
-              placeholder="Family name (optional)"
-              value={familyName}
-              onChange={(e) => setFamilyName(e.target.value)}
-            />
-          )}
-          <select
-            className={styles.select}
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              Select role
-            </option>
-            {ROLES.map((r) => (
-              <option key={r}>{r}</option>
-            ))}
-            <option value="custom">Other…</option>
-          </select>
-          {role === "custom" && (
-            <input
-              className={styles.input}
-              placeholder="Enter role"
-              value={customRole}
-              onChange={(e) => setCustomRole(e.target.value)}
-              required
-            />
-          )}
-        </div>
-        <button className={styles.addBtn} disabled={adding}>
-          {adding ? <span className={styles.spinner} /> : <FaPlus />}
-          {adding ? "Adding..." : "Add Member"}
-        </button>
-      </form>
-
-      <div className={styles.list}>
-        {filteredMembers.length === 0 && (
-          <p className={styles.empty}>No members found.</p>
-        )}
-        {filteredMembers.map((m) => (
-          <div key={m.id} className={styles.memberRow}>
-            <FaUserAlt className={styles.userIcon} />
-            <div className={styles.memberInfo}>
-              <span className={styles.memberName}>{m.name}</span>
-              {m.phone && <span className={styles.memberPhone}>{m.phone}</span>}
-              <span className={styles.memberRole}>
-                {m.role}
-                {isSCC && m.family_name ? ` · ${m.family_name}` : ""}
-              </span>
-            </div>
-            <div className={styles.rowActions}>
-              <button
-                className={styles.editBtn}
-                onClick={() => openEdit(m)}
-                disabled={removingId === m.id}
-                title="Edit member"
-              >
-                <FaEdit />
-              </button>
-              <button
-                className={`${styles.removeBtn} ${confirmId === m.id ? styles.confirm : ""}`}
-                onClick={() => handleRemove(m.id)}
-                disabled={removingId === m.id}
-                title={
-                  confirmId === m.id
-                    ? "Click again to confirm"
-                    : "Remove member"
-                }
-              >
-                {removingId === m.id ? (
-                  <span className={styles.spinner} />
-                ) : (
-                  <>
-                    <FaTrash />
-                    {confirmId === m.id && " Confirm?"}
-                  </>
-                )}
-              </button>
-            </div>
+      <div className={`${styles.section} ${styles.sectionAdd}`}>
+        <div className={styles.sectionHeader}>
+          <div className={`${styles.sectionIcon} ${styles.sectionIconAlt}`}>
+            <FaUserAlt size={13} />
           </div>
-        ))}
+          <div>
+            <h3 className={styles.sectionTitle}>Add Member</h3>
+            <p className={styles.sectionSub}>Fill in the details below</p>
+          </div>
+        </div>
+
+        <AddMemberForm onAdd={addMember} isSCC={isSCC} />
       </div>
 
       {editTarget && (
-        <div
-          className={styles.modalOverlay}
-          onClick={() => setEditTarget(null)}
-        >
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <h4 className={styles.modalTitle}>Edit Member</h4>
-            <form className={styles.form} onSubmit={handleEditSave}>
-              <div className={styles.fields}>
-                <input
-                  className={styles.input}
-                  placeholder="Full name"
-                  value={editName}
-                  onChange={(e) => setEditName(e.target.value)}
-                  required
-                />
-                <input
-                  className={styles.input}
-                  placeholder="07XXXXXXXX or 011XXXXXXX"
-                  value={editPhone}
-                  onChange={(e) => setEditPhone(sanitizePhone(e.target.value))}
-                  onPaste={(e) => {
-                    e.preventDefault();
-                    setEditPhone(
-                      sanitizePhone(e.clipboardData.getData("text")),
-                    );
-                  }}
-                  inputMode="numeric"
-                  maxLength={10}
-                />
-                {isSCC && (
-                  <input
-                    className={styles.input}
-                    placeholder="Family name (optional)"
-                    value={editFamilyName}
-                    onChange={(e) => setEditFamilyName(e.target.value)}
-                  />
-                )}
-                <select
-                  className={styles.select}
-                  value={editRole}
-                  onChange={(e) => setEditRole(e.target.value)}
-                >
-                  {ROLES.map((r) => (
-                    <option key={r}>{r}</option>
-                  ))}
-                  <option value="custom">Other…</option>
-                </select>
-                {editRole === "custom" && (
-                  <input
-                    className={styles.input}
-                    placeholder="Enter role"
-                    value={editCustomRole}
-                    onChange={(e) => setEditCustomRole(e.target.value)}
-                  />
-                )}
-              </div>
-              <div className={styles.modalActions}>
-                <button
-                  type="button"
-                  className={styles.cancelBtn}
-                  onClick={() => setEditTarget(null)}
-                  disabled={updating}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className={styles.addBtn}
-                  disabled={updating}
-                >
-                  {updating ? (
-                    <span className={styles.spinner} />
-                  ) : (
-                    "Save Changes"
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <EditMemberModal
+          member={editTarget}
+          isSCC={isSCC}
+          onSave={updateMember}
+          onClose={() => setEditTarget(null)}
+        />
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./TableToolbar.module.css";
 import { FaSearch, FaPencilAlt, FaCheck, FaTimes } from "react-icons/fa";
 
@@ -20,7 +20,7 @@ const TableToolbar = ({
   meetingActivities,
   onMeetingActivitiesChange,
   purposeSaved,
-  onSavePurpose, // optional: async (purpose, activities) => void
+  onSavePurpose,
 }) => {
   const isSCC = groupType === "scc";
 
@@ -31,11 +31,12 @@ const TableToolbar = ({
   );
   const [saving, setSaving] = useState(false);
 
-  // When parent loads data (e.g. date change), sync drafts
+  const isSavingRef = useRef(false);
+
   useEffect(() => {
+    if (isSavingRef.current) return;
     setDraftPurpose(meetingPurpose || "");
     setDraftActivities(meetingActivities || "");
-    // If there's no saved purpose yet, open in edit mode automatically
     if (!purposeSaved) setEditing(true);
     else setEditing(false);
   }, [meetingPurpose, meetingActivities, purposeSaved]);
@@ -49,7 +50,13 @@ const TableToolbar = ({
 
   const handleSave = async () => {
     if (!draftPurpose.trim()) return;
+
+    isSavingRef.current = true;
     setSaving(true);
+
+    // Flush the saving=true state to DOM before proceeding
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
     try {
       onMeetingPurposeChange(draftPurpose);
       onMeetingActivitiesChange(draftActivities);
@@ -57,6 +64,7 @@ const TableToolbar = ({
       setEditing(false);
     } finally {
       setSaving(false);
+      isSavingRef.current = false;
     }
   };
 
@@ -66,12 +74,10 @@ const TableToolbar = ({
     setEditing(false);
   };
 
-  // Show view mode only when saved and not currently editing
   const viewMode = purposeSaved && !editing;
 
   return (
     <div className={styles.toolbar}>
-      {/* ── Header ── */}
       <div className={styles.headerRow}>
         <div>
           <h3 className={styles.heading}>Attendance Register</h3>
@@ -94,11 +100,9 @@ const TableToolbar = ({
         </div>
       </div>
 
-      {/* ── Meeting Details ── */}
       <div className={styles.purposeSection}>
         <div className={styles.purposeSectionHeader}>
           <span className={styles.purposeSectionTitle}>📋 Meeting Details</span>
-
           <div className={styles.purposeHeaderRight}>
             {purposeSaved && !editing && (
               <span className={styles.savedBadge}>✓ Saved</span>
@@ -107,21 +111,15 @@ const TableToolbar = ({
               <button
                 className={styles.editBtn}
                 onClick={handleEdit}
-                disabled={saving}
                 title="Edit meeting details"
               >
-                {saving ? (
-                  <span className={styles.editSpinner} />
-                ) : (
-                  <FaPencilAlt size={10} />
-                )}
+                <FaPencilAlt size={10} />
                 Edit
               </button>
             )}
           </div>
         </div>
 
-        {/* VIEW MODE */}
         {viewMode ? (
           <div className={styles.purposeViewRow}>
             <div className={styles.purposeViewField}>
@@ -140,7 +138,6 @@ const TableToolbar = ({
             )}
           </div>
         ) : (
-          /* EDIT MODE */
           <div className={styles.purposeEditBlock}>
             <div className={styles.purposeRow}>
               <div className={styles.purposeField}>
@@ -154,9 +151,9 @@ const TableToolbar = ({
                   placeholder="e.g. Weekly fellowship and prayer session…"
                   value={draftPurpose}
                   onChange={(e) => setDraftPurpose(e.target.value)}
-                  disabled={locked}
+                  disabled={locked || saving}
                   rows={3}
-                  autoFocus={purposeSaved} // only autofocus when re-editing
+                  autoFocus={!!purposeSaved}
                 />
               </div>
               <div className={styles.purposeField}>
@@ -166,7 +163,7 @@ const TableToolbar = ({
                   placeholder="e.g. Bible study, worship, announcements…"
                   value={draftActivities}
                   onChange={(e) => setDraftActivities(e.target.value)}
-                  disabled={locked}
+                  disabled={locked || saving}
                   rows={3}
                 />
               </div>
