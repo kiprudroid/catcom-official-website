@@ -6,7 +6,18 @@ import { SCCs } from "../../data/scc";
 const SccOverview = ({ className }) => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 480 : false,
+  );
 
+  // Detect mobile breakpoint
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 480);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Auto-rotate SCCs every 3 minutes
   useEffect(() => {
     const interval = setInterval(() => {
       const currentIndex = SCCs.findIndex(
@@ -18,13 +29,16 @@ const SccOverview = ({ className }) => {
     return () => clearInterval(interval);
   }, [selectedScc]);
 
+  // Reset slide index when SCC changes
   useEffect(() => {
     setSlideIndex(0);
   }, [selectedScc]);
 
   const photos = selectedScc.sccPhotos || [];
-  const totalSlides = Math.ceil(photos.length / 2);
+  const imagesPerSlide = isMobile ? 1 : 2;
+  const totalSlides = Math.ceil(photos.length / imagesPerSlide);
 
+  // Auto-advance slides every 3 seconds
   useEffect(() => {
     if (totalSlides <= 1) return;
     const timer = setInterval(() => {
@@ -32,6 +46,11 @@ const SccOverview = ({ className }) => {
     }, 3000);
     return () => clearInterval(timer);
   }, [totalSlides, selectedScc]);
+
+  // Clamp slideIndex when imagesPerSlide changes (e.g. resize mid-view)
+  useEffect(() => {
+    if (slideIndex >= totalSlides) setSlideIndex(0);
+  }, [isMobile, totalSlides]);
 
   const handlePrevScc = () => {
     const currentIndex = SCCs.findIndex((scc) => scc.name === selectedScc.name);
@@ -51,7 +70,10 @@ const SccOverview = ({ className }) => {
     setSlideIndex((prev) => (prev + 1) % totalSlides);
   };
 
-  const currentPair = photos.slice(slideIndex * 2, slideIndex * 2 + 2);
+  const currentPair = photos.slice(
+    slideIndex * imagesPerSlide,
+    slideIndex * imagesPerSlide + imagesPerSlide,
+  );
 
   return (
     <div className={`${styles.sccExpanded} ${className}`}>
@@ -87,7 +109,9 @@ const SccOverview = ({ className }) => {
                 &#8249;
               </button>
 
-              <div className={styles.photoGrid}>
+              <div
+                className={`${styles.photoGrid} ${isMobile ? styles.photoGridSingle : ""}`}
+              >
                 {currentPair.map((image, index) => (
                   <div
                     key={`${slideIndex}-${index}`}
@@ -95,12 +119,13 @@ const SccOverview = ({ className }) => {
                   >
                     <img
                       src={image}
-                      alt={`${selectedScc.name} photo ${slideIndex * 2 + index + 1}`}
+                      alt={`${selectedScc.name} photo ${slideIndex * imagesPerSlide + index + 1}`}
                       className={styles.slideshowImage}
                     />
                   </div>
                 ))}
-                {currentPair.length === 1 && (
+                {/* Pad to 2 columns on desktop if only 1 image in last slide */}
+                {!isMobile && currentPair.length === 1 && (
                   <div className={styles.imageWrapper} />
                 )}
               </div>

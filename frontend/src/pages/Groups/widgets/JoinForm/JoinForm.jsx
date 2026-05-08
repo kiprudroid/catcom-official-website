@@ -13,7 +13,7 @@ const initialForm = {
   email: "",
   gender: "",
   college: "",
-  groups: [],
+  groups: "",
 };
 
 const KENYAN_PHONE_REGEX = /^(?:0)(7[0-9]{8}|1[01][0-9]{7})$/;
@@ -36,8 +36,7 @@ function validate(form) {
     errors.email = "Enter a valid email address";
   if (!form.gender) errors.gender = "Please select your gender";
   if (!form.college) errors.college = "Please select your college";
-  if (form.groups.length === 0)
-    errors.groups = "Please select at least one group";
+  if (!form.groups) errors.groups = "Please select a group";
   return errors;
 }
 
@@ -55,7 +54,7 @@ function Modal({ type, message, onClose }) {
       ? "Incomplete Form"
       : "Submission Failed";
   const msg = isSuccess
-    ? "You have successfully submitted your request to join the selected group(s). We'll contact you soon."
+    ? "You have successfully submitted your request to join the selected group. We'll contact you soon."
     : message || "Please check your details and try again.";
 
   return (
@@ -117,20 +116,10 @@ function JoinForm() {
   };
 
   const handleGroupChange = (e) => {
-    const { value, checked } = e.target;
-    const newGroups = checked
-      ? [...form.groups, value]
-      : form.groups.filter((g) => g !== value);
-    setForm((prev) => ({ ...prev, groups: newGroups }));
-    if (touched.groups) {
-      setErrors((prev) => ({
-        ...prev,
-        groups:
-          newGroups.length === 0
-            ? "Please select at least one group"
-            : undefined,
-      }));
-    }
+    const { value } = e.target;
+    setForm((prev) => ({ ...prev, groups: value }));
+    setTouched((prev) => ({ ...prev, groups: true }));
+    setErrors((prev) => ({ ...prev, groups: undefined }));
   };
 
   const handleSubmit = async (e) => {
@@ -215,7 +204,7 @@ function JoinForm() {
       <form onSubmit={handleSubmit} noValidate>
         <SectionHeading as="h2">Join a Group</SectionHeading>
         <Paragraph>
-          Fill out the form below to request to join one or more CATCOM groups.
+          Fill out the form below to request to join a CATCOM group.
         </Paragraph>
 
         <div className={styles.formRow}>
@@ -296,7 +285,7 @@ function JoinForm() {
 
           <div className={styles.formCol}>
             <label className={styles.groupLabel}>
-              <SectionHeading>Select Group(s) to Join</SectionHeading>
+              <SectionHeading>Select a Group to Join</SectionHeading>
             </label>
             <div
               className={`${styles.checkboxGroup} ${errors.groups && touched.groups ? styles.checkboxError : ""}`}
@@ -304,11 +293,11 @@ function JoinForm() {
               {groups.map(({ id, value, label }) => (
                 <div key={id} className={styles.checkboxItem}>
                   <input
-                    type="checkbox"
+                    type="radio"
                     id={id}
                     name="groups"
                     value={value}
-                    checked={form.groups.includes(value)}
+                    checked={form.groups === value}
                     onChange={handleGroupChange}
                     onBlur={() => setTouched((p) => ({ ...p, groups: true }))}
                   />
@@ -323,7 +312,7 @@ function JoinForm() {
         </div>
 
         <button className={styles.joinBtn} type="submit" disabled={loading}>
-          {loading ? "Submitting…" : "Join Group(s)"}
+          {loading ? "Submitting…" : "Join Group"}
         </button>
       </form>
     </div>

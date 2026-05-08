@@ -59,12 +59,17 @@
   width: 100%;
 }
 
-/* 2-column photo pair */
+/* 2-column photo pair (desktop default) */
 .photoGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   width: 100%;
+}
+
+/* Single-column override for mobile — applied via JS isMobile flag */
+.photoGridSingle {
+  grid-template-columns: 1fr;
 }
 
 .imageWrapper {
