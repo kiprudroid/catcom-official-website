@@ -29,9 +29,12 @@ const MemberRow = ({
         <div className={styles.memberTimestamp}>
           <FaClock size={10} />
           <span>
-            Added{" "}
-            {new Date(member.createdAt).toLocaleString("en-KE", {
+            Added on{" "}
+            {new Date(member.createdAt).toLocaleDateString("en-KE", {
               dateStyle: "medium",
+            })}{" "}
+            at{" "}
+            {new Date(member.createdAt).toLocaleTimeString("en-KE", {
               timeStyle: "short",
             })}
           </span>

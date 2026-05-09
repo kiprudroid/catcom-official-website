@@ -83,7 +83,7 @@ const TableToolbar = ({
           <h3 className={styles.heading}>Attendance Register</h3>
           {locked && (
             <p className={styles.lockedNotice}>
-              🔒 Locked — more than 12 hours since this date was saved.
+              🔒 This register has been closed.
             </p>
           )}
         </div>
