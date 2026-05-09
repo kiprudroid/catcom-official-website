@@ -1,5 +1,3 @@
-
-
  CREATE TABLE IF NOT EXISTS attendance_meetings (
    id          SERIAL PRIMARY KEY,
    group_id    INTEGER NOT NULL REFERENCES attendance_groups(id) ON DELETE CASCADE,

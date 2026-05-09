@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaClock } from "react-icons/fa";
 import MemberAvatar from "../MemberAvatar/MemberAvatar";
 import styles from "./MemberRow.module.css";
 
@@ -24,6 +24,22 @@ const MemberRow = ({
           {isSCC && member.family_name ? ` · ${member.family_name}` : ""}
         </span>
       </div>
+
+      {member.createdAt && (
+        <div className={styles.memberTimestamp}>
+          <FaClock size={10} />
+          <span>
+            Added on{" "}
+            {new Date(member.createdAt).toLocaleDateString("en-KE", {
+              dateStyle: "medium",
+            })}{" "}
+            at{" "}
+            {new Date(member.createdAt).toLocaleTimeString("en-KE", {
+              timeStyle: "short",
+            })}
+          </span>
+        </div>
+      )}
     </div>
     <div className={styles.rowActions}>
       <button

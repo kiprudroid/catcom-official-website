@@ -100,9 +100,13 @@ export const fetchMembers = async () => {
     headers: authHeaders(),
   });
   if (!res.ok) throw new Error("Failed to fetch members");
-  return res.json();
-};
+  const data = await res.json();
 
+  return data.map(({ created_at, ...rest }) => ({
+    ...rest,
+    createdAt: created_at,
+  }));
+};
 export const createMember = async (data) => {
   const res = await fetch(`${API_BASE}/attendance/members`, {
     method: "POST",
