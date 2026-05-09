@@ -71,7 +71,7 @@ export const mysteries = [
           "Mary and Joseph obey the law and bring their newborn son to the temple and offer a sacrifice. There they meet Simeon who has waited many years to meet the Messiah... He also warns Mary that her own heart will be pierced. She continues to trust God, not knowing what lies ahead. I pray for trust in God’s plan and patience in waiting for it to unfold.",
       },
       {
-        title: "5. Finding in the Temple",
+        title: "5. Finding Jesus in the Temple",
         detail:
           "After not knowing where he was for three days, Mary and Joseph find Jesus in the temple. I imagine the fear they felt when they realized Jesus was not with them as they returned from Jerusalem... At last they find him in his father’s home. What relief and joy. We look for Jesus too and we can always find him in church. I pray that I will not find reasons to avoid visiting Jesus regularly.",
       },
@@ -242,7 +242,7 @@ export const mysteries = [
         and the story of his good news.   `,
       },
       {
-        title: "4. The Assumption",
+        title: "4. The Assumption of Mary",
         detail: `My beloved speaks...to me: ‘Arise, my 
         love, my dove, my fair one, and come 
         away for behold the winter is past, the rain 
@@ -255,7 +255,7 @@ export const mysteries = [
         pointing the way toward her son. `,
       },
       {
-        title: "5. The Coronation",
+        title: "5. The Coronation of Mary",
         detail: `A great sign appeared in heaven, a woman 
         clothed with the sun, with the moon under 
         her feet, and on her head a crown of 
