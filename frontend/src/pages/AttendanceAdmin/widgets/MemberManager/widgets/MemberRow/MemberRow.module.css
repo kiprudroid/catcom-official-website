@@ -122,6 +122,15 @@
   flex-shrink: 0;
 }
 
+.memberTimestamp {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--color-text-tertiary, #aaa);
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
