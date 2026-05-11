@@ -18,7 +18,14 @@ export const csvCell = (val) => `"${String(val ?? "").replace(/"/g, '""')}"`;
 
 // ─── Single-date CSV export
 
-export const exportSingleCSV = (members, groupName, meetingDate) => {
+export const exportSingleCSV = (
+  members,
+  groupName,
+  meetingDate,
+  meetingPurpose,
+  meetingActivities,
+  visitors = [],
+) => {
   const meta = [
     [csvCell("Group"), csvCell(groupName || "Unknown")],
     [csvCell("Date"), csvCell(meetingDate || "Unknown")],
@@ -44,11 +51,26 @@ export const exportSingleCSV = (members, groupName, meetingDate) => {
       m.recentAbsences ?? 0,
     ].map(csvCell),
   );
+
+  // ─── Visitors section
+  const visitorRows = visitors.length
+    ? [
+        [],
+        [csvCell("VISITORS & ALUMNI")],
+        ["#", "Name", "Phone", "Type"].map(csvCell),
+        ...visitors.map((v, i) =>
+          [i + 1, v.name, v.phone || "", "Visitor"].map(csvCell),
+        ),
+      ]
+    : [];
+
   const csv = [
     ...meta.map((r) => r.join(",")),
     header.join(","),
     ...rows.map((r) => r.join(",")),
+    ...visitorRows.map((r) => r.join(",")),
   ].join("\n");
+
   triggerDownload(
     csv,
     "text/csv",
@@ -64,6 +86,7 @@ export const exportSinglePDF = (
   meetingDate,
   meetingPurpose,
   meetingActivities,
+  visitors = [],
 ) => {
   const present = members.filter((m) => m.attendance === "present").length;
   const absent = members.filter((m) => m.attendance === "absent").length;
@@ -109,6 +132,47 @@ export const exportSinglePDF = (
     })
     .join("");
 
+  // ─── Visitors section
+  const visitorsBlock = visitors.length
+    ? `
+    <div style="margin-top:32px;">
+      <h2 style="font-size:15px;font-weight:800;margin:0 0 4px;color:#065f46;">
+        Visitors &amp; Alumni
+      </h2>
+      <p style="font-size:12px;color:#6b7280;margin:0 0 10px;">
+        ${visitors.length} visitor${visitors.length !== 1 ? "s" : ""} recorded for this meeting
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${visitors
+            .map(
+              (v, i) => `
+          <tr style="background:${i % 2 === 0 ? "#fff" : "#f9fafb"}">
+            <td>${i + 1}</td>
+            <td><strong>${v.name}</strong></td>
+            <td>${v.phone || "—"}</td>
+            <td>
+              <span style="padding:3px 10px;border-radius:20px;font-size:12px;
+                font-weight:600;background:#d1fae5;color:#065f46;">
+                Visitor
+              </span>
+            </td>
+          </tr>`,
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>`
+    : "";
+
   const html = `<!DOCTYPE html><html><head><meta charset="utf-8"/>
 <title>${groupName} Attendance — ${meetingDate}</title>
 <style>
@@ -139,6 +203,7 @@ export const exportSinglePDF = (
 ${meetingDetailsBlock}
 <table><thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Role</th><th>Status</th><th>Consec. Absences</th><th>Recent (60d)</th></tr></thead>
 <tbody>${rows}</tbody></table>
+${visitorsBlock}
 <div class="footer">Generated: ${new Date().toLocaleString()}</div>
 </body></html>`;
 

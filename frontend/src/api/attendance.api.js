@@ -190,3 +190,30 @@ export const saveMeetingPurpose = async ({ date, purpose, activities }) => {
   if (!res.ok) throw new Error("Failed to save meeting purpose");
   return res.json();
 };
+
+export const fetchVisitorsByDate = async (date) => {
+  const res = await fetch(`${API_BASE}/attendance/visitors/${date}`, {
+    headers: authHeaders(),
+  });
+  if (!res.ok) throw new Error("Failed to fetch visitors");
+  return res.json();
+};
+
+export const createVisitor = async (data) => {
+  const res = await fetch(`${API_BASE}/attendance/visitors`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error("Failed to add visitor");
+  return res.json();
+};
+
+export const deleteVisitor = async (id) => {
+  const res = await fetch(`${API_BASE}/attendance/visitors/${id}`, {
+    method: "DELETE",
+    headers: authHeaders(),
+  });
+  if (!res.ok) throw new Error("Failed to remove visitor");
+  return res.json();
+};

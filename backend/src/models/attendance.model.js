@@ -238,3 +238,25 @@ export const getMeetingByDateQuery = ({ group_id, date }) =>
     `SELECT * FROM attendance_meetings WHERE group_id = $1 AND date = $2`,
     [group_id, date],
   );
+
+export const getVisitorsByDateQuery = ({ group_id, date }) =>
+  pool.query(
+    `SELECT * FROM attendance_visitors
+       WHERE group_id = $1 AND date = $2
+       ORDER BY created_at ASC`,
+    [group_id, date],
+  );
+
+export const addVisitorQuery = ({ group_id, date, name, phone, type }) =>
+  pool.query(
+    `INSERT INTO attendance_visitors (group_id, date, name, phone, type)
+       VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+    [group_id, date, name, phone || null, type || "visitor"],
+  );
+
+export const deleteVisitorQuery = ({ id, group_id }) =>
+  pool.query(
+    `DELETE FROM attendance_visitors
+       WHERE id = $1 AND group_id = $2 RETURNING *`,
+    [id, group_id],
+  );

@@ -57,4 +57,8 @@ router.get("/attendance/records/range", verifyGroupAdmin, C.getAttendanceRange);
 router.get("/attendance/records/:date", verifyGroupAdmin, C.getAttendance);
 router.post("/attendance/records", verifyGroupAdmin, C.upsertAttendance);
 
+router.get("/attendance/visitors/:date", verifyGroupAdmin, C.getVisitors);
+router.post("/attendance/visitors", verifyGroupAdmin, C.createVisitor);
+router.delete("/attendance/visitors/:id", verifyGroupAdmin, C.deleteVisitor);
+
 export default router;

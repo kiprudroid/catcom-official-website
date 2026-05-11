@@ -95,6 +95,10 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
 }
 
+.visitorLogWrapper {
+  margin-bottom: 16px;
+}
+
 @media (max-width: 600px) {
   .wrapper {
     padding: 14px 12px;

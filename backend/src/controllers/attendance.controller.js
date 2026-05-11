@@ -221,3 +221,41 @@ export const upsertMeetingPurposeHandler = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getVisitors = async (req, res, next) => {
+  try {
+    res.json(
+      await Service.getVisitorsByDate({
+        group_id: req.user.group_id,
+        date: req.params.date,
+      }),
+    );
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const createVisitor = async (req, res, next) => {
+  try {
+    res.status(201).json(
+      await Service.addVisitor({
+        group_id: req.user.group_id,
+        ...req.body,
+      }),
+    );
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const deleteVisitor = async (req, res, next) => {
+  try {
+    await Service.removeVisitor({
+      id: req.params.id,
+      group_id: req.user.group_id,
+    });
+    res.json({ message: "Visitor removed" });
+  } catch (err) {
+    next(err);
+  }
+};
