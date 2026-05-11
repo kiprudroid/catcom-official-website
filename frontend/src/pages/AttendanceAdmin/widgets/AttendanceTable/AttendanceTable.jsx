@@ -181,11 +181,13 @@ const AttendanceTable = ({
       />
 
       {purposeFilled && (
-        <VisitorLog
-          visitors={visitors}
-          onAdd={handleAddVisitor}
-          onRemove={handleRemoveVisitor}
-        />
+        <div className={styles.visitorLogWrapper}>
+          <VisitorLog
+            visitors={visitors}
+            onAdd={handleAddVisitor}
+            onRemove={handleRemoveVisitor}
+          />
+        </div>
       )}
 
       {!purposeFilled && !locked && (
