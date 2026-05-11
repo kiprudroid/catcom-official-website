@@ -2,10 +2,20 @@ import React, { useState, useEffect, useCallback } from "react";
 import styles from "./AttendanceTable.module.css";
 import { isLocked } from "@/utils/attendanceLock";
 import { exportSingleCSV, exportSinglePDF } from "./utils/attendanceExport";
-import { fetchMeetingPurpose, saveMeetingPurpose } from "@/api/attendance.api";
-import RangeReportModal from "./widgets/RangeReportModal";
-import TableToolbar from "./widgets/TableToolbar";
-import AttendanceRow from "./widgets/AttendanceRow";
+import {
+  fetchMeetingPurpose,
+  saveMeetingPurpose,
+  fetchVisitorsByDate,
+  createVisitor,
+  deleteVisitor,
+} from "@/api/attendance.api";
+
+import {
+  VisitorLog,
+  TableToolbar,
+  AttendanceRow,
+  RangeReportModal,
+} from "@/pages/AttendanceAdmin/widgets/AttendanceTable/widgets";
 
 const AttendanceTable = ({
   members,
@@ -23,6 +33,7 @@ const AttendanceTable = ({
   const [meetingActivities, setMeetingActivities] = useState("");
   const [purposeSaved, setPurposeSaved] = useState(false);
   const [saveTimer, setSaveTimer] = useState(null);
+  const [visitors, setVisitors] = useState([]);
 
   const locked = isLocked(meetingDate);
   const roles = [...new Set(members.map((m) => m.role))];
@@ -33,6 +44,8 @@ const AttendanceTable = ({
     setMeetingPurpose("");
     setMeetingActivities("");
     setPurposeSaved(false);
+    setVisitors([]);
+
     fetchMeetingPurpose(meetingDate)
       .then((data) => {
         if (data?.purpose) {
@@ -41,6 +54,10 @@ const AttendanceTable = ({
         }
         if (data?.activities) setMeetingActivities(data.activities);
       })
+      .catch(() => {});
+
+    fetchVisitorsByDate(meetingDate)
+      .then(setVisitors)
       .catch(() => {});
   }, [meetingDate]);
 
@@ -69,6 +86,15 @@ const AttendanceTable = ({
     setMeetingActivities(val);
     setPurposeSaved(false);
     persistPurpose(meetingPurpose, val);
+  };
+  const handleAddVisitor = async ({ name, phone, type }) => {
+    const saved = await createVisitor({ date: meetingDate, name, phone, type });
+    setVisitors((prev) => [...prev, saved]);
+  };
+
+  const handleRemoveVisitor = async (id) => {
+    await deleteVisitor(id);
+    setVisitors((prev) => prev.filter((v) => v.id !== id));
   };
 
   const handleUpdateAttendance = (id, status) => {
@@ -127,6 +153,7 @@ const AttendanceTable = ({
             meetingDate,
             meetingPurpose,
             meetingActivities,
+            visitors,
           )
         }
         onDownloadPDF={() =>
@@ -136,6 +163,7 @@ const AttendanceTable = ({
             meetingDate,
             meetingPurpose,
             meetingActivities,
+            visitors,
           )
         }
         onShowRange={() => setShowRange(true)}
@@ -151,6 +179,14 @@ const AttendanceTable = ({
         onMeetingActivitiesChange={handleActivitiesChange}
         purposeSaved={purposeSaved}
       />
+
+      {purposeFilled && (
+        <VisitorLog
+          visitors={visitors}
+          onAdd={handleAddVisitor}
+          onRemove={handleRemoveVisitor}
+        />
+      )}
 
       {!purposeFilled && !locked && (
         <div className={styles.purposeGate}>

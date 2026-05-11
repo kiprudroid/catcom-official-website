@@ -240,3 +240,29 @@ export const upsertMeetingPurpose = async ({
   });
   return rows[0];
 };
+
+export const getVisitorsByDate = async ({ group_id, date }) => {
+  if (!date) throw new Error("date is required");
+  const { rows } = await Model.getVisitorsByDateQuery({ group_id, date });
+  return rows;
+};
+
+export const addVisitor = async ({ group_id, date, name, phone, type }) => {
+  if (!name?.trim()) throw new Error("name is required");
+  if (!date) throw new Error("date is required");
+  const cleanPhone = phone ? validatePhone(phone) : null;
+  const { rows } = await Model.addVisitorQuery({
+    group_id,
+    date,
+    name: name.trim(),
+    phone: cleanPhone,
+    type: type || "visitor",
+  });
+  return rows[0];
+};
+
+export const removeVisitor = async ({ id, group_id }) => {
+  const { rows } = await Model.deleteVisitorQuery({ id, group_id });
+  if (!rows[0]) throw new Error("Visitor not found");
+  return rows[0];
+};
