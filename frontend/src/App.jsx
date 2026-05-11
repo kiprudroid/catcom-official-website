@@ -90,7 +90,7 @@ const router = createBrowserRouter(
           </ProtectedAdmin>
         }
       >
-        <Route index element={<Navigate to="leaders" replace />} />
+        <Route index element={<Navigate to="events" replace />} />
         <Route path="leaders" element={<LeadersSection />} />
         <Route path="scc-leaders" element={<SccLeaders />} />
         <Route path="events" element={<EventsSection />} />
