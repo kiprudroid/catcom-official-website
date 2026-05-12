@@ -1,15 +1,9 @@
-/* ═══════════════════════════════════════════════
-   LeadersSection.module.css  —  Refined Admin UI
-   ═══════════════════════════════════════════════ */
-
-/* ── Layout ─────────────────────────────────── */
 .section {
   background: var(--card-bg, #f8fafc);
   padding: 1.5rem;
   border-radius: 16px;
 }
 
-/* ── Error ───────────────────────────────────── */
 .error {
   margin: 0 0 14px;
   padding: 10px 14px;
@@ -22,7 +16,6 @@
   font-weight: 500;
 }
 
-/* ── Form card ───────────────────────────────── */
 .form {
   display: flex;
   flex-direction: column;
@@ -37,7 +30,6 @@
     0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
-/* ── Form fields ─────────────────────────────── */
 .form input,
 .form select,
 .form textarea {
@@ -49,9 +41,9 @@
   font-size: 0.9rem;
   outline: none;
   transition:
-    border-color 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease;
+    border-color 0.18s,
+    box-shadow 0.18s,
+    background 0.18s;
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
@@ -74,7 +66,6 @@
   border-color: #cbd5e1;
   background: #fff;
 }
-
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
@@ -83,7 +74,6 @@
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
-/* File input */
 .form input[type="file"] {
   padding: 0.5rem 0.75rem;
   cursor: pointer;
@@ -93,13 +83,11 @@
   color: #64748b;
   font-size: 0.85rem;
 }
-
 .form input[type="file"]:hover {
   border-color: #94a3b8;
   background: #e2e8f0;
 }
 
-/* ── Action row ──────────────────────────────── */
 .actions {
   display: flex;
   gap: 8px;
@@ -107,7 +95,6 @@
   flex-wrap: wrap;
 }
 
-/* ── Buttons ─────────────────────────────────── */
 .actionButton {
   padding: 9px 18px;
   border-radius: 9px;
@@ -120,31 +107,26 @@
   gap: 7px;
   font-weight: 600;
   font-size: 0.875rem;
-  letter-spacing: 0.01em;
-  transition:
-    filter 0.15s ease,
-    transform 0.1s ease,
-    box-shadow 0.15s ease;
   box-shadow: 0 2px 8px rgba(29, 78, 216, 0.28);
+  transition:
+    filter 0.15s,
+    transform 0.1s,
+    box-shadow 0.15s;
 }
-
 .actionButton:hover:not(:disabled) {
   filter: brightness(1.08);
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
 }
-
 .actionButton:active:not(:disabled) {
   transform: translateY(0);
   filter: brightness(0.97);
 }
-
 .actionButton:disabled {
   opacity: 0.65;
   cursor: not-allowed;
 }
 
-/* Cancel */
 .actions button:not(.actionButton):not(.deleteBtn) {
   padding: 9px 16px;
   border-radius: 9px;
@@ -158,16 +140,14 @@
   font-weight: 600;
   font-size: 0.875rem;
   transition:
-    border-color 0.15s ease,
-    background 0.15s ease;
+    border-color 0.15s,
+    background 0.15s;
 }
-
 .actions button:not(.actionButton):not(.deleteBtn):hover {
   border-color: #94a3b8;
   background: #f8fafc;
 }
 
-/* Delete */
 .deleteBtn {
   padding: 9px 16px;
   background: #fff5f5;
@@ -181,16 +161,19 @@
   gap: 6px;
   font-weight: 600;
   transition:
-    background 0.15s ease,
-    border-color 0.15s ease;
+    background 0.15s,
+    border-color 0.15s;
 }
-
 .deleteBtn:hover {
   background: #fee2e2;
   border-color: #fca5a5;
 }
 
-/* ── List ────────────────────────────────────── */
+.listWrapper {
+  margin-top: 8px;
+  width: 100%;
+}
+
 .list {
   list-style: none;
   padding: 0;
@@ -199,14 +182,22 @@
   gap: 8px;
   width: 100%;
   box-sizing: border-box;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
-.listWrapper {
-  margin-top: 8px;
-  width: 100%;
+.list::-webkit-scrollbar {
+  width: 5px;
+}
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
 }
 
-/* ── List item ───────────────────────────────── */
 .listItem {
   border: 1px solid #e2e8f0;
   padding: 14px 16px;
@@ -216,10 +207,9 @@
   width: 100%;
   box-sizing: border-box;
   transition:
-    box-shadow 0.15s ease,
-    border-color 0.15s ease;
+    box-shadow 0.15s,
+    border-color 0.15s;
 }
-
 .listItem:hover {
   border-color: #bfdbfe;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -238,7 +228,6 @@
   gap: 14px;
 }
 
-/* ── Avatar ──────────────────────────────────── */
 .avatar {
   width: 56px;
   height: 56px;
@@ -254,7 +243,6 @@
   font-style: italic;
   font-size: 0.875rem;
 }
-
 .desc {
   margin: 3px 0 0;
   font-size: 0.85rem;
@@ -262,7 +250,6 @@
   line-height: 1.5;
 }
 
-/* ── Preview ─────────────────────────────────── */
 .preview {
   width: 80px;
   height: 80px;
@@ -272,25 +259,21 @@
   border: 1px solid #e2e8f0;
 }
 
-/* ── Spinner ─────────────────────────────────── */
 @keyframes leadersSpin {
   to {
     transform: rotate(360deg);
   }
 }
-
 .spinner {
   animation: leadersSpin 0.75s linear infinite;
   flex-shrink: 0;
 }
-
 .spinnerSm {
   font-size: 0.95rem;
 }
 .spinnerLg {
   font-size: 1.6rem;
 }
-
 .spinnerWrap {
   display: flex;
   justify-content: center;
@@ -299,13 +282,11 @@
   color: #94a3b8;
 }
 
-/* ── Responsive ──────────────────────────────── */
 @media (max-width: 900px) {
   .listRow {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .actions {
     width: 100%;
     flex-wrap: wrap;
@@ -317,12 +298,10 @@
     flex-direction: column;
     align-items: flex-start;
   }
-
   .avatar {
     width: 48px;
     height: 48px;
   }
-
   .form {
     padding: 1.1rem;
   }
