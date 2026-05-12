@@ -1,159 +1,94 @@
 import React, { useEffect, useMemo, useState } from "react";
 import styles from "./SccLeaders.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
-import {
-  FaEdit,
-  FaSearch,
-  FaTrash,
-  FaUserTie,
-  FaRegBuilding,
-  FaBriefcase,
-  FaSpinner,
-} from "react-icons/fa";
+import { FaSearch, FaSpinner } from "react-icons/fa";
 import {
   fetchSccLeaders,
   createSccLeader,
   updateSccLeader,
   deleteSccLeader as deleteSccLeaderApi,
 } from "@/api/sccLeaders.api";
-import { BACKEND_URL } from "@/data/urlClient";
+import { SccLeaderForm, SccAccordion } from "./widgets";
+
+const SCC_OPTIONS = [
+  { value: "all", label: "All" },
+  { value: "st-martin", label: "St. Martin De Porres" },
+  { value: "mmog", label: "Mary Mother of God" },
+  { value: "st-therese", label: "St. Therese of the Child Jesus" },
+  { value: "st-veronica", label: "St. Veronica" },
+  { value: "st-charles", label: "St Charles Lwanga" },
+  { value: "st-stephen", label: "St. Stephen" },
+  { value: "st-jude", label: "St. Jude" },
+  { value: "st-paul", label: "St. Paul" },
+];
+
+const EMPTY_FORM = {
+  exec_full_name: "",
+  position: "",
+  scc_name: "",
+  image_url: "",
+};
+
+const normalize = (s) =>
+  String(s || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
 
 export default function SccLeaders() {
-  const SCC_OPTIONS = useMemo(
-    () => [
-      { value: "all", label: "All" },
-      { value: "st-martin", label: "St. Martin De Porres" },
-      { value: "mmog", label: "Mary Mother of God" },
-      {
-        value: "st-therese",
-        label: "St. Therese of the child Jesus",
-      },
-      { value: "st-veronica", label: "St. Veronica" },
-      { value: "st-charles", label: "St Charles Lwanga" },
-      { value: "st-stephen", label: "St. Stephen" },
-      { value: "st-jude", label: "St. Jude" },
-      { value: "st-paul", label: "St. Paul" },
-    ],
-    [],
-  );
-
-  const normalizeSccName = (name) =>
-    String(name || "")
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, " ");
-  const EMPTY_FORM = {
-    exec_full_name: "",
-    position: "",
-    scc_name: "",
-    image_url: "",
-  };
-
   const [sccLeaders, setSccLeaders] = useState([]);
   const [form, setForm] = useState(EMPTY_FORM);
   const [imageFile, setImageFile] = useState(null);
   const [editingId, setEditingId] = useState(null);
-
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [currentScc, setCurrentScc] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [editSpinnerId, setEditSpinnerId] = useState(null);
 
-  //Fetch data
   useEffect(() => {
-    const loadSccLeaders = async () => {
+    (async () => {
       setLoading(true);
       setError("");
-
       try {
         const data = await fetchSccLeaders();
         setSccLeaders(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error("Error fetching SCC leaders:", err);
         setError(err?.message || "Error fetching SCC leaders");
       } finally {
         setLoading(false);
       }
-    };
-
-    loadSccLeaders();
+    })();
   }, []);
 
-  //Reset form
   const resetForm = () => {
     setForm(EMPTY_FORM);
     setImageFile(null);
     setEditingId(null);
   };
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-
     if (type === "file") {
       setImageFile(files?.[0] ?? null);
       return;
     }
-
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Start editing
-  const startEdit = (leader) => {
-    setEditingId(leader.exec_id);
-    setError("");
-
-    setForm({
-      exec_full_name: leader.exec_full_name || "",
-      position: leader.position || "",
-      scc_name: leader.scc_name || "",
-      image_url: leader.exec_image || "",
-    });
-
-    setImageFile(null);
-  };
-
-  // Cancel edit
-  const cancelEdit = () => {
-    resetForm();
-    setError("");
-  };
-
-  const handleEditClick = (leader) => {
-    if (!leader?.exec_id) return;
-    setEditSpinnerId(leader.exec_id);
-    startEdit(leader);
-
-    window.setTimeout(() => {
-      setEditSpinnerId((prev) => (prev === leader.exec_id ? null : prev));
-    }, 700);
-  };
-
-  // Update state after create/update
-  const upsertLeaderInState = (savedLeader) => {
-    const savedId = savedLeader.exec_id;
-    if (!savedId) return false;
-
+  const upsertLeader = (saved) => {
     setSccLeaders((prev) => {
-      const index = prev.findIndex((l) => l.exec_id === savedId);
-
-      if (index === -1) return [savedLeader, ...prev];
-
-      const updated = [...prev];
-      updated[index] = savedLeader;
-      return updated;
+      const idx = prev.findIndex((l) => l.exec_id === saved.exec_id);
+      if (idx === -1) return [saved, ...prev];
+      const next = [...prev];
+      next[idx] = saved;
+      return next;
     });
-
-    return true;
   };
 
-  //  Submit (Create / Update)
-  const submitLeader = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (submitting) return;
-
     setSubmitting(true);
     setError("");
 
@@ -161,59 +96,51 @@ export default function SccLeaders() {
     fd.append("exec_full_name", form.exec_full_name);
     fd.append("position", form.position);
     fd.append("scc_name", form.scc_name);
-
-    if (imageFile) {
-      fd.append("image", imageFile);
-    }
+    if (imageFile) fd.append("image", imageFile);
 
     try {
-      if (editingId === null) {
-        const created = await createSccLeader(fd);
-
-        const ok = upsertLeaderInState(created);
-        if (!ok) {
-          const data = await fetchSccLeaders();
-          setSccLeaders(Array.isArray(data) ? data : []);
-        }
-      } else {
-        const updated = await updateSccLeader(editingId, fd);
-
-        const ok = upsertLeaderInState(updated);
-        if (!ok) {
-          const data = await fetchSccLeaders();
-          setSccLeaders(Array.isArray(data) ? data : []);
-        }
-      }
-
+      const saved =
+        editingId === null
+          ? await createSccLeader(fd)
+          : await updateSccLeader(editingId, fd);
+      upsertLeader(saved);
       resetForm();
     } catch (err) {
-      console.error("Error submitting leader:", err);
-
       setError(err?.message || "Error submitting leader");
     } finally {
       setSubmitting(false);
     }
   };
 
-  // Delete leader
-  const removeSccLeader = async (id) => {
-    if (!id) return;
-
+  const handleEdit = (leader) => {
+    if (!leader?.exec_id) return;
+    setEditSpinnerId(leader.exec_id);
+    setEditingId(leader.exec_id);
     setError("");
+    setForm({
+      exec_full_name: leader.exec_full_name || "",
+      position: leader.position || "",
+      scc_name: leader.scc_name || "",
+      image_url: leader.exec_image || "",
+    });
+    setImageFile(null);
+    window.setTimeout(
+      () => setEditSpinnerId((p) => (p === leader.exec_id ? null : p)),
+      700,
+    );
+  };
 
-    const previous = sccLeaders;
-
-    // optimistic update
-    setSccLeaders((prev) => prev.filter((l) => l.exec_id !== id));
-
+  const handleDelete = async (id) => {
+    if (!id) return;
+    setError("");
+    const prev = sccLeaders;
+    setSccLeaders((l) => l.filter((x) => x.exec_id !== id));
     try {
       await deleteSccLeaderApi(id);
-
       if (editingId === id) resetForm();
     } catch (err) {
-      console.error("Error deleting SCC leader:", err);
-      setSccLeaders(previous);
-      setError(err?.message || "Error deleting SCC leader");
+      setSccLeaders(prev);
+      setError(err?.message || "Error deleting leader");
     }
   };
 
@@ -221,196 +148,46 @@ export default function SccLeaders() {
     <section className={styles.section}>
       <SectionHeading>SCC Leaders</SectionHeading>
 
-      {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={submitLeader} className={styles.form}>
+      <SccLeaderForm
+        form={form}
+        imageFile={imageFile}
+        editingId={editingId}
+        submitting={submitting}
+        error={error}
+        sccOptions={SCC_OPTIONS}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onCancel={() => {
+          resetForm();
+          setError("");
+        }}
+      />
+
+      <div className={styles.searchField}>
+        <FaSearch className={styles.searchIcon} />
         <input
-          name="exec_full_name"
-          value={form.exec_full_name}
-          onChange={handleChange}
-          placeholder="Full name"
-          required
-          className={styles.formInput}
+          type="search"
+          placeholder="Search leaders by name…"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.searchInput}
         />
-
-        <input
-          name="position"
-          value={form.position}
-          onChange={handleChange}
-          placeholder="Position"
-          required
-          className={styles.formInput}
-        />
-
-        <select
-          name="scc_name"
-          value={form.scc_name}
-          onChange={handleChange}
-          required
-          className={styles.formSelect}
-        >
-          <option value="" disabled>
-            Select SCC
-          </option>
-          {SCC_OPTIONS.filter((opt) => opt.value !== "all").map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="file"
-          name="image"
-          accept="image/*"
-          onChange={handleChange}
-          className={styles.fileInput}
-        />
-
-        <div className={styles.actions}>
-          <button
-            type="submit"
-            disabled={submitting}
-            className={styles.actionButton}
-          >
-            {submitting ? (
-              <>
-                <FaSpinner
-                  className={`${styles.spinner} ${styles.spinnerSm}`}
-                />
-                {editingId !== null ? "Updating..." : "Adding..."}
-              </>
-            ) : (
-              <>{editingId !== null ? "Update SCC Leader" : "Add SCC Leader"}</>
-            )}
-          </button>
-
-          {editingId !== null && (
-            <button
-              type="button"
-              onClick={cancelEdit}
-              disabled={submitting}
-              className={styles.cancelButton}
-            >
-              Cancel
-            </button>
-          )}
-        </div>
-      </form>
-
-      {/* Filter + Search */}
-      <div className={styles.filterRow}>
-        <label className={styles.filterGroup}>
-          <span>Filter by SCC:</span>
-          <select
-            value={currentScc}
-            onChange={(e) => setCurrentScc(e.target.value)}
-            className={styles.filterSelect}
-          >
-            {SCC_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <div className={styles.searchField}>
-          <FaSearch className={styles.searchIcon} />
-          <input
-            type="search"
-            placeholder="Search by name"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={styles.searchInput}
-          />
-        </div>
       </div>
 
-      {/* List */}
       <div className={styles.listWrapper}>
         {loading ? (
           <div className={styles.spinnerWrap}>
-            <FaSpinner className={`${styles.spinner} ${styles.spinnerLg}`} />
+            <FaSpinner className={styles.spinnerLg} />
           </div>
         ) : (
-          <ul className={`${styles.list} ${styles.listScrollable}`}>
-            {sccLeaders
-              .filter((l) => {
-                const matchesScc =
-                  currentScc === "all" ||
-                  normalizeSccName(l.scc_name) === normalizeSccName(currentScc);
-
-                const matchesSearch = normalizeSccName(
-                  l.exec_full_name,
-                ).includes(normalizeSccName(searchTerm));
-
-                return matchesScc && matchesSearch;
-              })
-              .map((l) => {
-                const id = l.exec_id;
-
-                return (
-                  <li key={id} className={styles.listItem}>
-                    <div className={styles.listRow}>
-                      <div className={styles.listLeft}>
-                        {l.exec_image ? (
-                          <img
-                            src={`${BACKEND_URL}${l.exec_image}`}
-                            alt={l.exec_full_name || "leader"}
-                            className={styles.avatar}
-                          />
-                        ) : (
-                          <div className={styles.avatarFallback}>
-                            <FaUserTie />
-                          </div>
-                        )}
-
-                        <div className={styles.cardContent}>
-                          <div className={styles.cardName}>
-                            {l.exec_full_name}
-                          </div>
-                          <div className={styles.badges}>
-                            <span className={styles.badge}>
-                              <FaBriefcase />
-                              {l.position}
-                            </span>
-                            <span className={styles.badgeAlt}>
-                              <FaRegBuilding />
-                              {l.scc_name}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className={styles.actions}>
-                        <button
-                          type="button"
-                          className={styles.actionButton}
-                          onClick={() => handleEditClick(l)}
-                        >
-                          {editSpinnerId === id ? (
-                            <FaSpinner
-                              className={`${styles.spinner} ${styles.spinnerSm}`}
-                            />
-                          ) : (
-                            <FaEdit />
-                          )}
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          className={styles.deleteBtn}
-                          onClick={() => removeSccLeader(id)}
-                        >
-                          <FaTrash />
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
-          </ul>
+          <SccAccordion
+            sccOptions={SCC_OPTIONS}
+            leaders={sccLeaders}
+            searchTerm={searchTerm}
+            editSpinnerId={editSpinnerId}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         )}
       </div>
     </section>

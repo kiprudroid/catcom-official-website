@@ -1,0 +1,365 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: #1a1410;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.panel:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px var(--glow);
+}
+
+.panelOpen {
+  border-color: var(--accent);
+  box-shadow: 0 4px 24px var(--glow);
+}
+
+.panelHeader {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  background: none;
+  position: relative;
+  overflow: hidden;
+  min-height: 56px;
+}
+
+.headerBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  filter: blur(1px) brightness(0.55) saturate(0.7);
+  transform: scale(1.04);
+  transition:
+    filter 0.3s,
+    transform 0.35s;
+  pointer-events: none;
+}
+
+.panel:hover .headerBg {
+  filter: blur(0.5px) brightness(0.65) saturate(0.85);
+  transform: scale(1.06);
+}
+
+.panelOpen .headerBg {
+  filter: blur(0px) brightness(0.5) saturate(0.75);
+}
+
+.headerTint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  gap: 12px;
+}
+
+.panelLeft {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.saintIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  transition:
+    transform 0.2s,
+    background 0.2s;
+  drop-shadow: 0 0 8px var(--accent);
+}
+
+.panel:hover .saintIcon {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.panelTitle {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #f0ebe2;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid;
+  backdrop-filter: blur(4px);
+}
+
+.chevron {
+  color: rgba(240, 235, 226, 0.55);
+  font-size: 0.78rem;
+  transition:
+    transform 0.22s ease,
+    color 0.18s;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.list {
+  list-style: none;
+  padding: 8px 10px 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 340px;
+  overflow-y: auto;
+  background: #131010;
+}
+
+.list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+.empty {
+  padding: 16px 6px;
+  color: rgba(240, 235, 226, 0.35);
+  font-size: 0.82rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.listItem {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    box-shadow 0.15s;
+}
+
+.listItem:hover {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 12px var(--glow);
+}
+
+.listRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.listLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.avatarFallback {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 2px solid;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cardName {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #f0ebe2;
+  letter-spacing: -0.01em;
+}
+
+.badges {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.badge,
+.badgeAlt {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.67rem;
+  font-weight: 600;
+}
+
+.badge {
+  background: rgba(124, 168, 200, 0.12);
+  color: #aac8dc;
+  border: 1px solid rgba(124, 168, 200, 0.25);
+}
+
+.badgeAlt {
+  background: rgba(200, 169, 110, 0.12);
+  color: #d4b47c;
+  border: 1px solid rgba(200, 169, 110, 0.25);
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.editBtn {
+  padding: 7px 13px;
+  border-radius: 8px;
+  border: none;
+  color: #1a1410;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  font-size: 0.76rem;
+  transition:
+    filter 0.15s,
+    transform 0.12s,
+    box-shadow 0.15s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.02em;
+}
+
+.editBtn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.editBtn:active {
+  transform: translateY(0);
+}
+
+.deleteBtn {
+  padding: 7px 12px;
+  background: rgba(220, 38, 38, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.76rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.12s;
+}
+
+.deleteBtn:hover {
+  background: rgba(220, 38, 38, 0.18);
+  border-color: rgba(220, 38, 38, 0.45);
+  transform: translateY(-1px);
+}
+
+.deleteBtn:active {
+  transform: translateY(0);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 0.7s linear infinite;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .listRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .listLeft {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
