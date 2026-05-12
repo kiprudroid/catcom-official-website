@@ -1,206 +1,329 @@
+/* ═══════════════════════════════════════════════
+   LeadersSection.module.css  —  Refined Admin UI
+   ═══════════════════════════════════════════════ */
+
+/* ── Layout ─────────────────────────────────── */
 .section {
-    background: var(--card-bg);
-    padding: 1rem;
-    border-radius: 12px;
+  background: var(--card-bg, #f8fafc);
+  padding: 1.5rem;
+  border-radius: 16px;
 }
 
+/* ── Error ───────────────────────────────────── */
 .error {
-    margin: 0 0 12px;
-    color: #b00020;
-    font-size: 0.95rem;
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
+  border-radius: 8px;
+  color: #b91c1c;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
+/* ── Form card ───────────────────────────────── */
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 20px;
-    padding: 1rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-bottom: 24px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
+/* ── Form fields ─────────────────────────────── */
 .form input,
 .form select,
 .form textarea {
-    padding: 0.6rem 0.75rem;
-    border-radius: 8px;
-    border: 1px solid #d0d7de;
-    background: #fff;
-    color: inherit;
-    outline: none;
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-    width: 100%;
-    box-sizing: border-box;
+  padding: 0.65rem 0.9rem;
+  border-radius: 9px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  color: #1e293b;
+  font-size: 0.9rem;
+  outline: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
-.form input[type="file"] {
-    padding: 0.45rem 0.6rem;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
+.form textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.55;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.form input:hover,
+.form select:hover,
+.form textarea:hover {
+  border-color: #cbd5e1;
+  background: #fff;
 }
 
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-    border-color: #93c5fd;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  border-color: #38bdf8;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
-.preview {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-top: 8px;
-    border-radius: 8px;
+/* File input */
+.form input[type="file"] {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  background: #f1f5f9;
+  border-style: dashed;
+  border-color: #cbd5e1;
+  color: #64748b;
+  font-size: 0.85rem;
 }
 
-.list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 8px;
+.form input[type="file"]:hover {
+  border-color: #94a3b8;
+  background: #e2e8f0;
 }
 
-.listItem {
-    border: 1px solid #e5e7eb;
-    padding: 12px 14px;
-    border-radius: 12px;
-    margin-bottom: 0;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
-}
-
-.listRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-}
-
-.listLeft {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.avatar {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #e5e7eb;
-}
-
-.role {
-    color: #555;
-    font-style: italic;
-}
-
-.desc {
-    margin: 4px 0;
-}
-
+/* ── Action row ──────────────────────────────── */
 .actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.actions button:not(.actionButton):not(.deleteBtn) {
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    background: #fff;
-    color: #374151;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
+/* ── Buttons ─────────────────────────────────── */
 .actionButton {
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: none;
-    background-color: #1d4ed8;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 600;
-    font-size: 0.9rem;
+  padding: 9px 18px;
+  border-radius: 9px;
+  border: none;
+  background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  transition:
+    filter 0.15s ease,
+    transform 0.1s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.28);
 }
+
+.actionButton:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
+}
+
+.actionButton:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.97);
+}
+
+.actionButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Cancel */
+.actions button:not(.actionButton):not(.deleteBtn) {
+  padding: 9px 16px;
+  border-radius: 9px;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.actions button:not(.actionButton):not(.deleteBtn):hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+/* Delete */
 .deleteBtn {
-    padding: 8px 14px;
-    background: #fee2e2;
-    color: #b91c1c;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 600;
+  padding: 9px 16px;
+  background: #fff5f5;
+  color: #dc2626;
+  border: 1.5px solid #fecaca;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .deleteBtn:hover {
-    background: #fca5a5;
+  background: #fee2e2;
+  border-color: #fca5a5;
 }
 
+/* ── List ────────────────────────────────────── */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.listWrapper {
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* ── List item ───────────────────────────────── */
+.listItem {
+  border: 1px solid #e2e8f0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+  transition:
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.listItem:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.listRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.listLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Avatar ──────────────────────────────────── */
+.avatar {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2.5px solid #e0f2fe;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+  flex-shrink: 0;
+}
+
+.role {
+  color: #64748b;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.desc {
+  margin: 3px 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* ── Preview ─────────────────────────────────── */
+.preview {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ── Spinner ─────────────────────────────────── */
 @keyframes leadersSpin {
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
-    animation: leadersSpin 0.8s linear infinite;
+  animation: leadersSpin 0.75s linear infinite;
+  flex-shrink: 0;
 }
 
 .spinnerSm {
-    font-size: 1rem;
+  font-size: 0.95rem;
 }
-
 .spinnerLg {
-    font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .spinnerWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+  color: #94a3b8;
 }
 
+/* ── Responsive ──────────────────────────────── */
 @media (max-width: 900px) {
-    .listRow {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .listRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .actions {
-        width: 100%;
-        flex-wrap: wrap;
-    }
+  .actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 640px) {
-    .listLeft {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .listLeft {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .avatar {
-        width: 52px;
-        height: 52px;
-    }
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .form {
+    padding: 1.1rem;
+  }
 }
