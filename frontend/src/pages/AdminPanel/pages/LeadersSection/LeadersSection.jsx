@@ -193,7 +193,7 @@ export default function LeadersSection() {
 
   return (
     <section className={styles.section}>
-      <SectionHeading>Leaders</SectionHeading>
+      <SectionHeading>CATCOM Executive Leaders</SectionHeading>
 
       {error ? <p className={styles.error}>{error}</p> : null}
       <form onSubmit={submitLeader} className={styles.form}>
