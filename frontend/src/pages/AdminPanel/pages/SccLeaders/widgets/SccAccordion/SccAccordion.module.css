@@ -5,11 +5,11 @@
 }
 
 .panel {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 14px;
-  background: #1a1410;
+  background: #ffffff;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
@@ -44,7 +44,7 @@
   inset: 0;
   background-size: cover;
   background-position: center 30%;
-  filter: blur(1px) brightness(0.55) saturate(0.7);
+  filter: blur(1px) brightness(0.62) saturate(0.75);
   transform: scale(1.04);
   transition:
     filter 0.3s,
@@ -53,18 +53,19 @@
 }
 
 .panel:hover .headerBg {
-  filter: blur(0.5px) brightness(0.65) saturate(0.85);
+  filter: blur(0.5px) brightness(0.7) saturate(0.9);
   transform: scale(1.06);
 }
 
 .panelOpen .headerBg {
-  filter: blur(0px) brightness(0.5) saturate(0.75);
+  filter: blur(0px) brightness(0.58) saturate(0.8);
 }
 
 .headerTint {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  opacity: 0.7;
   transition: opacity 0.2s;
 }
 
@@ -94,26 +95,25 @@
   justify-content: center;
   font-size: 1.15rem;
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
   transition:
     transform 0.2s,
     background 0.2s;
-  drop-shadow: 0 0 8px var(--accent);
 }
 
 .panel:hover .saintIcon {
   transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.26);
 }
 
 .panelTitle {
   font-weight: 700;
   font-size: 0.875rem;
-  color: #f0ebe2;
+  color: #ffffff;
   letter-spacing: 0.01em;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 .count {
@@ -126,13 +126,13 @@
   border-radius: 999px;
   font-size: 0.68rem;
   font-weight: 700;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.15);
   border: 1px solid;
   backdrop-filter: blur(4px);
 }
 
 .chevron {
-  color: rgba(240, 235, 226, 0.55);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.78rem;
   transition:
     transform 0.22s ease,
@@ -146,14 +146,14 @@
 
 .list {
   list-style: none;
-  padding: 8px 10px 10px;
+  padding: 10px 10px 12px;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
   max-height: 340px;
   overflow-y: auto;
-  background: #131010;
+  background: #f8f7f5;
 }
 
 .list::-webkit-scrollbar {
@@ -165,23 +165,23 @@
 }
 
 .list::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.12);
   border-radius: 999px;
 }
 
 .empty {
   padding: 16px 6px;
-  color: rgba(240, 235, 226, 0.35);
+  color: #94a3b8;
   font-size: 0.82rem;
   text-align: center;
   font-style: italic;
 }
 
 .listItem {
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.07);
   padding: 11px 13px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff;
   transition:
     border-color 0.15s,
     background 0.15s,
@@ -190,7 +190,7 @@
 
 .listItem:hover {
   border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.06);
+  background: #ffffff;
   box-shadow: 0 2px 12px var(--glow);
 }
 
@@ -213,7 +213,7 @@
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
 }
 
@@ -224,7 +224,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f1f5f9;
   font-size: 1.1rem;
   flex-shrink: 0;
   border: 2px solid;
@@ -239,7 +239,7 @@
 .cardName {
   font-weight: 700;
   font-size: 0.875rem;
-  color: #f0ebe2;
+  color: #1e293b;
   letter-spacing: -0.01em;
 }
 
@@ -261,15 +261,15 @@
 }
 
 .badge {
-  background: rgba(124, 168, 200, 0.12);
-  color: #aac8dc;
-  border: 1px solid rgba(124, 168, 200, 0.25);
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
 }
 
 .badgeAlt {
-  background: rgba(200, 169, 110, 0.12);
-  color: #d4b47c;
-  border: 1px solid rgba(200, 169, 110, 0.25);
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
 }
 
 .actions {
@@ -283,7 +283,7 @@
   padding: 7px 13px;
   border-radius: 8px;
   border: none;
-  color: #1a1410;
+  color: #fff;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -294,14 +294,14 @@
     filter 0.15s,
     transform 0.12s,
     box-shadow 0.15s;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px var(--glow);
   letter-spacing: 0.02em;
 }
 
 .editBtn:hover {
-  filter: brightness(1.12);
+  filter: brightness(1.1);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 14px var(--glow);
 }
 
 .editBtn:active {
@@ -310,9 +310,9 @@
 
 .deleteBtn {
   padding: 7px 12px;
-  background: rgba(220, 38, 38, 0.1);
-  color: #f87171;
-  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: #fff5f5;
+  color: #dc2626;
+  border: 1px solid #fecaca;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.76rem;
@@ -327,8 +327,8 @@
 }
 
 .deleteBtn:hover {
-  background: rgba(220, 38, 38, 0.18);
-  border-color: rgba(220, 38, 38, 0.45);
+  background: #fee2e2;
+  border-color: #fca5a5;
   transform: translateY(-1px);
 }
 
