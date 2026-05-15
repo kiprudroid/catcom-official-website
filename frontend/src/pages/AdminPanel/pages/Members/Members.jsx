@@ -153,7 +153,7 @@ export default function Members() {
     const joinScc = filteredJoinRequests.map((r) => ({
       id: r.user_id,
       name: r.full_name,
-      requestedAt: new Date().toISOString(),
+      requestedAt: r.date_joined, 
       note: "Join SCC",
       type: "joinScc",
       ...r,
@@ -167,7 +167,7 @@ export default function Members() {
       .map((r) => ({
         id: r.user_id,
         name: r.full_name,
-        requestedAt: new Date().toISOString(),
+        requestedAt: r.date_joined,
         note: `Join Group: ${stripPendingPrefix(r.group_joined)}`,
         type: "joinGroup",
         ...r,

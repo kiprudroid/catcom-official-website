@@ -47,7 +47,9 @@ create table join_scc (
     email varchar(100) not null unique,
     year_study int,
     gender gender_type, 
-    scc_name varchar(100) not null
+    scc_name varchar(100) not null,
+    date_joined TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    
 );
 
 create table scc_executive (
@@ -67,7 +69,8 @@ CREATE TABLE groups (
     email VARCHAR(100) UNIQUE NOT NULL,
     gender VARCHAR(10) NOT NULL,
     college VARCHAR(100) NOT NULL,
-    group_joined VARCHAR(50) NOT NULL
+    group_joined VARCHAR(50) NOT NULL,
+    date_joined TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE executive_leaders (
