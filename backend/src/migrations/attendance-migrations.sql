@@ -44,6 +44,9 @@ ADD COLUMN last_follow_up TIMESTAMP;
 ALTER TABLE attendance_members
   ADD COLUMN IF NOT EXISTS family_name VARCHAR(150);
 
+ALTER TABLE attendance_members
+  ADD COLUMN IF NOT EXISTS in_session BOOLEAN NOT NULL DEFAULT TRUE;
+
 -- 4. Attendance records — scoped to member (which is scoped to group)
 CREATE TABLE IF NOT EXISTS attendance_records (
   id         SERIAL PRIMARY KEY,
