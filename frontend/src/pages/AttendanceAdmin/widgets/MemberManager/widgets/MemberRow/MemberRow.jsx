@@ -29,13 +29,12 @@ const MemberRow = ({
       className={`${styles.memberRow} ${!inSession ? styles.outOfSession : ""}`}
     >
       <MemberAvatar name={member.name} />
+
       <div className={styles.memberInfo}>
         <div className={styles.memberNameRow}>
           <span className={styles.memberName}>{member.name}</span>
-          {!inSession && (
-            <span className={styles.outOfSessionBadge}>On Break</span>
-          )}
         </div>
+
         <div className={styles.memberMeta}>
           {member.phone && (
             <span className={styles.memberPhone}>{member.phone}</span>
