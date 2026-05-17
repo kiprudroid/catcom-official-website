@@ -23,6 +23,7 @@ import {
   markAttendance,
   updateMemberById,
   markMemberFollowUp,
+  toggleMemberSession,
 } from "@/api/attendance.api";
 
 import { recordSaveTimestamp } from "@/utils/attendanceLock";
@@ -81,7 +82,10 @@ const AttendanceAdmin = () => {
     consecutiveAbsence: Number(m.consecutive_absences) || 0,
     recentAbsences: Number(m.recent_absences) || 0,
     lastFollowUp: m.last_follow_up,
+    inSession: m.in_session !== false,
   }));
+
+  const inSessionMembers = membersWithAttendance.filter((m) => m.inSession);
 
   const updateAttendance = (memberId, status) => {
     setAttendance((prev) => ({ ...prev, [memberId]: status }));
@@ -91,7 +95,7 @@ const AttendanceAdmin = () => {
     setSaving(true);
     try {
       await Promise.all(
-        members.map((m) =>
+        inSessionMembers.map((m) =>
           markAttendance({
             member_id: m.id,
             date: meetingDate,
@@ -157,6 +161,20 @@ const AttendanceAdmin = () => {
     }
   };
 
+  const handleToggleSession = async (id, in_session) => {
+    try {
+      const updated = await toggleMemberSession(id, in_session);
+      setMembers((prev) =>
+        prev.map((m) => (m.id === id ? { ...m, ...updated } : m)),
+      );
+      toast.success(
+        in_session ? "Marked as in session" : "Marked as out of session",
+      );
+    } catch {
+      toast.error("Failed to update session status");
+    }
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("attendance_token");
     localStorage.removeItem("attendance_group");
@@ -187,28 +205,29 @@ const AttendanceAdmin = () => {
         </div>
       </div>
 
-      <AttendanceWidgets members={membersWithAttendance} />
+      <AttendanceWidgets members={inSessionMembers} />
 
       <MembersAtRisk
-        members={membersWithAttendance}
+        members={inSessionMembers}
         onFollowUp={handleFollowUp}
         meetingDate={meetingDate}
         groupType={group.type}
       />
 
       <div className={styles.splitRow}>
-        <AttendanceChart members={membersWithAttendance} />
+        <AttendanceChart members={inSessionMembers} />
         <MemberManager
-          members={members}
+          members={membersWithAttendance}
           addMember={handleAddMember}
           removeMember={handleRemoveMember}
           updateMember={handleUpdateMember}
+          toggleSession={handleToggleSession}
           groupType={group.type}
         />
       </div>
 
       <AttendanceTable
-        members={membersWithAttendance}
+        members={inSessionMembers}
         updateAttendance={updateAttendance}
         meetingDate={meetingDate}
         groupName={group.name}

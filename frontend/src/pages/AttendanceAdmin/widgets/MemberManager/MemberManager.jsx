@@ -13,6 +13,7 @@ const MemberManager = ({
   addMember,
   removeMember,
   updateMember,
+  toggleSession,
   groupType,
 }) => {
   const isSCC = groupType === "scc";
@@ -44,6 +45,8 @@ const MemberManager = ({
     return matchesName && matchesRole;
   });
 
+  const inSessionCount = members.filter((m) => m.inSession !== false).length;
+
   return (
     <div className={styles.card}>
       <div className={`${styles.section} ${styles.sectionMembers}`}>
@@ -53,7 +56,9 @@ const MemberManager = ({
           </div>
           <div>
             <h3 className={styles.sectionTitle}>Members</h3>
-            <p className={styles.sectionSub}>{members.length} total</p>
+            <p className={styles.sectionSub}>
+              {inSessionCount} in session · {members.length} total
+            </p>
           </div>
         </div>
 
@@ -77,6 +82,7 @@ const MemberManager = ({
               removingId={removingId}
               onEdit={setEditTarget}
               onRemove={handleRemove}
+              onToggleSession={toggleSession}
             />
           ))}
         </div>
