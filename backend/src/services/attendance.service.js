@@ -151,6 +151,7 @@ export const updateMember = async ({
   phone,
   role,
   family_name,
+  in_session,
 }) => {
   const cleanPhone = phone !== undefined ? validatePhone(phone) : undefined;
   const { rows } = await Model.updateMemberQuery({
@@ -161,6 +162,7 @@ export const updateMember = async ({
     role,
     family_name:
       family_name !== undefined ? family_name?.trim() || null : undefined,
+    in_session,
   });
   if (!rows[0]) throw new Error("Member not found");
   return rows[0];

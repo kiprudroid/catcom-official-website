@@ -8,12 +8,17 @@
   border: 1px solid #edf0f2;
   transition:
     border-color 0.15s,
-    box-shadow 0.15s;
+    box-shadow 0.15s,
+    opacity 0.2s;
 }
 
 .memberRow:hover {
   border-color: #c8eaec;
   box-shadow: 0 1px 6px rgba(45, 171, 177, 0.08);
+}
+
+.outOfSession {
+  opacity: 0.5;
 }
 
 .memberInfo {
@@ -24,6 +29,13 @@
   min-width: 0;
 }
 
+.memberNameRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
 .memberName {
   font-size: 14px;
   font-weight: 600;
@@ -31,6 +43,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.outOfSessionBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 20px;
+  background: #fef3c7;
+  color: #92400e;
+  white-space: nowrap;
 }
 
 .memberMeta {
@@ -55,11 +77,55 @@
   white-space: nowrap;
 }
 
+.memberTimestamp {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 11px;
+  color: #aaa;
+}
+
 .rowActions {
   display: flex;
   align-items: center;
   gap: 5px;
   flex-shrink: 0;
+}
+
+.sessionToggle {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  min-height: 28px;
+}
+
+.sessionOn {
+  background: #d1fae5;
+  color: #065f46;
+  border-color: #6ee7b7;
+}
+
+.sessionOn:hover {
+  background: #a7f3d0;
+  border-color: #34d399;
+}
+
+.sessionOff {
+  background: #f3f4f6;
+  color: #6b7280;
+  border-color: #e5e7eb;
+}
+
+.sessionOff:hover {
+  background: #d1fae5;
+  color: #065f46;
+  border-color: #6ee7b7;
 }
 
 .editBtn {
@@ -104,11 +170,22 @@
   background: #fee2e2;
 }
 
-.removeBtn.confirm {
+.confirm {
   border-color: #ef4444;
   color: white;
   background: #ef4444;
   font-weight: 700;
+}
+
+.sessionSpinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.6s linear infinite;
+  opacity: 0.7;
 }
 
 .spinner {
@@ -120,15 +197,6 @@
   animation: spin 0.6s linear infinite;
   display: inline-block;
   flex-shrink: 0;
-}
-
-.memberTimestamp {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 3px;
-  font-size: 11px;
-  color: var(--color-text-tertiary, #aaa);
 }
 
 @keyframes spin {

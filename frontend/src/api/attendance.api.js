@@ -101,12 +101,12 @@ export const fetchMembers = async () => {
   });
   if (!res.ok) throw new Error("Failed to fetch members");
   const data = await res.json();
-
   return data.map(({ created_at, ...rest }) => ({
     ...rest,
     createdAt: created_at,
   }));
 };
+
 export const createMember = async (data) => {
   const res = await fetch(`${API_BASE}/attendance/members`, {
     method: "POST",
@@ -124,6 +124,16 @@ export const updateMemberById = async (id, data) => {
     body: JSON.stringify(data),
   });
   if (!res.ok) throw new Error("Failed to update member");
+  return res.json();
+};
+
+export const toggleMemberSession = async (id, in_session) => {
+  const res = await fetch(`${API_BASE}/attendance/members/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ in_session }),
+  });
+  if (!res.ok) throw new Error("Failed to update session status");
   return res.json();
 };
 

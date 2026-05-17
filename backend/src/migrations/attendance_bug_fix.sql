@@ -11,3 +11,6 @@ CREATE TABLE IF NOT EXISTS attendance_visitors (
 
 CREATE INDEX IF NOT EXISTS idx_att_visitors_group ON attendance_visitors (group_id);
 CREATE INDEX IF NOT EXISTS idx_att_visitors_date  ON attendance_visitors (date);
+
+
+
