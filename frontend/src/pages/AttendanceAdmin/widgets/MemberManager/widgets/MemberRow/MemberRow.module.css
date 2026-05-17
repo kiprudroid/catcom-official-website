@@ -18,7 +18,9 @@
 }
 
 .outOfSession {
-  opacity: 0.5;
+  opacity: 0.75;
+  background: #fdf4f4;
+  border-color: #f5dada;
 }
 
 .memberInfo {
@@ -33,7 +35,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: wrap;
+  min-width: 0;
 }
 
 .memberName {
@@ -43,16 +45,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.outOfSessionBadge {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 1px 6px;
-  border-radius: 20px;
-  background: #fef3c7;
-  color: #92400e;
-  white-space: nowrap;
+  min-width: 0;
 }
 
 .memberMeta {
@@ -103,6 +96,10 @@
   transition: all 0.15s;
   white-space: nowrap;
   min-height: 28px;
+  min-width: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sessionOn {
@@ -117,9 +114,9 @@
 }
 
 .sessionOff {
-  background: #f3f4f6;
-  color: #6b7280;
-  border-color: #e5e7eb;
+  background: #fde8e8;
+  color: #9b4444;
+  border-color: #f5c0c0;
 }
 
 .sessionOff:hover {
@@ -178,8 +175,8 @@
 }
 
 .sessionSpinner {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border: 2px solid currentColor;
   border-top-color: transparent;
   border-radius: 50%;
@@ -202,5 +199,34 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .memberRow {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .memberInfo {
+    flex: 1 1 calc(100% - 48px);
+  }
+
+  .memberName {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .rowActions {
+    width: 100%;
+    justify-content: flex-end;
+    padding-top: 6px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 4px;
+  }
+
+  .sessionToggle {
+    flex: 1;
+    justify-content: center;
   }
 }
