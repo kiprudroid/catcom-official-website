@@ -70,8 +70,8 @@ export const getMembersByGroupQuery = (group_id) =>
     `SELECT
       m.*,
       m.last_follow_up,
+      m.in_session,
 
-      -- Total absences in the last 60 days (regardless of streak)
       (
         SELECT COUNT(*)
         FROM attendance_records ar
@@ -80,8 +80,6 @@ export const getMembersByGroupQuery = (group_id) =>
           AND ar.date >= CURRENT_DATE - INTERVAL '60 days'
       ) AS recent_absences,
 
-      -- True consecutive absences: count absences from latest record backwards
-      -- stopping at the first non-absence. Resets after last_follow_up date.
       (
         WITH ordered AS (
           SELECT
@@ -90,17 +88,15 @@ export const getMembersByGroupQuery = (group_id) =>
             ROW_NUMBER() OVER (ORDER BY date DESC) AS rn
           FROM attendance_records
           WHERE member_id = m.id
-            -- Only count records after the last follow-up (streak resets on follow-up)
             AND (m.last_follow_up IS NULL OR date > m.last_follow_up::date)
           ORDER BY date DESC
         ),
-        -- Find how many leading rows are absent before first non-absent
         streak AS (
           SELECT status
           FROM ordered
           WHERE rn <= COALESCE(
             (SELECT MIN(rn) - 1 FROM ordered WHERE status != 'absent'),
-            (SELECT COUNT(*) FROM ordered)  -- all are absent
+            (SELECT COUNT(*) FROM ordered)
           )
         )
         SELECT COUNT(*) FROM streak WHERE status = 'absent'
@@ -114,8 +110,8 @@ export const getMembersByGroupQuery = (group_id) =>
 
 export const addMemberQuery = ({ group_id, name, phone, role, family_name }) =>
   pool.query(
-    `INSERT INTO attendance_members (group_id, name, phone, role, family_name)
-     VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+    `INSERT INTO attendance_members (group_id, name, phone, role, family_name, in_session)
+     VALUES ($1, $2, $3, $4, $5, TRUE) RETURNING *`,
     [group_id, name, phone || null, role, family_name || null],
   );
 
@@ -126,6 +122,7 @@ export const updateMemberQuery = ({
   phone,
   role,
   family_name,
+  in_session,
 }) => {
   const fields = [];
   const values = [];
@@ -146,6 +143,10 @@ export const updateMemberQuery = ({
   if (family_name !== undefined) {
     fields.push(`family_name = $${idx++}`);
     values.push(family_name || null);
+  }
+  if (in_session !== undefined) {
+    fields.push(`in_session = $${idx++}`);
+    values.push(in_session);
   }
 
   fields.push(`updated_at = NOW()`);
