@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./MemberModal.module.css";
 import { stripPendingPrefix, buildCopyText } from "../../utils/requestHelpers";
 
@@ -53,7 +53,7 @@ export default function MemberModal({ member, onClose }) {
         <div className={styles.details}>
           {member.phone_number && (
             <div className={styles.detailRow}>
-              <span className={styles.label}>Phone</span>
+              <span className={styles.label}>PHONE</span>
               <a href={`tel:${member.phone_number}`} className={styles.link}>
                 {member.phone_number}
               </a>
@@ -61,7 +61,7 @@ export default function MemberModal({ member, onClose }) {
           )}
           {member.email && (
             <div className={styles.detailRow}>
-              <span className={styles.label}>Email</span>
+              <span className={styles.label}>EMAIL</span>
               <a href={`mailto:${member.email}`} className={styles.link}>
                 {member.email}
               </a>
@@ -69,30 +69,26 @@ export default function MemberModal({ member, onClose }) {
           )}
           {member.gender && (
             <div className={styles.detailRow}>
-              <span className={styles.label}>Gender</span>
+              <span className={styles.label}>GENDER</span>
               <span className={styles.value}>{member.gender}</span>
             </div>
           )}
           {member.college && (
             <div className={styles.detailRow}>
-              <span className={styles.label}>College</span>
+              <span className={styles.label}>COLLEGE</span>
               <span className={styles.value}>{member.college}</span>
             </div>
           )}
           {member.year_study && (
             <div className={styles.detailRow}>
-              <span className={styles.label}>Year</span>
+              <span className={styles.label}>YEAR</span>
               <span className={styles.value}>Year {member.year_study}</span>
             </div>
           )}
           <div className={styles.detailRow}>
-            <span className={styles.label}>Request</span>
+            <span className={styles.label}>REQUEST</span>
             <span className={styles.value}>{member.note}</span>
           </div>
-        </div>
-
-        <div className={styles.preview}>
-          <pre className={styles.preText}>{buildCopyText(member)}</pre>
         </div>
 
         <button className={styles.copyBtn} onClick={handleCopy}>

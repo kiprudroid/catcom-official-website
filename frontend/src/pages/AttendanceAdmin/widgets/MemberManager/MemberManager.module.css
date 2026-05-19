@@ -88,3 +88,34 @@
   text-align: center;
   padding: 20px;
 }
+
+.sectionHeaderText {
+  flex: 1;
+}
+
+.exportBtns {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.exportBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.exportBtn:hover {
+  border-color: #2dabb1;
+  color: #1c9097;
+  background: #e0f4f5;
+}

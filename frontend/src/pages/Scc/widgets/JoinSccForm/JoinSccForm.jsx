@@ -45,28 +45,42 @@ function FieldError({ msg }) {
   return <span className={styles.fieldError}>{msg}</span>;
 }
 
+// modal type: "success" | "duplicate_email" | "already_member" | "error"
 function Modal({ type, onClose }) {
   const isSuccess = type === "success";
+  const color = isSuccess ? "#22c55e" : "#ef4444";
+
+  const title =
+    {
+      success: "Request Submitted!",
+      duplicate_email: "Email Already Used",
+      already_member: "Already a Member",
+      error: "Submission Failed",
+    }[type] ?? "Error";
+
+  const message =
+    {
+      success:
+        "You have successfully submitted your request to join an SCC. You will be contacted and assigned an SCC soon.",
+      duplicate_email:
+        "This email address has already been used to submit a join request. Please use a different email address.",
+      already_member:
+        "Our records show that you are already a member. If you think this is a mistake, please speak to your SCC leader directly.",
+      error:
+        "Something went wrong while submitting your request. Please try again.",
+    }[type] ?? "An unexpected error occurred.";
+
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
-        <div
-          className={styles.modalIcon}
-          style={{ background: isSuccess ? "#22c55e" : "#ef4444" }}
-        >
+        <div className={styles.modalIcon} style={{ background: color }}>
           {isSuccess ? "✓" : "✕"}
         </div>
-        <p className={styles.modalTitle}>
-          {isSuccess ? "Request Submitted!" : "Email Already Used"}
-        </p>
-        <p className={styles.modalMessage}>
-          {isSuccess
-            ? "You have successfully submitted your request to join an SCC. You will be contacted and assigned an SCC soon."
-            : "This email address has already been used to submit a join request. Please use a different email address."}
-        </p>
+        <p className={styles.modalTitle}>{title}</p>
+        <p className={styles.modalMessage}>{message}</p>
         <button
           className={styles.modalBtn}
-          style={{ background: isSuccess ? "#22c55e" : "#ef4444" }}
+          style={{ background: color }}
           onClick={onClose}
         >
           OK
@@ -80,7 +94,7 @@ function JoinSccForm({ className }) {
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [modal, setModal] = useState(null);
+  const [modal, setModal] = useState(null); // null | "success" | "duplicate_email" | "already_member" | "error"
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -136,7 +150,16 @@ function JoinSccForm({ className }) {
       setModal("success");
     } catch (err) {
       console.error(err);
-      setModal("error");
+      if (err.message === "ALREADY_MEMBER") {
+        setModal("already_member");
+      } else if (
+        err.message?.toLowerCase().includes("email") ||
+        err.message?.toLowerCase().includes("already")
+      ) {
+        setModal("duplicate_email");
+      } else {
+        setModal("error");
+      }
     } finally {
       setLoading(false);
     }

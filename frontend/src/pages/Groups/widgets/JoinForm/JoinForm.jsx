@@ -45,17 +45,25 @@ function FieldError({ msg }) {
   return <span className={styles.fieldError}>{msg}</span>;
 }
 
+// type: "success" | "already_member" | "validation" | "error"
 function Modal({ type, message, onClose }) {
   const isSuccess = type === "success";
   const color = isSuccess ? "#22c55e" : "#ef4444";
-  const title = isSuccess
-    ? "Request Submitted!"
-    : type === "validation"
-      ? "Incomplete Form"
-      : "Submission Failed";
-  const msg = isSuccess
-    ? "You have successfully submitted your request to join the selected group. We'll contact you soon."
-    : message || "Please check your details and try again.";
+
+  const title =
+    {
+      success: "Request Submitted!",
+      already_member: "Already a Member",
+      validation: "Incomplete Form",
+      error: "Submission Failed",
+    }[type] ?? "Error";
+
+  const msg =
+    type === "success"
+      ? "You have successfully submitted your request to join the selected group. We'll contact you soon."
+      : type === "already_member"
+        ? "Our records show that you are already a member. If you think this is a mistake, please speak to your group leader directly."
+        : message || "Please check your details and try again.";
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
@@ -81,7 +89,7 @@ function JoinForm() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [modal, setModal] = useState(null);
+  const [modal, setModal] = useState(null); // null | { type, message? }
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -141,7 +149,11 @@ function JoinForm() {
       setErrors({});
       setTouched({});
     } catch (error) {
-      setModal({ type: "error", message: error.message });
+      if (error.message === "ALREADY_MEMBER") {
+        setModal({ type: "already_member" });
+      } else {
+        setModal({ type: "error", message: error.message });
+      }
     } finally {
       setLoading(false);
     }

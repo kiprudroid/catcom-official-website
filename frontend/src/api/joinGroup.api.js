@@ -1,4 +1,5 @@
 import { API_BASE } from "./apiClient";
+import { fetchMembers } from "./attendance.api";
 
 const assertOk = async (res, message) => {
   if (res.ok) return;
@@ -24,6 +25,34 @@ const readJsonIfAny = async (res) => {
   return res.json();
 };
 
+/**
+ * Block submission if the phone number already exists in attendance_members.
+ * Phone numbers are unique per person — someone can belong to a group AND
+ * an SCC, but they cannot have two different phone numbers.
+ *
+ * If fetchMembers() fails (network/auth issue), we fail open so the forms
+ * stay usable during attendance API downtime.
+ */
+const assertPhoneNotRegistered = async (phoneNumber) => {
+  const normPhone = (phoneNumber || "").replace(/\s/g, "").trim();
+  if (!normPhone) return;
+
+  let members = [];
+  try {
+    members = await fetchMembers();
+  } catch {
+    return; // fail open
+  }
+
+  const duplicate = members.find(
+    (m) => (m.phone || "").replace(/\s/g, "").trim() === normPhone,
+  );
+
+  if (duplicate) {
+    throw new Error("ALREADY_MEMBER");
+  }
+};
+
 export const fetchJoinGroups = async () => {
   const res = await fetch(`${API_BASE}/join-group`, {
     method: "GET",
@@ -37,13 +66,16 @@ export const fetchJoinGroups = async () => {
 export const createJoinGroup = async (joinGroupData) => {
   const { fname, lname, phone, email, gender, college, groups } = joinGroupData;
 
+  // Phone-number uniqueness guard — runs before touching the join-group endpoint
+  await assertPhoneNotRegistered(phone);
+
   const payload = {
-    full_name: `${fname} ${lname}`.trim(), // backend expects one full_name string
+    full_name: `${fname} ${lname}`.trim(),
     phone_number: phone,
     email,
     gender,
     college,
-    group_joined: Array.isArray(groups) ? groups.join(", ") : groups, // handles both string (radio) and array (checkbox)
+    group_joined: Array.isArray(groups) ? groups.join(", ") : groups,
   };
 
   const res = await fetch(`${API_BASE}/join-group`, {

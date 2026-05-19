@@ -1,6 +1,5 @@
 -- ─────────────────────────────────────────────────────────────────
 -- DYNAMIC ATTENDANCE SYSTEM — full schema
--- Run once. Safe to re-run (IF NOT EXISTS everywhere).
 -- ─────────────────────────────────────────────────────────────────
 
 -- 1. Groups (committees, SCCs, groups, etc.)

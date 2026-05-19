@@ -22,8 +22,15 @@ export const getInitials = (name) =>
     .join("")
     .toUpperCase();
 
-const MemberAvatar = ({ name, size = 34, fontSize = 12, style = {} }) => (
+const MemberAvatar = ({
+  name,
+  size = 34,
+  fontSize = 12,
+  style = {},
+  onClick,
+}) => (
   <div
+    onClick={onClick}
     style={{
       width: size,
       height: size,
@@ -37,7 +44,15 @@ const MemberAvatar = ({ name, size = 34, fontSize = 12, style = {} }) => (
       color: "white",
       flexShrink: 0,
       letterSpacing: "0.02em",
+      cursor: onClick ? "pointer" : "default",
+      transition: "opacity 0.15s, transform 0.15s",
       ...style,
+    }}
+    onMouseEnter={(e) => {
+      if (onClick) e.currentTarget.style.opacity = "0.85";
+    }}
+    onMouseLeave={(e) => {
+      if (onClick) e.currentTarget.style.opacity = "1";
     }}
   >
     {getInitials(name)}
