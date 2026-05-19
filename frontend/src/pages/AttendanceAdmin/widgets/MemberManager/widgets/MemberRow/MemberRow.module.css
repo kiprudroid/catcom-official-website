@@ -356,4 +356,50 @@
     flex: 1;
     justify-content: center;
   }
+
+  .detailOverlay {
+    align-items: center;
+    padding: 0;
+  }
+
+  .detailBox {
+    width: 80%;
+    max-width: 100%;
+    border-radius: 20px;
+    padding: 1.5rem 1.25rem 1.25rem;
+    gap: 0.55rem;
+    animation: detailSlideUp 0.25s ease-out;
+  }
+
+  .detailName {
+    font-size: 1rem;
+  }
+
+  .detailLabel {
+    font-size: 0.65rem;
+  }
+
+  .detailValue {
+    font-size: 0.82rem;
+  }
+
+  .detailRow {
+    padding: 8px 12px;
+  }
+
+  .detailCopyBtn {
+    padding: 0.6rem;
+    font-size: 0.88rem;
+  }
+}
+
+@keyframes detailSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

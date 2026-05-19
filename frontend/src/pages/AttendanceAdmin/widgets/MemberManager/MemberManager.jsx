@@ -42,7 +42,6 @@ const exportCSV = (members, isSCC) => {
 };
 
 const exportPDF = (members, isSCC) => {
-  const colWidths = isSCC ? [160, 110, 110, 110, 90] : [180, 120, 130, 100];
   const headers = [
     "Name",
     "Phone",
@@ -60,61 +59,72 @@ const exportPDF = (members, isSCC) => {
     ].filter((v) => v !== null),
   );
 
-  const totalWidth = colWidths.reduce((a, b) => a + b, 0) + 80;
-  const rowHeight = 28;
-  const headerHeight = 36;
-  const topPad = 60;
-  const pageHeight = topPad + headerHeight + rows.length * rowHeight + 60;
+  const tableRows = rows
+    .map((row) => {
+      const status = row[row.length - 1];
+      const statusColor = status === "In Session" ? "#065f46" : "#9b4444";
+      const statusBg = status === "In Session" ? "#d1fae5" : "#fde8e8";
+      return `
+        <tr>
+          ${row
+            .map((cell, i) => {
+              const isStatus = i === row.length - 1;
+              return `<td style="${isStatus ? `color:${statusColor};background:${statusBg};border-radius:4px;font-weight:600;text-align:center;` : ""}">${cell}</td>`;
+            })
+            .join("")}
+        </tr>`;
+    })
+    .join("");
 
-  const escXml = (s) =>
-    String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Members List</title>
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; padding: 32px; color: #1c3a3a; }
+        .header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; border-bottom: 2px solid #e5e7eb; padding-bottom: 16px; }
+        .header h1 { font-size: 20px; font-weight: 700; }
+        .header p { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+        .meta { font-size: 12px; color: #9ca3af; text-align: right; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        thead tr { background: #1c9097; color: white; }
+        thead th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.04em; }
+        tbody tr { border-bottom: 1px solid #f0f0f0; }
+        tbody tr:nth-child(even) { background: #f7fafa; }
+        tbody td { padding: 9px 12px; vertical-align: middle; }
+        @media print {
+          body { padding: 20px; }
+          @page { margin: 1cm; size: A4 landscape; }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <div>
+          <h1>Members List</h1>
+          <p>${members.length} members · Exported ${new Date().toLocaleDateString("en-KE", { dateStyle: "long" })}</p>
+        </div>
+        <div class="meta">JKUAT CATCOM</div>
+      </div>
+      <table>
+        <thead>
+          <tr>${headers.map((h) => `<th>${h}</th>`).join("")}</tr>
+        </thead>
+        <tbody>${tableRows}</tbody>
+      </table>
+    </body>
+    </html>`;
 
-  let headerCells = "";
-  let x = 40;
-  headers.forEach((h, i) => {
-    headerCells += `<rect x="${x}" y="${topPad}" width="${colWidths[i]}" height="${headerHeight}" fill="#1c9097"/>`;
-    headerCells += `<text x="${x + 10}" y="${topPad + 23}" font-family="Arial" font-size="12" font-weight="bold" fill="white">${escXml(h)}</text>`;
-    x += colWidths[i];
-  });
-
-  let dataCells = "";
-  rows.forEach((row, ri) => {
-    const y = topPad + headerHeight + ri * rowHeight;
-    const bg = ri % 2 === 0 ? "#f7fafa" : "#ffffff";
-    dataCells += `<rect x="40" y="${y}" width="${totalWidth - 80}" height="${rowHeight}" fill="${bg}"/>`;
-    let cx = 40;
-    row.forEach((val, ci) => {
-      const isStatus = ci === row.length - 1;
-      const color = isStatus
-        ? val === "In Session"
-          ? "#065f46"
-          : "#9b4444"
-        : "#1c3a3a";
-      dataCells += `<text x="${cx + 10}" y="${y + 18}" font-family="Arial" font-size="11" fill="${color}">${escXml(val)}</text>`;
-      cx += colWidths[ci];
-    });
-    dataCells += `<line x1="40" y1="${y + rowHeight}" x2="${totalWidth - 40}" y2="${y + rowHeight}" stroke="#e5e7eb" stroke-width="0.5"/>`;
-  });
-
-  const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${pageHeight}">
-  <rect width="${totalWidth}" height="${pageHeight}" fill="white"/>
-  <text x="40" y="36" font-family="Arial" font-size="16" font-weight="bold" fill="#1c3a3a">Members List</text>
-  <text x="${totalWidth - 40}" y="36" font-family="Arial" font-size="11" fill="#9ca3af" text-anchor="end">${rows.length} members · ${new Date().toLocaleDateString("en-KE")}</text>
-  ${headerCells}
-  ${dataCells}
-</svg>`;
-
-  const blob = new Blob([svg], { type: "image/svg+xml" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "members.svg";
-  a.click();
-  URL.revokeObjectURL(url);
+  const win = window.open("", "_blank");
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(() => {
+    win.print();
+  }, 400);
 };
 
 const MemberManager = ({
@@ -180,7 +190,7 @@ const MemberManager = ({
             <button
               className={styles.exportBtn}
               onClick={() => exportPDF(members, isSCC)}
-              title="Download PDF"
+              title="Print / Save as PDF"
             >
               <FaFilePdf size={13} /> PDF
             </button>
