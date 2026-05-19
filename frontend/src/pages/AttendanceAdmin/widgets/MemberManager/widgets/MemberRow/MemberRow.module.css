@@ -202,6 +202,133 @@
   }
 }
 
+.detailOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.detailBox {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem 1.75rem 1.5rem;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  animation: detailPop 0.25s ease-out;
+}
+
+@keyframes detailPop {
+  from {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.detailClose {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.detailClose:hover {
+  background: #e5e7eb;
+}
+
+.detailAvatar {
+  margin-top: 0.25rem;
+}
+
+.detailName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1c3a3a;
+  margin: 0;
+  text-align: center;
+}
+
+.detailBadge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #e0f4f5;
+  color: #1c9097;
+  border-radius: 20px;
+  padding: 3px 12px;
+}
+
+.detailFields {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.detailRow:last-child {
+  border-bottom: none;
+}
+
+.detailLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #9ca3af;
+  letter-spacing: 0.06em;
+}
+
+.detailValue {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1c3a3a;
+  text-align: right;
+}
+
+.detailCopyBtn {
+  width: 100%;
+  padding: 0.7rem;
+  background: #1c3a3a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.detailCopyBtn:hover {
+  background: #2dabb1;
+}
+
 @media (max-width: 480px) {
   .memberRow {
     flex-wrap: wrap;
@@ -228,5 +355,51 @@
   .sessionToggle {
     flex: 1;
     justify-content: center;
+  }
+
+  .detailOverlay {
+    align-items: center;
+    padding: 0;
+  }
+
+  .detailBox {
+    width: 80%;
+    max-width: 100%;
+    border-radius: 20px;
+    padding: 1.5rem 1.25rem 1.25rem;
+    gap: 0.55rem;
+    animation: detailSlideUp 0.25s ease-out;
+  }
+
+  .detailName {
+    font-size: 1rem;
+  }
+
+  .detailLabel {
+    font-size: 0.65rem;
+  }
+
+  .detailValue {
+    font-size: 0.82rem;
+  }
+
+  .detailRow {
+    padding: 8px 12px;
+  }
+
+  .detailCopyBtn {
+    padding: 0.6rem;
+    font-size: 0.88rem;
+  }
+}
+
+@keyframes detailSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

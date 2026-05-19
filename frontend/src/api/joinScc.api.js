@@ -1,14 +1,43 @@
 import { API_BASE } from "./apiClient";
+import { fetchMembers } from "./attendance.api";
+
 const API_URL = `${API_BASE}/join-sccs`;
 
-// Get token from localStorage
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
   return {
-    "Accept": "application/json",
+    Accept: "application/json",
     "Content-Type": "application/json",
-    ...(token && { "Authorization": `Bearer ${token}` }),
+    ...(token && { Authorization: `Bearer ${token}` }),
   };
+};
+
+/**
+ * Block submission if the phone number already exists in attendance_members.
+ * Phone numbers are unique per person — someone can belong to a group AND
+ * an SCC, but they cannot have two different phone numbers.
+ *
+ * If fetchMembers() fails (network/auth issue), we fail open so the forms
+ * stay usable during attendance API downtime.
+ */
+const assertPhoneNotRegistered = async (phoneNumber) => {
+  const normPhone = (phoneNumber || "").replace(/\s/g, "").trim();
+  if (!normPhone) return;
+
+  let members = [];
+  try {
+    members = await fetchMembers();
+  } catch {
+    return; // fail open
+  }
+
+  const duplicate = members.find(
+    (m) => (m.phone || "").replace(/\s/g, "").trim() === normPhone,
+  );
+
+  if (duplicate) {
+    throw new Error("ALREADY_MEMBER");
+  }
 };
 
 export const fetchJoinSccs = async () => {
@@ -24,6 +53,8 @@ export const fetchJoinSccs = async () => {
 };
 
 export const createJoinScc = async (payload) => {
+  await assertPhoneNotRegistered(payload.phone_number);
+
   const res = await fetch(`${API_URL}`, {
     method: "POST",
     headers: getAuthHeaders(),

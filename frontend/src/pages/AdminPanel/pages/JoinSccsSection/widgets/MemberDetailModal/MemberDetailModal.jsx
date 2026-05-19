@@ -30,29 +30,25 @@ export default function MemberDetailModal({ member, onClose }) {
 
         <div className={styles.details}>
           <div className={styles.detailRow}>
-            <span className={styles.label}>Phone</span>
+            <span className={styles.label}>PHONE</span>
             <a href={`tel:${member.phone_number}`} className={styles.link}>
               {member.phone_number}
             </a>
           </div>
           <div className={styles.detailRow}>
-            <span className={styles.label}>Email</span>
+            <span className={styles.label}>EMAIL</span>
             <a href={`mailto:${member.email}`} className={styles.link}>
               {member.email}
             </a>
           </div>
           <div className={styles.detailRow}>
-            <span className={styles.label}>Year of Study</span>
+            <span className={styles.label}>YEAR OF STUDY</span>
             <span className={styles.value}>Year {member.year_study}</span>
           </div>
           <div className={styles.detailRow}>
-            <span className={styles.label}>Gender</span>
+            <span className={styles.label}>GENDER</span>
             <span className={styles.value}>{member.gender}</span>
           </div>
-        </div>
-
-        <div className={styles.preview}>
-          <pre className={styles.preText}>{buildMemberText(member)}</pre>
         </div>
 
         <button className={styles.copyBtn} onClick={handleCopy}>
