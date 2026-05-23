@@ -3217,7 +3217,102 @@
   },
   {
     "date": "2026-05-24",
-    "sections": [],
+    "sections": [ {
+      "header": "First Reading",
+      "readings": [
+        {
+        "text": "When the time for Pentecost was fulfilled,they were all in one place together. And suddenly there came from the sky a noise like a strong driving wind, and it filled the entire house in which they were. Then there appeared to them tongues as of fire, which parted and came to rest on each one of them. And they were all filled with the Holy Spirit and began to speak in different tongues, as the Spirit enabled them to proclaim. Now there were devout Jews from every nation under heaven staying in Jerusalem. At this sound, they gathered in a large crowd, but they were confused because each one heard them speaking in his own language. They were astounded, and in amazement they asked, \"Are not all these people who are speaking Galileans? Then how does each of us hear them in his native language? We are Parthians, Medes, and Elamites, inhabitants of Mesopotamia, Judea and Cappadocia, Pontus and Asia, Phrygia and Pamphylia, Egypt and the districts of Libya near Cyrene, as well as travelers from Rome, both Jews and converts to Judaism, Cretans and Arabs, yet we hear them speaking in our own tongues of the mighty acts of God./\"",
+          "verses": [
+            {
+              "book": "Acts",
+              "link": "https://bible.usccb.org/bible/acts/28?16",
+              "text": "Acts 2:1-11"
+            }
+          ]
+        }
+      ],
+      "type": "READING"
+    },
+    {
+      "header": "Responsorial Psalm",
+      "readings": [
+        {
+        "text": "R. (cf. 30) Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. Bless the LORD, O my soul! O LORD, my God, you are great indeed! How manifold are your works, O LORD! the earth is full of your creatures; R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. May the glory of the LORD endure forever; may the LORD be glad in his works! Pleasing to him be my theme; I will be glad in the LORD. R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. If you take away their breath, they perish and return to their dust. When you send forth your spirit, they are created, and you renew the face of the earth. R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia.",
+          "verses": [
+            {
+              "book": "Psalms",
+              "link": "https://bible.usccb.org/bible/psalms/11?4",
+              "text": "Psalm 104:1, 24, 29-30, 31, 34 "
+            }
+          ]
+        }
+      ],
+      "type": "PSALM"
+    },
+    {
+      "header": "Reading 2",
+      "readings": [
+        {
+        "text": "Brothers and sisters: No one can say, \"Jesus is Lord,\" except by the Holy Spirit. There are different kinds of spiritual gifts but the same Spirit; there are different forms of service but the same Lord; there are different workings but the same God who produces all of them in everyone. To each individual the manifestation of the Spirit is given for some benefit. As a body is one though it has many parts, and all the parts of the body, though many, are one body, so also Christ. For in one Spirit we were all baptized into one body, whether Jews or Greeks, slaves or free persons, and we were all given to drink of one Spirit.",
+          "verses": [
+            {
+              "book": "1 Corinthians",
+              "link": "https://bible.usccb.org/bible/2corinthians/13?11",
+              "text": "1 Corinthians 12:3b-7, 12-13"
+            }
+          ]
+        }
+      ],
+      "type": "READING"
+    },
+    {
+      "header": "Alleluia",
+      "readings": [
+        {
+          "text": "R. Alleluia, alleluia. Come, Holy Spirit, fill the hearts of your faithful and kindle in them the fire of your love. R. Alleluia, alleluia.",
+          "verses": [
+            {
+              "book": "John",
+              "link": "https://bible.usccb.org/bible/john/16?7",
+              "text": "John 16:7, 13"
+            }
+          ]
+        }
+      ],
+      "type": "ALLELUIA"
+    },
+    {
+      "header": "Sequence",
+      "readings": [
+        {
+        "text": "Come, Holy Spirit, come!\n        And from your celestial home\n        Shed a ray of light divine!\n        \n        Come, Father of the poor!\n        Come, source of all our store!\n        Come, within our bosoms shine.\n        \n        You, of comforters the best;\n        You, the soul’s most welcome guest;\n        Sweet refreshment here below;\n        \n        In our labor, rest most sweet;\n        Grateful coolness in the heat;\n        Solace in the midst of woe.\n        \n        O most blessed Light divine,\n        Shine within these hearts of yours,\n        And our inmost being fill!\n        \n        Where you are not, we have naught,\n        Nothing good in deed or thought,\n        Nothing free from taint of ill.\n        \n        Heal our wounds, our strength renew;\n        On our dryness pour your dew;\n        Wash the stains of guilt away:\n        \n        Bend the stubborn heart and will;\n        Melt the frozen, warm the chill;\n        Guide the steps that go astray.\n        \n        On the faithful, who adore\n        And confess you, evermore\n        In your sevenfold gift descend;\n        \n        Give them virtue’s sure reward;\n        Give them your salvation, Lord;\n        Give them joys that never end. Amen.\n        Alleluia.",
+          "verses": [
+            {
+              "book": "John",
+              "link": "https://bible.usccb.org/bible/john/21?20",
+              "text": ""
+            }
+          ]
+        }
+      ],
+      "type": "GOSPEL"
+    },
+    {
+      "header": "Gospel",
+      "readings": [
+        {
+        "text": "On the evening of that first day of the week, when the doors were locked, where the disciples were, for fear of the Jews, Jesus came and stood in their midst and said to them, \"Peace be with you.\" When he had said this, he showed them his hands and his side. The disciples rejoiced when they saw the Lord. Jesus said to them again, \"Peace be with you. As the Father has sent me, so I send you.\" And when he had said this, he breathed on them and said to them, \"Receive the Holy Spirit. Whose sins you forgive are forgiven them, and whose sins you retain are retained.\"",
+          "verses": [
+            {
+              "book": "John",
+              "link": "https://bible.usccb.org/bible/john/21?20",
+              "text": "John 20:19-23"
+            }
+          ]
+        }
+      ],
+      "type": "GOSPEL"
+    }],
     "title": "Pentecost Sunday",
     "url": "https://bible.usccb.org/bible/readings/052426.cfm"
   },
