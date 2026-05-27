@@ -1,5 +1,5 @@
 export { default as Home } from "./Home";
-export { default as Liturgy } from "./Liturgy";
+export { default as DailyReadingsAndPrayers } from "./DailyReadingsAndPrayers";
 export { default as About } from "./About";
 export { default as Groups } from "./Groups";
 export { default as Scc } from "./Scc";
