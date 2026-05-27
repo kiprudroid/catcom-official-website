@@ -238,4 +238,114 @@ May the souls of the faithful departed, through the mercy of God, rest in peace.
     content: `
     O my God, I love you above all things, with my whole heart and soul, because you are all-good and worthy of all love. I love my neighbor as myself for the love of you. I forgive all who have injured me and ask pardon of all whom I have injured.. Amen.`,
   },
+  {
+    title: "Altar Server's Prayer Before Mass",
+    contentJSX: (
+      <div>
+        <p>
+          <em>Lamb of God who takes away the sins of the world,</em>{" "}
+          <strong>spare me O Lord.</strong>
+        </p>
+        <p>
+          <em>Lamb of God who takes away the sins of the world,</em>{" "}
+          <strong>graciously hear me O Lord.</strong>
+        </p>
+        <p>
+          <em>Lamb of God who takes away the sins of the world,</em> have mercy
+          on me.
+        </p>
+        <p>
+          Christ hear me, <strong>Christ graciously hear me.</strong>
+        </p>
+
+        <br />
+
+        <p>
+          Open my mouth, O Lord, to bless your Holy Name.
+          <br />
+          Cleanse my heart from all evil and distracting thoughts.
+          <br />
+          Enlighten my understanding and inflame my will that I may serve more
+          worthily at your holy altar.
+        </p>
+
+        <br />
+
+        <p>
+          O Mary, Mother of Christ the High Priest, obtain for me the most
+          important grace of knowing my vocation in life. Grant me a true spirit
+          of faith and humble obedience so that I may ever behold the priest as
+          a representative of God and willingly follow him in the Way, the
+          Truth, and the Life of Christ. Amen.
+        </p>
+
+        <br />
+
+        <h4
+          style={{
+            textAlign: "center",
+            textDecoration: "underline",
+            fontWeight: "bold",
+          }}
+        >
+          BEFORE MASS
+        </h4>
+        <p>
+          Go before us O Lord, in this our sacrifice of prayer and praise, and
+          grant that what we say and sing with our lips we may believe in our
+          hearts and practice and show forth in our daily lives. Through Christ
+          our Lord.
+        </p>
+
+        <br />
+
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>
+          Glory be to the Father, and to the Son, and to the Holy Spirit,
+          <br />
+          as it was in the beginning, is now, and ever shall be,
+          <br />
+          world without end. Amen. <strong>(×3)</strong>
+        </p>
+
+        <p style={{ textAlign: "center", fontWeight: "bold" }}>
+          St. John Berchmans, Patron Saint of Altar Servers, pray for us.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "Altar Server's Prayer After Mass",
+    contentJSX: (
+      <div>
+        <h4
+          style={{
+            textAlign: "center",
+            textDecoration: "underline",
+            fontWeight: "bold",
+          }}
+        >
+          AFTER MASS
+        </h4>
+        <p>
+          Bless, O Lord, our hearts and minds, and grant that as we leave your
+          house, we may continue to be aware of Your presence. Through Christ
+          Our Lord.
+        </p>
+
+        <br />
+
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>
+          Glory be to the Father, and to the Son, and to the Holy Spirit,
+          <br />
+          as it was in the beginning, is now, and ever shall be,
+          <br />
+          world without end. Amen. <strong>(×3)</strong>
+        </p>
+
+        <p style={{ textAlign: "center", fontWeight: "bold" }}>
+          St. John Berchmans, Patron Saint of Altar Servers, pray for us.
+        </p>
+      </div>
+    ),
+  },
 ];
