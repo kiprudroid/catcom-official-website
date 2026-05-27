@@ -244,18 +244,18 @@ May the souls of the faithful departed, through the mercy of God, rest in peace.
       <div>
         <p>
           <em>Lamb of God who takes away the sins of the world,</em>{" "}
-          <strong>spare me O Lord.</strong>
+          <strong>spare us O Lord.</strong>
         </p>
         <p>
           <em>Lamb of God who takes away the sins of the world,</em>{" "}
-          <strong>graciously hear me O Lord.</strong>
+          <strong>graciously hear us O Lord.</strong>
         </p>
         <p>
           <em>Lamb of God who takes away the sins of the world,</em> have mercy
-          on me.
+          on us.
         </p>
         <p>
-          Christ hear me, <strong>Christ graciously hear me.</strong>
+          Christ hear us, <strong>Christ graciously hear us.</strong>
         </p>
 
         <br />
