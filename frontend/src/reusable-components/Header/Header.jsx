@@ -9,6 +9,7 @@ import {
   FaUsers,
   FaChurch,
   FaPlusCircle,
+  FaBookOpen,
 } from "react-icons/fa";
 import {
   SectionHeading,
@@ -67,8 +68,8 @@ function Header() {
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                <FaBook className={styles.icon} />
-                Liturgy
+                <FaBookOpen className={styles.icon} /> Daily Readings &amp;
+                Prayers
               </NavLink>
             </li>
             <li>
@@ -138,7 +139,8 @@ function Header() {
             </li>
             <li>
               <NavLink to="/liturgy" onClick={closeMenu}>
-                <FaBook className={styles.icon} /> Liturgy
+                <FaBookOpen className={styles.icon} /> Daily Readings &amp;
+                Prayers
               </NavLink>
             </li>
             <li>
