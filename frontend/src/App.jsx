@@ -14,7 +14,7 @@ import { AttendanceLogin } from "@/pages/AttendanceAdmin/pages";
 
 import {
   Home,
-  Liturgy,
+  DailyReadingsAndPrayers,
   About,
   Groups,
   Scc,
@@ -53,7 +53,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Home />} />
-      <Route path="/liturgy" element={<Liturgy />} />
+      <Route path="/liturgy" element={<DailyReadingsAndPrayers />} />
       <Route path="/scc" element={<Scc />} />
       <Route path="/about" element={<About />} />
       <Route path="/groups" element={<Groups />} />
