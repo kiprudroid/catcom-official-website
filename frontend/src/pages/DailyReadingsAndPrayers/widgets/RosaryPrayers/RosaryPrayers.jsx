@@ -11,7 +11,7 @@ import {
 import { mysteries } from "@/pages/DailyReadingsAndPrayers/widgets/RosaryPrayers/data/rosary.data";
 
 function RosaryPrayers() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(null);
   const [currentMystery, setCurrentMystery] = useState({ section: 0, item: 0 });
 
   const toggleMystery = (idx) => setOpenIndex(openIndex === idx ? null : idx);
