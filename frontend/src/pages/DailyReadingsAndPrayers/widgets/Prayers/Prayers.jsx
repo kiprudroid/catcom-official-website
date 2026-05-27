@@ -3,7 +3,7 @@ import styles from "./Prayers.module.css";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import Select from "react-select";
-import { prayers } from "@/pages/DailyReadingsAndPrayers/data/data";
+import { prayers } from "@/pages/DailyReadingsAndPrayers/data/data.jsx";
 
 function Prayers() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -63,11 +63,13 @@ function Prayers() {
               </span>
             </div>
             <div
-              className={`${styles.content} ${
-                openIndex === index ? styles.show : ""
-              }`}
+              className={`${styles.content} ${openIndex === index ? styles.show : ""}`}
             >
-              <Paragraph>{prayer.content}</Paragraph>
+              {prayer.contentJSX ? (
+                <div className={styles.richContent}>{prayer.contentJSX}</div>
+              ) : (
+                <Paragraph>{prayer.content}</Paragraph>
+              )}
             </div>
           </div>
         ))}

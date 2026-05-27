@@ -148,11 +148,22 @@
 
 /* Expanded: show everything */
 .show {
-  max-height: 900px;
+  max-height: 9900px;
   color: #333;
   font-size: 0.92rem;
   -webkit-mask-image: none;
   mask-image: none;
+}
+
+.richContent p {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.richContent h4 {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.95rem;
+  color: #2dabb1;
 }
 
 @media screen and (max-width: 480px) {
