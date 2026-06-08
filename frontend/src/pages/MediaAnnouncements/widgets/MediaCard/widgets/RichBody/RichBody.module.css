@@ -1,0 +1,43 @@
+.richBody {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.richBody p {
+  margin: 0 0 4px;
+}
+.richBody p:last-child {
+  margin-bottom: 0;
+}
+.richBody strong {
+  font-weight: 700;
+  color: #111827;
+}
+.richBody em {
+  font-style: italic;
+}
+.richBody u {
+  text-decoration: underline;
+}
+.richBody mark {
+  background: #fef08a;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+.richBody a {
+  color: #2dabb1;
+  text-decoration: underline;
+  word-break: break-word;
+}
+.richBody a:hover {
+  color: #1c9097;
+}
+.richBody ul {
+  padding-left: 18px;
+  margin: 4px 0;
+}
+.richBody li {
+  margin-bottom: 2px;
+}
