@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MediaGrid.module.css";
-import MediaCard from "../../../../../MediaAnnouncements/widgets/MediaCard/MediaCard";
+import MediaCard from "@/pages/MediaAnnouncements/widgets/MediaCard/MediaCard";
 
 const MediaGrid = ({ items }) => {
   return (

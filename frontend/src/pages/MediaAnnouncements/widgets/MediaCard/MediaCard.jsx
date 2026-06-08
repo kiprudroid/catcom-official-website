@@ -18,11 +18,6 @@ const toEmbedUrl = (url) => {
   return url;
 };
 
-/**
- * Renders item.description as rich HTML (from the Tiptap editor).
- * Falls back gracefully if description is plain text or empty.
- */
-
 const RichBody = ({ html, className }) => {
   if (!html) return null;
   return (
@@ -34,6 +29,7 @@ const RichBody = ({ html, className }) => {
 };
 
 const MediaCard = ({ item }) => {
+  /* ── YouTube ── */
   if (item.type === "youtube") {
     return (
       <div className={styles.card}>
@@ -58,22 +54,33 @@ const MediaCard = ({ item }) => {
     );
   }
 
+  /* ── Announcement — styled teal banner instead of blank space ── */
   if (item.type === "announcement") {
     return (
       <div className={`${styles.card} ${styles.announcementCard}`}>
-        <div className={styles.announcementHeader}>
-          <FaBullhorn className={styles.announcementIcon} />
-          <span className={styles.typeBadge} data-type="announcement">
-            Announcement
-          </span>
+        {/* Banner replaces the empty thumbnail area */}
+        <div className={styles.announcementBanner}>
+          <FaBullhorn className={styles.announcementBannerIcon} />
         </div>
-        <p className={styles.announcementTitle}>{item.title}</p>
-        <RichBody html={item.description} className={styles.announcementBody} />
-        <MediaDate date={item.created_at} />
+
+        <div className={styles.announcementBody}>
+          <div className={styles.announcementHeader}>
+            <span className={styles.typeBadge} data-type="announcement">
+              <FaBullhorn /> Announcement
+            </span>
+          </div>
+          <p className={styles.announcementTitle}>{item.title}</p>
+          <RichBody
+            html={item.description}
+            className={styles.announcementText}
+          />
+          <MediaDate date={item.created_at} />
+        </div>
       </div>
     );
   }
 
+  /* ── Poster — fixed-height image so it doesn't stretch the row ── */
   if (item.type === "poster") {
     return (
       <div className={`${styles.card} ${styles.posterCard}`}>
@@ -96,6 +103,7 @@ const MediaCard = ({ item }) => {
     );
   }
 
+  /* ── TikTok / Instagram ── */
   return <LinkCard item={item} />;
 };
 

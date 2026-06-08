@@ -15,6 +15,7 @@ import { AttendanceLogin } from "@/pages/AttendanceAdmin/pages";
 import {
   Home,
   DailyReadingsAndPrayers,
+  MediaAnnouncements,
   About,
   Groups,
   Scc,
@@ -52,12 +53,15 @@ const ProtectedAttendance = ({ children }) =>
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+      {/* ── Public pages ── */}
       <Route path="/" element={<Home />} />
-      <Route path="/liturgy" element={<DailyReadingsAndPrayers />} />
-      <Route path="/scc" element={<Scc />} />
+      <Route path="/prayers-readings" element={<DailyReadingsAndPrayers />} />
+      <Route path="/media" element={<MediaAnnouncements />} />
       <Route path="/about" element={<About />} />
       <Route path="/groups" element={<Groups />} />
+      <Route path="/scc" element={<Scc />} />
 
+      {/* ── Dynamic SCC detail pages ── */}
       {SCCs.map((scc) => (
         <Route
           key={scc.name}
@@ -78,10 +82,12 @@ const router = createBrowserRouter(
         />
       ))}
 
+      {/* ── Auth ── */}
       <Route path="/login" element={<SuperAdminLogin />} />
       <Route path="/attendance-login" element={<AttendanceLogin />} />
       <Route path="/attendance-login/:groupId" element={<AttendanceLogin />} />
 
+      {/* ── Admin panel (protected) ── */}
       <Route
         path="/admin"
         element={
@@ -102,6 +108,7 @@ const router = createBrowserRouter(
         <Route path="media" element={<MediaSection />} />
       </Route>
 
+      {/* ── Attendance admin (protected) ── */}
       <Route
         path="/attendance-admin"
         element={
@@ -111,6 +118,7 @@ const router = createBrowserRouter(
         }
       />
 
+      {/* ── 404 ── */}
       <Route path="*" element={<NotFound />} />
     </>,
   ),
