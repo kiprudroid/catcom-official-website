@@ -1,3 +1,5 @@
+
+
 .footer {
   width: 100%;
   background-color: #2d2d2d;
@@ -5,21 +7,22 @@
   color: #eaeaea;
 }
 
+/* ── Desktop: 3 columns ── */
 .footerContainer {
   display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1.6fr;
   grid-template-areas: "location quick-links contact";
+  gap: 0;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
 }
 
-.catcomLogo {
-  width: 120px;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: 50%;
+/* ── Shared column styles ── */
+.location,
+.quickLinks,
+.contact {
+  padding: 0 1.5rem;
 }
 
 .location {
@@ -28,44 +31,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-right: 2px solid rgba(255, 215, 0, 0.4);
-}
-
-.locationWrapper {
-  font-size: 0.95rem;
-  color: #dcdcdc;
-  line-height: 1.5;
-  cursor: pointer;
+  border-right: 1px solid rgba(255, 215, 0, 0.3);
+  padding-left: 0;
 }
 
 .quickLinks {
   grid-area: quick-links;
-  border-right: 2px solid rgba(255, 215, 0, 0.4);
-}
-
-.quickLinks ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.quickLinks li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.quickLinks a {
-  text-decoration: none;
-  color: #eaeaea;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.quickLinks a:hover {
-  color: #ffd700;
-  transform: translateX(2px);
+  border-right: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .contact {
@@ -74,48 +46,83 @@
   flex-direction: column;
 }
 
+/* ── Logo ── */
+.catcomLogo {
+  width: 110px;
+  height: auto;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+}
+
+.locationWrapper {
+  font-size: 0.92rem;
+  color: #dcdcdc;
+  line-height: 1.7;
+}
+
+/* ── Headings ── */
+.heading {
+  font-size: 1rem !important;
+  font-weight: 700;
+  color: #2dabb1;
+  margin-bottom: 0.9rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Lists ── */
+.quickLinks ul,
 .contact ul {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
+.quickLinks li,
 .contact li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
+  gap: 9px;
+  font-size: 0.88rem;
 }
 
+.quickLinks li svg,
+.contact li svg {
+  font-size: 0.9rem;
+  color: #2dabb1;
+  flex-shrink: 0;
+}
+
+.quickLinks a,
 .contact a {
-  color: #eaeaea;
   text-decoration: none;
-  transition: color 0.3s ease, transform 0.2s ease;
+  color: #dcdcdc;
+  transition:
+    color 0.2s,
+    transform 0.2s;
+  line-height: 1.4;
 }
 
+.quickLinks a:hover,
 .contact a:hover {
   color: #ffd700;
-  transform: translateX(4px);
-}
-.contact .heading {
-  margin-bottom: 0.3rem;
-  font-size: 1.2rem;
-  line-height: 1.3;
+  transform: translateX(2px);
 }
 
+/* ── Bottom bar ── */
 .footerBottom {
-  color: #cfcfcf;
-  padding: 1rem;
+  color: #a0a0a0;
+  padding: 1rem 2rem;
   text-align: center;
-  font-size: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
+  font-size: 0.82rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footerBottom p {
-  margin: 0.3rem 0;
+  margin: 0.25rem 0;
 }
 
 .tagline {
@@ -123,77 +130,89 @@
   color: #ffd700;
 }
 
-/* Tablets (<= 1024px) */
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+
+/* Tablet landscape: keep 3 cols but tighter */
 @media (max-width: 1024px) {
   .footerContainer {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "location location"
-      "quick-links contact";
-    text-align: center;
+    grid-template-columns: 0.8fr 1fr 1.4fr;
+    padding: 2rem 1.5rem;
   }
 
   .location,
-  .quickLinks {
-    border-right: none;
-  }
-
-  .contactsWrapper {
-    flex-direction: column;
-    gap: 2rem;
+  .quickLinks,
+  .contact {
+    padding: 0 1rem;
   }
 }
 
-/* Phones (<= 768px) */
+/* Tablet portrait: location spans full top row, links+socials below */
 @media (max-width: 768px) {
   .footerContainer {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "location location"
       "quick-links contact";
-    gap: 2rem;
-    text-align: center;
+    gap: 2rem 1rem;
+    padding: 2rem 1.5rem;
   }
 
   .location {
-    padding-bottom: 1rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 0 0 1.5rem;
+  }
+
+  .quickLinks {
+    border-right: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 0 1rem 0 0;
+  }
+
+  .contact {
+    padding: 0 0 0 1rem;
+  }
+}
+
+/* Phone: full single column stack */
+@media (max-width: 480px) {
+  .footerContainer {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "location"
+      "quick-links"
+      "contact";
+    gap: 1.8rem;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .location {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 0 0 1.25rem;
   }
 
   .quickLinks {
     border-right: none;
-    border-right: 2px solid rgba(255, 215, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 0 0 1.25rem;
   }
 
-  .contactsWrapper {
-    flex-direction: column;
-    gap: 1.5rem;
+  .contact {
+    padding: 0;
   }
 
-  .heading {
-    text-align: left;
-  }
-}
-
-/* Extra small phones (<= 480px) */
-@media (max-width: 480px) {
   .catcomLogo {
-    width: 100px;
+    width: 90px;
   }
 
-  .footerContainer {
-    padding: 2rem 1rem;
-    gap: 1.2rem;
-  }
-
+  .quickLinks li,
   .contact li {
     font-size: 0.85rem;
   }
 
   .footerBottom {
     font-size: 0.75rem;
-  }
-
-  .heading {
-    text-align: left;
+    padding: 0.9rem 1rem;
   }
 }

@@ -1,16 +1,99 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 8px 0;
-  position: relative;
+  align-items: center;
+  gap: 28px;
+  padding: 16px 0 8px;
   width: 100%;
 }
 
-.title {
-  color: #2dabb1;
-  font-size: 1.5rem;
-  font-weight: 800;
+.headingBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  gap: 8px;
+  max-width: 560px;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2dabb1;
+}
+
+.title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: #1c3a3a;
   margin: 0;
+  line-height: 1.15;
+}
+
+.titleAccent {
+  color: #2dabb1;
+}
+
+.subtitle {
+  font-size: 0.92rem;
+  color: #4b6060;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.wrapper > :global(.gridArea),
+.wrapper > * {
+  width: 100%;
+}
+
+.viewAllWrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 4px;
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: #1c3a3a;
+  text-decoration: none;
+  padding: 11px 28px;
+  border-radius: 8px;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  white-space: nowrap;
+}
+
+.viewAllLink:hover {
+  background: #2dabb1;
+  transform: translateY(-2px);
+}
+
+.arrowIcon {
+  font-size: 0.78rem;
+  transition: transform 0.2s;
+}
+
+.viewAllLink:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.4rem;
+  }
+  .viewAllLink {
+    width: 100%;
+    justify-content: center;
+  }
 }

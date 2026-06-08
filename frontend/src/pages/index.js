@@ -1,5 +1,6 @@
 export { default as Home } from "./Home";
 export { default as DailyReadingsAndPrayers } from "./DailyReadingsAndPrayers";
+export { default as MediaAnnouncements } from "./MediaAnnouncements";
 export { default as About } from "./About";
 export { default as Groups } from "./Groups";
 export { default as Scc } from "./Scc";
