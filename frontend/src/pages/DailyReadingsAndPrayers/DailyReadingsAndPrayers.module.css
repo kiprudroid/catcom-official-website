@@ -1,35 +1,50 @@
 .gridContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  padding: 0 1.5rem 2rem;
   box-sizing: border-box;
 }
 
 .widget {
   background-color: var(--card-bg);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  min-height: 200px;
+  border-radius: 14px;
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   overflow: visible;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.widget:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .readingWeek {
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
-  width: 90%;
+  border-radius: 14px;
+  padding: 1.5rem;
+  width: 100%;
   box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.readingWeek:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .warningBox {
@@ -41,58 +56,48 @@
   max-width: 500px;
   border-radius: 0.5rem;
   border: 1px solid #ffeeba;
-  animation: fadeIn 0.3s ease-in-out;
 }
+
+/* ═══════════════════════════════════
+   Responsive
+═══════════════════════════════════ */
 
 @media screen and (max-width: 480px) {
   .gridContainer {
-    padding: 0.4rem;
-    gap: 1rem;
-    width: 100%;
+    padding: 0 0.75rem 1.5rem;
+    gap: 0.9rem;
   }
 
   .widget,
   .readingWeek {
-    width: 100%;
-    padding: 0.5rem;
-    overflow: visible;
-    min-height: unset;
+    padding: 1rem;
+    border-radius: 10px;
   }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .gridContainer {
-    padding: 0.8rem;
+    padding: 0 1rem 1.5rem;
     gap: 1.2rem;
-    width: 100%;
-  }
-
-  .widget,
-  .readingWeek {
-    width: 95%;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .gridContainer {
-    padding: 1rem;
-    gap: 1.4rem;
-    width: 90%;
+    padding: 0 1.25rem 1.75rem;
   }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   .gridContainer {
-    padding: 1.5rem;
-    gap: 1.5rem;
-    width: 100%;
+    padding: 0 1.5rem 2rem;
   }
 }
 
 @media screen and (min-width: 1441px) {
   .gridContainer {
-    padding: 2rem;
-    gap: 2rem;
     max-width: 1400px;
+    padding: 0 2rem 2rem;
+    gap: 2rem;
   }
 }
