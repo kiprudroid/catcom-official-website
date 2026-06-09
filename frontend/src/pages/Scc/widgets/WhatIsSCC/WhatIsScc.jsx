@@ -1,34 +1,18 @@
 import React from "react";
-import styles from "./WhatIsScc.module.css";
-import { SectionHeading, Paragraph } from "./../../../../components/Typography/Typography";
+import { PageHeroSection } from "@/components";
 
-const WhatIsScc = ({ className }) => {
+function WhatIsScc() {
   return (
-    <div className={`${styles.contentWrapper} ${className}`}>
-      <div className={styles.title}>
-        <SectionHeading className={styles.centeredText}>
-          What is an SCC?:
-        </SectionHeading>
-      </div>
-
-      <div className={styles.sideImageSection}>
-        <img
-          src="/others/unityCircle.png"
-          alt="Small Christian Community"
-          className={styles.sideSccImage}
-        />
-        <Paragraph
-          className={styles.textContent}
-          style={{ fontFamily: "Inter, sans-serif" }}
-        >
-          A Small Christian Community (SCC) is the Church within the community,
-          comprising of a manageable group of students, which help to promote
-          communion, co-responsibility, and gives every member a sense of
-          belonging to the community at large.
-        </Paragraph>
-      </div>
-    </div>
+    <PageHeroSection
+      eyebrow="JKUAT · CATCOM"
+      title="Small Christian Communities"
+      subtitle="SCCs are the basic units of the Church — small groups of Catholic students who meet regularly to pray together, read and reflect on Scripture, share their lives, and support one another in living the faith on campus. They are the heartbeat of CATCOM at JKUAT."
+      imageSrc="/others/unityCircle.png"
+      imageAlt="Small Christian Community"
+      accent="#003366"
+      pills={["Prayer", "Scripture", "Community", "Growth"]}
+    />
   );
-};
+}
 
 export default WhatIsScc;
