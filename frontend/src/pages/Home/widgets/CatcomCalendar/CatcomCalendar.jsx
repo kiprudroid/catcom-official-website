@@ -57,7 +57,7 @@ const CatcomCalendar = () => {
       <div className={styles.header}>
         <FaCalendarAlt className={styles.headingIcon} />
         <SectionHeading as="h2" className={styles.eyebrow}>
-          JKUAT CATCOM CALENDAR
+          UPCOMING CATCOM EVENTS &amp; MASS ANIMATION CALENDAR
         </SectionHeading>
       </div>
       {dateRange && <p className={styles.dateRange}>{dateRange}</p>}
