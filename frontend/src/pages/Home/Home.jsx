@@ -30,9 +30,6 @@ function Home() {
 
         {/* Semester calendar */}
         <div className={styles.card}>
-          <SectionHeading className={styles.cardTitle}>
-            CATCOM Semester Calendar
-          </SectionHeading>
           <CatcomCalendar />
         </div>
 
