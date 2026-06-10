@@ -11,6 +11,7 @@
   font-size: 1.6rem;
   font-weight: 700;
   color: #003366;
+  font-family: "DM Sans", sans-serif;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -205,7 +206,7 @@
 
 @media screen and (max-width: 480px) {
   .massServices {
-    padding: 1rem;
+    padding: 0.5rem 0.2rem;
   }
   .heading {
     font-size: 1.15rem;
