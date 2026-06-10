@@ -118,11 +118,10 @@ const MassAndServices = () => {
 
   return (
     <section className={styles.massServices}>
-       <SectionHeading as="h2" className={styles.heading}>
+      <SectionHeading as="h2" className={styles.heading}>
         <FaCalendarAlt className={styles.headingIcon} />
-        CATCOM weekly schedule: mass &amp; activities
-      </SectionHeading> 
-      
+        CATCOM WEEKLY SCHEDULE: MASS &amp; ACTIVITIES
+      </SectionHeading>
 
       <div className={styles.list}>
         {SCHEDULE.map((item) => {
