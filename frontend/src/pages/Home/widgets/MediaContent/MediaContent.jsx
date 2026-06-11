@@ -5,9 +5,22 @@ import { FaArrowRight } from "react-icons/fa";
 import { fetchPublicMedia } from "@/api/media.api";
 import { Loading, EmptyState, MediaGrid } from "./widgets";
 
+const slideShowImages = [
+  "/home-hero-images/hero1.jpeg",
+  "/home-hero-images/hero2.jpeg",
+  "/home-hero-images/hero3.jpeg",
+  "/home-hero-images/hero4.jpeg",
+  "/home-hero-images/hero5.jpeg",
+  "/home-hero-images/hero6.jpeg",
+  "/home-hero-images/hero7.jpeg",
+  "/home-hero-images/hero8.jpeg",
+];
+
 const MediaContent = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [current, setCurrent] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -28,18 +41,38 @@ const MediaContent = () => {
     load();
   }, [load]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % slideShowImages.length);
+        setVisible(true);
+      }, 600);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={styles.wrapper}>
-      {/* ── Section heading ── */}
-      <div className={styles.headingBlock}>
-        <span className={styles.eyebrow}>STAY CONNECTED</span>
-        <h2 className={styles.title}>
-          Latest <span className={styles.titleAccent}>Media</span> &amp;
-          Announcements
-        </h2>
-        <p className={styles.subtitle}>
-          Videos, posters and updates from the JKUAT Catholic Community.
-        </p>
+      {/* ── Slideshow heading block ── */}
+      <div className={styles.heroBlock}>
+        <div
+          className={`${styles.slideBg} ${visible ? styles.slideVisible : styles.slideHidden}`}
+          style={{ backgroundImage: `url(${slideShowImages[current]})` }}
+          aria-hidden="true"
+        />
+        <div className={styles.overlay} aria-hidden="true" />
+
+        <div className={styles.headingBlock}>
+          <span className={styles.eyebrow}>STAY CONNECTED</span>
+          <h2 className={styles.title}>
+            Latest <span className={styles.titleAccent}>Media</span> &amp;
+            Announcements
+          </h2>
+          <p className={styles.subtitle}>
+            Videos, posters and updates from the JKUAT Catholic Community.
+          </p>
+        </div>
       </div>
 
       {/* ── Cards ── */}
@@ -47,7 +80,7 @@ const MediaContent = () => {
       {!loading && items.length === 0 && <EmptyState type="all" />}
       {!loading && items.length > 0 && <MediaGrid items={items} />}
 
-      {/* ── View All — bottom center ── */}
+      {/* ── View All ── */}
       {!loading && items.length > 0 && (
         <div className={styles.viewAllWrap}>
           <NavLink to="/media" className={styles.viewAllLink}>

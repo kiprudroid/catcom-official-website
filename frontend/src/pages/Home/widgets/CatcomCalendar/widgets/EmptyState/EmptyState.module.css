@@ -5,31 +5,31 @@
   justify-content: center;
   gap: 0.5rem;
   text-align: center;
-  font-size: 0.9rem;
-  color: #6b7280;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
   padding: 2rem 1rem;
-  border-radius: 8px;
-  background: #f9fafb;
-  border: 1px dashed #e2e8f0;
-  animation: fadeIn 0.4s ease;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px dashed rgba(255, 215, 0, 0.2);
+  animation: fadeIn 0.5s ease;
 }
 
 .icon {
-  font-size: 1.6rem;
-  color: #cbd5e1;
-  margin-bottom: 0.2rem;
+  font-size: 2rem;
+  color: rgba(255, 215, 0, 0.5);
+  margin-bottom: 0.3rem;
 }
 
 .sub {
-  font-size: 0.78rem;
-  color: #94a3b8;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.38);
   font-style: italic;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;

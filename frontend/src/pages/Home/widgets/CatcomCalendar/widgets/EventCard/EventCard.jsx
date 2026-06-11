@@ -50,6 +50,7 @@ const EventCard = ({
   const [open, setOpen] = useState(false);
   const time = formatTime(event.event_time) ?? fallbackTime ?? null;
   const { month, year } = formatMonthYear(event.event_date);
+  const venue = event.venue || fallbackVenue || "Venue TBA";
 
   return (
     <div
@@ -69,9 +70,15 @@ const EventCard = ({
         <div className={styles.cardMeta}>
           <p className={styles.cardTitle}>{event.title}</p>
           <div className={styles.tags}>
-            {time && <span className={styles.tag}>{time}</span>}
+            {time && (
+              <span className={styles.tag}>
+                <FaClock className={styles.tagIcon} />
+                {time}
+              </span>
+            )}
             <span className={styles.tag}>
-              {event.venue || fallbackVenue || "Venue TBA"}
+              <FaMapMarkerAlt className={styles.tagIconMap} />
+              {venue}
             </span>
           </div>
         </div>
@@ -97,7 +104,7 @@ const EventCard = ({
             )}
             <p className={styles.bodyRow}>
               <FaMapMarkerAlt className={styles.bodyIcon} />
-              {event.venue || fallbackVenue || "Venue TBA"}
+              {venue}
             </p>
             {event.description && (
               <p className={styles.description}>{event.description}</p>

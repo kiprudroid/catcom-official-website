@@ -3,11 +3,10 @@ import styles from "./SccExecutiveCard.module.css";
 import { Phone } from "lucide-react";
 import { SectionHeading } from "@/components/Typography/Typography";
 import { FaUserCircle } from "react-icons/fa";
-import { BACKEND_URL } from "@/data/urlClient";
+import { BACKEND_URL } from "@/layouts/data/urlClient";
 import { Paragraph } from "@/components/Typography/Typography";
 
 export const SccExecutiveCard = ({ executives, loading }) => {
-  
   return (
     <div className={styles.container}>
       <div className={styles.sectionHeader}>
@@ -20,7 +19,7 @@ export const SccExecutiveCard = ({ executives, loading }) => {
             <SectionHeading>Loading...</SectionHeading>
           </div>
         )}
-        
+
         {executives.map((exec, index) => (
           <div
             key={exec.exec_full_name}
@@ -40,7 +39,6 @@ export const SccExecutiveCard = ({ executives, loading }) => {
               <h3>{exec.exec_full_name}</h3>
 
               <p className={styles.position}>{exec.position}</p>
-
             </div>
 
             <div className={styles.executiveBody}>
@@ -52,7 +50,6 @@ export const SccExecutiveCard = ({ executives, loading }) => {
               </div> */}
             </div>
           </div>
-          
         ))}
       </div>
     </div>

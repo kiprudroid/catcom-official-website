@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+.heroWidget {
+  padding: 0 !important;
+}
+
 .widget {
   width: 100%;
   background-color: var(--card-bg);
