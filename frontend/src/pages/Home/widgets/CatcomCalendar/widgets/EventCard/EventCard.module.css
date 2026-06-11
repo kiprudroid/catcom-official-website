@@ -1,22 +1,27 @@
 .card {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 0.5px solid rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 215, 0, 0.15);
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: #ffd700;
+  overflow: hidden;
   transition:
-    box-shadow 0.25s ease,
+    transform 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease,
     border-left-color 0.25s ease;
 }
 
 .card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
 }
 
 .cardOpen {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
 }
 
 .accent_gold {
@@ -24,15 +29,15 @@
 }
 .accent_gold:hover,
 .accent_gold.cardOpen {
-  border-left-color: #e6c200;
+  border-left-color: #ffe44d;
 }
 
 .accent_navy {
-  border-left-color: #003366;
+  border-left-color: #2dabb1;
 }
 .accent_navy:hover,
 .accent_navy.cardOpen {
-  border-left-color: #2dabb1;
+  border-left-color: #3ecbd2;
 }
 
 .cardHeader {
@@ -49,7 +54,7 @@
 }
 
 .cardHeader:hover {
-  background: #f5f8ff;
+  background: rgba(255, 215, 0, 0.06);
 }
 
 .dateCol {
@@ -62,14 +67,14 @@
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #003366;
+  color: #ffd700;
   line-height: 1;
 }
 
 .dateMonth {
   display: block;
   font-size: 0.68rem;
-  color: #2dabb1;
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -79,7 +84,7 @@
 .dateYear {
   display: block;
   font-size: 0.62rem;
-  color: #94a3b8;
+  color: rgba(255, 255, 255, 0.4);
   margin-top: 1px;
 }
 
@@ -91,7 +96,7 @@
 .cardTitle {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1f2937;
+  color: #fff;
   margin: 0 0 0.3rem;
   line-height: 1.3;
 }
@@ -103,16 +108,31 @@
 }
 
 .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.7rem;
-  padding: 2px 10px;
+  padding: 3px 10px;
   border-radius: 20px;
-  background: #f1f5f9;
-  color: #475569;
-  border: 0.5px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+  border: 0.5px solid rgba(255, 215, 0, 0.2);
+}
+
+.tagIcon {
+  color: #ffd700;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+.tagIconMap {
+  color: #2dabb1;
+  font-size: 0.65rem;
+  flex-shrink: 0;
 }
 
 .chevron {
-  color: #94a3b8;
+  color: rgba(255, 215, 0, 0.7);
   font-size: 0.85rem;
   flex-shrink: 0;
   transition: transform 0.25s ease;
@@ -123,7 +143,7 @@
 }
 
 .cardBody {
-  border-top: 0.5px solid rgba(0, 0, 0, 0.07);
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
   padding: 0 1.25rem;
   animation: slideDown 0.2s ease;
 }
@@ -144,7 +164,7 @@
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.75rem 0;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
 }
 
 .activityRow:last-child {
@@ -157,7 +177,7 @@
   gap: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #1f2937;
+  color: #fff;
   margin: 0;
 }
 
@@ -166,7 +186,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.83rem;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.65);
   font-style: italic;
   margin: 0;
 }
@@ -185,11 +205,11 @@
 
 .description {
   font-size: 0.83rem;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.55);
   margin: 0;
   line-height: 1.5;
   font-style: italic;
-  border-top: 0.5px solid rgba(0, 0, 0, 0.06);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.07);
   padding-top: 0.5rem;
 }
 

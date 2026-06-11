@@ -1,16 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./HeroSection.module.css";
-import { slideShowImages } from "@/data/data";
-
+import { slideShowImages } from "@/layouts/data/data";
 
 const CHURCH_IMAGES = [
-  "/church-images/church1.jpg",
-  "/church-images/church2.jpg",
-  "/church-images/church3.jpg",
-  "/church-images/church4.jpg",
-  "/church-images/church5.jpg",
-  "/church-images/church6.jpg",
-  "/church-images/church7.jpg",
+  "/sccPictures/stPaul/picture1.png",
+  "/sccPictures/stStephen/picture3.jpg",
+  "/sccPictures/stTherese/Picture3.png",
+  "/sccPictures/stTherese/Picture2.png",
+  "/sccPictures/stCharles/picture2.png",
+  "/sccPictures/stPaul/picture2.png",
+  "/home-hero-images/hero1.jpeg",
+  "/home-hero-images/hero2.jpeg",
+  "/home-hero-images/hero3.jpeg",
+  "/home-hero-images/hero4.jpeg",
+  "/home-hero-images/hero5.jpeg",
+  "/home-hero-images/hero6.jpeg",
+  "/home-hero-images/hero7.jpeg",
+  "/home-hero-images/hero8.jpeg",
 ];
 
 const PILLS = ["Praying", "Believing", "Worshiping", "Serving"];

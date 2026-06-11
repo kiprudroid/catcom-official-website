@@ -1,3 +1,13 @@
+.slideVisible {
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.slideHidden {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
 .heroSection {
   position: relative;
   height: auto;
@@ -45,7 +55,7 @@
 
 .heroTitle {
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 1rem;
@@ -99,31 +109,11 @@
   background: #2daab189;
 }
 
-.btnDivine {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: float 3s ease-in-out infinite;
-}
-
-.scroll-icon {
-  width: 2rem;
-  height: 2rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
 @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -135,25 +125,19 @@
   100% {
     transform: translate(-50%, 0);
   }
-
   50% {
     transform: translate(-50%, -10px);
   }
 }
 
 @media (min-width: 640px) {
-  .hero-title {
+  .heroTitle {
     font-size: 3.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .hero-title {
+  .heroTitle {
     font-size: 4.5rem;
-  }
-}
-@media (min-width: 640px) {
-  .hero-buttons {
-    flex-direction: row;
   }
 }
