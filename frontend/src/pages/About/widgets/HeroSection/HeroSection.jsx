@@ -64,7 +64,7 @@ export const HeroSection = () => {
         <div className={styles.heroBtns}>
           <button
             className={styles.btn}
-            // onClick={() => navigate("/sccs#join-form")}
+            onClick={() => navigate("/scc#join-form")}
           >
             Join Our Community
           </button>
