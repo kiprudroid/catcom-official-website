@@ -1,3 +1,13 @@
+.slideVisible {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.slideHidden {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
 .heroSection {
     position: relative;
     height: auto;
@@ -47,7 +57,6 @@
 .heroTitle {
     width: 100%;
     font-size: 2.5rem;
-    font-weight: 700;
     color: #fff;
     margin-bottom: 1rem;
     font-weight: bolder;
@@ -143,18 +152,17 @@
 }
 
 @media (min-width: 640px) {
-    .hero-title {
+    .heroTitle {
         font-size: 3.5rem;
+    }
+
+    .heroBtns {
+        flex-direction: row;
     }
 }
 
 @media (min-width: 1024px) {
-    .hero-title {
+    .heroTitle {
         font-size: 4.5rem;
-    }
-}
-@media (min-width: 640px) {
-    .hero-buttons {
-        flex-direction: row;
     }
 }

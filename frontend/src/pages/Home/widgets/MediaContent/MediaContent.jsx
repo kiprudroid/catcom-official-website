@@ -1,74 +1,94 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./MediaContent.module.css";
-import { SectionHeading } from "@/components/Typography/Typography";
-import {
-  FaYoutube,
-  FaTiktok,
-  FaInstagram,
-  FaBullhorn,
-  FaImage,
-} from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { fetchPublicMedia } from "@/api/media.api";
-import { SearchBar, Filters, Loading, EmptyState, MediaGrid } from "./widgets";
+import { Loading, EmptyState, MediaGrid } from "./widgets";
 
-const FILTERS = [
-  { key: "all", label: "All", icon: null },
-  { key: "youtube", label: "YouTube", icon: <FaYoutube /> },
-  { key: "announcement", label: "Announcements", icon: <FaBullhorn /> },
-  { key: "tiktok", label: "TikTok", icon: <FaTiktok /> },
-  { key: "instagram", label: "Instagram", icon: <FaInstagram /> },
-  { key: "poster", label: "Poster", icon: <FaImage /> },
+const slideShowImages = [
+  "/home-hero-images/hero1.jpeg",
+  "/home-hero-images/hero2.jpeg",
+  "/home-hero-images/hero3.jpeg",
+  "/home-hero-images/hero4.jpeg",
+  "/home-hero-images/hero5.jpeg",
+  "/home-hero-images/hero6.jpeg",
+  "/home-hero-images/hero7.jpeg",
+  "/home-hero-images/hero8.jpeg",
 ];
 
 const MediaContent = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeFilter, setActiveFilter] = useState("all");
-  const [search, setSearch] = useState("");
+  const [current, setCurrent] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const data = await fetchPublicMedia({ type: activeFilter, search });
-      const sorted = [...data].sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at),
-      );
+      const data = await fetchPublicMedia({ type: "all", search: "" });
+      const sorted = [...data]
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        .slice(0, 3);
       setItems(sorted);
     } catch {
       // silent
     } finally {
       setLoading(false);
     }
-  }, [activeFilter, search]);
+  }, []);
 
   useEffect(() => {
     load();
   }, [load]);
 
-  const handleFilterChange = (key) => {
-    setActiveFilter(key);
-    setSearch("");
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % slideShowImages.length);
+        setVisible(true);
+      }, 600);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={styles.wrapper}>
-      <SectionHeading as="h3" className={styles.title}>
-        Media &amp; Announcements
-      </SectionHeading>
+      {/* ── Slideshow heading block ── */}
+      <div className={styles.heroBlock}>
+        <div
+          className={`${styles.slideBg} ${visible ? styles.slideVisible : styles.slideHidden}`}
+          style={{ backgroundImage: `url(${slideShowImages[current]})` }}
+          aria-hidden="true"
+        />
+        <div className={styles.overlay} aria-hidden="true" />
 
-      <SearchBar onSearch={setSearch} />
+        <div className={styles.headingBlock}>
+          <span className={styles.eyebrow}>STAY CONNECTED</span>
+          <h2 className={styles.title}>
+            Latest <span className={styles.titleAccent}>Media</span> &amp;
+            Announcements
+          </h2>
+          <p className={styles.subtitle}>
+            Videos, posters and updates from the JKUAT Catholic Community.
+          </p>
+        </div>
+      </div>
 
-      <Filters
-        filters={FILTERS}
-        activeFilter={activeFilter}
-        onChange={handleFilterChange}
-      />
-
+      {/* ── Cards ── */}
       {loading && <Loading />}
-
-      {!loading && items.length === 0 && <EmptyState type={activeFilter} />}
-
+      {!loading && items.length === 0 && <EmptyState type="all" />}
       {!loading && items.length > 0 && <MediaGrid items={items} />}
+
+      {/* ── View All ── */}
+      {!loading && items.length > 0 && (
+        <div className={styles.viewAllWrap}>
+          <NavLink to="/media" className={styles.viewAllLink}>
+            View All Media &amp; Announcements
+            <FaArrowRight className={styles.arrowIcon} />
+          </NavLink>
+        </div>
+      )}
     </div>
   );
 };

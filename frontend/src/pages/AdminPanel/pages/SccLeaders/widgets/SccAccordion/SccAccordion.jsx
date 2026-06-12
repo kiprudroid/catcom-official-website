@@ -9,7 +9,7 @@ import {
   FaSpinner,
 } from "react-icons/fa";
 import { GiAngelWings } from "react-icons/gi";
-import { BACKEND_URL } from "@/data/urlClient";
+import { BACKEND_URL } from "@/layouts/data/urlClient";
 import styles from "./SccAccordion.module.css";
 
 const cathedralImg = "/cathedral.jpg";

@@ -1,0 +1,38 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 2rem 1rem;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px dashed rgba(255, 215, 0, 0.2);
+  animation: fadeIn 0.5s ease;
+}
+
+.icon {
+  font-size: 2rem;
+  color: rgba(255, 215, 0, 0.5);
+  margin-bottom: 0.3rem;
+}
+
+.sub {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.38);
+  font-style: italic;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

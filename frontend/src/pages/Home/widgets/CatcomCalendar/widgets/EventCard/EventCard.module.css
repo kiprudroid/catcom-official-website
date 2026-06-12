@@ -1,0 +1,230 @@
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-left-width: 4px;
+  border-left-style: solid;
+  border-left-color: #ffd700;
+  overflow: hidden;
+  transition:
+    transform 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease,
+    border-left-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+}
+
+.cardOpen {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+}
+
+.accent_gold {
+  border-left-color: #ffd700;
+}
+.accent_gold:hover,
+.accent_gold.cardOpen {
+  border-left-color: #ffe44d;
+}
+
+.accent_navy {
+  border-left-color: #2dabb1;
+}
+.accent_navy:hover,
+.accent_navy.cardOpen {
+  border-left-color: #3ecbd2;
+}
+
+.cardHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.cardHeader:hover {
+  background: rgba(255, 215, 0, 0.06);
+}
+
+.dateCol {
+  min-width: 52px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.dateDay {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffd700;
+  line-height: 1;
+}
+
+.dateMonth {
+  display: block;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.dateYear {
+  display: block;
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 1px;
+}
+
+.cardMeta {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.3rem;
+  line-height: 1.3;
+}
+
+.tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+  border: 0.5px solid rgba(255, 215, 0, 0.2);
+}
+
+.tagIcon {
+  color: #ffd700;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+.tagIconMap {
+  color: #2dabb1;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+.chevron {
+  color: rgba(255, 215, 0, 0.7);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.cardBody {
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  padding: 0 1.25rem;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.activityRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+}
+
+.activityRow:last-child {
+  border-bottom: none;
+}
+
+.fullDate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.bodyRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.83rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+  margin: 0;
+}
+
+.bodyIcon {
+  color: #2dabb1;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.bodyIconClock {
+  color: #ffd700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.description {
+  font-size: 0.83rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.5;
+  font-style: italic;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.07);
+  padding-top: 0.5rem;
+}
+
+@media screen and (max-width: 480px) {
+  .cardHeader {
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+  }
+  .cardBody {
+    padding: 0 1rem;
+  }
+  .dateDay {
+    font-size: 1.25rem;
+  }
+  .cardTitle {
+    font-size: 0.88rem;
+  }
+}

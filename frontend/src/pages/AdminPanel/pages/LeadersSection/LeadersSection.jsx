@@ -8,7 +8,7 @@ import {
   updateLeader,
   deleteLeader as deleteLeaderApi,
 } from "@/api/leaders.api";
-import { BACKEND_URL } from "@/data/urlClient";
+import { BACKEND_URL } from "@/layouts/data/urlClient";
 
 export default function LeadersSection() {
   const EMPTY_FORM = {

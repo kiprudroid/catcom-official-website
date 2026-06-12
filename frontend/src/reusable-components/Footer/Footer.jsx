@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Footer.module.css";
 import { SectionHeading } from "../../components/Typography/Typography";
 import {
   FaEnvelope,
@@ -15,6 +14,7 @@ import {
   FaUsers,
   FaChurch,
   FaInfoCircle,
+  FaBullhorn,
 } from "react-icons/fa";
 import styles from "./Footer.module.css";
 
@@ -36,7 +36,6 @@ function Footer({ className }) {
 
         <div className={styles.quickLinks}>
           <SectionHeading className={styles.heading}>
-            {" "}
             Quick Links
           </SectionHeading>
           <ul>
@@ -46,7 +45,11 @@ function Footer({ className }) {
             </li>
             <li>
               <FaBookOpen />
-              <NavLink to="/liturgy">Liturgy</NavLink>
+              <NavLink to="/prayers-readings">Daily Readings & Prayers</NavLink>
+            </li>
+            <li>
+              <FaBullhorn />
+              <NavLink to="/media">Media &amp; Announcements</NavLink>
             </li>
             <li>
               <FaInfoCircle />
@@ -102,7 +105,6 @@ function Footer({ className }) {
                 catcomjkuat
               </NavLink>
             </li>
-
             <li>
               <FaEnvelope />
               <NavLink to="mailto:jkuatcatcom18@gmail.com">
@@ -116,7 +118,7 @@ function Footer({ className }) {
       <div className={styles.footerBottom}>
         <p>© {new Date().getFullYear()} JKUAT Catcom. All Rights Reserved.</p>
         <p className={styles.tagline}>
-          “Rooted in Faith, Growing in Community.”
+          "Rooted in Faith, Growing in Community."
         </p>
       </div>
     </footer>

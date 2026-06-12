@@ -8,7 +8,8 @@ import {
   FaInfoCircle,
   FaUsers,
   FaChurch,
-  FaPlusCircle,
+  FaBookOpen,
+  FaBullhorn,
 } from "react-icons/fa";
 import {
   SectionHeading,
@@ -62,13 +63,23 @@ function Header() {
             </li>
             <li>
               <NavLink
-                to="/liturgy"
+                to="/prayers-readings"
                 className={({ isActive }) =>
                   isActive ? styles.activeLink : styles.inactiveLink
                 }
               >
-                <FaBook className={styles.icon} />
-                Liturgy
+                <FaBookOpen className={styles.icon} /> Daily Readings &amp;
+                Prayers
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/media"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
+                <FaBullhorn className={styles.icon} /> Media &amp; Announcements
               </NavLink>
             </li>
             <li>
@@ -137,8 +148,14 @@ function Header() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/liturgy" onClick={closeMenu}>
-                <FaBook className={styles.icon} /> Liturgy
+              <NavLink to="/prayers-readings" onClick={closeMenu}>
+                <FaBookOpen className={styles.icon} /> Daily Readings &amp;
+                Prayers
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/media" onClick={closeMenu}>
+                <FaBullhorn className={styles.icon} /> Media &amp; Announcements
               </NavLink>
             </li>
             <li>

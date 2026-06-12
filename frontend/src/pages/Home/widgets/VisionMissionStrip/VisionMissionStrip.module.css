@@ -1,0 +1,53 @@
+.strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid #2dabb1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.teal {
+  border-left-color: #2dabb1;
+}
+.gold {
+  border-left-color: #ffd700;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #003366;
+  margin: 0 0 0.5rem;
+}
+
+.cardText {
+  font-size: 0.88rem;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════
+     Responsive
+  ═══════════════════════════════════ */
+
+@media screen and (max-width: 600px) {
+  .strip {
+    grid-template-columns: 1fr;
+  }
+}

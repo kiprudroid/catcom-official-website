@@ -19,19 +19,19 @@ const AboutPage = () => {
   const [leaders, setLeaders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  
+
   const RANK_MAP = {
-    'moderator': 1,
-    'Vice Moderator': 2,
-    'Secretary': 3,
-    'Treasurer': 4,
-    'Organising Secretary': 5,
-    'Pastoral Secretary': 6,
-    'Choir Moderator': 7,
-    'Choir Director': 8,
-    'Publicity Secretary': 9,
-    'Technical Secretary': 10,
-    'Catering Secretary': 11,    
+    moderator: 1,
+    "Vice Moderator": 2,
+    Secretary: 3,
+    Treasurer: 4,
+    "Organising Secretary": 5,
+    "Pastoral Secretary": 6,
+    "Choir Moderator": 7,
+    "Choir Director": 8,
+    "Publicity Secretary": 9,
+    "Technical Secretary": 10,
+    "Catering Secretary": 11,
   };
 
   useEffect(() => {
@@ -52,22 +52,22 @@ const AboutPage = () => {
 
     loadLeaders();
   }, []);
-  
+
   const [rankedLeaders, setRankedLeaders] = useState([]);
 
   useEffect(() => {
     if (leaders.length > 0) {
-      
       const normalizedRankMap = Object.fromEntries(
-        Object.entries(RANK_MAP).map(([key, value]) => [key.toLowerCase(), value])
+        Object.entries(RANK_MAP).map(([key, value]) => [
+          key.toLowerCase(),
+          value,
+        ]),
       );
 
       const sortedLeaders = [...leaders].sort((a, b) => {
-      
         const titleA = a.post_title?.toLowerCase();
         const titleB = b.post_title?.toLowerCase();
 
-        
         const rankA = normalizedRankMap[titleA] ?? Number.MAX_SAFE_INTEGER;
         const rankB = normalizedRankMap[titleB] ?? Number.MAX_SAFE_INTEGER;
 
@@ -76,20 +76,19 @@ const AboutPage = () => {
         }
         if (rankA > rankB) {
           return 1;
-        }       
+        }
         return 0;
       });
       setRankedLeaders(sortedLeaders);
     } else {
-     
       setRankedLeaders([]);
     }
-  }, [leaders]); 
+  }, [leaders]);
 
   return (
     <DashboardLayout>
       <div className={styles.aboutContainer}>
-        <div className={styles.widget}>
+        <div className={`${styles.widget} ${styles.heroWidget}`}>
           <HeroSection />
         </div>
 
@@ -111,10 +110,12 @@ const AboutPage = () => {
 
         <div className={styles.widget}>
           {error ? <p className={styles.error}>{error}</p> : null}
-          {loading ? <SectionHeading className={styles.loading}>Loading...</SectionHeading> : null}
-          <ExecutiveCards
-            executives={rankedLeaders}
-          />
+          {loading ? (
+            <SectionHeading className={styles.loading}>
+              Loading...
+            </SectionHeading>
+          ) : null}
+          <ExecutiveCards executives={rankedLeaders} />
         </div>
       </div>
     </DashboardLayout>

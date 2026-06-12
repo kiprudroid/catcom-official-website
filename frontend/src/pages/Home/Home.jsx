@@ -3,44 +3,39 @@ import styles from "./Home.module.css";
 import "@fontsource/inter";
 
 import { SectionHeading } from "@/components/Typography/Typography";
-import { slideShowImages } from "../../data/data";
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 
 import {
-  VisionCards,
+  HeroSection,
   CatcomCalendar,
-  ChurchImage,
-  ImageSlider,
   MassAndServices,
   MediaContent,
+  VisionMissionStrip,
 } from "@/pages/Home/widgets";
 
 function Home() {
   return (
     <DashboardLayout>
       <div className={styles.homeContainer}>
-        <div className={`${styles.card} ${styles.hero}`}>
-          <ChurchImage />
-          <VisionCards />
+        <div className={`${styles.card} ${styles.heroCard}`}>
+          <HeroSection />
         </div>
 
-        <div className={`${styles.card} ${styles.calendar}`}>
+        <VisionMissionStrip />
+
+        {/* Weekly schedule */}
+        <div className={styles.card}>
           <MassAndServices />
         </div>
 
-        <div className={`${styles.card} ${styles.calendar}`}>
-          <SectionHeading className={styles.cardTitle}>
-            CATCOM Semester Calendar
-          </SectionHeading>
+        {/* Semester calendar */}
+        <div className={styles.card}>
           <CatcomCalendar />
         </div>
 
-        <div className={`${styles.card} ${styles.fullWidth}`}>
+        {/* Media / news */}
+        <div className={styles.card}>
           <MediaContent />
-        </div>
-
-        <div className={`${styles.card} ${styles.fullWidth}`}>
-          <ImageSlider images={slideShowImages} />
         </div>
       </div>
     </DashboardLayout>

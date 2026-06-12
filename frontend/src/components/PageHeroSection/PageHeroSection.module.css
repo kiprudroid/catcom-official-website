@@ -1,0 +1,156 @@
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, #f0f9fa 0%, #e8f4f5 60%, #f8f9fa 100%);
+  border-radius: 14px;
+  border-left: 5px solid var(--hero-accent, #2dabb1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle decorative circle in the background */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(45, 171, 177, 0.08) 0%,
+    transparent 70%
+  );
+  top: -80px;
+  right: -60px;
+  pointer-events: none;
+}
+
+/* ── Left text block ── */
+.left {
+  flex: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--hero-accent, #2dabb1);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #003366;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+  max-width: 600px;
+}
+
+.pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-size: 0.75rem;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(45, 171, 177, 0.1);
+  border: 1px solid rgba(45, 171, 177, 0.3);
+  color: #0f6e6e;
+  font-weight: 500;
+}
+
+/* ── Right image ── */
+.right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.image:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* ═══════════════════════════════════
+     Responsive
+  ═══════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .hero {
+    flex-direction: column-reverse;
+    padding: 1.5rem 1.25rem;
+    gap: 1rem;
+    text-align: center;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+  .subtitle {
+    font-size: 0.88rem;
+  }
+  .image {
+    width: 80px;
+    height: 80px;
+  }
+  .pills {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+  .title {
+    font-size: 1.65rem;
+  }
+  .image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1441px) {
+  .hero {
+    padding: 3rem 2.5rem;
+  }
+  .title {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .image {
+    width: 140px;
+    height: 140px;
+  }
+}

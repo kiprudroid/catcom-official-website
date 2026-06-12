@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ExecutiveCards.module.css";
 import { Phone } from "lucide-react";
 import { SectionHeading, Paragraph } from "@/components/Typography/Typography";
-import { BACKEND_URL } from "@/data/urlClient";
+import { BACKEND_URL } from "@/layouts/data/urlClient";
 
 const ExecutiveCards = ({ executives }) => {
   return (
