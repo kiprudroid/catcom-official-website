@@ -24,14 +24,10 @@ function Home() {
         <VisionMissionStrip />
 
         {/* Weekly schedule */}
-        <div className={styles.card}>
-          <MassAndServices />
-        </div>
+        <MassAndServices />
 
         {/* Semester calendar */}
-        <div className={styles.card}>
-          <CatcomCalendar />
-        </div>
+        <CatcomCalendar />
 
         {/* Media / news */}
         <div className={styles.card}>
