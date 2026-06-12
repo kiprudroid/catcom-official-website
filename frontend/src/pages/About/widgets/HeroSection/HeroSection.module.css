@@ -18,6 +18,8 @@
   justify-content: center;
   overflow: hidden;
   width: 100%;
+  border-radius: 14px;
+  
 }
 
 .heroBackground {
@@ -27,16 +29,16 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-
-.heroOverlay {
+.overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.6)
+    135deg,
+    rgba(0, 20, 55, 0.78) 0%,
+    rgba(0, 45, 95, 0.64) 55%,
+    rgba(0, 70, 110, 0.6) 100%
   );
+  z-index: 1;
 }
 
 .heroContent {
