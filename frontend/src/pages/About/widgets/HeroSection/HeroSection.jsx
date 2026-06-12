@@ -37,13 +37,15 @@ export const HeroSection = () => {
 
   return (
     <section className={styles.heroSection}>
+      {/* slideshow Layers*/}
       <div
         className={`${styles.heroBackground} ${visible ? styles.slideVisible : styles.slideHidden}`}
         style={{ backgroundImage: `url(${slideShowImages[current]})` }}
       >
-        <div className={styles.heroOverlay} />
+        <div className={styles.overlay}  aria-hidden="true"/>
       </div>
 
+      {/* content*/}
       <div className={styles.heroContent}>
         <div className={styles.heroHeading}>
           <SectionHeading fontSize="2.5rem" className={styles.heroTitle}>

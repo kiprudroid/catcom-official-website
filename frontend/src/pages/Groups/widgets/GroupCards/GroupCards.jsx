@@ -20,6 +20,7 @@ const GroupCards = () => {
                 showArrows
                 showThumbs={false}
                 showStatus={false}
+                showIndicators={false}
                 infiniteLoop
                 autoPlay
                 interval={3500}
