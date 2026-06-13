@@ -1,0 +1,182 @@
+.section {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  position: relative;
+  cursor: pointer;
+}
+
+.sectionHeader {
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.sectionHeader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/liturgy-images/rosary.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  filter: brightness(0.3) saturate(0.6);
+  transition: filter 0.4s ease;
+}
+
+.sectionHeader:hover::before {
+  filter: brightness(0.38) saturate(0.75);
+}
+
+.sectionHeader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 171, 177, 0.2) 0%,
+    rgba(92, 60, 20, 0.45) 100%
+  );
+}
+
+.toggleBtn {
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+  width: 100%;
+}
+
+.headerIcon {
+  font-size: 1.8rem;
+  color: rgba(255, 220, 150, 0.9);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.headerText {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.headerSubtitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.body {
+  background: linear-gradient(180deg, #fffbf0 0%, #ffffff 100%);
+  padding: 1.5rem;
+  border-top: 3px solid #d97706;
+}
+
+.prayerGrid {
+  column-count: 3;
+  column-gap: 2rem;
+  padding: 0.5rem 0;
+}
+
+.prayerLine {
+  break-inside: avoid;
+  display: block;
+  margin-bottom: 0.6rem;
+  line-height: 1.55;
+  font-size: 0.92rem;
+  color: #374151;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  transition: background 0.15s;
+  cursor: default;
+}
+
+.prayerLine:hover {
+  background: rgba(217, 119, 6, 0.06);
+}
+
+.fullPrayers {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.prayerBlock {
+  background: rgba(217, 119, 6, 0.05);
+  border-left: 3px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+}
+
+.prayerTitle {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #92400e;
+  margin-bottom: 0.5rem;
+}
+
+.prayerText {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+.leaderBlock {
+  background: rgba(99, 102, 241, 0.05);
+  border-left: 3px solid #6366f1;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+}
+
+.leaderLabel {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.leaderText {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+@media screen and (max-width: 480px) {
+  .prayerGrid {
+    column-count: 1;
+  }
+
+  .headerText {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .prayerGrid {
+    column-count: 2;
+  }
+}

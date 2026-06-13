@@ -1,148 +1,169 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
-    padding: 0 0 8px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 0 0 8px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* ── Slideshow hero header ── */
 .heroBlock {
-    position: relative;
-    width: 100%;
-    min-height: 200px;
-    overflow: hidden;
-    border-radius: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  overflow: hidden;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .slideBg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-    transition: opacity 0.6s ease;
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transition: opacity 0.6s ease;
 }
 
 .slideVisible {
-    opacity: 1;
+  opacity: 1;
 }
 
 .slideHidden {
-    opacity: 0;
+  opacity: 0;
 }
 
 .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 20, 55, 0.88) 0%,
-        rgba(0, 45, 95, 0.84) 55%,
-        rgba(28, 58, 58, 0.85) 100%
-    );
-    z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 20, 55, 0.88) 0%,
+    rgba(0, 45, 95, 0.84) 55%,
+    rgba(28, 58, 58, 0.85) 100%
+  );
+  z-index: 1;
 }
 
 .headingBlock {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-    max-width: 560px;
-    padding: 2.5rem 1.5rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  max-width: 560px;
+  padding: 2.5rem 1.5rem;
+  box-sizing: border-box;
 }
 
 .eyebrow {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #2dabb1;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2dabb1;
 }
 
 .title {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 900;
-    color: #fff;
-    margin: 0;
-    line-height: 1.15;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  line-height: 1.15;
 }
 
 .titleAccent {
-    color: #2dabb1;
+  color: #2dabb1;
 }
 
 .subtitle {
-    font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
-    line-height: 1.6;
-    max-width: 420px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 420px;
 }
 
-/* ── Rest ── */
-.wrapper > :global(.gridArea),
-.wrapper > * {
-    width: 100%;
+/* ── Grid area full width ── */
+.gridWrap {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16px;
 }
 
 .viewAllWrap {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-top: 4px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 4px 16px 0;
+  box-sizing: border-box;
 }
 
 .viewAllLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #fff;
-    background: #1c3a3a;
-    text-decoration: none;
-    padding: 11px 28px;
-    border-radius: 8px;
-    transition:
-        background 0.2s,
-        transform 0.15s;
-    white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: #1c3a3a;
+  text-decoration: none;
+  padding: 11px 28px;
+  border-radius: 8px;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  white-space: nowrap;
 }
 
 .viewAllLink:hover {
-    background: #2dabb1;
-    transform: translateY(-2px);
+  background: #2dabb1;
+  transform: translateY(-2px);
 }
 
 .arrowIcon {
-    font-size: 0.78rem;
-    transition: transform 0.2s;
+  font-size: 0.78rem;
+  transition: transform 0.2s;
 }
 
 .viewAllLink:hover .arrowIcon {
-    transform: translateX(4px);
+  transform: translateX(4px);
 }
 
 @media (max-width: 480px) {
-    .heroBlock {
-        min-height: 160px;
-        border-radius: 8px;
-    }
-    .title {
-        font-size: 1.4rem;
-    }
-    .viewAllLink {
-        width: 100%;
-        justify-content: center;
-    }
+  .heroBlock {
+    min-height: 160px;
+    border-radius: 8px;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+  .gridWrap {
+    padding: 0 8px;
+  }
+  .viewAllWrap {
+    padding: 4px 8px 0;
+  }
+  .viewAllLink {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .gridWrap {
+    padding: 0 12px;
+  }
+  .viewAllWrap {
+    padding: 4px 12px 0;
+  }
 }
