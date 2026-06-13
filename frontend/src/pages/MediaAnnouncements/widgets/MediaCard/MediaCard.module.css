@@ -11,6 +11,7 @@
   text-decoration: none;
   color: inherit;
   height: 100%;
+  margin: 1.4rem;
 }
 
 .card:hover {
