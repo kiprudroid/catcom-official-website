@@ -76,9 +76,11 @@ const MediaContent = () => {
       </div>
 
       {/* ── Cards ── */}
-      {loading && <Loading />}
-      {!loading && items.length === 0 && <EmptyState type="all" />}
-      {!loading && items.length > 0 && <MediaGrid items={items} />}
+      <div className={styles.gridWrap}>
+        {loading && <Loading />}
+        {!loading && items.length === 0 && <EmptyState type="all" />}
+        {!loading && items.length > 0 && <MediaGrid items={items} />}
+      </div>
 
       {/* ── View All ── */}
       {!loading && items.length > 0 && (
