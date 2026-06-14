@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./MediaContent.module.css";
 import { FaArrowRight } from "react-icons/fa";
 import { fetchPublicMedia } from "@/api/media.api";
@@ -21,6 +21,7 @@ const MediaContent = () => {
   const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(true);
+  const navigate = useNavigate();
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -52,6 +53,12 @@ const MediaContent = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleViewAll = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "instant" });
+    navigate("/media");
+  };
+
   return (
     <div className={styles.wrapper}>
       {/* ── Slideshow heading block ── */}
@@ -76,14 +83,20 @@ const MediaContent = () => {
       </div>
 
       {/* ── Cards ── */}
-      {loading && <Loading />}
-      {!loading && items.length === 0 && <EmptyState type="all" />}
-      {!loading && items.length > 0 && <MediaGrid items={items} />}
+      <div className={styles.gridWrap}>
+        {loading && <Loading />}
+        {!loading && items.length === 0 && <EmptyState type="all" />}
+        {!loading && items.length > 0 && <MediaGrid items={items} />}
+      </div>
 
       {/* ── View All ── */}
       {!loading && items.length > 0 && (
         <div className={styles.viewAllWrap}>
-          <NavLink to="/media" className={styles.viewAllLink}>
+          <NavLink
+            to="/media"
+            className={styles.viewAllLink}
+            onClick={handleViewAll}
+          >
             View All Media &amp; Announcements
             <FaArrowRight className={styles.arrowIcon} />
           </NavLink>
