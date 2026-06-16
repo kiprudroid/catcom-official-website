@@ -11,12 +11,17 @@ const CHURCH_IMAGES = [
   "/sccPictures/stPaul/picture2.png",
   "/home-hero-images/hero1.jpeg",
   "/home-hero-images/hero2.jpeg",
+  "/home-hero-images/scc4.png",
   "/home-hero-images/hero3.jpeg",
   "/home-hero-images/hero4.jpeg",
   "/home-hero-images/hero5.jpeg",
+  "/home-hero-images/scc5.png",
   "/home-hero-images/hero6.jpeg",
   "/home-hero-images/hero7.jpeg",
   "/home-hero-images/hero8.jpeg",
+  "/home-hero-images/scc2.png",
+  "/home-hero-images/scc2.png",
+  "/home-hero-images/scc6.png",
 ];
 
 const PILLS = ["Praying", "Believing", "Worshiping", "Serving"];
