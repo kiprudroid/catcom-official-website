@@ -5521,11 +5521,92 @@
     "url": "https://bible.usccb.org/bible/readings/062326.cfm"
   },
   {
-    "date": "2026-06-24",
-    "sections": [],
-    "title": "Solemnity of the Nativity of Saint John the Baptist",
-    "url": "https://bible.usccb.org/bible/readings/062426.cfm"
-  },
+  "date": "2026-06-24",
+  "sections": [
+    {
+      "header": "Reading 1",
+      "readings": [
+        {
+          "text": "Hear me, O coastlands,\nlisten, O distant peoples.\nThe LORD called me from birth,\nfrom my mother's womb he gave me my name.\nHe made of me a sharp-edged sword\nand concealed me in the shadow of his arm.\nHe made me a polished arrow,\nin his quiver he hid me.\nYou are my servant, he said to me,\nIsrael, through whom I show my glory.\n\nThough I thought I had toiled in vain,\nand for nothing, uselessly, spent my strength,\nyet my reward is with the LORD,\nmy recompense is with my God.\nFor now the LORD has spoken\nwho formed me as his servant from the womb,\nthat Jacob may be brought back to him\nand Israel gathered to him;\nand I am made glorious in the sight of the LORD,\nand my God is now my strength!\nIt is too little, he says, for you to be my servant,\nto raise up the tribes of Jacob,\nand restore the survivors of Israel;\nI will make you a light to the nations,\nthat my salvation may reach to the ends of the earth.",
+          "verses": [
+            {
+              "book": "Isaiah",
+              "link": "https://bible.usccb.org/bible/isaiah/49?1",
+              "text": "Isaiah 49:1-6"
+            }
+          ]
+        }
+      ],
+      "type": "READING"
+    },
+    {
+      "header": "Responsorial Psalm",
+      "readings": [
+        {
+          "text": "R. I praise you, for I am wonderfully made.\nO LORD, you have probed me, you know me;\nyou know when I sit and when I stand;\nyou understand my thoughts from afar.\nMy journeys and my rest you scrutinize,\nwith all my ways you are familiar.\nR. I praise you, for I am wonderfully made.\nTruly you have formed my inmost being;\nyou knit me in my mother’s womb.\nI give you thanks that I am fearfully, wonderfully made;\nwonderful are your works.\nR. I praise you, for I am wonderfully made.\nMy soul also you knew full well;\nor my frame was not hidden from you\nwhen I was made in secret,\nwhen I was fashioned in the depths of the earth.\nR. I praise you, for I am wonderfully made.",
+          "verses": [
+            {
+              "book": "Psalms",
+              "link": "https://bible.usccb.org/bible/psalms/139?1",
+              "text": "Psalm 139:1b-3, 13-14ab, 14c-15"
+            }
+          ]
+        }
+      ],
+      "type": "PSALM"
+    },
+    {
+      "header": "Reading II",
+      "readings": [
+        {
+          "text": "Brothers and sisters: God raised up David as king; of him he testified, ‘I have found David, son of Jesse, a man after my own heart; he will carry out my every wish.’ From this man’s descendants God, according to his promise, has brought to Israel a savior, Jesus. John heralded his coming by proclaiming a baptism of repentance to all the people of Israel; and as John was completing his course, he would say, ‘What do you suppose that I am? I am not he. Behold, one is coming after me; I am not worthy to unfasten the sandals of his feet.’",
+          "verses": [
+            {
+              "book": "Acts",
+              "link": "https://bible.usccb.org/bible/acts/13?22",
+              "text": "Acts 13:22-26"
+            }
+          ]
+        }
+      ],
+      "type": "READING"
+    },
+    {
+      "header": "Alleluia",
+      "readings": [
+        {
+          "text": "R. Alleluia, alleluia.\nYou, child, will be called prophet of the Most High,\nfor you will go before the Lord to prepare his way.\nR. Alleluia, alleluia.",
+          "verses": [
+            {
+              "book": "Luke",
+              "link": "https://bible.usccb.org/bible/luke/1?76",
+              "text": "Luke 1:76"
+            }
+          ]
+        }
+      ],
+      "type": "ALLELUIA"
+    },
+    {
+      "header": "Gospel",
+      "readings": [
+        {
+          "text": "When the time arrived for Elizabeth to have her child she gave birth to a son. Her neighbors and relatives heard that the Lord had shown his great mercy toward her, and they rejoiced with her. When they came on the eighth day to circumcise the child, they were going to call him Zechariah after his father, but his mother said in reply, “No. He will be called John.” But they answered her, “There is no one among your relatives who has this name.” So they made signs, asking his father what he wished him to be called. He asked for a tablet and wrote, “John is his name,” and all were amazed. Immediately his mouth was opened, his tongue freed, and he spoke blessing God. Then fear came upon all their neighbors, and all these matters were discussed throughout the hill country of Judea. All who heard these things took them to heart, saying, “What, then, will this child be?” For surely the hand of the Lord was with him.\n\nThe child grew and became strong in spirit, and he was in the desert until the day of his manifestation to Israel.",
+          "verses": [
+            {
+              "book": "Luke",
+              "link": "https://bible.usccb.org/bible/luke/1?57",
+              "text": "Luke 1:57-66, 80"
+            }
+          ]
+        }
+      ],
+      "type": "GOSPEL"
+    }
+  ],
+  "title": "Solemnity of the Nativity of Saint John the Baptist",
+  "url": "https://bible.usccb.org/bible/readings/062426.cfm"
+},
   {
     "date": "2026-06-25",
     "sections": [
