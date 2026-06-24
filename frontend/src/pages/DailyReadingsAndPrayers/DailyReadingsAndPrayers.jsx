@@ -5,6 +5,8 @@ import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout.jsx"
 
 import {
   ReadingsOfTheWeek,
+  MorningPrayers,
+  EveningPrayers,
   Prayers,
   RosaryPrayers,
   WayOfTheCross,
@@ -17,6 +19,12 @@ function DailyReadingsAndPrayers() {
       <div className={styles.gridContainer}>
         <div className={`${styles.readingWeek} ${styles.widget}`}>
           <ReadingsOfTheWeek />
+        </div>
+        <div className={styles.widget}>
+          <MorningPrayers />
+        </div>
+        <div className={styles.widget}>
+          <EveningPrayers />
         </div>
         <div className={styles.widget}>
           <Prayers />
