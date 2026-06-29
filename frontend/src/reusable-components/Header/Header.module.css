@@ -141,24 +141,40 @@
   list-style: none;
 }
 
-.mobileNavList li a {
+/* ── Mobile nav links (inactive) ── */
+.mobileNavList li .inactiveLink {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
   color: #1a1a1a;
-  text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
-  padding: 9px 8px;
+  padding: 9px 10px;
   border-radius: 8px;
-  transition:
-    color 0.2s,
-    background 0.2s;
+  border-bottom: none;
+  white-space: normal;
 }
 
-.mobileNavList li a:hover {
+.mobileNavList li .inactiveLink:hover {
   color: #2dabb1;
   background: rgba(45, 171, 177, 0.08);
+}
+
+/* ── Mobile nav links (active) ── */
+.mobileNavList li .activeLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  color: #2dabb1;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 9px 10px 9px 8px;
+  border-radius: 8px;
+  background: rgba(45, 171, 177, 0.1);
+  border-bottom: none;
+  border-left: 3px solid #2dabb1;
 }
 
 /* ── Responsive ── */
