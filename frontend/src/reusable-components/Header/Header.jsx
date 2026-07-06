@@ -114,6 +114,7 @@ function Header() {
             </li>
           </ul>
         )}
+
         {isMobile && (
           <>
             <div className={styles.logoGroup}>
@@ -143,33 +144,69 @@ function Header() {
         >
           <ul className={styles.mobileNavList}>
             <li>
-              <NavLink to="/" onClick={closeMenu}>
+              <NavLink
+                to="/"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
                 <FaHome className={styles.icon} /> Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/prayers-readings" onClick={closeMenu}>
+              <NavLink
+                to="/prayers-readings"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
                 <FaBookOpen className={styles.icon} /> Daily Readings &amp;
                 Prayers
               </NavLink>
             </li>
             <li>
-              <NavLink to="/media" onClick={closeMenu}>
+              <NavLink
+                to="/media"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
                 <FaBullhorn className={styles.icon} /> Media &amp; Announcements
               </NavLink>
             </li>
             <li>
-              <NavLink to="/about" onClick={closeMenu}>
+              <NavLink
+                to="/about"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
                 <FaInfoCircle className={styles.icon} /> About Us
               </NavLink>
             </li>
             <li>
-              <NavLink to="/groups" onClick={closeMenu}>
+              <NavLink
+                to="/groups"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
                 <FaUsers className={styles.icon} /> Groups
               </NavLink>
             </li>
             <li>
-              <NavLink to="/scc" onClick={closeMenu}>
+              <NavLink
+                to="/scc"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.inactiveLink
+                }
+              >
                 <FaChurch className={styles.icon} /> SCC
               </NavLink>
             </li>
