@@ -3217,102 +3217,104 @@
   },
   {
     "date": "2026-05-24",
-    "sections": [ {
-      "header": "First Reading",
-      "readings": [
-        {
-        "text": "When the time for Pentecost was fulfilled,they were all in one place together. And suddenly there came from the sky a noise like a strong driving wind, and it filled the entire house in which they were. Then there appeared to them tongues as of fire, which parted and came to rest on each one of them. And they were all filled with the Holy Spirit and began to speak in different tongues, as the Spirit enabled them to proclaim. Now there were devout Jews from every nation under heaven staying in Jerusalem. At this sound, they gathered in a large crowd, but they were confused because each one heard them speaking in his own language. They were astounded, and in amazement they asked, \"Are not all these people who are speaking Galileans? Then how does each of us hear them in his native language? We are Parthians, Medes, and Elamites, inhabitants of Mesopotamia, Judea and Cappadocia, Pontus and Asia, Phrygia and Pamphylia, Egypt and the districts of Libya near Cyrene, as well as travelers from Rome, both Jews and converts to Judaism, Cretans and Arabs, yet we hear them speaking in our own tongues of the mighty acts of God./\"",
-          "verses": [
-            {
-              "book": "Acts",
-              "link": "https://bible.usccb.org/bible/acts/28?16",
-              "text": "Acts 2:1-11"
-            }
-          ]
-        }
-      ],
-      "type": "READING"
-    },
-    {
-      "header": "Responsorial Psalm",
-      "readings": [
-        {
-        "text": "R. (cf. 30) Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. Bless the LORD, O my soul! O LORD, my God, you are great indeed! How manifold are your works, O LORD! the earth is full of your creatures; R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. May the glory of the LORD endure forever; may the LORD be glad in his works! Pleasing to him be my theme; I will be glad in the LORD. R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. If you take away their breath, they perish and return to their dust. When you send forth your spirit, they are created, and you renew the face of the earth. R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia.",
-          "verses": [
-            {
-              "book": "Psalms",
-              "link": "https://bible.usccb.org/bible/psalms/11?4",
-              "text": "Psalm 104:1, 24, 29-30, 31, 34 "
-            }
-          ]
-        }
-      ],
-      "type": "PSALM"
-    },
-    {
-      "header": "Reading 2",
-      "readings": [
-        {
-        "text": "Brothers and sisters: No one can say, \"Jesus is Lord,\" except by the Holy Spirit. There are different kinds of spiritual gifts but the same Spirit; there are different forms of service but the same Lord; there are different workings but the same God who produces all of them in everyone. To each individual the manifestation of the Spirit is given for some benefit. As a body is one though it has many parts, and all the parts of the body, though many, are one body, so also Christ. For in one Spirit we were all baptized into one body, whether Jews or Greeks, slaves or free persons, and we were all given to drink of one Spirit.",
-          "verses": [
-            {
-              "book": "1 Corinthians",
-              "link": "https://bible.usccb.org/bible/2corinthians/13?11",
-              "text": "1 Corinthians 12:3b-7, 12-13"
-            }
-          ]
-        }
-      ],
-      "type": "READING"
-    },
-    {
-      "header": "Alleluia",
-      "readings": [
-        {
-          "text": "R. Alleluia, alleluia. Come, Holy Spirit, fill the hearts of your faithful and kindle in them the fire of your love. R. Alleluia, alleluia.",
-          "verses": [
-            {
-              "book": "John",
-              "link": "https://bible.usccb.org/bible/john/16?7",
-              "text": "John 16:7, 13"
-            }
-          ]
-        }
-      ],
-      "type": "ALLELUIA"
-    },
-    {
-      "header": "Sequence",
-      "readings": [
-        {
-        "text": "Come, Holy Spirit, come!\n        And from your celestial home\n        Shed a ray of light divine!\n        \n        Come, Father of the poor!\n        Come, source of all our store!\n        Come, within our bosoms shine.\n        \n        You, of comforters the best;\n        You, the soul’s most welcome guest;\n        Sweet refreshment here below;\n        \n        In our labor, rest most sweet;\n        Grateful coolness in the heat;\n        Solace in the midst of woe.\n        \n        O most blessed Light divine,\n        Shine within these hearts of yours,\n        And our inmost being fill!\n        \n        Where you are not, we have naught,\n        Nothing good in deed or thought,\n        Nothing free from taint of ill.\n        \n        Heal our wounds, our strength renew;\n        On our dryness pour your dew;\n        Wash the stains of guilt away:\n        \n        Bend the stubborn heart and will;\n        Melt the frozen, warm the chill;\n        Guide the steps that go astray.\n        \n        On the faithful, who adore\n        And confess you, evermore\n        In your sevenfold gift descend;\n        \n        Give them virtue’s sure reward;\n        Give them your salvation, Lord;\n        Give them joys that never end. Amen.\n        Alleluia.",
-          "verses": [
-            {
-              "book": "John",
-              "link": "https://bible.usccb.org/bible/john/21?20",
-              "text": ""
-            }
-          ]
-        }
-      ],
-      "type": "GOSPEL"
-    },
-    {
-      "header": "Gospel",
-      "readings": [
-        {
-        "text": "On the evening of that first day of the week, when the doors were locked, where the disciples were, for fear of the Jews, Jesus came and stood in their midst and said to them, \"Peace be with you.\" When he had said this, he showed them his hands and his side. The disciples rejoiced when they saw the Lord. Jesus said to them again, \"Peace be with you. As the Father has sent me, so I send you.\" And when he had said this, he breathed on them and said to them, \"Receive the Holy Spirit. Whose sins you forgive are forgiven them, and whose sins you retain are retained.\"",
-          "verses": [
-            {
-              "book": "John",
-              "link": "https://bible.usccb.org/bible/john/21?20",
-              "text": "John 20:19-23"
-            }
-          ]
-        }
-      ],
-      "type": "GOSPEL"
-    }],
+    "sections": [
+      {
+        "header": "First Reading",
+        "readings": [
+          {
+            "text": "When the time for Pentecost was fulfilled,they were all in one place together. And suddenly there came from the sky a noise like a strong driving wind, and it filled the entire house in which they were. Then there appeared to them tongues as of fire, which parted and came to rest on each one of them. And they were all filled with the Holy Spirit and began to speak in different tongues, as the Spirit enabled them to proclaim. Now there were devout Jews from every nation under heaven staying in Jerusalem. At this sound, they gathered in a large crowd, but they were confused because each one heard them speaking in his own language. They were astounded, and in amazement they asked, \"Are not all these people who are speaking Galileans? Then how does each of us hear them in his native language? We are Parthians, Medes, and Elamites, inhabitants of Mesopotamia, Judea and Cappadocia, Pontus and Asia, Phrygia and Pamphylia, Egypt and the districts of Libya near Cyrene, as well as travelers from Rome, both Jews and converts to Judaism, Cretans and Arabs, yet we hear them speaking in our own tongues of the mighty acts of God./\"",
+            "verses": [
+              {
+                "book": "Acts",
+                "link": "https://bible.usccb.org/bible/acts/28?16",
+                "text": "Acts 2:1-11"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (cf. 30) Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. Bless the LORD, O my soul! O LORD, my God, you are great indeed! How manifold are your works, O LORD! the earth is full of your creatures; R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. May the glory of the LORD endure forever; may the LORD be glad in his works! Pleasing to him be my theme; I will be glad in the LORD. R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia. If you take away their breath, they perish and return to their dust. When you send forth your spirit, they are created, and you renew the face of the earth. R. Lord, send out your Spirit, and renew the face of the earth. or: R. Alleluia.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/11?4",
+                "text": "Psalm 104:1, 24, 29-30, 31, 34 "
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Reading 2",
+        "readings": [
+          {
+            "text": "Brothers and sisters: No one can say, \"Jesus is Lord,\" except by the Holy Spirit. There are different kinds of spiritual gifts but the same Spirit; there are different forms of service but the same Lord; there are different workings but the same God who produces all of them in everyone. To each individual the manifestation of the Spirit is given for some benefit. As a body is one though it has many parts, and all the parts of the body, though many, are one body, so also Christ. For in one Spirit we were all baptized into one body, whether Jews or Greeks, slaves or free persons, and we were all given to drink of one Spirit.",
+            "verses": [
+              {
+                "book": "1 Corinthians",
+                "link": "https://bible.usccb.org/bible/2corinthians/13?11",
+                "text": "1 Corinthians 12:3b-7, 12-13"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. Come, Holy Spirit, fill the hearts of your faithful and kindle in them the fire of your love. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "John",
+                "link": "https://bible.usccb.org/bible/john/16?7",
+                "text": "John 16:7, 13"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Sequence",
+        "readings": [
+          {
+            "text": "Come, Holy Spirit, come!\n        And from your celestial home\n        Shed a ray of light divine!\n        \n        Come, Father of the poor!\n        Come, source of all our store!\n        Come, within our bosoms shine.\n        \n        You, of comforters the best;\n        You, the soul’s most welcome guest;\n        Sweet refreshment here below;\n        \n        In our labor, rest most sweet;\n        Grateful coolness in the heat;\n        Solace in the midst of woe.\n        \n        O most blessed Light divine,\n        Shine within these hearts of yours,\n        And our inmost being fill!\n        \n        Where you are not, we have naught,\n        Nothing good in deed or thought,\n        Nothing free from taint of ill.\n        \n        Heal our wounds, our strength renew;\n        On our dryness pour your dew;\n        Wash the stains of guilt away:\n        \n        Bend the stubborn heart and will;\n        Melt the frozen, warm the chill;\n        Guide the steps that go astray.\n        \n        On the faithful, who adore\n        And confess you, evermore\n        In your sevenfold gift descend;\n        \n        Give them virtue’s sure reward;\n        Give them your salvation, Lord;\n        Give them joys that never end. Amen.\n        Alleluia.",
+            "verses": [
+              {
+                "book": "John",
+                "link": "https://bible.usccb.org/bible/john/21?20",
+                "text": ""
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "On the evening of that first day of the week, when the doors were locked, where the disciples were, for fear of the Jews, Jesus came and stood in their midst and said to them, \"Peace be with you.\" When he had said this, he showed them his hands and his side. The disciples rejoiced when they saw the Lord. Jesus said to them again, \"Peace be with you. As the Father has sent me, so I send you.\" And when he had said this, he breathed on them and said to them, \"Receive the Holy Spirit. Whose sins you forgive are forgiven them, and whose sins you retain are retained.\"",
+            "verses": [
+              {
+                "book": "John",
+                "link": "https://bible.usccb.org/bible/john/21?20",
+                "text": "John 20:19-23"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
     "title": "Pentecost Sunday",
     "url": "https://bible.usccb.org/bible/readings/052426.cfm"
   },
@@ -5521,92 +5523,92 @@
     "url": "https://bible.usccb.org/bible/readings/062326.cfm"
   },
   {
-  "date": "2026-06-24",
-  "sections": [
-    {
-      "header": "Reading 1",
-      "readings": [
-        {
-          "text": "Hear me, O coastlands,\nlisten, O distant peoples.\nThe LORD called me from birth,\nfrom my mother's womb he gave me my name.\nHe made of me a sharp-edged sword\nand concealed me in the shadow of his arm.\nHe made me a polished arrow,\nin his quiver he hid me.\nYou are my servant, he said to me,\nIsrael, through whom I show my glory.\n\nThough I thought I had toiled in vain,\nand for nothing, uselessly, spent my strength,\nyet my reward is with the LORD,\nmy recompense is with my God.\nFor now the LORD has spoken\nwho formed me as his servant from the womb,\nthat Jacob may be brought back to him\nand Israel gathered to him;\nand I am made glorious in the sight of the LORD,\nand my God is now my strength!\nIt is too little, he says, for you to be my servant,\nto raise up the tribes of Jacob,\nand restore the survivors of Israel;\nI will make you a light to the nations,\nthat my salvation may reach to the ends of the earth.",
-          "verses": [
-            {
-              "book": "Isaiah",
-              "link": "https://bible.usccb.org/bible/isaiah/49?1",
-              "text": "Isaiah 49:1-6"
-            }
-          ]
-        }
-      ],
-      "type": "READING"
-    },
-    {
-      "header": "Responsorial Psalm",
-      "readings": [
-        {
-          "text": "R. I praise you, for I am wonderfully made.\nO LORD, you have probed me, you know me;\nyou know when I sit and when I stand;\nyou understand my thoughts from afar.\nMy journeys and my rest you scrutinize,\nwith all my ways you are familiar.\nR. I praise you, for I am wonderfully made.\nTruly you have formed my inmost being;\nyou knit me in my mother’s womb.\nI give you thanks that I am fearfully, wonderfully made;\nwonderful are your works.\nR. I praise you, for I am wonderfully made.\nMy soul also you knew full well;\nor my frame was not hidden from you\nwhen I was made in secret,\nwhen I was fashioned in the depths of the earth.\nR. I praise you, for I am wonderfully made.",
-          "verses": [
-            {
-              "book": "Psalms",
-              "link": "https://bible.usccb.org/bible/psalms/139?1",
-              "text": "Psalm 139:1b-3, 13-14ab, 14c-15"
-            }
-          ]
-        }
-      ],
-      "type": "PSALM"
-    },
-    {
-      "header": "Reading II",
-      "readings": [
-        {
-          "text": "Brothers and sisters: God raised up David as king; of him he testified, ‘I have found David, son of Jesse, a man after my own heart; he will carry out my every wish.’ From this man’s descendants God, according to his promise, has brought to Israel a savior, Jesus. John heralded his coming by proclaiming a baptism of repentance to all the people of Israel; and as John was completing his course, he would say, ‘What do you suppose that I am? I am not he. Behold, one is coming after me; I am not worthy to unfasten the sandals of his feet.’",
-          "verses": [
-            {
-              "book": "Acts",
-              "link": "https://bible.usccb.org/bible/acts/13?22",
-              "text": "Acts 13:22-26"
-            }
-          ]
-        }
-      ],
-      "type": "READING"
-    },
-    {
-      "header": "Alleluia",
-      "readings": [
-        {
-          "text": "R. Alleluia, alleluia.\nYou, child, will be called prophet of the Most High,\nfor you will go before the Lord to prepare his way.\nR. Alleluia, alleluia.",
-          "verses": [
-            {
-              "book": "Luke",
-              "link": "https://bible.usccb.org/bible/luke/1?76",
-              "text": "Luke 1:76"
-            }
-          ]
-        }
-      ],
-      "type": "ALLELUIA"
-    },
-    {
-      "header": "Gospel",
-      "readings": [
-        {
-          "text": "When the time arrived for Elizabeth to have her child she gave birth to a son. Her neighbors and relatives heard that the Lord had shown his great mercy toward her, and they rejoiced with her. When they came on the eighth day to circumcise the child, they were going to call him Zechariah after his father, but his mother said in reply, “No. He will be called John.” But they answered her, “There is no one among your relatives who has this name.” So they made signs, asking his father what he wished him to be called. He asked for a tablet and wrote, “John is his name,” and all were amazed. Immediately his mouth was opened, his tongue freed, and he spoke blessing God. Then fear came upon all their neighbors, and all these matters were discussed throughout the hill country of Judea. All who heard these things took them to heart, saying, “What, then, will this child be?” For surely the hand of the Lord was with him.\n\nThe child grew and became strong in spirit, and he was in the desert until the day of his manifestation to Israel.",
-          "verses": [
-            {
-              "book": "Luke",
-              "link": "https://bible.usccb.org/bible/luke/1?57",
-              "text": "Luke 1:57-66, 80"
-            }
-          ]
-        }
-      ],
-      "type": "GOSPEL"
-    }
-  ],
-  "title": "Solemnity of the Nativity of Saint John the Baptist",
-  "url": "https://bible.usccb.org/bible/readings/062426.cfm"
-},
+    "date": "2026-06-24",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Hear me, O coastlands,\nlisten, O distant peoples.\nThe LORD called me from birth,\nfrom my mother's womb he gave me my name.\nHe made of me a sharp-edged sword\nand concealed me in the shadow of his arm.\nHe made me a polished arrow,\nin his quiver he hid me.\nYou are my servant, he said to me,\nIsrael, through whom I show my glory.\n\nThough I thought I had toiled in vain,\nand for nothing, uselessly, spent my strength,\nyet my reward is with the LORD,\nmy recompense is with my God.\nFor now the LORD has spoken\nwho formed me as his servant from the womb,\nthat Jacob may be brought back to him\nand Israel gathered to him;\nand I am made glorious in the sight of the LORD,\nand my God is now my strength!\nIt is too little, he says, for you to be my servant,\nto raise up the tribes of Jacob,\nand restore the survivors of Israel;\nI will make you a light to the nations,\nthat my salvation may reach to the ends of the earth.",
+            "verses": [
+              {
+                "book": "Isaiah",
+                "link": "https://bible.usccb.org/bible/isaiah/49?1",
+                "text": "Isaiah 49:1-6"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. I praise you, for I am wonderfully made.\nO LORD, you have probed me, you know me;\nyou know when I sit and when I stand;\nyou understand my thoughts from afar.\nMy journeys and my rest you scrutinize,\nwith all my ways you are familiar.\nR. I praise you, for I am wonderfully made.\nTruly you have formed my inmost being;\nyou knit me in my mother’s womb.\nI give you thanks that I am fearfully, wonderfully made;\nwonderful are your works.\nR. I praise you, for I am wonderfully made.\nMy soul also you knew full well;\nor my frame was not hidden from you\nwhen I was made in secret,\nwhen I was fashioned in the depths of the earth.\nR. I praise you, for I am wonderfully made.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/139?1",
+                "text": "Psalm 139:1b-3, 13-14ab, 14c-15"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Reading II",
+        "readings": [
+          {
+            "text": "Brothers and sisters: God raised up David as king; of him he testified, ‘I have found David, son of Jesse, a man after my own heart; he will carry out my every wish.’ From this man’s descendants God, according to his promise, has brought to Israel a savior, Jesus. John heralded his coming by proclaiming a baptism of repentance to all the people of Israel; and as John was completing his course, he would say, ‘What do you suppose that I am? I am not he. Behold, one is coming after me; I am not worthy to unfasten the sandals of his feet.’",
+            "verses": [
+              {
+                "book": "Acts",
+                "link": "https://bible.usccb.org/bible/acts/13?22",
+                "text": "Acts 13:22-26"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia.\nYou, child, will be called prophet of the Most High,\nfor you will go before the Lord to prepare his way.\nR. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Luke",
+                "link": "https://bible.usccb.org/bible/luke/1?76",
+                "text": "Luke 1:76"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "When the time arrived for Elizabeth to have her child she gave birth to a son. Her neighbors and relatives heard that the Lord had shown his great mercy toward her, and they rejoiced with her. When they came on the eighth day to circumcise the child, they were going to call him Zechariah after his father, but his mother said in reply, “No. He will be called John.” But they answered her, “There is no one among your relatives who has this name.” So they made signs, asking his father what he wished him to be called. He asked for a tablet and wrote, “John is his name,” and all were amazed. Immediately his mouth was opened, his tongue freed, and he spoke blessing God. Then fear came upon all their neighbors, and all these matters were discussed throughout the hill country of Judea. All who heard these things took them to heart, saying, “What, then, will this child be?” For surely the hand of the Lord was with him.\n\nThe child grew and became strong in spirit, and he was in the desert until the day of his manifestation to Israel.",
+            "verses": [
+              {
+                "book": "Luke",
+                "link": "https://bible.usccb.org/bible/luke/1?57",
+                "text": "Luke 1:57-66, 80"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Solemnity of the Nativity of Saint John the Baptist",
+    "url": "https://bible.usccb.org/bible/readings/062426.cfm"
+  },
   {
     "date": "2026-06-25",
     "sections": [
@@ -5912,5 +5914,980 @@
     "sections": [],
     "title": "Solemnity of Saints Peter and Paul, Apostles",
     "url": "https://bible.usccb.org/bible/readings/062926.cfm"
+  },
+  {
+    "date": "2026-07-06",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Thus says the LORD: I will allure her; I will lead her into the desert and speak to her heart. She shall respond there as in the days of her youth, when she came up from the land of Egypt. On that day, says the LORD, She shall call me “My husband,” and never again “My baal.” I will espouse you to me forever: I will espouse you in right and in justice, in love and in mercy; I will espouse you in fidelity, and you shall know the LORD.",
+            "verses": [
+              {
+                "book": "Hosea",
+                "link": "https://bible.usccb.org/bible/Hosea/2?16",
+                "text": "Hosea 2:16, 17c-18, 21-22"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (8a) The Lord is gracious and merciful. Every day will I bless you, and I will praise your name forever and ever. Great is the LORD and highly to be praised; his greatness is unsearchable. R. The Lord is gracious and merciful. Generation after generation praises your works and proclaims your might. They speak of the splendor of your glorious majesty and tell of your wondrous works. R. The Lord is gracious and merciful. They discourse of the power of your terrible deeds and declare your greatness. They publish the fame of your abundant goodness and joyfully sing of your justice. R. The Lord is gracious and merciful. The LORD is gracious and merciful, slow to anger and of great kindness. The LORD is good to all and compassionate toward all his works. R. The Lord is gracious and merciful.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/145?2",
+                "text": "Psalm 145:2-3, 4-5, 6-7, 8-9"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. Our Savior Jesus Christ has destroyed death and brought life to light through the Gospel. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "2 Timothy",
+                "link": "https://bible.usccb.org/bible/2Timothy/1?10",
+                "text": "See 2 Timothy 1:10"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "While Jesus was speaking, an official came forward, knelt down before him, and said, “My daughter has just died. But come, lay your hand on her, and she will live.” Jesus rose and followed him, and so did his disciples. A woman suffering hemorrhages for twelve years came up behind him and touched the tassel on his cloak. She said to herself, “If only I can touch his cloak, I shall be cured.” Jesus turned around and saw her, and said, “Courage, daughter! Your faith has saved you.” And from that hour the woman was cured. When Jesus arrived at the official’s house and saw the flute players and the crowd who were making a commotion, he said, “Go away! The girl is not dead but sleeping.” And they ridiculed him. When the crowd was put out, he came and took her by the hand, and the little girl arose. And news of this spread throughout all that land.",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/9?18",
+                "text": "Matthew 9:18-26"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Monday of the Fourteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/070626.cfm"
+  },
+  {
+    "date": "2026-07-07",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Thus says the LORD: They made kings in Israel, but not by my authority; they established princes, but without my approval. With their silver and gold they made idols for themselves, to their own destruction. Cast away your calf, O Samaria! my wrath is kindled against them; How long will they be unable to attain innocence in Israel? The work of an artisan, no god at all, Destined for the flames— such is the calf of Samaria! When they sow the wind, they shall reap the whirlwind; The stalk of grain that forms no ear can yield no flour; Even if it could, strangers would swallow it. When Ephraim made many altars to expiate sin, his altars became occasions of sin. Though I write for him my many ordinances, they are considered as a stranger’s. Though they offer sacrifice, immolate flesh and eat it, the LORD is not pleased with them. He shall still remember their guilt and punish their sins; they shall return to Egypt.",
+            "verses": [
+              {
+                "book": "Hosea",
+                "link": "https://bible.usccb.org/bible/Hosea/8?4",
+                "text": "Hosea 8:4-7, 11-13"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (9a) The house of Israel trusts in the Lord. or: R. Alleluia. Our God is in heaven; whatever he wills, he does. Their idols are silver and gold, the handiwork of men. R. The house of Israel trusts in the Lord. or: R. Alleluia. They have mouths but speak not; they have eyes but see not; They have ears but hear not; they have noses but smell not. R. The house of Israel trusts in the Lord. or: R. Alleluia. They have hands but feel not; they have feet but walk not. Their makers shall be like them, everyone that trusts in them. R. The house of Israel trusts in the Lord. or: R. Alleluia.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/115?3",
+                "text": "Psalm 115:3-4, 5-6, 7ab-8, 9-10"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. I am the good shepherd, says the Lord; I know my sheep, and mine know me. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "John",
+                "link": "https://bible.usccb.org/bible/john/10?14",
+                "text": "John 10:14"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "A demoniac who could not speak was brought to Jesus, and when the demon was driven out the mute man spoke. The crowds were amazed and said, “Nothing like this has ever been seen in Israel.” But the Pharisees said, “He drives out demons by the prince of demons.” Jesus went around to all the towns and villages, teaching in their synagogues, proclaiming the Gospel of the Kingdom, and curing every disease and illness. At the sight of the crowds, his heart was moved with pity for them because they were troubled and abandoned, like sheep without a shepherd. Then he said to his disciples, “The harvest is abundant but the laborers are few; so ask the master of the harvest to send out laborers for his harvest.”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/9?32",
+                "text": "Matthew 9:32-38"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Tuesday of the Fourteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/070726.cfm"
+  },
+  {
+    "date": "2026-07-08",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Israel is a luxuriant vine whose fruit matches its growth. The more abundant his fruit, the more altars he built; The more productive his land, the more sacred pillars he set up. Their heart is false, now they pay for their guilt; God shall break down their altars and destroy their sacred pillars. If they would say, “We have no king”— Since they do not fear the LORD, what can the king do for them? The king of Samaria shall disappear, like foam upon the waters. The high places of Aven shall be destroyed, the sin of Israel; thorns and thistles shall overgrow their altars. Then they shall cry out to the mountains, “Cover us!” and to the hills, “Fall upon us!” “Sow for yourselves justice, reap the fruit of piety; break up for yourselves a new field, for it is time to seek the LORD, till he come and rain down justice upon you.”",
+            "verses": [
+              {
+                "book": "Hosea",
+                "link": "https://bible.usccb.org/bible/hosea/10?1",
+                "text": "Hosea 10:1-3, 7-8, 12"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (4b) Seek always the face of the Lord. or: R. Alleluia. Sing to him, sing his praise, proclaim all his wondrous deeds. Glory in his holy name; rejoice, O hearts that seek the LORD! R. Seek always the face of the Lord. or: R. Alleluia. Look to the LORD in his strength; seek to serve him constantly. Recall the wondrous deeds that he has wrought, his portents, and the judgments he has uttered. R. Seek always the face of the Lord. or: R. Alleluia. You descendants of Abraham, his servants, sons of Jacob, his chosen ones! He, the LORD, is our God; throughout the earth his judgments prevail. R. Seek always the face of the Lord. or: R. Alleluia.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/105?2",
+                "text": "Psalm 105:2-3, 4-5, 6-7"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. The Kingdom of God is at hand: repent and believe in the Gospel. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Mark",
+                "link": "https://bible.usccb.org/bible/mark/1?15",
+                "text": "Mark 1:15"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus summoned his Twelve disciples and gave them authority over unclean spirits to drive them out and to cure every disease and every illness. The names of the Twelve Apostles are these: first, Simon called Peter, and his brother Andrew; James, the son of Zebedee, and his brother John; Philip and Bartholomew, Thomas and Matthew the tax collector; James, the son of Alphaeus, and Thaddeus; Simon the Cananean, and Judas Iscariot who betrayed Jesus. Jesus sent out these Twelve after instructing them thus, “Do not go into pagan territory or enter a Samaritan town. Go rather to the lost sheep of the house of Israel. As you go, make this proclamation: ‘The Kingdom of heaven is at hand.’”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/10?1",
+                "text": "Matthew 10:1-7"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Wednesday of the Fourteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/070826.cfm"
+  },
+  {
+    "date": "2026-07-09",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Thus says the LORD: When Israel was a child I loved him, out of Egypt I called my son. The more I called them, the farther they went from me, Sacrificing to the Baals and burning incense to idols. Yet it was I who taught Ephraim to walk, who took them in my arms; I drew them with human cords, with bands of love; I fostered them like one who raises an infant to his cheeks; Yet, though I stooped to feed my child, they did not know that I was their healer. My heart is overwhelmed, my pity is stirred. I will not give vent to my blazing anger, I will not destroy Ephraim again; For I am God and not man, the Holy One present among you; I will not let the flames consume you.",
+            "verses": [
+              {
+                "book": "Hosea",
+                "link": "https://bible.usccb.org/bible/hosea/11?1",
+                "text": "Hosea 11:1-4, 8e-9"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (4b) Let us see your face, Lord, and we shall be saved. O shepherd of Israel, hearken. From your throne upon the cherubim, shine forth. Rouse your power. R. Let us see your face, Lord, and we shall be saved. Once again, O LORD of hosts, look down from heaven, and see: Take care of this vine, and protect what your right hand has planted, the son of man whom you yourself made strong. R. Let us see your face, Lord, and we shall be saved.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/80?2",
+                "text": "Psalm 80:2ac, 3b, 15-16"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. The Kingdom of God is at hand: repent and believe in the Gospel. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Mark",
+                "link": "https://bible.usccb.org/bible/mark/1?15",
+                "text": "Mark 1:15"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus said to his Apostles: “As you go, make this proclamation: ‘The Kingdom of heaven is at hand.’ Cure the sick, raise the dead, cleanse the lepers, drive out demons. Without cost you have received; without cost you are to give. Do not take gold or silver or copper for your belts; no sack for the journey, or a second tunic, or sandals, or walking stick. The laborer deserves his keep. Whatever town or village you enter, look for a worthy person in it, and stay there until you leave. As you enter a house, wish it peace. If the house is worthy, let your peace come upon it; if not, let your peace return to you. Whoever will not receive you or listen to your words-- go outside that house or town and shake the dust from your feet. Amen, I say to you, it will be more tolerable for the land of Sodom and Gomorrah on the day of judgment than for that town.”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/10?7",
+                "text": "Matthew 10:7-15"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Thursday of the Fourteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/070926.cfm"
+  },
+  {
+    "date": "2026-07-10",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Thus says the LORD: Return, O Israel, to the LORD, your God; you have collapsed through your guilt. Take with you words, and return to the LORD; Say to him, “Forgive all iniquity, and receive what is good, that we may render as offerings the bullocks from our stalls. Assyria will not save us, nor shall we have horses to mount; We shall say no more, ‘Our god,’ to the work of our hands; for in you the orphan finds compassion.” I will heal their defection, says the LORD, I will love them freely; for my wrath is turned away from them. I will be like the dew for Israel: he shall blossom like the lily; He shall strike root like the Lebanon cedar, and put forth his shoots. His splendor shall be like the olive tree and his fragrance like the Lebanon cedar. Again they shall dwell in his shade and raise grain; They shall blossom like the vine, and his fame shall be like the wine of Lebanon. Ephraim! What more has he to do with idols? I have humbled him, but I will prosper him. “I am like a verdant cypress tree”— because of me you bear fruit!Let him who is wise understand these things; let him who is prudent know them. Straight are the paths of the LORD, in them the just walk, but sinners stumble in them.",
+            "verses": [
+              {
+                "book": "Hosea",
+                "link": "https://bible.usccb.org/bible/hosea/14?2",
+                "text": "Hosea 14:2-10"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (17b) My mouth will declare your praise. Have mercy on me, O God, in your goodness; in the greatness of your compassion wipe out my offense. Thoroughly wash me from my guilt and of my sin cleanse me. R. My mouth will declare your praise. Behold, you are pleased with sincerity of heart, and in my inmost being you teach me wisdom. Cleanse me of sin with hyssop, that I may be purified; wash me, and I shall be whiter than snow. R. My mouth will declare your praise. A clean heart create for me, O God, and a steadfast spirit renew within me. Cast me not out from your presence, and your Holy Spirit take not from me. R. My mouth will declare your praise. Give me back the joy of your salvation, and a willing spirit sustain in me. O Lord, open my lips, and my mouth shall proclaim your praise. R. My mouth will declare your praise.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/51?3",
+                "text": "Psalm 51:3-4, 8-9, 12-13, 14, 17"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. When the Spirit of truth comes, he will guide you to all truth and remind you of all I told you. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "John",
+                "link": "https://bible.usccb.org/bible/john/16?13",
+                "text": "John 16:13a; 14:26d"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus said to his Apostles: “Behold, I am sending you like sheep in the midst of wolves; so be shrewd as serpents and simple as doves. But beware of men, for they will hand you over to courts and scourge you in their synagogues, and you will be led before governors and kings for my sake as a witness before them and the pagans. When they hand you over, do not worry about how you are to speak or what you are to say. You will be given at that moment what you are to say. For it will not be you who speak but the Spirit of your Father speaking through you. Brother will hand over brother to death, and the father his child; children will rise up against parents and have them put to death. You will be hated by all because of my name, but whoever endures to the end will be saved. When they persecute you in one town, flee to another. Amen, I say to you, you will not finish the towns of Israel before the Son of Man comes.”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/10?16",
+                "text": "Matthew 10:16-23"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Friday of the Fourteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/071026.cfm"
+  },
+  {
+    "date": "2026-07-11",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "In the year King Uzziah died, I saw the Lord seated on a high and lofty throne, with the train of his garment filling the temple. Seraphim were stationed above; each of them had six wings: with two they veiled their faces, with two they veiled their feet, and with two they hovered aloft. They cried one to the other, “Holy, holy, holy is the LORD of hosts! All the earth is filled with his glory!” At the sound of that cry, the frame of the door shook and the house was filled with smoke. Then I said, “Woe is me, I am doomed! For I am a man of unclean lips, living among a people of unclean lips; yet my eyes have seen the King, the LORD of hosts!” Then one of the seraphim flew to me, holding an ember that he had taken with tongs from the altar. He touched my mouth with it and said, “See, now that this has touched your lips, your wickedness is removed, your sin purged.”Then I heard the voice of the Lord saying, “Whom shall I send? Who will go for us?” “Here I am,” I said; “send me!”",
+            "verses": [
+              {
+                "book": "Isaiah",
+                "link": "https://bible.usccb.org/bible/isaiah/6?1",
+                "text": "Isaiah 6:1-8"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (1a) The Lord is king; he is robed in majesty. The LORD is king, in splendor robed; robed is the LORD and girt about with strength. R. The Lord is king; he is robed in majesty. And he has made the world firm, not to be moved. Your throne stands firm from of old; from everlasting you are, O LORD. R. The Lord is king; he is robed in majesty. Your decrees are worthy of trust indeed: holiness befits your house, O LORD, for length of days. R. The Lord is king; he is robed in majesty.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/93?1",
+                "text": "Psalm 93:1ab, 1cd-2, 5"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. If you are insulted for the name of Christ, blessed are you, for the Spirit of God rests upon you. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "1 Peter",
+                "link": "https://bible.usccb.org/bible/1peter/4?14",
+                "text": "1 Peter 4:14"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus said to his Apostles: “No disciple is above his teacher, no slave above his master. It is enough for the disciple that he become like his teacher, for the slave that he become like his master. If they have called the master of the house Beelzebul, how much more those of his household!“Therefore do not be afraid of them. Nothing is concealed that will not be revealed, nor secret that will not be known. What I say to you in the darkness, speak in the light; what you hear whispered, proclaim on the housetops. And do not be afraid of those who kill the body but cannot kill the soul; rather, be afraid of the one who can destroy both soul and body in Gehenna. Are not two sparrows sold for a small coin? Yet not one of them falls to the ground without your Father’s knowledge. Even all the hairs of your head are counted. So do not be afraid; you are worth more than many sparrows. Everyone who acknowledges me before others I will acknowledge before my heavenly Father. But whoever denies me before others, I will deny before my heavenly Father.”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/10?24",
+                "text": "Matthew 10:24-33"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Memorial of Saint Benedict, Abbot",
+    "url": "https://bible.usccb.org/bible/readings/071126.cfm"
+  },
+  {
+    "date": "2026-07-12",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Thus says the LORD: Just as from the heavens the rain and snow come down and do not return there till they have watered the earth, making it fertile and fruitful, giving seed to the one who sows and bread to the one who eats, so shall my word be that goes forth from my mouth; my word shall not return to me void, but shall do my will, achieving the end for which I sent it.",
+            "verses": [
+              {
+                "book": "Isaiah",
+                "link": "https://bible.usccb.org/bible/isaiah/55?10",
+                "text": "Isaiah 55:10-11"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (Lk 8:8) The seed that falls on good ground will yield a fruitful harvest. You have visited the land and watered it; greatly have you enriched it. God's watercourses are filled; you have prepared the grain. R. The seed that falls on good ground will yield a fruitful harvest. Thus have you prepared the land: drenching its furrows, breaking up its clods, Softening it with showers, blessing its yield. R. The seed that falls on good ground will yield a fruitful harvest. You have crowned the year with your bounty, and your paths overflow with a rich harvest; The untilled meadows overflow with it, and rejoicing clothes the hills. R. The seed that falls on good ground will yield a fruitful harvest. The fields are garmented with flocks and the valleys blanketed with grain. They shout and sing for joy. R. The seed that falls on good ground will yield a fruitful harvest.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/65?10",
+                "text": "Psalm 65:10, 11, 12-13, 14"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Reading 2",
+        "readings": [
+          {
+            "text": "Brothers and sisters: I consider that the sufferings of this present time are as nothing compared with the glory to be revealed for us. For creation awaits with eager expectation the revelation of the children of God; for creation was made subject to futility, not of its own accord but because of the one who subjected it, in hope that creation itself would be set free from slavery to corruption and share in the glorious freedom of the children of God. We know that all creation is groaning in labor pains even until now; and not only that, but we ourselves, who have the firstfruits of the Spirit, we also groan within ourselves as we wait for adoption, the redemption of our bodies.",
+            "verses": [
+              {
+                "book": "Romans",
+                "link": "https://bible.usccb.org/bible/romans/8?18",
+                "text": "Romans 8:18-23"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. The seed is the word of God, Christ is the sower. All who come to him will have life forever. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": null,
+                "link": "https://bible.usccb.orgroute?<nolink>",
+                "text": ""
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "On that day, Jesus went out of the house and sat down by the sea. Such large crowds gathered around him that he got into a boat and sat down, and the whole crowd stood along the shore. And he spoke to them at length in parables, saying: \"A sower went out to sow. And as he sowed, some seed fell on the path, and birds came and ate it up. Some fell on rocky ground, where it had little soil. It sprang up at once because the soil was not deep, and when the sun rose it was scorched, and it withered for lack of roots. Some seed fell among thorns, and the thorns grew up and choked it. But some seed fell on rich soil, and produced fruit, a hundred or sixty or thirtyfold. Whoever has ears ought to hear.\" The disciples approached him and said, \"Why do you speak to them in parables?\" He said to them in reply, \"Because knowledge of the mysteries of the kingdom of heaven has been granted to you, but to them it has not been granted. To anyone who has, more will be given and he will grow rich; from anyone who has not, even what he has will be taken away. This is why I speak to them in parables, because they look but do not see and hear but do not listen or understand. Isaiah's prophecy is fulfilled in them, which says: You shall indeed hear but not understand, you shall indeed look but never see. Gross is the heart of this people, they will hardly hear with their ears, they have closed their eyes, lest they see with their eyes and hear with their ears and understand with their hearts and be converted, and I heal them. \"But blessed are your eyes, because they see, and your ears, because they hear. Amen, I say to you, many prophets and righteous people longed to see what you see but did not see it, and to hear what you hear but did not hear it. \"Hear then the parable of the sower. The seed sown on the path is the one who hears the word of the kingdom without understanding it, and the evil one comes and steals away what was sown in his heart. The seed sown on rocky ground is the one who hears the word and receives it at once with joy. But he has no root and lasts only for a time. When some tribulation or persecution comes because of the word, he immediately falls away. The seed sown among thorns is the one who hears the word, but then worldly anxiety and the lure of riches choke the word and it bears no fruit. But the seed sown on rich soil is the one who hears the word and understands it, who indeed bears fruit and yields a hundred or sixty or thirtyfold.\"",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/13?1",
+                "text": "Matthew 13:1-23"
+              }
+            ]
+          },
+          {
+            "text": "On that day, Jesus went out of the house and sat down by the sea. Such large crowds gathered around him that he got into a boat and sat down, and the whole crowd stood along the shore. And he spoke to them at length in parables, saying: \"A sower went out to sow. And as he sowed, some seed fell on the path, and birds came and ate it up. Some fell on rocky ground, where it had little soil. It sprang up at once because the soil was not deep, and when the sun rose it was scorched, and it withered for lack of roots. Some seed fell among thorns, and the thorns grew up and choked it. But some seed fell on rich soil and produced fruit, a hundred or sixty or thirtyfold. Whoever has ears ought to hear.\"",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/13?1",
+                "text": "Matthew 13:1-9"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Fifteenth Sunday in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/071226.cfm"
+  },
+  {
+    "date": "2026-07-13",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Hear the word of the LORD, princes of Sodom! Listen to the instruction of our God, people of Gomorrah! What care I for the number of your sacrifices? says the LORD. I have had enough of whole-burnt rams and fat of fatlings; In the blood of calves, lambs and goats I find no pleasure. When you come in to visit me, who asks these things of you? Trample my courts no more! Bring no more worthless offerings; your incense is loathsome to me. New moon and sabbath, calling of assemblies, octaves with wickedness: these I cannot bear. Your new moons and festivals I detest; they weigh me down, I tire of the load. When you spread out your hands, I close my eyes to you; Though you pray the more, I will not listen. Your hands are full of blood! Wash yourselves clean! Put away your misdeeds from before my eyes; cease doing evil; learn to do good. Make justice your aim: redress the wronged, hear the orphan’s plea, defend the widow.",
+            "verses": [
+              {
+                "book": "Isaiah",
+                "link": "https://bible.usccb.org/bible/isaiah/1?10",
+                "text": "Isaiah 1:10-17"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (23b) To the upright I will show the saving power of God. “Not for your sacrifices do I rebuke you, for your burnt offerings are before me always. I take from your house no bullock, no goats out of your fold.” R. To the upright I will show the saving power of God . “Why do you recite my statutes, and profess my covenant with your mouth, Though you hate discipline and cast my words behind you?” R. To the upright I will show the saving power of God. “When you do these things, shall I be deaf to it? Or do you think you that I am like yourself? I will correct you by drawing them up before your eyes. He that offers praise as a sacrifice glorifies me; and to him that goes the right way I will show the salvation of God.” R. To the upright I will show the saving power of God.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/50?8",
+                "text": "Psalm 50:8-9, 16bc-17, 21, 23"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. Blessed are they who are persecuted for the sake of righteousness, for theirs is the Kingdom of heaven. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/5?10",
+                "text": "Matthew 5:10"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus said to his Apostles: “Do not think that I have come to bring peace upon the earth. I have come to bring not peace but the sword. For I have come to set a man against his father, a daughter against her mother, and a daughter-in-law against her mother-in-law; and one’s enemies will be those of his household.“Whoever loves father or mother more than me is not worthy of me, and whoever loves son or daughter more than me is not worthy of me; and whoever does not take up his cross and follow after me is not worthy of me. Whoever finds his life will lose it, and whoever loses his life for my sake will find it.“Whoever receives you receives me, and whoever receives me receives the one who sent me. Whoever receives a prophet because he is a prophet will receive a prophet’s reward, and whoever receives a righteous man because he is righteous will receive a righteous man’s reward. And whoever gives only a cup of cold water to one of these little ones to drink because he is a disciple– amen, I say to you, he will surely not lose his reward.”When Jesus finished giving these commands to his Twelve disciples, he went away from that place to teach and to preach in their towns.",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/10?34",
+                "text": "Matthew 10:34-11:1"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Monday of the Fifteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/071326.cfm"
+  },
+  {
+    "date": "2026-07-14",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "In the days of Ahaz, king of Judah, son of Jotham, son of Uzziah, Rezin, king of Aram, and Pekah, king of Israel, son of Remaliah, went up to attack Jerusalem, but they were not able to conquer it. When word came to the house of David that Aram was encamped in Ephraim, the heart of the king and the heart of the people trembled, as the trees of the forest tremble in the wind. Then the LORD said to Isaiah: Go out to meet Ahaz, you and your son Shear-jashub, at the end of the conduit of the upper pool, on the highway of the fuller’s field, and say to him: Take care you remain tranquil and do not fear; let not your courage fail before these two stumps of smoldering brands the blazing anger of Rezin and the Arameans, and of the son Remaliah, because of the mischief that Aram, Ephraim and the son of Remaliah, plots against you, saying, “Let us go up and tear Judah asunder, make it our own by force, and appoint the son of Tabeel king there.” Thus says the LORD: This shall not stand, it shall not be! Damascus is the capital of Aram, and Rezin is the head of Damascus; Samaria is the capital of Ephraim, and Remaliah’s son the head of Samaria. But within sixty years and five, Ephraim shall be crushed, no longer a nation. Unless your faith is firm you shall not be firm!",
+            "verses": [
+              {
+                "book": "Isaiah",
+                "link": "https://bible.usccb.org/bible/Isaiah/7?1",
+                "text": "Isaiah 7:1-9"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (see 9d) God upholds his city for ever. Great is the LORD and wholly to be praised in the city of our God. His holy mountain, fairest of heights, is the joy of all the earth. R. God upholds his city for ever. Mount Zion, “the recesses of the North,” is the city of the great King. God is with her castles; renowned is he as a stronghold. R. God upholds his city for ever. For lo! the kings assemble, they come on together; They also see, and at once are stunned, terrified, routed. R. God upholds his city for ever. Quaking seizes them there; anguish, like a woman’s in labor, As though a wind from the east were shattering ships of Tarshish. R. God upholds his city for ever.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/48?2",
+                "text": "Psalm 48:2-3a, 3b-4, 5-6, 7-8"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. If today you hear his voice, harden not your hearts. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/95?8",
+                "text": "Psalm 95:8"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus began to reproach the towns where most of his mighty deeds had been done, since they had not repented. “Woe to you, Chorazin! Woe to you, Bethsaida! For if the mighty deeds done in your midst had been done in Tyre and Sidon, they would long ago have repented in sackcloth and ashes. But I tell you, it will be more tolerable for Tyre and Sidon on the day of judgment than for you. And as for you, Capernaum: Will you be exalted to heaven? You will go down to the nether world. For if the mighty deeds done in your midst had been done in Sodom, it would have remained until this day. But I tell you, it will be more tolerable for the land of Sodom on the day of judgment than for you.”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/11?20",
+                "text": "Matthew 11:20-24"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Memorial of Saint Kateri Tekakwitha, Virgin [In the Dioceses of the United States]",
+    "url": "https://bible.usccb.org/bible/readings/071426.cfm"
+  },
+  {
+    "date": "2026-07-15",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Thus says the LORD: Woe to Assyria! My rod in anger, my staff in wrath. Against an impious nation I send him, and against a people under my wrath I order him To seize plunder, carry off loot, and tread them down like the mud of the streets. But this is not what he intends, nor does he have this in mind; Rather, it is in his heart to destroy, to make an end of nations not a few. For he says: “By my own power I have done it, and by my wisdom, for I am shrewd. I have moved the boundaries of peoples, their treasures I have pillaged, and, like a giant, I have put down the enthroned. My hand has seized like a nest the riches of nations; As one takes eggs left alone, so I took in all the earth; No one fluttered a wing, or opened a mouth, or chirped!” Will the axe boast against him who hews with it? Will the saw exalt itself above him who wields it? As if a rod could sway him who lifts it, or a staff him who is not wood! Therefore the Lord, the LORD of hosts, will send among his fat ones leanness, And instead of his glory there will be kindling like the kindling of fire.",
+            "verses": [
+              {
+                "book": "Isaiah",
+                "link": "https://bible.usccb.org/bible/Isaiah/10?5",
+                "text": "Isaiah 10:5-7, 13b-16"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (14a) The Lord will not abandon his people. Your people, O LORD, they trample down, your inheritance they afflict. Widow and stranger they slay, the fatherless they murder. R. The Lord will not abandon his people. And they say, “The LORD sees not; the God of Jacob perceives not.” Understand, you senseless ones among the people; and, you fools, when will you be wise? R. The Lord will not abandon his people. Shall he who shaped the ear not hear? or he who formed the eye not see? Shall he who instructs nations not chastise, he who teaches men knowledge? R. The Lord will not abandon his people. For the LORD will not cast off his people, nor abandon his inheritance; But judgment shall again be with justice, and all the upright of heart shall follow it. R. The Lord will not abandon his people",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/94?5",
+                "text": "Psalm 94:5-6, 7-8, 9-10, 14-15"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. Blessed are you, Father, Lord of heaven and earth, you have revealed to little ones the mysteries of the Kingdom. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/11?25",
+                "text": "Matthew 11:25"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "At that time Jesus exclaimed: “I give praise to you, Father, Lord of heaven and earth, for although you have hidden these things from the wise and the learned you have revealed them to the childlike. Yes, Father, such has been your gracious will. All things have been handed over to me by my Father. No one knows the Son except the Father, and no one knows the Father except the Son and anyone to whom the Son wishes to reveal him.”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/11?25",
+                "text": "Matthew 11:25-27"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Memorial of Saint Bonaventure, Bishop and Doctor of the Church",
+    "url": "https://bible.usccb.org/bible/readings/071526.cfm"
+  },
+  {
+    "date": "2026-07-16",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "The way of the just is smooth; the path of the just you make level. Yes, for your way and your judgments, O LORD, we look to you; Your name and your title are the desire of our souls. My soul yearns for you in the night, yes, my spirit within me keeps vigil for you; When your judgment dawns upon the earth, the world's inhabitants learn justice. O LORD, you mete out peace to us, for it is you who have accomplished all we have done. O LORD, oppressed by your punishment, we cried out in anguish under your chastising. As a woman about to give birth writhes and cries out in her pains, so were we in your presence, O LORD. We conceived and writhed in pain, giving birth to wind; Salvation we have not achieved for the earth, the inhabitants of the world cannot bring it forth. But your dead shall live, their corpses shall rise; awake and sing, you who lie in the dust. For your dew is a dew of light, and the land of shades gives birth.",
+            "verses": [
+              {
+                "book": "Isaiah",
+                "link": "https://bible.usccb.org/bible/Isaiah/26?7",
+                "text": "Isaiah 26:7-9, 12, 16-19"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (20b) From heaven the Lord looks down on the earth. You, O LORD, abide forever, and your name through all generations. You will arise and have mercy on Zion, for it is time to pity her. For her stones are dear to your servants, and her dust moves them to pity. R. From heaven the Lord looks down on the earth. The nations shall revere your name, O LORD, and all the kings of the earth your glory, When the LORD has rebuilt Zion and appeared in his glory; When he has regarded the prayer of the destitute, and not despised their prayer. R. From heaven the Lord looks down on the earth. Let this be written for the generation to come, and let his future creatures praise the LORD: \"The LORD looked down from his holy height, from heaven he beheld the earth, To hear the groaning of the prisoners, to release those doomed to die.\" R. From heaven the Lord looks down on the earth.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/102?13",
+                "text": "Psalm 102:13-14ab and 15, 16-18, 19-21"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. Come to me, all you who labor and are burdened, and I will give you rest, says the Lord. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/11?28",
+                "text": "Matthew 11:28"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus said: \"Come to me, all you who labor and are burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am meek and humble of heart; and you will find rest for yourselves. For my yoke is easy, and my burden light.\"",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/11?28",
+                "text": "Matthew 11:28-30"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Thursday of the Fifteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/071626.cfm"
+  },
+  {
+    "date": "2026-07-20",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "Hear what the LORD says: Arise, present your plea before the mountains, and let the hills hear your voice! Hear, O mountains, the plea of the LORD, pay attention, O foundations of the earth! For the LORD has a plea against his people, and he enters into trial with Israel. O my people, what have I done to you, or how have I wearied you? Answer me! For I brought you up from the land of Egypt, from the place of slavery I released you; and I sent before you Moses, Aaron, and Miriam. With what shall I come before the LORD, and bow before God most high? Shall I come before him with burnt offerings, with calves a year old? Will the LORD be pleased with thousands of rams, with myriad streams of oil? Shall I give my first-born for my crime, the fruit of my body for the sin of my soul? You have been told, O man, what is good, and what the LORD requires of you: Only to do the right and to love goodness, and to walk humbly with your God.",
+            "verses": [
+              {
+                "book": "Micah",
+                "link": "https://bible.usccb.org/bible/micah/6?1",
+                "text": "Micah 6:1-4, 6-8"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (23b) To the upright I will show the saving power of God. “Gather my faithful ones before me, those who have made a covenant with me by sacrifice.” And the heavens proclaim his justice; for God himself is the judge. R. To the upright I will show the saving power of God. “Not for your sacrifices do I rebuke you, for your burnt offerings are before me always. I take from your house no bullock, no goats out of your fold.” R. To the upright I will show the saving power of God. “Why do you recite my statutes, and profess my covenant with your mouth, Though you hate discipline and cast my words behind you?” R. To the upright I will show the saving power of God. “When you do these things, shall I be deaf to it? Or do you think that I am like yourself? I will correct you by drawing them up before your eyes. He that offers praise as a sacrifice glorifies me; and to him that goes the right way I will show the salvation of God.” R. To the upright I will show the saving power of God.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/50?5",
+                "text": "Psalm 50:5-6, 8-9, 16bc-17, 21, 23"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. If today you hear his voice, harden not your hearts. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/95?8",
+                "text": "Psalm 95:8"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Some of the scribes and Pharisees said to Jesus, “Teacher, we wish to see a sign from you.” He said to them in reply, “An evil and unfaithful generation seeks a sign, but no sign will be given it except the sign of Jonah the prophet. Just as Jonah was in the belly of the whale three days and three nights, so will the Son of Man be in the heart of the earth three days and three nights. At the judgment, the men of Nineveh will arise with this generation and condemn it, because they repented at the preaching of Jonah; and there is something greater than Jonah here. At the judgment the queen of the south will arise with this generation and condemn it, because she came from the ends of the earth to hear the wisdom of Solomon; and there is something greater than Solomon here.”",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/12?38",
+                "text": "Matthew 12:38-42"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Monday of the Sixteenth Week in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/072026.cfm"
+  },
+  {
+    "date": "2026-07-26",
+    "sections": [
+      {
+        "header": "Reading 1",
+        "readings": [
+          {
+            "text": "The LORD appeared to Solomon in a dream at night. God said, \"Ask something of me and I will give it to you.\" Solomon answered: \"O LORD, my God, you have made me, your servant, king to succeed my father David; but I am a mere youth, not knowing at all how to act. I serve you in the midst of the people whom you have chosen, a people so vast that it cannot be numbered or counted. Give your servant, therefore, an understanding heart to judge your people and to distinguish right from wrong. For who is able to govern this vast people of yours?\" The LORD was pleased that Solomon made this request. So God said to him: \"Because you have asked for this— not for a long life for yourself, nor for riches, nor for the life of your enemies, but for understanding so that you may know what is right— I do as you requested. I give you a heart so wise and understanding that there has never been anyone like you up to now, and after you there will come no one to equal you.\"",
+            "verses": [
+              {
+                "book": "1 Kings",
+                "link": "https://bible.usccb.org/bible/1kings/3?5",
+                "text": "1 Kings 3:5, 7-12"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Responsorial Psalm",
+        "readings": [
+          {
+            "text": "R. (97a) Lord, I love your commands. I have said, O LORD, that my part is to keep your words. The law of your mouth is to me more precious than thousands of gold and silver pieces. R. Lord, I love your commands. Let your kindness comfort me according to your promise to your servants. Let your compassion come to me that I may live, for your law is my delight. R. Lord, I love your commands. For I love your commands more than gold, however fine. For in all your precepts I go forward; every false way I hate. R. Lord, I love your commands. Wonderful are your decrees; therefore I observe them. The revelation of your words sheds light, giving understanding to the simple. R. Lord, I love your commands.",
+            "verses": [
+              {
+                "book": "Psalms",
+                "link": "https://bible.usccb.org/bible/psalms/119?57",
+                "text": "Psalm 119:57, 72, 76-77, 127-128, 129-130"
+              }
+            ]
+          }
+        ],
+        "type": "PSALM"
+      },
+      {
+        "header": "Reading 2",
+        "readings": [
+          {
+            "text": "Brothers and sisters: We know that all things work for good for those who love God, who are called according to his purpose. For those he foreknew he also predestined to be conformed to the image of his Son, so that he might be the firstborn among many brothers and sisters. And those he predestined he also called; and those he called he also justified; and those he justified he also glorified.",
+            "verses": [
+              {
+                "book": "Romans",
+                "link": "https://bible.usccb.org/bible/romans/8?28",
+                "text": "Romans 8:28-30"
+              }
+            ]
+          }
+        ],
+        "type": "READING"
+      },
+      {
+        "header": "Alleluia",
+        "readings": [
+          {
+            "text": "R. Alleluia, alleluia. Blessed are you, Father, Lord of heaven and earth; for you have revealed to little ones the mysteries of the kingdom. R. Alleluia, alleluia.",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/11?25",
+                "text": "Cf. Matthew 11:25"
+              }
+            ]
+          }
+        ],
+        "type": "ALLELUIA"
+      },
+      {
+        "header": "Gospel",
+        "readings": [
+          {
+            "text": "Jesus said to his disciples: \"The kingdom of heaven is like a treasure buried in a field, which a person finds and hides again, and out of joy goes and sells all that he has and buys that field. Again, the kingdom of heaven is like a merchant searching for fine pearls. When he finds a pearl of great price, he goes and sells all that he has and buys it. Again, the kingdom of heaven is like a net thrown into the sea, which collects fish of every kind. When it is full they haul it ashore and sit down to put what is good into buckets. What is bad they throw away. Thus it will be at the end of the age. The angels will go out and separate the wicked from the righteous and throw them into the fiery furnace, where there will be wailing and grinding of teeth. \"Do you understand all these things?\" They answered, \"Yes.\" And he replied, \"Then every scribe who has been instructed in the kingdom of heaven is like the head of a household who brings from his storeroom both the new and the old.\"",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/13?44",
+                "text": "Matthew 13:44-52"
+              }
+            ]
+          },
+          {
+            "text": "Jesus said to his disciples: \"The kingdom of heaven is like a treasure buried in a field, which a person finds and hides again, and out of joy goes and sells all that he has and buys that field. Again, the kingdom of heaven is like a merchant searching for fine pearls. When he finds a pearl of great price, he goes and sells all that he has and buys it.\"",
+            "verses": [
+              {
+                "book": "Matthew",
+                "link": "https://bible.usccb.org/bible/matthew/13?44",
+                "text": "Matthew 13:44-46"
+              }
+            ]
+          }
+        ],
+        "type": "GOSPEL"
+      }
+    ],
+    "title": "Seventeenth Sunday in Ordinary Time",
+    "url": "https://bible.usccb.org/bible/readings/072626.cfm"
   }
 ]
