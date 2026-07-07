@@ -18,7 +18,18 @@ function Card({ SccName = "Scc Name", path, images = [] }) {
 
   return (
     <div className={styles.card}>
-      <img src={displayImage} alt={SccName} className={styles.cardImage} />
+      <img
+        src={displayImage}
+        alt={SccName}
+        className={styles.cardImage}
+        loading="lazy"
+        decoding="async"
+        onError={(e) => {
+          if (e.currentTarget.src !== "/placeholder.png") {
+            e.currentTarget.src = "/placeholder.png";
+          }
+        }}
+      />
 
       <div className={styles.cardContent}>
         <h2 className={styles.title}>{SccName}</h2>

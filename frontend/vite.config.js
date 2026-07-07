@@ -10,4 +10,8 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  optimizeDeps: {
+    // Stop Vite from pre-bundling the whole icon set if it's causing issues
+    include: ['react-icons/gi'] 
+  }
 });

@@ -118,6 +118,7 @@ const SccOverview = ({ className }) => {
                     className={styles.imageWrapper}
                   >
                     <img
+                      load="lazy"
                       src={image}
                       alt={`${selectedScc.name} photo ${slideIndex * imagesPerSlide + index + 1}`}
                       className={styles.slideshowImage}

@@ -8,35 +8,41 @@ import {
 } from "react-router-dom";
 
 import { SCCs } from "@/pages/Scc/data/scc";
-import SccInfo from "./pages/Scc/SccInfo/SccInfo";
-import { SuperAdminLogin } from "@/pages/AdminPanel/pages";
-import { AttendanceLogin } from "@/pages/AttendanceAdmin/pages";
 
-import {
-  Home,
-  DailyReadingsAndPrayers,
-  MediaAnnouncements,
-  About,
-  Groups,
-  Scc,
-  NotFound,
-  AdminPanel,
-  AttendanceAdmin,
-} from "@/pages";
+// ── 1. Extract the Lazy Loading Functions outside the component ──
+const loadHome = () => import("@/pages").then(m => ({ Component: m.Home }));
+const loadAbout = () => import("@/pages").then(m => ({ Component: m.About }));
+const loadGroups = () => import("@/pages").then(m => ({ Component: m.Groups }));
+const loadScc = () => import("@/pages").then(m => ({ Component: m.Scc }));
+const loadMedia = () => import("@/pages").then(m => ({ Component: m.MediaAnnouncements }));
+const loadPrayers = () => import("@/pages").then(m => ({ Component: m.DailyReadingsAndPrayers }));
+const loadNotFound = () => import("@/pages").then(m => ({ Component: m.NotFound }));
 
-import {
-  EventsSection,
-  LeadersSection,
-  Members,
-  Reports,
-  SccLeaders,
-  JoinGroup,
-  JoinSccsSection,
-  MediaSection,
-} from "@/pages/AdminPanel/pages";
+const loadSuperAdminLogin = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.SuperAdminLogin }));
+const loadAttendanceLogin = () => import("@/pages/AttendanceAdmin/pages").then(m => ({ Component: m.AttendanceLogin }));
 
-import OtherTools from "@/pages/AdminPanel/pages/OtherTools/OtherTools";
+const loadLeaders = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.LeadersSection }));
+const loadSccLeaders = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.SccLeaders }));
+const loadEvents = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.EventsSection }));
+const loadMembers = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.Members }));
+const loadJoinSccs = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.JoinSccsSection }));
+const loadReports = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.Reports }));
+const loadJoinGroup = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.JoinGroup }));
+const loadMediaSection = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.MediaSection }));
+const loadOtherTools = () => import("@/pages/AdminPanel/pages/OtherTools/OtherTools").then(m => ({ Component: m.default }));
 
+// Layout wrappers
+const loadAdminPanel = async () => {
+  const m = await import("@/pages");
+  return { Component: () => <ProtectedAdmin><m.AdminPanel /></ProtectedAdmin> };
+};
+const loadAttendanceAdmin = async () => {
+  const m = await import("@/pages");
+  return { Component: () => <ProtectedAttendance><m.AttendanceAdmin /></ProtectedAttendance> };
+};
+
+
+// Auth checks
 const isAdminLoggedIn = () => !!localStorage.getItem("token");
 const isAttendanceLoggedIn = () => !!localStorage.getItem("attendance_token");
 
@@ -44,82 +50,59 @@ const ProtectedAdmin = ({ children }) =>
   isAdminLoggedIn() ? children : <Navigate to="/login" replace />;
 
 const ProtectedAttendance = ({ children }) =>
-  isAttendanceLoggedIn() ? (
-    children
-  ) : (
-    <Navigate to="/attendance-login" replace />
-  );
+  isAttendanceLoggedIn() ? children : <Navigate to="/attendance-login" replace />;
 
+
+// ── 2. Clean, highly-readable Router configuration ──
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      {/* ── Public pages ── */}
-      <Route path="/" element={<Home />} />
-      <Route path="/prayers-readings" element={<DailyReadingsAndPrayers />} />
-      <Route path="/media" element={<MediaAnnouncements />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/groups" element={<Groups />} />
-      <Route path="/scc" element={<Scc />} />
+      {/* Public Pages */}
+      <Route path="/" lazy={loadHome} />
+      <Route path="/prayers-readings" lazy={loadPrayers} />
+      <Route path="/media" lazy={loadMedia} />
+      <Route path="/about" lazy={loadAbout} />
+      <Route path="/groups" lazy={loadGroups} />
+      <Route path="/scc" lazy={loadScc} />
 
-      {/* ── Dynamic SCC detail pages ── */}
+      {/* Dynamic Details with Inline Closures for Route contexts */}
       {SCCs.map((scc) => (
         <Route
           key={scc.name}
           path={scc.path}
-          element={
-            <SccInfo
-              name={scc.name}
-              about={scc.about}
-              activities={scc.activities}
-              sccPhotos={scc.sccPhotos}
-              aboutPatronSaint={scc.aboutPatronSaint}
-              prayer={scc.prayer}
-              image={scc.image}
-              leaders={scc.leaders}
-              path={scc.path}
-            />
-          }
+          lazy={async () => {
+            const m = await import("./pages/Scc/SccInfo/SccInfo");
+            return {
+              Component: (props) => <m.default {...props} {...scc} />
+            };
+          }}
         />
       ))}
 
-      {/* ── Auth ── */}
-      <Route path="/login" element={<SuperAdminLogin />} />
-      <Route path="/attendance-login" element={<AttendanceLogin />} />
-      <Route path="/attendance-login/:groupId" element={<AttendanceLogin />} />
+      {/* Auth */}
+      <Route path="/login" lazy={loadSuperAdminLogin} />
+      <Route path="/attendance-login" lazy={loadAttendanceLogin} />
+      <Route path="/attendance-login/:groupId" lazy={loadAttendanceLogin} />
 
-      {/* ── Admin panel (protected) ── */}
-      <Route
-        path="/admin"
-        element={
-          <ProtectedAdmin>
-            <AdminPanel />
-          </ProtectedAdmin>
-        }
-      >
+      {/* Admin Protected Layout */}
+      <Route path="/admin" lazy={loadAdminPanel}>
         <Route index element={<Navigate to="events" replace />} />
-        <Route path="leaders" element={<LeadersSection />} />
-        <Route path="scc-leaders" element={<SccLeaders />} />
-        <Route path="events" element={<EventsSection />} />
-        <Route path="members" element={<Members />} />
-        <Route path="join-sccs" element={<JoinSccsSection />} />
-        <Route path="reports" element={<Reports />} />
-        <Route path="other-tools" element={<OtherTools />} />
-        <Route path="join-group" element={<JoinGroup />} />
-        <Route path="media" element={<MediaSection />} />
+        <Route path="leaders" lazy={loadLeaders} />
+        <Route path="scc-leaders" lazy={loadSccLeaders} />
+        <Route path="events" lazy={loadEvents} />
+        <Route path="members" lazy={loadMembers} />
+        <Route path="join-sccs" lazy={loadJoinSccs} />
+        <Route path="reports" lazy={loadReports} />
+        <Route path="other-tools" lazy={loadOtherTools} />
+        <Route path="join-group" lazy={loadJoinGroup} />
+        <Route path="media" lazy={loadMediaSection} />
       </Route>
 
-      {/* ── Attendance admin (protected) ── */}
-      <Route
-        path="/attendance-admin"
-        element={
-          <ProtectedAttendance>
-            <AttendanceAdmin />
-          </ProtectedAttendance>
-        }
-      />
+      {/* Attendance Protected Layout */}
+      <Route path="/attendance-admin" lazy={loadAttendanceAdmin} />
 
-      {/* ── 404 ── */}
-      <Route path="*" element={<NotFound />} />
+      {/* 404 */}
+      <Route path="*" lazy={loadNotFound} />
     </>,
   ),
 );
