@@ -11,6 +11,7 @@ import {
   MassAndServices,
   MediaContent,
   VisionMissionStrip,
+  JoinCTA
 } from "@/pages/Home/widgets";
 
 function Home() {
@@ -25,6 +26,8 @@ function Home() {
 
         {/* Weekly schedule */}
         <MassAndServices />
+
+        <JoinCTA />
 
         {/* Semester calendar */}
         <CatcomCalendar />
