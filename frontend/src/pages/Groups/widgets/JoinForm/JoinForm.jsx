@@ -204,7 +204,7 @@ function JoinForm() {
   ];
 
   return (
-    <div className={styles.formGrid}>
+    <div className={styles.formGrid} id="join-form">
       {modal && (
         <Modal
           type={modal.type}
