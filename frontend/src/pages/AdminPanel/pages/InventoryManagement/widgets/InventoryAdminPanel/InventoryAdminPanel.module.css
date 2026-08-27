@@ -1,0 +1,19 @@
+.container { background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.title { font-size: 13px; font-weight: 800; color: #1c3a3a; margin: 0; }
+.emailRow { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; padding: 6px 0; border-bottom: 1px solid #e5e7eb; font-size: 12px; }
+.emailValue { color: #1c3a3a; font-weight: 600; }
+.emailLabel { color: #9ca3af; }
+.formRow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.input { padding: 8px 10px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 12px; background: white; flex: 1; min-width: 160px; outline: none; }
+.input:focus { border-color: #2dabb1; }
+.pwWrap { position: relative; display: flex; align-items: center; flex: 1; min-width: 160px; }
+.pwWrap .input { width: 100%; padding-right: 36px; }
+.eyeBtn { position: absolute; right: 8px; background: none; border: none; color: #9ca3af; cursor: pointer; display: flex; }
+.saveBtn { background: #1c3a3a; color: #fff; border: none; border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.saveBtn:hover { background: #2dabb1; }
+.dangerBtn { background: #fee2e2; color: #ef4444; border: 1.5px solid #fecaca; border-radius: 8px; padding: 8px 12px; font-size: 12px; cursor: pointer; display: flex; gap: 6px; align-items: center; }
+.hint { font-size: 11px; color: #9ca3af; margin: 0; }
+.noAdmin { font-size: 12px; color: #6b7280; margin: 0; }
+.windowSection { border-top: 1.5px dashed #e5e7eb; padding-top: 10px; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; }
+.windowTitle { font-size: 12px; font-weight: 800; color: #1c3a3a; margin: 0; }
+.check { display: flex; gap: 6px; align-items: center; font-size: 12px; }

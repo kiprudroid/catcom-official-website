@@ -12,10 +12,12 @@ import {
   FaPhotoVideo,
   FaBars,
   FaTimes,
+  FaBoxes,
 } from "react-icons/fa";
 
 const tabs = [
   { key: "events", label: "Events", icon: <FaCalendarAlt /> },
+  { key: "inventory", label: "Inventory", icon: <FaBoxes /> },
   { key: "other-tools", label: "Other Tools", icon: <FaTools /> },
   { key: "media", label: "Media", icon: <FaPhotoVideo /> },
   { key: "leaders", label: "Exec Leaders", icon: <FaUser /> },

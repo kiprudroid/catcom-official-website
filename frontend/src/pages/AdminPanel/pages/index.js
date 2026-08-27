@@ -8,3 +8,4 @@ export { default as JoinGroup } from "./JoinGroup";
 export { default as JoinSccsSection } from "./JoinSccsSection";
 export { default as SuperAdminLogin } from "./SuperAdminLogin";
 export { default as MediaSection } from "./MediaSection";
+export { default as InventoryManagement } from "./InventoryManagement/InventoryManagement";

@@ -9,6 +9,7 @@ import sccLeadersRouter from "./routes/scc-leaders.routes.js";
 import groupsRouter from "./routes/join-group.routes.js";
 import readingsRouter from "./routes/readings.routes.js";
 import attendanceRouter from "./routes/attendance.routes.js";
+import inventoryRouter from "./routes/inventory.routes.js";
 import mediaRouter from "./routes/media.routes.js"; // ← new
 import cors from "cors";
 import { errorHandler } from "./middleware/errorHandler.js";
@@ -37,6 +38,7 @@ app.use("/api", authRouter);
 app.use("/api", joinSccRouter);
 app.use("/api", readingsRouter);
 app.use("/api", attendanceRouter);
+app.use("/api", inventoryRouter);
 app.use("/api", mediaRouter);
 
 app.use(errorHandler);
