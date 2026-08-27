@@ -5,9 +5,9 @@ import {
   Toolbar,
   PageHeader,
   MemberTable,
-  MemberModal,
   ExportModal,
 } from "@/pages/AdminPanel/pages/JoinGroup/widgets";
+import { MemberDetailModal } from "@/pages/AdminPanel/components";
 
 const PENDING_PREFIX = "PENDING: ";
 const isPending = (v) => typeof v === "string" && v.startsWith(PENDING_PREFIX);
@@ -21,7 +21,7 @@ function JoinGroup() {
   const [deletingId, setDeletingId] = useState(null);
   const [confirmId, setConfirmId] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
-  const [copied, setCopied] = useState(false);
+
   const [showExport, setShowExport] = useState(false);
   const [exportGroup, setExportGroup] = useState("all");
   const [exportRange, setExportRange] = useState("all");
@@ -198,13 +198,17 @@ function JoinGroup() {
         />
       )}
 
-      <MemberModal
+      {/* <MemberDetailModal
         member={selectedMember}
         copied={copied}
         onClose={() => setSelectedMember(null)}
         onCopy={handleCopyDetails}
-      />
+      /> */}
 
+      <MemberDetailModal
+        member={selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
       {showExport && (
         <ExportModal
           allGroups={allGroups}
