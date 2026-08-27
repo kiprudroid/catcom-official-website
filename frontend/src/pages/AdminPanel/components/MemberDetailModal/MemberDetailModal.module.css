@@ -62,53 +62,18 @@
   font-size: 1.15rem;
   font-weight: 700;
   color: #111827;
-  margin: 0 0 0.6rem;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-}
-
-.typePill {
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.typeScc {
-  background: #e0f2fe;
-  color: #0369a1;
-}
-.typeGroup {
-  background: #fef3c7;
-  color: #92400e;
-}
-.typeDummy {
-  background: #f3f4f6;
-  color: #6b7280;
-}
-
-.groupTag {
-  background: #fef3c7;
-  color: #92400e;
-  border-radius: 999px;
-  padding: 0.2rem 0.75rem;
-  font-size: 0.78rem;
-  font-weight: 600;
+  margin: 0 0 0.4rem;
 }
 
 .sccTag {
-  background: #e0f2fe;
-  color: #0369a1;
+  background: #ccfbf1;
+  color: #0f766e;
   border-radius: 999px;
   padding: 0.2rem 0.75rem;
   font-size: 0.78rem;
   font-weight: 600;
+  margin-bottom: 1.25rem;
+  display: inline-block;
 }
 
 .details {
@@ -168,4 +133,86 @@
 }
 .copyBtn:hover {
   background: #374151;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.actions .copyBtn,
+.actions .whatsappBtn {
+  flex: 1;
+}
+
+.whatsappBtn {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.whatsappBtn:hover {
+  background: #1ebe5a;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.sccTag,
+.groupTag {
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.sccTag {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.groupTag {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.actions .copyBtn,
+.actions .whatsappBtn {
+  flex: 1;
+}
+
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.whatsappBtn:hover {
+  background: #1ebe5a;
 }
