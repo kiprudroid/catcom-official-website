@@ -205,7 +205,6 @@ const InventoryManagement = () => {
       <div className={styles.header}>
         <div>
           <h2 className={styles.title}><FaBoxes style={{ marginRight: 8 }} />Inventory Management</h2>
-          <p className={styles.sub}>Manage groups, inventory accounts (M:N), and SCC regime windows. Mirrors Attendance Other Tools.</p>
         </div>
         <button className={styles.newBtn} onClick={() => { setShowGroupForm(!showGroupForm); setEditingGroup(null); setGroupForm({ name: "", type: "group" }); }}>
           <FaPlus /> New Group
@@ -220,27 +219,33 @@ const InventoryManagement = () => {
             {reportLoading ? "Generating…" : <><FaFilePdf style={{ marginRight: 6 }} /> Print PDF</>}
           </button>
         </div>
-        <p className={styles.sub}>Select groups (All or individual) and choose whether to include Inventory (Ledger), Bookings, or both — same workflow as Attendance reports. Pop-up will open for Print / Save as PDF.</p>
-        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
-          <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13, fontWeight: 700 }}>
-            <input type="checkbox" checked={reportGroups.length === groups.length && groups.length > 0} onChange={toggleReportAll} /> Select All ({groups.length})
+        <p className={styles.sub}>Select what to include and which groups to export. Same print workflow as Attendance reports.</p>
+        {/* Top row: two checkboxes side by side */}
+        <div className={styles.reportTypeRow}>
+          <label className={styles.reportCheck}>
+            <input type="checkbox" checked={includeInventory} onChange={(e) => setIncludeInventory(e.target.checked)} />
+            Inventory (Ledger)
           </label>
-          <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13 }}>
-            <input type="checkbox" checked={includeInventory} onChange={(e) => setIncludeInventory(e.target.checked)} /> Inventory (Ledger)
-          </label>
-          <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13 }}>
-            <input type="checkbox" checked={includeBookings} onChange={(e) => setIncludeBookings(e.target.checked)} /> Bookings
+          <label className={styles.reportCheck}>
+            <input type="checkbox" checked={includeBookings} onChange={(e) => setIncludeBookings(e.target.checked)} />
+            Bookings
           </label>
         </div>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {/* Uniform vertical list going downwards */}
+        <div className={styles.reportGroupList}>
+          <label className={`${styles.reportCheck} ${styles.reportCheckAll}`}>
+            <input type="checkbox" checked={reportGroups.length === groups.length && groups.length > 0} onChange={toggleReportAll} />
+            Select All ({groups.length})
+          </label>
           {groups.map((g) => (
-            <label key={g.id} style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 12, background: reportGroups.includes(String(g.id)) ? "#e0f2fe" : "#f9fafb", border: "1.5px solid #e5e7eb", padding: "6px 10px", borderRadius: 20, cursor: "pointer" }}>
+            <label key={g.id} className={styles.reportCheck}>
               <input type="checkbox" checked={reportGroups.includes(String(g.id))} onChange={() => toggleReportGroup(g.id)} />
-              {g.name} <span style={{ color: "#9ca3af", fontSize: 10 }}>{g.type}</span>
+              <span>{g.name}</span>
+              <span className={styles.reportGroupType}>{g.type}</span>
             </label>
           ))}
         </div>
-        {reportGroups.length > 0 && <div style={{ fontSize: 12, color: "#6b7280" }}>{reportGroups.length} group(s) selected · {includeInventory && includeBookings ? "Inventory + Bookings" : includeInventory ? "Inventory only" : "Bookings only"}</div>}
+        {reportGroups.length > 0 && <div className={styles.reportSummary}>{reportGroups.length} group(s) selected · {includeInventory && includeBookings ? "Inventory + Bookings" : includeInventory ? "Inventory only" : "Bookings only"}</div>}
       </div>
 
       {showGroupForm && (
