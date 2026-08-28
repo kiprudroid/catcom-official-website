@@ -360,3 +360,22 @@ export const fetchInventoryWindowPublic = async (group_id) => {
   if (!res.ok) return { is_open: true };
   return res.json();
 };
+
+// ── Superadmin: read items/bookings via admin token (mirrors /admin/groups/:id/…) ──
+export const fetchAdminInventoryItems = async (group_id) => {
+  const res = await fetch(`${API_BASE}/inventory/admin/groups/${group_id}/items`, { headers: adminHeaders() });
+  if (!res.ok) {
+    const d = await res.json().catch(() => ({}));
+    throw new Error(d.message || "Failed to fetch items");
+  }
+  return res.json();
+};
+
+export const fetchAdminBookings = async (group_id) => {
+  const res = await fetch(`${API_BASE}/inventory/admin/groups/${group_id}/bookings`, { headers: adminHeaders() });
+  if (!res.ok) {
+    const d = await res.json().catch(() => ({}));
+    throw new Error(d.message || "Failed to fetch bookings");
+  }
+  return res.json();
+};

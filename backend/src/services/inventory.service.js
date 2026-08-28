@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import pool from "../config/db.config.js";
 import * as Model from "../models/inventory.model.js";
 
-const VALID_CATEGORIES = ["technical", "publicity", "choir", "pastoral", "catering", "committee", "scc"];
+const VALID_CATEGORIES = ["group","scc","other","technical", "publicity", "choir", "pastoral", "catering", "committee"];
 const VALID_CONDITIONS = ["new", "good", "fair", "damaged", "lost", "disposed"];
 const VALID_UNITS = ["pieces", "sets", "pairs", "litres", "kg", "metres", "boxes", "other"];
 const VALID_ACQ_TYPES = ["purchased", "donated", "transfer"];
@@ -76,7 +76,7 @@ export const getInventoryGroups = async () => {
   return rows;
 };
 
-const VALID_GROUP_TYPES = ["technical","publicity","choir","pastoral","catering","committee","scc","group","other"];
+const VALID_GROUP_TYPES = ["group","scc","other"];
 
 export const createInventoryGroup = async ({ name, type }) => {
   if (!name?.trim()) throw new Error("Group name is required");
@@ -351,6 +351,7 @@ export const createBooking = async ({ item_id, group_id, booked_by_name, booked_
   if (Number(item.group_id) !== Number(group_id)) throw new Error("Item does not belong to this group");
   if (item.archived) throw new Error("Cannot book an archived item");
   if (!item.is_bookable) throw new Error("Item is not bookable");
+  if (qty > Number(item.quantity_available)) throw new Error(`Cannot book more than available (${item.quantity_available} in stock)`);
   const cleanPhone = validatePhone(booked_by_phone);
   if (new Date(return_due_date) < new Date(booking_date)) throw new Error("return_due_date must be >= booking_date");
   const uc = overrideUnitCost !== undefined ? Number(overrideUnitCost) : Number(item.unit_cost) || 0;
@@ -400,7 +401,7 @@ export const updateBookingStatus = async ({ id, status, return_date, group_id })
   const from = b.status;
   const allowed = {
     pending: ["approved", "cancelled"],
-    approved: ["issued", "cancelled", "overdue"],
+    approved: ["issued", "returned", "cancelled", "overdue"],
     issued: ["returned", "overdue"],
     overdue: ["returned", "cancelled"],
     cancelled: [],

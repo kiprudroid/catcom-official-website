@@ -6,7 +6,7 @@ import styles from "./InventoryLogin.module.css";
 import { loginInventoryAdmin, fetchInventoryGroups } from "@/api/inventory.api";
 import toast from "react-hot-toast";
 
-const TYPE_FILTERS = ["All", "Technical", "Publicity", "Choir", "Pastoral", "Catering", "Committee", "SCC", "Group", "Other"];
+const TYPE_FILTERS = ["All", "Group", "SCC", "Other"];
 
 const InventoryLogin = () => {
   const { groupId } = useParams();

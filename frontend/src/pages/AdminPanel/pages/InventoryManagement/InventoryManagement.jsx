@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./InventoryManagement.module.css";
 import toast from "react-hot-toast";
-import { FaPlus, FaSearch, FaBoxes } from "react-icons/fa";
+import { FaPlus, FaSearch, FaBoxes, FaFilePdf } from "react-icons/fa";
 import {
   fetchInventoryGroups,
   fetchInventoryGroupAdmin,
@@ -22,18 +22,17 @@ import {
   createInventoryGroup,
   updateInventoryGroup,
   deleteInventoryGroup,
+  fetchAdminInventoryItems,
+  fetchAdminBookings,
 } from "@/api/inventory.api";
+import { exportSuperAdminPDF } from "@/pages/InventoryAdmin/utils/inventoryExport";
 import InventoryAdminPanel from "./widgets/InventoryAdminPanel/InventoryAdminPanel";
 
 const FILTERS = [
   { key: "all", label: "All" },
-  { key: "technical", label: "Technical" },
-  { key: "publicity", label: "Publicity" },
-  { key: "choir", label: "Choir" },
-  { key: "pastoral", label: "Pastoral" },
-  { key: "catering", label: "Catering" },
-  { key: "committee", label: "Committee" },
+  { key: "group", label: "Group" },
   { key: "scc", label: "SCC" },
+  { key: "other", label: "Other" },
 ];
 
 const InventoryManagement = () => {
@@ -49,12 +48,17 @@ const InventoryManagement = () => {
   const [allAdmins, setAllAdmins] = useState([]);
   const [showGroupForm, setShowGroupForm] = useState(false);
   const [editingGroup, setEditingGroup] = useState(null);
-  const [groupForm, setGroupForm] = useState({ name: "", type: "technical" });
+  const [groupForm, setGroupForm] = useState({ name: "", type: "group" });
   const [savingGroup, setSavingGroup] = useState(false);
   const [regimes, setRegimes] = useState([]);
   const [showRegimeForm, setShowRegimeForm] = useState(false);
   const [regimeForm, setRegimeForm] = useState({ name: "", start_date: "", end_date: "", is_active: false });
   const [windowForms, setWindowForms] = useState({});
+  const [adminGroupFilter, setAdminGroupFilter] = useState("all");
+  const [reportGroups, setReportGroups] = useState([]);
+  const [includeInventory, setIncludeInventory] = useState(true);
+  const [includeBookings, setIncludeBookings] = useState(true);
+  const [reportLoading, setReportLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => { loadGroups(); loadRegimes(); loadAllAdmins(); }, []);
@@ -151,6 +155,43 @@ const InventoryManagement = () => {
     try { await upsertEditWindow(gid, { regime_id: w.regime_id || null, window_start: w.window_start, window_end: w.window_end, is_open: !!w.is_open }); toast.success("Window saved"); } catch (e) { toast.error(e.message); }
   };
 
+  // ── Superadmin Reports (same UI pattern as InventoryAdmin) ──
+  const toggleReportGroup = (gid) => {
+    const sid = String(gid);
+    setReportGroups((p) => (p.includes(sid) ? p.filter((x) => x !== sid) : [...p, sid]));
+  };
+  const toggleReportAll = () => {
+    if (reportGroups.length === groups.length) setReportGroups([]);
+    else setReportGroups(groups.map((g) => String(g.id)));
+  };
+  const handlePrintReport = async () => {
+    if (reportGroups.length === 0) return toast.error("Select at least one group");
+    if (!includeInventory && !includeBookings) return toast.error("Select Inventory and/or Bookings");
+    setReportLoading(true);
+    try {
+      const selectedGroups = groups.filter((g) => reportGroups.includes(String(g.id)));
+      const itemsByGroup = {};
+      const bookingsByGroup = {};
+      await Promise.all(
+        selectedGroups.map(async (g) => {
+          if (includeInventory) {
+            try {
+              const items = await fetchAdminInventoryItems(g.id);
+              itemsByGroup[g.id] = items.map((it) => ({ ...it, group_name: g.name, group_id: g.id }));
+            } catch { itemsByGroup[g.id] = []; }
+          }
+          if (includeBookings) {
+            try {
+              const bks = await fetchAdminBookings(g.id);
+              bookingsByGroup[g.id] = bks;
+            } catch { bookingsByGroup[g.id] = []; }
+          }
+        })
+      );
+      exportSuperAdminPDF({ groups: selectedGroups, itemsByGroup, bookingsByGroup, includeInventory, includeBookings });
+    } catch (e) { toast.error(e.message || "Failed to generate report"); } finally { setReportLoading(false); }
+  };
+
   const filtered = groups.filter((g) => {
     const mSearch = g.name.toLowerCase().includes(search.toLowerCase());
     const mType = activeFilter === "all" || g.type === activeFilter || g.type?.toLowerCase() === activeFilter;
@@ -166,9 +207,40 @@ const InventoryManagement = () => {
           <h2 className={styles.title}><FaBoxes style={{ marginRight: 8 }} />Inventory Management</h2>
           <p className={styles.sub}>Manage groups, inventory accounts (M:N), and SCC regime windows. Mirrors Attendance Other Tools.</p>
         </div>
-        <button className={styles.newBtn} onClick={() => { setShowGroupForm(!showGroupForm); setEditingGroup(null); setGroupForm({ name: "", type: "technical" }); }}>
+        <button className={styles.newBtn} onClick={() => { setShowGroupForm(!showGroupForm); setEditingGroup(null); setGroupForm({ name: "", type: "group" }); }}>
           <FaPlus /> New Group
         </button>
+      </div>
+
+      {/* Reports — print entire inventory and/or bookings for all groups */}
+      <div className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h3 className={styles.sectionTitle}><FaFilePdf style={{ marginRight: 6 }} />Reports — Print Inventory / Bookings</h3>
+          <button className={styles.newBtn} onClick={handlePrintReport} disabled={reportLoading || reportGroups.length === 0 || (!includeInventory && !includeBookings)}>
+            {reportLoading ? "Generating…" : <><FaFilePdf style={{ marginRight: 6 }} /> Print PDF</>}
+          </button>
+        </div>
+        <p className={styles.sub}>Select groups (All or individual) and choose whether to include Inventory (Ledger), Bookings, or both — same workflow as Attendance reports. Pop-up will open for Print / Save as PDF.</p>
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
+          <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13, fontWeight: 700 }}>
+            <input type="checkbox" checked={reportGroups.length === groups.length && groups.length > 0} onChange={toggleReportAll} /> Select All ({groups.length})
+          </label>
+          <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13 }}>
+            <input type="checkbox" checked={includeInventory} onChange={(e) => setIncludeInventory(e.target.checked)} /> Inventory (Ledger)
+          </label>
+          <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13 }}>
+            <input type="checkbox" checked={includeBookings} onChange={(e) => setIncludeBookings(e.target.checked)} /> Bookings
+          </label>
+        </div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {groups.map((g) => (
+            <label key={g.id} style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 12, background: reportGroups.includes(String(g.id)) ? "#e0f2fe" : "#f9fafb", border: "1.5px solid #e5e7eb", padding: "6px 10px", borderRadius: 20, cursor: "pointer" }}>
+              <input type="checkbox" checked={reportGroups.includes(String(g.id))} onChange={() => toggleReportGroup(g.id)} />
+              {g.name} <span style={{ color: "#9ca3af", fontSize: 10 }}>{g.type}</span>
+            </label>
+          ))}
+        </div>
+        {reportGroups.length > 0 && <div style={{ fontSize: 12, color: "#6b7280" }}>{reportGroups.length} group(s) selected · {includeInventory && includeBookings ? "Inventory + Bookings" : includeInventory ? "Inventory only" : "Bookings only"}</div>}
       </div>
 
       {showGroupForm && (
@@ -176,8 +248,6 @@ const InventoryManagement = () => {
           <input className={styles.input} placeholder="Group name" value={groupForm.name} onChange={(e) => setGroupForm({ ...groupForm, name: e.target.value })} required />
           <select className={styles.input} value={groupForm.type} onChange={(e) => setGroupForm({ ...groupForm, type: e.target.value })}>
             {FILTERS.filter((f) => f.key !== "all").map((f) => <option key={f.key} value={f.key}>{f.label}</option>)}
-            <option value="group">Group</option>
-            <option value="other">Other</option>
           </select>
           <button className={styles.saveBtn} type="submit" disabled={savingGroup}>{savingGroup ? "Saving…" : editingGroup ? "Update Group" : "Create Group"}</button>
           <button className={styles.cancelBtn} type="button" onClick={() => { setShowGroupForm(false); setEditingGroup(null); }}>Cancel</button>
@@ -244,9 +314,17 @@ const InventoryManagement = () => {
 
       {/* Multi-group grants */}
       <div className={styles.section}>
-        <h3 className={styles.sectionTitle}>Inventory Admins (multi-group)</h3>
-        <p className={styles.sub}>Superadmin can grant an admin access to additional groups/SCCs after initial creation.</p>
-        {allAdmins.length === 0 ? <p className={styles.empty}>No inventory admins yet.</p> : allAdmins.map((a) => (
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+          <h3 className={styles.sectionTitle}>Inventory Admins (multi-group)</h3>
+          <select className={styles.miniSelect} value={adminGroupFilter} onChange={(e) => setAdminGroupFilter(e.target.value)}>
+            <option value="all">All groups</option>
+            {groups.map((g) => <option key={g.id} value={String(g.id)}>{g.name}</option>)}
+          </select>
+        </div>
+        {(() => {
+          const filteredAdmins = adminGroupFilter === "all" ? allAdmins : allAdmins.filter((a) => (a.groups || []).some((g) => String(g.id) === String(adminGroupFilter)));
+          if (filteredAdmins.length === 0) return <p className={styles.empty}>{adminGroupFilter === "all" ? "No inventory admins yet." : "No admins for this group."}</p>;
+          return filteredAdmins.map((a) => (
           <div key={a.id} className={styles.adminRow}>
             <div className={styles.adminInfo}>
               <strong>{a.email}</strong> {a.full_name && <span>— {a.full_name}</span>}
@@ -271,7 +349,8 @@ const InventoryManagement = () => {
               <button className={`${styles.miniBtn} ${styles.dangerBtn}`} onClick={async () => { if (!window.confirm("Delete this inventory account entirely?")) return; try { await deleteInventoryAdminById(a.id); await loadAllAdmins(); toast.success("Deleted"); } catch (e) { toast.error(e.message); } }}>Delete Account</button>
             </div>
           </div>
-        ))}
+        )); 
+        })()}
       </div>
 
       {/* Regimes */}

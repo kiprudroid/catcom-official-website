@@ -2,12 +2,11 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./InventoryAdmin.module.css";
 import toast from "react-hot-toast";
-import { FaSignOutAlt, FaPlus, FaExchangeAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaPlus, FaExchangeAlt, FaFilePdf } from "react-icons/fa";
 import {
   fetchInventoryItems,
   createInventoryItem,
   updateInventoryItem,
-  archiveInventoryItem,
   adjustInventoryItem,
   fetchInventoryStats,
   fetchBookings,
@@ -17,6 +16,7 @@ import {
   deleteBooking,
   fetchInventoryWindowPublic,
 } from "@/api/inventory.api";
+import { exportInventoryPDF, exportBookingsPDF } from "./utils/inventoryExport";
 
 const CATEGORIES = ["technical", "publicity", "choir", "pastoral", "catering", "committee", "scc"];
 const BOOKABLE_CATS = ["technical", "publicity", "catering", "choir"];
@@ -33,11 +33,10 @@ const InventoryAdmin = () => {
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState("records"); // records | bookings
   const [search, setSearch] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("all");
   const [bookingFilter, setBookingFilter] = useState("all");
   const [showItemModal, setShowItemModal] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [itemForm, setItemForm] = useState({ category: "technical", name: "", quantity_total: 1, unit: "pieces", condition: "good", is_bookable: false, unit_cost: 0, acquisition_cost: 0, description: "" });
+  const [itemForm, setItemForm] = useState({ category: "group", name: "", quantity_total: 1, unit: "pieces", condition: "good", is_bookable: false, unit_cost: 0, acquisition_cost: 0, description: "" });
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [bookingForm, setBookingForm] = useState({ item_id: "", quantity: 1, booked_by_name: "", booked_by_phone: "", booked_by_email: "", booking_date: new Date().toISOString().split("T")[0], return_due_date: new Date(Date.now() + 86400000 * 7).toISOString().split("T")[0], purpose: "" });
   const [windowLocked, setWindowLocked] = useState(false);
@@ -102,15 +101,15 @@ const InventoryAdmin = () => {
     } catch (e) { toast.error(e.message); } finally { setSaving(false); }
   };
 
-  const handleArchive = async (id) => {
-    if (!window.confirm("Archive this item? It will be hidden but history kept.")) return;
-    try { await archiveInventoryItem(id); setItems((p) => p.filter((x) => x.id !== id)); toast.success("Archived"); } catch (e) { toast.error(e.message); }
-  };
-
   const handleBookingCreate = async (e) => {
     e.preventDefault();
+    const selectedItem = items.find((it) => String(it.id) === String(bookingForm.item_id));
+    if (!selectedItem) return toast.error("Select an item");
+    const qty = Number(bookingForm.quantity);
+    if (!Number.isFinite(qty) || qty <= 0) return toast.error("Quantity must be > 0");
+    if (qty > Number(selectedItem.quantity_available)) return toast.error(`Cannot book more than available (${selectedItem.quantity_available} in stock)`);
     try {
-      const b = await createBooking({ group_id: selectedGroup.id, item_id: Number(bookingForm.item_id), quantity: Number(bookingForm.quantity), booked_by_name: bookingForm.booked_by_name, booked_by_phone: bookingForm.booked_by_phone, booked_by_email: bookingForm.booked_by_email, booking_date: bookingForm.booking_date, return_due_date: bookingForm.return_due_date, purpose: bookingForm.purpose });
+      const b = await createBooking({ group_id: selectedGroup.id, item_id: Number(bookingForm.item_id), quantity: qty, booked_by_name: bookingForm.booked_by_name, booked_by_phone: bookingForm.booked_by_phone, booked_by_email: bookingForm.booked_by_email, booking_date: bookingForm.booking_date, return_due_date: bookingForm.return_due_date, purpose: bookingForm.purpose });
       setBookings((p) => [b, ...p]);
       setShowBookingModal(false);
       toast.success("Booking created (pending)");
@@ -130,9 +129,8 @@ const InventoryAdmin = () => {
 
   const filteredItems = items.filter((it) => {
     const mSearch = !search || it.name.toLowerCase().includes(search.toLowerCase()) || (it.description && it.description.toLowerCase().includes(search.toLowerCase()));
-    const mCat = categoryFilter === "all" || it.category === categoryFilter;
     const mArch = !it.archived;
-    return mSearch && mCat && mArch;
+    return mSearch && mArch;
   });
 
   const filteredBookings = bookings.filter((b) => bookingFilter === "all" || b.status === bookingFilter);
@@ -185,37 +183,34 @@ const InventoryAdmin = () => {
       {activeTab === "records" ? (
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
-            <h3 className={styles.sectionTitle}>Records — {CATEGORIES.map((c) => c.charAt(0).toUpperCase() + c.slice(1)).join(" • ")}</h3>
-            <button className={styles.primaryBtn} onClick={() => { setEditingItem(null); setItemForm({ category: "technical", name: "", quantity_total: 1, unit: "pieces", condition: "good", is_bookable: false, unit_cost: 0, acquisition_cost: 0, description: "" }); setShowItemModal(true); }} disabled={windowLocked}><FaPlus /> Add Item</button>
+            <h3 className={styles.sectionTitle}>Records</h3>
+            <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+              <button className={styles.miniBtn} onClick={() => exportInventoryPDF(filteredItems, selectedGroup.name, stats)} title="Print / Save as PDF"><FaFilePdf /> PDF — Ledger</button>
+              <button className={styles.primaryBtn} onClick={() => { setEditingItem(null); setItemForm({ category: "group", name: "", quantity_total: 1, unit: "pieces", condition: "good", is_bookable: false, unit_cost: 0, acquisition_cost: 0, description: "" }); setShowItemModal(true); }} disabled={windowLocked}><FaPlus /> Add Item</button>
+            </div>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <input className={styles.searchInput} placeholder="Search items…" value={search} onChange={(e) => setSearch(e.target.value)} />
-            <select className={styles.select} value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
-              <option value="all">All Categories</option>
-              {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
           </div>
           {filteredItems.length === 0 ? <p style={{ color: "#9ca3af", textAlign: "center", padding: 20 }}>No items. Add one to get started.</p> : (
             <div className={styles.tableWrap}>
               <table>
                 <thead>
-                  <tr><th>Item</th><th>Category</th><th>Qty (avail/total)</th><th>Unit</th><th>Condition</th><th>Bookable</th><th>Cost</th><th>Actions</th></tr>
+                  <tr><th>Item</th><th>Qty (avail/total)</th><th>Unit</th><th>Condition</th><th>Bookable</th><th>Cost</th><th>Actions</th></tr>
                 </thead>
                 <tbody>
                   {filteredItems.map((it) => (
                     <tr key={it.id}>
                       <td><strong>{it.name}</strong>{it.description && <div style={{ fontSize: 11, color: "#6b7280" }}>{it.description}</div>}</td>
-                      <td><span className={`${styles.pill} ${styles["pill" + it.category.charAt(0).toUpperCase() + it.category.slice(1)] || ""}`}>{it.category}</span></td>
                       <td>{it.quantity_available} / {it.quantity_total} {Number(it.quantity_available) <= 2 && <span style={{ color: "#ef4444", fontWeight: 700 }}> • low</span>}</td>
                       <td>{it.unit}</td>
                       <td>{it.condition}</td>
-                      <td>{it.is_bookable ? "✓" : "—"} {BOOKABLE_CATS.includes(it.category) && !it.is_bookable && <span style={{ color: "#9ca3af" }}>(can enable)</span>}</td>
+                      <td>{it.is_bookable ? "✓" : "—"}</td>
                       <td>{Number(it.unit_cost) > 0 ? `KES ${Number(it.unit_cost).toLocaleString()}` : "—"}</td>
                       <td>
                         <div className={styles.actionsCell}>
                           <button className={styles.miniBtn} onClick={() => { setEditingItem(it); setItemForm({ category: it.category, name: it.name, quantity_total: it.quantity_total, unit: it.unit, condition: it.condition, is_bookable: it.is_bookable, unit_cost: it.unit_cost, acquisition_cost: it.acquisition_cost, description: it.description || "" }); setShowItemModal(true); }}>Edit</button>
                           <button className={styles.miniBtn} onClick={async () => { const d = window.prompt("Adjust available qty by (e.g. 2 or -1):"); if (d === null) return; try { const upd = await adjustInventoryItem(it.id, { delta_available: Number(d), delta_total: Number(d), reason: "Manual adjust" }); setItems((p) => p.map((x) => x.id === upd.id ? upd : x)); toast.success("Adjusted"); } catch (e) { toast.error(e.message); } }}><FaExchangeAlt /> Adjust</button>
-                          <button className={`${styles.miniBtn} ${styles.danger}`} onClick={() => handleArchive(it.id)}>Archive</button>
                         </div>
                       </td>
                     </tr>
@@ -228,8 +223,11 @@ const InventoryAdmin = () => {
       ) : (
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
-            <h3 className={styles.sectionTitle}>Bookings — hire at a cost (Technical & Publicity, Catering, Choir)</h3>
-            <button className={styles.primaryBtn} onClick={() => { setBookingForm({ item_id: "", quantity: 1, booked_by_name: "", booked_by_phone: "", booked_by_email: "", booking_date: new Date().toISOString().split("T")[0], return_due_date: new Date(Date.now() + 86400000 * 7).toISOString().split("T")[0], purpose: "" }); setShowBookingModal(true); }}><FaPlus /> New Booking</button>
+            <h3 className={styles.sectionTitle}>Bookings</h3>
+            <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+              <button className={styles.miniBtn} onClick={() => exportBookingsPDF(filteredBookings, selectedGroup.name, stats)} title="Print / Save as PDF"><FaFilePdf /> PDF — Bookings</button>
+              <button className={styles.primaryBtn} onClick={() => { setBookingForm({ item_id: "", quantity: 1, booked_by_name: "", booked_by_phone: "", booked_by_email: "", booking_date: new Date().toISOString().split("T")[0], return_due_date: new Date(Date.now() + 86400000 * 7).toISOString().split("T")[0], purpose: "" }); setShowBookingModal(true); }}><FaPlus /> New Booking</button>
+            </div>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <select className={styles.select} value={bookingFilter} onChange={(e) => setBookingFilter(e.target.value)}>
@@ -282,21 +280,42 @@ const InventoryAdmin = () => {
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <h3 className={styles.modalTitle}>{editingItem ? "Edit Item" : "Add Item"} — {selectedGroup.name}</h3>
             <form className={styles.formGrid} onSubmit={handleCreateItem}>
-              <input placeholder="Item name *" value={itemForm.name} onChange={(e) => setItemForm({ ...itemForm, name: e.target.value })} required />
-              <select value={itemForm.category} onChange={(e) => setItemForm({ ...itemForm, category: e.target.value })}>
-                {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
-              </select>
-              <input type="number" min="0" placeholder="Qty total" value={itemForm.quantity_total} onChange={(e) => setItemForm({ ...itemForm, quantity_total: e.target.value })} required />
-              <select value={itemForm.unit} onChange={(e) => setItemForm({ ...itemForm, unit: e.target.value })}>
-                <option value="pieces">pieces</option><option value="sets">sets</option><option value="pairs">pairs</option><option value="boxes">boxes</option><option value="litres">litres</option><option value="kg">kg</option><option value="other">other</option>
-              </select>
-              <select value={itemForm.condition} onChange={(e) => setItemForm({ ...itemForm, condition: e.target.value })}>
-                <option value="new">new</option><option value="good">good</option><option value="fair">fair</option><option value="damaged">damaged</option><option value="lost">lost</option>
-              </select>
-              <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13 }}><input type="checkbox" checked={itemForm.is_bookable} onChange={(e) => setItemForm({ ...itemForm, is_bookable: e.target.checked })} /> Bookable (for hire)</label>
-              <input type="number" step="0.01" placeholder="Hire cost per unit (KES)" value={itemForm.unit_cost} onChange={(e) => setItemForm({ ...itemForm, unit_cost: e.target.value })} />
-              <input type="number" step="0.01" placeholder="Acquisition cost" value={itemForm.acquisition_cost} onChange={(e) => setItemForm({ ...itemForm, acquisition_cost: e.target.value })} />
-              <textarea className={styles.full} placeholder="Description" value={itemForm.description} onChange={(e) => setItemForm({ ...itemForm, description: e.target.value })} rows={2} />
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Item Name *</label>
+                <input value={itemForm.name} onChange={(e) => setItemForm({ ...itemForm, name: e.target.value })} required />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Quantity Total *</label>
+                <input type="number" min="0" value={itemForm.quantity_total} onChange={(e) => setItemForm({ ...itemForm, quantity_total: e.target.value })} required />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Unit</label>
+                <select value={itemForm.unit} onChange={(e) => setItemForm({ ...itemForm, unit: e.target.value })}>
+                  <option value="pieces">pieces</option><option value="sets">sets</option><option value="pairs">pairs</option><option value="boxes">boxes</option><option value="litres">litres</option><option value="kg">kg</option><option value="other">other</option>
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Condition</label>
+                <select value={itemForm.condition} onChange={(e) => setItemForm({ ...itemForm, condition: e.target.value })}>
+                  <option value="new">new</option><option value="good">good</option><option value="fair">fair</option><option value="damaged">damaged</option><option value="lost">lost</option>
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Bookable</label>
+                <label style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13 }}><input type="checkbox" checked={itemForm.is_bookable} onChange={(e) => setItemForm({ ...itemForm, is_bookable: e.target.checked })} /> Available for hire</label>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Hire Cost per Unit (KES)</label>
+                <input type="number" step="0.01" value={itemForm.unit_cost} onChange={(e) => setItemForm({ ...itemForm, unit_cost: e.target.value })} />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Acquisition Cost (KES)</label>
+                <input type="number" step="0.01" value={itemForm.acquisition_cost} onChange={(e) => setItemForm({ ...itemForm, acquisition_cost: e.target.value })} />
+              </div>
+              <div className={`${styles.formGroup} ${styles.full}`}>
+                <label className={styles.label}>Description</label>
+                <textarea value={itemForm.description} onChange={(e) => setItemForm({ ...itemForm, description: e.target.value })} rows={2} />
+              </div>
               <div className={styles.formActions} style={{ gridColumn: "1 / -1" }}>
                 <button type="button" className={styles.cancelBtn} onClick={() => setShowItemModal(false)}>Cancel</button>
                 <button type="submit" className={styles.primaryBtn} disabled={saving}>{saving ? "Saving…" : editingItem ? "Update" : "Create"}</button>
@@ -311,17 +330,41 @@ const InventoryAdmin = () => {
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <h3 className={styles.modalTitle}>New Booking</h3>
             <form className={styles.formGrid} onSubmit={handleBookingCreate}>
-              <select value={bookingForm.item_id} onChange={(e) => setBookingForm({ ...bookingForm, item_id: e.target.value })} required>
-                <option value="">Select bookable item…</option>
-                {items.filter((it) => it.is_bookable && !it.archived && it.quantity_available > 0).map((it) => <option key={it.id} value={it.id}>{it.name} — {it.quantity_available} avail @ KES {Number(it.unit_cost).toLocaleString()}</option>)}
-              </select>
-              <input type="number" min="1" placeholder="Qty" value={bookingForm.quantity} onChange={(e) => setBookingForm({ ...bookingForm, quantity: e.target.value })} required />
-              <input placeholder="Borrower name *" value={bookingForm.booked_by_name} onChange={(e) => setBookingForm({ ...bookingForm, booked_by_name: e.target.value })} required />
-              <input placeholder="Phone (07…)" value={bookingForm.booked_by_phone} onChange={(e) => setBookingForm({ ...bookingForm, booked_by_phone: e.target.value })} />
-              <input type="email" placeholder="Borrower email" value={bookingForm.booked_by_email} onChange={(e) => setBookingForm({ ...bookingForm, booked_by_email: e.target.value })} />
-              <input type="date" value={bookingForm.booking_date} onChange={(e) => setBookingForm({ ...bookingForm, booking_date: e.target.value })} required />
-              <input type="date" value={bookingForm.return_due_date} onChange={(e) => setBookingForm({ ...bookingForm, return_due_date: e.target.value })} required />
-              <textarea className={styles.full} placeholder="Purpose / notes" value={bookingForm.purpose} onChange={(e) => setBookingForm({ ...bookingForm, purpose: e.target.value })} rows={2} />
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Item *</label>
+                <select value={bookingForm.item_id} onChange={(e) => setBookingForm({ ...bookingForm, item_id: e.target.value })} required>
+                  <option value="">Select bookable item…</option>
+                  {items.filter((it) => it.is_bookable && !it.archived && it.quantity_available > 0).map((it) => <option key={it.id} value={it.id}>{it.name} — {it.quantity_available} avail @ KES {Number(it.unit_cost).toLocaleString()}</option>)}
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Quantity *</label>
+                <input type="number" min="1" max={(() => { const sel = items.find((it) => String(it.id) === String(bookingForm.item_id)); return sel ? sel.quantity_available : undefined; })()} value={bookingForm.quantity} onChange={(e) => setBookingForm({ ...bookingForm, quantity: e.target.value })} required />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Borrower Name *</label>
+                <input value={bookingForm.booked_by_name} onChange={(e) => setBookingForm({ ...bookingForm, booked_by_name: e.target.value })} required />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Phone (07…)</label>
+                <input value={bookingForm.booked_by_phone} onChange={(e) => setBookingForm({ ...bookingForm, booked_by_phone: e.target.value })} />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Borrower Email</label>
+                <input type="email" value={bookingForm.booked_by_email} onChange={(e) => setBookingForm({ ...bookingForm, booked_by_email: e.target.value })} />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Booking Date *</label>
+                <input type="date" value={bookingForm.booking_date} onChange={(e) => setBookingForm({ ...bookingForm, booking_date: e.target.value })} required />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Return Due Date *</label>
+                <input type="date" value={bookingForm.return_due_date} onChange={(e) => setBookingForm({ ...bookingForm, return_due_date: e.target.value })} required />
+              </div>
+              <div className={`${styles.formGroup} ${styles.full}`}>
+                <label className={styles.label}>Purpose / Notes</label>
+                <textarea value={bookingForm.purpose} onChange={(e) => setBookingForm({ ...bookingForm, purpose: e.target.value })} rows={2} />
+              </div>
               <div className={styles.formActions} style={{ gridColumn: "1 / -1" }}>
                 <button type="button" className={styles.cancelBtn} onClick={() => setShowBookingModal(false)}>Cancel</button>
                 <button type="submit" className={styles.primaryBtn}>Create Booking</button>
