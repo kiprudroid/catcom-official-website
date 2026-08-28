@@ -214,38 +214,65 @@ const InventoryManagement = () => {
       {/* Reports — print entire inventory and/or bookings for all groups */}
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h3 className={styles.sectionTitle}><FaFilePdf style={{ marginRight: 6 }} />Reports — Print Inventory / Bookings</h3>
+          <div>
+            <h3 className={styles.sectionTitle}><FaFilePdf style={{ marginRight: 6, color: "#ef4444" }} />Reports &amp; PDF Export</h3>
+            <p className={styles.sub} style={{ marginTop: 2 }}>Print or save comprehensive inventory ledger and bookings reports across groups.</p>
+          </div>
           <button className={styles.newBtn} onClick={handlePrintReport} disabled={reportLoading || reportGroups.length === 0 || (!includeInventory && !includeBookings)}>
-            {reportLoading ? "Generating…" : <><FaFilePdf style={{ marginRight: 6 }} /> Print PDF</>}
+            {reportLoading ? "Generating PDF…" : <><FaFilePdf style={{ marginRight: 6 }} /> Print / Export PDF</>}
           </button>
         </div>
-        <p className={styles.sub}>Select what to include and which groups to export. Same print workflow as Attendance reports.</p>
-        {/* Top row: two checkboxes side by side */}
-        <div className={styles.reportTypeRow}>
-          <label className={styles.reportCheck}>
-            <input type="checkbox" checked={includeInventory} onChange={(e) => setIncludeInventory(e.target.checked)} />
-            Inventory (Ledger)
-          </label>
-          <label className={styles.reportCheck}>
-            <input type="checkbox" checked={includeBookings} onChange={(e) => setIncludeBookings(e.target.checked)} />
-            Bookings
-          </label>
-        </div>
-        {/* Uniform vertical list going downwards */}
-        <div className={styles.reportGroupList}>
-          <label className={`${styles.reportCheck} ${styles.reportCheckAll}`}>
-            <input type="checkbox" checked={reportGroups.length === groups.length && groups.length > 0} onChange={toggleReportAll} />
-            Select All ({groups.length})
-          </label>
-          {groups.map((g) => (
-            <label key={g.id} className={styles.reportCheck}>
-              <input type="checkbox" checked={reportGroups.includes(String(g.id))} onChange={() => toggleReportGroup(g.id)} />
-              <span>{g.name}</span>
-              <span className={styles.reportGroupType}>{g.type}</span>
+
+        {/* 1. Content Selection (Side by side at top) */}
+        <div className={styles.reportContentBox}>
+          <span className={styles.reportLabel}>1. Select Report Type(s)</span>
+          <div className={styles.reportTypesRow}>
+            <label className={styles.reportCheckCard}>
+              <input type="checkbox" checked={includeInventory} onChange={(e) => setIncludeInventory(e.target.checked)} />
+              <div>
+                <strong>Inventory Ledger</strong>
+                <span>Items, quantities, condition &amp; valuation</span>
+              </div>
             </label>
-          ))}
+            <label className={styles.reportCheckCard}>
+              <input type="checkbox" checked={includeBookings} onChange={(e) => setIncludeBookings(e.target.checked)} />
+              <div>
+                <strong>Bookings Report</strong>
+                <span>Hires, borrower details, dates &amp; payments</span>
+              </div>
+            </label>
+          </div>
         </div>
-        {reportGroups.length > 0 && <div className={styles.reportSummary}>{reportGroups.length} group(s) selected · {includeInventory && includeBookings ? "Inventory + Bookings" : includeInventory ? "Inventory only" : "Bookings only"}</div>}
+
+        {/* 2. Group Selection (Uniform vertical list going downwards) */}
+        <div className={styles.reportContentBox}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span className={styles.reportLabel}>2. Select Target Group(s)</span>
+            <span className={styles.reportBadgeCount}>{reportGroups.length} of {groups.length} selected</span>
+          </div>
+          <div className={styles.reportGroupsList}>
+            <label className={`${styles.reportGroupRow} ${styles.reportGroupRowAll}`}>
+              <input type="checkbox" checked={reportGroups.length === groups.length && groups.length > 0} onChange={toggleReportAll} />
+              <span style={{ fontWeight: 800 }}>Select All Groups ({groups.length})</span>
+            </label>
+            {groups.map((g) => {
+              const selected = reportGroups.includes(String(g.id));
+              return (
+                <label key={g.id} className={`${styles.reportGroupRow} ${selected ? styles.reportGroupRowSelected : ""}`}>
+                  <input type="checkbox" checked={selected} onChange={() => toggleReportGroup(g.id)} />
+                  <span className={styles.reportGroupName}>{g.name}</span>
+                  <span className={styles.reportGroupTypeTag}>{g.type}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+
+        {reportGroups.length > 0 && (
+          <div className={styles.reportFooterSummary}>
+            Ready to export: <strong>{reportGroups.length} group(s)</strong> with <strong>{[includeInventory && "Inventory", includeBookings && "Bookings"].filter(Boolean).join(" &amp; ")}</strong>
+          </div>
+        )}
       </div>
 
       {showGroupForm && (

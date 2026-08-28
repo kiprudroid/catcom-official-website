@@ -55,9 +55,23 @@
 .activePill { background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 800; margin-left: 6px; }
 .regimeActions { display: flex; gap: 6px; }
 .checkLabel { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #374151; }
-.reportTypeRow { display: flex; flex-direction: row; gap: 24px; align-items: center; flex-wrap: wrap; }
-.reportGroupList { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
-.reportCheck { display: flex; gap: 8px; align-items: center; font-size: 13px; cursor: pointer; text-align: left; color: #374151; }
-.reportCheckAll { font-weight: 700; color: #1c3a3a; padding-bottom: 6px; margin-bottom: 2px; border-bottom: 1px solid #f3f4f6; width: 100%; }
-.reportGroupType { color: #9ca3af; font-size: 11px; text-transform: capitalize; }
-.reportSummary { font-size: 12px; color: #6b7280; margin-top: 4px; }
+.reportContentBox { display: flex; flex-direction: column; gap: 8px; background: #fcfcfd; border: 1.5px solid #edf2f7; border-radius: 12px; padding: 14px; }
+.reportLabel { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #4a5568; }
+.reportBadgeCount { font-size: 11px; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 2px 8px; border-radius: 12px; }
+.reportTypesRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 650px) { .reportTypesRow { grid-template-columns: 1fr; } }
+.reportCheckCard { display: flex; align-items: flex-start; gap: 10px; background: white; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 12px; cursor: pointer; transition: all 0.15s; }
+.reportCheckCard:hover { border-color: #2dabb1; background: #f8fafc; }
+.reportCheckCard input[type="checkbox"] { margin-top: 2px; accent-color: #1c3a3a; width: 16px; height: 16px; cursor: pointer; }
+.reportCheckCard div { display: flex; flex-direction: column; gap: 2px; }
+.reportCheckCard strong { font-size: 13px; font-weight: 700; color: #1c3a3a; }
+.reportCheckCard span { font-size: 11px; color: #718096; }
+.reportGroupsList { display: flex; flex-direction: column; gap: 6px; max-height: 240px; overflow-y: auto; padding-right: 2px; }
+.reportGroupRow { display: flex; align-items: center; gap: 10px; background: white; border: 1.5px solid #e2e8f0; border-radius: 9px; padding: 9px 12px; cursor: pointer; transition: all 0.15s; }
+.reportGroupRow:hover { border-color: #cbd5e1; background: #f8fafc; }
+.reportGroupRowSelected { border-color: #2dabb1; background: #f0fdfa; }
+.reportGroupRowAll { font-weight: 700; background: #f1f5f9; border-color: #cbd5e1; }
+.reportGroupRow input[type="checkbox"] { accent-color: #1c3a3a; width: 16px; height: 16px; cursor: pointer; }
+.reportGroupName { flex: 1; font-size: 13px; font-weight: 600; color: #1c3a3a; }
+.reportGroupTypeTag { font-size: 10px; font-weight: 700; text-transform: uppercase; background: #e2e8f0; color: #475569; padding: 2px 8px; border-radius: 10px; }
+.reportFooterSummary { font-size: 12px; color: #475569; background: #f0fdf4; border: 1.5px solid #bbf7d0; padding: 10px 14px; border-radius: 10px; display: flex; align-items: center; gap: 6px; }
