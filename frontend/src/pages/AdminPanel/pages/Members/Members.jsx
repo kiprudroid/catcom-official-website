@@ -11,7 +11,6 @@ import { fetchJoinSccs, deleteJoinScc, assignScc } from "@/api/joinScc.api";
 
 import {
   ToastNotification,
-  MemberModal,
   RequestsTable,
 } from "@/pages/AdminPanel/pages/Members/widgets";
 import {
@@ -19,6 +18,8 @@ import {
   isGroupJoinPending,
   stripPendingPrefix,
 } from "./utils/requestHelpers";
+
+import { MemberDetailModal } from "@/pages/AdminPanel/components";
 
 export default function Members() {
   const [requests, setRequests] = useState(() => {
@@ -153,7 +154,7 @@ export default function Members() {
     const joinScc = filteredJoinRequests.map((r) => ({
       id: r.user_id,
       name: r.full_name,
-      requestedAt: r.date_joined, 
+      requestedAt: r.date_joined,
       note: "Join SCC",
       type: "joinScc",
       ...r,
@@ -260,13 +261,10 @@ export default function Members() {
         onReject={reject}
         onRowClick={setSelectedMember}
       />
-
-      {selectedMember && (
-        <MemberModal
-          member={selectedMember}
-          onClose={() => setSelectedMember(null)}
-        />
-      )}
+      <MemberDetailModal
+        member={selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
     </div>
   );
 }

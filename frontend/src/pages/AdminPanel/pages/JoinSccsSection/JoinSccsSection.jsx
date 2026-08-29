@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { fetchJoinSccs, deleteJoinScc } from "@/api/joinScc.api";
 import styles from "./JoinSccsSection.module.css";
 import {
-  MemberDetailModal,
   SearchBar,
   ExportModal,
 } from "@/pages/AdminPanel/pages/JoinSccsSection/widgets";
+import { MemberDetailModal } from "@/pages/AdminPanel/components";
 
 export default function JoinSccsSection() {
   const [joinRequests, setJoinRequests] = useState([]);
