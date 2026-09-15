@@ -20,6 +20,7 @@ const loadNotFound = () => import("@/pages").then(m => ({ Component: m.NotFound 
 
 const loadSuperAdminLogin = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.SuperAdminLogin }));
 const loadAttendanceLogin = () => import("@/pages/AttendanceAdmin/pages").then(m => ({ Component: m.AttendanceLogin }));
+const loadInventoryLogin = () => import("@/pages/InventoryAdmin/pages/InventoryLogin/InventoryLogin").then(m => ({ Component: m.default }));
 
 const loadLeaders = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.LeadersSection }));
 const loadSccLeaders = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.SccLeaders }));
@@ -30,6 +31,7 @@ const loadReports = () => import("@/pages/AdminPanel/pages").then(m => ({ Compon
 const loadJoinGroup = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.JoinGroup }));
 const loadMediaSection = () => import("@/pages/AdminPanel/pages").then(m => ({ Component: m.MediaSection }));
 const loadOtherTools = () => import("@/pages/AdminPanel/pages/OtherTools/OtherTools").then(m => ({ Component: m.default }));
+const loadInventoryManagement = () => import("@/pages/AdminPanel/pages/InventoryManagement/InventoryManagement").then(m => ({ Component: m.default }));
 
 // Layout wrappers
 const loadAdminPanel = async () => {
@@ -40,17 +42,25 @@ const loadAttendanceAdmin = async () => {
   const m = await import("@/pages");
   return { Component: () => <ProtectedAttendance><m.AttendanceAdmin /></ProtectedAttendance> };
 };
+const loadInventoryAdmin = async () => {
+  const m = await import("@/pages");
+  return { Component: () => <ProtectedInventory><m.InventoryAdmin /></ProtectedInventory> };
+};
 
 
 // Auth checks
 const isAdminLoggedIn = () => !!localStorage.getItem("token");
 const isAttendanceLoggedIn = () => !!localStorage.getItem("attendance_token");
+const isInventoryLoggedIn = () => !!localStorage.getItem("inventory_token");
 
 const ProtectedAdmin = ({ children }) =>
   isAdminLoggedIn() ? children : <Navigate to="/login" replace />;
 
 const ProtectedAttendance = ({ children }) =>
   isAttendanceLoggedIn() ? children : <Navigate to="/attendance-login" replace />;
+
+const ProtectedInventory = ({ children }) =>
+  isInventoryLoggedIn() ? children : <Navigate to="/inventory-login" replace />;
 
 
 // ── 2. Clean, highly-readable Router configuration ──
@@ -83,6 +93,8 @@ const router = createBrowserRouter(
       <Route path="/login" lazy={loadSuperAdminLogin} />
       <Route path="/attendance-login" lazy={loadAttendanceLogin} />
       <Route path="/attendance-login/:groupId" lazy={loadAttendanceLogin} />
+      <Route path="/inventory-login" lazy={loadInventoryLogin} />
+      <Route path="/inventory-login/:groupId" lazy={loadInventoryLogin} />
 
       {/* Admin Protected Layout */}
       <Route path="/admin" lazy={loadAdminPanel}>
@@ -94,12 +106,14 @@ const router = createBrowserRouter(
         <Route path="join-sccs" lazy={loadJoinSccs} />
         <Route path="reports" lazy={loadReports} />
         <Route path="other-tools" lazy={loadOtherTools} />
+        <Route path="inventory" lazy={loadInventoryManagement} />
         <Route path="join-group" lazy={loadJoinGroup} />
         <Route path="media" lazy={loadMediaSection} />
       </Route>
 
       {/* Attendance Protected Layout */}
       <Route path="/attendance-admin" lazy={loadAttendanceAdmin} />
+      <Route path="/inventory-admin" lazy={loadInventoryAdmin} />
 
       {/* 404 */}
       <Route path="*" lazy={loadNotFound} />
