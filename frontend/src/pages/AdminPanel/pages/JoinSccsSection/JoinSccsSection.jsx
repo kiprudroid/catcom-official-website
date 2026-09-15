@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { fetchJoinSccs, deleteJoinScc } from "@/api/joinScc.api";
 import styles from "./JoinSccsSection.module.css";
 import {
@@ -6,6 +6,15 @@ import {
   ExportModal,
 } from "@/pages/AdminPanel/pages/JoinSccsSection/widgets";
 import { MemberDetailModal } from "@/pages/AdminPanel/components";
+
+const formatDate = (value) => {
+  if (!value) return "—";
+  return new Date(value).toLocaleDateString("en-KE", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+};
 
 export default function JoinSccsSection() {
   const [joinRequests, setJoinRequests] = useState([]);
@@ -17,6 +26,7 @@ export default function JoinSccsSection() {
   const [expandedGroups, setExpandedGroups] = useState({});
   const [selectedMember, setSelectedMember] = useState(null);
   const [showExport, setShowExport] = useState(false);
+  const [sortRecent, setSortRecent] = useState(false);
 
   const loadJoinRequests = async () => {
     try {
@@ -69,6 +79,20 @@ export default function JoinSccsSection() {
 
   const sortedGroups = Object.keys(grouped).sort((a, b) => a.localeCompare(b));
 
+  const groupedSorted = useMemo(() => {
+    const result = {};
+    for (const key of sortedGroups) {
+      const arr = [...grouped[key]];
+      if (sortRecent) {
+        arr.sort((a, b) => new Date(b.date_joined) - new Date(a.date_joined));
+      } else {
+        arr.sort((a, b) => a.full_name.localeCompare(b.full_name));
+      }
+      result[key] = arr;
+    }
+    return result;
+  }, [grouped, sortedGroups, sortRecent]);
+
   if (loading)
     return (
       <div className={styles.stateContainer}>
@@ -89,6 +113,13 @@ export default function JoinSccsSection() {
           </p>
         </div>
         <div className={styles.headerActions}>
+          <button
+            className={styles.sortBtn}
+            onClick={() => setSortRecent((prev) => !prev)}
+            title="Toggle sort order"
+          >
+            {sortRecent ? "↓ Newest first" : "A–Z"}
+          </button>
           <button
             className={styles.exportBtn}
             onClick={() => setShowExport(true)}
@@ -120,7 +151,9 @@ export default function JoinSccsSection() {
                   {expandedGroups[scc] ? "▾" : "▸"}
                 </span>
                 <span className={styles.sccName}>{scc}</span>
-                <span className={styles.badge}>{grouped[scc].length}</span>
+                <span className={styles.badge}>
+                  {groupedSorted[scc].length}
+                </span>
               </div>
             </button>
 
@@ -135,11 +168,12 @@ export default function JoinSccsSection() {
                       <th>Email</th>
                       <th>Year</th>
                       <th>Gender</th>
+                      <th>Joined</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {grouped[scc].map((request, index) => (
+                    {groupedSorted[scc].map((request, index) => (
                       <tr
                         key={request.user_id}
                         className={
@@ -183,6 +217,9 @@ export default function JoinSccsSection() {
                           >
                             {request.gender}
                           </span>
+                        </td>
+                        <td className={styles.dateCell}>
+                          {formatDate(request.date_joined)}
                         </td>
                         <td>
                           {confirmId === request.user_id ? (

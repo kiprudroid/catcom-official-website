@@ -15,6 +15,27 @@
   gap: 1rem;
 }
 
+.topbarActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sortBtn {
+  padding: 0.45rem 1rem;
+  background: #fff;
+  color: #0d9488;
+  border: 1px solid #0d9488;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.sortBtn:hover {
+  background: #f0fdfa;
+}
+
 .logoGroup {
   display: flex;
   flex-direction: column;
@@ -123,5 +144,8 @@
   .titleRow {
     flex-wrap: wrap;
     gap: 0.4rem;
+  }
+  .topbarActions {
+    align-self: flex-start;
   }
 }

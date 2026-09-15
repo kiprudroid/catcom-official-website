@@ -39,3 +39,24 @@
   font-size: 0.875rem;
   margin-bottom: 1rem;
 }
+
+.sortRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.sortBtn {
+  padding: 0.45rem 1rem;
+  background: #fff;
+  color: #0d9488;
+  border: 1px solid #0d9488;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.sortBtn:hover {
+  background: #f0fdfa;
+}
