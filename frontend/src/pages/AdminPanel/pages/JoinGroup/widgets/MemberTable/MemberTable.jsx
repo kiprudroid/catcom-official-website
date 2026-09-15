@@ -1,5 +1,14 @@
 import styles from "./MemberTable.module.css";
 
+const formatDate = (value) => {
+  if (!value) return "—";
+  return new Date(value).toLocaleDateString("en-KE", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+};
+
 function MemberTable({
   members,
   deletingId,
@@ -30,6 +39,7 @@ function MemberTable({
             <th>Gender</th>
             <th>College</th>
             <th>Group(s) Joined</th>
+            <th>Joined</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -75,6 +85,7 @@ function MemberTable({
                   ))}
                 </div>
               </td>
+              <td className={styles.dateCell}>{formatDate(s.date_joined || s.created_at)}</td>
               <td>
                 {confirmId === s.user_id ? (
                   <div className={styles.confirmInline}>

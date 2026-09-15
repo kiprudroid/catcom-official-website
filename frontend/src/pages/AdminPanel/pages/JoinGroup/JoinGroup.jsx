@@ -16,11 +16,13 @@ function JoinGroup() {
   const [submissions, setSubmissions] = useState([]);
   const [search, setSearch] = useState("");
   const [groupFilter, setGroupFilter] = useState("all");
+  const [sortRecent, setSortRecent] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [confirmId, setConfirmId] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const [showExport, setShowExport] = useState(false);
   const [exportGroup, setExportGroup] = useState("all");
@@ -58,7 +60,7 @@ function JoinGroup() {
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
-    return approved.filter((s) => {
+    const rows = approved.filter((s) => {
       const matchSearch =
         s.full_name.toLowerCase().includes(q) ||
         s.email.toLowerCase().includes(q) ||
@@ -72,7 +74,19 @@ function JoinGroup() {
           .includes(groupFilter);
       return matchSearch && matchGroup;
     });
-  }, [search, groupFilter, approved]);
+
+    const sorted = [...rows];
+    if (sortRecent) {
+      sorted.sort(
+        (a, b) =>
+          new Date(b.date_joined || b.created_at) -
+          new Date(b.date_joined || a.created_at),
+      );
+    } else {
+      sorted.sort((a, b) => a.full_name.localeCompare(b.full_name));
+    }
+    return sorted;
+  }, [search, groupFilter, approved, sortRecent]);
 
   const getExportRows = () => {
     let rows = [...approved];
@@ -87,9 +101,10 @@ function JoinGroup() {
     if (exportRange !== "all") {
       const cutoff = new Date();
       cutoff.setDate(cutoff.getDate() - Number(exportRange));
-      rows = rows.filter((r) =>
-        r.created_at ? new Date(r.created_at) >= cutoff : true,
-      );
+      rows = rows.filter((r) => {
+        const d = r.date_joined || r.created_at;
+        return d ? new Date(d) >= cutoff : true;
+      });
     }
     return rows;
   };
@@ -165,6 +180,16 @@ function JoinGroup() {
         onRefresh={loadSubmissions}
       />
 
+      <div className={styles.sortRow}>
+        <button
+          className={styles.sortBtn}
+          onClick={() => setSortRecent((prev) => !prev)}
+          title="Toggle sort order"
+        >
+          {sortRecent ? "↓ Newest first" : "A–Z"}
+        </button>
+      </div>
+
       <Toolbar
         search={search}
         onSearch={setSearch}
@@ -197,13 +222,6 @@ function JoinGroup() {
           onCancelDelete={() => setConfirmId(null)}
         />
       )}
-
-      {/* <MemberDetailModal
-        member={selectedMember}
-        copied={copied}
-        onClose={() => setSelectedMember(null)}
-        onCopy={handleCopyDetails}
-      /> */}
 
       <MemberDetailModal
         member={selectedMember}

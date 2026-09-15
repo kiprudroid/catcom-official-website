@@ -39,6 +39,12 @@
   background: #f9fafb;
 }
 
+.dateCell {
+  color: #6b7280;
+  font-size: 0.83rem;
+  white-space: nowrap;
+}
+
 .rowDeleting {
   opacity: 0.4;
   pointer-events: none;

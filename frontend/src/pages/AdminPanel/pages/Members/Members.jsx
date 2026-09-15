@@ -38,6 +38,7 @@ export default function Members() {
   const [groupAssigning, setGroupAssigning] = useState({});
   const [filterRange, setFilterRange] = useState("all");
   const [filterType, setFilterType] = useState("all");
+  const [sortRecent, setSortRecent] = useState(true);
   const [toastMsg, setToastMsg] = useState(null);
   const [showNotifDot, setShowNotifDot] = useState(false);
   const prevTotalRef = useRef(null);
@@ -196,6 +197,16 @@ export default function Members() {
     return filteredByType.filter((r) => new Date(r.requestedAt) >= cutoff);
   }, [filteredByType, filterRange]);
 
+  const sortedRequests = useMemo(() => {
+    const arr = [...finalFiltered];
+    if (sortRecent) {
+      arr.sort((a, b) => new Date(b.requestedAt) - new Date(a.requestedAt));
+    } else {
+      arr.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+    }
+    return arr;
+  }, [finalFiltered, sortRecent]);
+
   const totalPending = allRequests.length;
 
   return (
@@ -225,19 +236,28 @@ export default function Members() {
             requests are forwarded to the Join Group page.
           </p>
         </div>
-        <button
-          className={styles.refreshBtn}
-          onClick={() => {
-            loadJoinRequests();
-            setShowNotifDot(false);
-          }}
-        >
-          ↻ Refresh
-        </button>
+        <div className={styles.topbarActions}>
+          <button
+            className={styles.sortBtn}
+            onClick={() => setSortRecent((prev) => !prev)}
+            title="Toggle sort order"
+          >
+            {sortRecent ? "↓ Newest first" : "A–Z"}
+          </button>
+          <button
+            className={styles.refreshBtn}
+            onClick={() => {
+              loadJoinRequests();
+              setShowNotifDot(false);
+            }}
+          >
+            ↻ Refresh
+          </button>
+        </div>
       </div>
 
       <RequestsTable
-        rows={finalFiltered}
+        rows={sortedRequests}
         loading={loading}
         error={error}
         filterRange={filterRange}
