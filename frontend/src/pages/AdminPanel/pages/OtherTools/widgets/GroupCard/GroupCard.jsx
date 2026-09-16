@@ -10,6 +10,15 @@ import {
   FaChevronUp,
 } from "react-icons/fa";
 import AdminAccountPanel from "../AdminAccountPanel/AdminAccountPanel";
+import { formatRelativeTime } from "@/utils/formatRelativeTime";
+
+const WEEKLY_STATUS_LABEL = {
+  compliant: "On track",
+  pending_thursday: "Thursday pending",
+  pending_sunday: "Sunday pending",
+  missed_thursday: "Missed Thursday",
+  missed_sunday: "Missed Sunday",
+};
 
 const GroupCard = ({
   group,
@@ -48,6 +57,19 @@ const GroupCard = ({
 
           {group.admin_email && (
             <span className={styles.adminEmail}>{group.admin_email}</span>
+          )}
+
+          {group.last_login_at ? (
+            <span
+              className={`${styles.loginStatus} ${styles[group.weekly_status] || ""}`}
+              title={WEEKLY_STATUS_LABEL[group.weekly_status] || ""}
+            >
+              Last login: {formatRelativeTime(group.last_login_at)}
+            </span>
+          ) : (
+            <span className={`${styles.loginStatus} ${styles.missed_thursday}`}>
+              No logins yet
+            </span>
           )}
         </div>
       </div>

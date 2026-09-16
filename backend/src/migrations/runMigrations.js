@@ -1,11 +1,11 @@
-import db from '../config/db.config.js';
+import db from "../config/db.config.js";
 
 const runMigrations = async () => {
   try {
-    console.log('Starting database migrations...\n');
+    console.log("Starting database migrations...\n");
 
     // Create users table
-    console.log('Creating users table...');
+    console.log("Creating users table...");
     await db.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
@@ -17,10 +17,10 @@ const runMigrations = async () => {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log('✓ Users table created');
+    console.log("✓ Users table created");
 
     // Create refresh_tokens table
-    console.log('\nCreating refresh_tokens table...');
+    console.log("\nCreating refresh_tokens table...");
     await db.query(`
       CREATE TABLE IF NOT EXISTS refresh_tokens (
         id SERIAL PRIMARY KEY,
@@ -31,22 +31,22 @@ const runMigrations = async () => {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log('✓ Refresh tokens table created');
+    console.log("✓ Refresh tokens table created");
 
     // Create indexes
-    console.log('\nCreating indexes...');
+    console.log("\nCreating indexes...");
     await db.query(`
       CREATE INDEX IF NOT EXISTS idx_refresh_tokens_user_id ON refresh_tokens(user_id);
     `);
     await db.query(`
       CREATE INDEX IF NOT EXISTS idx_refresh_tokens_token ON refresh_tokens(token);
     `);
-    console.log('✓ Indexes created');
+    console.log("✓ Indexes created");
 
-    console.log('\n✓ All migrations completed successfully!\n');
+    console.log("\n✓ All migrations completed successfully!\n");
     process.exit(0);
   } catch (error) {
-    console.error('Migration failed:', error.message);
+    console.error("Migration failed:", error.message);
     process.exit(1);
   }
 };

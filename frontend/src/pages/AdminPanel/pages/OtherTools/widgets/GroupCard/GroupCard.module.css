@@ -141,6 +141,28 @@
   flex-shrink: 0;
 }
 
+.loginStatus {
+  font-size: 0.78rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #eef1f4;
+  color: #556;
+}
+.compliant {
+  background: #e3f5ea;
+  color: #2d6a4f;
+}
+.pending_thursday,
+.pending_sunday {
+  background: #fdf3d8;
+  color: #8a6d1f;
+}
+.missed_thursday,
+.missed_sunday {
+  background: #fbe4e4;
+  color: #b3261e;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
