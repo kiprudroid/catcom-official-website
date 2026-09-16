@@ -8,3 +8,4 @@ export { default as NotFound } from "./NotFound";
 export { default as AdminPanel } from "./AdminPanel/dashboard/AdminPanel";
 
 export { default as AttendanceAdmin } from "./AttendanceAdmin";
+export { default as InventoryAdmin } from "./InventoryAdmin/InventoryAdmin";

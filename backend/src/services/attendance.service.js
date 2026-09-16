@@ -1,10 +1,12 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import * as Model from "../models/attendance.model.js";
+import * as LoginModel from "../models/group-admin-login.model.js";
 
 const VALID_TYPES = ["committee", "scc", "group", "other"];
 const VALID_STATUSES = ["present", "absent", "apology"];
 const KENYAN_PHONE = /^(07[0-9]\d{7}|01[01][0-9]\d{6})$/;
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 const validatePhone = (phone) => {
   if (phone === null || phone === undefined || phone === "") return null;
@@ -17,9 +19,75 @@ const validatePhone = (phone) => {
   return digits;
 };
 
+const startOfWeek = (date) => {
+  const d = new Date(date);
+  const day = d.getDay(); // 0 = Sunday
+  const diffToMonday = day === 0 ? -6 : 1 - day;
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + diffToMonday);
+  return d;
+};
+
+const loggedInOn = (logins, targetDay) =>
+  logins.some((l) => new Date(l.logged_in_at).getDay() === targetDay);
+
+const computeWeeklyStatus = (logins) => {
+  const today = new Date().getDay();
+  const weekStart = startOfWeek(new Date());
+  const hitThursday = loggedInOn(logins, 4);
+  const hitSunday = loggedInOn(logins, 0);
+
+  let weekly_status = "compliant";
+  if (!hitThursday && today > 4) weekly_status = "missed_thursday";
+  else if (
+    hitThursday &&
+    !hitSunday &&
+    new Date() > new Date(weekStart.getTime() + 6 * DAY_MS)
+  )
+    weekly_status = "missed_sunday";
+  else if (!hitThursday && today <= 4) weekly_status = "pending_thursday";
+  else if (hitThursday && !hitSunday) weekly_status = "pending_sunday";
+
+  return {
+    last_login_at: logins[0]?.logged_in_at || null,
+    weekly_status,
+  };
+};
+
+const getWeeklyLoginStatus = async (group_admin_id) => {
+  const weekStart = startOfWeek(new Date());
+  const { rows: logins } = await LoginModel.getRecentLoginsQuery(
+    group_admin_id,
+    weekStart,
+  );
+  return computeWeeklyStatus(logins);
+};
+
 export const getAllGroups = async () => {
-  const { rows } = await Model.getAllGroupsQuery();
-  return rows;
+  const { rows: groups } = await Model.getAllGroupsQuery();
+  const { rows: admins } = await LoginModel.getAllAdminsQuery();
+  const weekStart = startOfWeek(new Date());
+  const { rows: allLogins } =
+    await LoginModel.getAllRecentLoginsQuery(weekStart);
+
+  const loginsByAdmin = {};
+  for (const l of allLogins) {
+    if (!loginsByAdmin[l.group_admin_id]) loginsByAdmin[l.group_admin_id] = [];
+    loginsByAdmin[l.group_admin_id].push(l);
+  }
+
+  const statusByGroupId = {};
+  for (const admin of admins) {
+    statusByGroupId[admin.group_id] = computeWeeklyStatus(
+      loginsByAdmin[admin.id] || [],
+    );
+  }
+
+  return groups.map((g) => ({
+    ...g,
+    last_login_at: statusByGroupId[g.id]?.last_login_at || null,
+    weekly_status: statusByGroupId[g.id]?.weekly_status || null,
+  }));
 };
 
 export const getGroupById = async (id) => {
@@ -62,6 +130,13 @@ export const loginGroupAdmin = async ({ email, password }) => {
   if (!admin) throw new Error("Invalid credentials");
   const match = await bcrypt.compare(password, admin.password);
   if (!match) throw new Error("Invalid credentials");
+
+  try {
+    await LoginModel.recordAdminLoginQuery(admin.id);
+  } catch (err) {
+    console.error("Failed to record group admin login:", err.message);
+  }
+
   const token = jwt.sign(
     {
       admin_id: admin.id,
@@ -116,7 +191,10 @@ export const deleteGroupAdmin = async (group_id) => {
 
 export const getGroupAdmin = async (group_id) => {
   const { rows } = await Model.getAdminByGroupIdQuery(group_id);
-  return rows[0] || null;
+  const admin = rows[0];
+  if (!admin) return null;
+  const { last_login_at, weekly_status } = await getWeeklyLoginStatus(admin.id);
+  return { ...admin, last_login_at, weekly_status };
 };
 
 export const getMembersByGroup = async (group_id) => {

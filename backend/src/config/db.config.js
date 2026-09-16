@@ -10,6 +10,10 @@ const db =
     connectionString: process.env.DATABASE_URL,
     statement_timeout: 0,
     idle_in_transaction_session_timeout: 600000,
+    connectionTimeoutMillis: 10000,
+    idleTimeoutMillis: 30000,
+    keepAlive: true,
+    max: 10,
     ssl:false,
   });
 

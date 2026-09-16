@@ -282,7 +282,13 @@ const OtherTools = () => {
                 onExpand={handleExpandGroup}
                 onEdit={handleEditGroup}
                 onDelete={handleDeleteGroup}
-                onNavigate={() => navigate("/attendance-login")}
+                onNavigate={() =>
+                  window.open(
+                    "/attendance-login",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
                 onFormChange={handleAdminFormChange}
                 onTogglePassword={handleTogglePassword}
                 onCreateAdmin={handleCreateAdmin}
