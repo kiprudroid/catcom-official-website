@@ -79,12 +79,27 @@
   background: #e5e7eb;
 }
 
+.imageButton {
+  padding: 0;
+  border: 0;
+  cursor: zoom-in;
+  text-align: inherit;
+}
+
+.imageButton:focus-visible {
+  outline: 2px solid #2dabb1;
+  outline-offset: 2px;
+}
+
 .slideshowImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
+}
+.imageButton:hover .slideshowImage {
+  transform: scale(1.03);
 }
 .slideshowImage:hover {
   transform: scale(1.03);

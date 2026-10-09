@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 import { SectionHeading } from "./../../../../components/Typography/Typography";
 import styles from "./SccOverview.module.css";
 import { SCCs } from "../../data/scc";
@@ -6,6 +11,7 @@ import { SCCs } from "../../data/scc";
 const SccOverview = ({ className }) => {
   const [selectedScc, setSelectedScc] = useState(SCCs[0]);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" ? window.innerWidth <= 480 : false,
   );
@@ -32,6 +38,7 @@ const SccOverview = ({ className }) => {
   // Reset slide index when SCC changes
   useEffect(() => {
     setSlideIndex(0);
+    setLightboxIndex(-1);
   }, [selectedScc]);
 
   const photos = selectedScc.sccPhotos || [];
@@ -75,6 +82,11 @@ const SccOverview = ({ className }) => {
     slideIndex * imagesPerSlide + imagesPerSlide,
   );
 
+  const slides = photos.map((src, idx) => ({
+    src,
+    alt: `${selectedScc.name} photo ${idx + 1}`,
+  }));
+
   return (
     <div className={`${styles.sccExpanded} ${className}`}>
       <div className={styles.navigationButtonsAndHeading}>
@@ -113,9 +125,12 @@ const SccOverview = ({ className }) => {
                 className={`${styles.photoGrid} ${isMobile ? styles.photoGridSingle : ""}`}
               >
                 {currentPair.map((image, index) => (
-                  <div
+                  <button
                     key={`${slideIndex}-${index}`}
-                    className={styles.imageWrapper}
+                    type="button"
+                    className={`${styles.imageWrapper} ${styles.imageButton}`}
+                    onClick={() => setLightboxIndex(slideIndex * imagesPerSlide + index)}
+                    aria-label={`Open ${selectedScc.name} photo ${slideIndex * imagesPerSlide + index + 1} in viewer`}
                   >
                     <img
                       load="lazy"
@@ -123,7 +138,7 @@ const SccOverview = ({ className }) => {
                       alt={`${selectedScc.name} photo ${slideIndex * imagesPerSlide + index + 1}`}
                       className={styles.slideshowImage}
                     />
-                  </div>
+                  </button>
                 ))}
                 {/* Pad to 2 columns on desktop if only 1 image in last slide */}
                 {!isMobile && currentPair.length === 1 && (
@@ -155,6 +170,15 @@ const SccOverview = ({ className }) => {
           ) : (
             <div className={styles.noImages}>No photos available</div>
           )}
+          <Lightbox
+            open={lightboxIndex >= 0}
+            index={lightboxIndex}
+            close={() => setLightboxIndex(-1)}
+            slides={slides}
+            plugins={[Thumbnails, Zoom]}
+            thumbnails={{ position: "bottom" }}
+            on={{ view: ({ index }) => setLightboxIndex(index) }}
+          />
         </div>
 
         <div className={styles.families}>

@@ -109,6 +109,21 @@
   position: relative;
 }
 
+.slideButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: 8px;
+}
+
+.slideButton:focus-visible {
+  outline: 2px solid #2dabb1;
+  outline-offset: 2px;
+}
+
 .sliderContainer {
   /* MODIFIED: Changed fixed width to be responsive */
   width: 100%;

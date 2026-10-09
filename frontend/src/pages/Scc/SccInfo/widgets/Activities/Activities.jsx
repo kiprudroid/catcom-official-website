@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
+import Lightbox from "yet-another-react-lightbox";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 import styles from "./Activities.module.css";
 import { SectionHeading } from "@/components/Typography/Typography";
 
@@ -37,6 +42,8 @@ const ActivityItem = ({ activity }) => {
 };
 
 const Activities = ({ activities = [], sccPhotos = [] ,className}) => {
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -48,6 +55,11 @@ const Activities = ({ activities = [], sccPhotos = [] ,className}) => {
     adaptiveHeight: true,
     fade: true,
   };
+
+  const slides = sccPhotos.map((src, idx) => ({
+    src,
+    alt: `Slide ${idx + 1}`,
+  }));
 
   return (
     <div className={`${styles.card} ${className}`}>
@@ -71,13 +83,31 @@ const Activities = ({ activities = [], sccPhotos = [] ,className}) => {
         <div className={styles.photosColumn}>
           <div className={styles.photosInner}>
             {sccPhotos && sccPhotos.length > 0 ? (
-              <Slider {...settings} className={styles.sliderContainer}>
-                {sccPhotos.map((img, idx) => (
-                  <div key={idx} className={styles.slide}>
-                    <img src={img} alt={`Slide ${idx + 1}`} className={styles.slideshowImage} />
-                  </div>
-                ))}
-              </Slider>
+              <>
+                <Slider {...settings} className={styles.sliderContainer}>
+                  {sccPhotos.map((img, idx) => (
+                    <div key={idx} className={styles.slide}>
+                      <button
+                        type="button"
+                        className={styles.slideButton}
+                        onClick={() => setLightboxIndex(idx)}
+                        aria-label={`Open photo ${idx + 1} in viewer`}
+                      >
+                        <img src={img} alt={`Slide ${idx + 1}`} className={styles.slideshowImage} />
+                      </button>
+                    </div>
+                  ))}
+                </Slider>
+                <Lightbox
+                  open={lightboxIndex >= 0}
+                  index={lightboxIndex}
+                  close={() => setLightboxIndex(-1)}
+                  slides={slides}
+                  plugins={[Thumbnails, Zoom]}
+                  thumbnails={{ position: "bottom" }}
+                  on={{ view: ({ index }) => setLightboxIndex(index) }}
+                />
+              </>
             ) : (
               <div className={styles.noImages}>No photos available</div>
             )}
