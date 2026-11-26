@@ -36,38 +36,6 @@ export const SCCs = [
       "St Martin (1579-1639) was born in Lima, Peru. He was the illegitimate son of a nobleman and possibly an African woman slave. He had a younger sister but soon after her birth, their father abandoned them.St Martin grew up in poverty with his mother who, unable to support him, sent him for two years to a Care School and then to work and train with a barber/surgeon.St Martin devoted his life to the sick, the poor and praying to the Blessed Sacrament. As a Lay Brother, he begged for alms to feed the hungry, the sick and his Dominican community. Often when there was no more space in their infirmary, he would give patients his own small bed.",
     prayer:
       "O glorious Saint Martin, whose burning charity embraced all, especially the poor and needy, we humbly turn to you for your intercession. May we, like you, be moved by compassion and generosity, and may we always strive to follow your example of humility and service to others. Saint Martin, pray for us, that we may be made worthy of the promises of Christ. Amen",
-    leaders: [
-      {
-        name: "Alex Karanja",
-        role: "Moderator",
-        image: "sccPictures/stMartin/leaders/AlexKaranja.jpeg",
-      },
-      {
-        name: "Kelvin Macharia",
-        role: "Coordinator",
-        image: "sccPictures/stMartin/leaders/KelvinMacharia.jpeg",
-      },
-      {
-        name: "Scholastica Osebe",
-        role: "Treasurer",
-        image: "sccPictures/stMartin/leaders/ScholasticaOsebe.jpeg",
-      },
-      {
-        name: "Rehema Nkirote Mwenda",
-        role: "Secretary",
-        image: "sccPictures/stMartin/leaders/RehemaNkirote.jpeg",
-      },
-      {
-        name: "Jovial Ann Wairimu Mutua",
-        role: "Project Manager",
-        image: "sccPictures/stMartin/leaders/JovialAnn.jpeg",
-      },
-      {
-        name: "Grace Mutheu",
-        role: "Catering Secretary",
-        image: "sccPictures/stMartin/leaders/GraceMutheu.jpeg",
-      },
-    ],
   },
   {
     path: "mmog",
@@ -92,43 +60,21 @@ export const SCCs = [
       "sccPictures/MMOG/Picture4.jpg",
       "sccPictures/MMOG/Picture5.jpg",
       "sccPictures/MMOG/Picture6.jpg",
+      "sccPictures/MMOG/Picture7.jpg",
+      "sccPictures/MMOG/Picture8.jpg",
+      "sccPictures/MMOG/Picture9.jpg",
+      "sccPictures/MMOG/Picture10.jpg",
+      "sccPictures/MMOG/Picture11.jpg",
+      "sccPictures/MMOG/Picture12.jpg",
+      "sccPictures/MMOG/Picture13.jpg",
+      "sccPictures/MMOG/Picture14.jpg",
+      "sccPictures/MMOG/Picture15.jpg",
+      "sccPictures/MMOG/Picture16.jpg",
     ],
     aboutPatronSaint:
       "Mary was a first-century Jewish woman of Nazareth, the wife of Joseph and the mother of Jesus. She is an important figure of Christianity, venerated under various titles such as virgin or queen, many of them mentioned in the Litany of Loreto. God's “first” thought in creating was Jesus. Jesus, the incarnate Word, is the one who could give God perfect love and worship on behalf of all creation. As Jesus was “first” in God's mind, Mary was “second” insofar as she was chosen from all eternity to be his mother.",
     prayer:
       "Hail Mary, full of grace, the Lord is with thee; blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen ",
-    leaders: [
-      {
-        name: "John Mwanza",
-        role: "Moderator",
-        image: "sccPictures/MMOG/leaders/john-mwiwa-mwanza.jpeg",
-      },
-      {
-        name: "Kevin Onyango",
-        role: "Coordinator",
-        image: "sccPictures/MMOG/leaders/onyango-kelvin.jpeg",
-      },
-      {
-        name: "Belinda Kiplagat",
-        role: "Treasurer",
-        image: "sccPictures/MMOG/leaders/belinda-jepkogei-kiplagat.jpeg",
-      },
-      {
-        name: "Antony Wamaitha",
-        role: "Secretary",
-        image: "sccPictures/MMOG/leaders/antony-wamaitha.jpeg",
-      },
-      {
-        name: "Kelvin Kipyator",
-        role: "Project Manager",
-        image: "sccPictures/MMOG/leaders/kelvin-kipyator.jpeg",
-      },
-      {
-        name: "Nekesa Ann Sharline",
-        role: "Catering Secretary",
-        image: "sccPictures/MMOG/leaders/nekesa-ann-sharline.jpeg",
-      },
-    ],
   },
   {
     path: "st-therese",
@@ -166,35 +112,6 @@ export const SCCs = [
       "St Therese of Lisieux, also known as the little flower lived a very short simple but adventurous and profound life in her time. Born in 1873 she went on to become one of the Carmalite nuns at age 15 where she embarked on a path of humility and childlike trust and fondness to Jesus Christ.Her approach, “The Little Way” of doing small things with extraordinary love has become a legacy that we embrace in our daily spiritual life. She lived for 24 years on earth but her spirit lives on in us and in heaven",
     prayer:
       "Teach us how to open our hearts without reserve to the Holy Spirit as you did ,to seek and find God's will in all the crises and choices, in all the joys and disappointments of our lives. Gain for us too, the Grace to do His will with courage and untroubled hearts so that we may radiate a joy and a gladness like yours in the service of Our Lord.Amen",
-    leaders: [
-      {
-         name: "Lucy Muthoni Mburu", 
-        role: "Moderator", 
-        image:"sccPictures/stTherese/leaders/lucy-muthoni-mburu.jpeg",
-      },
-      { name: "Gilbert Kipyego Biwot",
-        role: "Coordinator",
-        image:"sccPictures/stTherese/leaders/gilbert-kipyego-biwot.jpeg",
-      },
-      { name: "Lucy Agwaya",
-        role: "Treasurer",
-        image:"sccPictures/stTherese/leaders/lucy-agwaya.jpeg",
-      },      
-      {
-        name:"Fanuel Gwama",
-        role:"Secretary",
-        image:"sccPictures/stTherese/leaders/fanuel-gwama.jpeg",
-      },
-      { name: "Magdalene Minoo Muteti",
-        role: "Project Manager",
-        image:"sccPictures/stTherese/leaders/magdalene-minoo-muteti.jpeg",
-      },
-      {
-        name: "Grace Watiri Kihara",
-        role: "Catering Secretary",
-        image:"sccPictures/stTherese/leaders/grace-watiri-kihara.jpeg",
-      },
-    ],
   },
   {
     path: "st-veronica",
@@ -222,32 +139,6 @@ export const SCCs = [
     prayer:
       "Prayer to Saint Veronica My Jesus, Saint Veronica served You on the way to Calvary by wiping Your beloved face with a towel on which Your sacred image then appeared. She protected this treasure, and whenever people touched it, they were miraculously healed. I ask her to pray for the growth of my ability to see Your sacred image in others, to recognize their hurts, to stop and join them on their difficult journeys, and to feel the same compassion for them as she did for You. Show me how to wipe their faces, serve their needs, and heal their wounds, reminding me that as I do this for them, I also do this for You. Saint Veronica, pray for me. Amen.",
 
-    leaders :[
-  { name: "David Mogeni",
-    role: "Moderator",
-    image:"/sccPictures/stVeronica/leaders/david-mogeni.jpeg",
-  },
-  { name: "Michael Wambui",
-    role: "Coordinator",
-    image:"/sccPictures/stVeronica/leaders/michael-wambui.jpeg",
-  },
-  { name: "Esther Sagina",
-    role: "Treasurer",
-    image:"/sccPictures/stVeronica/leaders/esther-sagina.jpeg",
-  },
-  { name: "Scholastica Wangare",
-    role: "Secretary",
-    image:"/sccPictures/stVeronica/leaders/scholastica-wangare-muneene.jpeg",
-  },
-  { name: "Gachuhi Catherine Wahu",
-    role: "Project Manager",
-    image:"/sccPictures/stVeronica/leaders/gachuhi-catherine-wahu.jpeg",
-  },
-  { name: "Cynthia Paul",
-    role: "Catering Secretary",
-    image:"/sccPictures/stVeronica/leaders/cynthia-paul.jpeg",
-  }
-],
   },
   {
     path: "st-charles",
@@ -275,14 +166,6 @@ export const SCCs = [
       "Saint Charles Lwanga, born in 1860 in Buganda (modern-day Uganda), was a Christian convert and one of the 22 Catholic martyrs who died for their faith under King Mwanga II's persecution. Serving as a page in the royal court, he became a leader among the Christian converts and protected young boys from the king's immoral advances. Amid growing hostility, he was baptized and encouraged his fellow believers to remain steadfast. Arrested and condemned, he was burned alive on June 3, 1886, at Namugongo, showing immense courage and devotion until his last breath. Canonized by Pope Paul VI in 1964, he is honored as the patron saint of youth, converts, and African Catholics. His feast day, celebrated with his fellow martyrs, remains a significant event in Uganda and beyond, inspiring Christians to stand firm in their faith despite persecution",
     prayer:
       "Saint Charles Lwanga, you embraced suffering and death for your faith, shining brightly as a beacon of hope in the face of persecution. Your unwavering love for Christ inspires us to live lives of integrity and courage. Pray for us, that we may have the strength to stand firm in our faith, to follow Christ's teachings, and to bear witness to the Gospel, even in the face of adversity. Amen",
-    leaders:  [
-  { name: "Rafiki Paul", role: "Moderator", image: "/sccPictures/stCharles/leaders/rafiki-paul.jpeg"},
-  { name: "Andy Ogana", role: "Coordinator", image: "/sccPictures/stCharles/leaders/andy-ogana.jpeg" },
-  { name: "Hellen Bernice", role: "Treasurer", image: "/sccPictures/stCharles/leaders/hellen-bernice.jpeg" },
-  { name: "Sylvia Adhiambo", role: "Secretary", image: "/sccPictures/stCharles/leaders/sylvia-adhiambo.jpeg" },
-  { name: "Immaculate Mukai Kyalo", role: "Project Manager", image: "/sccPictures/stCharles/leaders/immaculate-mukai-kyalo.jpeg" },
-  { name: "Immaculate Kimani", role: "Catering Secretary", image: "/sccPictures/stCharles/leaders/immaculate-kimani.jpeg" }
-]
   },
   {
     path: "st-stephen",
@@ -312,38 +195,14 @@ export const SCCs = [
       "sccPictures/stStephen/picture10.jpg",
       "sccPictures/stStephen/picture11.jpg",
       "sccPictures/stStephen/picture12.jpg",
+      "sccPictures/stStephen/picture13.jpg",
+      "sccPictures/stStephen/picture14.jpg",
+      "sccPictures/stStephen/picture15.jpg",
     ],
     aboutPatronSaint:
       "Saint Stephen, the first Christian martyr, was one of the first deacons of the Church, chosen to assist the apostles in serving the poor and ensuring fair resource distribution. Known for his deep faith, wisdom, and ability to perform miracles, he became a prominent preacher, which led to opposition from Jewish synagogues. Accused of blasphemy, he was brought before the Sanhedrin, where he delivered a speech recounting Israel's history and condemning the religious leaders for resisting God's will. Enraged, they dragged him outside Jerusalem and stoned him to death, during which he prayed for his persecutors.Among those witnessing his execution was Saul of Tarsus, who later became Saint Paul.feast day is celebrated on December 26",
     prayer:
       "O glorious St. Stephen, first martyr for the faith, you who were filled with grace and power, and who, even in the face of death, prayed for your persecutors, intercede for us. Grant that we may imitate your courage and steadfastness in our own lives, always choosing to follow the truth and love even our enemies. Help us to be faithful witnesses to Christ, and to seek forgiveness, not only for ourselves, but for those who have wronged us. St. Stephen, pray for us, that we may one day join you in heaven, praising God eternally. Amen.",
-    leaders : [
-  { name: "Redemta Wambui",
-    role: "Moderator",
-    image:"/sccPictures/stStephen/leaders/redemta-wambui.jpeg",
-  },
-  { name: "Steve Mbuvi",
-    role: "Coordinator",
-    image:"/sccPictures/stStephen/leaders/steve-mbuvi.jpeg",
-  },
-  { name: "Rickson Mumo",
-    role: "Treasurer",
-    image:"/sccPictures/stStephen/leaders/rickson-mumo.jpeg",
-  },
-  { name: "Joseph Olumatete",
-    role: "Secretary",
-    image:"/sccPictures/stStephen/leaders/joseph-olumatete.jpeg",
-  },
-  { name: "Emma Chebet",
-    role: "Project Manager",
-    image:"/sccPictures/stStephen/leaders/emma-chebet.jpeg",
-  },
-  {
-    name:"Nayere Sean",
-    role:"Catering Secretary",
-    image:"/sccPictures/stStephen/leaders/nayere-sean.jpeg",
-  }
-],
   },
   {
     path: "st-jude",
@@ -369,27 +228,20 @@ export const SCCs = [
       "spiritual discussions",
     ],
     sccPhotos: [
-      "sccPictures/stJude/picture1.png",
-      "sccPictures/stJude/picture2.png",
-      "sccPictures/stJude/picture3.png",
-      "sccPictures/stJude/picture4.png",
-      "sccPictures/stJude/picture5.png",
-      "sccPictures/stJude/picture6.png",
-      "sccPictures/stJude/picture7.png",
-      "sccPictures/stJude/picture8.png",
+      "sccPictures/stJude/picture1.jpg",
+      "sccPictures/stJude/picture2.jpg",
+      "sccPictures/stJude/picture3.jpg",
+      "sccPictures/stJude/picture4.jpg",
+      "sccPictures/stJude/picture5.jpg",
+      "sccPictures/stJude/picture6.jpg",
+      "sccPictures/stJude/picture7.jpg",
+      "sccPictures/stJude/picture8.jpg",
+      "sccPictures/stJude/picture9.jpg",
     ],
     aboutPatronSaint:
       "St. Jude is the Patron Saint of Hope and impossible causes and one of Jesus' original twelve Apostles.He preached the Gospel with great passion, often in the most difficult circumstances. Through the power of the Holy Spirit, he made profound differences in people's lives as he offered them the Word of God. The Gospel tells us that St. Jude was a brother of St. James the Less, also one of the Apostles. They are described in the Gospel of Matthew as the 'brethren' of Jesus, probably cousins.",
     prayer:
       "Most holy Apostle, St. Jude, faithful servant and friend of Jesus, I place myself into your hands at this difficult time.Help me to know that I am not alone. Please pray for me, asking God to send me comfort for my sorrows, bravery for my fears, and healing for my suffering. Ask our loving God to strengthen my faith and give me the courage to accept His Will for my life. Thank you, St. Jude, for the hope you offer to all who believe in you. Amen.",
-    leaders: [
-  { name: "Ben Lutyo", role: "Moderator", image: "/sccPictures/stJude/leaders/ben-lutyo.jpeg" },
-  { name: "Brian Mwendwa", role: "Coordinator", image: "/sccPictures/stJude/leaders/brian-mwendwa.jpeg" },
-  { name: "Felister Mukiri", role: "Treasurer", image: "/sccPictures/stJude/leaders/felista-mukiri-kabweria.jpeg" },
-  { name: "Charlene Munene", role: "Secretary", image: "/sccPictures/stJude/leaders/charlene-wanjiru-munene.jpeg" },
-  { name: "Alvin Mecca", role: "Project Manager", image: "/sccPictures/stJude/leaders/alvin-mecca.jpeg" },
-  { name: "Laureen Wangari", role: "Catering Secretary", image: "/sccPictures/stJude/leaders/laureen-wangari.jpeg" }
-],
   },
   {
     path: "st-paul",
@@ -425,32 +277,6 @@ export const SCCs = [
       "Saint Paul, originally named Saul, was born around 5 AD in Tarsus, a prominent city in modern-day Turkey. He came from a devout Jewish background, was a Roman citizen, and was highly educated in Jewish law under the renowned rabbi Gamaliel. As a Pharisee, he zealously upheld the Mosaic Law and initially persecuted early Christians, believing them to be a threat to Judaism.His life dramatically changed on the road to Damascus when he had a vision of Jesus. This experience left him temporarily blind, but after three days, he regained his sight and converted to Christianity. Taking the name Paul, he dedicated his life to spreading the gospel.",
     prayer:
       "Holy St. Paul, you taught others about the saving message of Jesus, intercede for us so that Christ may live in us. Help us to know and imitate you and your love for Jesus. It is through your writings that many people have come to know Jesus, may all people know and glorify God through your writings and intercession.",
-    leaders :[
-  { name: "Raphael Muema Petro",
-    role: "Moderator",
-    image:"/sccPictures/stPaul/leaders/raphael-muema-petro.jpeg",
-  },
-  { name: "Jeremiah Kyalo",
-    role: "Coordinator",
-    image:"/sccPictures/stPaul/leaders/jeremiah-kyalo.jpeg",
-  },
-  { name: "Venadate Kerubo",
-    role: "Treasurer",
-    image:"/sccPictures/stPaul/leaders/venadate-kerubo.jpeg",
-  },
-  { name: "Mark Brenson Muriithi",
-    role: "Secretary",
-    image:"/sccPictures/stPaul/leaders/mark-brenson-muriithi.jpeg",
-  },
-  { name: "Victor Wafula",
-    role: "Project Manager",
-    image:"/sccPictures/stPaul/leaders/victor-wafula.jpeg",
-  },
-  { name: "Anyango Esther",
-    role: "Catering Secretary",
-    image:"/sccPictures/stPaul/leaders/anyango-esther.jpeg",
-  }
-],
   },
 ];
 
@@ -489,7 +315,7 @@ export const sccCards = [
   {
     path: "st-jude",
     name: "St. Jude",
-    images: ["sccPictures/stJude/picture1.png"],
+    images: ["sccPictures/stJude/picture1.jpg"],
   },
   {
     path: "st-paul",

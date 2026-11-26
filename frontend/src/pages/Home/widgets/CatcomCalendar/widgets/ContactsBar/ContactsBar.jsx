@@ -3,14 +3,14 @@ import styles from "./ContactsBar.module.css";
 
 const CONTACTS = [
   {
-    name: "Wilfred Wandera",
+    name: "Sean Nayere",
     role: "Organising Secretary",
-    phone: "0715 115 907",
+    phone: "0791 522 574",
   },
   {
-    name: "Hillary Kasaine",
+    name: "Ruth Wanjiku",
     role: "Publicity Secretary",
-    phone: "0743 382 152",
+    phone: "0793 762 449",
   },
 ];
 
